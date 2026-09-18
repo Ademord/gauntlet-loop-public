@@ -72,3 +72,13 @@ Per pair: two runs. Cost anchors come from the ledger: the one fully recorded re
 ## 10. Reporting
 
 Each look produces a short Markdown report from the analysis script under `research/program/paired-study/`, with the pair manifests, prompt diffs, and per-run milestone lines. Results enter the skill only through the backlog. A result is reported with its interval, its exclusions, and the sentence "on tasks of this class, from this owner's repositories, with these model versions".
+
+## Amendment, 19 September 2026: harness isolation, measurement, and mutation tasks
+
+Recorded before any valid pair has run; the first attempt failed at startup and produced no task work (see `paired-study/LOG.md`).
+
+- **Isolation.** Each arm is a headless `claude -p` session in a fresh clone under the system temporary directory, outside any repository, with `--setting-sources project,local --strict-mcp-config --disable-slash-commands`: no user-level hooks, plugins, MCP servers, or skills reach an arm. Both arms use the same pinned model (`claude-sonnet-5` unless a pair records otherwise), permission mode `acceptEdits`, and the same tool allowlist. A preflight call confirms the CLI is logged in before anything is cloned.
+- **Acceptance.** `accepted` means the independent rerun of the test command passes after every tracked file under the protected test paths has been restored to the task base, and no file outside the allowed paths changed (new test files are allowed). The agent's own declared state is recorded but does not decide acceptance.
+- **Cost and effort.** `cost_usd` and `total_tokens` come from the transcript's final result event; `reviews_used` is the agent's recorded review count when it writes an integer, otherwise the number of critic dispatches counted in the transcript. These replace the earlier `subagent_tokens` outcome.
+- **Mutation-minted tasks.** For the F1 volume, tasks are also minted by applying one semantic mutation (a flipped comparison, swapped `and`/`or`, a dropped `not`, a changed small integer or boolean literal) to a test-covered line and keeping it only if exactly one or two tests fail; the original line is the answer (`tools/paired_study/mint_mutations.py`). Their results generalize only to one-token defects in the minted repository, and they cannot exercise F2.
+- **Startup failures.** A pair stops when an arm fails at startup, and such rows are marked `harness_failure` with a reason; section 6 already excludes them from analysis.

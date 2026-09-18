@@ -1,0 +1,110 @@
+[
+  {
+    "task_id": "m001-intelligence-schema-L37",
+    "file": "schema.py",
+    "line": 37,
+    "kind": "compare",
+    "original": "in",
+    "mutated": "not in",
+    "failing": 1
+  },
+  {
+    "task_id": "m002-intelligence-evaluate-L148",
+    "file": "evaluate.py",
+    "line": 148,
+    "kind": "boolop",
+    "original": "and",
+    "mutated": "or",
+    "failing": 1
+  },
+  {
+    "task_id": "m003-intelligence-evaluate-L102",
+    "file": "evaluate.py",
+    "line": 102,
+    "kind": "int",
+    "original": "0",
+    "mutated": "1",
+    "failing": 1
+  },
+  {
+    "task_id": "m004-intelligence-evaluate-L97",
+    "file": "evaluate.py",
+    "line": 97,
+    "kind": "int",
+    "original": "0",
+    "mutated": "1",
+    "failing": 1
+  },
+  {
+    "task_id": "m005-intelligence-schema-L31",
+    "file": "schema.py",
+    "line": 31,
+    "kind": "compare",
+    "original": "in",
+    "mutated": "not in",
+    "failing": 2
+  },
+  {
+    "task_id": "m006-intelligence-evaluate-L149",
+    "file": "evaluate.py",
+    "line": 149,
+    "kind": "int",
+    "original": "1",
+    "mutated": "2",
+    "failing": 1
+  },
+  {
+    "task_id": "m007-intelligence-vlm-L59",
+    "file": "vlm.py",
+    "line": 59,
+    "kind": "int",
+    "original": "3",
+    "mutated": "4",
+    "failing": 2
+  },
+  {
+    "task_id": "m008-intelligence-evaluate-L45",
+    "file": "evaluate.py",
+    "line": 45,
+    "kind": "boolop",
+    "original": "and",
+    "mutated": "or",
+    "failing": 1
+  },
+  {
+    "task_id": "m009-intelligence-schema-L26",
+    "file": "schema.py",
+    "line": 26,
+    "kind": "compare",
+    "original": "is",
+    "mutated": "is not",
+    "failing": 2
+  },
+  {
+    "task_id": "m010-intelligence-evaluate-L44",
+    "file": "evaluate.py",
+    "line": 44,
+    "kind": "compare",
+    "original": "is",
+    "mutated": "is not",
+    "failing": 2
+  },
+  {
+    "task_id": "m011-intelligence-vlm-L129",
+    "file": "vlm.py",
+    "line": 129,
+    "kind": "int",
+    "original": "1",
+    "mutated": "2",
+    "failing": 2
+  },
+  {
+    "task_id": "m012-intelligence-validation-L99",
+    "file": "validation.py",
+    "line": 99,
+    "kind": "compare",
+    "original": "is",
+    "mutated": "is not",
+    "failing": 1
+  }
+]

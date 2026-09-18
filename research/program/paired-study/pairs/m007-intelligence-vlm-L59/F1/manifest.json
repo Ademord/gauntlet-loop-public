@@ -1,0 +1,24 @@
+{
+  "task_id": "m007-intelligence-vlm-L59",
+  "flag": "F1",
+  "flag_name": "light-vs-compact",
+  "spec_path": "research/program/paired-study/tasks/m007-intelligence-vlm-L59.yaml",
+  "spec_sha256": "0c4770bf51edcbc749d462a9d27f3923ae930021dce2933f5547e13eb14a2a12",
+  "order": [
+    "B",
+    "A"
+  ],
+  "arm_prompt_sha256": {
+    "A": "b0ec9de0aca81656bf4a6c718db78d3ea105c50c9b66f5f5c10e6c3ff8e94256",
+    "B": "b929088d0af9eda5c81188ef14a390e98fbdf05a198fd83432e3a8ec4b10ead8"
+  },
+  "only_difference": {
+    "A": "Topology: light. One bounded build, then one independent evidence-based review that reruns the checks; no preference comparison loop. A light review that does not accept escalates to compact with the reason recorded.",
+    "B": "Topology: compact. A lead/builder and a separate critic with fresh context; build, independent review, revise, until the checks pass and the comparison favors ours, within the budget."
+  },
+  "review_cap": 8,
+  "reserve": 2,
+  "status": "generated",
+  "runs": {},
+  "model_tokens_used_by_generator": 0
+}

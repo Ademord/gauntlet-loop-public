@@ -1,0 +1,44 @@
+task_id: m005-intelligence-schema-L31
+repo: <projects-root>/intelligence-pipeline
+base_commit: 570db48faefde40f06fc498be05031a7deecd338
+answer_commit: 570db48faefde40f06fc498be05031a7deecd338
+mutation:
+  file: schema.py
+  line: 31
+  col_start: 24
+  col_end: 26
+  original: in
+  mutated: not in
+  kind: compare
+test_files_from_answer: []
+held_out_files: []
+held_out_study_files: []
+setup_copy_from_repo: []
+protected_paths:
+- tests
+- test
+description: 'A recent change to schema.py broke behavior the test suite covers: 2
+  tests now fail. Find the defect and restore the intended behavior without changing
+  any test. Local-only; no hosting, no CI.'
+test_command: python -m pytest -q -p no:cacheprovider
+failing_tests:
+- tests/test_core.py::test_parse_number_locale_formats
+- tests/test_core.py::test_parse_number_dot_only_stays_decimal
+allowed_paths:
+- schema.py
+difficulty:
+  estimate: low
+  proxies:
+  - one-token defect in schema.py
+  - 2 failing tests pin it
+  - suite runs in about 4 seconds
+verifiability: deterministic
+task_class: code-fix
+review_cap: 8
+mint:
+  minted_utc: '2026-09-18T23:51:54Z'
+  kind: compare
+  failing_count: 2
+  suite_seconds: 3.6
+  seed: 17
+  method: tools/paired_study/mint_mutations.py

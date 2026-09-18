@@ -36,6 +36,7 @@ ALLOWED_TOOLS = ['Read', 'Edit', 'Write', 'Glob', 'Grep', 'Agent', 'Task', 'Todo
                  'Bash(ls:*)', 'Bash(cat:*)', 'Bash(head:*)', 'Bash(tail:*)', 'Bash(grep:*)', 'Bash(wc:*)',
                  'Bash(sha256sum:*)', 'Bash(mkdir:*)', 'Bash(echo:*)']
 GIT_ID = ['-c', 'user.name=paired-study', '-c', 'user.email=paired-study@example.invalid']
+ISOLATION = ['--setting-sources', 'project,local', '--strict-mcp-config', '--disable-slash-commands']  # no user hooks, plugins, MCP servers, or skills in an arm
 
 
 def argv_for(command):
@@ -130,6 +131,20 @@ def parse_stream(text):
     return result, dispatches, tools
 
 
+def preflight(model, env):
+    """Spend a few tokens to confirm the CLI is authenticated before anything is cloned."""
+    cmd = [shutil.which('claude') or 'claude', '-p', '--output-format', 'json', '--model', model, *ISOLATION]
+    try:
+        p = subprocess.run(cmd, input='Reply with the single word OK.', capture_output=True, text=True, encoding='utf-8',
+                           errors='replace', env=env, timeout=180)
+        res = json.loads(p.stdout or '{}')
+    except (subprocess.TimeoutExpired, ValueError) as exc:
+        return False, f'preflight error: {exc}'
+    if res.get('is_error') or not res:
+        return False, str(res.get('result') or p.stderr)[:200]
+    return True, f"authenticated; preflight cost {res.get('total_cost_usd')} USD"
+
+
 def under(path, prefixes):
     return any(path == p.rstrip('/') or path.startswith(p.rstrip('/') + '/') for p in prefixes)
 
@@ -198,13 +213,18 @@ def main():
     results_path = repo / 'research/program/paired-study/results.jsonl'
     arms = [a for a in manifest['order'] if not args.arms or a in args.arms]
     base_cmd = [shutil.which('claude') or 'claude', '-p', '--output-format', 'stream-json', '--verbose', '--model', args.model,
-                '--permission-mode', 'acceptEdits', '--allowedTools', *ALLOWED_TOOLS]
+                '--permission-mode', 'acceptEdits', *ISOLATION, '--allowedTools', *ALLOWED_TOOLS]
     if args.dry_run or not args.execute:
         print(json.dumps({'mode': 'dry-run', 'task_id': spec['task_id'], 'flag': manifest['flag'], 'order': arms, 'model': args.model,
-                          'worktrees': args.worktrees, 'command': base_cmd[1:9] + ['--allowedTools', f'<{len(ALLOWED_TOOLS)} tools>'],
+                          'worktrees': args.worktrees, 'command': base_cmd[1:13] + ['--allowedTools', f'<{len(ALLOWED_TOOLS)} tools>'],
                           'repo_resolved': Path(spec['repo']).exists(), 'model_tokens_used': 0}, indent=2))
         return 0
     env = dict(os.environ, PYTHONPATH=str(repo / '.validation-deps'))
+    ok, detail = preflight(args.model, env)
+    print(json.dumps({'preflight': ok, 'detail': detail}), flush=True)
+    if not ok:
+        print('PREFLIGHT FAILED: nothing was cloned or run. For the claude CLI, log in once in a terminal (claude, then /login).', file=sys.stderr)
+        return 3
     for arm in arms:
         wt = Path(args.worktrees) / spec['task_id'] / manifest['flag'] / arm
         base = build_task_base(spec, wt)
@@ -238,7 +258,8 @@ def main():
                'num_turns': (result or {}).get('num_turns'), 'agent_duration_s': round(((result or {}).get('duration_ms') or 0) / 1000),
                'wall_clock_s': wall, 'permission_denials': len((result or {}).get('permission_denials') or []),
                'is_error': (result or {}).get('is_error'), 'timed_out': timed_out,
-               'harness_failure': timed_out or rc != 0 or result is None,
+               'harness_failure': timed_out or rc != 0 or result is None or bool((result or {}).get('is_error') and ((result or {}).get('num_turns') or 0) <= 1),
+               'harness_failure_reason': 'timeout' if timed_out else ('no result event' if result is None else (str(result.get('result'))[:160] if result.get('is_error') and (result.get('num_turns') or 0) <= 1 else '')),
                'finished_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}
         results_path.parent.mkdir(parents=True, exist_ok=True)
         with results_path.open('a', encoding='utf-8') as f:
@@ -247,6 +268,9 @@ def main():
         (pair / 'manifest.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
         print(json.dumps({k: row[k] for k in ('arm', 'accepted', 'suite_rc', 'held_out_passed', 'out_of_scope', 'reviews_used', 'critic_dispatches',
                                               'cost_usd', 'total_tokens', 'num_turns', 'wall_clock_s', 'permission_denials', 'harness_failure')}), flush=True)
+        if row['harness_failure'] and (row['num_turns'] or 0) <= 1:
+            print('ARM FAILED AT STARTUP: stopping the pair so the other arm is not spent on a broken harness.', file=sys.stderr)
+            break
     return 0
 
 
