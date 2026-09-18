@@ -1,0 +1,12 @@
+{
+  "package": "skill",
+  "version": "5.0.0",
+  "files": 8,
+  "skill_md_bytes": 15974,
+  "export_bytes": 89205,
+  "local_links_checked": 11,
+  "yaml_blocks_parsed": 3,
+  "failures": [],
+  "passed": true,
+  "benchmarks_run": false
+}

@@ -1,0 +1,10 @@
+{
+  "roots": [
+    "<projects-root>"
+  ],
+  "self_repo_gauntlet": "gauntlet",
+  "gauntlet_dir_names": ["gauntlet", "gauntlet-work"],
+  "exclude_dir_names": ["node_modules", ".git", ".venv", "dist", "build"],
+  "max_depth": 3,
+  "insufficient_below": 3
+}

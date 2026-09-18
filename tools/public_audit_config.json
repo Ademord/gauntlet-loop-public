@@ -1,0 +1,16 @@
+{
+  "_comment": "Public copy of the audit config. Patterns here are generic on purpose: the private canonical repository holds the specific identity, machine, and project-name terms that were applied before export, and this copy re-checks only generic classes. Everything tracked ships, so zero hard hits is the bar.",
+  "hard_patterns": {
+    "personal_path": ["C:\\\\Users", "C:/Users", "/c/Users", "/home/[a-z]", "/Users/[A-Za-z]", "AppData\\\\Local", "AppData/Local"],
+    "machine_identity": ["DESKTOP-[A-Z0-9]{7}", "S-1-5-21-"],
+    "personal_identity": ["[A-Za-z0-9._%+-]+@gmail\\.com", "[0-9]{5,}\\+[A-Za-z0-9-]+@users\\.noreply\\.github\\.com"],
+    "secret": ["gho_[A-Za-z0-9]{10,}", "ghp_[A-Za-z0-9]{10,}", "github_pat_[A-Za-z0-9_]{10,}", "sk-ant-[A-Za-z0-9-]{10,}", "AKIA[0-9A-Z]{12}", "-----BEGIN [A-Z ]*PRIVATE KEY"]
+  },
+  "review_terms": {
+    "possible_client_or_confidential": ["client project", "customer data", "confidential", "internal only"]
+  },
+  "audit_allowlist": ["tools/validate_package.py", "tools/public_audit.py", "tools/public_audit_config.json"],
+  "default_action": "ship",
+  "text_extensions": [".md", ".txt", ".json", ".jsonl", ".yaml", ".yml", ".py", ".tsv", ".csv", ".html", ".gitignore", ".gitattributes", ".cjs", ".mjs", ".js"],
+  "ship_plan": {}
+}

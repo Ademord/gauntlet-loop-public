@@ -1,0 +1,35 @@
+task_id: t001-ip-sum-check-gates-confidence
+repo: <projects-root>/intelligence-pipeline
+base_commit: "ee90819231bf6cbb7f2e2c1402c7b56e84707b07"     # parent of the answer commit
+answer_commit: "c2fc3cf8e848c5da49bef4423520e1f6b9cb178e"   # 2026-07-24 "Promote the out-of-band sum check to ERROR so it gates confidence"
+test_files_from_answer: [tests/test_core.py]
+held_out_files: []
+held_out_study_files:
+  - { src: research/program/paired-study/tasks/001-heldout/test_sum_check_heldout.py, dst: tests/test_sum_check_heldout.py }
+setup_copy_from_repo: []
+description: >
+  The validator's out-of-band sum check (flag code SUM_CHECK in validation.py) is only a warning, so a
+  record whose amount_total is far outside the band around its line-item sum still ships with HIGH
+  confidence and no review. Make the two failing tests in tests/test_core.py pass without breaking the
+  suite: an out-of-band total must route the record to review. Local-only; no hosting, no CI.
+test_command: python -m pytest -q -p no:cacheprovider
+failing_tests:
+  - tests/test_core.py::test_validate_out_of_band_sum_gates_confidence
+  - tests/test_core.py::test_sum_check_pins_measured_tenfold_misread
+allowed_paths: [validation.py]
+difficulty:
+  estimate: low
+  proxies: [one validator function, one reproducible known failure pinned by two tests, no interface change, suite runs in under 4 seconds]
+verifiability: deterministic
+task_class: code-fix
+review_cap: 8
+mint_check_2026_09_18:
+  at_answer: "26 passed in 3.26s"
+  at_base_with_answer_tests: "2 failed, 24 passed in 3.23s; the two failures are exactly failing_tests"
+  answer_code_diff: "validation.py +5/-1 (severity WARN -> ERROR with a comment); tools/run_experiment.py +3/-1 is unrelated to the tests and out of task scope"
+  suite_runtime_s: 3.7
+  dependencies: "none; pytest only (pyproject optional extra test)"
+held_out_intent: >
+  Two cases the builder does not see: a total just below the lower band edge (ratio 0.99) must also route to
+  review, and an in-band gross total (ratio 1.2, tax headroom) must stay HIGH with no flag. Together they
+  separate the intended fix (promote the out-of-band severity) from an over-broad one (flag every mismatch).

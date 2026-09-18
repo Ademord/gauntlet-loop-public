@@ -1,0 +1,131 @@
+run_id: v5-upgrade-2026-09-17
+skill_version_governing_run: "4.0.0"   # the run follows the installed v4 procedure; v5 is its product, not its judge
+contract_version: 1
+created_utc: "2026-09-17T11:08:35Z"
+branch: codex/v5-adaptive-evidence-2026-09-17
+base_commit: ce76d1b1e341e13159af04c3bd76fc708bb6408a
+
+outcome: >
+  A reviewed Gauntlet Loop 5.0.0 package (same 8-file layout, same `gauntlet-loop` identifier)
+  that turns six September 2026 research items into bounded, versioned rule changes with recorded
+  limits; a thesis document that reasons through each item and states what was adopted, adapted,
+  or rejected and why; a research-program proposal that redirects Gauntlet Bench from "which arm
+  wins" to "predict the cheapest architecture that reliably solves this task"; provenance, release
+  artifacts, and updated verification tooling on a branch of the private gauntlet-loop repository.
+audience: >
+  Franco Ribera as skill owner/operator, and any agent (Codex or Claude Code) executing the skill.
+non_goals:
+  - No benchmark campaign, paid model sweep, synthetic task suite, or measured superiority claim.
+  - No installation into <codex-skills>/gauntlet-loop (install is a separate user decision).
+  - No merge to main. The branch is pushed to the private remote only.
+  - No learned router, memory database, scheduler, or background agent is built.
+  - No edits to archived versions, research archives, or historical provenance records.
+
+reference:
+  identity: "gauntlet-loop 4.0.0, commit ce76d1b, skill/ (8 files, SHA256 in provenance/v4/package-verification.json)"
+  snapshot: versions/v4/
+  retrieved_utc: "2026-09-17T11:08:35Z"
+  comparison_dimension: >
+    Operational guidance quality: given six scenario probes derived from the research items, which
+    package gives an executing agent a concrete, non-contradictory, evidence-bound instruction; with
+    no loss of portability, brevity, or backward compatibility of records.
+  conditions: >
+    Both packages read in full by the critic; probes supplied as text; the critic must cite the
+    line or section that answers each probe, or state that the package is silent.
+
+difficulty:                       # applying the DATS idea to this run itself; recorded, not enforced
+  estimate: high
+  proxies:
+    scope: "8 files, ~70 KB of interdependent rules; six new sources; nine required checks"
+    interacting_components: "SKILL.md entrypoint + 7 references + 3 tools + docs + provenance must stay mutually consistent"
+    verifiability: mixed          # structure/links/hashes/sizes deterministic; guidance quality is judgment
+    novelty: high                 # self-referential: a v4-governed run producing v5
+    prior_failures: "v4 release QA found 3 consistency findings and 1 ambiguity; expect the same class"
+topology:
+  choice: compact-with-parallel-critics
+  reason: >
+    One writer (the lead) owns every file, so no builder coordination is needed and a full team would
+    add only coordination cost. Judgment-heavy acceptance is split across independent critics with
+    distinct lenses (research fidelity, consistency/scenario probes, portability/prompt mode) so that
+    no single critic's opinion drives revision. Deterministic checks run first every round.
+
+roles:
+  lead_builder:
+    who: "Claude Fable 5.1 (claude-fable-5-1) in Claude Code desktop, this session"
+    effort: unknown
+  critics:
+    who: "Agent tool subagents with fresh context; receive files and probes only, never the lead's transcript"
+    model: "recorded per review in verdict records when observable, else unknown"
+    independence: separate-context
+evidence_ladder_for_this_run:      # applying the Loop-Back Authority idea to this run itself
+  rounds_1_2: "any finding class may be the biggest gap"
+  round_3_onward: >
+    only deterministic or external findings, or a judgment finding corroborated by a second
+    independent critic or an order-swapped comparison, may force another revision; uncorroborated
+    judgment findings are recorded as advisory.
+
+pieces:
+  A: { name: skill-package-v5, owner: lead, surface: "skill/**" }
+  B: { name: thesis-and-research-notes, owner: lead, surface: "docs/thesis/**, research/scan-2026-09-17/**, research/program/**" }
+  C: { name: tooling-release-provenance, owner: lead, surface: "tools/**, releases/v5/**, provenance/v5/**, docs/UPGRADES.md, docs/LINEAGE.md, README.md" }
+dependencies:
+  - "C depends on A (hashes, export)"
+  - "B cites A (line references) and A cites B's research notes; integrate after both are stable"
+
+required_checks:                  # criteria version 1; frozen before building
+  C1-structure:
+    source: "repo README verification practice; skill-creator quick_validate.py"
+    expected: "frontmatter valid; name unchanged; version 5.0.0; 8 files; every local link resolves; export resolves every anchor"
+    evidence_kind: deterministic
+  C2-size:
+    source: "v4 design choice: compact entrypoint with conditional references"
+    expected: "skill/SKILL.md <= 16,000 bytes (v4: 13,413); single-file export <= 90,000 bytes (v4: 70,753)"
+    evidence_kind: deterministic
+  C3-research-fidelity:
+    source: "feedback rule: verbatim quotes, ASSUMPTION labels; v4 research-basis practice"
+    expected: "six sources cited with correct title/authors/arXiv ID/date; every figure matches the abstract verbatim; each source's limits stated; no claim that v5 outperforms v4"
+    evidence_kind: external
+  C4-scenario-probes:
+    source: "this contract; probes P1-P6 in gauntlet/v5-upgrade-2026-09-17/probes.md"
+    expected: "for each probe, v5 gives a concrete instruction that v4 lacks or leaves ambiguous, in the direction the source supports, citable by section"
+    evidence_kind: judgment-with-citation
+  C5-consistency:
+    source: "v4 rule: surface conflicts, do not blend"
+    expected: "no v5 rule contradicts another; critic lists any contradiction with both locations"
+    evidence_kind: judgment-with-citation
+  C6-backward-compatibility:
+    source: "v4 execution contract record schemas"
+    expected: "v4 verdict, lesson, checkpoint, and milestone records remain valid; new fields are additive with stated defaults; a v4-style user budget override still works"
+    evidence_kind: judgment-with-citation
+  C7-prompt-mode-forward-check:
+    source: "v4 prompt-drafting reference"
+    expected: "a v5-drafted prompt for a realistic task carries the evidence ladder, difficulty/topology decision, budgets, resume validation, and no benchmark; 250-450 words; no placeholders"
+    evidence_kind: judgment-with-citation
+  C8-tooling:
+    source: "tools/verify_archive.py, tools/export_single_file.py"
+    expected: "verify_archive passes on the branch with v4 hashes checked against versions/v4 and v5 against skill/; export regenerates the committed release file byte-identically; zip hash recorded"
+    evidence_kind: deterministic
+  C9-export-boundary:
+    source: "gauntlet-publication EXPORT-CHECKLIST.md"
+    expected: "no private project names, personal absolute paths, or credentials added to skill/ files; provenance may keep local paths per existing convention"
+    evidence_kind: deterministic
+
+budget:
+  source: "v4 defaults; no user override given"
+  per_piece_reviews: { soft: 6, hard: 9 }
+  run_reviews: { soft: 24, hard: 30, integration_reserve: 6 }
+  observable_requests: unknown   # no request counter available in this harness; review counts are manual
+  accounting: "one dispatched critic Agent call = one review; deterministic scripts run by the lead are builder self-checks and do not count"
+delivery:
+  selected:
+    - "repository branch pushed to private remote origin (github.com/Ademord/gauntlet-loop)"
+  not_selected:
+    - install
+    - merge
+    - hosted demo
+    - offline download
+learning: off               # cross-run learning not enabled for this repository
+agent_language: off
+stopping_milestone: >
+  C1-C9 pass on the integrated branch, no HOLD open, thesis/research/provenance written, branch
+  committed and pushed; or budget exhaustion parks the incomplete piece with its gap recorded.

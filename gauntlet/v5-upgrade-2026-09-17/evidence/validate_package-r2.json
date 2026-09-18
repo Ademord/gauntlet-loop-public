@@ -1,0 +1,14 @@
+{
+  "package": "skill",
+  "version": "5.0.0",
+  "files": 8,
+  "skill_md_bytes": 16104,
+  "export_bytes": 89335,
+  "local_links_checked": 11,
+  "yaml_blocks_parsed": 3,
+  "failures": [
+    "SKILL.md is 16104 bytes > 16000"
+  ],
+  "passed": false,
+  "benchmarks_run": false
+}

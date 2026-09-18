@@ -1,0 +1,24 @@
+{
+  "task_id": "t001-ip-sum-check-gates-confidence",
+  "flag": "F1",
+  "flag_name": "light-vs-compact",
+  "spec_path": "research/program/paired-study/tasks/001-intelligence-pipeline-sum-check.yaml",
+  "spec_sha256": "b05da631380416d61d449c54ae9d5583b891ab35c44ebd5cd92ab0e4836a9f60",
+  "order": [
+    "A",
+    "B"
+  ],
+  "arm_prompt_sha256": {
+    "A": "aad3d36ae566629047177fabf45b4603abce4e30f8204cc9f966ff6f629bb255",
+    "B": "745c69647192075a87dec463daf6a2f9a8a0956724ccbf44595930dc957db31c"
+  },
+  "only_difference": {
+    "A": "Topology: light. One bounded build, then one independent evidence-based review that reruns the checks; no preference comparison loop. A light review that does not accept escalates to compact with the reason recorded.",
+    "B": "Topology: compact. A lead/builder and a separate critic with fresh context; build, independent review, revise, until the checks pass and the comparison favors ours, within the budget."
+  },
+  "review_cap": 8,
+  "reserve": 2,
+  "status": "generated",
+  "runs": {},
+  "model_tokens_used_by_generator": 0
+}

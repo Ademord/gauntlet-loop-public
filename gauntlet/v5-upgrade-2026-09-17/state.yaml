@@ -1,0 +1,39 @@
+run_id: v5-upgrade-2026-09-17
+latest_event: E018
+skill_version_governing_run: "4.0.0"
+contract_version: 1
+criteria_version: 1
+reference: { identity: "gauntlet-loop 4.0.0 @ ce76d1b (versions/v4/)", location: versions/v4/ }
+current_candidate:
+  identity: "final; sha256 list in evidence/candidate-final-sha256.txt; package record provenance/v5/package-verification.json"
+  location: skill/
+best_candidate:
+  identity: "final (same as current)"
+  basis: "six independent reviews across three rounds plus deterministic checks; see progress.md ledger"
+pieces:
+  A: { name: skill-package-v5, state: accepted, reviews_used: 6, review_rounds: 3 }
+  B: { name: thesis-and-research-notes, state: accepted-by-lead, reviews_used: 0, note: "notes checked by R1 against re-fetched abstracts; thesis not independently reviewed" }
+  C: { name: tooling-release-provenance, state: accepted, reviews_used: 0, note: "deterministic checks only; commit and push pending" }
+checks:
+  C1-structure: { status: passed, evidence: "evidence/quick_validate-final.txt, evidence/validate_package-final.json" }
+  C2-size: { status: passed, evidence: "15,989 <= 16,000; export 89,747 <= 90,000" }
+  C3-research-fidelity: { status: passed, evidence: "evidence/R1-fidelity-verdict.md; advisories closed" }
+  C4-scenario-probes: { status: passed, evidence: "evidence/R2-probes-verdict.md (6/6); R4 unaffected" }
+  C5-consistency: { status: passed, evidence: "evidence/R6-consistency-verdict.md plus lead verification of the prescribed two-word fix (grep none); no critic re-read after final edits, disclosed" }
+  C6-backward-compatibility: { status: passed, evidence: "evidence/R2-probes-verdict.md; R4 improved" }
+  C7-prompt-mode-forward-check: { status: passed, evidence: "evidence/R3-prompt-mode-verdict.md, evidence/R5-prompt-mode-verdict.md (449 words both rounds)" }
+  C8-tooling: { status: passed, evidence: "evidence/build_release-final.json, evidence/verify_archive-final.json; zip byte-identical on rebuild" }
+  C9-export-boundary: { status: passed, evidence: "validate_package forbidden-pattern scan clean on every candidate" }
+holds: []
+budget:
+  run_reviews_used: 6
+  run_reviews_reserved: 0
+  run_hard: 30
+  integration_reserve: 6
+  observable_requests: unknown
+  subagent_tokens_reported_by_harness: { R1: 126269, R2: 175032, R3: 109186, R4: 215249, R5: 141251, R6: 231036 }
+owners: { lead: "Claude Fable 5.1 session", workers_active: [] }
+external_effects:
+  - { action: "git push branch to private remote", status: confirmed, evidence: "E019" }
+timing: { run_started_utc: "2026-09-17T11:08:35Z", accepted_utc: "2026-09-17T13:25:00Z" }
+next_action: "owner reviews the branch; decide install (backlog B-010) and merge"

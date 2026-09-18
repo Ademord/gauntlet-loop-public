@@ -1,0 +1,20 @@
+task_id: example-csv-quoted-comma
+repo: C:/path/to/repository            # local path; each arm gets its own worktree from base_commit
+base_commit: "0000000000000000000000000000000000000000"   # usually the parent of the answer commit; quote hashes
+answer_commit: "1111111111111111111111111111111111111111" # the original fix; never shown to the builder
+test_files_from_answer: [tests/test_import.py]           # copied from the answer commit into the task base, so the test fails at base
+held_out_files: [tests/heldout/test_import_edge.py]      # removed from the builder's clone; restored from the answer commit for the final verify
+held_out_study_files: []                                 # or [{src: <path in this repo>, dst: <path in the clone>}] for study-owned held-out tests
+setup_copy_from_repo: []                                 # directories or files copied from the source repo into the clone (e.g. node_modules); no shell is used
+description: >
+  The CSV import drops rows containing quoted commas. Make tests/test_import.py::test_quoted_comma pass
+  without breaking the suite. Local-only; no hosting, no CI.
+test_command: python -m pytest -q
+failing_test: tests/test_import.py::test_quoted_comma
+allowed_paths: [src/csv_import.py]
+difficulty:
+  estimate: low
+  proxies: [one import path, one reproducible known failure, no novel design]
+verifiability: deterministic
+task_class: code-fix
+review_cap: 8            # user cap per arm; reserve ceil(20%) = 2

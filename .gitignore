@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+.validation-deps/
+.env
+.env.*
+!.env.example
+tmp/
+.paired-scratch/
+.paired-worktrees/
+tools/private_terms.local.json

@@ -1,0 +1,5 @@
+{
+  "root": "<projects-root>",
+  "exclude_dir_names": ["node_modules", ".git", "dist", "build", ".venv"],
+  "flag_name_substrings": ["client", "company", "customer"]
+}
