@@ -27,7 +27,7 @@ Only the abstracts of the six papers were read. That limit is stated in every no
 
 ## 3. The six sources and how each was judged
 
-Full notes with verbatim abstracts, a line-by-line check of the scan's paraphrase, and the transfer judgment are in [research/scan-2026-09-17/](../../research/scan-2026-09-17/README.md). This section gives the judgment and the reasoning that produced it.
+Full notes with verbatim abstracts, a line-by-line check of the scan's paraphrase, and the transfer judgment are in [research/scans/2026-09-17/](../scans/2026-09-17/README.md). This section gives the judgment and the reasoning that produced it.
 
 ### 3.1 Loop-Back Authority (arXiv 2609.14767)
 
@@ -119,11 +119,11 @@ Two observations about the process. First, the findings that changed the artifac
 
 The repository holds three archived research kits whose experiments were designed and never run, all framed as "which arm wins". DATS and Loop-Back Authority together suggest that question is wrong: there is likely a frontier, with cheap solo execution best for easy verifiable tasks and richer orchestration paying only on hard verifiable tasks, and with judgment-only dimensions penalizing extra review at any difficulty. The better question is whether the cheapest architecture that reliably solves a given task can be predicted from features known before the run.
 
-v5 makes every ordinary run emit the observation a study of that question needs. The program proposal in [research/program/gauntlet-bench-v2-hypothesis.md](../../research/program/gauntlet-bench-v2-hypothesis.md) states the hypotheses, the observational phase that costs nothing beyond the records v5 already keeps, the minimum volume before any inference is credible, and the designed study that would follow only under separate authorization.
+v5 makes every ordinary run emit the observation a study of that question needs. The program proposal in [research/program/gauntlet-bench-v2-hypothesis.md](../program/gauntlet-bench-v2-hypothesis.md) states the hypotheses, the observational phase that costs nothing beyond the records v5 already keeps, the minimum volume before any inference is credible, and the designed study that would follow only under separate authorization.
 
 ## 10. Versioning and rollback
 
-v4 is preserved byte-for-byte under `versions/v4/` with its hashes in `provenance/v4/`. v5's hashes, release file, and archive are recorded in `provenance/v5/` once the run accepts. Rolling back is copying `versions/v4/` over the installed skill and verifying against the v4 record; the installation script's before-and-after hash check from v4 applies unchanged. No run in progress under v4 needs to move; a resumed run records the version change as a contract amendment under v5's own rule.
+v4 is preserved byte-for-byte under `versions/v4/` with its hashes in `provenance/v4/`. v5's hashes, release file, and archive are recorded in `dist/` once the run accepts. Rolling back is copying `versions/v4/` over the installed skill and verifying against the v4 record; the installation script's before-and-after hash check from v4 applies unchanged. No run in progress under v4 needs to move; a resumed run records the version change as a contract amendment under v5's own rule.
 
 ## 11. Conclusion
 

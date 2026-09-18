@@ -1,38 +1,36 @@
-# Status, 18 September 2026
+# Status
 
-Work in progress. From 18 September 2026 this repository is the canonical working repository (the private original is frozen; see README, Working in this repository). This file is the handoff: what exists, what is verified, what is untested, and what is next. Everything here was produced with deterministic scripts or with independent critic reviews recorded under `gauntlet/`; nothing claims a measured performance gain.
+Work in progress, updated 18 September 2026. This is the canonical working repository.
 
-## State
+## Where things stand
 
-| Item | State | Evidence |
+| Area | State | Where |
 | --- | --- | --- |
-| Skill package 5.0.0 | reviewed and accepted by a gauntlet run on itself; not installed anywhere by this repository | `gauntlet/v5-upgrade-2026-09-17/` (six critic reviews in three rounds, nine frozen checks all passed), `provenance/v5/` |
-| Portable export and ZIP | reproducible byte for byte from `skill/`; hashes recorded | `tools/build_release.py`, `tools/verify_release.py` |
-| Thesis and per-paper notes | written; abstracts verified verbatim by an independent critic; full papers not read | `docs/thesis/v5-thesis.md`, `research/scan-2026-09-17/` |
-| Research program | proposal and pre-registered paired-study protocol written; predictions stated | `research/program/` |
-| Run ledger (phase 0) | scripts run over the author's projects: three recorded runs, five unrecorded run directories, every cell `insufficient` at n = 3; outputs kept private (they name other projects) | `tools/ledger/`, `ledger/SCHEMA.md` |
-| Paired-study harness | analysis self-test passes; arm generator produces prompts that differ only in the flag block; runner dry-runs; execute mode never run | `tools/paired_study/` |
-| Task pool | two tasks minted from public repositories and checked empirically; supply for thirty pairs proposed (mutation-minted tasks) but not built | `research/program/paired-study/tasks/`, backlog B-014 |
-| First paired run | not executed; it is the harness test and costs model tokens | backlog B-016 |
-| Installation into a live skills directory | not done; owner's decision | backlog B-010 |
+| Skill 5.0.0 | Accepted by a gauntlet run on itself: nine frozen checks, six independent critic reviews. Not benchmarked. Installing it is up to each user | [skill/](skill/SKILL.md), [dist/](dist/README.md), [gauntlet/v5-upgrade-2026-09-17/](gauntlet/v5-upgrade-2026-09-17/progress.md) |
+| Version history | Complete from v1 to v5; every stored file checksummed | [versions/](versions/README.md) |
+| Research | Six papers noted with verbatim abstracts; the v5 thesis; a research program with a pre-registered paired-study protocol and a backlog | [research/](research/README.md) |
+| Run ledger | Scripts ready. The first ingest over the author's projects found three recorded runs and five run folders without a machine-readable record; every cell is below threshold. Outputs stay local | [tools/ledger/](tools/README.md), [ledger/SCHEMA.md](ledger/SCHEMA.md) |
+| Paired-study harness | Analysis self-test passes; arms generated for two tasks minted from public repositories; execute mode never run | [tools/paired_study/](tools/paired_study/README.md), [research/program/paired-study/](research/program/paired-study/tasks/001-intelligence-pipeline-sum-check.yaml) |
+| Leak guard | Pre-commit guard and audit; zero hits on the tree and the history | [tools/README.md](tools/README.md) |
 
-## Known limitations, stated plainly
+## Known limitations
 
-- Only abstracts of the six papers were read.
+- Only the abstracts of the six v5 papers were read.
 - The difficulty estimate every run records is the lead's self-report.
-- One consistency fix in the v5 run was verified by the lead deterministically after the last critic read; disclosed in `provenance/v5/release-review.md`.
-- Critics were language models judging text about language-model critics; the probes were written by the same lead who wrote the candidate.
-- The paired-study runner's execute mode is untested. The first pair is the test.
+- The v5 critics were language models judging text about language-model critics, and the scenario probes were written by the same lead who wrote the candidate.
+- The last consistency fix of the v5 run was verified deterministically after the last critic read it; see [dist/RELEASE-REVIEW.md](dist/RELEASE-REVIEW.md).
+- v4 and v5 dropped the worked examples and the bar table that v1 to v3 carried; the effect was never measured.
+- The paired-study runner's execute mode is untested; the first pair is its test.
 
 ## Next steps, in order
 
-1. Run the first pair (task t001, flag F1: light versus compact) as the harness test; read both transcripts; record the measured per-arm cost. Backlog B-016.
-2. Build the mutation-minting script for low-difficulty deterministic tasks. Backlog B-014.
-3. Process the next batch of papers through `docs/RESEARCH-INTAKE.md` into backlog rows; batch adopted rows into a 5.1 upgrade run. Standing.
-4. Decide the open skill items: template length (B-012), small-cap budget edge cases (B-013), two v4 inheritances in the route verbs and the `winner: bar` reading for repairs (B-009).
+1. Run the first paired run, task t001 with flag F1 (light versus compact), as the harness test; read both transcripts; record the measured cost per arm (B-016).
+2. Build the mutation-minting script that supplies low-difficulty tasks for thirty pairs (B-014).
+3. Process the next batch of papers through [research/INTAKE.md](research/INTAKE.md) into backlog rows, then batch the rows into a 5.1 upgrade run. Already queued for 5.1: task class and features in the milestone record (B-002), the route wording and `winner: bar` for repairs (B-009), the prompt template's length (B-012), budgets under small caps (B-013), and restoring the examples and bar table v4 dropped (B-020).
+4. Design the per-chat record behind the every-interaction-as-experiment direction (B-019).
 
-The full backlog with gates and states is [research/program/backlog.md](research/program/backlog.md).
+The full list with gates and states is the [backlog](research/program/backlog.md).
 
 ## How to resume
 
-Before dispatching any work, write a resume validation record as the execution contract prescribes: checkpoint identity, artifact identity match, versions match, authorization still valid, external effects reconciled, decision. The v5 run's own resume after an interruption is recorded in its events and is the worked example.
+Before dispatching work, write a resume validation record as the [execution contract](skill/references/execution-contract.md) prescribes. Then run `python tools/verify_release.py`, the validator, and `python tools/ledger/run_all.py` with your local configuration to confirm the state matches this file.

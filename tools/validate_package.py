@@ -1,7 +1,7 @@
 """Deterministic package checks for a Gauntlet skill package (structure, size, links, YAML, export boundary).
 
 Usage: python tools/validate_package.py [--package skill] [--version 5.0.0]
-       [--max-skill-bytes 16000] [--export releases/v5/gauntlet-loop-v5-SKILL.md --max-export-bytes 90000]
+       [--max-skill-bytes 16000] [--export dist/gauntlet-loop-v5-SKILL.md --max-export-bytes 90000]
 
 Exit code 0 means every check passed. Prints a JSON summary. No benchmark, no model call.
 """

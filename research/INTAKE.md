@@ -7,7 +7,7 @@ Papers arrive faster than versions should. This is the fixed path from "interest
 | Stage | Location | Who may write it |
 | --- | --- | --- |
 | Raw scan text as supplied (a feed summary, a pasted digest) | `research/source-notes-<date>.txt` | anyone; never published; never treated as findings |
-| One note per paper | `research/scan-<date>/NN-<slug>.md` from `research/scan-template.md` | the lead of an intake session |
+| One note per paper | `research/scans/<date>/NN-<slug>.md` from `research/scans/TEMPLATE.md` | the lead of an intake session |
 | Proposal | a `candidate` row in `research/program/backlog.md` | the lead |
 | Adopted rule | `skill/` on a `codex/` branch through an upgrade run | only an upgrade run with frozen checks and independent critics |
 | Source assessment that ships with the skill | `skill/references/research-basis.md`, one bullet per source with its limits | the upgrade run |

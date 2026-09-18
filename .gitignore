@@ -10,3 +10,12 @@ tmp/
 .paired-worktrees/
 tools/private_terms.local.json
 *.local.json
+.audit/
+ledger/runs.jsonl
+ledger/unrecorded.jsonl
+ledger/cells.tsv
+ledger/feature-usefulness.tsv
+ledger/report-*.md
+research/source-notes-*.txt
+research/program/paired-study/task-pool-survey-*
+research/program/paired-study/pairs/*/*/arm*.transcript.json

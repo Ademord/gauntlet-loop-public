@@ -1,20 +1,16 @@
 # Research
 
-The current operational package is [skill/](../skill/), version 5.0.0. Its [research basis](../skill/references/research-basis.md) records the sources that informed each version and their limits, one bullet per source, and says what no source establishes.
+The skill changes only when research and run evidence justify it. This folder holds the evidence behind each version, the reasoning that turned it into rules, and the program that will test whether those rules pay.
 
-## Public in this copy
-
-| Input | Purpose |
+| Path | What it holds |
 | --- | --- |
-| [scan-2026-09-17/](scan-2026-09-17/README.md) | Six notes, one per paper, with the abstract verbatim, the supplied paraphrase checked line by line, what the abstract does not establish, where v4 stood, the gap, the proposed change, and the adoption judgment. These are the inputs to v5. |
-| [scan-template.md](scan-template.md) | The template every future note follows; the procedure is in [docs/RESEARCH-INTAKE.md](../docs/RESEARCH-INTAKE.md). |
-| [program/](program/gauntlet-bench-v2-hypothesis.md) | The research program: the hypothesis that the right question is "which architecture is the cheapest that reliably solves this task", the phases from observational ledger to designed pairs, the pre-registered paired-study protocol, the minted tasks, and the backlog. |
-| [historical-lineage.md](historical-lineage.md) | Attribution and version history. |
+| [INTAKE.md](INTAKE.md) | The fixed path from a new paper to a note, a backlog row, and possibly a rule |
+| [scans/](scans/README.md) | One folder per batch of papers, one note per paper: the abstract verbatim, the supplied paraphrase checked line by line, limits, and an adoption judgment. [TEMPLATE.md](scans/TEMPLATE.md) is the note format |
+| [thesis/](thesis/v5-thesis.md) | Design rationale per version, starting with v5: what each source supports, what was adopted, adapted, or rejected, and what would falsify each choice |
+| [program/](program/gauntlet-bench-v2-hypothesis.md) | The research program: the hypothesis that the right question is "which architecture is the cheapest that reliably solves this task", the [pre-registered paired-study protocol](program/phase2-paired-study.md), the [minted tasks and generated arms](program/paired-study/tasks/001-intelligence-pipeline-sum-check.yaml), and the [backlog](program/backlog.md) |
 
-## Private, in the canonical repository
-
-Three earlier study archives (a benchmark design with vendored v1 to v3 and two research kits whose experiments were designed and never run), the raw research feed text that prompted v4 and v5, two commissioned pitches on a self-improving run ledger, a survey of the author's repositories for study tasks, and the run ledger outputs. They name other private projects or contain local paths, so they stay private; redacted excerpts can be published on request.
+Each version also carries its own source assessment: [v2](../versions/v2/references/research-basis.md), [v4](../versions/v4/references/research-basis.md), and [v5](../skill/references/research-basis.md). v1 and v3 cite no sources.
 
 ## What the evidence establishes
 
-No benchmark or model-performance experiment has been run for any version of the skill. The archived research kits recorded local tooling tests and diagnostic contract checks, and zero model-performance results. The v5 run's reviews checked structure, research fidelity, guidance on six scenario probes, consistency, backward compatibility, and prompt drafting. Research claims in the notes are the papers' claims about their own settings; their transfer to this workflow is stated as the skill's inference with a falsifier, never as a result.
+No version of the skill has been benchmarked. The per-paper notes record what each paper claims about its own setting; the transfer to this workflow is always stated as the skill's inference, with a falsifier, never as a result. Earlier study archives, raw research feeds, commissioned pitches, and a survey of the author's repositories stay in a frozen private repository because they name other private projects.

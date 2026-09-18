@@ -11,6 +11,6 @@ Six arXiv items supplied as a daily scan, each checked against its own abstract 
 | 5 | [Recoverability](05-recoverability.md) | 2609.13672 | a restored checkpoint is not a valid resume point until validated | resume validation record and decision, version-change amendment |
 | 6 | [PipeSwift](06-pipeswift-completion-time.md) | 2609.16491 | optimize completed jobs, not per-response metrics | critical-path dispatch, completion-time record |
 
-The unifying reading, argued in [the thesis](../../docs/thesis/v5-thesis.md): every expensive mechanism in an agent workflow (a supervisor, a bigger team, a memory, a checkpoint) earns its cost only on dimensions that can be verified, and a workflow should record enough to test that conditionality on its own runs.
+The unifying reading, argued in [the thesis](../../thesis/v5-thesis.md): every expensive mechanism in an agent workflow (a supervisor, a bigger team, a memory, a checkpoint) earns its cost only on dimensions that can be verified, and a workflow should record enough to test that conditionality on its own runs.
 
 These notes are inputs to the 5.0.0 upgrade. They do not authorize a benchmark, and none of the adopted changes is claimed to be measured.

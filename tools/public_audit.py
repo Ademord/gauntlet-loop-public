@@ -4,7 +4,7 @@ person must review (client or company project names, a possible never-name nickn
 job-search material). Classify every tracked path by the ship plan in tools/public_audit_config.json and compute
 what blocks a public copy. Zero model tokens. Read-only.
 
-Usage: python tools/public_audit.py            writes docs/PUBLIC-READINESS.md and docs/public-readiness.json
+Usage: python tools/public_audit.py            writes .audit/PUBLIC-READINESS.md and .audit/public-readiness.json
 """
 import json
 import re
@@ -136,7 +136,8 @@ def main():
         'history': {c[:10]: {'files_with_hard_hits': len(f), 'sample': sorted(f)[:8]} for c, f in history.items()},
         'model_tokens_used': 0,
     }
-    (repo / 'docs/public-readiness.json').write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
+    (repo / '.audit').mkdir(exist_ok=True)
+    (repo / '.audit/public-readiness.json').write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
 
     def fmt(d):
         return ', '.join(f'{k.split(":", 1)[1]}={v}' for k, v in sorted(d.items())) or ''
@@ -181,7 +182,7 @@ def main():
            '5. Evidence: run records, ledger, pitches, task specs, and provenance are excluded from the plan; redacted excerpts can be added later by hand.',
            '6. Private original: this repository stays private and canonical.',
            '7. Standalone proof: the curated copy must pass `tools/validate_package.py` and `tools/verify_archive.py` from its own tree before publication (not yet done).']
-    (repo / 'docs/PUBLIC-READINESS.md').write_text('\n'.join(md) + '\n', encoding='utf-8')
+    (repo / '.audit/PUBLIC-READINESS.md').write_text('\n'.join(md) + '\n', encoding='utf-8')
     print(json.dumps({k: result[k] for k in ('verdict', 'tracked_files', 'ship_set_hard_hits', 'scrub_set_hard_hits', 'ship_set_review_hits', 'history_commits_scanned', 'history_commits_with_hard_hits', 'blocking_by_category')}, indent=2))
 
 

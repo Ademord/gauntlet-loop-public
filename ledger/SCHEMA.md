@@ -27,4 +27,4 @@ One JSON object per run in `ledger/runs.jsonl`, produced only by `tools/ledger/i
 
 `ledger/unrecorded.jsonl` lists every `gauntlet/` or `gauntlet-work/` directory found with no machine-readable milestone line, with a note of which prose files exist (`PROGRESS.md`, `LOG.md`, `status.json`, round files). That list is the denominator: a missing row is a row.
 
-Privacy: the ledger lives in this private repository. It carries project names and one-line summaries copied from milestone records; it never copies evidence, transcripts, fixtures, or client data. Before any public export the export checklist applies and the ledger is excluded.
+Privacy: ledger outputs (`runs.jsonl`, `unrecorded.jsonl`, `cells.tsv`, `feature-usefulness.tsv`, `report-*.md`) are gitignored and stay on the machine that ran the ingest, because they carry project names and local paths. Only this schema and the example config are tracked.
