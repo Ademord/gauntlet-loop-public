@@ -18,4 +18,5 @@ ledger/feature-usefulness.tsv
 ledger/report-*.md
 research/source-notes-*.txt
 research/program/paired-study/task-pool-survey-*
-research/program/paired-study/pairs/*/*/arm*.transcript.json
+research/program/paired-study/pairs/*/*/arm*.transcript.jsonl
+research/program/paired-study/pairs/*/*/arm*.gauntlet/

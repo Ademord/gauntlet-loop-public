@@ -65,13 +65,13 @@ def analyze(results, flag, alpha, looks):
                          'discordant_A_only': a_only, 'discordant_B_only': b_only,
                          'p_value': binom_two_sided(a_only, a_only + b_only),
                          'significant_at_look': binom_two_sided(a_only, a_only + b_only) < per_look_alpha}
-    for metric in ('reviews_used', 'subagent_tokens', 'wall_clock_s'):
+    for metric in ('reviews_used', 'cost_usd', 'total_tokens', 'wall_clock_s'):
         diffs = [t['A'][metric] - t['B'][metric] for t in complete.values()
                  if isinstance(t['A'].get(metric), (int, float)) and isinstance(t['B'].get(metric), (int, float))]
         st = sign_test(diffs)
         out[metric] = {'pairs_with_values': len(diffs), 'A_minus_B': bootstrap_mean_ci(diffs), 'sign_test': st,
                        'significant_at_look': st['p_value'] < per_look_alpha if diffs else False}
-    out['reading'] = ('no difference detected' if not out['acceptance']['significant_at_look'] and not any(out[m]['significant_at_look'] for m in ('reviews_used', 'subagent_tokens', 'wall_clock_s'))
+    out['reading'] = ('no difference detected' if not out['acceptance']['significant_at_look'] and not any(out[m]['significant_at_look'] for m in ('reviews_used', 'cost_usd', 'total_tokens', 'wall_clock_s'))
                       else 'a primary outcome crossed the per-look threshold; read the direction from the estimates')
     return out
 
@@ -87,14 +87,14 @@ def selftest():
         acc = rng.random() < 0.9
         for arm, rv in (('A', ra), ('B', rb)):
             results.append({'task_id': f't{i}', 'flag': 'F1', 'arm': arm, 'accepted': acc, 'reviews_used': rv,
-                            'subagent_tokens': rv * 60000 + rng.randint(-5000, 5000), 'wall_clock_s': rv * 300, 'harness_failure': False})
+                            'cost_usd': rv * 0.4, 'total_tokens': rv * 60000 + rng.randint(-5000, 5000), 'wall_clock_s': rv * 300, 'harness_failure': False})
     results.append({'task_id': 'broken', 'flag': 'F1', 'arm': 'A', 'accepted': False, 'reviews_used': 0, 'harness_failure': True})
     out = analyze(results, 'F1', 0.05, 3)
     assert out['pairs'] == 30 and out['excluded_pairs'] == ['broken'], out
     assert out['reviews_used']['A_minus_B']['mean'] < 0, 'direction should be negative (A fewer reviews)'
     assert out['reviews_used']['sign_test']['p_value'] < 0.05 / 3, 'planted effect should be detected at n=30'
     assert out['acceptance']['discordant_A_only'] == 0 and out['acceptance']['discordant_B_only'] == 0
-    null = [dict(r, reviews_used=3, subagent_tokens=100000, wall_clock_s=600) for r in results if not r['harness_failure']]
+    null = [dict(r, reviews_used=3, cost_usd=1.0, total_tokens=100000, wall_clock_s=600) for r in results if not r['harness_failure']]
     out_null = analyze(null, 'F1', 0.05, 3)
     assert out_null['reading'] == 'no difference detected', out_null['reading']
     print(json.dumps({'selftest': 'passed', 'planted_effect_mean_diff': round(out['reviews_used']['A_minus_B']['mean'], 2), 'p': out['reviews_used']['sign_test']['p_value']}))
