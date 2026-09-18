@@ -12,7 +12,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 repo = Path(__file__).resolve().parents[2]
-_cfg = json.loads((Path(__file__).resolve().parent / 'survey_config.json').read_text(encoding='utf-8'))
+_cfg_dir = Path(__file__).resolve().parent
+_cfg = json.loads(((_cfg_dir / 'survey_config.local.json') if (_cfg_dir / 'survey_config.local.json').exists() else (_cfg_dir / 'survey_config.json')).read_text(encoding='utf-8'))
 EXCLUDE_NAMES = set(_cfg['exclude_dir_names'])
 FLAG_SUBSTRINGS = tuple(_cfg['flag_name_substrings'])
 TEST_PATTERNS = re.compile(r'(^|/)(tests?|__tests__|e2e|spec)(/|$)|(^|/)test_[^/]+\.py$|_test\.py$|\.test\.[cm]?[jt]sx?$|\.spec\.[cm]?[jt]sx?$')

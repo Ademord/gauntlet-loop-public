@@ -16,6 +16,20 @@ repo = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(repo / '.validation-deps'))
 import yaml  # noqa: E402
 
+
+def projects_root():
+    """Real projects root from GAUNTLET_PROJECTS_ROOT or the gitignored ledger/config.local.json; never committed."""
+    import os
+    env = os.environ.get('GAUNTLET_PROJECTS_ROOT')
+    if env:
+        return env
+    local = repo / 'ledger/config.local.json'
+    if local.exists():
+        roots = json.loads(local.read_text(encoding='utf-8')).get('roots') or []
+        if roots:
+            return roots[0]
+    return '<projects-root>'
+
 FLAGS = {
     'F1': {
         'name': 'light-vs-compact',
@@ -68,6 +82,8 @@ def main():
     args = ap.parse_args()
     spec_bytes = Path(args.spec).read_bytes()
     spec = yaml.safe_load(spec_bytes)
+    if isinstance(spec.get('repo'), str):
+        spec['repo'] = spec['repo'].replace('<projects-root>', projects_root())
     for key in ('base_commit', 'answer_commit'):
         if key in spec:
             spec[key] = str(spec[key])  # an all-digit hash would otherwise parse as an integer

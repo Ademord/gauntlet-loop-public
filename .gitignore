@@ -9,3 +9,4 @@ tmp/
 .paired-scratch/
 .paired-worktrees/
 tools/private_terms.local.json
+*.local.json

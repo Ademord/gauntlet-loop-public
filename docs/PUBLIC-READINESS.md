@@ -1,11 +1,11 @@
 # Public-readiness audit
 
-Generated 2026-09-18T13:58:04Z by `tools/public_audit.py` on branch `main` at `7eca89d5d9`. Read-only, zero model tokens. Hard patterns are personal paths, machine identity, personal identity, and secrets; review terms are names a person must decide on. The ship plan (ship / scrub / exclude) is the lead's proposal in `tools/public_audit_config.json`; the owner decides.
+Generated 2026-09-18T14:03:36Z by `tools/public_audit.py` on branch `main` at `bfff58c84a`. Read-only, zero model tokens. Hard patterns are personal paths, machine identity, personal identity, and secrets; review terms are names a person must decide on. The ship plan (ship / scrub / exclude) is the lead's proposal in `tools/public_audit_config.json`; the owner decides.
 
 ## Verdict: READY FOR A CURATED PUBLIC COPY
 
-- Tracked files: 110. Ship set hard hits: 0. Scrub set hard hits: 0 (must be removed by hand before those files ship). Ship set review-term hits: 7.
-- Git history: 1 commits scanned on all branches; 0 contain text blobs with hard hits. A public copy must therefore be a fresh repository, not this one made public.
+- Tracked files: 114. Ship set hard hits: 0. Scrub set hard hits: 0 (must be removed by hand before those files ship). Ship set review-term hits: 30.
+- Git history: 2 commits scanned on all branches; 0 contain text blobs with hard hits. A public copy must therefore be a fresh repository, not this one made public.
 
 ## Hits by top-level path (working tree)
 
@@ -17,8 +17,10 @@ Generated 2026-09-18T13:58:04Z by `tools/public_audit.py` on branch `main` at `7
 | README.md | ship |  |  |
 | STATUS.md | ship |  |  |
 | docs/LINEAGE.md | ship |  |  |
+| docs/PUBLIC-READINESS.md | ship |  | possible_client_or_confidential=14 |
 | docs/RESEARCH-INTAKE.md | ship |  |  |
 | docs/UPGRADES.md | ship |  |  |
+| docs/public-readiness.json | ship |  | possible_client_or_confidential=9 |
 | docs/thesis | ship |  |  |
 | gauntlet/runs.jsonl | ship |  |  |
 | gauntlet/v5-upgrade-2026-09-17 | ship |  |  |
@@ -36,6 +38,7 @@ Generated 2026-09-18T13:58:04Z by `tools/public_audit.py` on branch `main` at `7
 | skill/references | ship |  | possible_client_or_confidential=1 |
 | tools/build_release.py | ship |  |  |
 | tools/export_single_file.py | ship |  |  |
+| tools/hooks | ship |  |  |
 | tools/ledger | ship |  |  |
 | tools/paired_study | ship |  |  |
 | tools/public_audit.py | ship |  |  |
@@ -54,7 +57,8 @@ Generated 2026-09-18T13:58:04Z by `tools/public_audit.py` on branch `main` at `7
 
 | commit | files with hard hits | sample |
 | --- | --- | --- |
-| 7eca89d5d9 | 0 |  |
+| bfff58c84a | 0 |  |
+| 6b10b48b30 | 0 |  |
 
 ## Files with hard hits that the plan would ship or scrub
 
@@ -65,6 +69,8 @@ Generated 2026-09-18T13:58:04Z by `tools/public_audit.py` on branch `main` at `7
 
 | path | action | review hits |
 | --- | --- | --- |
+| docs/PUBLIC-READINESS.md | ship | possible_client_or_confidential=14 |
+| docs/public-readiness.json | ship | possible_client_or_confidential=9 |
 | releases/v4/gauntlet-loop-v4-SKILL.md | ship | possible_client_or_confidential=1 |
 | releases/v4/gauntlet-loop-v4.zip | ship | possible_client_or_confidential=1 |
 | releases/v5/gauntlet-loop-v5-SKILL.md | ship | possible_client_or_confidential=1 |

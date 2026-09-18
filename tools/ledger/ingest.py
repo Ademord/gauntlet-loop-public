@@ -162,7 +162,7 @@ def ingest_dir(gdir, project, rows, unrecorded, now):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--config', default=str(repo / 'ledger/config.json'))
+    ap.add_argument('--config', default=str(repo / ('ledger/config.local.json' if (repo / 'ledger/config.local.json').exists() else 'ledger/config.json')))
     args = ap.parse_args()
     cfg = load_config(args.config)
     now = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')

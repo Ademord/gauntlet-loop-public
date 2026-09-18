@@ -3,7 +3,7 @@
   "flag": "F1",
   "flag_name": "light-vs-compact",
   "spec_path": "research/program/paired-study/tasks/002-tinder-power-mode-autoplay.yaml",
-  "spec_sha256": "bbb90b9a6ce963d2dfecd4f67c57e50c231728b3d702694f3c521e31ba38465c",
+  "spec_sha256": "4e557af01653ed29a7e62b90de537f2300fdb5905921a9842face96206e7a742",
   "order": [
     "B",
     "A"

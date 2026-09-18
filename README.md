@@ -47,6 +47,14 @@ python tools/paired_study/analyze_pairs.py --selftest
 
 PyYAML and pytest are expected in a local `.validation-deps/` directory (`pip install --target .validation-deps pyyaml pytest`).
 
+## Working in this repository
+
+From 18 September 2026 this is the canonical working repository; the private original is frozen. Personal paths never enter it:
+
+- Real paths go in gitignored local files: `ledger/config.local.json` (roots for the run ledger; its first root also resolves `<projects-root>` in task specs, or set `GAUNTLET_PROJECTS_ROOT`), `tools/paired_study/survey_config.local.json`, and `tools/private_terms.local.json` (terms that must never appear here). `*.local.json` is ignored.
+- Install the guard once per clone: `git config core.hooksPath tools/hooks`. Every commit is then scanned by `tools/hooks/check_staged.py` and refused if a staged text file contains a personal path, machine identity, personal identity, secret, or a private term.
+- Run records, ledger outputs, task specs, and evidence are welcome when they pass the guard; refer to another project by name only if that project is public.
+
 ## What is not here
 
 This is a curated export of a private canonical repository. Excluded on purpose: run evidence and provenance that contain local paths, earlier intermediate versions (v2, v3, a pre-team customization), the study archives and raw research feeds, commissioned pitches, a repository survey, and the run ledger outputs, which name other private projects. The export boundary is enforced by `tools/public_audit.py` (zero hard hits on every tracked file) and the copy is rebuilt deterministically from the private repository; nothing is edited by hand after export.

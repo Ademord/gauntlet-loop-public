@@ -39,7 +39,7 @@ def summarize(rows, threshold):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--config', default=str(repo / 'ledger/config.json'))
+    ap.add_argument('--config', default=str(repo / ('ledger/config.local.json' if (repo / 'ledger/config.local.json').exists() else 'ledger/config.json')))
     args = ap.parse_args()
     threshold = json.loads(Path(args.config).read_text(encoding='utf-8')).get('insufficient_below', 3)
     rows = [json.loads(l) for l in (repo / 'ledger/runs.jsonl').read_text(encoding='utf-8').splitlines() if l.strip()]

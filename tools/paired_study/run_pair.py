@@ -32,6 +32,20 @@ sys.path.insert(0, str(repo / '.validation-deps'))
 import yaml  # noqa: E402
 
 
+def projects_root():
+    """Real projects root from GAUNTLET_PROJECTS_ROOT or the gitignored ledger/config.local.json; never committed."""
+    import os
+    env = os.environ.get('GAUNTLET_PROJECTS_ROOT')
+    if env:
+        return env
+    local = repo / 'ledger/config.local.json'
+    if local.exists():
+        roots = json.loads(local.read_text(encoding='utf-8')).get('roots') or []
+        if roots:
+            return roots[0]
+    return '<projects-root>'
+
+
 def run(cmd, cwd=None, check=True):
     return subprocess.run(cmd, cwd=cwd, capture_output=True, text=True, check=check)
 
@@ -52,6 +66,8 @@ def main():
         print('REFUSED: spec changed since the pair was generated; regenerate the pair or restore the spec', file=sys.stderr)
         return 2
     spec = yaml.safe_load(spec_bytes)
+    if isinstance(spec.get('repo'), str):
+        spec['repo'] = spec['repo'].replace('<projects-root>', projects_root())
     for key in ('base_commit', 'answer_commit'):
         if key in spec:
             spec[key] = str(spec[key])  # an all-digit hash would otherwise parse as an integer

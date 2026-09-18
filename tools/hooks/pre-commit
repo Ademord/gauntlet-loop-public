@@ -1,0 +1,2 @@
+#!/bin/sh
+python tools/hooks/check_staged.py || exit 1

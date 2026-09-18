@@ -3,7 +3,7 @@
   "flag": "F1",
   "flag_name": "light-vs-compact",
   "spec_path": "research/program/paired-study/tasks/001-intelligence-pipeline-sum-check.yaml",
-  "spec_sha256": "b05da631380416d61d449c54ae9d5583b891ab35c44ebd5cd92ab0e4836a9f60",
+  "spec_sha256": "bbeed81a0b99d0ac57e84f5a4cc4ca6c8665e4af2920ad38e00dd1f6d2ace639",
   "order": [
     "A",
     "B"

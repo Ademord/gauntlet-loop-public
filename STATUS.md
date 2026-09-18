@@ -1,6 +1,6 @@
 # Status, 18 September 2026
 
-Work in progress. This file is the public handoff: what exists, what is verified, what is untested, and what is next. Everything here was produced with deterministic scripts or with independent critic reviews recorded under `gauntlet/`; nothing claims a measured performance gain.
+Work in progress. From 18 September 2026 this repository is the canonical working repository (the private original is frozen; see README, Working in this repository). This file is the handoff: what exists, what is verified, what is untested, and what is next. Everything here was produced with deterministic scripts or with independent critic reviews recorded under `gauntlet/`; nothing claims a measured performance gain.
 
 ## State
 
