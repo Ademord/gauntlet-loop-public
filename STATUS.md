@@ -10,7 +10,7 @@ Work in progress, updated 19 September 2026. This is the canonical working repos
 | Version history | Complete from v1 to v5; every stored file checksummed | [versions/](versions/README.md) |
 | Research | Six papers noted with verbatim abstracts; the v5 thesis; a research program with a pre-registered paired-study protocol, amended 19 September for harness isolation and measurement | [research/](research/README.md) |
 | Run ledger | Scripts ready. The first ingest over the author's projects found three recorded runs and five run folders without a machine-readable record; every cell is below threshold. Outputs stay local | [tools/ledger/](tools/README.md), [ledger/SCHEMA.md](ledger/SCHEMA.md) |
-| Paired study | First look at flag F1 taken on 14 pairs: both topologies solved every task, no difference detected under the pre-registered tests, and the light arm used about a third fewer tokens. Every arm used exactly one review, so the compact arm never revised and the contrast measured exploration rather than the loop. Minting more tasks toward the planned 30 pairs | [look-F1.md](research/program/paired-study/look-F1.md), [LOG.md](research/program/paired-study/LOG.md) |
+| Paired study | Flag F1 is done on mutation tasks: thirty pairs, no difference detected, both topologies solving every task. The contrast-fired rate is zero of thirty, so the compact arm never revised and the flag was never tested on work where a first review would reject. The series ended under a stopping rule written before the last sixteen pairs ran | [look-F1.md](research/program/paired-study/look-F1.md), [LOG.md](research/program/paired-study/LOG.md) |
 | Guards | Pre-commit leak guard, audit with zero hits on tree and history, and a commit-msg guard that refuses skill changes not tied to an upgrade run | [tools/README.md](tools/README.md) |
 
 ## Known limitations
@@ -21,12 +21,12 @@ Work in progress, updated 19 September 2026. This is the canonical working repos
 - The last consistency fix of the v5 run was verified deterministically after the last critic read it; see [dist/RELEASE-REVIEW.md](dist/RELEASE-REVIEW.md).
 - v4 and v5 dropped the worked examples and the bar table that v1 to v3 carried; the effect was never measured.
 - The twelve mutation tasks all come from one repository and are one-token defects; results on them generalize only to that class.
-- Fourteen pairs are one-token defects and small repairs in one public Python repository on one model; nothing here speaks to harder work.
-- Cost is measured now: about two dollars and seven minutes per pair, dominated by cache reads.
+- The thirty F1 pairs are one-token defects and small repairs in one public Python repository on one model; nothing here speaks to harder work, and the flag's own mechanism never fired on them.
+- Cost is measured: $53.65 for thirty pairs, about six minutes a pair, dominated by cache reads.
 
 ## Next steps, in order
 
-1. Finish the F1 series to thirty pairs and take the second look; the protocol's stopping rules decide whether a third is needed.
+1. Run the excision pilot (B-027, B-028): at most eight pairs whose only question is whether a first review ever rejects. That single number decides whether F1, F2 and the checkpoint handoff have any task class to run on.
 2. Cut medium tasks by hand from release-sized commits (B-025). The flag's contrast never fired on one-token defects, and both the evidence ladder (F2) and the checkpoint handoff need work long enough to reach a third review round.
 3. Run the 5.1 upgrade, whose contract and probes are already frozen in `gauntlet/v51-upgrade-2026-09-19/`: restore the bar table and worked examples (B-020), task class and features in the milestone (B-002), route and repair-verdict wording (B-009), template length (B-012), budgets under small caps (B-013).
 4. Open the checkpoint-handoff gate (B-023) once medium tasks exist: clone each arm's first-verdict state and cross the solvers, so an arm's advantage separates into arriving well and finishing well.
