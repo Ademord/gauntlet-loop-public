@@ -14,6 +14,7 @@ Not built: automatic task minting from git history (survey first, mint by hand),
 ## Added 19 September 2026
 
 - `mint_mutations.py` mints low-difficulty tasks from a Python repository with an offline test suite: one semantic mutation per candidate line, kept only if exactly one or two tests fail; the original line is the answer. Specs record the repository as `<projects-root>/<name>` and the mutation by line and byte columns.
+- `mint_excisions.py` mints medium tasks from the same kind of repository: a whole function body is removed and replaced with a `raise NotImplementedError`, signature and docstring kept, and the task is kept only if at least three tests fail. It exists because the first F1 look found the mutation class too easy to make the revision loop fire; see [task-classes.md](../../research/program/paired-study/task-classes.md). Bodies outside the size band are skipped, because the largest reporting functions are pinned by exact-output tests and reimplementing them is guesswork. Running these tasks needs excision support in `run_pair.py` (B-027), which is not in place yet.
 - `run_pair.py --execute` now runs a login preflight, isolates each arm from user-level settings, hooks, MCP servers, and skills, restores protected test paths before the independent suite run, and measures cost, tokens, turns, and critic dispatches from the transcript. Transcripts and each arm's `gauntlet/` folder stay local (gitignored); the results row is the public record.
 
 ## Running a series
