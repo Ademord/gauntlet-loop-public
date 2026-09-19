@@ -1,0 +1,54 @@
+task_id: x001-intelligence-pipeline-process_source
+repo: <projects-root>/intelligence-pipeline
+base_commit: 570db48faefde40f06fc498be05031a7deecd338
+answer_commit: 570db48faefde40f06fc498be05031a7deecd338
+excision:
+  file: pipeline.py
+  start_line: 51
+  end_line: 75
+  indent: 4
+  placeholder: raise NotImplementedError("This function was removed for a repair task;
+    reimplement it.")
+  qualname: process_source
+  body_sha256: 1585c06ec9474b998d775df04ccf98d5ede3bc9c5837033d0a1cd660e2ec34c7
+test_files_from_answer: []
+held_out_files: []
+held_out_study_files: []
+setup_copy_from_repo: []
+protected_paths:
+- tests
+- test
+description: '`process_source` in pipeline.py has been removed: its body now raises
+  NotImplementedError, and 5 tests fail. Reimplement it so the whole suite passes.
+  Its signature is unchanged and the tests state the behavior; do not change any test.
+  Local-only; no hosting, no CI.'
+test_command: python -m pytest -q -p no:cacheprovider
+failing_tests:
+- tests/test_core.py::test_pipeline_extracts_target_offline
+- tests/test_core.py::test_pipeline_non_target_gets_null_fields
+- tests/test_core.py::test_pipeline_blank_is_unprocessable_but_status_ok
+- tests/test_core.py::test_pipeline_provider_crash_is_failed_provider
+- tests/test_core.py::test_pipeline_garbage_is_failed_parse
+allowed_paths:
+- pipeline.py
+difficulty:
+  estimate: medium
+  proxies:
+  - 25 lines of removed implementation, not a single token
+  - 5 failing tests pin the behavior
+  - 'no docstring: the tests are the only statement of the contract'
+  - suite runs in about 4 seconds
+verifiability: deterministic
+task_class: code-fix
+review_cap: 8
+mint:
+  minted_utc: '2026-09-19T12:53:30Z'
+  kind: excision
+  failing_count: 5
+  body_lines: 25
+  suite_seconds: 3.5
+  seed: 29
+  method: tools/paired_study/mint_excisions.py
+  size_band:
+  - 10
+  - 40

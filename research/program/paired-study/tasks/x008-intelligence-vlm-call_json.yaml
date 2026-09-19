@@ -1,0 +1,57 @@
+task_id: x008-intelligence-vlm-call_json
+repo: <projects-root>/intelligence-pipeline
+base_commit: 570db48faefde40f06fc498be05031a7deecd338
+answer_commit: 570db48faefde40f06fc498be05031a7deecd338
+excision:
+  file: vlm.py
+  start_line: 121
+  end_line: 149
+  indent: 4
+  placeholder: raise NotImplementedError("This function was removed for a repair task;
+    reimplement it.")
+  qualname: call_json
+  body_sha256: 53f626e920b44ba0d0720e0c217178d2eb1e7f97efff7a3d7ddd4a4b8786ba8e
+test_files_from_answer: []
+held_out_files: []
+held_out_study_files: []
+setup_copy_from_repo: []
+protected_paths:
+- tests
+- test
+description: '`call_json` in vlm.py has been removed: its body now raises NotImplementedError,
+  and 8 tests fail. Reimplement it so the whole suite passes. Its signature and docstring
+  are unchanged and the tests state the behavior; do not change any test. Local-only;
+  no hosting, no CI.'
+test_command: python -m pytest -q -p no:cacheprovider
+failing_tests:
+- tests/test_core.py::test_cache_is_a_one_way_ratchet
+- tests/test_core.py::test_pipeline_extracts_target_offline
+- tests/test_core.py::test_pipeline_non_target_gets_null_fields
+- tests/test_core.py::test_pipeline_blank_is_unprocessable_but_status_ok
+- tests/test_core.py::test_pipeline_provider_crash_is_failed_provider
+- tests/test_core.py::test_pipeline_garbage_is_failed_parse
+- tests/test_experiment.py::test_ablation_takes_output_as_is
+- tests/test_experiment.py::test_ablation_records_parse_failure_without_retry
+allowed_paths:
+- vlm.py
+difficulty:
+  estimate: medium
+  proxies:
+  - 29 lines of removed implementation, not a single token
+  - 8 failing tests pin the behavior
+  - the docstring states intent; the tests state the contract
+  - suite runs in about 4 seconds
+verifiability: deterministic
+task_class: code-fix
+review_cap: 8
+mint:
+  minted_utc: '2026-09-19T12:54:09Z'
+  kind: excision
+  failing_count: 8
+  body_lines: 29
+  suite_seconds: 3.6
+  seed: 29
+  method: tools/paired_study/mint_excisions.py
+  size_band:
+  - 10
+  - 40

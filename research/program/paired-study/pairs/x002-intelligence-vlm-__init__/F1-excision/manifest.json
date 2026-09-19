@@ -1,0 +1,24 @@
+{
+  "task_id": "x002-intelligence-vlm-__init__",
+  "flag": "F1-excision",
+  "flag_name": "light-vs-compact, excision tasks",
+  "spec_path": "research/program/paired-study/tasks/x002-intelligence-vlm-__init__.yaml",
+  "spec_sha256": "c86110b6821d6c2b7dd6ab546af6cb4f6aa799ac9b71fd743d42faacf613ea7c",
+  "order": [
+    "A",
+    "B"
+  ],
+  "arm_prompt_sha256": {
+    "A": "f432de56c48b7b1b2e7c94b6b5379051cf32d8c9c845eb3423c539e44f8c649d",
+    "B": "2ccd44e2ae8c6a60e4fdf4c90329dfbe7e4110697a6e48e4148c77070f1519ab"
+  },
+  "only_difference": {
+    "A": "Topology: light. One bounded build, then one independent evidence-based review that reruns the checks; no preference comparison loop. A light review that does not accept escalates to compact with the reason recorded.",
+    "B": "Topology: compact. A lead/builder and a separate critic with fresh context; build, independent review, revise, until the checks pass and the comparison favors ours, within the budget."
+  },
+  "review_cap": 8,
+  "reserve": 2,
+  "status": "generated",
+  "runs": {},
+  "model_tokens_used_by_generator": 0
+}

@@ -1,0 +1,52 @@
+task_id: x007-intelligence-evaluate-match_line_items
+repo: <projects-root>/intelligence-pipeline
+base_commit: 570db48faefde40f06fc498be05031a7deecd338
+answer_commit: 570db48faefde40f06fc498be05031a7deecd338
+excision:
+  file: evaluate.py
+  start_line: 65
+  end_line: 80
+  indent: 4
+  placeholder: raise NotImplementedError("This function was removed for a repair task;
+    reimplement it.")
+  qualname: match_line_items
+  body_sha256: bc004fbb613a8b5c9bff57e04d43715059c9146fa57cdb894e443cea4817b579
+test_files_from_answer: []
+held_out_files: []
+held_out_study_files: []
+setup_copy_from_repo: []
+protected_paths:
+- tests
+- test
+description: '`match_line_items` in evaluate.py has been removed: its body now raises
+  NotImplementedError, and 3 tests fail. Reimplement it so the whole suite passes.
+  Its signature and docstring are unchanged and the tests state the behavior; do not
+  change any test. Local-only; no hosting, no CI.'
+test_command: python -m pytest -q -p no:cacheprovider
+failing_tests:
+- tests/test_core.py::test_match_line_items_name_then_amount
+- tests/test_core.py::test_compute_metrics_matrix_buckets_and_calibration
+- tests/test_core.py::test_compute_metrics_failure_excluded_and_hallucination_counted
+allowed_paths:
+- evaluate.py
+difficulty:
+  estimate: medium
+  proxies:
+  - 16 lines of removed implementation, not a single token
+  - 3 failing tests pin the behavior
+  - the docstring states intent; the tests state the contract
+  - suite runs in about 4 seconds
+verifiability: deterministic
+task_class: code-fix
+review_cap: 8
+mint:
+  minted_utc: '2026-09-19T12:54:05Z'
+  kind: excision
+  failing_count: 3
+  body_lines: 16
+  suite_seconds: 3.5
+  seed: 29
+  method: tools/paired_study/mint_excisions.py
+  size_band:
+  - 10
+  - 40

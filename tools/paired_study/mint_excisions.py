@@ -87,6 +87,12 @@ def candidates(rel, src, min_body_lines):
     return found
 
 
+def body_sha256(lines, c):
+    """Hash of the exact text the excision removes, so the runner can verify it is cutting the same span."""
+    span = '\n'.join(lines[c['start_line'] - 1:c['end_line']])
+    return hashlib.sha256(span.encode('utf-8')).hexdigest()
+
+
 def apply(path, c):
     """Replace the body span with the placeholder. Returns the original text for restoration."""
     original = path.read_text(encoding='utf-8')

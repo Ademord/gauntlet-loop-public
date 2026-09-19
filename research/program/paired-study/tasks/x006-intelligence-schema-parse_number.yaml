@@ -1,0 +1,53 @@
+task_id: x006-intelligence-schema-parse_number
+repo: <projects-root>/intelligence-pipeline
+base_commit: 570db48faefde40f06fc498be05031a7deecd338
+answer_commit: 570db48faefde40f06fc498be05031a7deecd338
+excision:
+  file: schema.py
+  start_line: 26
+  end_line: 42
+  indent: 4
+  placeholder: raise NotImplementedError("This function was removed for a repair task;
+    reimplement it.")
+  qualname: parse_number
+  body_sha256: e59616f651c8d62496b17b600f4f4cc7619d20dc198a1dc1c69dd3eafb498758
+test_files_from_answer: []
+held_out_files: []
+held_out_study_files: []
+setup_copy_from_repo: []
+protected_paths:
+- tests
+- test
+description: '`parse_number` in schema.py has been removed: its body now raises NotImplementedError,
+  and 4 tests fail. Reimplement it so the whole suite passes. Its signature and docstring
+  are unchanged and the tests state the behavior; do not change any test. Local-only;
+  no hosting, no CI.'
+test_command: python -m pytest -q -p no:cacheprovider
+failing_tests:
+- tests/test_core.py::test_parse_number_locale_formats
+- tests/test_core.py::test_parse_number_dot_only_stays_decimal
+- tests/test_core.py::test_pipeline_extracts_target_offline
+- tests/test_experiment.py::test_ablation_takes_output_as_is
+allowed_paths:
+- schema.py
+difficulty:
+  estimate: medium
+  proxies:
+  - 17 lines of removed implementation, not a single token
+  - 4 failing tests pin the behavior
+  - the docstring states intent; the tests state the contract
+  - suite runs in about 4 seconds
+verifiability: deterministic
+task_class: code-fix
+review_cap: 8
+mint:
+  minted_utc: '2026-09-19T12:53:58Z'
+  kind: excision
+  failing_count: 4
+  body_lines: 17
+  suite_seconds: 3.5
+  seed: 29
+  method: tools/paired_study/mint_excisions.py
+  size_band:
+  - 10
+  - 40

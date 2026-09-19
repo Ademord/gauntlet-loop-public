@@ -14,7 +14,9 @@ and held-out tests run last. Measured cost, tokens, turns, and critic dispatches
 The runner refuses a spec whose hash changed after the pair was generated.
 """
 import argparse
+import ast
 import hashlib
+import re
 import json
 import os
 import shlex
@@ -45,6 +47,20 @@ def argv_for(command):
     """Split a committed command string without a shell and resolve the executable (npm.cmd on Windows)."""
     parts = shlex.split(command, posix=True)
     return [shutil.which(parts[0]) or parts[0], *parts[1:]]
+
+
+def resolve_alias(repo_field):
+    """Expand `<alias:name>` from a gitignored map, so a public spec never carries a private directory name."""
+    m = re.search(r'<alias:([A-Za-z0-9._-]+)>', str(repo_field))
+    if not m:
+        return str(repo_field)
+    path = Path(__file__).resolve().parents[2] / 'research/program/paired-study/tasks/aliases.local.json'
+    if not path.exists():
+        raise SystemExit(f'spec uses alias {m.group(1)!r} but {path.name} is missing; it is gitignored and local')
+    aliases = json.loads(path.read_text(encoding='utf-8'))
+    if m.group(1) not in aliases:
+        raise SystemExit(f'alias {m.group(1)!r} is not in {path.name}')
+    return str(repo_field).replace(m.group(0), aliases[m.group(1)])
 
 
 def projects_root():
@@ -80,7 +96,7 @@ def load(pair):
     if hashlib.sha256(spec_bytes).hexdigest() != manifest['spec_sha256']:
         raise SystemExit('REFUSED: spec changed since the pair was generated; regenerate the pair or restore the spec')
     spec = yaml.safe_load(spec_bytes)
-    spec['repo'] = str(spec['repo']).replace('<projects-root>', projects_root())
+    spec['repo'] = resolve_alias(spec['repo']).replace('<projects-root>', projects_root())
     for key in ('base_commit', 'answer_commit'):
         if key in spec:
             spec[key] = str(spec[key])
@@ -109,6 +125,24 @@ def build_task_base(spec, wt):
             raise SystemExit(f"mutation anchor mismatch in {mut['file']}:{mut['line']}")
         lines[mut['line'] - 1] = line[:mut['col_start']] + mut['mutated'].encode() + line[mut['col_end']:]
         target.write_bytes(b'\n'.join(lines))
+    exc = spec.get('excision')
+    if exc:
+        target = wt / exc['file']
+        text = target.read_text(encoding='utf-8')
+        lines = text.split('\n')
+        span = '\n'.join(lines[exc['start_line'] - 1:exc['end_line']])
+        if hashlib.sha256(span.encode('utf-8')).hexdigest() != exc['body_sha256']:
+            raise SystemExit(f"excision anchor mismatch in {exc['file']}:{exc['start_line']}-{exc['end_line']}")
+        lines[exc['start_line'] - 1:exc['end_line']] = [' ' * exc['indent'] + exc['placeholder']]
+        cut = '\n'.join(lines)
+        try:
+            ast.parse(cut)
+        except SyntaxError as e:
+            raise SystemExit(f"excision left {exc['file']} unparseable: {e}")
+        target.write_text(cut, encoding='utf-8')
+    if mut and exc:
+        raise SystemExit('a spec carries both a mutation and an excision; one task, one defect')
+
     # Drop the history: with the upstream fix (or the pre-mutation commit) reachable, an arm could read the answer
     # instead of solving the task. The task base becomes a single commit in a fresh repository.
     rmtree(wt / '.git')

@@ -1,0 +1,24 @@
+{
+  "task_id": "x005-intelligence-validation-_check_formats",
+  "flag": "F1-excision",
+  "flag_name": "light-vs-compact, excision tasks",
+  "spec_path": "research/program/paired-study/tasks/x005-intelligence-validation-_check_formats.yaml",
+  "spec_sha256": "2df8a74bd44c378697fabcc7e5fada299432a947dbfc0637bbec6cd983370042",
+  "order": [
+    "A",
+    "B"
+  ],
+  "arm_prompt_sha256": {
+    "A": "bc7ad50ddd5903a44afcf8939ecd47c288e8fdd15dc1c477e4d2f0f56ee9427d",
+    "B": "26e02cc10afac87a6b4ffece82840553e7d1447864faffe3d24cc83364a38199"
+  },
+  "only_difference": {
+    "A": "Topology: light. One bounded build, then one independent evidence-based review that reruns the checks; no preference comparison loop. A light review that does not accept escalates to compact with the reason recorded.",
+    "B": "Topology: compact. A lead/builder and a separate critic with fresh context; build, independent review, revise, until the checks pass and the comparison favors ours, within the budget."
+  },
+  "review_cap": 8,
+  "reserve": 2,
+  "status": "generated",
+  "runs": {},
+  "model_tokens_used_by_generator": 0
+}

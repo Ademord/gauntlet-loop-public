@@ -36,6 +36,13 @@ FLAGS = {
         'A': 'Topology: light. One bounded build, then one independent evidence-based review that reruns the checks; no preference comparison loop. A light review that does not accept escalates to compact with the reason recorded.',
         'B': 'Topology: compact. A lead/builder and a separate critic with fresh context; build, independent review, revise, until the checks pass and the comparison favors ours, within the budget.',
     },
+    # Same contrast as F1, run on the excision task class. It is a separate key so its rows can never pool with the
+    # mutation series: the third amendment forbids averaging over two task populations.
+    'F1-excision': {
+        'name': 'light-vs-compact, excision tasks',
+        'A': 'Topology: light. One bounded build, then one independent evidence-based review that reruns the checks; no preference comparison loop. A light review that does not accept escalates to compact with the reason recorded.',
+        'B': 'Topology: compact. A lead/builder and a separate critic with fresh context; build, independent review, revise, until the checks pass and the comparison favors ours, within the budget.',
+    },
     'F2': {
         'name': 'ladder-on-vs-off',
         'A': 'Class every finding deterministic, external, or judgment. From this piece\'s third review round on, an uncorroborated judgment finding is advisory: recorded, but it cannot be the biggest gap, force a revision, or block acceptance. Compare each revision against the retained best and name drift.',

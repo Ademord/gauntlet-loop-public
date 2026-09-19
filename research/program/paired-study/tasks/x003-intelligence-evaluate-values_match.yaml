@@ -1,0 +1,52 @@
+task_id: x003-intelligence-evaluate-values_match
+repo: <projects-root>/intelligence-pipeline
+base_commit: 570db48faefde40f06fc498be05031a7deecd338
+answer_commit: 570db48faefde40f06fc498be05031a7deecd338
+excision:
+  file: evaluate.py
+  start_line: 44
+  end_line: 54
+  indent: 4
+  placeholder: raise NotImplementedError("This function was removed for a repair task;
+    reimplement it.")
+  qualname: values_match
+  body_sha256: b8c9d081f0bd0f36c7a9311c5d23d8d848f28f2077f9c39e18e419821d21b6cc
+test_files_from_answer: []
+held_out_files: []
+held_out_study_files: []
+setup_copy_from_repo: []
+protected_paths:
+- tests
+- test
+description: '`values_match` in evaluate.py has been removed: its body now raises
+  NotImplementedError, and 3 tests fail. Reimplement it so the whole suite passes.
+  Its signature and docstring are unchanged and the tests state the behavior; do not
+  change any test. Local-only; no hosting, no CI.'
+test_command: python -m pytest -q -p no:cacheprovider
+failing_tests:
+- tests/test_core.py::test_values_match_null_and_locale_semantics
+- tests/test_core.py::test_compute_metrics_matrix_buckets_and_calibration
+- tests/test_core.py::test_compute_metrics_failure_excluded_and_hallucination_counted
+allowed_paths:
+- evaluate.py
+difficulty:
+  estimate: medium
+  proxies:
+  - 11 lines of removed implementation, not a single token
+  - 3 failing tests pin the behavior
+  - the docstring states intent; the tests state the contract
+  - suite runs in about 4 seconds
+verifiability: deterministic
+task_class: code-fix
+review_cap: 8
+mint:
+  minted_utc: '2026-09-19T12:53:37Z'
+  kind: excision
+  failing_count: 3
+  body_lines: 11
+  suite_seconds: 3.6
+  seed: 29
+  method: tools/paired_study/mint_excisions.py
+  size_band:
+  - 10
+  - 40

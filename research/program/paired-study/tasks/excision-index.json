@@ -1,0 +1,74 @@
+[
+  {
+    "task_id": "x001-intelligence-pipeline-process_source",
+    "file": "pipeline.py",
+    "qualname": "process_source",
+    "body_lines": 25,
+    "failing": 5,
+    "start_line": 51,
+    "end_line": 75
+  },
+  {
+    "task_id": "x002-intelligence-vlm-__init__",
+    "file": "vlm.py",
+    "qualname": "CachingVLM.__init__",
+    "body_lines": 10,
+    "failing": 8,
+    "start_line": 60,
+    "end_line": 69
+  },
+  {
+    "task_id": "x003-intelligence-evaluate-values_match",
+    "file": "evaluate.py",
+    "qualname": "values_match",
+    "body_lines": 11,
+    "failing": 3,
+    "start_line": 44,
+    "end_line": 54
+  },
+  {
+    "task_id": "x004-intelligence-validation-_check_line_items",
+    "file": "validation.py",
+    "qualname": "_check_line_items",
+    "body_lines": 29,
+    "failing": 6,
+    "start_line": 92,
+    "end_line": 120
+  },
+  {
+    "task_id": "x005-intelligence-validation-_check_formats",
+    "file": "validation.py",
+    "qualname": "_check_formats",
+    "body_lines": 11,
+    "failing": 6,
+    "start_line": 78,
+    "end_line": 88
+  },
+  {
+    "task_id": "x006-intelligence-schema-parse_number",
+    "file": "schema.py",
+    "qualname": "parse_number",
+    "body_lines": 17,
+    "failing": 4,
+    "start_line": 26,
+    "end_line": 42
+  },
+  {
+    "task_id": "x007-intelligence-evaluate-match_line_items",
+    "file": "evaluate.py",
+    "qualname": "match_line_items",
+    "body_lines": 16,
+    "failing": 3,
+    "start_line": 65,
+    "end_line": 80
+  },
+  {
+    "task_id": "x008-intelligence-vlm-call_json",
+    "file": "vlm.py",
+    "qualname": "call_json",
+    "body_lines": 29,
+    "failing": 8,
+    "start_line": 121,
+    "end_line": 149
+  }
+]

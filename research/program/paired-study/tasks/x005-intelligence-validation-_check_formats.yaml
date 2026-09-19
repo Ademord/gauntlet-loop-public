@@ -1,0 +1,55 @@
+task_id: x005-intelligence-validation-_check_formats
+repo: <projects-root>/intelligence-pipeline
+base_commit: 570db48faefde40f06fc498be05031a7deecd338
+answer_commit: 570db48faefde40f06fc498be05031a7deecd338
+excision:
+  file: validation.py
+  start_line: 78
+  end_line: 88
+  indent: 4
+  placeholder: raise NotImplementedError("This function was removed for a repair task;
+    reimplement it.")
+  qualname: _check_formats
+  body_sha256: 0c8eea30a38f16acbf5e9c3f26c72023b784f39571002b491afb5ad62998e06f
+test_files_from_answer: []
+held_out_files: []
+held_out_study_files: []
+setup_copy_from_repo: []
+protected_paths:
+- tests
+- test
+description: '`_check_formats` in validation.py has been removed: its body now raises
+  NotImplementedError, and 6 tests fail. Reimplement it so the whole suite passes.
+  Its signature is unchanged and the tests state the behavior; do not change any test.
+  Local-only; no hosting, no CI.'
+test_command: python -m pytest -q -p no:cacheprovider
+failing_tests:
+- tests/test_core.py::test_pipeline_extracts_target_offline
+- tests/test_core.py::test_validate_clean_target_high_no_flags
+- tests/test_core.py::test_validate_missing_required_is_error_low
+- tests/test_core.py::test_validate_out_of_band_sum_gates_confidence
+- tests/test_core.py::test_sum_check_pins_measured_tenfold_misread
+- tests/test_core.py::test_validate_skips_row_math_on_null_quantity
+allowed_paths:
+- validation.py
+difficulty:
+  estimate: medium
+  proxies:
+  - 11 lines of removed implementation, not a single token
+  - 6 failing tests pin the behavior
+  - 'no docstring: the tests are the only statement of the contract'
+  - suite runs in about 4 seconds
+verifiability: deterministic
+task_class: code-fix
+review_cap: 8
+mint:
+  minted_utc: '2026-09-19T12:53:48Z'
+  kind: excision
+  failing_count: 6
+  body_lines: 11
+  suite_seconds: 3.6
+  seed: 29
+  method: tools/paired_study/mint_excisions.py
+  size_band:
+  - 10
+  - 40
