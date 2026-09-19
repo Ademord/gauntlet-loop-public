@@ -106,5 +106,149 @@
     "original": "is",
     "mutated": "is not",
     "failing": 1
+  },
+  {
+    "task_id": "m013-intelligence-pipeline-L35",
+    "file": "pipeline.py",
+    "line": 35,
+    "kind": "int",
+    "original": "1",
+    "mutated": "2",
+    "failing": 1
+  },
+  {
+    "task_id": "m014-intelligence-schema-L93",
+    "file": "schema.py",
+    "line": 93,
+    "kind": "boolop",
+    "original": "or",
+    "mutated": "and",
+    "failing": 1
+  },
+  {
+    "task_id": "m015-intelligence-vlm-L67",
+    "file": "vlm.py",
+    "line": 67,
+    "kind": "int",
+    "original": "0",
+    "mutated": "1",
+    "failing": 1
+  },
+  {
+    "task_id": "m016-intelligence-evaluate-L68",
+    "file": "evaluate.py",
+    "line": 68,
+    "kind": "compare",
+    "original": "==",
+    "mutated": "!=",
+    "failing": 1
+  },
+  {
+    "task_id": "m017-intelligence-evaluate-L46",
+    "file": "evaluate.py",
+    "line": 46,
+    "kind": "compare",
+    "original": "==",
+    "mutated": "!=",
+    "failing": 2
+  },
+  {
+    "task_id": "m018-intelligence-evaluate-L189",
+    "file": "evaluate.py",
+    "line": 189,
+    "kind": "compare",
+    "original": "==",
+    "mutated": "!=",
+    "failing": 1
+  },
+  {
+    "task_id": "m019-intelligence-evaluate-L49",
+    "file": "evaluate.py",
+    "line": 49,
+    "kind": "compare",
+    "original": "==",
+    "mutated": "!=",
+    "failing": 1
+  },
+  {
+    "task_id": "m020-intelligence-vlm-L68",
+    "file": "vlm.py",
+    "line": 68,
+    "kind": "int",
+    "original": "0",
+    "mutated": "1",
+    "failing": 2
+  },
+  {
+    "task_id": "m021-intelligence-evaluate-L51",
+    "file": "evaluate.py",
+    "line": 51,
+    "kind": "compare",
+    "original": "==",
+    "mutated": "!=",
+    "failing": 1
+  },
+  {
+    "task_id": "m022-intelligence-evaluate-L120",
+    "file": "evaluate.py",
+    "line": 120,
+    "kind": "compare",
+    "original": "==",
+    "mutated": "!=",
+    "failing": 1
+  },
+  {
+    "task_id": "m023-intelligence-vlm-L135",
+    "file": "vlm.py",
+    "line": 135,
+    "kind": "bool",
+    "original": "True",
+    "mutated": "False",
+    "failing": 1
+  },
+  {
+    "task_id": "m024-intelligence-schema-L29",
+    "file": "schema.py",
+    "line": 29,
+    "kind": "drop-not",
+    "original": "not ",
+    "mutated": "",
+    "failing": 2
+  },
+  {
+    "task_id": "m025-intelligence-evaluate-L47",
+    "file": "evaluate.py",
+    "line": 47,
+    "kind": "compare",
+    "original": "==",
+    "mutated": "!=",
+    "failing": 2
+  },
+  {
+    "task_id": "m026-intelligence-evaluate-L200",
+    "file": "evaluate.py",
+    "line": 200,
+    "kind": "drop-not",
+    "original": "not ",
+    "mutated": "",
+    "failing": 2
+  },
+  {
+    "task_id": "m027-intelligence-evaluate-L58",
+    "file": "evaluate.py",
+    "line": 58,
+    "kind": "compare",
+    "original": "is",
+    "mutated": "is not",
+    "failing": 1
+  },
+  {
+    "task_id": "m028-intelligence-pipeline-L57",
+    "file": "pipeline.py",
+    "line": 57,
+    "kind": "compare",
+    "original": "==",
+    "mutated": "!=",
+    "failing": 2
   }
 ]

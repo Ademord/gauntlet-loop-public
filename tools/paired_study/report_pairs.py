@@ -67,7 +67,11 @@ def main():
                       f"| {fmt(a.get('num_turns'))}/{fmt(b.get('num_turns'))} | {fmt(a.get('total_tokens'))}/{fmt(b.get('total_tokens'))} "
                       f"| ${fmt(a.get('cost_usd'), 2)}/${fmt(b.get('cost_usd'), 2)} | {fmt(a.get('wall_clock_s'))}/{fmt(b.get('wall_clock_s'))} |")
         md.append('')
-        md += ['## Totals', '', '| Measure | A, light | B, compact |', '| --- | --- | --- |']
+        fired = [t for t in complete if (complete[t]['B'].get('reviews_used') or 0) >= 2]
+        solved_a = sum(1 for t in complete if complete[t]['A'].get('suite_rc') == 0)
+        solved_b = sum(1 for t in complete if complete[t]['B'].get('suite_rc') == 0)
+        md += ['## Totals', '', '| Measure | A, light | B, compact |', '| --- | --- | --- |',
+               f'| solved, suite passes | {solved_a} of {len(complete)} | {solved_b} of {len(complete)} |']
         for label, key, nd in (('accepted', 'accepted', 0), ('median reviews', 'reviews_used', 0), ('median turns', 'num_turns', 0),
                                ('median tokens', 'total_tokens', 0), ('total cost', 'cost_usd', 2), ('median seconds', 'wall_clock_s', 0)):
             va = [complete[t]['A'].get(key) for t in complete]
@@ -81,6 +85,10 @@ def main():
                 nb = [x for x in vb if isinstance(x, (int, float))]
                 md.append(f'| {label} | {fmt(statistics.median(na)) if na else "unknown"} | {fmt(statistics.median(nb)) if nb else "unknown"} |')
         md.append('')
+    if complete:
+        md += [f'Contrast-fired rate, the pre-registered secondary from the third amendment: {len(fired)} of {len(complete)} pairs '
+               f'had an arm B that used two or more reviews{" (" + ", ".join(sorted(fired)) + ")" if fired else ""}. Where it is zero, arm B '
+               f'never revised and the flag did not manipulate the revision loop.', '']
     md += ['## Paired tests', '',
            'From `analyze_pairs.py`, committed before the first pair ran. The per-look threshold is the alpha split across the '
            f'planned looks: {stats["alpha_per_look"]:.4f}. A difference is reported as detected only below that threshold.', '',

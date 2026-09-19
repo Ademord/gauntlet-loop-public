@@ -1,0 +1,43 @@
+task_id: m023-intelligence-vlm-L135
+repo: <projects-root>/intelligence-pipeline
+base_commit: 570db48faefde40f06fc498be05031a7deecd338
+answer_commit: 570db48faefde40f06fc498be05031a7deecd338
+mutation:
+  file: vlm.py
+  line: 135
+  col_start: 46
+  col_end: 50
+  original: 'True'
+  mutated: 'False'
+  kind: bool
+test_files_from_answer: []
+held_out_files: []
+held_out_study_files: []
+setup_copy_from_repo: []
+protected_paths:
+- tests
+- test
+description: 'A recent change to vlm.py broke behavior the test suite covers: 1 test
+  now fails. Find the defect and restore the intended behavior without changing any
+  test. Local-only; no hosting, no CI.'
+test_command: python -m pytest -q -p no:cacheprovider
+failing_tests:
+- tests/test_core.py::test_pipeline_provider_crash_is_failed_provider
+allowed_paths:
+- vlm.py
+difficulty:
+  estimate: low
+  proxies:
+  - one-token defect in vlm.py
+  - 1 failing test pin it
+  - suite runs in about 4 seconds
+verifiability: deterministic
+task_class: code-fix
+review_cap: 8
+mint:
+  minted_utc: '2026-09-19T11:00:46Z'
+  kind: bool
+  failing_count: 1
+  suite_seconds: 3.6
+  seed: 23
+  method: tools/paired_study/mint_mutations.py

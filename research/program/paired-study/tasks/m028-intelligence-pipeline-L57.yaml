@@ -1,0 +1,44 @@
+task_id: m028-intelligence-pipeline-L57
+repo: <projects-root>/intelligence-pipeline
+base_commit: 570db48faefde40f06fc498be05031a7deecd338
+answer_commit: 570db48faefde40f06fc498be05031a7deecd338
+mutation:
+  file: pipeline.py
+  line: 57
+  col_start: 22
+  col_end: 24
+  original: ==
+  mutated: '!='
+  kind: compare
+test_files_from_answer: []
+held_out_files: []
+held_out_study_files: []
+setup_copy_from_repo: []
+protected_paths:
+- tests
+- test
+description: 'A recent change to pipeline.py broke behavior the test suite covers:
+  2 tests now fail. Find the defect and restore the intended behavior without changing
+  any test. Local-only; no hosting, no CI.'
+test_command: python -m pytest -q -p no:cacheprovider
+failing_tests:
+- tests/test_core.py::test_pipeline_extracts_target_offline
+- tests/test_core.py::test_pipeline_non_target_gets_null_fields
+allowed_paths:
+- pipeline.py
+difficulty:
+  estimate: low
+  proxies:
+  - one-token defect in pipeline.py
+  - 2 failing tests pin it
+  - suite runs in about 4 seconds
+verifiability: deterministic
+task_class: code-fix
+review_cap: 8
+mint:
+  minted_utc: '2026-09-19T11:01:36Z'
+  kind: compare
+  failing_count: 2
+  suite_seconds: 3.5
+  seed: 23
+  method: tools/paired_study/mint_mutations.py

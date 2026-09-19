@@ -93,3 +93,38 @@ The first execution of a pair (t001, F1) ran to completion and is kept as a pilo
 Both changes apply to every arm equally, so they do not favour a topology, but they change the measured cost, which is why the pilot's numbers are not pooled with the series.
 
 **Measured cost, replacing the estimate in section 8.** In the pilot, the light arm used 407,622 tokens for $0.86 in 176 seconds, and the compact arm 1,806,843 tokens for $1.03 in 245 seconds, both on `claude-sonnet-5` against a 26-test suite. A pair of this size is therefore about two dollars and seven minutes, and thirty pairs are on the order of sixty dollars. Section 8's earlier range of 100k to 400k tokens per arm held for the light arm only.
+
+## Amendment, 19 September 2026 (third): what to do about a contrast that never fires
+
+Written after the first look at fourteen F1 pairs and **before** the remaining pairs were generated or run, so that
+it constrains data not yet seen. The first look is committed as `2c5f164`; this amendment is a separate commit that
+precedes the second batch.
+
+**The observation.** Every arm of all fourteen pairs used exactly one critic review. Arm B is `compact`, whose
+mechanism is build, review, **revise**. If the first review accepts, arm B performs the same sequence of acts as
+arm A plus the fixed overhead of a second agent's context. On this task class the flag therefore did not
+manipulate the thing it names. Whatever the remaining pairs show about tokens is a statement about exploration
+overhead between two topologies that happen to behave identically, not about the revision loop.
+
+**What is pre-registered now.**
+
+1. **Contrast-fired rate**, a new secondary outcome: the fraction of counted pairs whose arm B used two or more
+   reviews. It is computed from `reviews_used`, already recorded for every row since the first pair, and it is
+   printed by `report_pairs.py` at every look. No model judgment enters it.
+2. **A stopping rule for a dead contrast.** If the contrast-fired rate is zero at the second look, the F1 series on
+   mutation tasks ends at thirty pairs whatever the p-values say, and the conclusion is recorded as: *on one-token
+   defects with a deterministic oracle, the compact topology's first review accepts, so its extra structure is
+   pure overhead; the flag is untested on work where a first review would reject.* F1 then moves to the medium-task
+   pool (B-025) and is rerun there under the same protocol with a fresh thirty-pair target.
+3. **`solved` as a named secondary outcome**: the task's own suite passes on the arm's worktree after the protected
+   tests are restored (`suite_rc == 0` in the recorded row), irrespective of the out-of-scope file rule that decides `accepted`. This separates a failed
+   repair from a tidy-up violation. It was computed post hoc at the first look, where it was 14 of 14 in both arms;
+   from here it is registered, so later looks cannot be read as having invented it.
+
+**What is not changed.** The primary outcomes, the tests in `analyze_pairs.py`, the alpha split across three looks,
+the exclusion rules, and the thirty-pair target all stand. `report_pairs.py` is descriptive only; adding a line to
+it changes no test.
+
+**Why not stop now.** The result so far is the unfavourable one for the more elaborate topology, and abandoning a
+pre-registered series at the first unfavourable look is the practice pre-registration exists to prevent. The
+remaining pairs are cheap, about two dollars each, and they pin the token difference with a usable interval.
