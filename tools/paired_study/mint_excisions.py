@@ -17,6 +17,7 @@ Writes research/program/paired-study/tasks/x<NNN>-*.yaml and tasks/excision-inde
 """
 import argparse
 import ast
+import hashlib
 import json
 import random
 import subprocess
@@ -82,6 +83,7 @@ def candidates(rel, src, min_body_lines):
         found.append({'file': rel, 'qualname': qual, 'name': node.name, 'start_line': start, 'end_line': end,
                       'body_lines': end - start + 1, 'has_docstring': has_doc,
                       'indent': len(lines[start - 1]) - len(lines[start - 1].lstrip())})
+        found[-1]['body_sha256'] = body_sha256(lines, found[-1])
     return found
 
 
@@ -152,7 +154,8 @@ def main():
             spec = {
                 'task_id': task_id, 'repo': f'<projects-root>/{args.repo}', 'base_commit': head, 'answer_commit': head,
                 'excision': {'file': c['file'], 'start_line': c['start_line'], 'end_line': c['end_line'],
-                             'indent': c['indent'], 'placeholder': PLACEHOLDER, 'qualname': c['qualname']},
+                             'indent': c['indent'], 'placeholder': PLACEHOLDER, 'qualname': c['qualname'],
+                             'body_sha256': c['body_sha256']},
                 'test_files_from_answer': [], 'held_out_files': [], 'held_out_study_files': [], 'setup_copy_from_repo': [],
                 'protected_paths': ['tests', 'test'],
                 'description': (f'`{c["qualname"]}` in {c["file"]} has been removed: its body now raises NotImplementedError, and '
