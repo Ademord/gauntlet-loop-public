@@ -11,7 +11,7 @@ Work in progress, updated 19 September 2026. This is the canonical working repos
 | Research | Six papers noted with verbatim abstracts; the v5 thesis; a research program with a pre-registered paired-study protocol, amended 19 September for harness isolation and measurement | [research/](research/README.md) |
 | Run ledger | Scripts ready. The first ingest over the author's projects found three recorded runs and five run folders without a machine-readable record; every cell is below threshold. Outputs stay local | [tools/ledger/](tools/README.md), [ledger/SCHEMA.md](ledger/SCHEMA.md) |
 | Paired study | Flag F1 is done on mutation tasks: thirty pairs, no difference detected, both topologies solving every task. The contrast-fired rate is zero of thirty, so the compact arm never revised and the flag was never tested on work where a first review would reject. The series ended under a stopping rule written before the last sixteen pairs ran | [look-F1.md](research/program/paired-study/look-F1.md), [LOG.md](research/program/paired-study/LOG.md) |
-| Guards | Pre-commit leak guard, audit with zero hits on tree and history, and a commit-msg guard that refuses skill changes not tied to an upgrade run | [tools/README.md](tools/README.md) |
+| Guards | Pre-commit leak guard, audit with zero hits on tree and history, and a commit-msg guard that refuses skill changes not tied to an upgrade run. Both scanners were blind to a Windows path inside a JSON string until 19 September, when one slipped into a tracked manifest; both now scan the de-escaped form, and a spec may name a private repository only through a gitignored alias | [tools/README.md](tools/README.md) |
 
 ## Known limitations
 

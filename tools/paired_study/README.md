@@ -20,3 +20,17 @@ Not built: automatic task minting from git history (survey first, mint by hand),
 ## Running a series
 
 `run_series.py --flag F1` runs every ready pair for a flag, one at a time, skipping pairs that already have counted rows, stopping on a dead login and after two consecutive harness failures. `report_pairs.py --flag F1` then writes `research/program/paired-study/look-F1.md` from the rows, with the exact tests from `analyze_pairs.py`. Neither script interprets anything: every number in the report comes from a recorded row.
+
+## Naming a repository that is not public
+
+A spec's `repo` is published here, so it must not carry the directory name of a project that is not itself public.
+Write it as `<projects-root>/<alias:some-name>` and put the real directory name in
+`research/program/paired-study/tasks/aliases.local.json`, which is gitignored:
+
+```json
+{ "some-name": "the-real-directory-name" }
+```
+
+`run_pair.py` resolves the alias at load time and fails loudly if the map is missing or the alias is not in it.
+`make_arms.py` records the spec path relative to this repository and refuses a spec from outside it, because
+recording an absolute path once put a personal home directory into a tracked manifest.
