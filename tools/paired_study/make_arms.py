@@ -17,6 +17,18 @@ sys.path.insert(0, str(repo / '.validation-deps'))
 import yaml  # noqa: E402
 
 
+def spec_path_for_record(given):
+    """Record the spec path relative to the repository, never as it was typed.
+
+    Passing an absolute path once put a personal home directory into a tracked manifest of a public repository.
+    """
+    p = Path(given)
+    try:
+        return str(p.resolve().relative_to(repo)).replace(chr(92), '/')
+    except ValueError:
+        raise SystemExit(f'spec must live inside the repository, got {given}')
+
+
 def projects_root():
     """Real projects root from GAUNTLET_PROJECTS_ROOT or the gitignored ledger/config.local.json; never committed."""
     import os
@@ -103,7 +115,7 @@ def main():
     for arm, text in prompts.items():
         (out / f'arm{arm}.prompt.md').write_text(text + '\n', encoding='utf-8')
     manifest = {
-        'task_id': spec['task_id'], 'flag': args.flag, 'flag_name': flag['name'], 'spec_path': args.spec, 'spec_sha256': spec_hash,
+        'task_id': spec['task_id'], 'flag': args.flag, 'flag_name': flag['name'], 'spec_path': spec_path_for_record(args.spec), 'spec_sha256': spec_hash,
         'order': order, 'arm_prompt_sha256': {arm: hashlib.sha256(t.encode()).hexdigest() for arm, t in prompts.items()},
         'only_difference': {'A': flag['A'], 'B': flag['B']}, 'review_cap': spec.get('review_cap', 8), 'reserve': reserve(int(spec.get('review_cap', 8))),
         'status': 'generated', 'runs': {}, 'model_tokens_used_by_generator': 0,

@@ -35,13 +35,25 @@ def is_text(name):
 
 
 def scan_text(text):
+    """Scan the text and a de-escaped copy of it.
+
+    A Windows path inside a JSON string has its separators doubled, and a pattern written for the single
+    form cannot match the doubled one: the doubled backslash is not the character the pattern looks for.
+    A tracked manifest hid a personal path that way, so every scan now also sees the collapsed form.
+    Counts are the maximum of the two passes, never the sum, so one real hit is not reported twice.
+    """
+    forms = [text]
+    collapsed = text.replace(chr(92) * 2, chr(92))
+    if collapsed != text:
+        forms.append(collapsed)
     hits = defaultdict(int)
-    for cat, pats in HARD.items():
-        for p in pats:
-            hits[f'hard:{cat}'] += len(p.findall(text))
-    for cat, pats in REVIEW.items():
-        for p in pats:
-            hits[f'review:{cat}'] += len(p.findall(text))
+    for form in forms:
+        for kind, groups in (('hard', HARD), ('review', REVIEW)):
+            for cat, pats in groups.items():
+                n = sum(len(p.findall(form)) for p in pats)
+                key = f'{kind}:{cat}'
+                if n > hits[key]:
+                    hits[key] = n
     return {k: v for k, v in hits.items() if v}
 
 

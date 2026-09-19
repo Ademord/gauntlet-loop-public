@@ -114,3 +114,30 @@ split across three looks while only two were used, which is conservative rather 
   cache reads. Any future claim about a topology being cheaper has to say cheaper in what unit.
 
 **Cost of the study.** Thirty pairs, $53.65 in API-equivalent pricing, about six minutes a pair.
+
+## 2026-09-19, deviation: a task spec was renamed after its arms had run
+
+One spec named a project repository that is not public. The rule in this repository is that another project may be
+named only if that project is public, so the name was removed from the tree: the spec file is now
+`002-demo-autoplay-on-entry.yaml`, its `repo` field reads `<projects-root>/<alias:demo-app-1>`, and a gitignored
+`tasks/aliases.local.json` resolves the alias locally. A quoted commit message that carried the name was replaced
+with a neutral description. The runner gained alias resolution for this.
+
+The deviation is that the spec changed after both of its arms had run. Its two recorded rows keep the hash of the
+spec as it was, so `run_pair` would refuse to rerun that pair against the old manifest; the manifest was
+regenerated, and the pair would have to be rerun from scratch to be counted again. Nothing in the recorded results
+changed, and t002 stays in the thirty counted pairs, because the task content is identical: only a name moved
+behind an alias.
+
+The name is still in two commits of this repository's history. Removing it there needs a history rewrite and a
+force push of a public repository, which is the owner's decision, not the agent's.
+
+Two defects were found while doing this, and both are fixed:
+
+- **The manifest recorded whatever spec path it was given.** Regenerating with an absolute path put a personal home
+  directory into a tracked file. `make_arms.py` now records the path relative to the repository and refuses a spec
+  from outside it.
+- **Neither the audit nor the pre-commit hook could see that path.** A Windows path inside a JSON string has its
+  separators doubled, and the patterns were written for the single form, so the doubled form matched nothing. Both
+  now scan a de-escaped copy as well. Verified against a synthetic escaped path: one hard hit where there were
+  none before, the plain form still hit, clean text still clean, and the hook refuses a staged file carrying one.

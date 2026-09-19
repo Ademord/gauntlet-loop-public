@@ -2,8 +2,8 @@
   "task_id": "t002-tpm-demo-autoplay-on-entry",
   "flag": "F1",
   "flag_name": "light-vs-compact",
-  "spec_path": "research/program/paired-study/tasks/002-tinder-power-mode-autoplay.yaml",
-  "spec_sha256": "4e557af01653ed29a7e62b90de537f2300fdb5905921a9842face96206e7a742",
+  "spec_path": "research/program/paired-study/tasks/002-demo-autoplay-on-entry.yaml",
+  "spec_sha256": "baea3413dd028d26781e210c06fc177f8c5a9b05b4cda48b44f92317e21c6179",
   "order": [
     "B",
     "A"
@@ -19,19 +19,6 @@
   "review_cap": 8,
   "reserve": 2,
   "status": "generated",
-  "runs": {
-    "B": {
-      "finished_utc": "2026-09-19T10:48:22Z",
-      "model": "claude-sonnet-5",
-      "harness_rc": 0,
-      "accepted": true
-    },
-    "A": {
-      "finished_utc": "2026-09-19T10:54:51Z",
-      "model": "claude-sonnet-5",
-      "harness_rc": 0,
-      "accepted": true
-    }
-  },
+  "runs": {},
   "model_tokens_used_by_generator": 0
 }

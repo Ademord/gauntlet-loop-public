@@ -23,8 +23,11 @@ for path in staged:
     if path in allow or not (Path(path).suffix.lower() in text_ext or Path(path).name in text_ext):
         continue
     content = subprocess.run(['git', 'show', f':{path}'], cwd=repo, capture_output=True, text=True, encoding='utf-8', errors='replace').stdout
+    # Also scan a de-escaped copy: a Windows path inside a JSON string has its separators doubled, and a
+    # pattern written for the single form cannot match the doubled one. A tracked manifest hid one that way.
+    forms = {content, content.replace(chr(92) * 2, chr(92))}
     for kind, pat in patterns:
-        if pat.search(content):
+        if any(pat.search(form) for form in forms):
             bad.append(f'{path}: {kind} ({pat.pattern})')
 if bad:
     print('COMMIT REFUSED by tools/hooks/check_staged.py:\n  ' + '\n  '.join(bad), file=sys.stderr)
