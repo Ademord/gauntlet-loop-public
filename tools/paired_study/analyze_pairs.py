@@ -44,7 +44,7 @@ def bootstrap_mean_ci(diffs, resamples=10000, seed=17):
 
 
 def analyze(results, flag, alpha, looks):
-    rows = [r for r in results if r.get('flag') == flag]
+    rows = [r for r in results if r.get('flag') == flag and not r.get('pilot')]
     by_task = {}
     for r in rows:
         by_task.setdefault(r['task_id'], {})[r['arm']] = r

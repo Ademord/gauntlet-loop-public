@@ -34,7 +34,9 @@ ALLOWED_TOOLS = ['Read', 'Edit', 'Write', 'Glob', 'Grep', 'Agent', 'Task', 'Todo
                  'Bash(python:*)', 'Bash(python3:*)', 'Bash(py:*)', 'Bash(pytest:*)', 'Bash(npm:*)', 'Bash(node:*)',
                  'Bash(git status:*)', 'Bash(git diff:*)', 'Bash(git log:*)', 'Bash(git show:*)', 'Bash(git rev-parse:*)',
                  'Bash(ls:*)', 'Bash(cat:*)', 'Bash(head:*)', 'Bash(tail:*)', 'Bash(grep:*)', 'Bash(wc:*)',
-                 'Bash(sha256sum:*)', 'Bash(mkdir:*)', 'Bash(echo:*)']
+                 'Bash(sha256sum:*)', 'Bash(mkdir:*)', 'Bash(echo:*)', 'Bash(cd:*)', 'Bash(tee:*)', 'Bash(find:*)', 'Bash(diff:*)',
+                 'Bash(sed:*)', 'Bash(awk:*)', 'Bash(cut:*)', 'Bash(sort:*)', 'Bash(uniq:*)', 'Bash(date:*)', 'Bash(pwd:*)', 'Bash(printf:*)']
+DENIED_TOOLS = ['WebSearch', 'WebFetch', 'ToolSearch', 'ScheduleWakeup', 'NotebookEdit']  # an arm stays offline and local
 GIT_ID = ['-c', 'user.name=paired-study', '-c', 'user.email=paired-study@example.invalid']
 ISOLATION = ['--setting-sources', 'project,local', '--strict-mcp-config', '--disable-slash-commands']  # no user hooks, plugins, MCP servers, or skills in an arm
 
@@ -92,7 +94,11 @@ def build_task_base(spec, wt):
     run(['git', 'checkout', '-q', '--detach', spec['base_commit']], cwd=wt)
     for f in spec.get('test_files_from_answer', []) or []:
         run(['git', 'checkout', '-q', spec['answer_commit'], '--', f], cwd=wt)
+    held_contents = {}
     for f in spec.get('held_out_files', []) or []:
+        shown = subprocess.run(['git', 'show', f"{spec['answer_commit']}:{f}"], cwd=wt, capture_output=True)
+        if shown.returncode == 0:
+            held_contents[f] = shown.stdout
         (wt / f).unlink(missing_ok=True)
     mut = spec.get('mutation')
     if mut:
@@ -103,14 +109,19 @@ def build_task_base(spec, wt):
             raise SystemExit(f"mutation anchor mismatch in {mut['file']}:{mut['line']}")
         lines[mut['line'] - 1] = line[:mut['col_start']] + mut['mutated'].encode() + line[mut['col_end']:]
         target.write_bytes(b'\n'.join(lines))
-    run(['git', *GIT_ID, 'commit', '-q', '--allow-empty', '-am', 'paired-study task base'], cwd=wt)
+    # Drop the history: with the upstream fix (or the pre-mutation commit) reachable, an arm could read the answer
+    # instead of solving the task. The task base becomes a single commit in a fresh repository.
+    rmtree(wt / '.git')
+    run(['git', 'init', '-q', '-b', 'main'], cwd=wt)
+    run(['git', *GIT_ID, 'add', '-A'], cwd=wt)
+    run(['git', *GIT_ID, 'commit', '-q', '-m', 'task base'], cwd=wt)
     for rel in spec.get('setup_copy_from_repo', []) or []:
         src = Path(spec['repo']) / rel
         if src.is_dir():
             shutil.copytree(src, wt / rel, dirs_exist_ok=True)
         elif src.is_file():
             shutil.copyfile(src, wt / rel)
-    return run(['git', 'rev-parse', 'HEAD'], cwd=wt).stdout.strip()
+    return run(['git', 'rev-parse', 'HEAD'], cwd=wt).stdout.strip(), held_contents
 
 
 def parse_stream(text):
@@ -149,7 +160,7 @@ def under(path, prefixes):
     return any(path == p.rstrip('/') or path.startswith(p.rstrip('/') + '/') for p in prefixes)
 
 
-def verify(spec, wt, base):
+def verify(spec, wt, base, held_contents):
     protected = spec.get('protected_paths', ['tests', 'test'])
     copied = spec.get('setup_copy_from_repo', []) or []
     tracked = [t for t in run(['git', 'ls-tree', '-r', '--name-only', base], cwd=wt).stdout.split('\n') if t]
@@ -164,8 +175,9 @@ def verify(spec, wt, base):
     suite = subprocess.run(argv_for(spec['test_command']), cwd=wt, capture_output=True, text=True, timeout=900)
     held = None
     if spec.get('held_out_files') or spec.get('held_out_study_files'):
-        for f in spec.get('held_out_files', []) or []:
-            run(['git', 'checkout', '-q', spec['answer_commit'], '--', f], cwd=wt, check=False)
+        for f, data in held_contents.items():
+            (wt / f).parent.mkdir(parents=True, exist_ok=True)
+            (wt / f).write_bytes(data)
         for item in spec.get('held_out_study_files', []) or []:
             (wt / item['dst']).parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(repo / item['src'], wt / item['dst'])
@@ -213,7 +225,7 @@ def main():
     results_path = repo / 'research/program/paired-study/results.jsonl'
     arms = [a for a in manifest['order'] if not args.arms or a in args.arms]
     base_cmd = [shutil.which('claude') or 'claude', '-p', '--output-format', 'stream-json', '--verbose', '--model', args.model,
-                '--permission-mode', 'acceptEdits', *ISOLATION, '--allowedTools', *ALLOWED_TOOLS]
+                '--permission-mode', 'acceptEdits', *ISOLATION, '--disallowedTools', *DENIED_TOOLS, '--allowedTools', *ALLOWED_TOOLS]
     if args.dry_run or not args.execute:
         print(json.dumps({'mode': 'dry-run', 'task_id': spec['task_id'], 'flag': manifest['flag'], 'order': arms, 'model': args.model,
                           'worktrees': args.worktrees, 'command': base_cmd[1:13] + ['--allowedTools', f'<{len(ALLOWED_TOOLS)} tools>'],
@@ -227,7 +239,7 @@ def main():
         return 3
     for arm in arms:
         wt = Path(args.worktrees) / spec['task_id'] / manifest['flag'] / arm
-        base = build_task_base(spec, wt)
+        base, held_contents = build_task_base(spec, wt)
         prompt = (pair / f'arm{arm}.prompt.md').read_text(encoding='utf-8')
         t0 = time.time()
         timed_out = False
@@ -242,12 +254,12 @@ def main():
         if (wt / 'gauntlet').exists():
             shutil.copytree(wt / 'gauntlet', pair / f'arm{arm}.gauntlet', dirs_exist_ok=True)
         result, dispatches, tools = parse_stream(stdout)
-        checks = verify(spec, wt, base)
+        checks = verify(spec, wt, base, held_contents)
         ms = milestone_of(wt)
         usage = (result or {}).get('usage') or {}
         tokens = sum(usage.get(k, 0) or 0 for k in ('input_tokens', 'output_tokens', 'cache_read_input_tokens', 'cache_creation_input_tokens'))
         milestone_reviews = find_key(ms, {'reviews_used', 'run_used', 'critic_reviews'}) if ms else None
-        row = {'task_id': spec['task_id'], 'flag': manifest['flag'], 'arm': arm, 'model': args.model,
+        row = {'task_id': spec['task_id'], 'flag': manifest['flag'], 'arm': arm, 'model': args.model, 'task_base': base, 'history_orphaned': True,
                'accepted': checks['suite_rc'] == 0 and not checks['out_of_scope'],
                'suite_rc': checks['suite_rc'], 'suite_tail': checks['suite_tail'], 'held_out_passed': checks['held_out_passed'],
                'protected_modified': checks['protected_modified'], 'out_of_scope': checks['out_of_scope'], 'changed_files': checks['changed_files'],

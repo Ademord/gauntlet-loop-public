@@ -82,3 +82,14 @@ Recorded before any valid pair has run; the first attempt failed at startup and 
 - **Cost and effort.** `cost_usd` and `total_tokens` come from the transcript's final result event; `reviews_used` is the agent's recorded review count when it writes an integer, otherwise the number of critic dispatches counted in the transcript. These replace the earlier `subagent_tokens` outcome.
 - **Mutation-minted tasks.** For the F1 volume, tasks are also minted by applying one semantic mutation (a flipped comparison, swapped `and`/`or`, a dropped `not`, a changed small integer or boolean literal) to a test-covered line and keeping it only if exactly one or two tests fail; the original line is the answer (`tools/paired_study/mint_mutations.py`). Their results generalize only to one-token defects in the minted repository, and they cannot exercise F2.
 - **Startup failures.** A pair stops when an arm fails at startup, and such rows are marked `harness_failure` with a reason; section 6 already excludes them from analysis.
+
+## Amendment, 19 September 2026 (second): what the harness pilot changed
+
+The first execution of a pair (t001, F1) ran to completion and is kept as a pilot, excluded from the analysis, because it exposed two defects in the harness itself.
+
+- **The answer was reachable.** The arm's clone carried the source repository's full history, so the upstream fix (for a revert-fix task) or the pre-mutation commit (for a mutation task) could be read instead of solved. Both pilot transcripts were checked and neither arm looked, but the possibility invalidates the design. The task base is now built in a fresh repository with a single commit, so no arm can reach an answer through git.
+- **The tool allowlist was too tight.** The compact arm hit twelve permission denials, all of them ordinary shell composition such as piping test output through `tee`, which cost turns and tokens. The allowlist now covers the usual read-only shell verbs, and network and scheduling tools are denied explicitly rather than merely left out.
+
+Both changes apply to every arm equally, so they do not favour a topology, but they change the measured cost, which is why the pilot's numbers are not pooled with the series.
+
+**Measured cost, replacing the estimate in section 8.** In the pilot, the light arm used 407,622 tokens for $0.86 in 176 seconds, and the compact arm 1,806,843 tokens for $1.03 in 245 seconds, both on `claude-sonnet-5` against a 26-test suite. A pair of this size is therefore about two dollars and seven minutes, and thirty pairs are on the order of sixty dollars. Section 8's earlier range of 100k to 400k tokens per arm held for the light arm only.

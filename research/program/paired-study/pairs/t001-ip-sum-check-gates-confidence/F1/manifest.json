@@ -21,16 +21,16 @@
   "status": "generated",
   "runs": {
     "A": {
-      "finished_utc": "2026-09-18T23:48:56Z",
+      "finished_utc": "2026-09-19T09:07:31Z",
       "model": "claude-sonnet-5",
-      "harness_rc": 1,
-      "accepted": false
+      "harness_rc": 0,
+      "accepted": true
     },
     "B": {
-      "finished_utc": "2026-09-18T23:49:05Z",
+      "finished_utc": "2026-09-19T09:11:45Z",
       "model": "claude-sonnet-5",
-      "harness_rc": 1,
-      "accepted": false
+      "harness_rc": 0,
+      "accepted": true
     }
   },
   "model_tokens_used_by_generator": 0

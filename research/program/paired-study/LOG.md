@@ -26,3 +26,20 @@ resume_validation:
 **Mutation minting (B-014).** `mint_mutations.py` over five source files of `intelligence-pipeline` (a public repository with an offline 26-test suite that runs in about 4 seconds): 189 candidate mutation points, 39 tried with seed 17, 12 kept because exactly one or two tests failed. Five flip a comparison (`is`/`is not`, `in`/`not in`), two swap `and`/`or`, five change a small integer. Six live in `evaluate.py`, three in `schema.py`, two in `vlm.py`, one in `validation.py`. The runner rebuilt all twelve task bases and each failed exactly its recorded tests. F1 arms were generated for all of them, so fourteen pairs are ready: t001, t002, and m001 to m012.
 
 **Blocked on:** one login of the `claude` CLI by the owner. The harness test is then t001 on its own; its two transcripts get read before any further pair runs.
+
+## 2026-09-19, later: the first execution, kept as a pilot
+
+The owner logged the CLI in; the preflight passed at $0.20 and both arms of t001 under flag F1 ran to completion.
+
+| Arm | Topology | Accepted | Held-out | Reviews | Turns | Tokens | Cost | Denials | Wall clock |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| A | light | yes | passed | 1 | 5 | 407,622 | $0.86 | 0 | 176 s |
+| B | compact | yes | passed | 1 | 27 | 1,806,843 | $1.03 | 12 | 245 s |
+
+Both arms made the same one-line change, the out-of-band sum check from warning to error, and both passed the held-out test that separates that fix from an over-broad one. Arm A dispatched one critic, which re-diffed against the task base, reran the suite, and checked that the fix was general rather than special-cased to the two pinned tests. Arm B arrived at the same place with five times the turns and four and a half times the tokens.
+
+**Why it is a pilot and not the first counted pair.** Reading the transcripts, as a harness test is for, found two defects in the harness itself. The clone carried the source repository's whole history, so the upstream fix was reachable from inside an arm; both transcripts were searched and neither arm looked, but a design that allows it cannot be trusted. And the tool allowlist was too tight: all twelve of arm B's denials were ordinary shell composition, such as piping test output through `tee`, which cost it turns and tokens. Both rows are marked `pilot` in `results.jsonl`, the analysis skips them, and the protocol carries both findings as its second 19 September amendment.
+
+**What the pilot does establish.** The harness runs end to end: preflight, task base, headless arm, independent rerun with the protected tests restored, scope check, held-out check, and cost measured from the transcript. A pair of this size costs about two dollars and seven minutes. The protocol's earlier guess of 100k to 400k tokens per arm was right for the light arm and four times too low for the compact one, so thirty pairs are on the order of sixty dollars rather than the earlier estimate.
+
+**Fixes now in place.** The task base is built in a fresh repository with a single commit, so no history reaches an answer. The allowlist covers ordinary read-only shell verbs, and network and scheduling tools are denied explicitly. Every arm gets the same treatment, so neither topology is favoured.
