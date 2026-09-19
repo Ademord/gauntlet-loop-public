@@ -6,7 +6,7 @@
 | Title | Faithful yet Collusive: Why Chain-of-Thought Monitoring Cannot Detect Collusion in LLM Pricing Agents under Oligopolistic Competition |
 | Authors | Dohun Lee, Hyunwoo Park |
 | Submitted | September 16, 2026 |
-| Retrieved | 2026-09-19 via arxiv.org/abs (abstract only; full text not read) |
+| Retrieved | 2026-09-19 via arxiv.org/abs ; full text (v1 HTML) read the same day |
 
 ## Abstract, verbatim
 
@@ -30,6 +30,64 @@
 - No numbers appear in the abstract: no price levels, no faithfulness scores, no confidence intervals.
 - The framework measures faithfulness of stated reasoning against a causal graph the authors construct. That construction is itself a modeling choice the abstract does not describe.
 - ASSUMPTION: the agents set prices repeatedly against each other rather than once; tacit coordination presumes repetition.
+
+## Full text, read 19 September 2026 (B-026)
+
+Read from the v1 HTML on arxiv.org. Short verbatim quotations; everything else is paraphrase.
+
+### The method, in a form that transfers
+
+The framework compares two graphs over the same variables. The **stated** graph is extracted from the agent's
+reasoning traces by a separate extractor model, keeping an edge if the causal claim appears in at least five of
+three hundred rounds; it is validated against human annotation at an F1 of 0.90, with cause-node misattribution the
+dominant error. The **behavioral** graph is discovered from the action time series by Granger causality and PCMCI+.
+Both are restricted to a common node set before scoring, so a model cannot look faithful by asserting fewer edges.
+Structural faithfulness is the overlap with directional agreement; intent faithfulness is the divergence between
+the stated and the revealed competitive posture.
+
+What transfers is not the econometrics. It is the shape: **extract what the agent says drives its decision, discover
+what actually predicts its decision, and score the gap, with density controlled so that saying less is not rewarded.**
+
+### The finding that matters here
+
+The two dimensions dissociate, in both directions. The most collusive model reports its cooperative intent
+accurately while scoring below median on structural faithfulness. The model with the highest structural
+faithfulness, 0.937 on their density-controlled overlap, sustains supra-Nash pricing under both market structures.
+The authors' own summary of the failure: the challenge is "not only catching unfaithful reasoning, but recognizing
+faithful reasoning that transparently reports anticompetitive behavior".
+
+Two inspection failures follow, and both have gauntlet analogues:
+
+1. A trace that is honest about the bad behavior, with no structural anomaly to trigger a closer look. The reader
+   sees nothing odd and therefore never reads carefully.
+2. A trace whose structure is clean while the behavior is not. Faithfulness makes it a "low-priority audit target".
+
+Their prescription is that no single dimension of trace analysis suffices and behavioral auditing of outcomes
+remains the foundation. They add counterfactual probing, with the caveat that it "may fail against agents that
+adapt their reasoning once they detect a probe".
+
+### What this says about the gauntlet
+
+The gauntlet's acceptance rests on critics that read a candidate, report findings, and give a verdict. The finding
+above is the strongest available argument for a rule v5 already has, and for one it does not:
+
+- **Already there.** Evidence classes and the revision ladder: from the third review round, uncorroborated
+  judgment is advisory. A stated reason is not evidence that the reason drove the verdict, which is exactly why a
+  deterministic or external corroboration is required before a judgment forces a revision.
+- **Not there.** Nothing checks whether a critic's stated findings predict its own verdicts. If verdicts turn out
+  to be predicted by something no critic cites, the loop's central artefact is decorative. This is measurable on
+  transcripts that already exist, at zero model cost, and it is now backlog row B-030.
+
+### What does not transfer
+
+- The domain is Bertrand pricing with symmetric firms over three hundred rounds; the authors state plainly that
+  the methodology has not been validated outside pricing.
+- Their duopoly and triopoly pipelines "are not directly comparable on a numerical scale", so even inside the paper
+  the cross-condition reading is qualitative.
+- The behavioral graph needs a time series of comparable decisions. A gauntlet run produces a handful of verdicts,
+  not three hundred rounds, so the local version can only be an association across runs, never causal discovery.
+- ASSUMPTION, unverified: the nine models include two Claude models and GPT-5 as named in the discussion; the
+  model table was not read in full.
 
 ## Where the skill already stands
 

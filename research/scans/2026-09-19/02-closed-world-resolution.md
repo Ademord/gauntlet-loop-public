@@ -6,7 +6,7 @@
 | Title | Closed-World Resolution Against Tool Hallucination in LLM Agents |
 | Authors | Laxmipriya Ganesh Iyer |
 | Submitted | September 16, 2026 |
-| Retrieved | 2026-09-19 via arxiv.org/abs (abstract only; full text not read) |
+| Retrieved | 2026-09-19 via arxiv.org/abs ; full text (v1 HTML) read the same day |
 
 ## Abstract, verbatim
 
@@ -31,6 +31,57 @@
 - The comparison 34 versus 3 is fabricated-tool calls by surface, not total hallucinations by surface.
 - Nothing addresses tools that exist but whose behavior differs from their schema, which is the neighbouring failure.
 - ASSUMPTION: "two invocation surfaces" means structured tool-calling against raw JSON emission; the abstract implies it without defining both.
+
+## Full text, read 19 September 2026 (B-026)
+
+Read from the v1 HTML on arxiv.org. Short verbatim quotations; everything else is paraphrase.
+
+### The argument, which is an ordering argument
+
+The paper's real content is not the checker. The authors say so: the mechanism is "intentionally trivial, registry
+membership plus a signature type-check", and they "do not claim the check is novel". What they claim is placement.
+A gate decides admissibility for tools it exposed, so a call naming a tool that does not exist "is by definition
+not something a gate chose to expose"; a contract verifier compares a presented contract against a trusted root,
+and a fabricated tool has no contract to compare. Every existing defense reasons about the supply of tools and is
+silent about the demand, the calls the model actually emits. Therefore resolution must sit **before** the gate, and
+that placement is the contribution.
+
+The taxonomy is five classes: H1 a tool that does not exist, H2 an argument no schema declares or a required one
+omitted, H3 a value violating its declared type, H4 a real well-formed call to a tool the gate did not expose this
+step, H5 a real tool called with another tool's argument shape. H1 to H3 are adjudicable against the registry
+alone. H4 is the gate's job. The residue is the part of H5 that satisfies the target's schema anyway, which is
+semantic confusion between two compatible tools and reduces to the tool-selection problem.
+
+Measured: 322 hallucinations across ten hosted models on two invocation surfaces, with fabricated calls
+concentrated on the unconstrained raw-JSON surface, 34 against 3. Scale did not help: a 675B model matched a 7 to
+8B one. On the Model Context Protocol surface, where several servers merge into one namespace, 154 more, including
+from models that were clean on the single-registry surface, because collisions and shadowing are structural to the
+merge.
+
+### Why this matters to a gauntlet run more than it looks
+
+The finding transfers as a rule about ordering, not about tools. A gauntlet's critics judge a candidate against a
+contract's required checks. Every one of those judgments assumes that what the candidate and the critic refer to
+exists: the file path is real, the check id is in the contract, the quoted line is in the cited source, the
+"external evidence" was actually retrieved. Nothing in v5 resolves those references before the judging starts, so
+a fabricated citation is not something the review rejects; it is something the review never evaluates. That is the
+same blind spot, one level up.
+
+The local version of the Resolution Rung is therefore: **before a review round is scored, every reference in the
+candidate and in the critic's findings must resolve against a closed registry** (the repository tree, the
+contract's check ids, the cited file's actual bytes). An unresolved reference is a deterministic rejection, not a
+judgment call, and it costs no model tokens. Backlog row B-031. It is also the deterministic answer to a failure
+this owner has already hit in practice: research agents that invent a quotation, or that report "not found" as
+"does not exist".
+
+### What does not transfer
+
+- The measurement is about function-calling surfaces, not about prose citations; no number here is evidence about
+  how often a critic fabricates a reference.
+- The soundness statement holds for a closed registry of typed tools. A repository tree is a closed registry; a
+  claim about the outside world is not, and no resolver can adjudicate it.
+- The irreducible residue has a local analogue and it is the dangerous one: a citation that resolves to a real
+  file and a real line, but does not support the claim made about it. Resolution cannot catch that.
 
 ## Where the skill already stands
 

@@ -6,7 +6,7 @@
 | Title | Continual Enterprise World Model Discovery in Dynamic Systems |
 | Authors | Shambhavi Mishra, David Vazquez, Perouz Taslakian, Marco Pedersoli, Jose Dolz, Issam H. Laradji |
 | Submitted | September 17, 2026 |
-| Retrieved | 2026-09-19 via arxiv.org/abs (abstract only; full text not read) |
+| Retrieved | 2026-09-19 via arxiv.org/abs ; full text (v1 HTML) read the same day |
 
 ## Abstract, verbatim
 
@@ -30,6 +30,49 @@
 - IoU over predicted effects is a proxy for usefulness. It says nothing about whether an agent acting on the model does better work.
 - Answering "without querying the running system" is a speed and load argument, not a correctness argument: a stale model answers confidently from memory, which is the failure mode the revision phases are meant to catch. The abstract does not report how quickly the model detects a changed rule.
 - ASSUMPTION: the model is an explicit rule structure rather than weights, which is how the scan reads it and how the title suggests; only the abstract was read.
+
+## Full text, read 19 September 2026 (B-026)
+
+Read from the v1 HTML on arxiv.org. Short verbatim quotations; everything else is paraphrase.
+
+### The benchmark design is the transferable part
+
+EnterpriseWorldShift holds the tables and the records fixed and changes exactly one business rule at a time, across
+four successive versions of the same world: World A discovery, World B one rule modified, World C one rule added,
+World D one rule removed. The stated reason is that these are "the four operations a world model must support as
+the rules change, namely discovery, revision, extension, and retirement". Nine tables, 25 hidden rules, 600
+evaluation actions. The agent that carries its model forward beats the baseline that re-reads the rules for every
+question by up to 8.98 IoU points.
+
+Two design choices are worth copying more than the result:
+
+1. **One change at a time, everything else frozen.** Each world isolates one operation. This is the same discipline
+   the paired study applies to flags, applied to a knowledge store instead of a topology.
+2. **The model is scored, not only its predictions.** Each component "states a trigger and an effect in a readable
+   form", so each can be verified against the system it describes, unlike a model held in weights. The authors note
+   the cost of this honestly: scoring a model rather than its predictions "requires knowing the rule set in full,
+   which a production instance does not permit".
+
+### What it says about cross-run learning here
+
+v5 has a retrieval allowance of three lessons and a utility ledger that records whether a retrieved lesson helped.
+That covers discovery and, weakly, revision. It has nothing for **retirement**: a lesson that every past run
+supported, and that the world has since made wrong, stays in the store and keeps being retrieved. The benchmark's
+World D is exactly that case, and it is the one the local design never tests.
+
+The adaptation is cheap because the lessons are already readable records: give each lesson a trigger and an effect
+in the same shape the paper uses, and test the store against a fixed task set under four conditions, changing one
+lesson's truth at a time. Backlog row B-032.
+
+### What does not transfer
+
+- The environment is a live ServiceNow instance with hidden but real business rules and an oracle rule set. A
+  gauntlet's "world" is a repository plus a model's behavior, and there is no oracle list of true lessons, so the
+  local version can test retirement only against lessons whose truth the owner sets deliberately.
+- IoU against a reference rule set has no local equivalent; the measurable local quantity is whether a retired
+  lesson stops being retrieved and whether anything else breaks when it goes.
+- ASSUMPTION, unverified: the four worlds are evaluated in sequence with the same 600 actions; the evaluation
+  protocol section was not read in full.
 
 ## Where the skill already stands
 
