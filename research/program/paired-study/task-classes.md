@@ -66,8 +66,10 @@ docstring stay. Kept only if at least three tests fail.
   diagnosis. Tests that pin an exact output format make a fair-looking task that is really a guessing game, so the
   minter's size band excludes the two largest reporting functions, and any task whose failing tests are all string
   comparisons should be reviewed by hand before use.
-- Status: minted and unrun. Admission to the F1 study depends on its measured contrast-fired rate, on a pilot of at
-  most eight pairs, decided before any full series.
+- Status: piloted on eight pairs, 19 September 2026. Both topologies accepted and solved all sixteen arms. The
+  contrast-fired rate is 1 of 8 by the pre-registered proxy and 0 of 8 by the thing it proxied for, because the one
+  pair with two reviews had a first critic that passed and a second that confirmed. The class is admitted for cost
+  comparisons and **not** admitted for anything about the revision loop.
 
 ### 3. Hand-cut from release commits, backlog B-025
 
@@ -84,10 +86,8 @@ carries real intent, real scope, and the mess of a real change.
 1. F1 finishes its thirty mutation pairs, because the series was pre-registered and stopping at the first
    unfavourable look is the practice pre-registration exists to prevent. Its conclusion will be stated for the
    class it actually measured.
-2. The excision pilot then answers one question in at most eight pairs: does a first review ever reject? If it
-   never does, the class is no better than mutation for F1 and only the hand-cut class remains. If it does, F1 runs
-   a fresh thirty-pair series on excision tasks, and F2 becomes testable for the first time, because a run that
-   reaches round three is a run whose ladder can matter.
+2. The excision pilot ran on 19 September and answered it: a first review never rejected. Writing more code is not
+   what makes a review reject, so the next class must vary something else. See the new pre-registration below.
 3. The checkpoint-handoff experiment (B-023) needs a class where the first verdict is not the last, so it is gated
    behind the same pilot.
 
@@ -98,3 +98,20 @@ carries real intent, real scope, and the mess of a real change.
   it is one in eight or more, a thirty-pair series is registered as a separate study with its own three looks.
 - The pilot's pairs are **not** pooled with the mutation series. They are a different class, and mixing them would
   produce an average over two populations that describes neither.
+
+## Pre-registered before the next class is built, 19 September 2026
+
+The first metric was wrong and the pilot showed how: a review count cannot tell a rejection from a confirmation.
+Both fixes below are written before any task of the next class exists.
+
+1. **The metric is the verdict, not the count.** `mechanism_fired` is true for an arm when its **first** critic
+   report carries a negative verdict: `REJECT`, `FAIL`, `REVISE`, `HOLD`, or a winner of `bar` or `none` in the v5
+   vocabulary. It is extracted deterministically from the transcript, and an unparsed verdict counts as not fired
+   and is reported separately, never silently dropped.
+2. **The next class varies specification, not volume.** Candidates, in the order they will be tried: a task whose
+   tests pass for an implementation that violates a constraint stated only in the prompt; a task whose repair
+   requires touching a second file the failing test does not name; a task with a deliverable that is not a test.
+   Each is piloted at four pairs, and a class is admitted only if `mechanism_fired` is at least one in four.
+3. **A class that fails two pilots ends the search from minted tasks**, and the program says plainly that a
+   deterministic oracle over a repository cannot produce work a first review rejects, which would itself be the
+   result: the gauntlet's revision loop would be measurable only on judgment-heavy deliverables.

@@ -141,3 +141,59 @@ Two defects were found while doing this, and both are fixed:
   separators doubled, and the patterns were written for the single form, so the doubled form matched nothing. Both
   now scan a de-escaped copy as well. Verified against a synthetic escaped path: one hard hit where there were
   none before, the plain form still hit, clean text still clean, and the hook refuses a staged file carrying one.
+
+## 2026-09-19, excision pilot: the proxy fired once, the mechanism never did
+
+Eight pairs on the excision class, run under the flag key `F1-excision` so the rows can never pool with the
+mutation series. No harness failure. Report: [look-F1-excision.md](look-F1-excision.md). Cost $17.23.
+
+| | A, light | B, compact |
+| --- | --- | --- |
+| solved, suite passes | 8 of 8 | 8 of 8 |
+| accepted | 8 of 8 | 8 of 8 |
+| median turns | 23 | 34 |
+| median tokens | 2,032,807 | 3,417,203 |
+| total cost | $8.02 | $9.21 |
+| median seconds | 202 | 242 |
+
+**The pre-registered number and what it turned out to mean.** The contrast-fired rate is 1 of 8: on x008 the
+compact arm used two reviews. The rule written before the pilot says one in eight or more registers a thirty-pair
+series. Reading that transcript before computing anything, as the design requires, shows the proxy misfired. The
+first critic returned "Verdict: PASS" with one non-blocking edge-case note, and the lead then ran a *second,
+confirmatory* final review, which returned "Verdict: ACCEPT". No rejection, no revision. The sequence the flag
+names, build then reject then revise, did not happen.
+
+So two readings, both recorded, neither hidden:
+
+- by the letter of the pre-registered metric, the class clears the bar, 1 of 8;
+- by the thing the metric was a proxy for, a first review that rejects, the class scores **0 of 8**, and across all
+  76 recorded arms of both classes **no first review has ever returned a negative verdict**.
+
+**What is not being done, and why it is stated rather than quietly skipped.** The thirty-pair excision series is
+not being run now. At a rejection rate of zero it would buy another "no difference detected" on a class whose
+mechanism does not engage, for about $65 and three hours, which is the exact mistake the third amendment was
+written to stop repeating. The letter of the rule says run it; the owner can overrule this and have it run. What
+replaces it is a new pre-registration, written below before any new data exists.
+
+**Why the class failed to fire, which is the useful part.** The difficulty axis was wrong. An excision task removes
+between 11 and 29 lines and fails three to eight tests, so it is much larger than a one-token mutation, and the
+model solved all sixteen arms anyway. Volume of code to write is not what makes a first review reject. The
+candidates for what does: a contract the tests underspecify, so a passing implementation can still be wrong;
+coupling across files, so a local fix breaks something the arm did not look at; a stated constraint that conflicts
+with the obvious implementation; or a deliverable whose acceptance is not a test at all.
+
+**Two compliance findings, from the same transcripts.**
+
+- On x004 the light arm dispatched **no critic at all**. It repaired the function, verified it itself, and
+  reported. The light topology asks for one *independent* review, so that run did not run the topology it was
+  assigned. The harness still judged it correctly, because acceptance is the harness's own rerun and never the
+  arm's word.
+- On m013 in the mutation series, the arm's own milestone reported one review while the harness observed two
+  dispatches. `reviews_used` prefers the arm's self-report and falls back to the observed count, so it is not the
+  deterministic measure the protocol calls it. This is the stated-versus-behavioral gap of the fourth
+  19 September paper, in this repository's own data, on the one dimension it can measure today.
+  `tools/paired_study/audit_self_reports.py` now reports both: 1 mismatch and 1 zero-dispatch arm in 76, and that
+  count is a lower bound, because an arm that writes no milestone agrees with the observed count by construction.
+
+Neither finding changes any recorded result. The mutation series contrast-fired rate stays 0 of 30: the m013
+discrepancy is in arm A, and the metric is defined on arm B.

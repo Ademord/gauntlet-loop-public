@@ -19,6 +19,19 @@
   "review_cap": 8,
   "reserve": 2,
   "status": "generated",
-  "runs": {},
+  "runs": {
+    "B": {
+      "finished_utc": "2026-09-19T13:54:11Z",
+      "model": "claude-sonnet-5",
+      "harness_rc": 0,
+      "accepted": true
+    },
+    "A": {
+      "finished_utc": "2026-09-19T13:58:08Z",
+      "model": "claude-sonnet-5",
+      "harness_rc": 0,
+      "accepted": true
+    }
+  },
   "model_tokens_used_by_generator": 0
 }

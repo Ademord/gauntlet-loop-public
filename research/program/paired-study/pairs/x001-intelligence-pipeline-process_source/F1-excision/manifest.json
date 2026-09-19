@@ -25,6 +25,12 @@
       "model": "claude-sonnet-5",
       "harness_rc": 0,
       "accepted": true
+    },
+    "A": {
+      "finished_utc": "2026-09-19T13:04:25Z",
+      "model": "claude-sonnet-5",
+      "harness_rc": 0,
+      "accepted": true
     }
   },
   "model_tokens_used_by_generator": 0
