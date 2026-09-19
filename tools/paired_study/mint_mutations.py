@@ -122,7 +122,10 @@ def main():
         out_dir = Path(args.out)
         existing = sorted(out_dir.glob('m[0-9][0-9][0-9]-*.yaml'))
         n = len(existing)
-        used_lines, minted, tried = set(), [], 0
+        index_path = out_dir / 'mutation-index.json'
+        prior_index = json.loads(index_path.read_text(encoding='utf-8')) if index_path.exists() else []
+        used_lines = {(e['file'], e['line']) for e in prior_index}  # one task per source line, across runs
+        minted, tried = [], 0
         for c in pool[:args.max_candidates]:
             if len(minted) >= args.max_tasks:
                 break
