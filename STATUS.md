@@ -6,12 +6,12 @@ Work in progress, updated 19 September 2026. This is the canonical working repos
 
 | Area | State | Where |
 | --- | --- | --- |
-| Skill 5.0.0 | Accepted by a gauntlet run on itself: nine frozen checks, six independent critic reviews. Not benchmarked. Installing it is up to each user | [skill/](skill/SKILL.md), [dist/](dist/README.md), [gauntlet/v5-upgrade-2026-09-17/](gauntlet/v5-upgrade-2026-09-17/progress.md) |
-| Version history | Complete from v1 to v5; every stored file checksummed | [versions/](versions/README.md) |
+| Skill 5.1.0 | Accepted by a gauntlet run under 5.0.0: nine frozen checks, eight scenario probes frozen before building, four independent critics over four review rounds. It restores what v4 dropped and fixes wording the v5 run left ambiguous; no new mechanism, and nothing benchmarked. 5.0.0 is preserved byte for byte in versions/v5/ | [skill/](skill/SKILL.md), [dist/](dist/README.md), [gauntlet/v51-upgrade-2026-09-19/](gauntlet/v51-upgrade-2026-09-19/progress.md) |
+| Version history | Complete from v1 to v5.1; every stored file checksummed | [versions/](versions/README.md) |
 | Research | Six papers noted with verbatim abstracts; the v5 thesis; a research program with a pre-registered paired-study protocol, amended 19 September for harness isolation and measurement | [research/](research/README.md) |
 | Run ledger | Scripts ready. The first ingest over the author's projects found three recorded runs and five run folders without a machine-readable record; every cell is below threshold. Outputs stay local | [tools/ledger/](tools/README.md), [ledger/SCHEMA.md](ledger/SCHEMA.md) |
 | Paired study | Flag F1 is done on mutation tasks: thirty pairs, no difference detected, contrast-fired rate zero. An eight-pair pilot on a harder class, whole functions removed, also produced no first-review rejection, so the revision loop still has nothing to measure. The next class varies specification rather than volume, pre-registered before it is built | [look-F1.md](research/program/paired-study/look-F1.md), [task-classes.md](research/program/paired-study/task-classes.md) |
-| Guards | Pre-commit leak guard, audit with zero hits on tree and history, and a commit-msg guard that refuses skill changes not tied to an upgrade run. Both scanners were blind to a Windows path inside a JSON string until 19 September, when one slipped into a tracked manifest; both now scan the de-escaped form, and a spec may name a private repository only through a gitignored alias | [tools/README.md](tools/README.md) |
+| Guards | Pre-commit leak guard, audit with zero hits on tree and history, and a commit-msg guard that refuses skill changes not tied to an upgrade run. Both scanners were blind to a Windows path inside a JSON string until 19 September, when one slipped into a tracked manifest; both now scan the de-escaped form, and a spec may name a private repository only through a gitignored alias | [tools/README.md](tools/README.md) The validator also compares all three copies of the record vocabularies and checks that both worked examples carry every drafting include, after prose pacts failed at both jobs during the 5.1 run |
 
 ## Known limitations
 
@@ -19,7 +19,7 @@ Work in progress, updated 19 September 2026. This is the canonical working repos
 - The difficulty estimate every run records is the lead's self-report.
 - The v5 critics were language models judging text about language-model critics, and the scenario probes were written by the same lead who wrote the candidate.
 - The last consistency fix of the v5 run was verified deterministically after the last critic read it; see [dist/RELEASE-REVIEW.md](dist/RELEASE-REVIEW.md).
-- v4 and v5 dropped the worked examples and the bar table that v1 to v3 carried; the effect was never measured.
+- v4 and v5.0 dropped the worked examples and the bar table that v1 to v3 carried; 5.1 restored them, and the effect of neither the dropping nor the restoring was measured.
 - The twelve mutation tasks all come from one repository and are one-token defects; results on them generalize only to that class.
 - No first critic review has returned a negative verdict in any of the 76 recorded arms, so nothing here measures the revision loop; one arm dispatched no critic at all, and one under-reported its review count.
 - The thirty F1 pairs are one-token defects and small repairs in one public Python repository on one model; nothing here speaks to harder work, and the flag's own mechanism never fired on them.

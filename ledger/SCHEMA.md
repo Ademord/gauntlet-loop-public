@@ -14,12 +14,13 @@ One JSON object per run in `ledger/runs.jsonl`, produced only by `tools/ledger/i
 | `difficulty` | `{estimate, proxies[]}` | lead's recorded estimate; `unknown` when absent |
 | `verifiability` | string | `deterministic | external | judgment | mixed | unknown` |
 | `topology` | `{chosen, reason}` | canonical v5 values when recorded; older `tier` values kept verbatim (`solo`, `team`) |
-| `task_class` | string | closed vocabulary `code-fix | code-feature | research | writing | design | deliverable | skill | unknown` (backlog B-002 adds this to the skill's own record) |
-| `features_enabled` | string[] | closed vocabulary: `evidence_ladder`, `light_topology`, `order_swap`, `delegates`, `team`, `isolation`, `learning`, `retrieval_allowance`, `parallel_critics`; `unknown` when the record cannot say |
+| `task_class` | string | closed vocabulary `code-fix | code-feature | research | writing | design | deliverable | skill | unknown`, the same list the skill states in [execution-contract.md](../skill/references/execution-contract.md); change both together |
+| `features_enabled` | string[] | closed vocabulary: `evidence_ladder`, `light_topology`, `order_swap`, `delegates`, `team`, `isolation`, `learning`, `retrieval_allowance`, `parallel_critics`, `blinding`, `agent_language`; `unknown` when the record cannot say. The skill states the same list and `tools/ledger/features.py` holds it in code; change all three together, which `tools/validate_package.py` now checks |
 | `reviews` | `{used, per_piece, advisory_only}` | critic reviews; `unknown` where absent |
 | `models` | `{lead, builders, critics}` | as recorded or `unknown` |
 | `cost` | `{subagent_tokens, wall_clock_s}` | harness-reported subagent tokens and wall clock in seconds, or `unknown` |
 | `lessons_retrieved` | list | lesson IDs with ledger outcomes when learning was on; empty otherwise |
+| `features_not_enabled` | string[] | same vocabulary, for mechanisms deliberately left off. A source record may carry it; the ingester does not yet copy it (B-037), so it is absent from ledger rows |
 | `later_defects` | string | `not assessed` unless a later inspection was recorded |
 | `holds_open` | list | unresolved holds at the milestone |
 | `raw` | object | the original record verbatim for older shapes (omitted for `v5`) |

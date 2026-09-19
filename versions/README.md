@@ -11,7 +11,8 @@ Every version of the skill, oldest first. The current version is [skill/](../ski
 | v2 | [v2/](v2/SKILL.md) | 5 | `02b59d88e929` originally, `5caea86de45d` here | Phrases naming an earlier private project were generalized: one in `SKILL.md`, two in `references/team-method.md` (originally `b640a14bf58e`), three in `references/research-basis.md` (originally `d6cb2b473c78`). Nothing else changed. |
 | v3 | [v3/](v3/SKILL.md) | 1 | `5d89eacaccaa` | Byte for byte. It links four reference files that were never supplied with it, so those links do not resolve. |
 | v4.0.0 | [v4/](v4/SKILL.md) | 8 | `94c0360fa0fd` | Byte for byte. Its single-file release can be regenerated with `python tools/export_single_file.py --package versions/v4 --out v4.md`. |
-| v5.0.0 | [../skill/](../skill/SKILL.md) | 8 | in [dist/package-verification.json](../dist/package-verification.json) | The current version. |
+| v5.0.0 | [v5/](v5/SKILL.md) | 8 | in [SHA256SUMS](SHA256SUMS) | Byte for byte, snapshotted when 5.1.0 replaced it in `skill/`. |
+| v5.1.0 | [../skill/](../skill/SKILL.md) | 9 | in [dist/package-verification.json](../dist/package-verification.json) | The current version. Adds a ninth file, the restored bars, examples and failure list. |
 
 The full SHA256 of every stored file is in [SHA256SUMS](SHA256SUMS). From the repository root, `sha256sum -c versions/SHA256SUMS` checks them, and so does `python tools/verify_release.py`.
 
@@ -24,7 +25,8 @@ The full SHA256 of every stored file is in [SHA256SUMS](SHA256SUMS). From the re
 | v2 | one read-only scenario walkthrough by an independent agent (a skipped assertion, duplicated pass claims, language drift mid-slice, limited worker slots, a local-only stop), plus the standard skill validator | upgrade record in the frozen private repository |
 | v3 | none recorded | none |
 | v4.0.0 | an independent requirements review (three consistency findings fixed), a primary-source check, one prompt-mode forward check under an 8-review budget, the skill validator and package checks | release review in the frozen private repository |
-| v5.0.0 | a gauntlet run on itself: nine frozen checks, six scenario probes, six independent critic reviews in three rounds, deterministic validators | [gauntlet/v5-upgrade-2026-09-17/](../gauntlet/v5-upgrade-2026-09-17/progress.md), [dist/RELEASE-REVIEW.md](../dist/RELEASE-REVIEW.md) |
+| v5.0.0 | a gauntlet run on itself: nine frozen checks, six scenario probes, six independent critic reviews in three rounds, deterministic validators | 
+| v5.1.0 | a gauntlet run under 5.0.0: nine frozen checks, eight scenario probes frozen before building, four independent critics per round, deterministic validators | [gauntlet/v5-upgrade-2026-09-17/](../gauntlet/v5-upgrade-2026-09-17/progress.md), [dist/RELEASE-REVIEW.md](../dist/RELEASE-REVIEW.md) |
 
 None of these is a performance measurement.
 

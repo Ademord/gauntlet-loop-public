@@ -4,7 +4,7 @@ Deterministic scripts. None of them calls a model except `paired_study/run_pair.
 
 | Tool | What it does | Command |
 | --- | --- | --- |
-| `validate_package.py` | Checks a skill package: frontmatter, name, version, eight files, size limits (entrypoint 16,000 bytes, single file 90,000), local links, YAML examples, forbidden personal patterns | `python tools/validate_package.py --version 5.0.0 --export dist/gauntlet-loop-v5-SKILL.md` |
+| `validate_package.py` | Checks a skill package: frontmatter, name, version, the expected file count (`--expect-files`, 8 through 5.0.0 and 9 from 5.1.0), size limits (entrypoint 16,000 bytes, single file 110,000 from 5.1.0), local links, YAML examples, forbidden personal patterns | `python tools/validate_package.py --version 5.1.0 --expect-files 9 --export dist/gauntlet-loop-v5-SKILL.md --max-export-bytes 110000` |
 | `build_release.py` | Rebuilds `dist/` from `skill/`: the single file, a reproducible zip, and `package-verification.json` | `python tools/build_release.py` |
 | `export_single_file.py` | Writes one portable Markdown file from any package, references appended with anchors | `python tools/export_single_file.py --package versions/v4 --out v4.md` |
 | `verify_release.py` | Checks `skill/` against `dist/package-verification.json`, the zip and single file, every stored version against `versions/SHA256SUMS`, and every local Markdown link | `python tools/verify_release.py`, with `--write-version-sums` after adding a version |

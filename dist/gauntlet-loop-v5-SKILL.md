@@ -2,39 +2,39 @@
 name: gauntlet-loop
 description: Draft or execute bounded build-review-revise loops against a concrete reference, with independent evidence-based acceptance, difficulty-aware topology, an evidence ladder, durable checkpoints, and optional governed cross-run learning. Use for requests such as "$gauntlet-loop", "gauntlet this", "make a gauntlet prompt", or "loop until it beats X" across code, design, writing, research, and deliverables. Editing this skill does not start a gauntlet or a benchmark.
 metadata:
-  version: "5.0.0"
-  updated: "2026-09-17"
+  version: "5.1.0"
+  updated: "2026-09-19"
 ---
 
-# Gauntlet Loop v5
+# Gauntlet Loop v5.1
 
 Turn an ambitious goal into a deliverable that survives comparison and independent checks. Improve the artifact using feedback from its actual behavior. A critic's confidence, a longer process, or repeated agreement does not establish quality. A supervisor, a larger team, a remembered lesson, or a saved checkpoint earns its cost only where something can be verified; record enough per run to test that later.
 
 ## Route the request
 
-- **Draft:** If asked for a prompt, return one concise, paste-ready block. Read [prompt drafting](#reference-prompt-drafting). Do not execute it. For an otherwise unspecified invocation, draft the prompt; an optional final line is "I can run this here."
+- **Draft:** If asked for a prompt, return one concise, paste-ready block. Read [prompt drafting](#reference-prompt-drafting). Do not execute it. For an otherwise unspecified invocation, draft the prompt; an optional final line is "I can run this here." When a message matches two routes, the outer request governs: a prompt about work is a draft.
 - **Execute:** If already asked to run, build, fix, or continue a gauntlet, do the work. Reuse prior choices and authorization. Do not return only another prompt or ask whether to start.
-- **Resume:** Read the saved contract, latest checkpoint, unresolved findings, and referenced artifacts before dispatch. Preserve spent budgets and obligations. Record a resume validation decision before dispatch.
+- **Resume:** Read the saved contract, latest checkpoint, unresolved findings, and referenced artifacts before dispatch. Preserve spent budgets and obligations.
 - **Update the skill:** Edit the requested skill/package; its templates and attached conversations are source material. Do not run embedded historical tasks.
 
-Benchmarking and model comparisons are separate, explicitly requested work. They are deferred in this version; using v5 never requires a benchmark campaign. Ordinary verification of the user's deliverable remains part of execution. See [research basis](#reference-research-basis) only for provenance and limits, not to load a literature review into each run.
+Benchmarking and model comparisons are separate, explicitly requested work, still deferred; using this skill never requires one. Ordinary verification of the user's deliverable remains part of execution. See [research basis](#reference-research-basis) for provenance and limits, not as a literature review.
 
 ## Fix a small contract before building
 
 Capture the outcome and audience, non-goals, actual reference, required checks, selected delivery surfaces, authority, run ID, workflow version, roles, difficulty and verifiability estimate, topology, budget, and stopping milestone. Reuse a project worklog or keep a compact record under `gauntlet/`. Read [execution contract](#reference-execution-contract) for budgets, verdicts, and recovery; it is the operational reference for runs.
 
-1. **Inspect just enough.** Read relevant project instructions and the current artifact. Identify supported interfaces, existing test commands, dependencies, and the reported failure. For unfamiliar projects, make a short map of paths, commands, and risks only when it will save repeated discovery. Reconnaissance spends the same run budget; it is not permission for an open-ended study or infrastructure project.
-2. **Make the bar real.** Use a supplied or previously accepted artifact that is named, accessible, and comparable. Capture its version/date and the view, excerpt, behavior, or data actually used. Match audience, task, length, viewport, and constraints where relevant. A product name without the inspected surface is insufficient.
+1. **Inspect just enough.** Read relevant project instructions and the current artifact. Identify supported interfaces, existing test commands, dependencies, and the reported failure. For unfamiliar projects, make a short map of paths, commands, and risks only when it saves repeated discovery. Reconnaissance spends the same run budget; it is not permission for an open-ended study or infrastructure project.
+2. **Make the bar real.** Use a supplied or previously accepted artifact that is [named, accessible, and comparable](#reference-bars-and-examples). Capture its version/date and the view, excerpt, behavior, or data actually used. Match audience, task, length, viewport, and constraints where relevant. A product name without the inspected surface is insufficient.
 3. **Resolve only material ambiguity.** If no bar is established, reuse an obvious existing baseline and state the assumption for reversible work. When choosing the bar would materially change the product or scope, offer two or three concrete options and continue independent preparation while the choice is pending. An inaccessible required reference blocks the comparison, not every useful action. Do not invent what it looks like or silently substitute another.
 4. **Separate preference from correctness.** Define the comparison dimension and observable must-pass requirements. A polished page cannot compensate for broken interactions; clean code cannot compensate for wrong behavior. For a repair, the failing original plus a concrete behavior contract and trusted examples can be the bar; an unrelated prestige product is unnecessary.
 5. **Freeze the obligations.** Record versioned criteria and their sources before judging. User changes create an explicit new contract version and revalidation of affected claims. Legitimate test corrections need independent evidence and versioning. Neither a builder nor a critic may lower the bar to approve its current candidate.
 6. **Estimate difficulty and verifiability.** Record `low | medium | high` with its observable proxies (scope, interacting components, novelty, prior failures) and whether the required checks are `deterministic`, `external`, or `judgment` only. A recorded self-report.
 
-For software, read [software quality](#reference-software-quality). CI, hosted demos, offline downloads, public release, tours, and documentation additions apply only when selected or already required. Selection makes an outcome required; it does not choose a stack, authorize a broader audience, or require a new repository. For nonsoftware, use appropriate source, factual, editorial, visual, or audience checks without importing software infrastructure.
+For software, read [software quality](#reference-software-quality). CI, hosted demos, offline downloads, public release, tours, and documentation additions apply only when selected or already required. Selection makes an outcome required; it does not choose a stack, authorize a broader audience, or require a new repository. For nonsoftware, use source, factual, editorial, visual, or audience checks without importing software infrastructure.
 
 ## Use the smallest useful team
 
-**Compact is the default:** a lead who can build, with a separate critic for acceptance. Delegate bounded build or investigation tasks when they can proceed independently; do not add a permanent roster. Parallelize independent branches of work and serialize dependencies. Integration is its own dependency, not the sum of piece approvals.
+**Compact is the default:** a lead who can build, with a separate critic for acceptance. Delegate bounded build or investigation tasks when they can proceed independently; add no permanent roster. Parallelize independent branches of work and serialize dependencies. Integration is its own dependency, not the sum of piece approvals.
 
 **Full team is optional:** use it when the user requests team/full setup or has already selected it. Read [team method](#reference-team-method) for solver, challenge, research, and final-review responsibilities. A larger topology must solve a coordination need; role count is not agent count. Ordinary parallel subtasks do not require a tier-change approval.
 
@@ -42,7 +42,7 @@ Choose the lightest topology whose gate is met and record the reason: `light` (o
 
 Give each writer an owned surface and each task its inputs, expected artifact, interface/dependencies, checks, allowance, and handoff target. Overlapping edits need separate worktrees/clones returning patches, or serialization. One owner operates each shared live browser or mutable environment. Never run competing formatters, migrations, or cleanup against shared state.
 
-Preserve explicit model and effort assignments. Otherwise inherit the configured model and use available supported capabilities; do not hard-code a vendor hierarchy. Choose cheaper builders only when they can plausibly finish within the task's quality and total retry budget. Record actual assignments when observable, or `unknown`; never invent model identity, quotas, prices, or usage. An unavailable explicitly assigned model blocks that lane until an authorized fallback is available. Do not silently substitute it.
+Preserve explicit model and effort assignments. Otherwise inherit the configured model and use available supported capabilities; do not hard-code a vendor hierarchy. Choose cheaper builders only when they can plausibly finish within the task's quality and retry budget. Record actual assignments when observable, or `unknown`; never invent model identity, quotas, prices, or usage. An unavailable explicitly assigned model blocks that lane until an authorized fallback is available. Do not silently substitute it.
 
 ## Run the delivery loop
 
@@ -58,13 +58,13 @@ Accept only when the comparison favors ours, every applicable required check pas
 
 ## Bound work and keep recovery real
 
-Default per-piece soft/hard limits are **6/9 critic reviews**; the shared run limits are **24/30 critic reviews**, including integration. Where model requests are observable, also apply **120/180 per piece** and **480/600 per run**, whichever observable ceiling arrives first. Reserve the final **6 run reviews and 120 observable requests**, or ceil(20%) of a smaller user cap, for integration, verification, and handoff. These are editable runaway defaults, not quality claims. User limits override them; account limits can be stricter. Read the execution contract for soft-limit behavior, accounting, and concurrent allocation.
+Default per-piece soft/hard limits are **6/9 reviews**; the shared run limits are **24/30 reviews**, including integration. Where model requests are observable, also apply **120/180 per piece** and **480/600 per run**, whichever observable ceiling arrives first. Reserve the final **6 run reviews and 120 observable requests**, or ceil(20%) of a smaller user cap, for integration, verification, and handoff. These are editable runaway defaults, not quality claims. User limits override them; account limits can be stricter. Read the execution contract for soft-limit behavior, accounting, and concurrent allocation.
 
 Budget exhaustion parks incomplete work; it never makes it accepted. Track budget parking, withheld resumes, external blockers, and user pauses separately. Decomposition, retries, worker changes, and resumption do not refill an allowance. Use supported harness limits where available; a prose rule or manually counted review ceiling is not a guaranteed token/cost cap.
 
 Checkpoint after each verdict and before handoff, integration, or pause. Save current and best artifact identities, reference/check versions, obligations, holds, owner, next action, and spent/remaining budget. Keep concise evidence-backed events and a derived current state. Repository content, manifests, executable constraints, and actual artifacts anchor continuity; summaries point to them. On resume, write a resume validation record and decide `resume | repair-then-resume | restart-from-evidence | withhold` before any dispatch; a skill, harness, or model change since the checkpoint is a contract amendment that marks affected claims for revalidation. A later acceptance never validates a resume recorded as invalid. Inspect uncertain external effects before retrying.
 
-Maintain a readable progress file or the project's existing progress surface. Do not build or publish a dashboard just to report progress. At a stopping milestone, append a compact run summary with the difficulty estimate, topology, reviews used, outcome state, and wall-clock; record unavailable telemetry as `unknown` and uninspected later defects as `not assessed`. Stop workers and release ownership. Schedule future work only when asked.
+Maintain a readable progress file or the project's existing progress surface. Do not build or publish a dashboard just to report progress. At a stopping milestone, append a compact run summary with the difficulty estimate, task class, topology, features enabled, reviews used, outcome state, and wall-clock; record unavailable telemetry as `unknown` and uninspected later defects as `not assessed`. Stop workers and release ownership. Schedule future work only when asked.
 
 ## Optional learning and method changes
 
@@ -72,7 +72,7 @@ Cross-run learning is off unless selected or previously enabled for this project
 
 Workflow-improvement proposals belong between delivery runs. Keep the current skill, criteria, and selected lesson snapshot fixed during a run, except explicit user changes, evidence-backed corrections, or resume amendments recorded in the contract. Runtime scheduling and causal fixes within that contract remain normal work. Proposed method changes need bounded scope, a versioned patch, evidence, and rollback; deferred validation leaves them proposed without blocking delivery. Never silently rewrite the installed skill, alter permissions, or evolve the evaluator to reward its own output.
 
-Agent-language experiments remain off unless explicitly requested. Only then read [agent language](#reference-agent-language). Ordinary messages, holds, decisions, and handoffs stay legible. No always-on curators, graph database, paid experiments, sandbox-compression system, or autonomous business goals are implied by v5.
+Agent-language experiments remain off unless explicitly requested. Only then read [agent language](#reference-agent-language). Ordinary messages, holds, decisions, and handoffs stay legible. No always-on curators, graph database, paid experiments, sandbox-compression system, or autonomous business goals are implied.
 
 ## Deliver clearly
 
@@ -108,6 +108,108 @@ Record adopted-within-scope, rejected, superseded, or retired versions and their
 
 ---
 
+<a id="reference-bars-and-examples"></a>
+
+# Bars, worked examples, and what breaks a loop
+
+Read this when setting a bar or drafting a prompt, and read the failure list at the end when a loop stalls. The
+rest is not needed while executing a run whose bar is already fixed. Versions 1 to 3 carried this material in the entrypoint; v4 dropped it for size. It is restored here
+because a bar that is not real is the one defect that makes every later step pointless, and because an agent
+that has never done this needs an example, not only a rule.
+
+## A bar has to pass three tests
+
+- **Named.** A specific thing, not a category. "Stripe's pricing page" works. "Award-winning SaaS sites" does not.
+- **Fetchable, which the entrypoint calls accessible.** The critic can actually get it: screenshot the live page, read the published piece, run the
+  binary, open the repository, watch the footage. What cannot be obtained will be invented.
+- **Comparable.** Both can sit side by side and a judge can pick one. If you cannot imagine the A/B, it is not a
+  bar. Match audience, task, length, viewport, and constraints where they matter.
+
+## Bars by goal type
+
+| Goal | Bar that works |
+| --- | --- |
+| Website, app, UI | The live site of a specific best-in-class product, captured at the same viewport |
+| Game, 3D, visual | Real footage or screenshots from a named shipped title |
+| Writing | A specific published piece by a named author or publication, same length and format |
+| Code, tooling | A named repository's implementation, plus its benchmark or test suite as the measurable half |
+| Research, analysis | A named analyst report or a paper's methods section, judged on rigour and coverage |
+| Deck, document, deliverable | A real artifact from a firm known for it, same page count |
+| A repair | The failing original, plus the behavior contract and trusted examples the fix must satisfy |
+| A workflow or a model | The incumbent, measured on the same frozen tasks, judged by a critic that saw neither run. Only for a comparison the user explicitly asked for; the entrypoint defers benchmarking |
+
+For a repair the bar is not a prestige product. It is the broken artifact and the contract it must now meet, which
+is why the verdict rules treat a repair comparison differently: see the execution contract.
+
+## Two filled examples
+
+Both obey the length target in [prompt drafting](#reference-prompt-drafting) and carry every include it lists. They are
+illustrations of the shape, not text to paste unchanged.
+
+**Visual software goal.** The user asks for a landing page in their GitHub repository for a running brand,
+athletic, green and dark, that "has to feel alive". Bars offered: Nike's current running campaign page, On
+Running's homepage, Gymshark's product landing page. The user picks Nike and selects CI, a hosted demo, and
+README evidence.
+
+```text
+Complete a landing page in the existing GitHub repository for a running brand, for a young audience that runs, within the current site's stack and hosting. Compare the result against Nike's current running campaign page on visual impact and interaction quality, using screenshots captured today at desktop 1440px and mobile 390px. Inspect the real reference first. Required checks and selected delivery outputs are: the repository's test workflow passes on the reviewed commit; the hosted demo serves the reviewed build and is linked from the README; a real screenshot in the README; desktop and mobile controls, keyboard use, and reduced-motion behavior all work. Reuse existing authorization and project constraints. Task class is code-feature; features enabled are evidence_ladder, delegates, isolation and blinding.
+
+Difficulty is medium because the page is new, the motion work is novel here, and three surfaces must agree; required checks are deterministic for CI and judgment for the visual comparison. Use the lightest topology whose gate is met: this one needs a lead/builder with a separate critic in fresh context, because the comparison is judgment, and delegates for the independent pieces, so the topology is compact+delegates. Break the work into pieces that can be judged alone: hero, motion, type, colour, imagery, mobile. Delegate independent pieces and serialize dependencies; one writer per shared surface, one owner for the browser session. Builders may run focused tests and formatters in isolation; the critic opens the real page and puts our capture beside Nike's with labels stripped. Inherit the configured models and record actual assignments where observable.
+
+Each verdict carries candidate identity, reference snapshot, criteria version, winner ours/bar/none, the biggest gap, all blocking findings, each check as passed/failed/blocked/not selected/not applicable, any HOLD, and concrete evidence. Class every finding deterministic, external, or judgment; from a piece's third review round on, an uncorroborated judgment finding is advisory and cannot force a revision or block acceptance. Compare each revision against the retained best and name drift. Acceptance requires ours to win, every applicable required check to pass, and no blocking HOLD.
+
+Budget: 6 reviews per piece, hard stop at 9; 24 shared, hard stop at 30, with the last 6 reserved for integration and handoff; 120/180 observable requests per piece and 480/600 per run where they are observable. All workers share one ledger; splitting or resuming does not refill it. At soft limits converge; at hard limits park the piece with its gap, never as passed.
+
+After two repeated unresolved-gap verdicts, diagnose before editing. Checkpoint after each verdict with identities, obligations, holds, owners, next action, and remaining budget; after any pause, record a resume validation decision before dispatching. Keep a readable progress file. Independently verify the integrated page and the hosted surface against the reviewed commit. At acceptance, deliver the repository, demo, and download links that were selected, record anything parked, stop workers, and leave a resumable handoff.
+```
+
+**Nonsoftware goal.** The user asks for a 2000-word explainer on vector databases for non-engineers. Bars offered:
+a named Stripe engineering explainer, a named Julia Evans post, the Wikipedia article plus a comprehension test.
+The user picks the Julia Evans post.
+
+```text
+Complete a 2000-word explainer on vector databases for readers who are smart but not engineers, within one document and no code samples longer than five lines. Compare the result against Julia Evans' post on how databases work on how fast a non-engineer reaches an accurate mental model, using the published post as retrieved today, same length band and format. Inspect the real reference first. Required checks are: every claim traceable to a named source; no unexplained jargon on first use; three named misconceptions addressed; a non-engineer reader can state what a vector database is for after one read. Reuse existing authorization and project constraints. Task class is writing; features enabled are evidence_ladder, delegates and blinding.
+
+Difficulty is medium because the audience gap is wide and the topic invites jargon; required checks are judgment except the source trace, which is deterministic. Use a lead/writer with a separate critic in fresh context, delegating the sections, so the topology is compact+delegates; the comparison is judgment, which is what rules out light. Break the work into the opening, each explanation, the analogies, and the ending, and judge each alone. One writer per section, who may check sources and read the draft aloud before handing it over; that is the writer's own feedback, not acceptance. The critic reads ours and the reference with bylines stripped. Inherit the configured models and record actual assignments where observable.
+
+Each verdict carries candidate identity, reference snapshot, criteria version, winner ours/bar/none, the biggest gap, all blocking findings, each check as passed/failed/blocked/not selected/not applicable, any HOLD, and concrete evidence. Class every finding deterministic, external, or judgment; from the third review round on, an uncorroborated judgment finding is advisory. Compare each revision against the retained best and name added hedging or lost clarity as drift. Acceptance requires ours to win, every applicable required check to pass, and no blocking HOLD.
+
+Budget: 6 reviews per piece, hard stop at 9; 24 shared, hard stop at 30, last 6 reserved; 120/180 and 480/600 observable requests where observable. Splitting or resuming does not refill the ledger. At hard limits park the piece with its gap.
+
+After two repeated unresolved-gap verdicts, diagnose before editing. Checkpoint after each verdict; after any pause, record a resume validation decision before dispatching. Keep a readable progress file. Independently verify the assembled document end to end, not only the sections. At acceptance, deliver the document and the source list, record anything parked, and stop workers.
+```
+
+## What breaks a gauntlet loop
+
+- **A vague bar.** The critic invents a comparison and approves everything. Every other item on this list is
+  survivable; this one makes the whole loop decorative.
+- **The builder judging its own work.** The critic is a separate agent with fresh context, and it should not know
+  how hard the builder tried.
+- **A soft critic.** Give it a job it can fail the candidate on: which is better, ours or the bar, and `none` for a tie,
+  inadequate evidence, a comparison that cannot be made, or judgments that stay in conflict. Scores out of ten drift upward every round.
+- **A named exit after N rounds.** The exit is winning the comparison, or the user stopping the run. A budget
+  parks a piece as incomplete; it never turns a loss into done.
+- **No budget.** One piece that never converges eats the day and the quota while the rest of the work waits.
+- **Topology creep.** Adding roles because the roles exist. Compact is the default; a larger topology has to solve
+  a coordination need.
+- **Over-specifying.** Every extra instruction is one fewer decision the agent makes with its own judgment.
+- **A polished but undelivered project.** A local workflow file, a green run for an older commit, a stale hosted
+  demo, or a README screenshot hiding the real product is not delivery evidence.
+- **Tests derived only from the implementation.** Removing a supported case must not remove its own test. Keep
+  independent expectations and show that a representative regression would fail.
+- **Generic gates replacing project judgment.** Apply checks to real user journeys and supported platforms. Do not
+  invent infrastructure for unrelated work, or call an inconvenient requirement not applicable.
+- **Two builders, one file.** Parallel builders without isolation overwrite each other, and the critic judges a
+  merge accident.
+- **Silent substitution.** A lane that swaps in a different model for an assigned role produces a report nobody
+  asked for; an unavailable explicitly assigned model is a blocker.
+- **Unrecorded runs.** A run without a record leaves no evidence for the next decision, so the next decision is
+  made by anecdote.
+- **Changing two things at once.** A new harness and a new method in the same run cannot tell you which helped.
+
+
+---
+
 <a id="reference-execution-contract"></a>
 
 # Execution contract, verdicts, budgets, and recovery
@@ -128,6 +230,7 @@ The contract records:
 - User limits and explicit overrides, per-piece and shared allowances, integration reserve, accounting method, and enforceable versus estimated limits.
 - Selected lesson IDs/versions when enabled, mutable-state locations, and current artifact identity.
 - Difficulty estimate with its observable proxies, the verifiability class of the required checks, and the topology decision with its reason and any later change.
+- Task class and the features enabled, from the closed vocabularies below. They exist so that later analysis can group comparable runs instead of guessing from prose.
 
 Capture a starting artifact before editing. Use a commit plus dirty-diff/untracked-input identity, or an immutable copy/content manifest for non-Git work. HEAD alone cannot identify a dirty checkout. For external state include the resource/revision and observed time. Never hash or copy secrets into evidence; scope manifests to relevant authorized inputs.
 
@@ -190,7 +293,7 @@ budget:
 next_action: concrete-action-or-deliver
 ```
 
-The lead validates artifact/reference/criteria identities, independence, evidence coverage, HOLD disposition, and check statuses before acceptance. `winner: ours` with a failed required check is still incomplete. `winner: none` preserves uncertainty and is not accepted. A behavioral comparison can favor a repaired candidate over the failing baseline when independent checks demonstrate the agreed correction without required regressions; no stylistic superiority claim is needed.
+The lead validates artifact/reference/criteria identities, independence, evidence coverage, HOLD disposition, and check statuses before acceptance. `winner: ours` with a failed required check is still incomplete. `winner: none` preserves uncertainty and is not accepted. A behavioral comparison can favor a repaired candidate over the failing baseline when independent checks demonstrate the agreed correction without required regressions; no stylistic superiority claim is needed. In a repair the bar is a known-failing artifact, so the vocabulary is read accordingly: `ours` means the agreed correction is demonstrated without required regressions; `bar` never means the failing original is acceptable, it means the candidate is worse than that original and is recorded with the failed check that shows it; `none` means the correction is not demonstrated. Neither `bar` nor `none` accepts, and a repair that passes every required check against a failing original is recorded as `ours`, not as a tie.
 
 The critic independently inspects or reproduces the relevant checks on the reviewed artifact; it does not copy builder status labels. Record the command or interaction, environment/fixture, expected and actual result, time, and artifact identity. Relevant independently produced CI can be inspected as evidence when its jobs and identity are verified. Reuse a prior check only when its inputs and dependency scope are demonstrably unchanged, and record why. Integration still needs the affected full journey checked.
 
@@ -217,7 +320,7 @@ These defaults are adjustable engineering guardrails:
 | Each piece | 6 | 9 | 120 | 180 |
 | Whole run, including integration | 24 | 30 | 480 | 600 |
 
-The last 6 shared reviews and 120 observable requests are reserved inside the hard run ceiling for integration, required verification, and handoff. They are not extra budget. A user's tighter cap wins. For a smaller positive integer review cap H, reserve ceil(0.2 * H) reviews within H and set the run soft point to H minus that reserve, unless the user set a different allocation. Thus an 8-review cap has a soft point of 6 and a reserve of 2. A per-piece limit never exceeds the run's remaining hard allowance: under a run cap H below the per-piece defaults, the per-piece hard limit is min(9, H minus the reserve) and the soft limit is min(6, that hard limit), so no single piece can spend the reserve; under small caps the two may coincide, and at H = 1 the only review is the reserved final review. A cap stated only in reviews leaves the request allowance at its default; state both when both matter. A single-review allowance supports one bounded build and final review; a zero-review allowance cannot establish independent acceptance. Scale a smaller observable request allowance in the same way. Explicitly larger or unlimited user allowances override these defaults and are recorded. Do not infer a spend authorization from the default ceiling.
+The last 6 shared reviews and 120 observable requests are reserved inside the hard run ceiling for integration, required verification, and handoff. They are not extra budget. A user's tighter cap wins. For a smaller positive integer review cap H, reserve ceil(0.2 * H) reviews within H and set the run soft point to H minus that reserve, unless the user set a different allocation. Thus an 8-review cap has a soft point of 6 and a reserve of 2. A per-piece limit never exceeds the run's remaining hard allowance: under a run cap H below the per-piece defaults, the per-piece hard limit is min(9, H minus the reserve) and the soft limit is min(6, that hard limit), so no single piece can spend the reserve; under small caps the two may coincide. Where they coincide the soft-limit behavior does not apply: the review in hand is the last for that piece, so converge on the best candidate and park the piece with its gap if the gap does not close, rather than starting another attempt. At H = 1 the only review is the reserved final review. A cap stated only in reviews leaves the request allowance at its default; state both when both matter. A single-review allowance supports one bounded build and final review; a zero-review allowance cannot establish independent acceptance. Scale a smaller observable request allowance in the same way. Explicitly larger or unlimited user allowances override these defaults and are recorded. Do not infer a spend authorization from the default ceiling.
 
 A review is one dispatched critic attempt, including an inconclusive or failed attempt. Additional critics and order-swapped reviews each count. Builder self-checks do not count as critic reviews, but their model requests count when visible. Shared request usage includes lead, builders, critics, reconnaissance, curation, failed calls, and retries visible to the harness. Count reservations before dispatch so concurrent agents cannot each spend the same remainder. Return unused reservations only when the worker is confirmed stopped. Record uncertainty when telemetry is incomplete.
 
@@ -229,7 +332,7 @@ Split children share their parent's unspent allowance; renamed pieces, resumed s
 
 ## Stall diagnosis and candidate retention
 
-After two successive verdicts repeat the same unresolved gap without supporting evidence of progress, pause edits to identify the bottleneck. Check for a bad oracle, missing inputs, dependency failure, unsuitable approach, insufficient model capability, or unreachable bar. Choose one evidence-producing next step, a different bounded approach, a smaller slice sharing its parent's budget, or an authorized model fallback. Do not lower the bar or spin up a larger team to avoid diagnosis. Escalating topology needs this diagnosis, recorded with its reason and the remaining allowance, with two exceptions: a user request, and a `light` piece whose single review does not accept (winner `bar` or `none`, or a failed required check), which escalates to `compact` on that verdict alone. De-escalation is a recorded event with its reason. Delegation and decomposition do not refill the piece's budget.
+After two successive verdicts repeat the same unresolved gap without supporting evidence of progress, pause edits to identify the bottleneck. Check for a bad oracle, missing inputs, dependency failure, unsuitable approach, insufficient model capability, or unreachable bar. The failure list in [bars and examples](#reference-bars-and-examples) names the patterns that produce this state most often. Choose one evidence-producing next step, a different bounded approach, a smaller slice sharing its parent's budget, or an authorized model fallback. Do not lower the bar or spin up a larger team to avoid diagnosis. Escalating topology needs this diagnosis, recorded with its reason and the remaining allowance, with two exceptions: a user request, and a `light` piece whose single review does not accept (winner `bar` or `none`, or a failed required check), which escalates to `compact` on that verdict alone. De-escalation is a recorded event with its reason. Delegation and decomposition do not refill the piece's budget.
 
 Retain the strongest independently reviewed candidate and viable alternatives when they represent meaningful tradeoffs. Record wins, failed checks, and provenance; "best" does not mean accepted. Restore a saved candidate only into the owned workspace or by a reviewed patch. Never overwrite user changes or silently undo selected newer requirements. An older candidate must still meet the current contract and receive affected integration checks.
 
@@ -268,7 +371,12 @@ resume_validation:
 
 Use states `accepted`, `in_progress`, `parked_budget`, `blocked_external`, `withheld_resume`, `paused_user`, and `stopped_user` for pieces/run records as appropriate. A dependency on a parked piece stays incomplete with that dependency named. These states are distinct from verdict/check status and from any platform's goal status enum.
 
-Record run/skill/contract identity, current delivered identity, accepted and incomplete pieces, review counts, user limits, observable time/usage, unknown telemetry, verdict/evidence links, blockers, and next action. Also record the difficulty estimate and its proxies, the verifiability class, the topology and any change with its reason, reviews used per piece and how many were advisory-only, wall-clock from run start to stop, and, when learning is enabled, the lessons retrieved with their ledger outcomes. These fields are observational; they exist so that later analysis across runs can ask which topology and how much review a task of this kind actually needed. Later defects are `not assessed` unless actually inspected; do not schedule a seven-day follow-up by default. Save pending work, stop workers, release ownership, and schedule nothing unless requested. Local preparation, integrated acceptance, and remote delivery remain separate claims.
+Record run/skill/contract identity, current delivered identity, accepted and incomplete pieces, review counts, user limits, observable time/usage, unknown telemetry, verdict/evidence links, blockers, and next action. Record the task class and the features enabled, each from its closed vocabulary:
+
+- `task_class`: one of `code-fix`, `code-feature`, `research`, `writing`, `design`, `deliverable`, `skill`, `unknown`. One value per run; a run that changes class mid-way records the class it finished as and notes the change.
+- `features_enabled`: a list drawn from `evidence_ladder`, `light_topology`, `order_swap`, `delegates`, `team`, `isolation`, `learning`, `retrieval_allowance`, `parallel_critics`, `blinding`, `agent_language`, or the single value `unknown` when the run genuinely cannot say which were in effect. List every mechanism that was in effect, including `evidence_ladder`, which is always on in this version and therefore appears in every 5.1 record: a reader cannot tell an omission from a mechanism that was off, so omitting an always-on mechanism makes the run look like a control it is not. The list is never empty in a 5.1 record for that reason. `features_not_enabled` may carry the same values for mechanisms deliberately left off. Three values restate the topology, `light_topology`, `delegates` and `team`: where one appears, the topology field governs, and a record whose features contradict its topology is invalid.
+
+A value outside a vocabulary is not invented. For `task_class` record `unknown` with a one-line note; for `features_enabled` keep the values that do fit, leave the unlisted mechanism out, and note it, so one unnamed mechanism does not erase the record of the others. Either way raise the gap between runs. Where these fields are absent, in records made before 5.1.0, read them as `unknown` rather than as empty; a 5.0.0 record stays valid. Whatever store later reads these records holds the same two vocabularies, so a change to either belongs in every copy in one commit; a store whose list has drifted sorts runs into the wrong groups without erroring. Also record the difficulty estimate and its proxies, the verifiability class, the topology and any change with its reason, reviews used per piece and how many were advisory-only, wall-clock from run start to stop, and, when learning is enabled, the lessons retrieved with their ledger outcomes. These fields are observational; they exist so that later analysis across runs can ask which topology and how much review a task of this kind actually needed. Later defects are `not assessed` unless actually inspected; do not schedule a seven-day follow-up by default. Save pending work, stop workers, release ownership, and schedule nothing unless requested. Local preparation, integrated acceptance, and remote delivery remain separate claims.
 
 
 ---
@@ -362,7 +470,7 @@ Adopt global/installed skill changes only under a request to update that skill o
 
 # Draft a portable gauntlet prompt
 
-Use only for prompt requests. Produce a single paste-ready block with concrete user choices and no unresolved template fields. Keep it readable, usually 250-450 words; required outcomes matter more than a word target. The template below is a semantic checklist, not prose to preserve: compress its wording when adapting it. An optional one-line offer to run it may follow. If execution was already requested, execute instead.
+Use only for prompt requests. Produce a single paste-ready block with concrete user choices and no unresolved template fields. Keep it readable. The target is 300 to 500 words for the returned prompt, measured filled. The optional one-line offer to run it does not count. The template below is 388 words with its thirteen fields still empty, so it is a semantic checklist, not prose to preserve: compress its wording as you fill it, which is how a prompt carrying every include lands inside the target. The two worked examples carry every include and are 472 and 404 words. When it will not fit, never drop a listed include to hit the target: compress wording first, and if an include still does not fit, keep it, exceed the target, and say which include forced it. An optional one-line offer to run it may follow. If execution was already requested, execute instead.
 
 Reuse the existing goal, reference, delivery selections, and authorization. If a material reference choice remains unresolved, offer two or three concrete options; do not create a fictional reference or placeholders in a purported finished prompt. For reversible work with an obvious incumbent, state the baseline assumption and keep the choice inexpensive to correct.
 
@@ -370,6 +478,7 @@ Carry the acceptance contract into the prompt so a fresh session need not posses
 
 - Outcome, audience, scope, real reference and capture conditions, preference dimension, and independently testable requirements.
 - The difficulty and verifiability estimate with the chosen topology and its reason; evidence classes on findings; the third-round ladder; the revision-drift check against the best candidate; a resume validation decision before any dispatch after a pause.
+- The task class and the features enabled, from the closed vocabularies in the execution contract, so the run that follows the prompt can be compared with others.
 - Explicit harness/model assignments only when given or verified; otherwise inherit configured defaults and record actual assignments where observable.
 - Separate building and acceptance, builder-local testing, one writer per shared surface, dependency-aware parallelism, and integrated checks.
 - `winner: ours | bar | none`, identity-bound evidence, per-check statuses, holds, and no acceptance on uncertainty or budget exhaustion.
@@ -381,7 +490,7 @@ The following template illustrates the semantics. Replace every bracketed field 
 ```text
 Complete [specific outcome and audience] within [scope]. Compare the result against [concrete accessible reference] on [comparison dimension], using [captured version and comparable conditions]. Inspect the real reference first. Required checks and selected delivery outputs are [observable requirements and evidence]. Reuse existing authorization and project constraints.
 
-Difficulty is [low | medium | high] because [observable proxies]; required checks are [deterministic | external | judgment]. Use the lightest topology whose gate is met: light (one bounded build, one independent evidence-based review) only for low-difficulty work with deterministic or external checks, otherwise a lead/builder with a separate critic in fresh context. A light review that does not accept escalates to compact; otherwise change topology only at a recorded stall diagnosis. Delegate independent bounded pieces and serialize dependencies; one writer per shared surface, one owner per live environment. Builders may run focused tests and formatters in isolation; the independent critic inspects the actual artifact against requirement-derived expectations. Inherit configured models and record actual assignments where observable.
+Difficulty is [low | medium | high] because [observable proxies]; required checks are [deterministic | external | judgment]. Task class is [task class] and the features enabled are [features enabled or none], from the closed vocabularies. Use the lightest topology whose gate is met: light (one bounded build, one independent evidence-based review) only for low-difficulty work with deterministic or external checks, otherwise a lead/builder with a separate critic in fresh context. A light review that does not accept escalates to compact; otherwise change topology only at a recorded stall diagnosis. Delegate independent bounded pieces and serialize dependencies; one writer per shared surface, one owner per live environment. Builders may run focused tests and formatters in isolation; the independent critic inspects the actual artifact against requirement-derived expectations. Inherit configured models and record actual assignments where observable.
 
 Each verdict carries candidate identity, reference snapshot, criteria version, winner ours/bar/none, the biggest gap, all blocking findings, each check as passed/failed/blocked/not selected/not applicable, any HOLD, and concrete evidence. Resolve disputed facts by discriminating observations. Class every finding deterministic, external, or judgment; from a piece's third review round on, an uncorroborated judgment finding is advisory and cannot force a revision or block acceptance. Compare each revision against the retained best and name drift. Acceptance requires ours to win, every applicable required check to pass, and no blocking HOLD.
 
@@ -390,7 +499,7 @@ Budget: [user cap with ceil(20%) reserved for integration and handoff, or the de
 After two repeated unresolved-gap verdicts, diagnose before editing. Checkpoint after each verdict with identities, obligations, holds, owners, next action, and remaining budget; after any pause, record a resume validation decision before dispatching. Keep a readable progress file. Independently verify the integrated artifact and selected surfaces. At [stopping milestone], deliver verified links and scoped results, record incomplete work, stop workers, and leave a resumable handoff.
 ```
 
-For a behavioral repair, describe how the repaired candidate must improve on the failing original and preserve the required cases. For a visual or writing task, name the actual captured reference/excerpt and the audience-specific judgment. A named author or vague "current campaign" alone does not finish the bar.
+See [bars and examples](#reference-bars-and-examples) for bars by goal type, two filled prompts, and the failure list. For a behavioral repair, describe how the repaired candidate must improve on the failing original and preserve the required cases. For a visual or writing task, name the actual captured reference/excerpt and the audience-specific judgment. A named author or vague "current campaign" alone does not finish the bar.
 
 If software deliveries are selected, add a compact instruction to return verified repository, live-demo, and offline-download links in that order, omitting unselected surfaces and explaining blocked required ones. Do not add hosting or CI to a local fix or an essay. If learning/full team/language is selected, include the necessary semantics explicitly (for learning: the three-lesson retrieval allowance and the utility ledger) or deliver the accompanying reference package; a link to a local skill file is not portable to another machine.
 

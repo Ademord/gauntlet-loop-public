@@ -71,3 +71,41 @@ stopping_milestone: >
   C1 to C9 pass on the integrated branch with no blocking HOLD, records written, commit carries
   "Upgrade-run: v51-upgrade-2026-09-19" so the commit-msg guard accepts the skill change; or the run parks with
   its gap recorded.
+
+amendments:
+  - id: A1
+    date_utc: "2026-09-19"
+    row: B-020
+    change: >
+      The single-file export limit rises from 90,000 to 110,000 bytes. C2 provides for this raise and requires the
+      new limit to be recorded here and used in the validator invocation.
+    reason: >
+      The restored reference is 10,110 bytes of content that v1 to v3 carried inside the entrypoint, and the export
+      is a portability artifact with no runtime cost. The export grew with each review round, so this amendment records no single figure: the released size is in dist/package-verification.json and in the release review, both written at the end of the run. Three figures were recorded here during the run and each went stale, 102,867 and 103,542 and 105,167; the first two also came from a validator that decoded the file before measuring it, which collapsed CRLF and undercounted by a byte a line. The validator now measures the bytes on disk.
+    also_recorded: >
+      The 5.0.0 export was already 90,333 bytes, above the 90,000 the contract names, because the validator was
+      never invoked with --export. The limit was therefore aspirational rather than enforced, and the release
+      verification now passes --export so it is checked from here on.
+  - id: A2
+    date_utc: "2026-09-19"
+    row: B-002, B-020
+    change: >
+      Two changes outside the five queued rows are authorized here rather than left unrecorded, because C3 allows a
+      change to be addressed or explicitly deferred with a reason and neither was either.
+    one: >
+      The entrypoint no longer repeats "Record a resume validation decision before dispatch" in the Resume route.
+      The obligation is unchanged and stated in full four sections later, under "Bound work and keep recovery real", and in the drafting reference. The reason
+      is arithmetic: the sentence is 53 bytes, SKILL.md stands at 15,997 of its 16,000-byte limit, and restoring it
+      would put the file 50 bytes over. Restoring it would therefore cost both of the two things this version
+      adds to the entrypoint: the bar link frees 35 bytes and the two milestone fields 30, so dropping either alone still
+      leaves the file over the cap, at 16,015 or 16,020. Only dropping both, or the B-009 tie-break sentence at 94
+      bytes, makes room, and the tie-break sentence is B-009's deliverable. Measured by a critic in review round 4,
+      after this amendment first stated the cost as one of the two. Deferred, with the trade named, and queued as
+      B-038 for the next version that has room. Found and proved by the probe critic in review round 3.
+    two: >
+      tools/ledger/features.py and ledger/SCHEMA.md gained `blinding` and `agent_language`. B-002 authorizes
+      stating the vocabularies in the skill, not extending the ledger's own list, so this exceeds the row. It is
+      authorized because the alternative is worse: the skill governs both mechanisms, both worked examples use
+      blinding, and without the two values the package would instruct agents to record a value its own vocabulary
+      rejects. The measurable cost is that ledger/feature-usefulness.tsv gains two rows for which every
+      already-ingested run counts as "without". Found by the probe critic in review round 3.

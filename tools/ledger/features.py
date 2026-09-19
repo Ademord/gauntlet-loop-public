@@ -12,7 +12,8 @@ from pathlib import Path
 
 repo = Path(__file__).resolve().parents[2]
 UNKNOWN = 'unknown'
-FEATURES = ['evidence_ladder', 'light_topology', 'order_swap', 'delegates', 'team', 'isolation', 'learning', 'retrieval_allowance', 'parallel_critics']
+FEATURES = ['evidence_ladder', 'light_topology', 'order_swap', 'delegates', 'team', 'isolation', 'learning',
+            'retrieval_allowance', 'parallel_critics', 'blinding', 'agent_language']  # skill states the same list; validate_package.py checks all three copies
 
 
 def num(v):
