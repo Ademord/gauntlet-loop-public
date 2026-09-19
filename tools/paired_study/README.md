@@ -15,3 +15,7 @@ Not built: automatic task minting from git history (survey first, mint by hand),
 
 - `mint_mutations.py` mints low-difficulty tasks from a Python repository with an offline test suite: one semantic mutation per candidate line, kept only if exactly one or two tests fail; the original line is the answer. Specs record the repository as `<projects-root>/<name>` and the mutation by line and byte columns.
 - `run_pair.py --execute` now runs a login preflight, isolates each arm from user-level settings, hooks, MCP servers, and skills, restores protected test paths before the independent suite run, and measures cost, tokens, turns, and critic dispatches from the transcript. Transcripts and each arm's `gauntlet/` folder stay local (gitignored); the results row is the public record.
+
+## Running a series
+
+`run_series.py --flag F1` runs every ready pair for a flag, one at a time, skipping pairs that already have counted rows, stopping on a dead login and after two consecutive harness failures. `report_pairs.py --flag F1` then writes `research/program/paired-study/look-F1.md` from the rows, with the exact tests from `analyze_pairs.py`. Neither script interprets anything: every number in the report comes from a recorded row.

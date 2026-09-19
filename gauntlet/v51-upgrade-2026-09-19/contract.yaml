@@ -1,0 +1,73 @@
+run_id: v51-upgrade-2026-09-19
+skill_version_governing_run: "5.0.0"   # v5 governs the run; 5.1 is its product, never its judge
+contract_version: 1
+created_utc: "2026-09-19T09:30:00Z"
+status: frozen-not-started            # the checks below are fixed before any building; execution is a separate step
+
+outcome: >
+  A reviewed Gauntlet Loop 5.1.0 package that clears the queued backlog rows without growing the entrypoint past
+  its limit, plus the provenance, release artifacts, and version records the repository's own process requires.
+audience: the owner as skill operator, and any agent executing the skill
+non_goals:
+  - No new research adoption beyond the rows listed here; the 19 September scan's other candidates stay queued.
+  - No benchmark, no claim that 5.1 performs better than 5.0.0.
+  - No installation and no merge decision; both stay with the owner.
+  - No change to the paired study's committed analysis or to any recorded result.
+
+reference:
+  identity: "gauntlet-loop 5.0.0 as published, skill/ at the run's base commit"
+  snapshot: skill/            # copied to versions/v5/ before the package is replaced
+  comparison_dimension: >
+    Operational guidance quality on the probes below, with no loss of portability, brevity, or record compatibility.
+
+difficulty:
+  estimate: medium
+  proxies:
+    - five queued rows, four of them small wording or schema changes
+    - one row (B-020) reintroduces content v4 deliberately dropped, against a hard size limit
+    - eight interdependent files plus the release tooling
+    - the same self-referential shape as the v5 run, which found nine conflicts
+  verifiability: mixed        # structure, size, links, hashes deterministic; guidance quality is judgment
+topology:
+  choice: compact-with-parallel-critics
+  reason: >
+    One writer owns every file. Acceptance is judgment-heavy, so it splits across critics with distinct lenses,
+    as in the v5 run; deterministic checks run first in every round.
+
+scope:
+  B-020: >
+    Restore what v4 dropped: a table of bars by goal type, two short filled examples, and the list of what breaks
+    a loop. They go in a new reference read only when drafting a prompt or setting a bar, so the entrypoint does
+    not grow; the single-file export limit rises only if the reviewed content needs it, and the new limit is
+    recorded here and in the validator invocation.
+  B-002: task_class and features_enabled, with closed vocabularies, in the milestone summary and the prompt-drafting includes.
+  B-009: state that the outer request governs when a message matches both the draft and the execute route; give a
+    repair an honest verdict value or an explicit note, so `bar` no longer means the broken original won.
+  B-012: decide the prompt template's length target against its eleven slots, and make the template obey whatever is decided.
+  B-013: say what the per-piece soft and hard limits mean when a small user cap makes them coincide.
+
+required_checks:            # criteria version 1, frozen before building
+  C1-structure: {source: "repository practice", expected: "frontmatter valid, name unchanged, version 5.1.0, every local link resolves, export anchors resolve", evidence_kind: deterministic}
+  C2-size: {source: "this contract", expected: "skill/SKILL.md <= 16,000 bytes; single-file export <= the limit recorded in this contract (90,000 unless raised here with a reason)", evidence_kind: deterministic}
+  C3-scope: {source: "this contract", expected: "every queued row above is addressed or explicitly deferred with a reason; nothing else changes in skill/", evidence_kind: judgment-with-citation}
+  C4-probes: {source: "probes.md", expected: "each probe answered concretely by the candidate, citable by section, in the direction the backlog row states", evidence_kind: judgment-with-citation}
+  C5-consistency: {source: "v5 rule: surface conflicts, do not blend", expected: "no rule contradicts another; the critic quotes both locations for any conflict", evidence_kind: judgment-with-citation}
+  C6-compatibility: {source: "v5 record schemas", expected: "v5 verdict, lesson, checkpoint, and milestone records stay valid; new fields additive with stated defaults; user budget overrides unchanged", evidence_kind: judgment-with-citation}
+  C7-prompt-mode: {source: "prompt-drafting reference", expected: "a fresh agent drafting from 5.1 alone produces a compliant prompt within the decided length target, with no placeholder", evidence_kind: judgment-with-citation}
+  C8-release: {source: "tools", expected: "build_release, verify_release, validate_package, public_audit all pass; versions/v5 snapshot recorded in SHA256SUMS", evidence_kind: deterministic}
+  C9-records: {source: "repository practice", expected: "chronology row in README, version rows in versions/README, backlog rows closed, release review written", evidence_kind: deterministic}
+
+budget:
+  source: v5 defaults
+  per_piece_reviews: {soft: 6, hard: 9}
+  run_reviews: {soft: 24, hard: 30, integration_reserve: 6}
+  observable_requests: unknown
+  accounting: "one dispatched critic agent call is one review; deterministic scripts are builder self-checks"
+evidence_ladder:
+  rounds_1_2: any finding class may be the biggest gap
+  round_3_onward: only deterministic or external findings, or judgment corroborated by a second quoted location, may force a revision
+learning: off
+stopping_milestone: >
+  C1 to C9 pass on the integrated branch with no blocking HOLD, records written, commit carries
+  "Upgrade-run: v51-upgrade-2026-09-19" so the commit-msg guard accepts the skill change; or the run parks with
+  its gap recorded.
