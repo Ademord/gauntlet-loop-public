@@ -1,36 +1,42 @@
 # Gap analysis: the phase-2 paired study against established practice
 
+## Erratum, 2026-09-20
+
+**Token-metric correction:** every token statistic retained below (including the 476,552 F1 mean difference, SD, intervals and MDE) was calculated from the old `result.usage` field. It is historical arithmetic on a superseded metric, not corrected full-session token evidence or a valid input for a new sample-size plan. The [measurement replay](paired-study/measurement-replay.md) uses complete `modelUsage` categories and gives an F1 mean difference of **-363,217.133 tokens (A minus B)**. Cost reconciliation remains unchanged. Recompute uncertainty from the corrected derived rows before any future token-based inference.
+
+This audit's original wording overstated several conclusions. The affected passages below are corrected; historical sample counts, cost figures and decisions are retained as records of the original study. The MDE table is an approximate, retrospective calculation for a **paired mean**, not a power calculation for the sign test that decided the original results. A low-power comparison can still detect an effect, and a non-significant result does not prove equivalence. Microsoft's web-feature rates do not supply a numeric prior for prompt rules. A/A repeats measure local variability, and a resolution IV design does not identify every pairwise interaction. Finally, x008 **did revise in response to non-blocking critic feedback**; no first-review rejection is not the same as no review-driven revision. See the [dated log correction](paired-study/LOG.md#2026-09-20-correction-to-the-interpretation-of-the-september-19-results). No new experiments were run for this correction.
+
 Read: `phase2-paired-study.md` with its three amendments, `paired-study/LOG.md`, `paired-study/task-classes.md`, `backlog.md`, `gauntlet-bench-v2-hypothesis.md`, plus `analyze_pairs.py`, `look-F1.md` and the 80 rows of `results.jsonl`, from which I recomputed the numbers below.
 
 Anchors for every cost figure: 30 counted F1 pairs cost $53.65 at a median of $1.79 and 6.7 minutes per pair; the excision pilot cost $17.23 for 8 pairs. A single arm is therefore about $0.90 and three minutes. All 80 rows ran on `claude-sonnet-5`. Twenty-nine of the thirty F1 tasks came from one repository.
 
 ---
 
-## Gap 1. No power analysis, and the study could not have detected its own observed effects
+## Gap 1. No prospective power analysis matched to the decision statistic
 
 **Practice and source.** Miller, *Adding Error Bars to Evals* (Anthropic, 2024): compute the minimum detectable effect for the n you can afford and use it as a gate on whether to run at all. Kohavi (KDD 2015) states the same constraint as sigma-squared over delta-squared. NIST 5.3.3 says to select the design from the objective and the run budget before spending.
 
 **What the programme does.** Section 5 is one sentence: "Target 30 pairs per flag. Analyze at 10, 20, and 30 pairs." There is no computation anywhere in the protocol, the tools, or the reports that connects thirty to any effect size. A grep for power, minimum detectable effect, or MDE across `research/program/` and `tools/paired_study/` returns nothing.
 
-**What the arithmetic says.** From the 30 recorded paired differences, at 80% power and the protocol's own per-look alpha of 0.0167:
+**What the arithmetic says.** From the 30 recorded paired differences, a normal approximation for a paired-mean comparison at 80% power and per-look alpha 0.0167 gives the table below. These retrospective plug-in calculations are illustrative planning estimates; they do not give the power of the historical sign test, and sample sizes based on the observed effect are uncertain rather than guarantees:
 
-| Outcome | SD of paired difference | MDE at n=30 | as % of arm-B median | observed effect | pairs needed for the observed effect |
+| Outcome | SD of paired difference | Approximate mean MDE at n=30 | as % of arm-B median | observed mean effect magnitude | estimated pairs if this mean effect and SD persist |
 | --- | --- | --- | --- | --- | --- |
-| total tokens | 1,194,522 | 705,648 | 33% | 476,552 (22%) | 66 pairs, $132 |
+| legacy result.usage tokens (superseded) | 1,194,522 | 705,648 | 33% | 476,552 (22%) | historical estimate only; do not reuse |
 | cost | $0.30 | $0.18 | 20% | $0.08 (9%) | 151 pairs, $302 |
 | wall clock | 71.3 s | 42.1 s | 22% | 21.9 s (12%) | 111 pairs, $222 |
 
-Every observed effect is below the study's own detection floor. The result "no difference detected" was, for all three continuous outcomes, arithmetically guaranteed for any effect smaller than roughly a quarter to a third of the arm's consumption. The protocol correctly refuses to say "no effect", which is good, but neither the protocol nor the log ever states how large an effect the study was blind to.
+Each observed mean effect is below this approximation's 80%-power MDE. That does not make a non-significant result inevitable: smaller effects can be detected with lower probability. It also does not explain the sign-test result, which concerns the balance of positive and negative paired differences rather than their mean size. The missing prospective step was to choose an estimand, a practically worthwhile effect and a matching analysis, then assess the design's sensitivity under explicit assumptions.
 
 **Cost to close.** Zero runs and zero dollars. The paired differences are already in `results.jsonl`, and the table above took one script.
 
-**Worth it.** Yes, and it is the single cheapest correction available. It should be a gate: `analyze_pairs.py` should print the MDE at the current n next to every "no difference detected", and the protocol should require an MDE line before a series is authorized. Without it, the programme cannot distinguish a flag that does nothing from an instrument that sees nothing.
+**Worth it.** Yes: report uncertainty and a clearly labelled planning sensitivity estimate matched to the intended analysis. A retrospective MDE must not become a second significance gate or a claim that the study was incapable of detecting a smaller effect. Use the interval to show which effects remain compatible with the data.
 
 ---
 
-## Gap 2. The primary outcome had no variance, so no amount of runs could have tested it
+## Gap 2. Few acceptance discordances and a ceiling on observed solves
 
-**Practice and source.** Zhu et al., *Establishing Best Practices for Building Rigorous Agentic Benchmarks* (NeurIPS 2025): separate task validity from outcome validity, and check whether the grader can discriminate at all. Kapoor et al., *AI Agents That Matter*: a benchmark at ceiling reports a number about nothing.
+**Practice and source.** Zhu et al., *Establishing Best Practices for Building Rigorous Agentic Benchmarks* (NeurIPS 2025): separate task validity from outcome validity and check the grader. A benchmark at an observed ceiling provides little comparative information about correctness; it can still describe success on the sampled tasks and resource costs.
 
 **What the programme does.** Section 4 names `accepted` as the first primary outcome. Section 6 analyses it with "exact binomial test on discordant pairs (McNemar's exact form)."
 
@@ -38,7 +44,7 @@ Every observed effect is below the study's own detection floor. The result "no d
 
 **Cost to close.** Zero dollars to state. Closing it properly means a task class that produces failures, which is what B-033 queues.
 
-**Worth it.** Stating it is mandatory. The rest is already the programme's own plan. The thing to fix in the protocol is the ordering: an outcome with no observed variance in a pilot should block the series, in the same way the contrast-fired rate now does. The programme built that gate for the mechanism and not for the outcome.
+**Worth it.** State the ceiling and use a pilot to assess whether a planned quality comparison is informative. Zero observed failures does not establish zero population failure probability, and seven expected discordances is not an 80%-power sample-size calculation. Further runs might reveal failures, but a task class that discriminates meaningfully is a better next calibration target than automatically extending this series.
 
 ---
 
@@ -52,7 +58,7 @@ Every observed effect is below the study's own detection floor. The result "no d
 
 **Cost to close.** Zero. Either name one Overall Evaluation Criterion, which is what the RIGHT model and Kohavi both require, or divide by fifteen instead of three.
 
-**Worth it.** Yes. It does not change the F1 verdict, because nothing crossed anything. It matters before the next series, because the first flag that produces a win will produce it under an inflated alpha, and the programme will have no defence.
+**Worth it.** Yes. It does not change the historical F1 sign-test verdict because none of those tests crossed the decision threshold. The bootstrap mean interval is a different summary, discussed below. Specify the family of confirmatory claims before the next series; the 8.1% calculation above assumes independent tests, whereas these resource metrics are correlated.
 
 ---
 
@@ -60,7 +66,7 @@ Every observed effect is below the study's own detection floor. The result "no d
 
 **What the programme does.** Section 6 says: "Report both the estimate and the interval; a result with an interval that includes zero is 'no difference detected', not 'no effect'." `analyze_pairs.py` sets `significant_at_look` from the sign test p-value alone. The bootstrap interval is printed and never used.
 
-At thirty pairs the two disagreed on the only outcome that moved. The token interval is [-881,458, -44,211], which excludes zero; the sign test gives p = 0.200. The log reconciles this after the fact: "which is the ordinary disagreement between a mean-based interval and a rank-based test when a few large pairs carry the mean." That explanation is correct and it was written after seeing which way the two tests fell.
+At thirty pairs the token mean interval is [-881,458, -44,211], which excludes zero; the sign test gives p = 0.200. These answer different questions. The interval estimates the average paired token difference; the sign test examines positive versus negative differences after excluding ties and ignores their magnitudes. It is not a signed-rank test. A few large differences can shift the mean without making signs sufficiently imbalanced. The analyses also need compatible error levels if used together for a decision. Their different results do not license selecting whichever favours an arm.
 
 **Cost to close.** Zero.
 
@@ -78,7 +84,7 @@ The programme has one accidental data point and files it as a compliance failure
 
 **Cost to close.** Thirty single runs of a no-review arm against the existing thirty mutation tasks: about $27 and 1.5 hours. Eight more on the excision tasks: about $7.
 
-**Worth it.** This is the highest-value $27 available to the programme, and it should be spent before anything else. If a build-only arm also solves 30 of 30, then the finding is not "find a class where compact fires". The finding is that on this class the whole review apparatus, light included, is unjustified, and the programme has been comparing two prices for a service nobody needed. That is a real result, it is publishable in the programme's own terms, and it costs less than half of one look.
+**Worth it.** A capable single-agent baseline is necessary before claiming a benefit from review. It should retain ordinary tools, self-tests and revision within a stated budget. If it also solves all sampled tasks, that would show no observed correctness gain from review on that sample, not prove review useless or the configurations equivalent. The thirty-run purchase above was the original proposal, not an authorization or a demonstrated optimum; baseline calibration on the intended task class should determine the next spend.
 
 ---
 
@@ -94,17 +100,17 @@ The programme has one accidental data point and files it as a compliance failure
 
 ---
 
-## Gap 7. There is no A/A run, so the noise floor is unknown
+## Gap 7. Within-configuration repeatability has not been measured
 
 **Practice and source.** Henderson et al., *Deep Reinforcement Learning that Matters*: ten trials of the identical algorithm with identical hyperparameters, split arbitrarily into two groups of five, produced a statistically significant difference, t = -9.0916, p = 0.0016.
 
 **What the programme does.** Section 3 fixes constants: "same model IDs for lead, builder, and critic across both arms, recorded per run; same skill version (5.0.0) with the flag as the only prompt difference". Every task is run exactly once per arm. No configuration has ever been run against itself.
 
-This matters because the run-to-run variation here is visibly large. The paired token differences have an SD of 1.19M against a median arm size of about 2.1M, and eleven of thirty pairs ran opposite to the mean. None of that variance has been attributed. The programme currently cannot say whether its instrument is quiet and the flag is inert, or whether the instrument is too loud to see anything.
+The paired token differences have an SD of 1.19M against a median arm size of about 2.1M, and eleven of thirty pairs ran opposite to the mean. These differences combine task-specific treatment effects and stochastic variability; their spread is not itself an estimate of within-configuration run-to-run noise. Repeats can help separate those sources on the sampled tasks.
 
-**Cost to close.** Ten of the existing mutation tasks, run twice under arm A alone: 20 runs, about $18 and one hour. That yields ten null paired differences and a noise floor that every later study reuses without re-spending.
+**Cost to close.** The original proposal was ten existing mutation tasks, run twice under arm A alone: 20 runs, about $18 and one hour. This would give a small local repeatability sample for that task mix, model, harness and budget. It would not establish a universal noise floor reusable across later task classes or model versions.
 
-**Worth it.** Yes. It is the second purchase to make after the baseline arm. It is the difference between "no difference detected" as an assertion and as a measurement.
+**Worth it.** Repeats are useful when they resolve uncertainty relevant to the next comparison. They need not be a separate mandatory purchase on the old mutation pool. A treatment comparison still needs its own uncertainty estimate; an A/A result cannot certify that another study's null result is informative.
 
 ---
 
@@ -128,11 +134,11 @@ This matters because the run-to-run variation here is visibly large. The paired 
 
 > keep ladder (no cost, no harm)
 
-That is the branch established practice rejects. A rule that measurably does nothing still costs context budget and review surface, which is the analogue of Kohavi's cost of additional deployments. As written, the F2 study cannot remove the evidence ladder under any outcome: A better keeps it, no difference keeps it, and only B better removes it. That is a pre-registration that has already decided.
+That branch assumes zero cost and zero harm without measuring either. However, "no difference detected" also does not prove the ladder does nothing. The study can remove it when B is better, so the original claim that it could not lose under any outcome was too strong. A future decision rule should specify the relevant quality margin, costs and treatment of inconclusive evidence. Microsoft's web-product rates motivate caution; they do not supply a numeric prior for this rule.
 
 **Cost to close.** Zero. One cell of one table.
 
-**Worth it.** Half of it. Computing a numeric posterior is not worth doing for a programme with no positive result to interpret, and I would not import that machinery. Adopting the base rate as a default-reject stance is worth doing, because it changes F2 from a study that cannot lose into one that can.
+**Worth it.** Clarify the decision under uncertainty without imposing a borrowed numeric prior. Choosing the simpler configuration when a useful benefit remains unproven can be a product policy; record it as that policy, not as evidence of equivalence or an empirical law that one third of prompt rules work.
 
 ---
 
@@ -148,15 +154,15 @@ That is the branch established practice rejects. A rule that measurably does not
 
 ---
 
-## Gap 11. Flags are tested one at a time, which forfeits interactions at no saving
+## Gap 11. A factorial could screen main effects, with explicit aliasing limits
 
 **Practice and source.** NIST 5.3.3.4.4 on design resolution, 5.3.3.4.6 on screening under sparsity of effects, and 5.3.3.4.7's catalogue: doubling runs buys roughly one resolution step. Jones and Nachtsheim (2011) on definitive screening at 2m+1 runs.
 
 **What the programme does.** Section 1 ranks F1 through F4 and runs them in order. The hypothesis file, section 9, confirms it: "The flag under study rotates through the pre-registered list ... one at a time, until each reaches its planned 30 pairs or is stopped at a look."
 
-**What the arithmetic says.** Four flags at thirty pairs each is 240 runs and about $240. A resolution IV fractional factorial over the same four flags, eight configurations per task across thirty tasks, is also 240 runs and about $240. Same money, four main effects clean of pairwise interactions instead of four isolated contrasts, plus the ability to say whether the ladder and the critic shape interact.
+**What the arithmetic says.** Four flags at thirty pairs each is 240 runs. A resolution IV half-fraction over four flags, eight configurations per task across thirty tasks, also has 240 runs. Equal run counts do not guarantee equal cost or power. In the standard design I = ABCD, main effects are clear of two-factor interactions but aliased with three-factor interactions; AB = CD, AC = BD and AD = BC. Thus a ladder-by-critic interaction cannot be isolated from its aliased pair without additional assumptions or follow-up runs. [NIST's resolution and aliasing guidance](https://www.itl.nist.gov/div898/handbook/pri/section3/pri3344.htm).
 
-**Worth it. Not yet, and say so.** The factorial is unrunnable today for a reason that has nothing to do with money: F2 requires tasks that reach a third review round and none exist, and F4 requires a lesson corpus the protocol itself defers. The correct action is to pre-register the factorial shape now, so that when B-025 produces medium tasks the programme does not default back to one flag at a time out of habit. I would also decline definitive screening designs and alpha spending functions outright. Both are machinery for programmes with more factors and more runs than this one will have.
+**Worth it. Not yet.** F2 requires tasks that reach a third review round, and F4 requires a lesson corpus the protocol defers. Choose a design when the factors, feasible configurations and estimands are concrete; no factorial commitment is needed before that. Screening main effects and attributing a particular interaction are different objectives.
 
 ---
 
@@ -194,11 +200,11 @@ This is a thin programme, not a bad one. The following are not politeness, they 
 
 **Refusing to stop at the first unfavourable look, and saying why.** From the third amendment: "abandoning a pre-registered series at the first unfavourable look is the practice pre-registration exists to prevent." Correct, and it survived a temptation the log records honestly.
 
-**Futility stopping, invented independently.** The excision pilot's decision not to run a thirty-pair series is textbook conditional-power reasoning: "At a rejection rate of zero it would buy another 'no difference detected' on a class whose mechanism does not engage, for about $65 and three hours." That saved $65 and it is the best decision in the whole record. The programme also stated the letter of its own rule pointed the other way and left the override with the owner, rather than quietly reinterpreting the rule.
+**An explicit decision not to expand the pilot.** The excision series was not extended, and the conflict with the pre-registered dispatch-count rule was recorded. This was a practical judgment, not a calculated conditional-power analysis or proof that further runs must be null. The x008 correction below also weakens the original premise that no review-driven revision occurred. The historical stop remains a recorded decision, not a new statistical finding.
 
-**The contrast-fired rate itself.** Nothing in the sources I was given names this metric, and it is the right one. A flag whose mechanism never engages produces a real number about a false subject, and the programme discovered that, named it, pre-registered it, generalized it to F2, F3 and F4 in a table, and then discovered that its own version of it could not distinguish a rejection from a confirmation and replaced it with a verdict-based definition. That sequence is better research practice than the statistics around it.
+**Checking whether the proposed mechanism occurred.** This is useful diagnostic evidence. Neither dispatch count nor verdict wording alone establishes whether feedback changed an artifact: x008 had a passing first verdict followed by a critic-driven edit and another review. Record those behaviours separately. The diagnostic can support error analysis; it does not establish a performance advantage or a novelty claim.
 
-**Reading transcripts rather than counting them.** This is the SWE-Bench+ discipline, and it is what found both of the harness defects that invalidated the pilot and the x008 proxy misfire. From the excision entry: "Reading that transcript before computing anything, as the design requires, shows the proxy misfired." The programme also recorded both readings of that pair, the favourable letter-of-the-rule one and the unfavourable substantive one, and acted on the unfavourable one.
+**Reading transcripts rather than counting them, with an auditable correction.** Transcript review found harness defects, but the first x008 reading missed a real edit. In arm B's transcript, line 182 says the lead will address the critic's edge case, line 185 adds `VLMParseError` to the preserved exception types, and line 195 initiates another review. The first verdict was non-blocking, so the reject-then-revise sequence did not occur; feedback-then-revise did. This is evidence of a local review contribution, not a comparative performance result. [Transcript](paired-study/pairs/x008-intelligence-vlm-call_json/F1-excision/armB.transcript.jsonl).
 
 **Discarding the pilot instead of pooling it.** The git-history leak invalidated the design even though "both pilot transcripts were checked and neither arm looked". Two rows were written off on a possibility, not a demonstrated contamination. That is the correct standard.
 
@@ -206,7 +212,7 @@ This is a thin programme, not a bad one. The following are not politeness, they 
 
 **Cost reported as a top-line number, with the right caveat.** "A token difference of roughly 30% is eight cents a pair, because most tokens are cache reads. Any future claim about a topology being cheaper has to say cheaper in what unit." That is exactly the Kapoor et al. requirement, and the cache-read observation is a genuine contribution the sources do not cover.
 
-**Nulls stated as nulls.** "a result with an interval that includes zero is 'no difference detected', not 'no effect'", applied consistently in both looks.
+**A stated distinction between non-significance and no effect.** The protocol contains that distinction, but this audit's original "pure overhead" and "could not have produced a positive result" language went beyond it. Those claims are corrected here.
 
 **Every deviation recorded, including the ones that look bad.** The look taken at 14 pairs instead of 10 is marked a deviation. The spec renamed after its arms had run is a full entry with two additional defects it uncovered. The x004 arm that dispatched no critic is recorded as a protocol violation the harness caught. The m013 self-report mismatch is recorded with the note that the audit count "is a lower bound". Four separate facts that make the programme look worse, each written down by the programme.
 
@@ -216,17 +222,17 @@ This is a thin programme, not a bad one. The following are not politeness, they 
 
 ## The short version
 
-The programme spent about $73 and learned one true thing: on one-token defects with a deterministic oracle, the extra structure of the compact topology is pure overhead, and no first critic review has ever returned a negative verdict in 76 arms. That finding is sound and the process that produced it is honest.
+The programme spent about $73. Both arms solved every sampled mutation and excision task; the mutation series showed no second review in arm B, and the recorded first critic verdicts were not negative. Compact used more resources in the observed aggregates, but the historical decision tests did not establish a performance difference. These observations do not prove equivalence or that review is pure overhead. On x008, non-blocking feedback did cause a code revision.
 
-What it lacks is arithmetic done before spending. Three numbers would have been free and would have changed what was run: the minimum detectable effect was 33% of arm-B tokens and the observed effect was 22%, so the continuous outcomes were untestable at thirty pairs; McNemar needs seven one-way discordant pairs and the study produced two, so acceptance was untestable at any plausible n; and `solved` was 76 of 76, so the quality outcome had no variance at all. The study could not have produced a positive result about anything it measured.
+The design lacked prospective sensitivity planning tied to its actual decision statistic. The retrospective token mean MDE was about 33% of arm-B median consumption versus an observed mean difference of 22%; that indicates limited power under the approximation, not impossibility of detection. Acceptance had only two discordant pairs, while the historical per-look McNemar threshold required at least seven one-way discordances. Solved outcomes were at an observed ceiling. The useful correction is to match tasks, estimands, uncertainty and decision rules before further runs.
 
-The three purchases worth making, in order, before any medium-task series:
+The original audit proposed these purchases; the corrected interpretation does not authorize or require them in this order:
 
 1. A build-only baseline arm on the existing thirty mutation tasks. Thirty runs, about $27, 1.5 hours. It answers whether the review apparatus is justified on this class at all, which is a larger question than the one the study asked.
-2. An A/A run: ten tasks, twice, under arm A alone. Twenty runs, about $18, one hour. It establishes the noise floor once and every later study reuses it.
-3. The free corrections: print the MDE next to every verdict, name one OEC or divide alpha by fifteen, fix which statistic decides, compute the contrast-fired rate from `critic_dispatches` rather than the agent's self-report, promote `solved` to primary, and change F2's no-difference branch from keep to drop.
+2. An A/A run: ten tasks, twice, under arm A alone. Twenty runs, about $18, one hour. This would estimate local repeatability only; calibration on the next intended task class may be more useful.
+3. The free corrections: align the estimand, test and interval; label MDE assumptions; declare the confirmatory claim and multiplicity policy; use observed events for dispatch counts; distinguish verdicts from feedback-driven edits; and specify how inconclusive evidence affects the product decision. Changes to primary outcomes and decision rules apply prospectively, not to rewriting historical results.
 
-That is $45 and three hours of runs plus a morning of scripting, against $240 for four sequential flag studies that would each hit the same ceiling.
+The original $45 estimate is retained as an estimate for those proposed runs. It is not evidence that this is the best next spend, nor that all future flag studies would hit the same ceiling. First calibrate a capable baseline and the grader on the intended task class, then size a focused comparison.
 
 ---
 

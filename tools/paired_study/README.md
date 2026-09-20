@@ -1,6 +1,12 @@
 # Paired-study harness
 
-Protocol: [research/program/phase2-paired-study.md](../../research/program/phase2-paired-study.md). Everything here costs zero model tokens except `run_pair.py --execute`.
+Historical protocol: [research/program/phase2-paired-study.md](../../research/program/phase2-paired-study.md). `run_pair.py --execute`, its `run_series.py` wrapper, and `run_calibration.py --execute` dispatch model calls. Analysis, tests and preparation do not.
+
+## Current measurement boundary, 20 September 2026
+
+The paired runner now validates prompt hashes before preflight, records executable identities, uses complete `modelUsage` token categories with cost reconciliation, and prevents held-out failure from being accepted. Agent/Task dispatches remain dispatch counts; legacy review self-reports are explicitly unverified. [Replay measurements](../../research/program/paired-study/measurement-replay.md) derives corrected rows without modifying originals. The new controlled [review calibration](../../research/program/calibration/README.md) is separate from the historical F1 policies and is not pooled with them.
+
+The dated setup notes below are retained for provenance; claims such as execution being untested or token accounting not yet built describe the initial September 17 state, not the current runner.
 
 1. Write a task spec from a minted revert-fix task (see `task_spec.example.yaml`). Record difficulty and verifiability before anything runs.
 2. `python tools/paired_study/make_arms.py --spec <spec.yaml> --flag F1` writes `armA.prompt.md`, `armB.prompt.md`, and `manifest.json` (spec hash, counterbalanced order, prompt hashes, the only difference between arms).

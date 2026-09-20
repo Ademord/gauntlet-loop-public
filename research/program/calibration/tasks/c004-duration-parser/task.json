@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "c004-duration-parser",
+  "task_id": "c004-duration-parser",
+  "kind": "constructed-calibration-fixture",
+  "source_context": "workflow-bookkeeping",
+  "description": "Repair parse_duration(value) to parse whole duration strings in the two supported formats, returning seconds or exactly 'unknown'.",
+  "requirements": [
+    "Only string input is supported; every non-string input returns 'unknown'. Strip surrounding whitespace.",
+    "Support uppercase ISO time duration PT followed by optional integer hours H, optional integer minutes M and optional integer or decimal seconds S, in that order; at least one component is required. Examples: PT1H2M3.5S, PT90M, PT0S.",
+    "Support case-insensitive human text with optional 'about ' prefix and optional hours, minutes and seconds in that order. Units: h/hour/hours, min/minute/minutes, s/second/seconds. Whitespace between number/unit and successive components is optional. At least one component is required.",
+    "Hours and minutes are nonnegative integers; only seconds may have a decimal fraction. All digits are ASCII. Minute/second quantities can exceed 59 and are added by their unit values.",
+    "Require the entire string to match. Reject signs, duplicate or reordered units, unsupported units, arbitrary prefixes/suffixes and fractional hours/minutes.",
+    "Return total seconds including fractional seconds; zero is a valid known value. Return 'unknown' if the total is not finite."
+  ],
+  "allowed_paths": [
+    "solution.py"
+  ],
+  "test_command": "python -m unittest discover -s tests -v",
+  "visible_test_command": [
+    "python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+  ],
+  "heldout_test_command": [
+    "python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "heldout",
+    "-v"
+  ],
+  "solver_inputs": [
+    "description",
+    "requirements",
+    "allowed_paths",
+    "base/"
+  ],
+  "evaluation_only": [
+    "heldout/",
+    "oracle/",
+    "frozen_sha256"
+  ],
+  "provenance": {
+    "type": "original-constructed-stress-fixture",
+    "description": "Inspired by the actual parse_wall_clock responsibility in tools/ledger/ingest.py, whose documented forms motivate this calibration context. Source was inspected but not copied; the function/API, grammar, implementations and tests here are newly constructed.",
+    "copied_source": false,
+    "historical_bug": false,
+    "license": "CC-BY-4.0; repository LICENSE.md research license"
+  },
+  "validity_limits": [
+    "Calibration only; these tasks do not establish representative development performance or generality.",
+    "Hidden tests are independent of the solving run, not independently authored from this fixture's reference implementation.",
+    "The oracle is one valid implementation, not an exact patch requirement; behavioral alternatives are allowed.",
+    "Passing visible tests is intentionally insufficient. Base failure is seeded and does not predict model failure rate."
+  ],
+  "frozen_before_model_runs": true,
+  "frozen_utc": "2026-09-20T15:07:02.473541+00:00",
+  "frozen_sha256": {
+    "base/solution.py": "b84bba9577e0da688e44219589790c5549bc93915fad5ce6e692e1e6be808990",
+    "base/tests/test_visible.py": "b0977d025d43cbfc97685af95ad39a3b62d495ab39084ef86d12f9b6c81d89d6",
+    "heldout/test_hidden.py": "4cb5d8ac36f6161663cad025af716073ee67a8e2fd3dbbf9177c3f543770d37a",
+    "oracle/solution.py": "82769908b92f415730a4a2679fc5cffa04170efa87b0db85f5caee1657a1fd1e"
+  }
+}

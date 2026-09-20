@@ -2,6 +2,8 @@
 
 Newest entries last. Every entry that spends model tokens, or could, records what ran, what it cost, and what it established.
 
+The September 19 entries are historical records. See the [September 20 correction](#2026-09-20-correction-to-the-interpretation-of-the-september-19-results) before relying on their x008 or statistical interpretations.
+
 ## 2026-09-19: harness hardened, first pair blocked at login, twelve tasks minted
 
 Resume validation, written before anything was run:
@@ -197,3 +199,30 @@ with the obvious implementation; or a deliverable whose acceptance is not a test
 
 Neither finding changes any recorded result. The mutation series contrast-fired rate stays 0 of 30: the m013
 discrepancy is in arm A, and the metric is defined on arm B.
+
+## 2026-09-20: correction to the interpretation of the September 19 results
+
+No new benchmark runs or paid model experiments were launched. This correction preserves the earlier entries,
+raw results, recorded stopping decision and historical sign-test verdicts; it corrects their interpretation.
+
+- **x008 did revise.** The earlier "No rejection, no revision" statement is wrong. In the
+  [arm-B transcript](pairs/x008-intelligence-vlm-call_json/F1-excision/armB.transcript.jsonl), line 182 says the
+  lead will address the critic's edge case; line 185 changes the provider exception handler to preserve
+  `VLMParseError` as well as `VLMTransportError`; line 195 initiates another independent review. The first
+  verdict was PASS with a non-blocking finding. Thus there was no rejection-triggered revision, but there was
+  a critic-driven code revision followed by a second review. The original dispatch-count rate remains 1/8;
+  a rate based only on negative verdicts would miss this behaviour. This local contribution is not evidence
+  that compact outperformed light across tasks.
+- **The two token summaries answer different questions.** The bootstrap interval describes the paired mean;
+  the sign test tests the balance of positive and negative differences after excluding ties and ignores their
+  magnitudes. The earlier description as a "rank-based test" was imprecise: this was not a signed-rank test.
+  An interval excluding zero and a non-significant sign test can coexist. They must not be used interchangeably
+  or selected after seeing which favours a configuration.
+- **Non-significance is not equivalence.** All sampled tasks passed their suites, and the historical tests did
+  not establish an outcome difference. That supports "no observed correctness gain on these sampled tasks",
+  not "pure overhead" as a general causal conclusion. MDE estimates discussed in the later audit are planning
+  quantities at a specified power, not hard floors below which a significant result is impossible; a paired-mean
+  approximation also does not describe the power of the sign test. A/A repeats would measure local variability,
+  not a universal noise threshold for later task classes.
+
+See the [corrected gap analysis](../gap-analysis-2026-09-20.md) for the associated methodology erratum.

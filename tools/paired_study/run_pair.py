@@ -10,8 +10,8 @@ or the base commit with one recorded mutation applied (mutation-minted tasks). E
 each arm runs `claude -p` with the prompt on stdin, stream-json output, a pinned model, permission mode acceptEdits,
 and a tool allowlist. Verification never trusts the agent: protected test paths are restored to the task base
 before the suite runs (editing a failing test cannot pass it), changed files outside the allowed paths are reported,
-and held-out tests run last. Measured cost, tokens, turns, and critic dispatches come from the transcript.
-The runner refuses a spec whose hash changed after the pair was generated.
+and held-out tests run last and must pass. Measured cost, tokens, turns, and Agent/Task dispatches come from the transcript.
+The runner refuses changed spec or prompt hashes before its paid login preflight.
 """
 import argparse
 import ast
@@ -31,6 +31,10 @@ from pathlib import Path
 repo = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(repo / '.validation-deps'))
 import yaml  # noqa: E402
+try:
+    from .telemetry import accepted_checks, file_identity, measure_result, parse_stream, sha256_bytes, validate_arm_prompts
+except ImportError:  # direct script execution
+    from telemetry import accepted_checks, file_identity, measure_result, parse_stream, sha256_bytes, validate_arm_prompts
 
 ALLOWED_TOOLS = ['Read', 'Edit', 'Write', 'Glob', 'Grep', 'Agent', 'Task', 'TodoWrite',
                  'Bash(python:*)', 'Bash(python3:*)', 'Bash(py:*)', 'Bash(pytest:*)', 'Bash(npm:*)', 'Bash(node:*)',
@@ -158,24 +162,6 @@ def build_task_base(spec, wt):
     return run(['git', 'rev-parse', 'HEAD'], cwd=wt).stdout.strip(), held_contents
 
 
-def parse_stream(text):
-    result, dispatches, tools = None, 0, {}
-    for line in text.splitlines():
-        try:
-            ev = json.loads(line)
-        except ValueError:
-            continue
-        if ev.get('type') == 'assistant' and ev.get('parent_tool_use_id') is None:
-            for c in (ev.get('message') or {}).get('content') or []:
-                if isinstance(c, dict) and c.get('type') == 'tool_use':
-                    tools[c.get('name')] = tools.get(c.get('name'), 0) + 1
-                    if c.get('name') in ('Agent', 'Task'):
-                        dispatches += 1
-        elif ev.get('type') == 'result':
-            result = ev
-    return result, dispatches, tools
-
-
 def preflight(model, env):
     """Spend a few tokens to confirm the CLI is authenticated before anything is cloned."""
     cmd = [shutil.which('claude') or 'claude', '-p', '--output-format', 'json', '--model', model, *ISOLATION]
@@ -256,6 +242,19 @@ def main():
     args = ap.parse_args()
     pair = Path(args.pair).resolve()
     manifest, spec = load(pair)
+    try:
+        verified_prompts = validate_arm_prompts(pair, manifest)
+    except (ValueError, OSError) as exc:
+        raise SystemExit(f'REFUSED before preflight: {exc}') from exc
+    execution_identity = {
+        'runner': file_identity(__file__),
+        'telemetry': file_identity(Path(__file__).with_name('telemetry.py')),
+        'generator_source_at_run': file_identity(Path(__file__).with_name('make_arms.py')),
+        'generator_at_generation': manifest.get('generator_identity'),
+        'generator_at_generation_status': 'recorded' if manifest.get('generator_identity') else 'unknown_in_legacy_manifest',
+        'manifest_sha256_before_run': sha256_bytes((pair / 'manifest.json').read_bytes()),
+        'spec_sha256': manifest['spec_sha256'],
+    }
     results_path = repo / 'research/program/paired-study/results.jsonl'
     arms = [a for a in manifest['order'] if not args.arms or a in args.arms]
     base_cmd = [shutil.which('claude') or 'claude', '-p', '--output-format', 'stream-json', '--verbose', '--model', args.model,
@@ -263,7 +262,8 @@ def main():
     if args.dry_run or not args.execute:
         print(json.dumps({'mode': 'dry-run', 'task_id': spec['task_id'], 'flag': manifest['flag'], 'order': arms, 'model': args.model,
                           'worktrees': args.worktrees, 'command': base_cmd[1:13] + ['--allowedTools', f'<{len(ALLOWED_TOOLS)} tools>'],
-                          'repo_resolved': Path(spec['repo']).exists(), 'model_tokens_used': 0}, indent=2))
+                          'repo_resolved': Path(spec['repo']).exists(), 'prompts_hash_verified': True,
+                          'execution_identity': execution_identity, 'model_tokens_used': 0}, indent=2))
         return 0
     env = dict(os.environ, PYTHONPATH=str(repo / '.validation-deps'))
     ok, detail = preflight(args.model, env)
@@ -274,7 +274,7 @@ def main():
     for arm in arms:
         wt = Path(args.worktrees) / spec['task_id'] / manifest['flag'] / arm
         base, held_contents = build_task_base(spec, wt)
-        prompt = (pair / f'arm{arm}.prompt.md').read_text(encoding='utf-8')
+        prompt = verified_prompts[arm]['text']  # submit the same text whose hash was checked before preflight
         t0 = time.time()
         timed_out = False
         try:
@@ -288,19 +288,29 @@ def main():
         if (wt / 'gauntlet').exists():
             shutil.copytree(wt / 'gauntlet', pair / f'arm{arm}.gauntlet', dirs_exist_ok=True)
         result, dispatches, tools = parse_stream(stdout)
+        measurements = measure_result(result)
         checks = verify(spec, wt, base, held_contents)
         ms = milestone_of(wt)
         usage = (result or {}).get('usage') or {}
-        tokens = sum(usage.get(k, 0) or 0 for k in ('input_tokens', 'output_tokens', 'cache_read_input_tokens', 'cache_creation_input_tokens'))
         milestone_reviews = find_key(ms, {'reviews_used', 'run_used', 'critic_reviews'}) if ms else None
+        reported_reviews = milestone_reviews if isinstance(milestone_reviews, int) and not isinstance(milestone_reviews, bool) and milestone_reviews >= 0 else None
         row = {'task_id': spec['task_id'], 'flag': manifest['flag'], 'arm': arm, 'model': args.model, 'task_base': base, 'history_orphaned': True,
-               'accepted': checks['suite_rc'] == 0 and not checks['out_of_scope'],
+               'accepted': accepted_checks(checks),
                'suite_rc': checks['suite_rc'], 'suite_tail': checks['suite_tail'], 'held_out_passed': checks['held_out_passed'],
                'protected_modified': checks['protected_modified'], 'out_of_scope': checks['out_of_scope'], 'changed_files': checks['changed_files'],
                'agent_state': find_key(ms, {'state', 'outcome_state', 'outcome'}) if ms else None,
-               'reviews_used': milestone_reviews if isinstance(milestone_reviews, int) else dispatches,
-               'critic_dispatches': dispatches, 'tool_calls': tools,
-               'cost_usd': (result or {}).get('total_cost_usd'), 'total_tokens': tokens or None, 'usage': usage or None,
+               'self_reported_reviews': reported_reviews,
+               'reviews_used': reported_reviews if reported_reviews is not None else dispatches,
+               'reviews_used_source': 'legacy_milestone_self_report' if reported_reviews is not None else 'legacy_agent_task_dispatches',
+               'reviews_used_is_verified': False,
+               'agent_task_dispatches': dispatches,
+               'critic_dispatches': dispatches,  # compatibility alias: not verified critic reviews
+               'critic_dispatches_semantics': 'legacy_alias_of_agent_task_dispatches; reviewer role and completion are not inferred',
+               'tool_calls': tools, 'usage': usage or None,
+               **measurements,
+               'execution_identity': execution_identity,
+               'prompt_identity': {key: value for key, value in verified_prompts[arm].items() if key != 'text'},
+               'transcript_sha256': sha256_bytes((pair / f'arm{arm}.transcript.jsonl').read_bytes()),
                'num_turns': (result or {}).get('num_turns'), 'agent_duration_s': round(((result or {}).get('duration_ms') or 0) / 1000),
                'wall_clock_s': wall, 'permission_denials': len((result or {}).get('permission_denials') or []),
                'is_error': (result or {}).get('is_error'), 'timed_out': timed_out,
@@ -312,8 +322,8 @@ def main():
             f.write(json.dumps(row) + '\n')
         manifest['runs'][arm] = {'finished_utc': row['finished_utc'], 'model': args.model, 'harness_rc': rc, 'accepted': row['accepted']}
         (pair / 'manifest.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
-        print(json.dumps({k: row[k] for k in ('arm', 'accepted', 'suite_rc', 'held_out_passed', 'out_of_scope', 'reviews_used', 'critic_dispatches',
-                                              'cost_usd', 'total_tokens', 'num_turns', 'wall_clock_s', 'permission_denials', 'harness_failure')}), flush=True)
+        print(json.dumps({k: row[k] for k in ('arm', 'accepted', 'suite_rc', 'held_out_passed', 'out_of_scope', 'agent_task_dispatches',
+                                              'cost_usd', 'total_tokens', 'total_tokens_source', 'cost_reconciles', 'num_turns', 'wall_clock_s', 'permission_denials', 'harness_failure')}), flush=True)
         if row['harness_failure'] and (row['num_turns'] or 0) <= 1:
             print('ARM FAILED AT STARTUP: stopping the pair so the other arm is not spent on a broken harness.', file=sys.stderr)
             break

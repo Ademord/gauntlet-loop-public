@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "c006-ready-scheduler",
+  "task_id": "c006-ready-scheduler",
+  "kind": "constructed-calibration-fixture",
+  "source_context": "workflow-coordination",
+  "description": "Repair ready_tasks(tasks, capacity) to validate task dependencies and select dispatchable work subject to global capacity and exclusive resources.",
+  "requirements": [
+    "Tasks are dicts with unique string id, optional depends_on list of task IDs, optional resources list of string resource IDs, optional integer priority (default 0), and status pending/running/done/failed (default pending). Inputs otherwise follow this schema.",
+    "Validate capacity is an integer >=0, rejecting bool and other types with ValueError. Reject duplicate task IDs, unknown dependencies and any dependency cycle with ValueError, even if all tasks in a cycle are done or capacity is zero.",
+    "Capacity is the maximum total number of running tasks, so each existing running task consumes one slot. Never return more than max(0, capacity - running_count) new task IDs.",
+    "Only pending tasks whose every dependency has status done can be selected. Failed or running prerequisites do not count as done; unrelated branches remain eligible.",
+    "Resources held by existing running tasks cannot be selected again. Newly selected tasks immediately reserve their resources, so selected tasks also cannot conflict with one another.",
+    "Consider eligible tasks by descending priority, retaining original input order on ties. Greedily skip conflicting tasks and continue to later candidates until slots are filled or candidates end; do not globally optimize scheduling.",
+    "Return selected IDs in dispatch order and preserve inputs unchanged. Done/failed tasks hold no resources."
+  ],
+  "allowed_paths": [
+    "solution.py"
+  ],
+  "test_command": "python -m unittest discover -s tests -v",
+  "visible_test_command": [
+    "python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+  ],
+  "heldout_test_command": [
+    "python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "heldout",
+    "-v"
+  ],
+  "solver_inputs": [
+    "description",
+    "requirements",
+    "allowed_paths",
+    "base/"
+  ],
+  "evaluation_only": [
+    "heldout/",
+    "oracle/",
+    "frozen_sha256"
+  ],
+  "provenance": {
+    "type": "original-constructed-stress-fixture",
+    "description": "This is an original coordination stress fixture grounded in the repository's documented dependency and single-owner concerns. No production scheduler or historical defect was copied; it is not representative benchmark data.",
+    "copied_source": false,
+    "historical_bug": false,
+    "license": "CC-BY-4.0; repository LICENSE.md research license"
+  },
+  "validity_limits": [
+    "Calibration only; these tasks do not establish representative development performance or generality.",
+    "Hidden tests are independent of the solving run, not independently authored from this fixture's reference implementation.",
+    "The oracle is one valid implementation, not an exact patch requirement; behavioral alternatives are allowed.",
+    "Passing visible tests is intentionally insufficient. Base failure is seeded and does not predict model failure rate."
+  ],
+  "frozen_before_model_runs": true,
+  "frozen_utc": "2026-09-20T15:07:02.473541+00:00",
+  "frozen_sha256": {
+    "base/solution.py": "07f9cc3fe1afe3898709f34a4d71925cb0f98741ea828100d2f26d76d732c959",
+    "base/tests/test_visible.py": "b6f13b96c2ced59aaaa9f7dfb42cbd5637038e4992353412d0608905f2afe6bd",
+    "heldout/test_hidden.py": "775640c32ffb35e477b62189c5415bcd3c6252515124e285ed4b9e7076589a5b",
+    "oracle/solution.py": "f591049c9f65d538204a85e9874262579735efd33dc9ac7457dc5bef2d6f0b38"
+  }
+}

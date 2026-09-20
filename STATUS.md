@@ -1,6 +1,14 @@
 # Status
 
-Work in progress, updated 19 September 2026. This is the canonical working repository.
+Work in progress, updated 20 September 2026. This is the canonical working repository.
+
+## Measurement correction and current experiment
+
+The independent September 20 audit found incomplete token accounting, a missed critic-driven revision, and unsupported statistical conclusions. The [derived measurement replay](research/program/paired-study/measurement-replay.md) reconciles all 76 counted transcripts: 217,433,726 tokens across complete modelUsage categories, compared with 150,771,035 recorded previously. Original rows remain unchanged. Dollar figures are CLI-reported API-equivalent usage cost; subscription billing was not observed.
+
+The historical F1 arms both allow revision after rejection and use generated prompts, not the full installed skill. They therefore do not establish a benefit of the revision loop or a version-to-version gain. Of 76 counted arms, 76 passed their exposed suites and 74 met scope acceptance; only two arms, on one task, had held-out tests.
+
+The active next step is the [six-task review calibration](research/program/calibration/README.md): baseline, builder self-check, and fresh review plus one correction, all branching from the same built candidate. It uses frozen constructed stress fixtures to validate the apparatus. It is not a representative performance benchmark. Production skill 5.1.0 remains unchanged while the calibration runs.
 
 ## Where things stand
 
@@ -21,11 +29,13 @@ Work in progress, updated 19 September 2026. This is the canonical working repos
 - The last consistency fix of the v5 run was verified deterministically after the last critic read it; see [dist/RELEASE-REVIEW.md](dist/RELEASE-REVIEW.md).
 - v4 and v5.0 dropped the worked examples and the bar table that v1 to v3 carried; 5.1 restored them, and the effect of neither the dropping nor the restoring was measured.
 - The twelve mutation tasks all come from one repository and are one-token defects; results on them generalize only to that class.
-- No first critic review has returned a negative verdict in any of the 76 recorded arms, so nothing here measures the revision loop; one arm dispatched no critic at all, and one under-reported its review count.
+- No first critic review was recorded as negative across the 76 counted arms. That does not imply no review-driven edit: x008 changed exception handling after a nonblocking finding. Agent/Task dispatch counts are not verified reviewer counts; see the dated study erratum.
 - The thirty F1 pairs are one-token defects and small repairs in one public Python repository on one model; nothing here speaks to harder work, and the flag's own mechanism never fired on them.
 - Cost is measured: $53.65 for thirty pairs, about six minutes a pair, dominated by cache reads.
 
-## Next steps, in order
+## Superseded September 19 plan
+
+The following ordering is retained as history. It is superseded by the September 20 measurement repair and bounded calibration above. A representative confirmation study requires its own task sample and effect-size plan after the apparatus is validated.
 
 1. Build and pilot the specification-varying task class (B-033) with the corrected mechanism-fired metric (B-034). Two classes have now failed to make a first review reject, and a third failure would itself be the result: that a deterministic oracle over a repository cannot produce work the loop is needed for.
 2. Cut medium tasks by hand from release-sized commits (B-025). The flag's contrast never fired on one-token defects, and both the evidence ladder (F2) and the checkpoint handoff need work long enough to reach a third review round.

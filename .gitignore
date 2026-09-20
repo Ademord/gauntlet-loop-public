@@ -20,3 +20,4 @@ research/source-notes-*.txt
 research/program/paired-study/task-pool-survey-*
 research/program/paired-study/pairs/*/*/arm*.transcript.jsonl
 research/program/paired-study/pairs/*/*/arm*.gauntlet/
+research/program/calibration/runs/*/private/

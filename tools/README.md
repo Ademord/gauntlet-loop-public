@@ -1,6 +1,6 @@
 # Tools
 
-Deterministic scripts. None of them calls a model except `paired_study/run_pair.py --execute`. Python 3.10 or later (tested with 3.13). PyYAML and pytest are expected in `.validation-deps/`: run `pip install --target .validation-deps pyyaml pytest` once, then prefix commands with `PYTHONPATH=.validation-deps`.
+Most scripts are deterministic. `paired_study/run_pair.py --execute`, its series wrapper, and `paired_study/run_calibration.py --execute` dispatch paid model calls. Python 3.10 or later. PyYAML and pytest are expected in `.validation-deps/` for the historical tools; the new calibration fixtures use the standard library. Run `pip install --target .validation-deps pyyaml pytest` once if needed, then prefix commands with `PYTHONPATH=.validation-deps`.
 
 | Tool | What it does | Command |
 | --- | --- | --- |
@@ -14,3 +14,9 @@ Deterministic scripts. None of them calls a model except `paired_study/run_pair.
 | `paired_study/` | Paired-study harness: `survey_repos.py` finds candidate tasks, `mint_mutations.py` mints one-token tasks and `mint_excisions.py` mints medium ones, `make_arms.py` writes the two arm prompts, `run_pair.py` runs one pair headlessly behind a login preflight, `run_series.py` walks the ready pairs, `analyze_pairs.py` applies the committed exact tests, `report_pairs.py` writes the look report | see [paired_study/README.md](paired_study/README.md) |
 
 Local configuration lives in gitignored `*.local.json` files. The schema of the run ledger is [ledger/SCHEMA.md](../ledger/SCHEMA.md).
+
+## Measurement correction and calibration
+
+- `python -m unittest discover -s tests -v` checks accounting, prompt binding, grader integrity, stage isolation, and budget/stop behavior without model calls.
+- `python tools/paired_study/replay_measurements.py --output research/program/paired-study/results.corrected.jsonl --report research/program/paired-study/measurement-replay.md` creates a derived correction from matching local transcripts. It never rewrites the original rows. A fresh clone lacks gitignored transcripts; unsupported corrections stay unknown.
+- [Review calibration](../research/program/calibration/README.md) documents the frozen six-task comparison, its limits, and explicit prepare/execute commands.

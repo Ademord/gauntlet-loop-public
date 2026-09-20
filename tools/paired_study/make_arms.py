@@ -115,6 +115,7 @@ def main():
     for arm, text in prompts.items():
         (out / f'arm{arm}.prompt.md').write_text(text + '\n', encoding='utf-8')
     manifest = {
+        'generator_identity': {'name': 'make_arms.py', 'sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()},
         'task_id': spec['task_id'], 'flag': args.flag, 'flag_name': flag['name'], 'spec_path': spec_path_for_record(args.spec), 'spec_sha256': spec_hash,
         'order': order, 'arm_prompt_sha256': {arm: hashlib.sha256(t.encode()).hexdigest() for arm, t in prompts.items()},
         'only_difference': {'A': flag['A'], 'B': flag['B']}, 'review_cap': spec.get('review_cap', 8), 'reserve': reserve(int(spec.get('review_cap', 8))),

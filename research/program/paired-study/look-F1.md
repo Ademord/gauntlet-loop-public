@@ -145,3 +145,6 @@ From `analyze_pairs.py`, committed before the first pair ran. The per-look thres
 - Acceptance is binary and every task has a deterministic oracle, so the comparison is about cost and effort far more than about quality.
 - The planned first look is thirty pairs; a smaller look is reported for what it is.
 - Cost figures are the transcript's own `total_cost_usd`, which is API-equivalent pricing, not what a subscription is billed.
+# Historical report: measurement correction
+
+This report preserves the original F1 analysis. Its token statistics use the incomplete legacy `result.usage` field and are superseded by the [September 20 measurement replay](measurement-replay.md). The raw original rows are unchanged. F1 compares two policies that both permit revision; it is not a review-versus-no-review experiment or a full skill-version comparison.
