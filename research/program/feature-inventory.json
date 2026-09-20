@@ -1,0 +1,2429 @@
+[
+ {
+  "features": [
+   {
+    "id": "solo-tier-is-the-default",
+    "name": "Solo tier is the default roster",
+    "quote": "**Solo (default).** One lead that plans and builds, one separate critic per piece with fresh context, the verdict record, the budget, the stopping record, and the run log. This is the whole loop for writing, visual work, research, and bounded code pieces. Most runs never need more. (v3/SKILL.md)",
+    "predecessor_state": "v2/SKILL.md: \"Use two solvers, four whistleblower responsibilities, a reference researcher and a final reviewer when the user requests the full setup or the task benefits from it.\" \u2014 v2 had no named default roster and allowed the full eight-responsibility setup whenever \"the task benefits from it\".",
+    "behavior_delta": "The lead dispatches one builder-plus-critic pair per piece instead of standing up solvers, whistleblowers, a reference researcher and a final reviewer, unless the user asked for the team tier.",
+    "precondition": "A run where the lead judges the task would benefit from the eight-responsibility setup but the user did not say \"team gauntlet\" or \"full setup\" and no selected delivery gate requires more than one writer.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "no-self-upgrade-to-team-tier",
+    "name": "Lead cannot self-upgrade to team tier",
+    "quote": "The lead does not upgrade a solo run to the team tier on its own judgment. It may propose the upgrade once, with the reason, and continue solo until the user answers. (v3/SKILL.md)",
+    "predecessor_state": "silent \u2014 v2/SKILL.md gave the lead the discretion itself (\"when the user requests the full setup or the task benefits from it\") and said nothing about proposing or waiting.",
+    "behavior_delta": "Mid-run, when the lead concludes more roles are needed, it emits exactly one proposal and keeps working solo rather than spawning the extra agents; a second proposal is not permitted.",
+    "precondition": "A solo run is already underway and the lead forms the judgment that the team tier would help before the user has said anything about tiers.",
+    "kind": "behavior",
+    "depends_on": [
+     "solo-tier-is-the-default"
+    ]
+   },
+   {
+    "id": "budget-on-by-default",
+    "name": "Every piece has a budget by default",
+    "quote": "Every piece has a budget by default. (v3/SKILL.md)",
+    "predecessor_state": "v2/SKILL.md: \"Add a budget or cost ceiling line **only if the user named one**. No default cap.\"",
+    "behavior_delta": "The generated prompt now always carries a budget line, and a running loop always counts rounds per piece; v2 ran uncapped unless the user supplied a number. This is a direct reversal, not an addition.",
+    "precondition": "Any run or prompt draft where the user named no budget and no cost ceiling.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "budget-soft-limit-wrap-up",
+    "name": "Soft limit: wrap up and judge what exists",
+    "quote": "Unless the user names one: **soft limit 6 critic rounds or 120 model requests per piece, whichever comes first; hard stop at 1.5\u00d7.** At the soft limit the builder wraps up the current attempt and the critic judges what exists. (v3/SKILL.md)",
+    "predecessor_state": "silent \u2014 v2/SKILL.md defined no round or request count of any kind.",
+    "behavior_delta": "At round 6 (or 120 requests) the lead stops the builder from starting new work and dispatches the critic against the partial attempt, instead of letting the builder continue toward a better candidate.",
+    "precondition": "A single piece reaches its sixth critic round or its 120th model request without the critic having picked ours.",
+    "kind": "budget",
+    "depends_on": [
+     "budget-on-by-default"
+    ]
+   },
+   {
+    "id": "budget-hard-stop-parks-piece",
+    "name": "Hard stop at 1.5x parks the piece",
+    "quote": "At the hard stop the piece is parked as **blocked (budget)** with the biggest remaining gap and its evidence recorded, and work moves to other pieces or to the stopping milestone. (v3/SKILL.md)",
+    "predecessor_state": "silent \u2014 v2/SKILL.md had no mechanism that ever moved work off a losing piece; the only exits named were winning the comparison or the user stopping the run.",
+    "behavior_delta": "At 9 rounds (or 180 requests) the lead abandons the piece with a recorded status and reallocates to other pieces, where v2 would have kept looping indefinitely.",
+    "precondition": "A piece has already passed its soft limit and reaches 1.5x of it while the critic still picks the bar.",
+    "kind": "behavior",
+    "depends_on": [
+     "budget-soft-limit-wrap-up"
+    ]
+   },
+   {
+    "id": "parked-piece-is-never-a-pass",
+    "name": "A budget stop is never a pass",
+    "quote": "A budget stop is not an exit and never a pass. A parked piece stays unwon in the stopping record; it can be resumed with a larger budget, a smaller piece, a different builder, or a changed bar. (v3/SKILL.md)",
+    "predecessor_state": "v2/SKILL.md: \"**Named exit after N rounds.** The exit is winning the comparison, or the user stopping the run. Never a round count.\" \u2014 v2 forbade round-count exits outright rather than defining a non-passing one.",
+    "behavior_delta": "Guards the new budget against being read as a completion criterion: the stopping record and any SHIP claim must still show the piece as lost, so the budget cannot launder a failure into done.",
+    "precondition": "A piece has been parked at the hard stop and the lead is writing the stopping record or deciding whether to declare SHIP.",
+    "kind": "prohibition",
+    "depends_on": [
+     "budget-hard-stop-parks-piece"
+    ]
+   },
+   {
+    "id": "fixed-verdict-record-schema",
+    "name": "Critic returns a fixed verdict record",
+    "quote": "The critic's output is a record, not a review. Prose may follow it, but the record is what the lead reads and what goes on the progress page (v3/SKILL.md)",
+    "predecessor_state": "v2/SKILL.md: \"The critic inspects the actual output, compares against the real reference blind where meaningful, independently verifies the acceptance checks, and names the single biggest remaining gap.\" \u2014 free prose with a required gap sentence, no schema.",
+    "behavior_delta": "The critic emits seven named fields (piece, winner ours|bar|none, biggest_gap, checks, hold, evidence, round) and the lead parses those fields rather than reading a review; the progress page shows the record.",
+    "precondition": "Any critic round completes and has to hand its judgement back to the lead.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "verdict-without-evidence-is-void",
+    "name": "A verdict without evidence paths is void",
+    "quote": "A verdict without evidence paths is not a verdict. (v3/SKILL.md)",
+    "predecessor_state": "silent \u2014 v2/SKILL.md required \"scoped evidence\" and \"Record exact evidence\" for the run, but never made a critic's verdict itself invalid for lacking evidence pointers.",
+    "behavior_delta": "The lead rejects and re-requests a critic verdict whose evidence field is empty, instead of acting on the winner it declared.",
+    "precondition": "A critic returns a verdict whose evidence field has no paths, URLs, command output or screenshot files.",
+    "kind": "behavior",
+    "depends_on": [
+     "fixed-verdict-record-schema"
+    ]
+   },
+   {
+    "id": "multi-critic-majority-on-request",
+    "name": "Two or three critics with majority, only on request",
+    "quote": "For a high-stakes piece the user may ask for two or three critics with fresh context and a majority; do not add critics without being asked. (v3/SKILL.md)",
+    "predecessor_state": "silent \u2014 v2/SKILL.md named \"a final reviewer\" in the team roster and said \"separate critics review the actual artifacts and evidence\" but never offered a per-piece multi-critic vote or forbade adding critics.",
+    "behavior_delta": "Opens a majority-vote critic mode the lead may only enter on the user's word; absent that word the lead dispatches exactly one critic per piece per round.",
+    "precondition": "The user asks for extra critics on a named high-stakes piece, or the lead is tempted to add a second critic on its own.",
+    "kind": "behavior",
+    "depends_on": [
+     "fixed-verdict-record-schema"
+    ]
+   },
+   {
+    "id": "state-harness-and-models-per-role",
+    "name": "Name harness and model per role in the prompt",
+    "quote": "State the harness and the model per role in the prompt when they are known, and which quota each consumes. (v3/SKILL.md)",
+    "predecessor_state": "silent \u2014 v2/SKILL.md never mentioned models, harnesses or quotas; its fill-in rules covered only the bar, extensions, budget, tool names and implementation freedom.",
+    "behavior_delta": "The generated prompt gains a line assigning lead, critic and builder to named models on a named harness with the quota each draws from, where v2 prompts were model-agnostic.",
+    "precondition": "The user or the project has actually set models or a harness; otherwise the paired rule applies and the roles are left open with that stated.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "builder-cheapest-model-that-clears-critic",
+    "name": "Builder gets the cheapest model that clears the critic",
+    "quote": "The **builder** types; it needs the cheapest model that clears the critic on this kind of piece, because a weaker builder costs rounds, not final quality, as long as the exit stays \"the critic picks ours.\" (v3/SKILL.md)",
+    "predecessor_state": "silent \u2014 v2/SKILL.md assigned no model characteristics to any role.",
+    "behavior_delta": "Changes which model the lead assigns to builder slots: cheap by default, with the dated example mapping (lead on Claude Fable 5.1, critic on Claude Opus 5, builder on GPT-5.6 Luna) as the September 2026 starting point. ASSUMPTION: this only changes an outcome where the lead actually controls model assignment.",
+    "precondition": "The lead is choosing or naming a model for a builder slot and more than one model is reachable in the harness.",
+    "kind": "behavior",
+    "depends_on": [
+     "state-harness-and-models-per-role"
+    ]
+   },
+   {
+    "id": "cheap-builder-small-pieces",
+    "name": "Keep a cheap builder's pieces and context small",
+    "quote": "Cheap builders lose long-context recall first; keep their pieces small and their context to the piece and the bar. (v3/SKILL.md)",
+    "predecessor_state": "silent \u2014 v2/SKILL.md said only \"Break this into the smallest pieces that can be improved and judged on their own\" with no link between piece size and the builder's model.",
+    "behavior_delta": "Decomposition granularity and the context handed to a builder become a function of that builder's model: weaker model means smaller piece and a context trimmed to piece plus bar.",
+    "precondition": "A builder slot has been assigned a cheaper or weaker model and the lead is sizing pieces or assembling the builder's context.",
+    "kind": "behavior",
+    "depends_on": [
+     "builder-cheapest-model-that-clears-critic"
+    ]
+   },
+   {
+    "id": "no-silent-model-substitution",
+    "name": "No silent model substitution for a role",
+    "quote": "Never let a lane silently substitute a different model for an assigned role; an unavailable model is a recorded blocker for that piece, not a quiet fallback. (v3/SKILL.md)",
+    "predecessor_state": "silent \u2014 v2/SKILL.md had no concept of assigned models, so no substitution rule.",
+    "behavior_delta": "When the assigned model is unreachable the piece stops and the blocker is recorded, instead of the harness falling back to whatever model is available and the run continuing.",
+    "precondition": "A model assigned to a role is unavailable, rate-limited or silently remapped by the harness mid-run.",
+    "kind": "prohibition",
+    "depends_on": [
+     "state-harness-and-models-per-role"
+    ]
+   },
+   {
+    "id": "change-one-thing-per-run",
+    "name": "Change one thing per run",
+    "quote": "A run that changes harness and method at the same time cannot tell you which one helped; change one thing per run. (v3/SKILL.md)",
+    "predecessor_state": "silent \u2014 v2/SKILL.md framed the loop purely as a production method and contained no experiment-design constraint.",
+    "behavior_delta": "The lead refuses to vary harness and method together in one run, so a planned change gets split across runs.",
+    "precondition": "A run is being set up that would alter both the harness and the method (or two variables generally) relative to the previous run.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "workflow-comparison-protocol",
+    "name": "Comparison arms: frozen tasks, blind fresh critic",
+    "quote": "To compare this workflow against another, or one model against another, change one thing per arm, use the same frozen tasks, and let a fresh critic that saw none of the runs judge blind. (v3/SKILL.md)",
+    "predecessor_state": "silent \u2014 v2/SKILL.md described blind comparison only between the artifact and the bar, never between two runs of the workflow itself.",
+    "behavior_delta": "Defines a second, meta-level loop: the same frozen task set is run per arm and judged by a critic with no exposure to either run, rather than the arms being compared by whoever ran them.",
+    "precondition": "Someone actually sets out to compare two workflows or two models, with at least two completed runs to judge.",
+    "kind": "behavior",
+    "depends_on": [
+     "change-one-thing-per-run",
+     "run-log-record-per-run"
+    ]
+   },
+   {
+    "id": "worktree-isolation-parallel-builders",
+    "name": "Parallel builders on shared files get worktrees",
+    "quote": "When builders run in parallel on pieces that touch the same files, each builder works in its own worktree or workspace clone and returns a patch or branch; the lead merges and then runs the checks once across the union of changed files. (v3/SKILL.md)",
+    "predecessor_state": "v2/SKILL.md: \"Assign one writer per file and one owner of any live browser.\" \u2014 v2's only answer to write conflicts was serialization by ownership; it never allowed parallel work on shared files.",
+    "behavior_delta": "Parallel builders on overlapping files become possible: each gets an isolated checkout, returns a patch, and the lead does a single merged check pass instead of per-builder checks.",
+    "precondition": "Two or more pieces dispatched in the same wave touch the same files and the harness offers worktrees or workspace clones.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "serialize-when-no-isolation",
+    "name": "No isolation means serialize and say so",
+    "quote": "If the harness offers no isolation, serialize the overlapping pieces and say so; do not let two builders write the same file. (v3/SKILL.md)",
+    "predecessor_state": "silent \u2014 v2/SKILL.md assumed one writer per file throughout and never described a harness capability check or a disclosure when parallelism is dropped.",
+    "behavior_delta": "The lead checks for isolation before fanning out overlapping pieces, drops them to sequential when it is absent, and states that in the output rather than silently running them one at a time.",
+    "precondition": "Overlapping pieces are ready to dispatch in parallel and the harness provides no worktree or workspace clone.",
+    "kind": "behavior",
+    "depends_on": [
+     "worktree-isolation-parallel-builders"
+    ]
+   },
+   {
+    "id": "builders-do-not-run-gates",
+    "name": "Builders edit; they do not run gates or formatters",
+    "quote": "Builders do not run the project's gates or formatters; they edit. The lead or the critic verifies. (v3/SKILL.md)",
+    "predecessor_state": "silent \u2014 v2/SKILL.md said \"The lead builds; separate critics review the actual artifacts and evidence\" but never forbade a builder from running the project's checks or formatters.",
+    "behavior_delta": "A builder's turn ends at the edit: it does not invoke the test suite, linter or formatter, and verification moves entirely to the lead or critic.",
+    "precondition": "A builder is working in a project that actually has gates or formatters it could invoke.",
+    "kind": "prohibition",
+    "depends_on": []
+   },
+   {
+    "id": "run-log-record-per-run",
+    "name": "Every run appends a run record",
+    "quote": "Every run appends one record at the stopping milestone (or a hook writes it) so workflows and models can be compared later instead of argued about (v3/SKILL.md)",
+    "predecessor_state": "silent \u2014 v2/SKILL.md's stopping obligation was \"record delivered and unverified work, the next concrete step, evidence and active ownership\", a resumption note with no cross-run fields (no date, task_id, harness, models, rounds, wall time, tokens, cost or quota).",
+    "behavior_delta": "Adds a write at the end of every run capturing tier, harness, models per role with effort, pieces, rounds per piece, won/parked/blocked counts, wall time, tokens, cost and quota, verdict summary and blockers. Within the run itself this changes nothing an agent does; it only changes what is written down for later runs.",
+    "precondition": "A run reaches its stopping milestone, whether it shipped, parked pieces or was paused.",
+    "kind": "record",
+    "depends_on": []
+   },
+   {
+    "id": "run-log-location",
+    "name": "Run log lives at gauntlet/runs.jsonl",
+    "quote": "Keep it in the project under `gauntlet/runs.jsonl` or the project's equivalent. (v3/SKILL.md)",
+    "predecessor_state": "silent \u2014 v2/SKILL.md named no file or path for any run-level record; its records lived in \"the project's existing worklog or progress artifact\" (v2/references/software-quality.md).",
+    "behavior_delta": "Fixes where the record is written, so a later run or a comparison can find prior records without being told the path.",
+    "precondition": "A run record is being written and the project has no established equivalent location.",
+    "kind": "record",
+    "depends_on": [
+     "run-log-record-per-run"
+    ]
+   },
+   {
+    "id": "run-log-7-day-defect-followup",
+    "name": "Defects found in the next 7 days, filled in later",
+    "quote": "critic verdicts summary, blockers, defects found in the next 7 days (filled in later) (v3/SKILL.md)",
+    "predecessor_state": "silent \u2014 v2/SKILL.md had no post-run follow-up field of any kind; its stopping record closed at the milestone.",
+    "behavior_delta": "Leaves a field in the record that is deliberately incomplete at the stopping milestone and expects a later pass to fill it, so a shipped run's real defect rate can be attributed to the workflow. Nothing in the run itself changes.",
+    "precondition": "Seven days pass after a run and someone returns to the record with knowledge of defects that surfaced in the shipped work.",
+    "kind": "record",
+    "depends_on": [
+     "run-log-record-per-run"
+    ]
+   },
+   {
+    "id": "bar-row-workflow-or-model",
+    "name": "Bar type: a workflow or a model",
+    "quote": "| A workflow or a model | The incumbent, measured on the same frozen tasks, judged by a critic that saw neither run | (v3/SKILL.md)",
+    "predecessor_state": "silent \u2014 the bars table in v2/SKILL.md ended at \"| Deck, doc, deliverable | A real artifact from a firm known for it, same page count |\"; no row covered a process or a model as the thing being improved.",
+    "behavior_delta": "When the user's goal is to improve the workflow or pick a model, the lead proposes the incumbent workflow/model as the bar instead of declaring the goal unsuited to a gauntlet.",
+    "precondition": "The user brings a goal whose deliverable is a workflow or a model choice rather than an artifact, and the lead is offering candidate bars.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "flow-step-fix-tier-roles-budget",
+    "name": "New flow step: fix tier, roles and budget before writing",
+    "quote": "3. **Fix the tier, roles and budget.** Solo tier unless the user asked for the team tier or a selected delivery gate needs it. Name the harness and the model for each role if the user or project has set them; otherwise leave the roles open and say so. Use the default budget unless the user named one. (v3/SKILL.md)",
+    "predecessor_state": "v2/SKILL.md's flow went straight from \"2. **Set the bar.**\" to \"3. **Write the prompt.**\" with no step between.",
+    "behavior_delta": "Tier, per-role models and budget are settled before the prompt is drafted rather than being decided inside the draft or during the run, and an unset roster must be stated as open instead of quietly assumed.",
+    "precondition": "Any prompt-drafting turn, i.e. the default path where the user has not yet asked for the run to be executed.",
+    "kind": "behavior",
+    "depends_on": [
+     "solo-tier-is-the-default",
+     "budget-on-by-default",
+     "state-harness-and-models-per-role"
+    ]
+   },
+   {
+    "id": "agent-language-only-when-user-names-it",
+    "name": "Agent-language pilot off unless the user names it",
+    "quote": "The agent-language experiment ([references/agent-language.md](references/agent-language.md)) is off unless the user names it in the goal. (v3/SKILL.md)",
+    "predecessor_state": "v2/SKILL.md: \"For a requested agent-language experiment, or a concrete repeated communication bottleneck worth testing, read [references/agent-language.md](references/agent-language.md).\"",
+    "behavior_delta": "Removes the agent's own trigger: a lead that observes a repeated communication bottleneck may no longer start a shorthand pilot on that basis.",
+    "precondition": "A run hits a repeated communication bottleneck that the lead judges worth testing, and the user never mentioned an agent language.",
+    "kind": "prohibition",
+    "depends_on": []
+   },
+   {
+    "id": "agent-language-off-in-comparison-runs",
+    "name": "No agent-language pilot inside a comparison run",
+    "quote": "It is never on in a run whose purpose is to compare workflows or models, unless the pilot is the thing being compared. (v3/SKILL.md)",
+    "predecessor_state": "silent \u2014 v2/SKILL.md had no notion of comparison runs and therefore no interaction rule between the pilot and them.",
+    "behavior_delta": "Even a user who names the pilot does not get it in a benchmarking run, because it would be a second variable; the lead refuses or defers it.",
+    "precondition": "The user names the agent-language pilot for a run whose stated purpose is comparing two workflows or two models, and the pilot is not itself the compared variable.",
+    "kind": "prohibition",
+    "depends_on": [
+     "agent-language-only-when-user-names-it",
+     "change-one-thing-per-run"
+    ]
+   },
+   {
+    "id": "parked-pieces-in-delivery-format",
+    "name": "Parked pieces appear in the final delivery block",
+    "quote": "PARKED_PIECES_WITH_BIGGEST_GAP_IF_ANY (v3/SKILL.md)",
+    "predecessor_state": "v2/SKILL.md's delivery block went from \"VERIFIED_RESULTS_WITH_SCOPE_AND_CI_RUN_LINK_IF_SELECTED\" straight to \"REMAINING_BLOCKER_OR_LIMITATION_IF_ANY\" with no parked-piece slot.",
+    "behavior_delta": "The handed-over delivery message carries a named section for budget-parked pieces and their gaps, separate from external blockers, so a parked piece cannot disappear between the stopping record and the user-facing summary.",
+    "precondition": "A software gauntlet with delivery outputs finishes with at least one piece parked at its hard stop.",
+    "kind": "record",
+    "depends_on": [
+     "budget-hard-stop-parks-piece"
+    ]
+   },
+   {
+    "id": "prompt-length-bands-raised",
+    "name": "Prompt length bands raised",
+    "quote": "Keep prompts concise: usually 150 to 220 words for solo work, with room for roughly 250 to 350 words when concrete software delivery gates or the team tier need it. (v3/SKILL.md)",
+    "predecessor_state": "v2/SKILL.md: \"Keep prompts concise: usually 120 to 180 words for general work, with room for roughly 220 to 320 words when concrete software delivery gates need it.\"",
+    "behavior_delta": "Lifts the word ceiling by about 30 words in each band to accommodate the new budget, verdict-record, isolation and run-record lines, and reframes the lower band as solo work; a v2-length prompt is now under-length.",
+    "precondition": "Any prompt-drafting turn, which is the skill's default output.",
+    "kind": "budget",
+    "depends_on": [
+     "solo-tier-is-the-default"
+    ]
+   },
+   {
+    "id": "portability-claude-code-mapping",
+    "name": "Claude Code mapping",
+    "quote": "In Claude Code, the same prompt works as written; `/loop` and `ultracode` may be appended when the user wants self-paced reruns or multi-agent orchestration, and worktrees provide the isolation. (v3/SKILL.md)",
+    "predecessor_state": "v2/SKILL.md covered only Codex and a generic \"For another agent\" case, and its one mention of these tokens was the prohibition \"Do not emit `/loop` or `ultracode` as Codex commands.\"",
+    "behavior_delta": "On Claude Code the lead may now append /loop or ultracode to the prompt and use worktrees for the isolation requirement, where v2 gave no positive permission for either.",
+    "precondition": "The prompt is being drafted for or run in Claude Code and the user wants self-paced reruns or multi-agent orchestration.",
+    "kind": "behavior",
+    "depends_on": [
+     "worktree-isolation-parallel-builders"
+    ]
+   },
+   {
+    "id": "portability-ohmypi-mapping",
+    "name": "oh-my-pi mapping: workflowz, schema, budget",
+    "quote": "In oh-my-pi, run the builder and critic chain inside `workflowz` with the verdict record as the critic's output schema and the harness `budget` as the hard stop. (v3/SKILL.md)",
+    "predecessor_state": "silent \u2014 v2/SKILL.md named only Codex and \"another agent\"; oh-my-pi and workflowz do not appear in v2/SKILL.md or any v2 reference file.",
+    "behavior_delta": "On oh-my-pi the verdict record becomes a machine-enforced output schema and the budget becomes the harness's own hard stop rather than an instruction the lead has to police.",
+    "precondition": "The run is executed on oh-my-pi.",
+    "kind": "behavior",
+    "depends_on": [
+     "fixed-verdict-record-schema",
+     "budget-hard-stop-parks-piece"
+    ]
+   },
+   {
+    "id": "cross-vendor-builder-lane",
+    "name": "Cross-vendor builders need a supported lane; lead and critic stay put",
+    "quote": "Cross-vendor builders (a cheaper model from another provider) need a lane the harness supports: a role mapping in oh-my-pi, a custom agent behind a router in Codex, or a headless CLI called from a Claude Code subagent. Keep the lead and the critic on one harness; only builders move. (v3/SKILL.md)",
+    "predecessor_state": "silent \u2014 v2/SKILL.md never contemplated mixing providers within one run.",
+    "behavior_delta": "Permits a builder on another vendor's model only through one of three named mechanisms, and forbids moving the lead or critic off the primary harness to reach it.",
+    "precondition": "The chosen builder model comes from a different provider than the harness running the lead and critic.",
+    "kind": "behavior",
+    "depends_on": [
+     "builder-cheapest-model-that-clears-critic"
+    ]
+   }
+  ],
+  "removals": [
+   {
+    "id": "removal-no-default-cap",
+    "name": "The explicit no-default-cap rule",
+    "what_was_lost": "- Add a budget or cost ceiling line **only if the user named one**. No default cap. (v2/SKILL.md)"
+   },
+   {
+    "id": "removal-run-must-not-rewrite-skill",
+    "name": "Run must not rewrite the installed skill or its own authority",
+    "what_was_lost": "Project lessons remain project proposals until reviewed; a run must not silently rewrite this installed skill or its own authority. (v2/SKILL.md) \u2014 searched v3/SKILL.md for \"rewrite this installed skill\", \"own authority\", \"installed skill\": not found. The equivalent clauses survive only in v2/references/team-method.md (\"Global skill changes require a request to change that skill; do not let a local run alter its own standing rules.\") and v2/references/agent-language.md, neither of which is present in the v3 directory."
+   },
+   {
+    "id": "removal-template-user-task-and-cost",
+    "name": "Prompt line: start each piece with the user's task and the cost of the change",
+    "what_was_lost": "Start each piece with the user's task and the cost of the proposed change. (v2/SKILL.md, prompt template)"
+   },
+   {
+    "id": "removal-template-preserve-original-failures",
+    "name": "Prompt line: preserve original failures, promote findings only with scoped evidence",
+    "what_was_lost": "Preserve original failures; promote shared findings only with scoped evidence and independent review. (v2/SKILL.md, prompt template)"
+   },
+   {
+    "id": "removal-template-compare-blind-verify-independently",
+    "name": "Prompt line: compare blind, verify functional requirements independently",
+    "what_was_lost": "Compare blind where meaningful; verify functional requirements independently. (v2/SKILL.md, prompt template) \u2014 the v3 template retains \"compares against the real reference blind where meaningful, independently verifies the acceptance checks\" in the critic sentence, but the standalone looping instruction is gone."
+   },
+   {
+    "id": "removal-do-not-manufacture-committee",
+    "name": "Small edits need only the relevant parts; do not manufacture a committee",
+    "what_was_lost": "Small edits need only the relevant parts; do not manufacture a committee or testing campaign. (v2/SKILL.md)"
+   },
+   {
+    "id": "removal-smaller-work-fewer-agents",
+    "name": "Smaller work needs fewer agents",
+    "what_was_lost": "Run responsibilities in waves within available slots; smaller work needs fewer agents. (v2/SKILL.md) \u2014 v3 keeps \"run in waves within available slots\" and drops the scaling clause."
+   },
+   {
+    "id": "removal-task-benefits-from-it",
+    "name": "Team roster allowed when the task benefits from it",
+    "what_was_lost": "Use two solvers, four whistleblower responsibilities, a reference researcher and a final reviewer when the user requests the full setup or the task benefits from it. (v2/SKILL.md)"
+   },
+   {
+    "id": "removal-agent-language-bottleneck-trigger",
+    "name": "Agent-language pilot triggered by a real communication bottleneck",
+    "what_was_lost": "For a requested agent-language experiment, or a concrete repeated communication bottleneck worth testing, read [references/agent-language.md](references/agent-language.md). (v2/SKILL.md)"
+   },
+   {
+    "id": "removal-pilot-optional-plain-language",
+    "name": "Pilot is optional; plain language continues when it adds no measured value",
+    "what_was_lost": "The pilot is optional; normal work continues in plain language when it adds no measured value. (v2/SKILL.md)"
+   },
+   {
+    "id": "removal-round-count-from-no-invention-list",
+    "name": "Round count dropped from the do-not-invent list",
+    "what_was_lost": "Leave implementation choices open unless the user or project constrains them. No invented architecture, decomposition, round count, or stack choice. (v2/SKILL.md) \u2014 v3 reads \"No invented architecture, decomposition, or stack choice.\""
+   },
+   {
+    "id": "removal-v3-reference-files",
+    "name": "All four reference files absent from the v3 package",
+    "what_was_lost": "v2 ships references/team-method.md, references/agent-language.md, references/research-basis.md and references/software-quality.md. The v3 directory contains only SKILL.md (verified by listing versions/v3/ and searching for a references/ subdirectory: not found). v3/SKILL.md still links to all four, e.g. \"Before a team run, read [references/team-method.md](references/team-method.md)\" and \"read [references/software-quality.md](references/software-quality.md) before drafting or running the loop\". ASSUMPTION: this is a packaging artifact of the versions/ snapshot rather than a deliberate rule change; I did not read any changelog to confirm, per the brief. As shipped in this directory, every reference-file read instruction in v3 resolves to a missing file."
+   },
+   {
+    "id": "removal-earlier-private-project-provenance",
+    "name": "Attribution of the team method to an earlier private project",
+    "what_was_lost": "It generalizes the method of an earlier private project: purpose before controls, one writer per file, one owner of a live browser, independent critique, causal fixes, scoped evidence, and a useful stopping record. (v2/SKILL.md) \u2014 v3 keeps the list of practices but drops the provenance clause."
+   }
+  ],
+  "transition": "v2->v3"
+ },
+ {
+  "transition": "v4->v5",
+  "features": [
+   {
+    "id": "difficulty-verifiability-estimate",
+    "name": "Recorded difficulty and verifiability estimate",
+    "quote": "6. **Estimate difficulty and verifiability.** Record `low | medium | high` with its observable proxies (scope, interacting components, novelty, prior failures) and whether the required checks are `deterministic`, `external`, or `judgment` only. A recorded self-report. (v5/SKILL.md)",
+    "predecessor_state": "silent \u2014 v4/SKILL.md's contract list ends at step 5 (\"Freeze the obligations.\") and the capture line reads \"Capture the outcome and audience, non-goals, actual reference, required checks, selected delivery surfaces, authority, run ID, workflow version, roles, budget, and stopping milestone.\"",
+    "behavior_delta": "By itself record only: the lead writes two labels plus proxies into the contract and the milestone summary; it changes no dispatch on its own, but it is the input the topology gate reads.",
+    "precondition": "Any run that reaches the contract-fixing stage before building.",
+    "kind": "record",
+    "depends_on": []
+   },
+   {
+    "id": "light-topology-tier",
+    "name": "Light topology for low-difficulty verifiable work",
+    "quote": "Choose the lightest topology whose gate is met and record the reason: `light` (one bounded build, one independent evidence-based review, no preference loop) only for low-difficulty work whose required checks are deterministic or external; otherwise `compact`; `compact+delegates` for bounded independent pieces; `team` when selected. (v5/SKILL.md)",
+    "predecessor_state": "v4/SKILL.md offered only two tiers: \"**Compact is the default:** a lead who can build, with a separate critic for acceptance.\" and \"**Full team is optional:** use it when the user requests team/full setup or has already selected it.\"",
+    "behavior_delta": "On a low-difficulty piece with deterministic or external checks the agent runs one build and one review and skips the preference comparison loop entirely, instead of entering the default build-review-revise cycle.",
+    "precondition": "A piece is estimated low difficulty AND its required checks are deterministic or external (e.g. a failing unit test to repair).",
+    "kind": "behavior",
+    "depends_on": [
+     "difficulty-verifiability-estimate"
+    ]
+   },
+   {
+    "id": "light-escalates-on-non-accept",
+    "name": "Non-accepting light review escalates to compact",
+    "quote": "A `light` piece whose single review does not accept (winner `bar` or `none`, or a failed required check) escalates to `compact` on that verdict, with the reason recorded. (v5/references/team-method.md)",
+    "predecessor_state": "silent \u2014 no `light` tier existed in v4, so v4/references/team-method.md has no escalation rule tied to a single review's verdict.",
+    "behavior_delta": "After a light piece's one review returns bar/none or a failed check, the agent adds the compact revision loop for that piece instead of parking it or re-reviewing under the light tier, and does so without a stall diagnosis.",
+    "precondition": "A piece was run as `light` and its single review does not accept.",
+    "kind": "behavior",
+    "depends_on": [
+     "light-topology-tier"
+    ]
+   },
+   {
+    "id": "topology-change-needs-recorded-diagnosis",
+    "name": "Topology escalation gated on recorded stall diagnosis",
+    "quote": "Escalating topology needs this diagnosis, recorded with its reason and the remaining allowance, with two exceptions: a user request, and a `light` piece whose single review does not accept (winner `bar` or `none`, or a failed required check), which escalates to `compact` on that verdict alone. De-escalation is a recorded event with its reason. (v5/references/execution-contract.md)",
+    "predecessor_state": "v4/references/execution-contract.md ends the stall paragraph at \"Do not lower the bar or spin up a larger team to avoid diagnosis.\" with no rule about when topology may change or about de-escalation.",
+    "behavior_delta": "Mid-run the agent may not grow the team because work feels hard; it must first produce the stall diagnosis and record it with the remaining allowance, and it may also shrink topology, which v4 never contemplated.",
+    "precondition": "A run is underway and something (a repeated gap, perceived difficulty) tempts the lead to add agents or roles, without a user request and outside the light-escalation case.",
+    "kind": "behavior",
+    "depends_on": [
+     "light-topology-tier"
+    ]
+   },
+   {
+    "id": "critical-path-dispatch",
+    "name": "Advance the next independent piece while waiting",
+    "quote": "Dispatch around the critical path. When a piece waits on a slow check, an environment, or a critic, start the next independent build or review instead of idling the run; never block the whole run on one review while independent work exists. Record run start and per-piece completion times. (v5/references/team-method.md)",
+    "predecessor_state": "v4/references/team-method.md and v4/SKILL.md have only \"Parallelize independent branches of work and serialize dependencies.\", which says nothing about what to do during a wait.",
+    "behavior_delta": "While a critic or a slow check is outstanding, the agent dispatches the next independent piece rather than waiting for the verdict, changing the order and concurrency of dispatch.",
+    "precondition": "A run has at least two independent pieces AND one of them is blocked on a slow check, environment, or pending review.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "no-latency-optimization-of-reviews",
+    "name": "Do not shorten reviews to look fast",
+    "quote": "The objective is the accepted piece and the delivered run, not any single agent's response time; do not shorten reviews or builds to make steps look fast. (v5/references/team-method.md)",
+    "predecessor_state": "silent \u2014 v4/references/team-method.md contains no statement about response time or step latency.",
+    "behavior_delta": "Prohibition only: it forbids trading review depth for apparent speed, a temptation the new critical-path dispatch rule creates; nothing new is produced or recorded.",
+    "precondition": "Timing is being recorded or optimized during a run, i.e. the critical-path dispatch rule is in play.",
+    "kind": "prohibition",
+    "depends_on": [
+     "critical-path-dispatch"
+    ]
+   },
+   {
+    "id": "critic-receives-retained-best",
+    "name": "Critic is given the retained best candidate",
+    "quote": "2. **Review the actual candidate.** Give a separate critic the artifact, the retained best when it differs, reference snapshot, requirement-derived checks, and the environment needed to inspect them. (v5/SKILL.md)",
+    "predecessor_state": "v4/SKILL.md: \"2. **Review the actual candidate.** Give a separate critic the artifact, reference snapshot, requirement-derived checks, and the environment needed to inspect them.\"",
+    "behavior_delta": "The critic's input package gains a second artifact, so its review can compare candidate against retained best; without it the drift check cannot be performed by the critic.",
+    "precondition": "A piece has already produced a retained best candidate that differs from the candidate now under review, i.e. at least the second review round of that piece.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "evidence-class-on-findings",
+    "name": "Evidence class on every finding and check",
+    "quote": "Every finding, check result, and biggest gap carries an evidence class. `deterministic` comes from a compiler, test, calculation, rendering, or other reproducible procedure. `external` comes from a reference document, primary source, captured reference behavior, or live system observation. `judgment` is a critic's preference or reading, however expert. Class by the observation that produced the finding, not by its importance. (v5/references/execution-contract.md)",
+    "predecessor_state": "silent \u2014 v4/references/execution-contract.md's verdict record has `blocking_findings: [] # include all unresolved required failures` and per-check `status` with no class field, and no section defining evidence classes.",
+    "behavior_delta": "On its own record only: the critic adds `evidence_class`, `biggest_gap_class` and per-finding class labels to the verdict record. It changes no decision until the ladder reads those labels.",
+    "precondition": "A critic returns any verdict.",
+    "kind": "record",
+    "depends_on": []
+   },
+   {
+    "id": "third-round-judgment-ladder",
+    "name": "Uncorroborated judgment becomes advisory from round three",
+    "quote": "From the third round on, a `judgment` finding is advisory unless corroborated: it is recorded in `advisory_findings`, it cannot be the biggest gap, it cannot force a revision, and it cannot block acceptance, including when raised as a HOLD. (v5/references/execution-contract.md)",
+    "predecessor_state": "silent \u2014 v4/references/execution-contract.md treats every finding alike: \"Any critic can flag a specific acceptance claim with its artifact, evidence, suspected mismatch, and the next observation that would resolve it... The lead prevents acceptance of the affected claim while keeping unrelated work moving.\"",
+    "behavior_delta": "From a piece's third review round the lead stops revising in response to taste-only findings and may accept a candidate a critic still dislikes, where v4 would have looped or held.",
+    "precondition": "A single piece reaches its third review round AND a critic's biggest gap or HOLD at that round rests on preference/reading rather than a reproducible or source-backed observation.",
+    "kind": "behavior",
+    "depends_on": [
+     "evidence-class-on-findings"
+    ]
+   },
+   {
+    "id": "corroboration-restores-judgment",
+    "name": "Corroboration path for a judgment finding",
+    "quote": "Corroboration means a discriminating observation that changes the class, or a second independent critic preferring the change in an order-swapped comparison; that corroborating comparison counts against the budget but does not advance the index. (v5/references/execution-contract.md)",
+    "predecessor_state": "silent \u2014 v4 has no ladder and therefore no escape hatch; v4/SKILL.md only says \"On a close or consequential preference decision, consider a fresh, order-swapped comparison.\"",
+    "behavior_delta": "The lead can spend one extra review to make a round-three-or-later judgment finding binding again; that review is charged to the budget but does not push the piece further up the ladder.",
+    "precondition": "A piece is at review round three or later AND the lead or a critic wants an uncorroborated judgment finding to force a revision or block acceptance.",
+    "kind": "behavior",
+    "depends_on": [
+     "third-round-judgment-ladder"
+    ]
+   },
+   {
+    "id": "review-index-lineage-no-reslicing",
+    "name": "Review index follows lineage; re-slicing to reset is a violation",
+    "quote": "The index follows the candidate's lineage: revisions of the same artifact advance it, resumption does not reset it, and a genuinely new slice starts at one; re-slicing the same artifact to reset the ladder is a budget-continuity violation. (v5/references/execution-contract.md)",
+    "predecessor_state": "silent \u2014 v4 has no review index; v4/references/execution-contract.md only states \"Decomposition, retries, worker changes, and resumption do not refill an allowance.\" about budget, not about a review counter.",
+    "behavior_delta": "Prohibition: the agent may not relabel or re-split the same artifact to get back two unrestricted judgment rounds, and a resume continues the old index rather than starting over.",
+    "precondition": "A piece is at or past the ladder threshold AND the work is about to be re-sliced, renamed, or resumed after a pause.",
+    "kind": "prohibition",
+    "depends_on": [
+     "third-round-judgment-ladder"
+    ]
+   },
+   {
+    "id": "lead-exit-set-after-bar-none",
+    "name": "Enumerated exits from a bar/none verdict at round three",
+    "quote": "A `winner: bar` or `none` verdict still withholds acceptance; from the third round on, the lead's exits from such a verdict are a corroborating observation, a required-check fix, a stall-diagnosis step (a different bounded approach, a smaller slice, or an authorized fallback), or parking the piece. (v5/references/execution-contract.md)",
+    "predecessor_state": "silent \u2014 v4/references/execution-contract.md leaves the response to a repeated non-winning verdict to the stall paragraph only: \"Choose one evidence-producing next step, a different bounded approach, a smaller slice sharing its parent's budget, or an authorized model fallback.\"",
+    "behavior_delta": "After round three the lead must pick from four named exits instead of ordering another open-ended revision; 'try again' is no longer an available move.",
+    "precondition": "A piece is at review round three or later AND the verdict is `bar` or `none`.",
+    "kind": "behavior",
+    "depends_on": [
+     "third-round-judgment-ladder"
+    ]
+   },
+   {
+    "id": "drift-vs-best-recorded",
+    "name": "Revision drift against the retained best is recorded",
+    "quote": "Each review also compares the candidate against the retained best candidate on the comparison dimension and records `drift_vs_best`: added hedging or qualifiers, lost clarity, lost scope, or regressions the bar comparison would not show. Drift is a `judgment` finding unless a check demonstrates it. (v5/references/execution-contract.md)",
+    "predecessor_state": "v4/references/execution-contract.md's verdict record has no drift field, and v4/SKILL.md only says \"Retain the strongest verified candidate with its evidence and known gaps; the newest version may regress.\"",
+    "behavior_delta": "Adds a required comparison in each review and a `drift_vs_best` line in the verdict record; on its own it names a regression rather than acting on it.",
+    "precondition": "A review happens when a retained best candidate already exists to compare against.",
+    "kind": "record",
+    "depends_on": [
+     "critic-receives-retained-best"
+    ]
+   },
+   {
+    "id": "end-loop-on-prose-reshuffle",
+    "name": "End a loop that only reshuffles prose",
+    "quote": "The lead keeps the best candidate; a revision that only reshuffles prose ends the loop for that gap. (v5/references/execution-contract.md)",
+    "predecessor_state": "silent \u2014 v4/SKILL.md stops the loop only through the repeated-gap heuristic: \"After two consecutive verdicts repeat the same unresolved gap, diagnose missing context, faulty checks, dependencies, capability, or approach before another edit.\"",
+    "behavior_delta": "A revision that changes wording without changing measured behavior or evidence terminates further revision of that gap and the retained best is kept, instead of another build-review cycle.",
+    "precondition": "A revision is produced whose only difference from the retained best is rewording, with no check result or evidence changing.",
+    "kind": "behavior",
+    "depends_on": [
+     "drift-vs-best-recorded"
+    ]
+   },
+   {
+    "id": "per-piece-cap-bounded-by-run-remainder",
+    "name": "Per-piece limit capped by the run's remaining hard allowance",
+    "quote": "A per-piece limit never exceeds the run's remaining hard allowance: under a run cap H below the per-piece defaults, the per-piece hard limit is min(9, H minus the reserve) and the soft limit is min(6, that hard limit), so no single piece can spend the reserve; under small caps the two may coincide, and at H = 1 the only review is the reserved final review. (v5/references/execution-contract.md)",
+    "predecessor_state": "v4/references/execution-contract.md states the scaling of the run cap only: \"For a smaller positive integer review cap H, reserve ceil(0.2 * H) reviews within H and set the run soft point to H minus that reserve, unless the user set a different allocation. Thus an 8-review cap has a soft point of 6 and a reserve of 2.\" It never binds the per-piece 6/9 defaults to that smaller cap.",
+    "behavior_delta": "Under a tight user cap the first piece can no longer burn up to 9 reviews and eat the integration reserve; its ceiling is recomputed from the run cap, so a later piece and the final verification still have reviews.",
+    "precondition": "A user sets a run review cap smaller than the 6/9 per-piece defaults (e.g. \"at most 5 reviews\").",
+    "kind": "budget",
+    "depends_on": []
+   },
+   {
+    "id": "review-cap-does-not-scale-requests",
+    "name": "A review-only cap leaves the request allowance at default",
+    "quote": "A cap stated only in reviews leaves the request allowance at its default; state both when both matter. (v5/references/execution-contract.md)",
+    "predecessor_state": "v4/references/execution-contract.md says only \"Scale a smaller observable request allowance in the same way.\", leaving it open whether a review cap also shrinks the request allowance.",
+    "behavior_delta": "When the user caps reviews only, the agent keeps 120/180 and 480/600 observable requests instead of scaling them down, and is told to ask for both numbers when both matter.",
+    "precondition": "A user states a budget in reviews only, without naming a model-request allowance, and request telemetry is observable.",
+    "kind": "budget",
+    "depends_on": []
+   },
+   {
+    "id": "resume-validation-record",
+    "name": "Resume validation record with a four-way decision",
+    "quote": "On resume, write a resume validation record and decide `resume | repair-then-resume | restart-from-evidence | withhold` before any dispatch; a skill, harness, or model change since the checkpoint is a contract amendment that marks affected claims for revalidation. (v5/SKILL.md)",
+    "predecessor_state": "v4/SKILL.md: \"**Resume:** Read the saved contract, latest checkpoint, unresolved findings, and referenced artifacts before dispatch. Preserve spent budgets and obligations.\" and \"Reconcile state against reality on resume, and inspect uncertain external effects before retrying.\" \u2014 reading and reconciling, with no recorded decision and no option to refuse the resume.",
+    "behavior_delta": "Before dispatching any worker after a pause the agent writes a `resume_validation` block and can choose to repair first, rebuild state from evidence, or refuse to resume at all (parking the run as `withheld_resume`), where v4 always continued. It also re-reads the authorization the checkpoint relied on as part of that record.",
+    "precondition": "A run is resumed from a saved checkpoint after any pause, handoff, or new session.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "version-change-is-contract-amendment",
+    "name": "Skill, harness or model change since checkpoint amends the contract",
+    "quote": "A skill, harness, or model change since the checkpoint is a recorded contract amendment: affected accepted claims are marked for revalidation, and any comparison that spans the change says so. (v5/references/execution-contract.md)",
+    "predecessor_state": "v4/SKILL.md freezes the contract with no version-drift exception: \"Keep the current skill, criteria, and selected lesson snapshot fixed during a run, except explicit user changes or evidence-backed corrections recorded in the contract.\"",
+    "behavior_delta": "If the skill or model version differs from the checkpoint, previously accepted claims are re-opened for revalidation mid-run and any before/after comparison must be labelled as spanning the change; the frozen-contract rule now admits this as a third exception.",
+    "precondition": "A resume happens AND the skill file, harness, or model in use differs from the one recorded at the checkpoint.",
+    "kind": "behavior",
+    "depends_on": [
+     "resume-validation-record"
+    ]
+   },
+   {
+    "id": "acceptance-never-validates-bad-resume",
+    "name": "A later acceptance never validates an invalid resume",
+    "quote": "A later successful acceptance never validates a resume recorded as invalid; the resume decision is evaluated on its own evidence. (v5/references/execution-contract.md)",
+    "predecessor_state": "silent \u2014 v4/references/execution-contract.md's resume paragraph ends at \"Investigate unknown external effects before a retry; cancellation is not proof of rollback.\" with no rule about post-hoc justification.",
+    "behavior_delta": "Prohibition: the agent may not report a run as clean because the artifact ended up passing, when the resume it was built from was recorded as invalid or withheld; the bad resume stays in the record and the milestone state stays `withheld_resume`.",
+    "precondition": "A resume was recorded as invalid or withheld AND the run nonetheless later reaches an accepting verdict.",
+    "kind": "prohibition",
+    "depends_on": [
+     "resume-validation-record"
+    ]
+   },
+   {
+    "id": "lesson-retrieval-allowance",
+    "name": "At most three lessons per piece",
+    "quote": "By default at most three lessons from that pool enter a piece's working context, `active` before `experimental`, then ranked by applicability, validity, and evidence freshness, with `lowered` priority last; more needs a recorded reason. (v5/references/learning-and-evolution.md)",
+    "predecessor_state": "v4/references/learning-and-evolution.md caps nothing: \"Select active lessons by applicability, environment compatibility, validity, dependency status, and evidence freshness before semantic similarity. Read only the relevant subset; record selected IDs/versions in the run contract.\"",
+    "behavior_delta": "The agent loads at most three lessons into a piece's context and must record a reason to exceed that, instead of loading the whole relevant subset.",
+    "precondition": "Cross-run learning is enabled for the project AND the frozen pool holds more than three lessons applicable to a piece.",
+    "kind": "budget",
+    "depends_on": []
+   },
+   {
+    "id": "light-pieces-skip-retrieval",
+    "name": "Light pieces retrieve nothing without a trigger match",
+    "quote": "A `light` topology piece retrieves nothing unless an observed condition matches the `applies_when` of a lesson in the pool; similarity alone does not qualify. (v5/references/learning-and-evolution.md)",
+    "predecessor_state": "silent \u2014 v4/references/learning-and-evolution.md has no topology-conditional retrieval rule and no `light` topology to condition on.",
+    "behavior_delta": "On a light piece the agent skips memory retrieval entirely unless a lesson's recorded trigger actually matches something observed, removing lesson text from that piece's context.",
+    "precondition": "Cross-run learning is enabled AND a piece is running under `light` topology.",
+    "kind": "behavior",
+    "depends_on": [
+     "light-topology-tier",
+     "lesson-retrieval-allowance"
+    ]
+   },
+   {
+    "id": "retrieval-event-charged",
+    "name": "Retrieval is an event with a cost charged to the piece",
+    "quote": "Each retrieval is an event with the lesson ID/version, the selection reason, and its cost in observable tokens or `unknown`, charged against the piece's observable allowance where telemetry exists. (v5/references/learning-and-evolution.md)",
+    "predecessor_state": "silent \u2014 v4/references/execution-contract.md counts \"lead, builders, critics, reconnaissance, curation, failed calls, and retries visible to the harness\" in shared request usage but v4/references/learning-and-evolution.md defines no per-retrieval event or charge.",
+    "behavior_delta": "Each lesson pulled into context consumes the piece's observable request allowance, so memory use shortens the budget available for builds and reviews; where telemetry is missing the cost is written as `unknown`.",
+    "precondition": "Cross-run learning is enabled, a lesson is actually retrieved for a piece, and token telemetry is observable.",
+    "kind": "budget",
+    "depends_on": [
+     "lesson-retrieval-allowance"
+    ]
+   },
+   {
+    "id": "experimental-lessons-retrievable",
+    "name": "Experimental lessons enter the retrieval pool, labelled",
+    "quote": "An `experimental` lesson is labeled as such in working context and can inform a hypothesis or diagnosis, not a required rule. (v5/references/learning-and-evolution.md)",
+    "predecessor_state": "v4/references/learning-and-evolution.md selects only activated lessons: \"Select active lessons by applicability, environment compatibility, validity, dependency status, and evidence freshness before semantic similarity.\"",
+    "behavior_delta": "Unproven lessons now reach a piece's working context (ranked after active ones) where v4 excluded them, and they arrive carrying a label that bars them from acting as a rule.",
+    "precondition": "Cross-run learning is enabled AND the pool contains lessons at status `experimental`.",
+    "kind": "behavior",
+    "depends_on": [
+     "lesson-retrieval-allowance"
+    ]
+   },
+   {
+    "id": "lesson-utility-ledger",
+    "name": "Utility ledger on each lesson",
+    "quote": "utility_ledger: [] # entries: {run, piece, retrieved_at, applied, outcome, evidence}; outcome is prevented_defect | reduced_rounds | neutral | irrelevant | harmful | unknown (v5/references/learning-and-evolution.md)",
+    "predecessor_state": "silent \u2014 the v4 lesson record ends at \"admission_basis: none-until-reviewed\" with no field recording what a retrieval achieved.",
+    "behavior_delta": "Record only in itself: after each retrieval the lead writes an outcome entry with evidence at the piece verdict or milestone. It changes no in-run decision; it is read later by the promotion and demotion rules.",
+    "precondition": "Cross-run learning is enabled AND a lesson was actually retrieved during a piece.",
+    "kind": "record",
+    "depends_on": [
+     "lesson-retrieval-allowance"
+    ]
+   },
+   {
+    "id": "promotion-needs-cross-run-benefit",
+    "name": "Promotion to active needs a benefit entry from another run",
+    "quote": "Promotion from `experimental` to `active` needs the probe and review below plus at least one `prevented_defect` or `reduced_rounds` entry from a run other than the lesson's source run. (v5/references/learning-and-evolution.md)",
+    "predecessor_state": "v4/references/learning-and-evolution.md gates activation on review alone: \"An independent reviewer checks the evidence and scope before activation\" and \"Claims that a procedure improves future performance remain hypotheses until supported by separate relevant use.\"",
+    "behavior_delta": "A lesson stays experimental, and therefore stays a labelled hypothesis rather than an active rule, until a different run's ledger entry records it preventing a defect or cutting rounds.",
+    "precondition": "Cross-run learning is enabled AND an experimental lesson that has passed probe and review is a candidate for activation.",
+    "kind": "behavior",
+    "depends_on": [
+     "lesson-utility-ledger"
+    ]
+   },
+   {
+    "id": "candidate-to-experimental-gate",
+    "name": "Candidate becomes experimental only after probe plus non-author review",
+    "quote": "A `candidate` becomes `experimental` once its environment probe has run and a reviewer other than its author has checked its scope. (v5/references/learning-and-evolution.md)",
+    "predecessor_state": "v4/references/learning-and-evolution.md lists the statuses (\"status: candidate # candidate | experimental | active | disputed | superseded | invalidated | rejected | retired\") and says \"If a required probe is unavailable, keep the lesson `candidate` or `experimental`, with the missing evidence.\" without naming what moves a lesson from the first to the second.",
+    "behavior_delta": "The lead cannot relabel its own nomination as experimental; the probe must have run and someone other than the author must have checked scope, which also keeps unprobed lessons out of the newly retrievable experimental pool.",
+    "precondition": "Cross-run learning is enabled AND a nominated lesson is being moved off `candidate`.",
+    "kind": "behavior",
+    "depends_on": [
+     "experimental-lessons-retrievable"
+    ]
+   },
+   {
+    "id": "two-irrelevant-lowers-priority",
+    "name": "Two irrelevant entries lower retrieval priority",
+    "quote": "Two consecutive `irrelevant` entries set `retrieval_priority: lowered` without changing status. (v5/references/learning-and-evolution.md)",
+    "predecessor_state": "silent \u2014 v4/references/learning-and-evolution.md has no `retrieval_priority` field and no demotion path short of `disputed`/`invalidated`.",
+    "behavior_delta": "A lesson that twice turned out not to apply sorts behind every normal-priority lesson, so under the three-lesson allowance it usually stops reaching working context, while keeping its status.",
+    "precondition": "Cross-run learning is enabled AND one lesson accumulates two consecutive `irrelevant` ledger entries.",
+    "kind": "behavior",
+    "depends_on": [
+     "lesson-utility-ledger",
+     "lesson-retrieval-allowance"
+    ]
+   },
+   {
+    "id": "harmful-entry-disputes-lesson",
+    "name": "One evidenced harmful entry quarantines the lesson",
+    "quote": "One evidenced `harmful` entry moves the lesson to `disputed` and removes it from retrieval until reviewed. (v5/references/learning-and-evolution.md)",
+    "predecessor_state": "silent \u2014 v4/references/learning-and-evolution.md quarantines only on live contradiction: \"When a selected lesson conflicts with current observation, quarantine its affected use immediately, record the contradiction, notify dependent owners, and reverify affected claims.\"",
+    "behavior_delta": "A single evidenced bad outcome pulls the lesson out of the retrieval pool and flips its status to `disputed` until a review restores it, without waiting for a direct contradiction.",
+    "precondition": "Cross-run learning is enabled AND a retrieval produces a `harmful` ledger entry backed by evidence.",
+    "kind": "behavior",
+    "depends_on": [
+     "lesson-utility-ledger"
+    ]
+   },
+   {
+    "id": "milestone-observational-tuple",
+    "name": "Milestone summary carries the cross-run analysis tuple",
+    "quote": "Also record the difficulty estimate and its proxies, the verifiability class, the topology and any change with its reason, reviews used per piece and how many were advisory-only, wall-clock from run start to stop, and, when learning is enabled, the lessons retrieved with their ledger outcomes. These fields are observational; they exist so that later analysis across runs can ask which topology and how much review a task of this kind actually needed. (v5/references/execution-contract.md)",
+    "predecessor_state": "v4/references/execution-contract.md: \"Record run/skill/contract identity, current delivered identity, accepted and incomplete pieces, review counts, user limits, observable time/usage, unknown telemetry, verdict/evidence links, blockers, and next action.\"",
+    "behavior_delta": "Record only: the run summary gains difficulty, verifiability, topology and its changes, per-piece and advisory-only review counts, wall-clock and lesson outcomes. No agent acts differently in the run; the fields exist for later cross-run comparison.",
+    "precondition": "A run reaches a stopping milestone and writes its summary.",
+    "kind": "record",
+    "depends_on": [
+     "difficulty-verifiability-estimate",
+     "light-topology-tier",
+     "third-round-judgment-ladder"
+    ]
+   },
+   {
+    "id": "checkpoint-timing-and-index",
+    "name": "Checkpoints carry timing and review index",
+    "quote": "- Run start time, per-piece completion times, and each piece's review index, or `unknown`. (v5/references/execution-contract.md)",
+    "predecessor_state": "silent \u2014 the v4/references/execution-contract.md checkpoint list ends at \"Dispatched external actions and whether their effects are confirmed, failed, or unknown.\" with no timing or index entry.",
+    "behavior_delta": "Record only: each checkpoint writes run start, per-piece completion times and the piece's ladder index (or `unknown`). The index entry is what lets the ladder survive a resume without resetting.",
+    "precondition": "Any checkpoint is written, i.e. after each verdict and before handoff, integration, or pause.",
+    "kind": "record",
+    "depends_on": [
+     "review-index-lineage-no-reslicing"
+    ]
+   },
+   {
+    "id": "template-is-checklist-not-prose",
+    "name": "Prompt template is a checklist to compress",
+    "quote": "The template below is a semantic checklist, not prose to preserve: compress its wording when adapting it. (v5/references/prompt-drafting.md)",
+    "predecessor_state": "v4/references/prompt-drafting.md says only \"The following template illustrates the semantics. Replace every bracketed field and adapt the wording before returning it:\" with no instruction to compress.",
+    "behavior_delta": "On the draft route the agent rewrites the template tightly instead of shipping it near-verbatim, which is how the larger v5 semantic load still fits the 250-450 word target.",
+    "precondition": "The user asks for a prompt rather than execution, and the drafter would otherwise copy the template's sentences.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "drafted-prompt-carries-v5-mechanisms",
+    "name": "Drafted prompt must carry the v5 mechanisms",
+    "quote": "- The difficulty and verifiability estimate with the chosen topology and its reason; evidence classes on findings; the third-round ladder; the revision-drift check against the best candidate; a resume validation decision before any dispatch after a pause. (v5/references/prompt-drafting.md)",
+    "predecessor_state": "silent \u2014 the v4/references/prompt-drafting.md \"Include:\" list has no such bullet; its items stop at outcome/reference, model assignments, separation of building and acceptance, verdict vocabulary, budgets, and checkpoints.",
+    "behavior_delta": "A drafted paste-ready prompt now states difficulty, topology and its gate, evidence classes, the ladder, drift and the resume decision, so a session without the skill runs them; when learning is selected it must also state \"the three-lesson retrieval allowance and the utility ledger\" (v5/references/prompt-drafting.md).",
+    "precondition": "The user asks for a portable prompt to paste into another session.",
+    "kind": "behavior",
+    "depends_on": [
+     "difficulty-verifiability-estimate",
+     "light-topology-tier",
+     "third-round-judgment-ladder",
+     "drift-vs-best-recorded",
+     "resume-validation-record"
+    ]
+   }
+  ],
+  "removals": [
+   {
+    "id": "unconditional-hold-blocks-acceptance",
+    "name": "Any unresolved HOLD blocked acceptance",
+    "what_was_lost": "v4/SKILL.md: \"Accept only when the comparison favors ours, every applicable required check passes for the delivered identity, and no HOLD remains.\" and v4/references/software-quality.md: \"Return **SHIP** only when selected and otherwise required gates pass, the comparison favors ours, and no unresolved HOLD remains.\" \u2014 both replaced by \"no blocking HOLD\", so a HOLD recorded as advisory under the ladder no longer withholds acceptance or SHIP."
+   },
+   {
+    "id": "template-blind-comparison-clause",
+    "name": "Blind-comparison and no-invented-faults clause dropped from the portable prompt",
+    "what_was_lost": "v4/references/prompt-drafting.md template: \"Use blind comparison only when meaningful; do not invent a winner or faults.\" The guidance survives in v5/SKILL.md (\"Blind comparisons are useful only when identity is meaningfully concealed; fresh context alone is not blinding.\") but no longer travels in the paste-ready block, which is the version a session without the skill sees."
+   },
+   {
+    "id": "template-preserve-best-candidate",
+    "name": "Best-candidate retention instruction dropped from the portable prompt",
+    "what_was_lost": "v4/references/prompt-drafting.md template: \"Preserve the best verified candidate.\" v5's template instead says only \"Compare each revision against the retained best and name drift.\", which presumes retention without instructing it."
+   }
+  ]
+ },
+ {
+  "transition": "v5->v5.1",
+  "features": [
+   {
+    "id": "route-tiebreak-outer-request-governs",
+    "name": "Outer request decides draft vs execute",
+    "quote": "When a message matches two routes, the outer request governs: a prompt about work is a draft. (skill/SKILL.md, Route the request)",
+    "predecessor_state": "silent \u2014 v5 SKILL.md's Draft bullet ends: \"For an otherwise unspecified invocation, draft the prompt; an optional final line is \\\"I can run this here.\\\"\" and gives no rule for a message that matches two routes",
+    "behavior_delta": "On a message that both asks for a prompt and describes runnable work, the agent returns a drafted prompt instead of starting the loop; in v5 that message was unresolved and could be executed.",
+    "precondition": "One user message asks for a prompt about work the skill could also execute, e.g. \"make me a gauntlet prompt for fixing this failing test\".",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "bar-three-tests-operationalised",
+    "name": "Operational definitions of named, fetchable, comparable",
+    "quote": "**Named.** A specific thing, not a category. \"Stripe's pricing page\" works. \"Award-winning SaaS sites\" does not. (skill/references/bars-and-examples.md)",
+    "predecessor_state": "v5 SKILL.md step 2: \"Use a supplied or previously accepted artifact that is named, accessible, and comparable.\" \u2014 the three words are asserted, never defined, and no v5 reference file defines them (searched all seven files under versions/v5/references/)",
+    "behavior_delta": "The agent now has a rejection test it can apply to a proposed bar before building: a category-level bar and a bar whose surface cannot be fetched get refused rather than accepted as \"named\".",
+    "precondition": "A run starts with a bar given only as a category (\"award-winning SaaS sites\") or a brand name whose actual surface nobody has opened.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "bars-by-goal-type-table",
+    "name": "Bar patterns per goal type",
+    "quote": "| Writing | A specific published piece by a named author or publication, same length and format | (skill/references/bars-and-examples.md, Bars by goal type)",
+    "predecessor_state": "silent \u2014 no goal-type-to-bar mapping in versions/v5/SKILL.md or in any file under versions/v5/references/",
+    "behavior_delta": "When the agent must propose bar options, it proposes the pattern listed for that goal type (eight rows, including repair and workflow/model) instead of improvising one.",
+    "precondition": "The user names a goal but supplies no reference, so the agent has to offer two or three concrete bar options.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "two-filled-example-prompts",
+    "name": "Two worked filled prompts",
+    "quote": "Both obey the length target in [prompt drafting](prompt-drafting.md) and carry every include it lists. (skill/references/bars-and-examples.md, Two filled examples)",
+    "predecessor_state": "silent \u2014 v5 carried only the empty template in versions/v5/references/prompt-drafting.md and no filled example anywhere in the package",
+    "behavior_delta": "A drafting agent has two concrete targets (one software, one non-software) showing how every include compresses into one block; changes the shape of drafted prompts, changes nothing during execution.",
+    "precondition": "The agent is on the draft route and is filling the template.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "failure-list-at-stall-diagnosis",
+    "name": "Failure list consulted at stall diagnosis",
+    "quote": "The failure list in [bars and examples](bars-and-examples.md) names the patterns that produce this state most often. (skill/references/execution-contract.md, Stall diagnosis and candidate retention)",
+    "predecessor_state": "v5 execution-contract.md: \"Check for a bad oracle, missing inputs, dependency failure, unsuitable approach, insufficient model capability, or unreachable bar.\" \u2014 six causes, no checklist beyond them",
+    "behavior_delta": "At a stall the agent reads a fourteen-item list of loop-level failure patterns in addition to the six causes; twelve of the fourteen restate rules already present in v5 (vague bar, builder judging itself, soft critic, exit after N rounds, no budget, topology creep, undelivered project, implementation-derived tests, generic gates, two builders one file, silent substitution, unrecorded runs), so the added diagnostic reach is mostly the two items listed separately below.",
+    "precondition": "Two successive verdicts repeat the same unresolved gap, which triggers the stall diagnosis clause.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "no-two-changes-in-one-run",
+    "name": "Do not change harness and method together",
+    "quote": "- **Changing two things at once.** A new harness and a new method in the same run cannot tell you which helped. (skill/references/bars-and-examples.md, What breaks a gauntlet loop)",
+    "predecessor_state": "silent \u2014 searched versions/v5/SKILL.md and all seven versions/v5/references/*.md for \"two things\", \"confound\", \"changing\"; the only v5 confounding language is about the learning utility ledger (\"Ledger outcomes are confounded by everything else in a run\")",
+    "behavior_delta": "A run that would vary both the harness/model and the method is set up as two runs instead, keeping the outcome attributable. ASSUMPTION: the file states this only as a failure pattern in a list, not as an imperative, and names no enforcement point.",
+    "precondition": "A run is being set up in which both the harness or model and the method would differ from the previous comparable run.",
+    "kind": "prohibition",
+    "depends_on": []
+   },
+   {
+    "id": "over-specifying-named-failure",
+    "name": "Over-specifying named as a failure",
+    "quote": "- **Over-specifying.** Every extra instruction is one fewer decision the agent makes with its own judgment. (skill/references/bars-and-examples.md, What breaks a gauntlet loop)",
+    "predecessor_state": "silent \u2014 no v5 file cautions against instruction volume; versions/v5/references/prompt-drafting.md only says \"required outcomes matter more than a word target\"",
+    "behavior_delta": "When drafting a prompt or a delegate brief, the agent leaves out instruction it would otherwise add. ASSUMPTION: this pulls against the same release's larger word target and its extra required include, and the package states no rule for which of the two wins.",
+    "precondition": "Drafting a prompt or a delegate brief where optional extra instruction is available to add.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "repair-verdict-vocabulary-mapping",
+    "name": "Verdict vocabulary read for repairs",
+    "quote": "In a repair the bar is a known-failing artifact, so the vocabulary is read accordingly: `ours` means the agreed correction is demonstrated without required regressions; `bar` never means the failing original is acceptable, it means the candidate is worse than that original and is recorded with the failed check that shows it; `none` means the correction is not demonstrated. (skill/references/execution-contract.md)",
+    "predecessor_state": "v5 execution-contract.md said only: \"A behavioral comparison can favor a repaired candidate over the failing baseline when independent checks demonstrate the agreed correction without required regressions; no stylistic superiority claim is needed.\"",
+    "behavior_delta": "A critic on a repair records `ours` for a fix that passes every required check instead of hedging to `none`, and a `bar` verdict must now carry the failed check that shows the candidate is worse than the broken original.",
+    "precondition": "A repair run reaches a verdict: the candidate passes every required check against a failing original, or a critic is about to label the comparison `bar` or a tie.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "coincident-soft-hard-limit-park",
+    "name": "Converge and park when soft equals hard",
+    "quote": "Where they coincide the soft-limit behavior does not apply: the review in hand is the last for that piece, so converge on the best candidate and park the piece with its gap if the gap does not close, rather than starting another attempt. (skill/references/execution-contract.md, budget table section)",
+    "predecessor_state": "v5 execution-contract.md: \"under small caps the two may coincide, and at H = 1 the only review is the reserved final review.\" \u2014 it named the collision and said nothing about how to behave in it",
+    "behavior_delta": "Under a tiny review cap the agent stops launching another build attempt after a non-accepting review and parks the piece with its gap.",
+    "precondition": "The user sets a review cap small enough that the per-piece soft and hard limits compute to the same number, and that piece's one review does not accept.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "task-class-closed-vocabulary",
+    "name": "Task class field with closed vocabulary",
+    "quote": "`task_class`: one of `code-fix`, `code-feature`, `research`, `writing`, `design`, `deliverable`, `skill`, `unknown`. One value per run; a run that changes class mid-way records the class it finished as and notes the change. (skill/references/execution-contract.md, run record section)",
+    "predecessor_state": "silent \u2014 v5 execution-contract.md records \"the difficulty estimate and its proxies, the verifiability class, the topology and any change with its reason\" and no task class; searched all v5 files for \"task class\" and \"task_class\"",
+    "behavior_delta": "Record only. One more field in the contract capture, the run record, and the stopping-milestone summary (skill/SKILL.md now lists \"task class\" in that summary). Nothing an agent does inside the build-review-revise loop changes.",
+    "precondition": "A contract is captured at run start, or a run reaches a stopping milestone and writes its record.",
+    "kind": "record",
+    "depends_on": []
+   },
+   {
+    "id": "features-enabled-closed-vocabulary",
+    "name": "Features-enabled list with closed vocabulary",
+    "quote": "`features_enabled`: a list drawn from `evidence_ladder`, `light_topology`, `order_swap`, `delegates`, `team`, `isolation`, `learning`, `retrieval_allowance`, `parallel_critics`, `blinding`, `agent_language`, or the single value `unknown` when the run genuinely cannot say which were in effect. (skill/references/execution-contract.md, run record section)",
+    "predecessor_state": "silent \u2014 no v5 file names a mechanism inventory per run; searched versions/v5 for \"features_enabled\" and \"features enabled\"",
+    "behavior_delta": "Record only. One more field in the contract capture, the run record, and the stopping-milestone summary (skill/SKILL.md now lists \"features enabled\" there). No dispatch, review, or acceptance decision depends on it.",
+    "precondition": "A contract is captured at run start, or a run reaches a stopping milestone and writes its record.",
+    "kind": "record",
+    "depends_on": []
+   },
+   {
+    "id": "evidence-ladder-always-listed",
+    "name": "Always-on mechanisms must still be listed",
+    "quote": "List every mechanism that was in effect, including `evidence_ladder`, which is always on in this version and therefore appears in every 5.1 record: a reader cannot tell an omission from a mechanism that was off, so omitting an always-on mechanism makes the run look like a control it is not. (skill/references/execution-contract.md)",
+    "predecessor_state": "silent \u2014 the field it constrains does not exist in v5",
+    "behavior_delta": "Record only, and it is the rule that makes the list never empty: a run that used no optional mechanism still writes `evidence_ladder`, so a later reader cannot mistake it for a run with the ladder off.",
+    "precondition": "A 5.1 run writes its record having enabled none of the optional mechanisms, so the writer would otherwise leave the list empty.",
+    "kind": "record",
+    "depends_on": [
+     "features-enabled-closed-vocabulary"
+    ]
+   },
+   {
+    "id": "features-not-enabled-field",
+    "name": "Optional features-not-enabled field",
+    "quote": "`features_not_enabled` may carry the same values for mechanisms deliberately left off. (skill/references/execution-contract.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Record only, and optional (\"may\"): lets a record distinguish a mechanism deliberately left off from one never considered.",
+    "precondition": "A run deliberately leaves a listed mechanism off and the writer chooses to say so.",
+    "kind": "record",
+    "depends_on": [
+     "features-enabled-closed-vocabulary"
+    ]
+   },
+   {
+    "id": "features-topology-consistency-invalid",
+    "name": "Features contradicting topology invalidate the record",
+    "quote": "Three values restate the topology, `light_topology`, `delegates` and `team`: where one appears, the topology field governs, and a record whose features contradict its topology is invalid. (skill/references/execution-contract.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Record only: declares a class of record invalid. ASSUMPTION: the package names no validator and no repair procedure, so nothing during a run detects or fixes the contradiction.",
+    "precondition": "A record lists `team`, `delegates` or `light_topology` in its features while its topology field says something else.",
+    "kind": "record",
+    "depends_on": [
+     "features-enabled-closed-vocabulary"
+    ]
+   },
+   {
+    "id": "no-invented-vocabulary-values",
+    "name": "No invented values, degrade to unknown and note",
+    "quote": "A value outside a vocabulary is not invented. For `task_class` record `unknown` with a one-line note; for `features_enabled` keep the values that do fit, leave the unlisted mechanism out, and note it, so one unnamed mechanism does not erase the record of the others. (skill/references/execution-contract.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Record only during the run. The one non-record action is the following sentence, \"Either way raise the gap between runs.\", which obliges the agent to report the missing vocabulary value to the user after delivery rather than during it.",
+    "precondition": "A run's actual task or a mechanism it used has no matching value in either closed vocabulary at the moment the record is written.",
+    "kind": "record",
+    "depends_on": [
+     "task-class-closed-vocabulary",
+     "features-enabled-closed-vocabulary"
+    ]
+   },
+   {
+    "id": "legacy-records-read-as-unknown",
+    "name": "Pre-5.1 records stay valid, absent means unknown",
+    "quote": "Where these fields are absent, in records made before 5.1.0, read them as `unknown` rather than as empty; a 5.0.0 record stays valid. (skill/references/execution-contract.md)",
+    "predecessor_state": "silent \u2014 v5 had no version-dependent record fields to reconcile",
+    "behavior_delta": "Changes only how an existing record is interpreted when read; a resume does not mark an older record's claims for revalidation on account of the missing fields.",
+    "precondition": "A resume or a cross-run analysis reads a run record that was written before 5.1.0.",
+    "kind": "record",
+    "depends_on": [
+     "task-class-closed-vocabulary",
+     "features-enabled-closed-vocabulary"
+    ]
+   },
+   {
+    "id": "vocabulary-store-single-commit",
+    "name": "Vocabulary copies change in one commit",
+    "quote": "Whatever store later reads these records holds the same two vocabularies, so a change to either belongs in every copy in one commit; a store whose list has drifted sorts runs into the wrong groups without erroring. (skill/references/execution-contract.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "When the agent edits either vocabulary, it must update every copy of it in the same commit instead of editing the skill alone.",
+    "precondition": "Someone edits the task_class or features_enabled vocabulary while a separate store or schema holds its own copy of that list.",
+    "kind": "behavior",
+    "depends_on": [
+     "task-class-closed-vocabulary",
+     "features-enabled-closed-vocabulary"
+    ]
+   },
+   {
+    "id": "prompt-target-300-500-measured-filled",
+    "name": "Prompt word target 300 to 500, measured filled",
+    "quote": "The target is 300 to 500 words for the returned prompt, measured filled. (skill/references/prompt-drafting.md)",
+    "predecessor_state": "\"Keep it readable, usually 250-450 words; required outcomes matter more than a word target.\" (versions/v5/references/prompt-drafting.md)",
+    "behavior_delta": "Drafted prompts get longer at both ends of the band, and the count is taken on the filled prompt with the run offer excluded (\"The optional one-line offer to run it does not count.\"), against stated calibration points of a 388-word empty template and 472- and 404-word worked examples.",
+    "precondition": "The agent is on the draft route and is about to return a prompt.",
+    "kind": "budget",
+    "depends_on": []
+   },
+   {
+    "id": "never-drop-an-include-for-length",
+    "name": "Keep the include, overrun, name it",
+    "quote": "When it will not fit, never drop a listed include to hit the target: compress wording first, and if an include still does not fit, keep it, exceed the target, and say which include forced it. (skill/references/prompt-drafting.md)",
+    "predecessor_state": "\"Keep it readable, usually 250-450 words; required outcomes matter more than a word target.\" (versions/v5/references/prompt-drafting.md) \u2014 it ranked outcomes above the target but gave no procedure and required no disclosure",
+    "behavior_delta": "An over-length draft ships complete with a named culprit include, instead of being trimmed to the band or silently exceeding it.",
+    "precondition": "A draft that carries every listed include still exceeds 500 words after the agent has compressed its wording.",
+    "kind": "behavior",
+    "depends_on": [
+     "prompt-target-300-500-measured-filled"
+    ]
+   },
+   {
+    "id": "prompt-carries-task-class-and-features",
+    "name": "Drafted prompt states task class and features",
+    "quote": "The task class and the features enabled, from the closed vocabularies in the execution contract, so the run that follows the prompt can be compared with others. (skill/references/prompt-drafting.md, include list)",
+    "predecessor_state": "silent \u2014 the v5 include list ran from \"Outcome, audience, scope...\" to the harness/model line with no comparability fields, and the v5 template's Difficulty paragraph had no task-class slot",
+    "behavior_delta": "Adds one sentence to every drafted prompt (template slot: \"Task class is [task class] and the features enabled are [features enabled or none], from the closed vocabularies.\"), so the downstream run records two more fields. Nothing in that run's loop behaves differently.",
+    "precondition": "The draft route runs and returns a prompt.",
+    "kind": "record",
+    "depends_on": [
+     "task-class-closed-vocabulary",
+     "features-enabled-closed-vocabulary"
+    ]
+   }
+  ],
+  "removals": [
+   {
+    "id": "resume-validation-line-dropped-from-route",
+    "name": "Resume-validation reminder dropped from the Resume route bullet (the rule itself survives in SKILL.md's recovery section and in prompt-drafting.md)",
+    "what_was_lost": "Record a resume validation decision before dispatch. (versions/v5/SKILL.md, Resume bullet)"
+   },
+   {
+    "id": "old-prompt-length-guidance-dropped",
+    "name": "Old 250-450 band and its outcomes-over-target clause",
+    "what_was_lost": "Keep it readable, usually 250-450 words; required outcomes matter more than a word target. (versions/v5/references/prompt-drafting.md)"
+   }
+  ]
+ },
+ {
+  "transition": "v1->v1-local",
+  "features": [
+   {
+    "id": "execute-when-already-authorized",
+    "name": "Run the loop when authorization already given",
+    "quote": "If the user has already asked you to run, build, fix, or continue the gauntlet, act as the lead and execute it; do not repeat the offer or ask again for authorization already given. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "You are not doing the work. You are writing the prompt that makes another agent grind on the work until it beats a real reference. (versions/v1/SKILL.md)",
+    "behavior_delta": "On an invocation where the user has already said run/build/fix/continue, the agent skips emitting a prompt plus the \"I can run this here.\" offer and starts building as lead instead.",
+    "precondition": "The user's message, or an earlier accepted turn in the same task, already instructs the skill to run, build, fix, or continue a gauntlet.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "reuse-previously-accepted-bar",
+    "name": "Reuse an already-accepted reference",
+    "quote": "Use a supplied or previously accepted reference. If none is established, offer **2 or 3 candidate bars**, one line each, and wait for their pick. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "If the user supplied a reference, use it. If not, offer **2 or 3 candidate bars**, one line each, and stop. Wait for their pick. Do not write the prompt yet. (versions/v1/SKILL.md)",
+    "behavior_delta": "On a continuation, a bar agreed in an earlier turn is reused instead of re-offering two or three candidates and blocking.",
+    "precondition": "A second or later invocation inside a task where a bar was already picked, and the current message does not restate it.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "software-quality-reference-gate",
+    "name": "Mandatory reference read for software goals",
+    "quote": "For software repositories, apps, sites, extensions, or demos, read [references/software-quality.md](references/software-quality.md) before drafting or running the loop. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "silent \u2014 versions/v1/ contains only SKILL.md; there is no references/ directory and no reference-file instruction anywhere in versions/v1/SKILL.md",
+    "behavior_delta": "Inserts a compulsory file read before any prompt is drafted or any build starts, whenever the goal is software-shaped.",
+    "precondition": "The goal is a software repository, app, site, extension, or demo.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "extensions-offered-not-imposed",
+    "name": "Delivery extensions presented as options",
+    "quote": "Otherwise present relevant additions as options, not silent new requirements or blockers. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "The agent must surface CI/demo/README/offline additions to the user as a choice rather than adding them to the bar on its own initiative.",
+    "precondition": "A software goal where the user has not already stated a delivery scope and the reference file offers additions that fit.",
+    "kind": "behavior",
+    "depends_on": [
+     "software-quality-reference-gate"
+    ]
+   },
+   {
+    "id": "no-reasking-settled-scope",
+    "name": "Do not re-ask a settled scope",
+    "quote": "Do not ask again when the selection is already clear. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Suppresses a second scope question on a continuation run; the agent proceeds on the earlier selection.",
+    "precondition": "A continuation run where the extension scope was already settled in this task or in the repository's instructions.",
+    "kind": "prohibition",
+    "depends_on": [
+     "extensions-offered-not-imposed"
+    ]
+   },
+   {
+    "id": "extensions-independently-selectable",
+    "name": "Extensions do not imply each other",
+    "quote": "Selecting a demo does not automatically select public hosting, offline support, or a repository split. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Selecting one extension does not pull in the others, so the agent must not stand up hosting, an offline bundle, or a second repository off the back of a demo selection.",
+    "precondition": "The user selects exactly one delivery extension and the agent is deciding what else falls inside the bar.",
+    "kind": "prohibition",
+    "depends_on": [
+     "extensions-offered-not-imposed"
+    ]
+   },
+   {
+    "id": "selection-is-a-hard-gate",
+    "name": "A selected extension cannot be silently dropped",
+    "quote": "Once an extension to done is selected, it is a completion requirement: missing permissions make it blocked, not passed or silently deselected. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "A selected gate the agent cannot satisfy stops the run from being declared done, instead of quietly falling out of scope.",
+    "precondition": "A selected extension cannot be completed during the run, for example hosting permission is missing.",
+    "kind": "behavior",
+    "depends_on": [
+     "extensions-offered-not-imposed"
+    ]
+   },
+   {
+    "id": "na-must-be-justified",
+    "name": "Not-applicable must be explained, access gaps are blockers",
+    "quote": "Explain why a gate is not applicable; lack of access, an inconvenient test, or an unavailable host is a blocker for a selected or otherwise required gate. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Closes the escape route of marking a gate not applicable when the real reason is that it was hard or inaccessible; forces the status to blocked with a stated reason.",
+    "precondition": "The agent is about to record a required or selected check as not applicable.",
+    "kind": "prohibition",
+    "depends_on": [
+     "five-value-status-vocabulary"
+    ]
+   },
+   {
+    "id": "five-value-status-vocabulary",
+    "name": "Five-value check status vocabulary",
+    "quote": "Distinguish **passed**, **failed**, **blocked**, **not selected**, and **not applicable**. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Record only \u2014 fixes the five words used when writing a check's status; on its own it does not change what gets built or verified.",
+    "precondition": "At least one acceptance check exists and a status is being written for it.",
+    "kind": "wording",
+    "depends_on": []
+   },
+   {
+    "id": "acceptance-record-schema",
+    "name": "Six-column acceptance record in the worklog",
+    "quote": "Maintain a compact acceptance record in the project's existing worklog or progress artifact: **check, selection/scope, expected behavior, evidence, status, remaining gap**. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Record only \u2014 adds a fixed six-column table to an existing worklog or progress artifact; no change to what the builder or critic does.",
+    "precondition": "A software run with at least one selected or required check, and an existing worklog or progress artifact to write into.",
+    "kind": "record",
+    "depends_on": [
+     "software-quality-reference-gate",
+     "five-value-status-vocabulary"
+    ]
+   },
+   {
+    "id": "counts-from-actual-results",
+    "name": "Counts come from actual results",
+    "quote": "Counts come from actual results. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Record only \u2014 prohibits writing test or check counts that were not read off a real run.",
+    "precondition": "The agent is about to state a number of tests or checks in a report or worklog.",
+    "kind": "prohibition",
+    "depends_on": [
+     "acceptance-record-schema"
+    ]
+   },
+   {
+    "id": "evidence-named-before-building",
+    "name": "Name the evidence for each check before building",
+    "quote": "State what observable evidence will prove each selected or otherwise required check. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Forces an extra up-front step: each check gets a named evidence source before work starts, so the loop cannot decide afterwards what would have counted as proof.",
+    "precondition": "At least one check is selected or otherwise required, and building has not yet started.",
+    "kind": "behavior",
+    "depends_on": [
+     "extensions-offered-not-imposed"
+    ]
+   },
+   {
+    "id": "critic-may-add-missed-check",
+    "name": "Critic may add a check the plan missed",
+    "quote": "the critic can add a missed check when a real gap appears (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "A critic can extend the acceptance set mid-run rather than only judging against the list agreed before building.",
+    "precondition": "A critic finds a real gap during a round that no existing check covers.",
+    "kind": "behavior",
+    "depends_on": [
+     "software-quality-reference-gate",
+     "evidence-named-before-building"
+    ]
+   },
+   {
+    "id": "project-derived-checks",
+    "name": "Derive checks from the actual project",
+    "quote": "Derive project-specific checks from the user's goal, repository instructions, supported platforms, reported bugs, and reference behavior. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "Everything else stays out. No architecture, no file layout, no decomposition, no round count, no stack choice unless the user demanded it. The agent decides those, and it decides better than a spec written before the work started. (versions/v1/SKILL.md)",
+    "behavior_delta": "Adds an inspection pass over repo instructions, supported platforms and reported failures before the bar is fixed, producing checks that v1 would have left to the downstream agent's judgment.",
+    "precondition": "A software goal where a repository, platform list, or reported failure is actually available to inspect.",
+    "kind": "behavior",
+    "depends_on": [
+     "software-quality-reference-gate"
+    ]
+   },
+   {
+    "id": "nonsoftware-exemption",
+    "name": "Non-software work needs no repo, CI or demo",
+    "quote": "A purely nonsoftware deliverable does not need a repository, CI, or hosted demo just because this skill is used. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Prohibition \u2014 stops the agent from inventing CI or hosting for a writing, research or design goal now that the delivery checklist exists.",
+    "precondition": "The goal has no software deliverable and the delivery-extension machinery is nonetheless in context.",
+    "kind": "prohibition",
+    "depends_on": [
+     "software-quality-reference-gate"
+    ]
+   },
+   {
+    "id": "visual-win-cannot-offset-failing-check",
+    "name": "A visual win cannot offset a failing check",
+    "quote": "A visual win cannot compensate for a failing selected or otherwise required check. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "The loop keeps running after the blind comparison is won, if any selected check is still failing.",
+    "precondition": "The blind comparison picks ours while at least one selected or required check is failing.",
+    "kind": "behavior",
+    "depends_on": [
+     "selection-is-a-hard-gate"
+    ]
+   },
+   {
+    "id": "blind-only-where-meaningful",
+    "name": "Blind A/B only where meaningful, objective checks otherwise",
+    "quote": "Use blind comparison where a meaningful blind comparison is possible, and objective independent checks for functional requirements. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "The critic inspects the actual output, puts it next to the bar blind with the labels stripped, says which one is better, and names the single biggest remaining gap. Then it goes back to the builder. (versions/v1/SKILL.md)",
+    "behavior_delta": "Functional pieces are judged by pass/fail verification instead of an A/B taste pick; blind comparison stops being the universal judging mode.",
+    "precondition": "A piece under judgement is functional \u2014 it either works or does not \u2014 rather than a matter of taste.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "never-label-nonblind-blind",
+    "name": "Never call a non-blind review blind",
+    "quote": "Never label a nonblind review blind. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Record only \u2014 changes how a review is described in the write-up; it does not change how the review is run.",
+    "precondition": "A review ran without stripping labels and the agent is writing it up.",
+    "kind": "prohibition",
+    "depends_on": [
+     "blind-only-where-meaningful"
+    ]
+   },
+   {
+    "id": "separate-final-critic",
+    "name": "A separate final critic over all evidence",
+    "quote": "A separate final critic inspects the current artifacts, the meaningful reference comparison, and the evidence for every agreed gate. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent \u2014 versions/v1/SKILL.md names only per-piece critics (\"For each piece, fan out a builder and a separate critic with fresh context.\") and no final reviewer",
+    "behavior_delta": "Adds one more agent at the end of a run, distinct from the per-piece critics, that reviews artifacts plus the whole evidence record before anything is called done.",
+    "precondition": "A software run reaches the point where the lead would otherwise declare the work finished.",
+    "kind": "behavior",
+    "depends_on": [
+     "software-quality-reference-gate",
+     "acceptance-record-schema"
+    ]
+   },
+   {
+    "id": "ship-hold-verdict",
+    "name": "SHIP / HOLD verdict vocabulary and gate",
+    "quote": "Return **SHIP** only when selected and otherwise required gates pass and the reference comparison supports it. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent \u2014 versions/v1/SKILL.md has no verdict token; its exit is \"/loop on each piece until the critic picks ours blind. Do not stop before that.\"",
+    "behavior_delta": "Introduces a two-token verdict and makes the release decision a conjunction of gate passes and comparison win, rather than the comparison alone.",
+    "precondition": "The final critic has inspected the artifacts and is issuing a verdict.",
+    "kind": "behavior",
+    "depends_on": [
+     "separate-final-critic",
+     "selection-is-a-hard-gate"
+    ]
+   },
+   {
+    "id": "recheck-after-material-changes",
+    "name": "A verdict does not carry over a later build",
+    "quote": "Recheck after material changes; an earlier verdict does not cover a later build automatically. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Forces a re-review after the artifact changes, so an earlier SHIP cannot be reused for a build that came after it.",
+    "precondition": "The artifact changes materially after a critic verdict was already issued.",
+    "kind": "behavior",
+    "depends_on": [
+     "separate-final-critic"
+    ]
+   },
+   {
+    "id": "unselected-recommendations-not-blockers",
+    "name": "Unselected recommendations do not block release",
+    "quote": "Unselected recommendations are not release blockers. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "A critic's suggestion that was never selected as a gate cannot hold the run open.",
+    "precondition": "A critic raises an improvement that was never part of the selected or required scope.",
+    "kind": "prohibition",
+    "depends_on": [
+     "extensions-offered-not-imposed",
+     "ship-hold-verdict"
+    ]
+   },
+   {
+    "id": "template-exit-includes-checks",
+    "name": "Generated prompt's exit requires the checks too",
+    "quote": "Keep fixing and rejudging until the comparison wins and every agreed acceptance check passes. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "/loop on each piece until the critic picks ours blind. Do not stop before that. (versions/v1/SKILL.md)",
+    "behavior_delta": "The emitted prompt's stopping condition becomes a conjunction, so a downstream agent reading only the prompt will not stop on a blind win alone.",
+    "precondition": "A prompt is emitted that carries at least one acceptance check.",
+    "kind": "behavior",
+    "depends_on": [
+     "prompt-carries-selected-outcomes"
+    ]
+   },
+   {
+    "id": "template-record-blockers-not-pass",
+    "name": "Generated prompt tells the agent to record blockers",
+    "quote": "Record genuine external blockers instead of claiming a pass. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Adds an instruction inside the emitted prompt so the downstream agent reports a blocker rather than marking a gate passed.",
+    "precondition": "An external blocker stops a check while the generated prompt is being executed.",
+    "kind": "behavior",
+    "depends_on": [
+     "prompt-carries-selected-outcomes"
+    ]
+   },
+   {
+    "id": "prompt-carries-selected-outcomes",
+    "name": "Selected gates baked into the emitted prompt",
+    "quote": "Include selected outcomes in the generated prompt so it works in a fresh session without this skill; omit unselected extras or clearly label them optional. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "The text of the emitted prompt changes: selected delivery gates are written into it so a fresh session without the skill still enforces them.",
+    "precondition": "At least one delivery extension is selected and a paste-ready prompt is being emitted.",
+    "kind": "behavior",
+    "depends_on": [
+     "extensions-offered-not-imposed"
+    ]
+   },
+   {
+    "id": "replace-bracketed-placeholder",
+    "name": "Replace every bracketed instruction before returning",
+    "quote": "Replace every bracketed instruction before returning the prompt. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "silent \u2014 the v1 template's only brackets are the value slots [GOAL] and [BAR], with no instruction-shaped placeholder and no replacement rule",
+    "behavior_delta": "Prohibits shipping the new template's \"[Insert selected extensions to done and concrete project-specific checks here, if any...]\" line verbatim to the user.",
+    "precondition": "A drafted prompt still contains the template's instruction placeholder when the agent is about to return it.",
+    "kind": "prohibition",
+    "depends_on": [
+     "prompt-carries-selected-outcomes"
+    ]
+   },
+   {
+    "id": "word-budget-raised-for-delivery",
+    "name": "Word budget extended for delivery gates",
+    "quote": "Keep prompts concise: usually 120 to 180 words for general work, with room for roughly 220 to 320 words when concrete software delivery gates need it. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "Short. Around 120 to 180 words. If the prompt needs a heading to stay readable, it is too long. (versions/v1/SKILL.md)",
+    "behavior_delta": "Raises the ceiling from a single 120-180 band to a second 220-320 band, so a software prompt is no longer trimmed back to 180 words.",
+    "precondition": "A software prompt carrying selected delivery gates would exceed 180 words.",
+    "kind": "budget",
+    "depends_on": [
+     "prompt-carries-selected-outcomes"
+    ]
+   },
+   {
+    "id": "no-trimming-requirements-to-fit",
+    "name": "Do not cut requirements to hit the word count",
+    "quote": "Do not drop required outcomes to meet a word count or paste the entire reference checklist into every prompt. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "When the draft is over budget, the agent must cut prose rather than gates, and must not dump the whole reference file into the prompt either.",
+    "precondition": "A drafted prompt is over the word budget and the agent is choosing what to remove.",
+    "kind": "prohibition",
+    "depends_on": [
+     "word-budget-raised-for-delivery"
+    ]
+   },
+   {
+    "id": "drop-loop-and-ultracode",
+    "name": "No /loop or ultracode in emitted prompts",
+    "quote": "Do not emit `/loop` or `ultracode` as Codex commands. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "`/loop` and `ultracode` are Claude Code features. `/loop` reruns the prompt on an interval or lets the model pace itself. `ultracode` opts the turn into multi-agent orchestration. (versions/v1/SKILL.md)",
+    "behavior_delta": "Every emitted prompt now ends in plain-language looping and subagent wording instead of the two Claude Code commands, which changes what the downstream runtime is actually asked to do.",
+    "precondition": "Any prompt is emitted.",
+    "kind": "prohibition",
+    "depends_on": []
+   },
+   {
+    "id": "codex-invocation-trigger",
+    "name": "$gauntlet-loop invocation in Codex",
+    "quote": "In Codex, invoke this skill with `$gauntlet-loop` followed by the goal. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "Triggers on \"/gauntlet-loop\", \"gauntlet loop\", \"gauntlet this\", \"make a gauntlet prompt\", \"loop until it beats X\". (versions/v1/SKILL.md)",
+    "behavior_delta": "Adds \"$gauntlet-loop\" to the trigger set in the frontmatter description, so the skill fires on a token it previously ignored.",
+    "precondition": "A user types $gauntlet-loop rather than one of the v1 trigger phrases.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "report-missing-capability-blocker",
+    "name": "Report missing subagents or reference as a blocker",
+    "quote": "If separate subagents or the real reference are unavailable, report that blocker; do not pretend an independent blind comparison ran. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "For any other agent, swap the last two lines for: \"Keep looping until the critic picks ours. Run the builders and critics as parallel subagents.\" The structure carries over unchanged. (versions/v1/SKILL.md)",
+    "behavior_delta": "Replaces v1's claim that the structure carries over unchanged with an instruction to stop and report when the host cannot spawn separate critics or reach the reference.",
+    "precondition": "The executing host cannot spawn separate subagents, or the named reference cannot be fetched.",
+    "kind": "behavior",
+    "depends_on": [
+     "drop-loop-and-ultracode"
+    ]
+   },
+   {
+    "id": "final-delivery-link-order",
+    "name": "Fixed final link order: repo, demo, download",
+    "quote": "After executing a software gauntlet with delivery outputs, put verified links in this order: **repository, live demo, offline download**. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Record only \u2014 fixes the shape and ordering of the final handoff message; it changes nothing the agent builds or verifies.",
+    "precondition": "A software gauntlet was actually executed (not prompt-only) and produced at least two of repository, demo, and download.",
+    "kind": "record",
+    "depends_on": [
+     "execute-when-already-authorized"
+    ]
+   },
+   {
+    "id": "no-invented-urls",
+    "name": "Never invent a URL or pass source for a demo",
+    "quote": "Never invent a URL or imply that a relative HTML source link is a running demo. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Blocks the handoff from listing a link that was never verified, and from presenting a repo-relative file path as a live demo.",
+    "precondition": "A demo link is missing at handoff time, or only a repo-relative source path exists.",
+    "kind": "prohibition",
+    "depends_on": [
+     "final-delivery-link-order"
+    ]
+   },
+   {
+    "id": "distinct-evidence-tier-reporting",
+    "name": "Report local, CI and live evidence separately",
+    "quote": "Report local tests, exact-commit CI, and live/offline checks distinctly (versions/v1-local/SKILL.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Record only \u2014 forbids merging three evidence tiers into one \"tests pass\" claim in the final report.",
+    "precondition": "More than one of a local suite, a CI run, and a live or offline check actually ran.",
+    "kind": "record",
+    "depends_on": [
+     "final-delivery-link-order"
+    ]
+   },
+   {
+    "id": "recheck-permission-before-repeating-blocker",
+    "name": "Recheck a permission before reporting it blocked again",
+    "quote": "recheck a previously missing permission before repeating it as a current blocker (versions/v1-local/SKILL.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Forces one live capability probe before a stale blocker is restated, so an approval granted mid-run is picked up.",
+    "precondition": "A permission was reported missing earlier in the run and the agent is about to report it as still blocking.",
+    "kind": "behavior",
+    "depends_on": [
+     "selection-is-a-hard-gate"
+    ]
+   },
+   {
+    "id": "exact-commit-ci-evidence",
+    "name": "CI proof is a hosted run on the reviewed commit",
+    "quote": "Inspect the hosted run for the exact reviewed commit. Required jobs and critical checks must execute and pass; queued, cancelled, skipped, or older-commit runs are not proof. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "The agent must open the hosted run for the reviewed SHA; a green run on an earlier commit, a skipped job, a local suite, or an uncommitted workflow file no longer closes the CI gate.",
+    "precondition": "CI was selected as an extension to done and a workflow run exists.",
+    "kind": "behavior",
+    "depends_on": [
+     "software-quality-reference-gate",
+     "selection-is-a-hard-gate"
+    ]
+   },
+   {
+    "id": "ci-exercises-extension-and-demo",
+    "name": "CI must exercise both extension and demo",
+    "quote": "When CI is selected and both extension and demo exist, it must exercise both. (versions/v1-local/SKILL.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Forces the workflow to cover the installed extension as well as the demo, rather than testing the demo and inferring the extension works.",
+    "precondition": "CI is selected and the project ships both a browser extension and a separate demo.",
+    "kind": "behavior",
+    "depends_on": [
+     "exact-commit-ci-evidence"
+    ]
+   },
+   {
+    "id": "no-new-branch-restrictions-for-ci",
+    "name": "Do not add branch restrictions to create CI",
+    "quote": "Do not impose new branch restrictions merely to create CI. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Blocks the agent from configuring branch protection on the user's repository as a side effect of satisfying the CI gate.",
+    "precondition": "CI is selected and the agent is about to change repository branch rules.",
+    "kind": "prohibition",
+    "depends_on": [
+     "exact-commit-ci-evidence"
+    ]
+   },
+   {
+    "id": "hosted-demo-approved-audience-only",
+    "name": "Skill does not authorize publication or broader access",
+    "quote": "Respect the approved audience, including private/owner-only access. The skill itself does not authorize public publication, a paid hosting account, or broader access. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Selecting a hosted demo does not let the agent publish publicly or pay for hosting; it must prepare the artifact and request the genuinely missing approval.",
+    "precondition": "A hosted demo is selected and publishing it would widen the audience beyond what was already approved.",
+    "kind": "prohibition",
+    "depends_on": [
+     "software-quality-reference-gate"
+    ]
+   },
+   {
+    "id": "hosted-demo-loads-verified",
+    "name": "Verify the deployed URL loads the validated build",
+    "quote": "Publish the exact validated build, confirm deployment completion, and verify that the demo URL loads the intended experience for its intended audience. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "An HTTP 200 or a green deployment log no longer counts; the agent must load the URL and exercise critical controls and routes.",
+    "precondition": "A hosted demo is selected and a deployment has completed.",
+    "kind": "behavior",
+    "depends_on": [
+     "hosted-demo-approved-audience-only"
+    ]
+   },
+   {
+    "id": "demo-manual-exploration-and-reset",
+    "name": "Demo must allow manual exploration, reset and repeat",
+    "quote": "Let users explore real controls manually, reset to a known starting state, and repeat the workflow. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "A demo that only shows populated sample rows fails the gate; the build must include working controls, a reset path, and a repeatable journey.",
+    "precondition": "A usable demo experience is selected as an extension to done.",
+    "kind": "behavior",
+    "depends_on": [
+     "software-quality-reference-gate",
+     "selection-is-a-hard-gate"
+    ]
+   },
+   {
+    "id": "guided-tour-drives-real-handlers",
+    "name": "A guided tour must drive the real handlers",
+    "quote": "When a guided tour is selected, drive the same application handlers and state transitions as manual use. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "A scripted walkthrough that fakes state or shows canned screenshots does not count as working behavior; the tour must go through the product's own code paths.",
+    "precondition": "A guided tour is selected as a separate extension to done.",
+    "kind": "behavior",
+    "depends_on": [
+     "demo-manual-exploration-and-reset"
+    ]
+   },
+   {
+    "id": "deterministic-synthetic-fixtures",
+    "name": "Deterministic fixtures for demo scenarios",
+    "quote": "Use deterministic synthetic fixtures for selected demo scenarios: known records, ordering, identifiers, and clock/seed inputs where relevant. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Demo data must be pinned (known records, fixed ordering and identifiers, controlled clock or seed) so the recorded expected-versus-observed result is reproducible.",
+    "precondition": "A demo scenario is selected and its data or timing would otherwise vary between runs.",
+    "kind": "behavior",
+    "depends_on": [
+     "demo-manual-exploration-and-reset"
+    ]
+   },
+   {
+    "id": "offline-verified-with-networking-disabled",
+    "name": "Offline artifact verified with networking disabled",
+    "quote": "Verify a fresh copy with networking disabled, including required assets, the selected journey, recovery, and reset. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "The offline bundle must be opened from a fresh copy with the network off and driven through the journey; a working page in a previously cached browser session does not count.",
+    "precondition": "Portable or offline delivery is selected as an extension to done.",
+    "kind": "behavior",
+    "depends_on": [
+     "software-quality-reference-gate",
+     "selection-is-a-hard-gate"
+    ]
+   },
+   {
+    "id": "distributed-artifact-parity",
+    "name": "Verify the distributed artifact, not just the source tree",
+    "quote": "For each selected delivery surface, verify the same selected scenarios against the actual distributed artifact. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "The same scenarios must be re-run against the packaged download and the hosted deployment, with the source revision tied to build identity, instead of being verified once in the working tree.",
+    "precondition": "More than one delivery surface is selected, for example a hosted demo plus an offline download.",
+    "kind": "behavior",
+    "depends_on": [
+     "offline-verified-with-networking-disabled",
+     "hosted-demo-loads-verified"
+    ]
+   },
+   {
+    "id": "public-copy-boundary-audit",
+    "name": "Audit the actual publication boundary",
+    "quote": "Audit the actual publication boundary before release: files entering the public repository or archive, any history being published, and deployed assets including generated bundles, source maps, fixtures, and downloads. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Before anything is published the agent must enumerate the files, history and generated assets crossing the boundary; an ignore rule or a clean working tree is explicitly not accepted as proof.",
+    "precondition": "A clean public working copy is selected and a private original contains recordings, customer data, local state, or private history.",
+    "kind": "behavior",
+    "depends_on": [
+     "software-quality-reference-gate",
+     "selection-is-a-hard-gate"
+    ]
+   },
+   {
+    "id": "readme-actual-screenshot",
+    "name": "README carries a real screenshot",
+    "quote": "When README visual evidence is selected, include at least one useful **actual screenshot** for a visual product or demo. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Adds a build step: capture the reviewed artifact, store the image in the repository, link it relatively, and check it is readable; mockups must be labelled as such.",
+    "precondition": "README visual evidence is selected and the product is visual.",
+    "kind": "behavior",
+    "depends_on": [
+     "software-quality-reference-gate",
+     "selection-is-a-hard-gate"
+    ]
+   },
+   {
+    "id": "readme-demo-link",
+    "name": "README links the canonical demo URL with access notes",
+    "quote": "When documenting an existing or selected hosted demo, link its canonical URL near the start of the README, state how to access it and whether it is private, and keep the link current. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Adds a README edit placing the demo link near the top with its access conditions stated.",
+    "precondition": "A hosted demo exists or is selected, and a README is in scope.",
+    "kind": "behavior",
+    "depends_on": [
+     "hosted-demo-loads-verified"
+    ]
+   },
+   {
+    "id": "install-update-instructions",
+    "name": "Installation, update and recovery instructions",
+    "quote": "When onboarding or update guidance is selected, explain first installation, normal use, updates, and likely recovery paths in language appropriate to the user. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Adds documentation work covering first install, updates and recovery, verified against the real UI, and forbids telling users to reinstall for a normal update.",
+    "precondition": "Onboarding or update guidance is selected as an extension to done.",
+    "kind": "behavior",
+    "depends_on": [
+     "software-quality-reference-gate",
+     "selection-is-a-hard-gate"
+    ]
+   },
+   {
+    "id": "failure-class-coverage",
+    "name": "Cover the class of a reported failure",
+    "quote": "Cover the class of a reported failure, not just one patched example. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "A bug fix must come with coverage for the whole family of inputs or hosts that share the defect, not only the one case the user reported.",
+    "precondition": "A specific failure was reported and the agent is writing the check that proves it fixed.",
+    "kind": "behavior",
+    "depends_on": [
+     "project-derived-checks"
+    ]
+   },
+   {
+    "id": "test-oracle-independence",
+    "name": "Test oracle must not come from the code under test",
+    "quote": "Do not generate the entire test oracle from the same runtime configuration under test: removing a supported entry must not quietly remove its own regression. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Expectations must be written from independent sources, and where the failure mode matters the agent has to demonstrate that a representative regression actually fails.",
+    "precondition": "A test suite enumerates its cases from the same config, table, or runtime it is testing.",
+    "kind": "behavior",
+    "depends_on": [
+     "failure-class-coverage"
+    ]
+   },
+   {
+    "id": "evidence-class-separation",
+    "name": "Simulated evidence kept separate from live",
+    "quote": "Separate intercepted fixtures, simulated lifecycle/clock events, live public pages, and authenticated end-to-end behavior in the evidence record. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Record only in the general case \u2014 the four evidence classes must be labelled distinctly, which prevents a fixture-backed run being reported as a live checkout or a real transaction.",
+    "precondition": "A run produces evidence from more than one class, for example a fixture-driven journey plus a live page fetch.",
+    "kind": "record",
+    "depends_on": [
+     "acceptance-record-schema"
+    ]
+   },
+   {
+    "id": "isolated-environment-testing",
+    "name": "Test in isolated environments, not the user's browser",
+    "quote": "Test through isolated environments appropriate to the task instead of altering a user's active browser state. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Browser or extension checks must run in an isolated profile rather than the user's live session, changing how the verification is executed.",
+    "precondition": "A check would otherwise be run against the user's active browser profile or session state.",
+    "kind": "behavior",
+    "depends_on": [
+     "software-quality-reference-gate"
+    ]
+   },
+   {
+    "id": "request-only-missing-approval",
+    "name": "Probe capability, request only the missing approval",
+    "quote": "Inspect actual capability before telling the user they need another installation or permission. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "The agent must test what it can already do before asking for anything, name the exact blocked action and missing capability, and must not retry around the restriction.",
+    "precondition": "An operation fails or looks likely to fail for want of a permission or installation.",
+    "kind": "behavior",
+    "depends_on": [
+     "software-quality-reference-gate"
+    ]
+   },
+   {
+    "id": "credentials-out-of-repo-and-logs",
+    "name": "Keep credentials and device codes out of files and logs",
+    "quote": "Keep credentials and device codes out of repository files and logs. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "Prohibition \u2014 blocks writing a token or device code into a tracked file or a worklog during an authorization step.",
+    "precondition": "An authorization flow produces a credential or device code during the run.",
+    "kind": "prohibition",
+    "depends_on": [
+     "request-only-missing-approval"
+    ]
+   },
+   {
+    "id": "continue-authorized-work-while-blocked",
+    "name": "Keep working on authorized scope while blocked",
+    "quote": "Complete independently authorized work while a blocker is pending. Preserve the prepared artifact and a concrete next step. (versions/v1-local/references/software-quality.md)",
+    "predecessor_state": "silent",
+    "behavior_delta": "A pending approval no longer halts the run; the agent finishes everything else, keeps the prepared artifact, and resumes the blocked verification once unblocked.",
+    "precondition": "A selected gate is blocked on an external approval while other scope is still buildable.",
+    "kind": "behavior",
+    "depends_on": [
+     "request-only-missing-approval",
+     "selection-is-a-hard-gate"
+    ]
+   }
+  ],
+  "removals": [
+   {
+    "id": "removal-prompt-only-identity",
+    "name": "The skill's prompt-only self-definition",
+    "what_was_lost": "The user gives a goal. You give back ONE short prompt they can paste into a fresh agent session.\n\nYou are not doing the work. You are writing the prompt that makes another agent grind on the work until it beats a real reference. (versions/v1/SKILL.md)"
+   },
+   {
+    "id": "removal-hard-stop-before-prompt",
+    "name": "The hard stop before writing the prompt",
+    "what_was_lost": "If not, offer **2 or 3 candidate bars**, one line each, and stop. Wait for their pick. Do not write the prompt yet. (versions/v1/SKILL.md)"
+   },
+   {
+    "id": "removal-loop-command-in-template",
+    "name": "The /loop exit line in the prompt template",
+    "what_was_lost": "/loop on each piece until the critic picks ours blind. Do not stop before that. (versions/v1/SKILL.md, prompt template)"
+   },
+   {
+    "id": "removal-ultracode-line",
+    "name": "The ultracode closing line",
+    "what_was_lost": "Fan out subagents and ultracode. (versions/v1/SKILL.md)"
+   },
+   {
+    "id": "removal-claude-code-feature-explanation",
+    "name": "The explanation of /loop and ultracode",
+    "what_was_lost": "`/loop` and `ultracode` are Claude Code features. `/loop` reruns the prompt on an interval or lets the model pace itself. `ultracode` opts the turn into multi-agent orchestration. (versions/v1/SKILL.md)"
+   },
+   {
+    "id": "removal-structure-carries-over",
+    "name": "The claim that the structure ports unchanged to any agent",
+    "what_was_lost": "For any other agent, swap the last two lines for: \"Keep looping until the critic picks ours. Run the builders and critics as parallel subagents.\" The structure carries over unchanged. (versions/v1/SKILL.md)"
+   },
+   {
+    "id": "removal-everything-else-stays-out",
+    "name": "The minimalism rule and its rationale",
+    "what_was_lost": "Everything else stays out. No architecture, no file layout, no decomposition, no round count, no stack choice unless the user demanded it. The agent decides those, and it decides better than a spec written before the work started. (versions/v1/SKILL.md)"
+   },
+   {
+    "id": "removal-heading-length-test",
+    "name": "The heading test for prompt length",
+    "what_was_lost": "Short. Around 120 to 180 words. If the prompt needs a heading to stay readable, it is too long. (versions/v1/SKILL.md)"
+   },
+   {
+    "id": "removal-unconditional-blind-ab-in-template",
+    "name": "The unconditional blind A/B in the template's critic line",
+    "what_was_lost": "The critic inspects the actual output, puts it next to the bar blind with the labels stripped, says which one is better, and names the single biggest remaining gap. (versions/v1/SKILL.md, prompt template)"
+   }
+  ]
+ },
+ {
+  "transition": "v1-local->v2",
+  "features": [
+   {
+    "id": "team-method-reference-gate",
+    "name": "Mandatory team-method reference read before team runs",
+    "quote": "Before a substantive team run, read [references/team-method.md](references/team-method.md). (versions/v2/SKILL.md)",
+    "predecessor_state": "silent \u2014 v1-local/SKILL.md links only references/software-quality.md, and v1-local/references/ contains only software-quality.md; no team, roles, or coordination reference exists in the v1-local package",
+    "behavior_delta": "The lead must load an additional 81-line reference before starting a multi-agent run, which pulls in the whole governance layer (features 2-21 below) as live instructions instead of leaving coordination to the agent's own judgment. Scope note, not an inference: the 25-item output cap meant I did not itemize these further atomic rules that are also new in versions/v2/references/team-method.md and versions/v2/references/agent-language.md \u2014 classify a live control's effect before activating it; append-only decision history with no stored chain-of-thought; reputation records that never infer trust from model identity; separation of request/dispatch/completion/presentation for async effects with ownership-generation binding; scoped READY is not full SHIP; no incentives for fastest SHIP or fewest dissenting reports; the six-line resumption record template; protocol version freeze and receiver acknowledgement; matched held-out comparison with full-overhead token accounting; and the SKILL.md fill rule that a portable prompt selecting the language pilot must be self-contained. Each is independently switchable and belongs in a complete list.",
+    "precondition": "The user asks for a run (not just a drafted prompt) and the lead judges the run 'substantive' enough to warrant a team; a single-agent or prompt-only response never loads the file.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "purpose-before-controls",
+    "name": "Start from the user's task before adding any control",
+    "quote": "Before adding a feature or control, identify what the person wants to finish, their normal first action, the frequent secondary actions, and what can remain secondary or disappear. (versions/v2/references/team-method.md)",
+    "predecessor_state": "silent on design purpose. The nearest v1 text is about gate selection, not about what to build: \"Derive project-specific checks from the user's goal, repository instructions, supported platforms, reported bugs, and reference behavior.\" (versions/v1-local/SKILL.md). Searched v1-local/SKILL.md and v1-local/references/software-quality.md.",
+    "behavior_delta": "A builder must produce an explicit statement of the user's primary and secondary actions and the attention cost of a change before writing it, and the same requirement is pushed into every generated prompt via the new template line \"Start each piece with the user's task and the cost of the proposed change.\" (versions/v2/SKILL.md).",
+    "precondition": "A builder is about to add a UI control, feature or affordance that was not literally named in the goal.",
+    "kind": "behavior",
+    "depends_on": [
+     "team-method-reference-gate"
+    ]
+   },
+   {
+    "id": "one-writer-per-file",
+    "name": "Single writer per file with interface handoff",
+    "quote": "Assign one writer to each file or bounded surface. Dependent changes start only after the owner announces the interface and releases the relevant files. (versions/v2/references/team-method.md)",
+    "predecessor_state": "silent \u2014 v1-local/SKILL.md says only \"Run the builders and critics as parallel subagents.\" with no ownership or write-conflict rule; searched v1-local/SKILL.md and v1-local/references/software-quality.md",
+    "behavior_delta": "Parallel builders are serialized on shared files: a dependent builder must wait for an announced interface instead of editing concurrently, and the rule is carried into generated prompts by \"Assign one writer per file and one owner of any live browser.\" (versions/v2/SKILL.md).",
+    "precondition": "Two or more builders are dispatched in the same wave and at least two of them would touch the same file or bounded surface.",
+    "kind": "behavior",
+    "depends_on": [
+     "team-method-reference-gate"
+    ]
+   },
+   {
+    "id": "one-live-browser-owner",
+    "name": "Single owner of a live browser",
+    "quote": "One agent operates a live browser; other agents use independent read-only evidence or isolated fictional fixtures. (versions/v2/references/team-method.md)",
+    "predecessor_state": "silent \u2014 v1-local/SKILL.md has critics opening the reference with no exclusivity rule (\"The critic opens the real page in a browser\"); searched v1-local/SKILL.md and v1-local/references/software-quality.md",
+    "behavior_delta": "Only one agent per run may drive a live browser; every other agent that needs browser evidence must be given read-only artifacts or fixtures instead of its own session.",
+    "precondition": "A run dispatches more than one agent that would need to drive a live browser (for example a builder testing a page while a critic screenshots the reference).",
+    "kind": "behavior",
+    "depends_on": [
+     "team-method-reference-gate"
+    ]
+   },
+   {
+    "id": "eight-responsibility-roster",
+    "name": "Named eight-responsibility roster",
+    "quote": "Use two solvers, four whistleblower responsibilities, a reference researcher and a final reviewer when the user requests the full setup or the task benefits from it. (versions/v2/SKILL.md)",
+    "predecessor_state": "\"For each piece, fan out a builder and a separate critic with fresh context.\" (versions/v1-local/SKILL.md) \u2014 two undifferentiated roles only",
+    "behavior_delta": "The lead dispatches agents against eight named mandates (core solver, interaction solver, purpose/authority/journeys/evidence whistleblowers, reference researcher, final reviewer) with a defined ownership table, rather than spawning generic builder+critic pairs.",
+    "precondition": "The user asks for the full setup, or the lead judges the task large enough to benefit; small edits explicitly stay outside it.",
+    "kind": "behavior",
+    "depends_on": [
+     "team-method-reference-gate"
+    ]
+   },
+   {
+    "id": "responsibilities-in-waves-not-simultaneous",
+    "name": "Responsibilities run in waves, not as eight processes",
+    "quote": "These are responsibilities, not eight mandatory simultaneous processes. Reuse available slots in waves. (versions/v2/references/team-method.md)",
+    "predecessor_state": "silent \u2014 no concept of roles, slots or waves exists in v1-local/SKILL.md or v1-local/references/software-quality.md",
+    "behavior_delta": "Caps concurrent subagents at the available slots and sequences the roster across waves, so adding responsibilities does not add simultaneous agents; reinforced in SKILL.md by \"Do not equate role count with simultaneous agents, or repeated agreement with independent evidence.\"",
+    "precondition": "The eight-responsibility roster is in use and the number of responsibilities exceeds the concurrent subagent slots actually available.",
+    "kind": "budget",
+    "depends_on": [
+     "eight-responsibility-roster"
+    ]
+   },
+   {
+    "id": "parallelism-conditional-in-prompt-template",
+    "name": "Parallel fan-out only where independent work exists",
+    "quote": "Run builders and critics in parallel where independent work exists, in waves within available slots. Honor the user's stopping milestone and save a resumable status. (versions/v2/SKILL.md)",
+    "predecessor_state": "\"Run the builders and critics as parallel subagents.\" (versions/v1-local/SKILL.md, prompt template and both filled examples)",
+    "behavior_delta": "Every prompt this skill drafts now tells a fresh session to withhold parallel fan-out on dependent work and to batch into waves, where v1 told it to parallelize unconditionally; both filled examples carry the same hedge.",
+    "precondition": "A drafted prompt is handed to a fresh session and that session's pieces are not actually independent of each other.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "agreement-is-not-independent-evidence",
+    "name": "Repeated agreement counts as one source",
+    "quote": "Multiple agents citing the same result provide one source of evidence, not multiple independent confirmations. (versions/v2/references/team-method.md)",
+    "predecessor_state": "silent \u2014 v1 constrains only blind labelling (\"Never label a nonblind review blind.\", versions/v1-local/SKILL.md); searched v1-local/SKILL.md and v1-local/references/software-quality.md",
+    "behavior_delta": "The lead may not count concurring critics as corroboration when they all read the same artifact, so a claim backed by three agreeing agents still needs one fresh check; SKILL.md adds the goal-protection half: \"A passing scorer or a popular claim cannot rewrite the user's goal.\"",
+    "precondition": "Two or more agents report the same conclusion from the same underlying run, screenshot or test result, and the lead is deciding whether the claim is confirmed.",
+    "kind": "prohibition",
+    "depends_on": [
+     "team-method-reference-gate"
+    ]
+   },
+   {
+    "id": "finding-record-schema",
+    "name": "Required metadata on a reusable finding",
+    "quote": "A reusable finding needs an ID, author, scope, source/artifact identity, evidence pointer, dependencies, status and reviewer. (versions/v2/references/team-method.md)",
+    "predecessor_state": "\"Maintain a compact acceptance record in the project's existing worklog or progress artifact: **check, selection/scope, expected behavior, evidence, status, remaining gap**.\" (versions/v1-local/references/software-quality.md) \u2014 a per-gate acceptance record, with no schema for a shared reusable finding, no author and no dependency field",
+    "behavior_delta": "Record-shape change: anything written into shared memory for reuse must carry author, dependencies and a reviewer, which is what makes dependency-dispute propagation and independent promotion mechanically possible; on its own it changes what is written, not what is built.",
+    "precondition": "An agent wants to write a conclusion into shared memory for another agent to rely on later.",
+    "kind": "record",
+    "depends_on": [
+     "team-method-reference-gate"
+    ]
+   },
+   {
+    "id": "knowledge-status-vocabulary",
+    "name": "Five-state vocabulary for shared knowledge",
+    "quote": "Use **proposed**, **verified within scope**, **disputed**, **superseded** or **quarantined**. Unknown is not verified. (versions/v2/references/team-method.md)",
+    "predecessor_state": "v1 has an acceptance-status vocabulary only: \"Distinguish **passed**, **failed**, **blocked**, **not selected**, and **not applicable**.\" (versions/v1-local/SKILL.md)",
+    "behavior_delta": "Adds a second, orthogonal status axis for claims (as opposed to gates), and the accompanying rule that an unreviewed proposal may be used as a labelled hypothesis but \"cannot silently become acceptance facts or instructions\" \u2014 so a downstream agent must check a claim's status before treating it as fact.",
+    "precondition": "A downstream agent reads a shared finding whose evidence it did not itself inspect and is about to act on it.",
+    "kind": "record",
+    "depends_on": [
+     "finding-record-schema"
+    ]
+   },
+   {
+    "id": "independent-promotion-of-findings",
+    "name": "Non-author must reproduce a consequential finding",
+    "quote": "For consequential findings, promotion requires someone other than the author to inspect or reproduce the relevant evidence. (versions/v2/references/team-method.md)",
+    "predecessor_state": "\"The lead builds; separate critics review the actual artifacts and evidence.\" (versions/v1-local/SKILL.md) \u2014 independence required for reviewing the deliverable, not for admitting a claim into shared knowledge",
+    "behavior_delta": "Blocks a finding from moving to verified until a second agent has touched the evidence, and the requirement is pushed into generated prompts as \"promote shared findings only with scoped evidence and independent review\" (versions/v2/SKILL.md).",
+    "precondition": "An agent proposes a finding that other agents' work will depend on, and the lead is about to mark it verified.",
+    "kind": "behavior",
+    "depends_on": [
+     "knowledge-status-vocabulary"
+    ]
+   },
+   {
+    "id": "dependency-dispute-propagation",
+    "name": "Disputes propagate to dependent findings and their holders",
+    "quote": "When a dependency is disputed, mark downstream findings for review. Notify the agents relying on it, including those who were not part of the original discussion. (versions/v2/references/team-method.md)",
+    "predecessor_state": "silent \u2014 v1 has no shared-claim graph at all; searched v1-local/SKILL.md and v1-local/references/software-quality.md",
+    "behavior_delta": "The lead must walk the dependency graph and message agents outside the dispute thread, and must revalidate rather than discard when assumptions or target identity change; without this, a retracted claim keeps silently supporting downstream work.",
+    "precondition": "A shared finding that at least one other agent already built on is moved to disputed, or its source or target identity changes mid-run.",
+    "kind": "behavior",
+    "depends_on": [
+     "finding-record-schema"
+    ]
+   },
+   {
+    "id": "any-critic-can-hold-acceptance",
+    "name": "Any critic can HOLD a named acceptance claim",
+    "quote": "Any critic can report a HOLD on a named acceptance claim with the affected artifact, observation, suspected mismatch and discriminating check. (versions/v2/references/team-method.md)",
+    "predecessor_state": "\"Otherwise return **HOLD**, identify the highest-impact remaining gap, and continue the builder/critic loop or report the actual external blocker.\" (versions/v1-local/references/software-quality.md) \u2014 HOLD is a verdict issued by the single final critic at the end, not a flag any reviewer can raise against a specific claim mid-run",
+    "behavior_delta": "Moves HOLD from an end-of-run verdict to a mid-run interrupt any reviewer can fire: the lead must block promotion of the disputed claim and assign an independent check while unrelated work continues, and the power is carried into generated prompts as \"Any critic can flag an acceptance HOLD; resolve the underlying evidence before shipping.\" (versions/v2/SKILL.md).",
+    "precondition": "A non-final critic observes a mismatch on a specific acceptance claim while the run is still building, and can name a discriminating check.",
+    "kind": "behavior",
+    "depends_on": [
+     "team-method-reference-gate"
+    ]
+   },
+   {
+    "id": "hold-resolution-no-majority-vote",
+    "name": "HOLDs resolve by evidence, never by vote",
+    "quote": "If reviewers disagree, seek a new discriminating observation or a fresh critic instead of majority voting. (versions/v2/references/team-method.md)",
+    "predecessor_state": "silent \u2014 v1 has no dispute-resolution procedure at all; searched v1-local/SKILL.md and v1-local/references/software-quality.md",
+    "behavior_delta": "Forbids tallying reviewer opinions to close a dispute and forces a new observation or a fresh critic; adds that \"The lead can impose a stronger review but cannot pronounce away a failed required gate\" and that a written disposition (upheld / superseded by scope change / dismissed with reproducible reason) must be recorded.",
+    "precondition": "A HOLD is open and two or more reviewers reach opposite conclusions on the same claim.",
+    "kind": "prohibition",
+    "depends_on": [
+     "any-critic-can-hold-acceptance"
+    ]
+   },
+   {
+    "id": "grader-exploit-quarantine",
+    "name": "Preserve the original failure when the grader is wrong",
+    "quote": "If a grader rewards the wrong outcome, preserve the original failure, quarantine that result, identify dependent claims, and repair the oracle against the user's intended semantics. (versions/v2/references/team-method.md)",
+    "predecessor_state": "\"**Tests derived only from the implementation.** Removing a supported case must not remove its own test. Keep independent expectations and prove a representative regression would fail.\" (versions/v1-local/SKILL.md) \u2014 forbids deriving the oracle from the implementation, but says nothing about what to do once a passing result is found to be spurious",
+    "behavior_delta": "On a spurious pass the agent must keep the failing evidence, quarantine the result, repair the oracle rather than the test expectation, and must not copy the exploit into the approved solution library; reinforced in generated prompts by \"Preserve original failures\" (versions/v2/SKILL.md).",
+    "precondition": "A check reports a pass that a reviewer shows does not reflect the user's intended semantics \u2014 a bad oracle, a fixture that never ran, or a test that rewards the wrong outcome.",
+    "kind": "behavior",
+    "depends_on": [
+     "team-method-reference-gate"
+    ]
+   },
+   {
+    "id": "proportionate-restrictions-on-a-role",
+    "name": "Graduated restrictions on a repeatedly unreliable role",
+    "quote": "**Proportionate restrictions:** quarantine a disputed contribution first; after a verified repeated problem, the lead may require review before that role's project edits or reassign its owned files. (versions/v2/references/team-method.md)",
+    "predecessor_state": "silent \u2014 v1 has no notion of an agent accumulating a record or of restricting one; searched v1-local/SKILL.md and v1-local/references/software-quality.md",
+    "behavior_delta": "Gives the lead a graduated escalation path (quarantine the artifact, then gate that role's edits, then reassign its files) with a visible reason and recovery condition, while explicitly barring invented tool-level revocation or account permission changes.",
+    "precondition": "The same role has produced a problem that was independently verified more than once in the run.",
+    "kind": "behavior",
+    "depends_on": [
+     "any-critic-can-hold-acceptance"
+    ]
+   },
+   {
+    "id": "causal-correction-loop",
+    "name": "Independent retry of the original failure after a fix",
+    "quote": "Correct the cause, then have an independent reviewer retry the original failure without weakening its expectation. (versions/v2/references/team-method.md)",
+    "predecessor_state": "silent on the repair procedure. v1's closest text is about test derivation, not about re-running the reported failure: \"Cover the class of a reported failure, not just one patched example.\" (versions/v1-local/references/software-quality.md)",
+    "behavior_delta": "A fix is not accepted on the builder's own re-run: the exact starting state, action, expected result and observed failure must be captured, the smallest discriminating observation found, and a different agent must reproduce the original failing case against an unweakened expectation.",
+    "precondition": "A concrete failure has been reported and a builder has produced a candidate fix for it.",
+    "kind": "behavior",
+    "depends_on": [
+     "team-method-reference-gate"
+    ]
+   },
+   {
+    "id": "narrow-test-cadence-for-small-edits",
+    "name": "Discriminating checks instead of broad suites",
+    "quote": "Use a few discriminating checks on the affected journey; do not repeatedly run broad suites for small edits or add speculative test matrices while the visible bug remains. (versions/v2/references/team-method.md)",
+    "predecessor_state": "silent on cadence \u2014 v1's software-quality.md prescribes which checks to select and what evidence they need, but never how often or how broadly to run them; searched v1-local/SKILL.md and v1-local/references/software-quality.md",
+    "behavior_delta": "Suppresses full-suite reruns and speculative test matrices during small fixes, deferring breadth to a selected integrated checkpoint or a cross-feature change; this is a cost and focus constraint that reduces work an agent would otherwise do.",
+    "precondition": "A small edit is in flight, or a reported bug is still visible, and the agent is deciding whether to run the project's full suite.",
+    "kind": "budget",
+    "depends_on": [
+     "team-method-reference-gate"
+    ]
+   },
+   {
+    "id": "seven-level-evidence-ladder",
+    "name": "Seven evidence levels, none implying the next",
+    "quote": "Keep proposal, source review, fictional execution, frozen artifact, live observation, installed execution and remote delivery separate. None silently proves the next. (versions/v2/references/team-method.md)",
+    "predecessor_state": "\"Separate intercepted fixtures, simulated lifecycle/clock events, live public pages, and authenticated end-to-end behavior in the evidence record.\" (versions/v1-local/references/software-quality.md) \u2014 four levels, and no explicit non-implication rule",
+    "behavior_delta": "Extends the evidence taxonomy to seven named levels including proposal and source review at the bottom and remote delivery at the top, and makes non-implication explicit, so claiming delivery from a frozen artifact is now a named violation rather than a judgment call.",
+    "precondition": "An agent is about to record or report a result whose evidence sits at a lower level than the claim being made.",
+    "kind": "record",
+    "depends_on": [
+     "team-method-reference-gate"
+    ]
+   },
+   {
+    "id": "remote-readback-after-milestone-push",
+    "name": "Read the remote back after a milestone push",
+    "quote": "Read back the remote reference after a selected milestone push. (versions/v2/references/team-method.md)",
+    "predecessor_state": "v1 requires inspecting a CI run and a demo URL but not reading the pushed remote back: \"Inspect the hosted run for the exact reviewed commit.\" (versions/v1-local/references/software-quality.md)",
+    "behavior_delta": "After pushing at a milestone, the agent must fetch the remote ref and confirm what actually landed instead of treating a successful push command as proof.",
+    "precondition": "The run pushes to a remote at a selected milestone.",
+    "kind": "behavior",
+    "depends_on": [
+     "team-method-reference-gate"
+    ]
+   },
+   {
+    "id": "pause-milestone-record",
+    "name": "Stopping milestone produces a handoff record",
+    "quote": "On a user pause, finish only the agreed milestone, record pending and unverified work, release file/browser ownership, stop agents and schedule nothing unless requested. (versions/v2/references/team-method.md)",
+    "predecessor_state": "v1 names user stopping as a legitimate exit but requires nothing on stopping: \"The exit is winning the comparison, or the user stopping the run. Never a round count.\" (versions/v1-local/SKILL.md)",
+    "behavior_delta": "A pause becomes a procedure: the lead finishes only the agreed milestone, writes delivered vs unverified work plus the next concrete step and active ownership, stops workers and schedules nothing; SKILL.md carries the top-level rule \"Honor user pauses and usage constraints.\" and both filled examples now end with \"Honor a user pause and save the milestone status.\"",
+    "precondition": "The user pauses the run, or an agreed stopping milestone or usage constraint is reached before the comparison is won.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "no-silent-self-rewrite",
+    "name": "A run may not rewrite the installed skill",
+    "quote": "Project lessons remain project proposals until reviewed; a run must not silently rewrite this installed skill or its own authority. (versions/v2/SKILL.md)",
+    "predecessor_state": "silent \u2014 v1 has no rule about a run modifying the skill or its own permissions; searched v1-local/SKILL.md and v1-local/references/software-quality.md",
+    "behavior_delta": "Forbids the run from editing its own governing skill file or widening its authority, and confines adopted lessons to project methodology; team-method.md repeats it as \"Global skill changes require a request to change that skill; do not let a local run alter its own standing rules.\"",
+    "precondition": "A run derives a workflow lesson or hits a constraint and an agent proposes editing the installed skill or granting itself broader authority.",
+    "kind": "prohibition",
+    "depends_on": []
+   },
+   {
+    "id": "agent-language-pilot-optin",
+    "name": "Optional compositional shorthand experiment",
+    "quote": "For a requested agent-language experiment, or a concrete repeated communication bottleneck worth testing, read [references/agent-language.md](references/agent-language.md). (versions/v2/SKILL.md)",
+    "predecessor_state": "silent \u2014 no language, protocol or glossary concept appears anywhere in v1-local/SKILL.md or v1-local/references/software-quality.md",
+    "behavior_delta": "Opens a gated second reference that permits agents to invent tokens and a grammar for a bounded exchange (\"Agents may invent new tokens, a grammar and composition rules instead of only abbreviating English.\", versions/v2/references/agent-language.md) and to retain the glossary in project methodology; SKILL.md keeps it opt-in with \"The pilot is optional; normal work continues in plain language when it adds no measured value.\"",
+    "precondition": "The user asks for a language experiment, or the run hits a repeated, bounded communication exchange whose overhead is actually measured as a problem.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "language-legibility-no-evasion",
+    "name": "Shorthand must stay legible and non-evasive",
+    "quote": "Keep messages legible, with inline plain-language meaning. Never optimize for human incomprehensibility or use a dialect to evade review. (versions/v2/SKILL.md)",
+    "predecessor_state": "silent \u2014 v1-local/SKILL.md and v1-local/references/software-quality.md contain no rule about agent-to-agent message form",
+    "behavior_delta": "Every shorthand message must carry its plain-language expansion inline, user-facing text stays ordinary language, and the reference adds the reversion triggers and the ban on covert channels; this bounds the pilot rather than enabling it.",
+    "precondition": "A language pilot is active and agents are exchanging messages in the frozen protocol.",
+    "kind": "prohibition",
+    "depends_on": [
+     "agent-language-pilot-optin"
+    ]
+   },
+   {
+    "id": "independent-decoder-evaluation",
+    "name": "Fresh decoder must read unseen messages before adoption",
+    "quote": "An independent decoder receives only the frozen protocol and examples, then explains unseen messages, including new compositions, negation, ambiguous or unknown tokens and version changes. (versions/v2/references/agent-language.md)",
+    "predecessor_state": "silent \u2014 no evaluation procedure of any kind for agent communication exists in v1-local/SKILL.md or v1-local/references/software-quality.md",
+    "behavior_delta": "Blocks adopting a shorthand on the inventors' own say-so: a fresh agent with no coaching must reconstruct intent and boundaries from the frozen protocol, and if slots are unavailable the protocol stays experimental and production work reverts to plain language.",
+    "precondition": "A language pilot has produced a frozen candidate protocol and someone proposes using it for real task traffic.",
+    "kind": "behavior",
+    "depends_on": [
+     "agent-language-pilot-optin"
+    ]
+   }
+  ],
+  "removals": [
+   {
+    "id": "removal-description-done-extensions-enumeration",
+    "name": "Delivery extensions dropped from the skill description",
+    "what_was_lost": "Done can optionally include CI, interactive and portable demos, clean public releases, README screenshots, update instructions, and project-specific regressions. (versions/v1-local/SKILL.md, frontmatter description). The body still contains all of these; only the description-level advertisement was dropped, which changes what the skill is selected for."
+   },
+   {
+    "id": "removal-do-not-stop-before-that",
+    "name": "Hard no-early-stop clause dropped from the nonsoftware example",
+    "what_was_lost": "Keep looping on each piece until the critic picks ours blind. Do not stop before that. (versions/v1-local/SKILL.md, nonsoftware filled example)"
+   },
+   {
+    "id": "removal-unconditional-parallel-subagents",
+    "name": "Unconditional parallel-subagent instruction dropped",
+    "what_was_lost": "Run the builders and critics as parallel subagents. (versions/v1-local/SKILL.md \u2014 three occurrences: prompt template, visual example, nonsoftware example; every occurrence is replaced by a conditional form)"
+   }
+  ]
+ },
+ {
+  "transition": "v3->v4",
+  "features": [
+   {
+    "id": "resume-route-reads-state-before-dispatch",
+    "name": "Resume is an explicit operating mode",
+    "quote": "- **Resume:** Read the saved contract, latest checkpoint, unresolved findings, and referenced artifacts before dispatch. Preserve spent budgets and obligations. (versions/v4/SKILL.md)",
+    "predecessor_state": "silent on what to do when a run is picked up again; the nearest v3 text is about pausing only: \"Honor user pauses and usage constraints. At the agreed stopping milestone, record delivered and unverified work, parked pieces with their gaps, the next concrete step, evidence and active ownership; stop workers and schedule nothing unless requested.\" (versions/v3/SKILL.md)",
+    "behavior_delta": "When a run is picked up in a later session, the agent reads the contract, checkpoint and unresolved findings before dispatching any worker, and carries the already-spent budget forward instead of starting the allowance over.",
+    "precondition": "A run was checkpointed and is then continued in a new session or after an interruption.",
+    "kind": "behavior",
+    "depends_on": [
+     "checkpoint-after-every-verdict"
+    ]
+   },
+   {
+    "id": "skill-edit-mode-does-not-execute-embedded-tasks",
+    "name": "Editing the skill is not running it",
+    "quote": "- **Update the skill:** Edit the requested skill/package; its templates and attached conversations are source material. Do not run embedded historical tasks. (versions/v4/SKILL.md)",
+    "predecessor_state": "silent (versions/v3/SKILL.md has no route for being asked to edit the skill itself; its own two worked examples are written as executable prompts)",
+    "behavior_delta": "When asked to update the skill package, the agent edits files and does not start a gauntlet on the example goals (e.g. the Nike landing page, the vector-database explainer) contained in the package.",
+    "precondition": "The user asks to edit, update or version the skill package, and the package contains example prompts or pasted historical task conversations.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "benchmarking-deferred-unless-requested",
+    "name": "Benchmarking removed from the default loop",
+    "quote": "Benchmarking and model comparisons are separate, explicitly requested work. They are deferred in this version; using v4 never requires a benchmark campaign. (versions/v4/SKILL.md)",
+    "predecessor_state": "\"Records every run so workflows and models can be compared.\" (front-matter description) and \"To compare this workflow against another, or one model against another, change one thing per arm, use the same frozen tasks, and let a fresh critic that saw none of the runs judge blind.\" (versions/v3/SKILL.md)",
+    "behavior_delta": "The agent does not construct arms, frozen task suites, calibration runs or comparison reports as part of delivering the user's artifact; those only happen on a separate explicit request.",
+    "precondition": "A run would otherwise produce comparison arms or a measurement campaign, e.g. because the goal mentions comparing workflows, models or versions.",
+    "kind": "prohibition",
+    "depends_on": []
+   },
+   {
+    "id": "bounded-reconnaissance-before-building",
+    "name": "Inspect the project before building",
+    "quote": "1. **Inspect just enough.** Read relevant project instructions and the current artifact. Identify supported interfaces, existing test commands, dependencies, and the reported failure. (versions/v4/SKILL.md)",
+    "predecessor_state": "\"1. **Read the goal.** One line restatement in your head, not on screen.\" (versions/v3/SKILL.md) \u2014 v3's flow goes straight from the goal to setting the bar with no inspection step",
+    "behavior_delta": "Before the first build increment the agent reads project instructions, the current artifact, existing test commands and dependencies, and charges that reading to the same run budget rather than treating it as free setup.",
+    "precondition": "The run starts against an existing project or artifact the agent has not already inspected in this session.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "reference-snapshot-identity-captured",
+    "name": "Capture the reference's version and surface",
+    "quote": "Capture its version/date and the view, excerpt, behavior, or data actually used. Match audience, task, length, viewport, and constraints where relevant. A product name without the inspected surface is insufficient. (versions/v4/SKILL.md)",
+    "predecessor_state": "\"- **Fetchable.** The critic can actually get it - screenshot the live page, read the published piece, run the binary, open the repo, watch the footage. If the agent cannot obtain it, it will hallucinate the comparison.\" (versions/v3/SKILL.md) \u2014 v3 required reachability but no recorded version or captured surface",
+    "behavior_delta": "The critic must record which dated version and which specific view/excerpt of the bar it actually inspected, and a comparison that names only a product is not accepted as a bar.",
+    "precondition": "A comparison against an external reference is actually performed (i.e. the run is not a pure repair judged against its own behavior contract).",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "assumed-baseline-instead-of-waiting-for-a-bar",
+    "name": "Assume an obvious baseline for reversible work",
+    "quote": "If no bar is established, reuse an obvious existing baseline and state the assumption for reversible work. (versions/v4/SKILL.md)",
+    "predecessor_state": "\"If none is established, offer **2 or 3 candidate bars**, one line each, and wait for their pick.\" (versions/v3/SKILL.md)",
+    "behavior_delta": "With no bar supplied and reversible work in front of it, the agent starts work against a stated assumed baseline instead of stopping the run to ask the user to choose.",
+    "precondition": "No bar has been established, an obvious incumbent baseline exists, and the work is cheap to reverse.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "work-continues-while-bar-choice-pending",
+    "name": "Offering bar options no longer blocks work",
+    "quote": "When choosing the bar would materially change the product or scope, offer two or three concrete options and continue independent preparation while the choice is pending. (versions/v4/SKILL.md)",
+    "predecessor_state": "\"If none is established, offer **2 or 3 candidate bars**, one line each, and wait for their pick.\" (versions/v3/SKILL.md)",
+    "behavior_delta": "After presenting bar options the agent keeps doing reference-independent preparation instead of idling until the user answers.",
+    "precondition": "The bar choice is material enough to be offered to the user, and the user has not yet answered.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "failing-original-as-repair-bar",
+    "name": "A repair's bar is its own failing original",
+    "quote": "For a repair, the failing original plus a concrete behavior contract and trusted examples can be the bar; an unrelated prestige product is unnecessary. (versions/v4/SKILL.md)",
+    "predecessor_state": "v3 offers only external named references per goal type, e.g. \"| Code, tooling | A named repo's implementation, plus its benchmark or test suite as the measurable half |\" (versions/v3/SKILL.md)",
+    "behavior_delta": "On a bug fix the agent does not go fetch an external best-in-class artifact to compare against; it compares the repaired candidate to the failing original under a behavior contract.",
+    "precondition": "The goal is a repair or bug fix of an existing artifact rather than a new build.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "frozen-versioned-criteria-and-revalidation",
+    "name": "Criteria are versioned and frozen before judging",
+    "quote": "Record versioned criteria and their sources before judging. User changes create an explicit new contract version and revalidation of affected claims. (versions/v4/SKILL.md)",
+    "predecessor_state": "\"Derive project-specific checks from the user's goal, repository instructions, supported platforms, reported bugs, and reference behavior.\" (versions/v3/SKILL.md) \u2014 checks exist but carry no version and no revalidation trigger",
+    "behavior_delta": "When the user changes a requirement mid-run, already-passed checks affected by the change are re-run under a new criteria version instead of standing on their earlier pass; each verdict carries a criteria_version.",
+    "precondition": "The user changes or adds a requirement after at least one check has already been judged.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "no-bar-lowering-to-approve-a-candidate",
+    "name": "Builders and critics may not lower the bar",
+    "quote": "Neither a builder nor a critic may lower the bar to approve its current candidate. (versions/v4/SKILL.md)",
+    "predecessor_state": "\"Once an extension to done is selected, it is a completion requirement: missing permissions make it blocked, not passed or silently deselected.\" (versions/v3/SKILL.md) \u2014 v3 forbids silent deselection of a selected delivery gate, but says nothing about an agent relaxing the comparison bar or a check to approve its own candidate",
+    "behavior_delta": "When a candidate fails, the agent must fix the candidate or park it; relaxing the comparison target or the check to obtain a pass is prohibited.",
+    "precondition": "A candidate fails a required check or loses the comparison, and the same agent has the ability to edit the criteria.",
+    "kind": "prohibition",
+    "depends_on": [
+     "frozen-versioned-criteria-and-revalidation"
+    ]
+   },
+   {
+    "id": "delegation-without-tier-change-approval",
+    "name": "Ad-hoc subagents without a tier upgrade",
+    "quote": "Ordinary parallel subtasks do not require a tier-change approval. (versions/v4/SKILL.md)",
+    "predecessor_state": "\"The lead does not upgrade a solo run to the team tier on its own judgment. It may propose the upgrade once, with the reason, and continue solo until the user answers.\" (versions/v3/SKILL.md)",
+    "behavior_delta": "The lead dispatches bounded builder/investigation subagents for independent work without asking the user, where v3 required staying solo until the user approved an upgrade.",
+    "precondition": "A compact/solo run contains bounded subtasks that can proceed independently, and the harness can run subagents.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "inherit-configured-model-no-vendor-hierarchy",
+    "name": "No hard-coded model routing",
+    "quote": "Preserve explicit model and effort assignments. Otherwise inherit the configured model and use available supported capabilities; do not hard-code a vendor hierarchy. (versions/v4/SKILL.md)",
+    "predecessor_state": "\"Example mapping as of September 2026, to be replaced by measurement: lead on Claude Fable 5.1 at high or max effort; critic on Claude Opus 5; builder on GPT-5.6 Luna for bounded code pieces and on Opus 5 where a piece needs the whole repository in view.\" (versions/v3/SKILL.md)",
+    "behavior_delta": "With no user-assigned models, every role runs on the session's configured model instead of being routed to named vendor models, and drafted prompts stop naming specific models.",
+    "precondition": "The user or project has not explicitly assigned a model per role.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "builders-run-focused-tests-and-scoped-formatters",
+    "name": "Builders may test and format in isolation",
+    "quote": "Builders may run focused tests, type checks, and scoped formatters in their isolated workspace. They may add legitimate regression tests. Their results are development feedback, not independent acceptance. (versions/v4/SKILL.md)",
+    "predecessor_state": "\"Builders do not run the project's gates or formatters; they edit. The lead or the critic verifies. This avoids racing formatters and keeps the builder's context small.\" (versions/v3/SKILL.md)",
+    "behavior_delta": "Reverses v3: a builder now runs tests and type checks on its own work before handing off, so obvious failures are caught without spending a critic review.",
+    "precondition": "A builder works in an isolated workspace/worktree and the project has runnable tests, type checks or formatters.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "builder-test-corrections-reviewed-and-versioned",
+    "name": "Builders propose, never silently weaken, acceptance tests",
+    "quote": "Builders can create implementation tests and propose acceptance-test corrections. They cannot silently remove required cases, relax assertions, mark failures skipped, or edit evidence to obtain approval. (versions/v4/references/execution-contract.md)",
+    "predecessor_state": "\"- **Tests derived only from the implementation.** Removing a supported case must not remove its own test. Keep independent expectations and prove a representative regression would fail.\" (versions/v3/SKILL.md) \u2014 stated as a failure mode in a prose list, with no procedure for a claimed bad check. v3's references/ directory does not exist in the package, so no fuller predecessor was available.",
+    "behavior_delta": "When a builder claims an acceptance test is wrong, the claim is reviewed against the requirement with a discriminating example, the old check and its result are preserved, and any correction is versioned separately from the builder's desired verdict.",
+    "precondition": "A builder asserts that a required acceptance check is itself wrong, or wants to skip/relax a failing assertion.",
+    "kind": "behavior",
+    "depends_on": [
+     "frozen-versioned-criteria-and-revalidation"
+    ]
+   },
+   {
+    "id": "critic-that-edits-becomes-builder",
+    "name": "A reviewer who edits loses accepting authority",
+    "quote": "A critic that edits the candidate becomes its builder and needs a different accepting reviewer. (versions/v4/SKILL.md)",
+    "predecessor_state": "\"- **The builder judging its own work.** The critic must be a separate agent with fresh context. It should not know how hard the builder tried.\" (versions/v3/SKILL.md) \u2014 covers the builder judging, not the critic building",
+    "behavior_delta": "If a reviewer fixes the candidate during review, its verdict cannot accept the artifact and a fresh reviewer must be dispatched.",
+    "precondition": "A reviewer modifies the candidate it is reviewing instead of only reporting on it.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "order-swapped-recomparison-on-close-calls",
+    "name": "Order-swapped recheck on close preferences",
+    "quote": "On a close or consequential preference decision, consider a fresh, order-swapped comparison. A reversed preference calls for better evidence or `none`. (versions/v4/SKILL.md)",
+    "predecessor_state": "silent on presentation order; the nearest v3 text is \"For a high-stakes piece the user may ask for two or three critics with fresh context and a majority; do not add critics without being asked.\" (versions/v3/SKILL.md)",
+    "behavior_delta": "On a close preference verdict the lead can spend one more review presenting the pair in the opposite order, and a flipped result downgrades the verdict to `none` instead of accepting the first answer.",
+    "precondition": "A preference (taste) verdict comes back close or the decision is consequential, and review budget remains.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "stall-diagnosis-after-two-repeated-gaps",
+    "name": "Diagnose after two identical verdicts",
+    "quote": "After two consecutive verdicts repeat the same unresolved gap, diagnose missing context, faulty checks, dependencies, capability, or approach before another edit. (versions/v4/SKILL.md)",
+    "predecessor_state": "silent (versions/v3/SKILL.md); v3's only response to a non-converging piece is the budget: \"At the hard stop the piece is parked as **blocked (budget)** with the biggest remaining gap and its evidence recorded\"",
+    "behavior_delta": "After the second identical verdict the agent stops editing and spends a step identifying the bottleneck (bad check, missing input, wrong approach, model capability) instead of burning the remaining rounds on the same fix.",
+    "precondition": "Two verdicts in a row on the same piece name the same unresolved gap.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "retain-best-verified-candidate",
+    "name": "Keep the best verified candidate, not the newest",
+    "quote": "Retain the strongest verified candidate with its evidence and known gaps; the newest version may regress. (versions/v4/SKILL.md)",
+    "predecessor_state": "silent (versions/v3/SKILL.md tracks only rounds and the current artifact; nothing preserves an earlier candidate)",
+    "behavior_delta": "The agent keeps the strongest reviewed revision recoverable and can ship or restore it when a later edit regresses, instead of delivering whatever the last round produced.",
+    "precondition": "A later revision of a piece scores worse than an earlier independently reviewed one.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "integration-revalidates-full-journey",
+    "name": "Integration re-verifies the whole journey",
+    "quote": "After merging, independently revalidate affected checks and the complete required journey on the integrated artifact. (versions/v4/SKILL.md)",
+    "predecessor_state": "\"When builders run in parallel on pieces that touch the same files, each builder works in its own worktree or workspace clone and returns a patch or branch; the lead merges and then runs the checks once across the union of changed files.\" (versions/v3/SKILL.md)",
+    "behavior_delta": "After a merge the agent re-runs the full required user journey on the integrated artifact, not only the checks covering the changed files, and a set of piece wins no longer constitutes acceptance.",
+    "precondition": "Two or more separately built pieces are merged and each already passed its own checks.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "run-level-shared-review-budget",
+    "name": "Run-wide budget on top of per-piece budgets",
+    "quote": "Default per-piece soft/hard limits are **6/9 critic reviews**; the shared run limits are **24/30 critic reviews**, including integration. (versions/v4/SKILL.md)",
+    "predecessor_state": "\"Every piece has a budget by default. Unless the user names one: **soft limit 6 critic rounds or 120 model requests per piece, whichever comes first; hard stop at 1.5\u00d7.**\" (versions/v3/SKILL.md) \u2014 per-piece only, so total run cost scaled with the number of pieces",
+    "behavior_delta": "The run stops starting optional work at 24 total critic reviews and dispatches nothing more at 30, even when no individual piece has exhausted its own 6/9.",
+    "precondition": "A run is decomposed into enough pieces that their per-piece caps would sum above the run cap (roughly four or more pieces).",
+    "kind": "budget",
+    "depends_on": []
+   },
+   {
+    "id": "integration-reserve-inside-the-hard-ceiling",
+    "name": "Reserved budget for integration and handoff",
+    "quote": "Reserve the final **6 run reviews and 120 observable requests** for integration, verification, and handoff. (versions/v4/SKILL.md)",
+    "predecessor_state": "silent (versions/v3/SKILL.md has no run-level pool and therefore nothing to reserve)",
+    "behavior_delta": "Piece-level iteration cannot consume the last 6 reviews of the run, so integration and final verification are still affordable when the run hits its cap.",
+    "precondition": "A run approaches its shared review cap while integration, required verification or handoff is still outstanding.",
+    "kind": "budget",
+    "depends_on": [
+     "run-level-shared-review-budget"
+    ]
+   },
+   {
+    "id": "budget-continuity-across-splits-and-resumes",
+    "name": "Splitting or resuming does not refill the budget",
+    "quote": "Split children share their parent's unspent allowance; renamed pieces, resumed sessions, model changes, and restarts retain ledger ancestry. Neither decomposition nor a new run ID may bypass a still-active user ceiling. (versions/v4/references/execution-contract.md)",
+    "predecessor_state": "\"A parked piece stays unwon in the stopping record; it can be resumed with a larger budget, a smaller piece, a different builder, or a changed bar.\" (versions/v3/SKILL.md) \u2014 v3 explicitly offers re-slicing and resumption as ways to keep going",
+    "behavior_delta": "When a piece exhausts its allowance, splitting it or resuming in a new session inherits the remaining allowance instead of granting a fresh one; a new budget requires a recorded authorized change. This directly contradicts v3's resume-with-a-smaller-piece escape.",
+    "precondition": "A piece hits its budget and the agent splits it, renames it, restarts it, or resumes the run under a new run ID.",
+    "kind": "budget",
+    "depends_on": [
+     "run-level-shared-review-budget"
+    ]
+   },
+   {
+    "id": "checkpoint-after-every-verdict",
+    "name": "Checkpoint at every verdict, not only at the end",
+    "quote": "Checkpoint after each verdict and before handoff, integration, or pause. Save current and best artifact identities, reference/check versions, obligations, holds, owner, next action, and spent/remaining budget. (versions/v4/SKILL.md)",
+    "predecessor_state": "\"Honor user pauses and usage constraints. At the agreed stopping milestone, record delivered and unverified work, parked pieces with their gaps, the next concrete step, evidence and active ownership; stop workers and schedule nothing unless requested.\" (versions/v3/SKILL.md) \u2014 recording happens at the stopping milestone only",
+    "behavior_delta": "Durable state is written after each verdict, so a run killed mid-flight (rate limit, crash) can be resumed from the last verdict instead of from the last milestone.",
+    "precondition": "A run produces more than one verdict and can be interrupted between verdicts.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "optin-cross-run-learning",
+    "name": "Opt-in cross-run lesson lifecycle",
+    "quote": "Cross-run learning is off unless selected or previously enabled for this project. When enabled, read [learning and evolution](references/learning-and-evolution.md): nominate conditional lessons, probe their claims against the current environment, preserve contrary evidence, and retrieve only relevant valid entries. (versions/v4/SKILL.md)",
+    "predecessor_state": "not found \u2014 searched versions/v3/SKILL.md, the only file in the v3 package (versions/v3/references/ does not exist, although v3/SKILL.md links four files under that path). v3 mentions \"governed shared knowledge\" in its description and shared memory as a \"social substrate\" for the team tier, but defines no lesson record, probe, or admission process.",
+    "behavior_delta": "When a project enables it, milestones nominate conditional lessons that must be probed against the live environment and independently reviewed before they become active guidance, and unreviewed lessons can never be cited as acceptance authority. With it off, nothing changes.",
+    "precondition": "The user selects cross-run learning for a project, or it was enabled there in an earlier run.",
+    "kind": "behavior",
+    "depends_on": []
+   },
+   {
+    "id": "never-silently-rewrite-the-installed-skill",
+    "name": "Method changes are proposals, not self-installs",
+    "quote": "Never silently rewrite the installed skill, alter permissions, or evolve the evaluator to reward its own output. (versions/v4/SKILL.md)",
+    "predecessor_state": "not found \u2014 searched versions/v3/SKILL.md, the only file in the v3 package. v3 says \"These are coordination rules, not new system authority or permission to change external access\" about the team tier, but nothing about a run modifying the workflow that is judging it.",
+    "behavior_delta": "A run that concludes the workflow should change produces a scoped, versioned patch proposal with a rollback trigger and leaves the installed skill, the criteria and the budget controls untouched until the user asks for the update.",
+    "precondition": "During a delivery run the agent identifies a change it wants to make to the skill, the acceptance criteria, permissions, or the budget controls themselves.",
+    "kind": "prohibition",
+    "depends_on": []
+   }
+  ],
+  "removals": [
+   {
+    "id": "removed-named-model-mapping",
+    "name": "Named per-role model mapping and vendor-benchmark caveat",
+    "what_was_lost": "\"Example mapping as of September 2026, to be replaced by measurement: lead on Claude Fable 5.1 at high or max effort; critic on Claude Opus 5; builder on GPT-5.6 Luna for bounded code pieces and on Opus 5 where a piece needs the whole repository in view. Vendor benchmark numbers run 4 to 16 points above independent harness results; measure builders on your own pieces with the blind critic before trusting a price.\" (versions/v3/SKILL.md)"
+   },
+   {
+    "id": "removed-one-change-per-arm",
+    "name": "Change one thing per run / per arm comparison protocol",
+    "what_was_lost": "\"A run that changes harness and method at the same time cannot tell you which one helped; change one thing per run.\" and \"To compare this workflow against another, or one model against another, change one thing per arm, use the same frozen tasks, and let a fresh critic that saw none of the runs judge blind.\" (versions/v3/SKILL.md)"
+   },
+   {
+    "id": "removed-tier-upgrade-approval",
+    "name": "Lead may propose a tier upgrade once and must then wait",
+    "what_was_lost": "\"The lead does not upgrade a solo run to the team tier on its own judgment. It may propose the upgrade once, with the reason, and continue solo until the user answers.\" (versions/v3/SKILL.md)"
+   },
+   {
+    "id": "removed-majority-of-critics",
+    "name": "User-requested two or three critics with a majority",
+    "what_was_lost": "\"For a high-stakes piece the user may ask for two or three critics with fresh context and a majority; do not add critics without being asked.\" (versions/v3/SKILL.md)"
+   },
+   {
+    "id": "removed-harsh-critic-instruction",
+    "name": "The harsh-critic line in every prompt",
+    "what_was_lost": "\"The critic should be a harsh critic. Praise is not useful. If ours does not win, it keeps going.\" (versions/v3/SKILL.md \u2014 appears three times: in the prompt template and in both worked examples). v4 instead says \"Do not invent faults to sound harsh or excuse them to finish.\""
+   },
+   {
+    "id": "removed-binary-winner",
+    "name": "Winner is binary against the bar",
+    "what_was_lost": "\"`winner` is binary against the bar; scores out of 10 drift upward every round and are not used.\" (versions/v3/SKILL.md). The three-value field survives but v4 redefines the third value: \"`none` covers ties, inadequate evidence, non-comparability, or unresolved conflicting judgments and is never a win.\""
+   },
+   {
+    "id": "removed-live-progress-page",
+    "name": "Live progress page the user can watch",
+    "what_was_lost": "\"Keep a live progress page updating as the work evolves so I can watch it.\" (versions/v3/SKILL.md). v4: \"Maintain a readable progress file or the project's existing progress surface. Do not build or publish a dashboard just to report progress.\""
+   },
+   {
+    "id": "removed-seven-day-defect-followup",
+    "name": "Defects found in the next 7 days, filled in later",
+    "what_was_lost": "\"critic verdicts summary, blockers, defects found in the next 7 days (filled in later)\" (versions/v3/SKILL.md run-log schema). v4: \"uninspected later defects as `not assessed`\" and \"do not schedule a seven-day follow-up by default.\""
+   },
+   {
+    "id": "removed-bars-by-goal-table",
+    "name": "Bars-by-goal-type table and the bar-is-the-trick section",
+    "what_was_lost": "\"| Writing | A specific published piece by a named author or publication, same length and format |\" \u2014 one row of the seven-row \"Bars by goal type\" table, dropped along with the whole \"## The bar is the whole trick\" section (versions/v3/SKILL.md)"
+   },
+   {
+    "id": "removed-what-breaks-list",
+    "name": "The what-breaks-a-gauntlet-loop failure list",
+    "what_was_lost": "\"- **A vague bar.** The critic invents a comparison and approves everything. Most common failure by far.\" \u2014 the first of thirteen bullets under \"## What breaks a gauntlet loop\", a section with no counterpart in v4 (versions/v3/SKILL.md)"
+   },
+   {
+    "id": "removed-worked-examples",
+    "name": "The two filled example prompts",
+    "what_was_lost": "\"## Two filled examples\" \u2014 the Nike-bar landing-page prompt and the Julia-Evans-bar explainer prompt (versions/v3/SKILL.md). v4 keeps one abstract bracketed template in references/prompt-drafting.md and no filled examples."
+   },
+   {
+    "id": "removed-host-specific-commands",
+    "name": "Named host orchestration commands",
+    "what_was_lost": "\"In Claude Code, the same prompt works as written; `/loop` and `ultracode` may be appended when the user wants self-paced reruns or multi-agent orchestration, and worktrees provide the isolation. In oh-my-pi, run the builder and critic chain inside `workflowz` with the verdict record as the critic's output schema and the harness `budget` as the hard stop.\" (versions/v3/SKILL.md). v4: \"For another host, verify actual subagent, isolation, model-routing, and budget capabilities before naming commands.\""
+   },
+   {
+    "id": "removed-prompt-word-count",
+    "name": "150-220 word prompt target",
+    "what_was_lost": "\"Keep prompts concise: usually 150 to 220 words for solo work, with room for roughly 250 to 350 words when concrete software delivery gates or the team tier need it.\" (versions/v3/SKILL.md). v4: \"Keep it readable, usually 250-450 words\" (versions/v4/references/prompt-drafting.md)."
+   },
+   {
+    "id": "removed-no-bullets-in-prompt",
+    "name": "Prompt style rule: plain sentences, no bullet lists",
+    "what_was_lost": "\"Plain sentences. No bullet lists inside the prompt. It should read like someone telling an agent what perfect looks like and refusing to accept less.\" (versions/v3/SKILL.md)"
+   },
+   {
+    "id": "removed-delivery-markdown-template",
+    "name": "The literal delivery-links markdown block",
+    "what_was_lost": "\"[GitHub repository](VERIFIED_REPOSITORY_URL) \u2014 README with actual screenshots, setup, architecture, and roadmap.\" \u2014 the fenced markdown delivery template with VERIFIED_* placeholders (versions/v3/SKILL.md). v4 keeps the repository/demo/download ordering rule as one prose sentence with no template."
+   }
+  ]
+ }
+]
