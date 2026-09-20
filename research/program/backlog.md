@@ -1,5 +1,7 @@
 # Program backlog
 
+Current research ordering, 20 September 2026: the [measurement repair and completed calibration](calibration/DECISION.md) supersede the older task-difficulty escalation plans below. The next performance study needs independently sampled real tasks and stronger independent grading. Historical rows remain as provenance; they are not instructions to dispatch another synthetic pilot or add a skill mechanism.
+
 Proposals and follow-ups for the Gauntlet skill and its research program. A row here is a candidate, not an authorization. Skill changes follow the bounded workflow-improvement process in the learning reference (source failure, hypothesis, intended effect, permitted files, patch, rollback) and land only on a versioned branch with a snapshot of the incumbent and an `UPGRADES.md` entry, approved by the owner. Statuses: `candidate | drafted | reviewed | adopted | rejected | superseded | deferred`.
 
 | ID | Title | Kind | Source | Gate | Status |

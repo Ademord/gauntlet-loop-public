@@ -256,7 +256,8 @@ class Controller:
                'parent_session_id': (parent or {}).get('session_id'), 'subtype': result.get('subtype'),
                'is_error': result.get('is_error'), 'returncode': proc.returncode, 'agent_task_dispatches': dispatches,
                'permission_denial_count': len(result.get('permission_denials') or []),
-               'tool_counts': tools, 'transcript_sha256': digest(proc.stdout.encode()),
+               'tool_counts': tools, 'transcript_sha256': digest(raw.read_bytes()),
+               'transcript_sha256_encoding': 'file-bytes',
                'candidate_after': tree_hashes(work), 'cumulative_spend_usd': self.spent}
         append(self.run_dir / 'events.jsonl', row)
         self.calls.append(row)

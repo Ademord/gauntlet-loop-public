@@ -1,0 +1,49 @@
+{
+  "classification": "Descriptive derived analysis of frozen primary results; supplementary case is separate.",
+  "arms": {
+    "baseline": {
+      "tasks": 6,
+      "functional_passes": 6,
+      "scope_compliant_acceptances": 6,
+      "functional_rescues": 0,
+      "functional_spoils": 0,
+      "cost_usd_including_shared_build": 0.9802334,
+      "summed_stage_wall_clock_s_including_shared_build": 507.314,
+      "source_changed_from_baseline_tasks": []
+    },
+    "self_check": {
+      "tasks": 6,
+      "functional_passes": 6,
+      "scope_compliant_acceptances": 6,
+      "functional_rescues": 0,
+      "functional_spoils": 0,
+      "cost_usd_including_shared_build": 2.8242322000000004,
+      "summed_stage_wall_clock_s_including_shared_build": 1415.252,
+      "source_changed_from_baseline_tasks": [
+        "c002-item-matching",
+        "c003-review-routing",
+        "c004-duration-parser",
+        "c006-ready-scheduler"
+      ]
+    },
+    "review": {
+      "tasks": 6,
+      "functional_passes": 6,
+      "scope_compliant_acceptances": 6,
+      "functional_rescues": 0,
+      "functional_spoils": 0,
+      "cost_usd_including_shared_build": 3.3463368000000004,
+      "summed_stage_wall_clock_s_including_shared_build": 1628.798,
+      "source_changed_from_baseline_tasks": [
+        "c002-item-matching",
+        "c004-duration-parser",
+        "c006-ready-scheduler"
+      ]
+    }
+  },
+  "physical_pilot02_call_cost_usd": 5.190335600000001,
+  "prior_attempt_and_diagnostics_cost_usd": 0.577671,
+  "total_cost_usd_including_prior_attempt_and_diagnostics": 5.768006599999999,
+  "cost_interpretation": "CLI-reported API-equivalent usage, not verified subscription billing. Shared builds appear in each hypothetical arm but ran once.",
+  "latency_interpretation": "Sum of observed sequential stage wall-clock times, not an estimate of parallel throughput; excludes grading and setup."
+}

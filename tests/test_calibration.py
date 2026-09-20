@@ -14,6 +14,7 @@ TOOLS = Path(__file__).resolve().parents[1] / 'tools/paired_study'
 if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 from tools.paired_study import run_calibration as calibration
+from tools.paired_study import index_calibration_evidence as evidence
 
 
 def result(tokens=100, cost=0.1, session='session-build'):
@@ -191,6 +192,23 @@ class ControllerTest(unittest.TestCase):
         manifest = {'diagnostic_cost_usd': 0, 'max_usd': 15, 'model': 'model'}
         return calibration.Controller(run, manifest, 'mock-claude'), work
 
+    def test_transcript_identity_hashes_saved_bytes_after_newline_translation(self):
+        with tempfile.TemporaryDirectory() as directory:
+            controller, work = self.make_controller(Path(directory))
+            response = subprocess.CompletedProcess([], 0, json.dumps(result()) + '\n', '')
+            original_write = Path.write_text
+            def translated_write(path, data, *args, **kwargs):
+                if path.name.endswith('.transcript.jsonl'):
+                    return path.write_bytes(data.replace('\n', '\r\n').encode('utf-8'))
+                return original_write(path, data, *args, **kwargs)
+            with patch.object(calibration.subprocess, 'run', return_value=response), \
+                    patch.object(Path, 'write_text', translated_write), contextlib.redirect_stdout(io.StringIO()):
+                controller.call('task1', 'build', 'Build.', work)
+            saved = (controller.run_dir / 'private/task1-build.transcript.jsonl').read_bytes()
+            self.assertNotEqual(calibration.digest(saved), calibration.digest(response.stdout.encode()))
+            self.assertEqual(controller.calls[0]['transcript_sha256'], calibration.digest(saved))
+            self.assertEqual(controller.calls[0]['transcript_sha256_encoding'], 'file-bytes')
+
     def test_reviewer_write_is_detected_and_not_retried(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -335,6 +353,40 @@ class ReportingTest(unittest.TestCase):
                 cells = [cell.strip() for cell in row.strip('|').split('|')]
                 self.assertEqual(cells[rescue_index], '0', 'Fixing scope without changing function is not a performance rescue')
                 self.assertEqual(cells[spoil_index], '0')
+
+
+class EvidenceIndexTest(unittest.TestCase):
+    def test_crlf_file_retains_legacy_text_hash_and_records_actual_bytes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            run = Path(directory)
+            (run / 'private').mkdir()
+            path = run / 'private/task1-build.transcript.jsonl'
+            path.write_bytes(b'{"type":"result"}\r\n')
+            event = {'event': 'completed', 'task_id': 'task1', 'stage': 'build',
+                     'transcript_sha256': evidence.sha(b'{"type":"result"}\n')}
+            calibration.append(run / 'events.jsonl', event)
+            original = (run / 'events.jsonl').read_bytes()
+            row = evidence.build_index(run)['transcripts'][0]
+            self.assertNotEqual(row['file_bytes_sha256'], row['recorded_sha256'])
+            self.assertEqual(row['file_bytes_sha256'], evidence.sha(path.read_bytes()))
+            self.assertTrue(row['recorded_hash_verified'])
+            self.assertEqual((run / 'events.jsonl').read_bytes(), original)
+            path.write_bytes(b'{"type":"altered"}\r\n')
+            with self.assertRaisesRegex(ValueError, 'does not match'):
+                evidence.build_index(run)
+
+    def test_explicit_file_byte_encoding_is_verified(self):
+        with tempfile.TemporaryDirectory() as directory:
+            run = Path(directory)
+            (run / 'private').mkdir()
+            data = b'{"type":"result"}\r\n'
+            (run / 'private/task1-build.transcript.jsonl').write_bytes(data)
+            calibration.append(run / 'events.jsonl', {
+                'event': 'completed', 'task_id': 'task1', 'stage': 'build',
+                'transcript_sha256': evidence.sha(data), 'transcript_sha256_encoding': 'file-bytes',
+            })
+            row = evidence.build_index(run)['transcripts'][0]
+            self.assertEqual(row['recorded_sha256'], row['file_bytes_sha256'])
 
 
 if __name__ == '__main__':

@@ -1,0 +1,158 @@
+{
+  "classification": "Supplementary post-run findings, selected after reading stage summaries/patches; no primary-score changes or population inference.",
+  "recursion_limit": 1000,
+  "cases": [
+    {
+      "id": "duration-overflow",
+      "task": "c004-duration-parser",
+      "function": "parse_duration",
+      "input_description": "PT followed by 400 nines and H",
+      "expected": "unknown",
+      "selection": "Concrete overflow reported by the reviewer and self-check.",
+      "results": [
+        {
+          "arm": "baseline",
+          "source": "research/program/calibration/runs/2026-09-20-pilot-02/artifacts/c004-duration-parser/baseline/solution.py",
+          "source_sha256": "1f8125056b9b33995ecdabbae6e89aa04cfd391995bc96d50c1627e86256557c",
+          "exception": "OverflowError",
+          "passed": false
+        },
+        {
+          "arm": "self_check",
+          "source": "research/program/calibration/runs/2026-09-20-pilot-02/artifacts/c004-duration-parser/self_check/solution.py",
+          "source_sha256": "74e76c9cb0db403ab575f7e9e06a06d6b68210142b148c2c6136bd0a98cee9d4",
+          "actual": "unknown",
+          "passed": true
+        },
+        {
+          "arm": "review",
+          "source": "research/program/calibration/runs/2026-09-20-pilot-02/artifacts/c004-duration-parser/review/solution.py",
+          "source_sha256": "e2f5150c456fdef0c3382542d78e2da86c3af26d402433bb813227d2bd06952e",
+          "actual": "unknown",
+          "passed": true
+        },
+        {
+          "arm": "reference",
+          "source": "research/program/calibration/tasks/c004-duration-parser/oracle/solution.py",
+          "source_sha256": "82769908b92f415730a4a2679fc5cffa04170efa87b0db85f5caee1657a1fd1e",
+          "actual": "unknown",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "duration-nonbreaking-space",
+      "task": "c004-duration-parser",
+      "function": "parse_duration",
+      "input_description": "1 followed by U+00A0 and hour",
+      "expected": 3600,
+      "selection": "Post-run inspection of the self-check re.ASCII edit; contract permits whitespace and constrains only digits to ASCII.",
+      "results": [
+        {
+          "arm": "baseline",
+          "source": "research/program/calibration/runs/2026-09-20-pilot-02/artifacts/c004-duration-parser/baseline/solution.py",
+          "source_sha256": "1f8125056b9b33995ecdabbae6e89aa04cfd391995bc96d50c1627e86256557c",
+          "actual": 3600,
+          "passed": true
+        },
+        {
+          "arm": "self_check",
+          "source": "research/program/calibration/runs/2026-09-20-pilot-02/artifacts/c004-duration-parser/self_check/solution.py",
+          "source_sha256": "74e76c9cb0db403ab575f7e9e06a06d6b68210142b148c2c6136bd0a98cee9d4",
+          "actual": "unknown",
+          "passed": false
+        },
+        {
+          "arm": "review",
+          "source": "research/program/calibration/runs/2026-09-20-pilot-02/artifacts/c004-duration-parser/review/solution.py",
+          "source_sha256": "e2f5150c456fdef0c3382542d78e2da86c3af26d402433bb813227d2bd06952e",
+          "actual": 3600,
+          "passed": true
+        },
+        {
+          "arm": "reference",
+          "source": "research/program/calibration/tasks/c004-duration-parser/oracle/solution.py",
+          "source_sha256": "82769908b92f415730a4a2679fc5cffa04170efa87b0db85f5caee1657a1fd1e",
+          "actual": "unknown",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "scheduler-deep-chain",
+      "task": "c006-ready-scheduler",
+      "function": "ready_tasks",
+      "input_description": "3000 done tasks: id i depends on i+1; last has no dependency; capacity 1",
+      "expected": [],
+      "selection": "Recursion-depth issue reported by reviewer and self-check; no input-size ceiling in public contract.",
+      "results": [
+        {
+          "arm": "baseline",
+          "source": "research/program/calibration/runs/2026-09-20-pilot-02/artifacts/c006-ready-scheduler/baseline/solution.py",
+          "source_sha256": "ef00aefac766a06d984475bde2c70c23423acd432d9e31d8c4f478757e8e5572",
+          "exception": "RecursionError",
+          "passed": false
+        },
+        {
+          "arm": "self_check",
+          "source": "research/program/calibration/runs/2026-09-20-pilot-02/artifacts/c006-ready-scheduler/self_check/solution.py",
+          "source_sha256": "ca171b1b53446a5184b8e3c5d8b3fd4e63d658710a928a059f706e09b769c0ba",
+          "actual": [],
+          "passed": true
+        },
+        {
+          "arm": "review",
+          "source": "research/program/calibration/runs/2026-09-20-pilot-02/artifacts/c006-ready-scheduler/review/solution.py",
+          "source_sha256": "8826485ff6f181783a68698af201cb0df94ee1291228fe05cdc983195a738507",
+          "actual": [],
+          "passed": true
+        },
+        {
+          "arm": "reference",
+          "source": "research/program/calibration/tasks/c006-ready-scheduler/oracle/solution.py",
+          "source_sha256": "f591049c9f65d538204a85e9874262579735efd33dc9ac7457dc5bef2d6f0b38",
+          "exception": "RecursionError",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "scheduler-deep-cycle",
+      "task": "c006-ready-scheduler",
+      "function": "ready_tasks",
+      "input_description": "Same 3000 done tasks, with final task depending on id 0; capacity 1",
+      "expected_exception": "ValueError",
+      "selection": "Cycle-detection correction claimed in final stage messages; contract requires ValueError even for done tasks.",
+      "results": [
+        {
+          "arm": "baseline",
+          "source": "research/program/calibration/runs/2026-09-20-pilot-02/artifacts/c006-ready-scheduler/baseline/solution.py",
+          "source_sha256": "ef00aefac766a06d984475bde2c70c23423acd432d9e31d8c4f478757e8e5572",
+          "exception": "RecursionError",
+          "passed": false
+        },
+        {
+          "arm": "self_check",
+          "source": "research/program/calibration/runs/2026-09-20-pilot-02/artifacts/c006-ready-scheduler/self_check/solution.py",
+          "source_sha256": "ca171b1b53446a5184b8e3c5d8b3fd4e63d658710a928a059f706e09b769c0ba",
+          "exception": "ValueError",
+          "passed": true
+        },
+        {
+          "arm": "review",
+          "source": "research/program/calibration/runs/2026-09-20-pilot-02/artifacts/c006-ready-scheduler/review/solution.py",
+          "source_sha256": "8826485ff6f181783a68698af201cb0df94ee1291228fe05cdc983195a738507",
+          "exception": "ValueError",
+          "passed": true
+        },
+        {
+          "arm": "reference",
+          "source": "research/program/calibration/tasks/c006-ready-scheduler/oracle/solution.py",
+          "source_sha256": "f591049c9f65d538204a85e9874262579735efd33dc9ac7457dc5bef2d6f0b38",
+          "exception": "RecursionError",
+          "passed": false
+        }
+      ]
+    }
+  ]
+}

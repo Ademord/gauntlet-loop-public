@@ -1,2 +1,4 @@
 # Preserve archived source bytes and release hashes on every platform.
 * -text
+# Hashed run records retain Windows line endings; still check other whitespace.
+research/program/calibration/runs/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

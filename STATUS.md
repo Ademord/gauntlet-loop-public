@@ -2,13 +2,13 @@
 
 Work in progress, updated 20 September 2026. This is the canonical working repository.
 
-## Measurement correction and current experiment
+## Measurement correction and completed calibration
 
 The independent September 20 audit found incomplete token accounting, a missed critic-driven revision, and unsupported statistical conclusions. The [derived measurement replay](research/program/paired-study/measurement-replay.md) reconciles all 76 counted transcripts: 217,433,726 tokens across complete modelUsage categories, compared with 150,771,035 recorded previously. Original rows remain unchanged. Dollar figures are CLI-reported API-equivalent usage cost; subscription billing was not observed.
 
 The historical F1 arms both allow revision after rejection and use generated prompts, not the full installed skill. They therefore do not establish a benefit of the revision loop or a version-to-version gain. Of 76 counted arms, 76 passed their exposed suites and 74 met scope acceptance; only two arms, on one task, had held-out tests.
 
-The active next step is the [six-task review calibration](research/program/calibration/README.md): baseline, builder self-check, and fresh review plus one correction, all branching from the same built candidate. It uses frozen constructed stress fixtures to validate the apparatus. It is not a representative performance benchmark. Production skill 5.1.0 remains unchanged while the calibration runs.
+The [six-task review calibration](research/program/calibration/DECISION.md) is complete: baseline, builder self-check, and fresh review plus one correction all passed 6/6 frozen suites, at $0.98, $2.82 and $3.35 respectively across six tasks including each branch's shared builds. Total physical usage was $5.77 including the stopped first attempt and diagnostics. Supplementary probes found real repairs in both extra-work paths and a self-check regression that the frozen tests missed. These selected boundary cases cannot estimate general comparative performance. Production skill 5.1.0 remains unchanged. The next performance study requires real tasks sampled independently of reviewer usefulness and independently authored acceptance checks; no further paid run is active.
 
 ## Where things stand
 
@@ -18,7 +18,7 @@ The active next step is the [six-task review calibration](research/program/calib
 | Version history | Complete from v1 to v5.1; every stored file checksummed | [versions/](versions/README.md) |
 | Research | Six papers noted with verbatim abstracts; the v5 thesis; a research program with a pre-registered paired-study protocol, amended 19 September for harness isolation and measurement | [research/](research/README.md) |
 | Run ledger | Scripts ready. The first ingest over the author's projects found three recorded runs and five run folders without a machine-readable record; every cell is below threshold. Outputs stay local | [tools/ledger/](tools/README.md), [ledger/SCHEMA.md](ledger/SCHEMA.md) |
-| Paired study | Flag F1 is done on mutation tasks: thirty pairs, no difference detected, contrast-fired rate zero. An eight-pair pilot on a harder class, whole functions removed, also produced no first-review rejection, so the revision loop still has nothing to measure. The next class varies specification rather than volume, pre-registered before it is built | [look-F1.md](research/program/paired-study/look-F1.md), [task-classes.md](research/program/paired-study/task-classes.md) |
+| Paired study | Historical F1 data corrected and preserved. Both policies permit revision, and x008 contains a nonblocking critic-driven edit. The separate six-task calibration is complete; frozen grades were at a ceiling while supplementary probes found repairs and a regression. No demonstrated general orchestration advantage | [measurement-replay.md](research/program/paired-study/measurement-replay.md), [calibration decision](research/program/calibration/DECISION.md) |
 | Guards | Pre-commit leak guard, audit with zero hits on tree and history, and a commit-msg guard that refuses skill changes not tied to an upgrade run. Both scanners were blind to a Windows path inside a JSON string until 19 September, when one slipped into a tracked manifest; both now scan the de-escaped form, and a spec may name a private repository only through a gitignored alias | [tools/README.md](tools/README.md) The validator also compares all three copies of the record vocabularies and checks that both worked examples carry every drafting include, after prose pacts failed at both jobs during the 5.1 run |
 
 ## Known limitations
@@ -32,6 +32,7 @@ The active next step is the [six-task review calibration](research/program/calib
 - No first critic review was recorded as negative across the 76 counted arms. That does not imply no review-driven edit: x008 changed exception handling after a nonblocking finding. Agent/Task dispatch counts are not verified reviewer counts; see the dated study erratum.
 - The thirty F1 pairs are one-token defects and small repairs in one public Python repository on one model; nothing here speaks to harder work, and the flag's own mechanism never fired on them.
 - Cost is measured: $53.65 for thirty pairs, about six minutes a pair, dominated by cache reads.
+- Calibration reference implementations and their hidden tests shared an author. Supplementary checks found uncovered defects in three references; suite-passing does not mean full contract correctness. The selected supplementary cases are kept outside frozen scores.
 
 ## Superseded September 19 plan
 

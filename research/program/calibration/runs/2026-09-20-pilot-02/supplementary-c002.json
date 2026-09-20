@@ -1,0 +1,90 @@
+{
+  "classification": "supplementary, outside frozen primary score",
+  "selection": "One large-finite-amount case independently derived during grader review without reading candidate outputs; applied equally to all completed c002 branches and reference after their grading.",
+  "procedure": "Import each solution.py and call match_items(predicted, reference) with the inputs below in the default Decimal context.",
+  "predicted": [
+    {
+      "amount": "1000000000000000000000000000000"
+    }
+  ],
+  "reference": [
+    {
+      "amount": "1000000000000000000000000000000"
+    }
+  ],
+  "expected": {
+    "pairs": [
+      [
+        0,
+        0
+      ]
+    ],
+    "unmatched_predicted": [],
+    "unmatched_reference": []
+  },
+  "results": [
+    {
+      "candidate": "baseline",
+      "source": "research/program/calibration/runs/2026-09-20-pilot-02/artifacts/c002-item-matching/baseline/solution.py",
+      "source_sha256": "748ac3f56d7cfae32efc93f621186bee9dca07f5e39772ab29caed7d069f3270",
+      "actual": {
+        "pairs": [],
+        "unmatched_predicted": [
+          0
+        ],
+        "unmatched_reference": [
+          0
+        ]
+      },
+      "passed": false
+    },
+    {
+      "candidate": "self_check",
+      "source": "research/program/calibration/runs/2026-09-20-pilot-02/artifacts/c002-item-matching/self_check/solution.py",
+      "source_sha256": "5babefb478b8259e3820001c25fb2115ec05113c8239db8928f8421863bc8e43",
+      "actual": {
+        "pairs": [
+          [
+            0,
+            0
+          ]
+        ],
+        "unmatched_predicted": [],
+        "unmatched_reference": []
+      },
+      "passed": true
+    },
+    {
+      "candidate": "review",
+      "source": "research/program/calibration/runs/2026-09-20-pilot-02/artifacts/c002-item-matching/review/solution.py",
+      "source_sha256": "e1ecd32fbe291b2eb106fad212eb25a655fb125be223e0aa34f6f31c813769aa",
+      "actual": {
+        "pairs": [
+          [
+            0,
+            0
+          ]
+        ],
+        "unmatched_predicted": [],
+        "unmatched_reference": []
+      },
+      "passed": true
+    },
+    {
+      "candidate": "reference",
+      "source": "research/program/calibration/tasks/c002-item-matching/oracle/solution.py",
+      "source_sha256": "496ceb79fdf6eadaeb42919c6459a9a856eb634c843b4ac6ec35a6c2869462cf",
+      "actual": {
+        "pairs": [],
+        "unmatched_predicted": [
+          0
+        ],
+        "unmatched_reference": [
+          0
+        ]
+      },
+      "passed": false
+    }
+  ],
+  "interpretation_limit": "This one discovered case is not a task-distribution estimate and does not replace frozen results."
+}

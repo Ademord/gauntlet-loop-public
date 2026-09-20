@@ -1,0 +1,61 @@
+{
+  "created_utc": "2026-09-20T15:11:52Z",
+  "design": "shared-build checkpoint branches; constructed stress fixtures; exploratory",
+  "diagnostic_cost_usd": 0.0138446,
+  "max_usd": 15.0,
+  "model": "claude-sonnet-5",
+  "protocol_sha256": "af5cd078c4bd963d3112ae74746c5d76672cdc0c93af830c2db6bac1ea56bc1a",
+  "runner_sha256": "77ee25a60ec3c57ce4c3995285a4db488c6d6b42752e521f7bbef1f8ec525106",
+  "schema": 1,
+  "stage_caps": {
+    "build": 0.75,
+    "repair": 0.5,
+    "reviewer": 0.25,
+    "self_check": 0.75
+  },
+  "task_hashes": {
+    "c001-number-parser": {
+      "base/solution.py": "2e2a7a97afeb3fe1f20c72f9b5bbb39deeff76a18a6530d667bcb495d8f45259",
+      "base/tests/test_visible.py": "87e8feead136903d1eff6d465d7d6224de6f2cacfb9b48d1bc4c367b6f336afd",
+      "heldout/test_hidden.py": "e438de8f78fe86b2752da4577788e21e1d86d9566ba8ff1ec5fd4af7db98d3b6",
+      "oracle/solution.py": "778d5c0bfbd39c4f7eb7cb6103d5793bab341af0bdcc1206e973d4de6aafea14",
+      "task.json": "d173f5b525048efc68214cddd04fa8b38313ed828d9acb3c3c52b2487bf2ddab"
+    },
+    "c002-item-matching": {
+      "base/solution.py": "34e82343e363e0f1bd60c63a3f0c70c6f4994ecb6acb0df32973c0451bf8fa82",
+      "base/tests/test_visible.py": "3f03a4e7d9d8b62a9b5e97fed78183221b85bc4e090d6a39f08a3746239a1281",
+      "heldout/test_hidden.py": "471926be50afe5467e6db6603fd1f23e372d422f8a95981c4330a3a98caa502e",
+      "oracle/solution.py": "496ceb79fdf6eadaeb42919c6459a9a856eb634c843b4ac6ec35a6c2869462cf",
+      "task.json": "d476370cf4b2d1d4ea8cae6dc76ccb8c894d23682ba82ab608d8a6918ca7e216"
+    },
+    "c003-review-routing": {
+      "base/solution.py": "a948deceee599bb1b0495303ef9ead0644e315c63135cee087a826c4f887eb99",
+      "base/tests/test_visible.py": "31f953a06745cb0796dd149d6c8bf794643c076bb879b01bbb4662dffdb09da8",
+      "heldout/test_hidden.py": "aedb55cedace74d09ec4cb7395daff07288ec1aafddbf734289804d8a645f6b2",
+      "oracle/solution.py": "34ebcb060c27f9a8e01e741471e01b94ddf90ff388195eabdaabc43c1f68a17c",
+      "task.json": "c829f12f86ce369875e100cb62c69b56154627800dd478a377ce08d15ecad8f4"
+    },
+    "c004-duration-parser": {
+      "base/solution.py": "b84bba9577e0da688e44219589790c5549bc93915fad5ce6e692e1e6be808990",
+      "base/tests/test_visible.py": "b0977d025d43cbfc97685af95ad39a3b62d495ab39084ef86d12f9b6c81d89d6",
+      "heldout/test_hidden.py": "4cb5d8ac36f6161663cad025af716073ee67a8e2fd3dbbf9177c3f543770d37a",
+      "oracle/solution.py": "82769908b92f415730a4a2679fc5cffa04170efa87b0db85f5caee1657a1fd1e",
+      "task.json": "c555d5558e6ae7c6bed618fd1dce269738267e85dfa9cbbf5e00036e79b82139"
+    },
+    "c005-checkpoint-selection": {
+      "base/solution.py": "481f67114c0dac07e72d6259e54e2c53477b57a16142951357ae96b833b20a2b",
+      "base/tests/test_visible.py": "35fa7ddc6e184b5bc5afdd6305b0c0f8d8e1d9b848c9d027d75da29e8456a570",
+      "heldout/test_hidden.py": "34ff6174cb05283ac422dd8d8c2c0f775db0180f992686dedbb06d1df536a128",
+      "oracle/solution.py": "e673996536d17d6d803ece333caeedcd5bb4553ec2068802332f83c414211766",
+      "task.json": "7cb35b16b443fb2ea6971d87d65db902141f9b3c66c97b3473605c33bfc5634a"
+    },
+    "c006-ready-scheduler": {
+      "base/solution.py": "07f9cc3fe1afe3898709f34a4d71925cb0f98741ea828100d2f26d76d732c959",
+      "base/tests/test_visible.py": "b6f13b96c2ced59aaaa9f7dfb42cbd5637038e4992353412d0608905f2afe6bd",
+      "heldout/test_hidden.py": "775640c32ffb35e477b62189c5415bcd3c6252515124e285ed4b9e7076589a5b",
+      "oracle/solution.py": "f591049c9f65d538204a85e9874262579735efd33dc9ac7457dc5bef2d6f0b38",
+      "task.json": "953a0cbc18cb8adbd74bcc41baa9645075a2730fbddc26bf36f8b181de18e69d"
+    }
+  },
+  "telemetry_sha256": "73438f95fdcccd50dc2711a0f5d75881ad5782ba31232cae7d5427ef00e4d50e"
+}

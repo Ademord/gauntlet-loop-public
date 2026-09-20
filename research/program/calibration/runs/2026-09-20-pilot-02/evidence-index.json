@@ -1,0 +1,247 @@
+{
+  "schema": 1,
+  "events_file_bytes_sha256": "c6cc29733b41f57ed26c9402f0eb874dfc82e57d4e4978c0be6f981fcac79942",
+  "scope": "Completed calls with locally retained private transcripts; no source observations changed.",
+  "transcripts": [
+    {
+      "task_id": "c001-number-parser",
+      "stage": "build",
+      "path": "private/c001-number-parser-build.transcript.jsonl",
+      "recorded_sha256": "3d74fb01f420510c0cce1a7384d9b5ed343c76f9955df9aff267013175e0adc6",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "b7527b526b9082c9a27b5e8107e6c55911f6dab351939fde3c9983dcb13c2e19",
+      "normalized_utf8_text_sha256": "3d74fb01f420510c0cce1a7384d9b5ed343c76f9955df9aff267013175e0adc6",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c001-number-parser",
+      "stage": "reviewer",
+      "path": "private/c001-number-parser-reviewer.transcript.jsonl",
+      "recorded_sha256": "7c22e3c81c536033e371c718664c6347f71d0447e99950ae4124205580ade947",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "3acc3e846ec4e6916a19636225b12dd5cd506f77258df8e983d0635c98d8e16a",
+      "normalized_utf8_text_sha256": "7c22e3c81c536033e371c718664c6347f71d0447e99950ae4124205580ade947",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c001-number-parser",
+      "stage": "repair",
+      "path": "private/c001-number-parser-repair.transcript.jsonl",
+      "recorded_sha256": "5666b10f0447d118e762c38b8ac030401e2b1dcd5e6c1081a17cc5fc9b0f2d18",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "df1e498ccc4857dc5efff29f031644123fb26469e5729bee29dfcf9ef78f041f",
+      "normalized_utf8_text_sha256": "5666b10f0447d118e762c38b8ac030401e2b1dcd5e6c1081a17cc5fc9b0f2d18",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c001-number-parser",
+      "stage": "self_check",
+      "path": "private/c001-number-parser-self_check.transcript.jsonl",
+      "recorded_sha256": "95754e9e3be6f9f77bdefb0b067718055e6b81911f08d2c13e2eeb094ade6161",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "38bed73eda7ba4595ccff35bea981a975282c1864b70c1539e80164e9ca312b7",
+      "normalized_utf8_text_sha256": "95754e9e3be6f9f77bdefb0b067718055e6b81911f08d2c13e2eeb094ade6161",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c002-item-matching",
+      "stage": "build",
+      "path": "private/c002-item-matching-build.transcript.jsonl",
+      "recorded_sha256": "3bcedf8ac9eca86921d04c3d4ea94b4dd745d6954c88c699bcf9d5e8345b353d",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "c4fc5fb4c664039bb2ef8d6da67868d4be5e5cb8d78d2e1bd3593f707b01cca3",
+      "normalized_utf8_text_sha256": "3bcedf8ac9eca86921d04c3d4ea94b4dd745d6954c88c699bcf9d5e8345b353d",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c002-item-matching",
+      "stage": "self_check",
+      "path": "private/c002-item-matching-self_check.transcript.jsonl",
+      "recorded_sha256": "714f8ed2d3bb57c7ef1b0215a7f00826f5eb3769496659cade8b92cc5462860e",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "363011d13c15ceeca8afb7ac64a95b30cb9e7d67836b92a7edf68fb820ecf91c",
+      "normalized_utf8_text_sha256": "714f8ed2d3bb57c7ef1b0215a7f00826f5eb3769496659cade8b92cc5462860e",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c002-item-matching",
+      "stage": "reviewer",
+      "path": "private/c002-item-matching-reviewer.transcript.jsonl",
+      "recorded_sha256": "11d4a8b12745a6a009f099acaa606ea9229d68344d1fe878ab778f885c9a446e",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "c52c533b2acb102cd25b65d7af8043543aff83d156fe67c7bc1404c9c1cce81e",
+      "normalized_utf8_text_sha256": "11d4a8b12745a6a009f099acaa606ea9229d68344d1fe878ab778f885c9a446e",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c002-item-matching",
+      "stage": "repair",
+      "path": "private/c002-item-matching-repair.transcript.jsonl",
+      "recorded_sha256": "2b51f56e590efe9ceb575566b071fd6adc52d67c5f6a2663d42db537321a631e",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "2e5407bab1e0e8c8707b1c4fbfb4bb19e73cbead4436deba5f33e42a99161de4",
+      "normalized_utf8_text_sha256": "2b51f56e590efe9ceb575566b071fd6adc52d67c5f6a2663d42db537321a631e",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c003-review-routing",
+      "stage": "build",
+      "path": "private/c003-review-routing-build.transcript.jsonl",
+      "recorded_sha256": "bac08ba776a8dd95ebc138d9b06a7c0d4c0522186e47a6909cbb5dcda23a9d70",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "fcbf43f5051b1ca3df5ce0b076b80ace2c02e1392e5fabeb39fe65d5e2224a77",
+      "normalized_utf8_text_sha256": "bac08ba776a8dd95ebc138d9b06a7c0d4c0522186e47a6909cbb5dcda23a9d70",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c003-review-routing",
+      "stage": "self_check",
+      "path": "private/c003-review-routing-self_check.transcript.jsonl",
+      "recorded_sha256": "11e0a62d1bc77758e89cab685e2471b22bace940d27736d0ebe9745094c32f9a",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "c7d4f65c346c8ab03305560e1f85f73b2aafd73f6291e855908dcfd5df2eba92",
+      "normalized_utf8_text_sha256": "11e0a62d1bc77758e89cab685e2471b22bace940d27736d0ebe9745094c32f9a",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c003-review-routing",
+      "stage": "reviewer",
+      "path": "private/c003-review-routing-reviewer.transcript.jsonl",
+      "recorded_sha256": "36aa6892040b6417dd38c01139dad79f0ab9ecdc7c37ba1b72c8d7f73320ac75",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "bff15be529b148159ee36624727a6f8704df401c7f40256f30bc2bd731610e14",
+      "normalized_utf8_text_sha256": "36aa6892040b6417dd38c01139dad79f0ab9ecdc7c37ba1b72c8d7f73320ac75",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c003-review-routing",
+      "stage": "repair",
+      "path": "private/c003-review-routing-repair.transcript.jsonl",
+      "recorded_sha256": "04b05de819f3ce775c4b8b9bafee19b9c5e9d2aeadeeae5dfde97594d3b0eed4",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "66a3e3335a74e94ac379e66be3a057d71edd660ba6e422bfc655584d20f6e5fb",
+      "normalized_utf8_text_sha256": "04b05de819f3ce775c4b8b9bafee19b9c5e9d2aeadeeae5dfde97594d3b0eed4",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c004-duration-parser",
+      "stage": "build",
+      "path": "private/c004-duration-parser-build.transcript.jsonl",
+      "recorded_sha256": "5e5d8f3ad5eb6bcd844d052993e4791f1651ca82f2438b18a3df1c9fa1a0f39c",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "1be801ae06a71a028fa446687e4414a1809dd57e45ecc47009bcbb7211e90e75",
+      "normalized_utf8_text_sha256": "5e5d8f3ad5eb6bcd844d052993e4791f1651ca82f2438b18a3df1c9fa1a0f39c",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c004-duration-parser",
+      "stage": "self_check",
+      "path": "private/c004-duration-parser-self_check.transcript.jsonl",
+      "recorded_sha256": "b08853d09efdf4e288cd4c772fe11216c0789365d152430c108998d61854515c",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "825c6fc7047fd87d30121650614fb853d5e341543e6f6e498a27f3feb85f5836",
+      "normalized_utf8_text_sha256": "b08853d09efdf4e288cd4c772fe11216c0789365d152430c108998d61854515c",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c004-duration-parser",
+      "stage": "reviewer",
+      "path": "private/c004-duration-parser-reviewer.transcript.jsonl",
+      "recorded_sha256": "3a00b32a952c92c7cb84cf5eea0baa16b8cb075ca3d376dc06b674e13880eea5",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "f9a6368e0568940899304a973de176d9c0920fcf8d05de4a83b20466e43f67ac",
+      "normalized_utf8_text_sha256": "3a00b32a952c92c7cb84cf5eea0baa16b8cb075ca3d376dc06b674e13880eea5",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c004-duration-parser",
+      "stage": "repair",
+      "path": "private/c004-duration-parser-repair.transcript.jsonl",
+      "recorded_sha256": "c43b721b81f9e7f32e802a1b3cb9135be18972b8f7fc9a31eeec915e16c2487f",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "c54ba06bb851bd391cb89140be92ec5152c4ecbf09bd6f26307a952dff0bb44b",
+      "normalized_utf8_text_sha256": "c43b721b81f9e7f32e802a1b3cb9135be18972b8f7fc9a31eeec915e16c2487f",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c005-checkpoint-selection",
+      "stage": "build",
+      "path": "private/c005-checkpoint-selection-build.transcript.jsonl",
+      "recorded_sha256": "2a761549795e283900440a31edc678b60fc8ca745bb35c0f4eb8bf3c5aaccc0e",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "9ad23158286d69212fbe092cb90fe64898cbacae1edb4dcd83500ec15c1e61f5",
+      "normalized_utf8_text_sha256": "2a761549795e283900440a31edc678b60fc8ca745bb35c0f4eb8bf3c5aaccc0e",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c005-checkpoint-selection",
+      "stage": "reviewer",
+      "path": "private/c005-checkpoint-selection-reviewer.transcript.jsonl",
+      "recorded_sha256": "9d495f6a077083e0b3ef76438fcbf2767a17270ef94dfc389ce45918bf922253",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "df34c4184d5d070788dc78d967546b86f3a80e2aed368ed5d823520f3f423eeb",
+      "normalized_utf8_text_sha256": "9d495f6a077083e0b3ef76438fcbf2767a17270ef94dfc389ce45918bf922253",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c005-checkpoint-selection",
+      "stage": "repair",
+      "path": "private/c005-checkpoint-selection-repair.transcript.jsonl",
+      "recorded_sha256": "09cceabed7d6904ed6b2a5eb92c0a293cf1848247d03ce3e1a9a01fc78efe0ea",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "87bd82cbdc2ad2ef50c0197ebcbad822c4f23f1059a2a7a9e6ba4017d5c50fe8",
+      "normalized_utf8_text_sha256": "09cceabed7d6904ed6b2a5eb92c0a293cf1848247d03ce3e1a9a01fc78efe0ea",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c005-checkpoint-selection",
+      "stage": "self_check",
+      "path": "private/c005-checkpoint-selection-self_check.transcript.jsonl",
+      "recorded_sha256": "29c393d90e366d2fa03e15b4f8bd864d7a0d2657e7cb6aa0475c293132264af6",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "030428061940cd128643597b1dc92a9a1e95cc2e5db3e72833174b2bfb07f3dd",
+      "normalized_utf8_text_sha256": "29c393d90e366d2fa03e15b4f8bd864d7a0d2657e7cb6aa0475c293132264af6",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c006-ready-scheduler",
+      "stage": "build",
+      "path": "private/c006-ready-scheduler-build.transcript.jsonl",
+      "recorded_sha256": "d53e6bae0fab5cce8d8e6767bcdd9c5896b6ddf8adde80a409355ebc4e222844",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "77714ff7e3bdb8669c2046f48b409546f19d9ec77312bbe66ad2af9b1077ee11",
+      "normalized_utf8_text_sha256": "d53e6bae0fab5cce8d8e6767bcdd9c5896b6ddf8adde80a409355ebc4e222844",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c006-ready-scheduler",
+      "stage": "reviewer",
+      "path": "private/c006-ready-scheduler-reviewer.transcript.jsonl",
+      "recorded_sha256": "c7b495b035df6b2cd1baba678c8caf2f7da3df0d27f27ec8233c3708ffa7ea78",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "27670f6dc77bbd1667bda1ef7a9d424c5ba63ca37259de9275eded2c270aa685",
+      "normalized_utf8_text_sha256": "c7b495b035df6b2cd1baba678c8caf2f7da3df0d27f27ec8233c3708ffa7ea78",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c006-ready-scheduler",
+      "stage": "repair",
+      "path": "private/c006-ready-scheduler-repair.transcript.jsonl",
+      "recorded_sha256": "4d35907bdece12f4a7c5252db49ec9d08cf5fad7291b0cd4b3007423405d2c8f",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "f1288fb3cbfcdc8acf8de02284720f19fca8298872856f0f71e95937ecec6668",
+      "normalized_utf8_text_sha256": "4d35907bdece12f4a7c5252db49ec9d08cf5fad7291b0cd4b3007423405d2c8f",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c006-ready-scheduler",
+      "stage": "self_check",
+      "path": "private/c006-ready-scheduler-self_check.transcript.jsonl",
+      "recorded_sha256": "838942fb287bb80c4b558a12c0deb1d67e062b961facd6811a35f62038d359af",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "be5567d04fbd220f721b7fea62a0167e62b4c6e6d3c732faa8d6c515b35b312e",
+      "normalized_utf8_text_sha256": "838942fb287bb80c4b558a12c0deb1d67e062b961facd6811a35f62038d359af",
+      "recorded_hash_verified": true
+    }
+  ]
+}

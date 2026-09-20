@@ -13,14 +13,14 @@ The first three exercise document-processing concerns; the next two exercise run
 | c005-checkpoint-selection | Compound identity, timezone comparison, invalid timestamps, stable order | 8 |
 | c006-ready-scheduler | DAG validation, capacity, resource ownership, stable priorities | 9 |
 
-Each task has two visible test methods. Every initial base passes the visible suite and fails the hidden suite. Every reference implementation passes both suites. This establishes that the supplied tests discriminate between these particular known-bad and known-good implementations. It does not establish that all plausible bad implementations are rejected or that a model will struggle with these tasks.
+Each task has two visible test methods. Every initial base passes the visible suite and fails the hidden suite. Every reference implementation passes both suites. This establishes that the supplied tests discriminate between these particular defective bases and suite-passing references. It does not establish that all plausible bad implementations are rejected or that a model will struggle with these tasks. The [independent grader review](../GRADER-REVIEW.md) found a large-number defect in the c002 reference that the frozen tests miss; its passing score is not proof of full contract correctness.
 
 ## Inputs and isolation
 
 - `task.json` contains the full public behavior contract and hashes of all files in `base/`, `heldout/` and `oracle/`. Freeze the manifest identity in the experiment record before any model run.
 - `base/` contains `solution.py` and `tests/test_visible.py`; copy **only this directory's contents** into a solver's isolated workspace. Give the solver the description, requirements and allowed path from the manifest.
 - `heldout/test_hidden.py` is evaluator-only. Copy the candidate to a separate evaluator workspace, install this directory as `heldout/`, then run its command. Never add hidden checks to the solver's workspace or feedback during this calibration.
-- `oracle/solution.py` is a known-good implementation for apparatus validation only. It must never reach builders or critics. Alternative implementations can pass; equality to the oracle source is not an acceptance condition.
+- `oracle/solution.py` is a reference implementation for apparatus validation only, with the coverage limitation above. It must never reach builders or critics. Alternative implementations can pass; equality to the oracle source is not an acceptance condition.
 
 Hidden tests were written before solving runs and do not inspect the candidate's implementation. They were written by the same authoring agent as these fixtures and reference implementations, so they are **not** an independently authored assessment. Their limited examples can miss defects. All requirements tested in the hidden suite are stated in the public task contract.
 

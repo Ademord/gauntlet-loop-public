@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "events_file_bytes_sha256": "31e8252e09f7793f06047a069e6f97fd375a02177a49bef3d7f22c1f1e66e2d6",
+  "scope": "Completed calls with locally retained private transcripts; no source observations changed.",
+  "transcripts": [
+    {
+      "task_id": "c001-number-parser",
+      "stage": "build",
+      "path": "private/c001-number-parser-build.transcript.jsonl",
+      "recorded_sha256": "895349bb23799b3f21c67dbb51e739e85574487890cc96f73707624ae8d9ee81",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "06271c9e3336de1ae87d3b8d465385c4e33d554b6bfce1cc7cf3605cedccd2a6",
+      "normalized_utf8_text_sha256": "895349bb23799b3f21c67dbb51e739e85574487890cc96f73707624ae8d9ee81",
+      "recorded_hash_verified": true
+    },
+    {
+      "task_id": "c001-number-parser",
+      "stage": "reviewer",
+      "path": "private/c001-number-parser-reviewer.transcript.jsonl",
+      "recorded_sha256": "f0891e5ebcb90de77eb6836fcbc1791b84ce01ded59eab6c8dc737360069d24e",
+      "recorded_hash_encoding": "normalized-utf8-text",
+      "file_bytes_sha256": "c1294d162aae27cb3aed6ee3b78de5f4a49e9f55c1143a90075eb2b156532f6b",
+      "normalized_utf8_text_sha256": "f0891e5ebcb90de77eb6836fcbc1791b84ce01ded59eab6c8dc737360069d24e",
+      "recorded_hash_verified": true
+    }
+  ]
+}

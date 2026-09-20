@@ -1,6 +1,6 @@
 # Review-stage calibration
 
-This is the next experiment after the historical F1 study's measurement audit. It compares three continuations from the **same built candidate**: deliver immediately, let its builder self-check once, or obtain a fresh review followed by one correction. It does not compare complete skill versions.
+The September 20 calibration is complete; read the [decision and measured results](DECISION.md). It compares three continuations from the **same built candidate**: deliver immediately, let its builder self-check once, or obtain a fresh review followed by one correction. It does not compare complete skill versions.
 
 Read the [frozen protocol](PROTOCOL.md) and [fixture limitations](tasks/README.md). The six original stress fixtures validate the apparatus. They are not a representative repository benchmark and cannot establish a general performance improvement.
 
@@ -24,6 +24,20 @@ The prepared manifest freezes the runner, telemetry, protocol and all task files
 `REPORT.md` separates functional outcomes from scope compliance. It reports actual stage cost, rescues and spoils relative to the shared build, and incomplete work. An unresolved paid call makes total spend unknown and the observed amount a lower bound. CLI limits are checked at request boundaries, so they are not a promise of an exact external billing cutoff.
 
 Cost figures mean CLI-reported API-equivalent usage, not an independently verified subscription charge or invoice.
+
+## Evidence identities
+
+The two September 20 pilot runners hashed transcript text before Windows converted its line endings when saving the file. Their append-only `transcript_sha256` fields therefore identify normalized UTF-8 text, not the saved file bytes. Each run's derived `evidence-index.json` verifies those original hashes and separately records the actual file-byte hashes, binding the index to the unchanged events file. Exact frozen runner snapshots preserve what executed. Subsequent controller code explicitly hashes saved bytes.
+
+With the local private transcripts retained, regenerate the sidecar without model calls:
+
+```text
+python tools/paired_study/index_calibration_evidence.py --run research/program/calibration/runs/2026-09-20-pilot-02
+```
+
+`stage-summaries.jsonl` exports only final result messages, bound to the transcript byte hashes. These are the models' stated accounts; claims about their own checks are not independent grading. The saved candidate code and evaluator results provide the behavioral evidence. `supplementary-c002.json` records one independently derived boundary probe outside the frozen primary score; it must not be pooled into that score.
+
+Further concrete findings from the final messages and patches are recorded separately in `supplementary-findings.json`, including a self-check regression. Reproduce these offline with `python research/program/calibration/supplementary_probes.py --run research/program/calibration/runs/2026-09-20-pilot-02`. These checks were selected after the run and cannot support an unbiased comparative-performance estimate.
 
 ## What changes in the existing evidence
 

@@ -2,7 +2,7 @@
 
 A skill for coding agents that turns an ambitious goal into a deliverable that survives comparison with a real reference and independent, evidence-based checks. The agent builds, a separate critic with fresh context judges the actual artifact against a concrete bar, and the work is revised until it wins or its budget runs out. Current skill: 5.1.0. This is work in progress: [STATUS.md](STATUS.md) distinguishes verified behavior from unproven performance claims.
 
-The September 20 [measurement correction](research/program/paired-study/measurement-replay.md) preserves the original study and corrects its token totals. The next [review calibration](research/program/calibration/README.md) tests controlled continuations from an identical built candidate. It does not benchmark full skill versions or establish a general benefit from orchestration.
+The September 20 [measurement correction](research/program/paired-study/measurement-replay.md) preserves the original study and corrects its token totals. The completed [review calibration](research/program/calibration/DECISION.md) found equal frozen scores, plus real repairs and a regression in supplementary checks. It does not benchmark full skill versions or establish a general benefit from orchestration.
 
 ## How it works
 
