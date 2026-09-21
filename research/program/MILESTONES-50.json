@@ -1696,7 +1696,8 @@
       "evidence_ids": [
         "EV-CALIBRATION-CONTROLS",
         "EV-PASSIVE-OBSERVER",
-        "EV-OBSERVER-NATIVE-001"
+        "EV-OBSERVER-NATIVE-001",
+        "EV-OBSERVER-NATIVE-002"
       ],
       "experiment_ids": [],
       "related_backlog_ids": [
@@ -1982,7 +1983,8 @@
       "evidence_ids": [
         "EV-CALIBRATION-CONTROLS",
         "EV-PASSIVE-OBSERVER",
-        "EV-OBSERVER-NATIVE-001"
+        "EV-OBSERVER-NATIVE-001",
+        "EV-OBSERVER-NATIVE-002"
       ],
       "experiment_ids": [],
       "related_backlog_ids": [],
@@ -2032,7 +2034,8 @@
       "evidence_ids": [
         "EV-CALIBRATION-CONTROLS",
         "EV-PASSIVE-OBSERVER",
-        "EV-OBSERVER-NATIVE-001"
+        "EV-OBSERVER-NATIVE-001",
+        "EV-OBSERVER-NATIVE-002"
       ],
       "experiment_ids": [],
       "related_backlog_ids": [],

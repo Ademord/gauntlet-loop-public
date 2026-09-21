@@ -1,0 +1,70 @@
+{
+  "checked_utc": "2026-09-21T00:27:14.073842+00:00",
+  "observed": {
+    "database_bytes": 57344,
+    "page_size": 4096,
+    "page_count": 14,
+    "freelist_pages": 0,
+    "row_counts": {
+      "contact_labels": 4,
+      "contact_resolutions": 0,
+      "events": 22,
+      "measurements": 12,
+      "outcomes": 2,
+      "pending_enrollments": 1,
+      "sessions": 4
+    },
+    "index_count": 4
+  },
+  "transcripts": [
+    {
+      "file": "claude-opus-read-smoke.stdout.jsonl",
+      "bytes": 20245,
+      "lines": 39,
+      "gzip6_bytes_in_memory": 4785
+    },
+    {
+      "file": "claude-opus-smoke.stdout.jsonl",
+      "bytes": 31185,
+      "lines": 25,
+      "gzip6_bytes_in_memory": 6184
+    },
+    {
+      "file": "claude-smoke.stdout.jsonl",
+      "bytes": 106562,
+      "lines": 26,
+      "gzip6_bytes_in_memory": 30224
+    },
+    {
+      "file": "codex-smoke.stdout.jsonl",
+      "bytes": 2996,
+      "lines": 11,
+      "gzip6_bytes_in_memory": 698
+    }
+  ],
+  "snapshots": [
+    {
+      "file": "checkpoint-001.sqlite3",
+      "bytes": 57344,
+      "sha256": "fbf58c3a03e517268df01efcc0fe09cfdd335e5ca17dd039c55f10bdeca2c99d",
+      "gzip6_bytes_in_memory": 3577
+    }
+  ],
+  "synthetic_10000_events": {
+    "events": 10000,
+    "base_database_bytes": 49152,
+    "populated_database_bytes": 5586944,
+    "incremental_bytes_per_event": 553.7792,
+    "metadata_bytes_each": [
+      179
+    ],
+    "page_size": 4096,
+    "page_count": 1364,
+    "freelist_pages": 0,
+    "gzip6_bytes_in_memory": 637421
+  },
+  "scope": "Read-only live inspection; synthetic inserts used a temporary database; gzip outputs remained in memory. No model calls, live writes, deletion, VACUUM, or compaction.",
+  "private_probe_source_sha256": "9f82cbcd44a189c771d132e63750a18666d485a9b8d760104d755d8b71a89438",
+  "original_measurement_sha256": "1120e9d8cb02e8bdbb1ab2c997a0cffb194e87a64a02384005eaab347fbddd2e",
+  "performance_claim": null
+}

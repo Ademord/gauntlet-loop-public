@@ -2,7 +2,7 @@
   "schema_version": 1,
   "id": "OBS-PROTOTYPE-001",
   "date": "2026-09-21",
-  "status": "native_codex_and_claude_capture_verified_for_bounded_diagnostics",
+  "status": "native_codex_capture_verified_claude_failure_capture_verified",
   "claim_ids": [
     "M-030",
     "M-036",
@@ -44,10 +44,10 @@
     "ordinary_task_created": false,
     "live_capture_verified": {
       "codex": "request_tool_stop_cycle",
-      "claude": "request_tool_stop_cycle_with_mcp_disabled_for_diagnostic"
+      "claude": "request_failure_lifecycle"
     },
     "codex_native_trust_reviewed": true,
-    "claude_successful_tool_cycle_verified": true,
+    "claude_successful_tool_cycle_verified": false,
     "enrollment": "explicit session or one-shot exact host/directory with expiry",
     "daily_commit_automation": false,
     "complete_interruption_or_descendant_coverage_verified": false
@@ -58,10 +58,9 @@
     "Collector overhead and missing arrivals may affect observations.",
     "No skill package was changed or installed.",
     "Event metadata excludes prompts/tool content/paths. Private pending enrollment stores a directory for routing.",
+    "The native Claude task was blocked by usage credits; its captured failure is preserved.",
     "Native diagnostic logs and SQLite snapshots remain private.",
-    "First-pass resolution concerns captured, fully classified records with explicit user resolution; it is not complete-conversation success.",
-    "Claude first hit a model-credit limit; Opus then overshot its soft dollar guard with normal MCP configuration; a Read-only invocation without MCP servers succeeded. All attempts are preserved.",
-    "The CLI dollar guard is not a guaranteed hard cost ceiling."
+    "First-pass resolution concerns captured, fully classified records with explicit user resolution; it is not complete-conversation success."
   ],
   "offline_validation": "research/program/materials/observer-validation.json",
   "implementations": [
@@ -71,10 +70,8 @@
     "tools/observer_install.py",
     "tools/observer_checkpoint.py"
   ],
-  "native_validation": "research/program/materials/observer-native-validation-002.json",
-  "checkpoint": "research/program/materials/observer-checkpoint-002.json",
+  "native_validation": "research/program/materials/observer-native-validation.json",
+  "checkpoint": "research/program/materials/observer-checkpoint-001.json",
   "latest_offline_validation": "research/program/materials/observer-validation-002.json",
-  "git_memory_note": "research/program/materials/git-memory.md",
-  "prior_native_validation": "research/program/materials/observer-native-validation.json",
-  "storage_note": "research/program/materials/observer-storage.md"
+  "git_memory_note": "research/program/materials/git-memory.md"
 }

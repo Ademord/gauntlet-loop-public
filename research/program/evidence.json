@@ -429,7 +429,7 @@
           "sha256": "a96dd0803fcf69a26ea16c6a3f405aed35b98b9b673774efd650bcb046f8ae9f"
         },
         {
-          "path": "research/program/materials/passive-observer.json",
+          "path": "research/program/materials/observer-native-001/passive-observer.json",
           "sha256": "baf59bbdadf84bf1bd2ccf961ee8e778aa406c32d74fd3930f69e30a27013497"
         },
         {
@@ -449,6 +449,55 @@
         "limited-native-passive-recording",
         "external-contact-classification",
         "private-snapshot-manifest-export"
+      ]
+    },
+    {
+      "id": "EV-OBSERVER-NATIVE-002",
+      "kind": "engineering",
+      "observed_on": "2026-09-21",
+      "review_status": "active",
+      "scope": "Claude Opus/high captured a native Read and completion cycle with MCP servers disabled for that diagnostic; the prior normal-MCP soft-budget overshoot is retained. Recorder storage is measured and projected separately.",
+      "limitations": [
+        "No full Claude/MCP tool coverage or comparative orchestration result.",
+        "All Claude diagnostic attempts together reported $3.286704 API-equivalent usage; billed cash and full research/human costs remain unknown.",
+        "Soft CLI dollar guard overshot on a single request; it is not a hard preflight budget.",
+        "Storage-growth projection uses synthetic event shapes and excludes additional session/outcome growth.",
+        "No history deletion or daily automation was activated."
+      ],
+      "claim_ids": [
+        "M-030",
+        "M-036",
+        "M-037"
+      ],
+      "source_ids": [
+        "A7"
+      ],
+      "artifacts": [
+        {
+          "path": "research/program/materials/observer-native-validation-002.json",
+          "sha256": "e0a441d9ca2a5ad88375328f026f0d32c6e5dd2ba3a3eff752b54b601b5200aa"
+        },
+        {
+          "path": "research/program/materials/observer-checkpoint-002.json",
+          "sha256": "1c75b79bafbb7ec745b1ca21a9eadbc36af7b16e908f1f458c71972e45ed6653"
+        },
+        {
+          "path": "research/program/materials/passive-observer.json",
+          "sha256": "0bf64e55c2161973ab2068ad8a73283a51dfe9d6b53369d58d8b3705e7e559d0"
+        },
+        {
+          "path": "research/program/materials/observer-storage.md",
+          "sha256": "7abd153f0b343b8a53dd08ab6770cb72cff35f92325ac8a4e1e17392c6080940"
+        },
+        {
+          "path": "research/program/materials/observer-storage-measurement.json",
+          "sha256": "3097afe1ab4e62ba499716c444444dc32867b9542ba1c28805b4a10662a4aab8"
+        }
+      ],
+      "establishes": [
+        "bounded-claude-native-capture",
+        "soft-budget-overshoot-observed",
+        "recorder-storage-magnitude"
       ]
     }
   ]

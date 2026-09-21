@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "id": "OBS-NATIVE-002",
+  "observed_utc": "2026-09-21T00:26:54.996351+00:00",
+  "purpose": "claude_opus_high_native_recorder_followup",
+  "prior_record": "research/program/materials/observer-native-validation.json",
+  "runtime_sha256": "be0417d9f90581bc368f3e85e174ff6126d807bdc4b4fa2aa7d3e30c7f0dd0de",
+  "performance_claim": null,
+  "ordinary_tasks_recorded": 0,
+  "attempts": [
+    {
+      "session_sha256": "42d20758e067ab7aa555087e8037bd945b827969226dbc9cd46a9d8b444f952d",
+      "task_sha256": "9882ed393ed81f565e30d9827f2c06958221165255b1d717eb9193a2b03be026",
+      "requested_model": "opus",
+      "resolved_model": "claude-opus-5",
+      "requested_effort": "high",
+      "native_tool_count": 316,
+      "native_mcp_server_count": 7,
+      "mcp_configuration": "normal-user-configuration",
+      "event_counts": {
+        "PreToolUse": 1,
+        "SessionStart": 1,
+        "UserPromptSubmit": 1
+      },
+      "native_returncode": 1,
+      "terminal_reason": "budget_exhausted",
+      "successful_tool_cycle_verified": false,
+      "fixture_value_verified": false,
+      "diagnostic_check_pre_registered": false,
+      "api_equivalent_cost_usd": 3.24448,
+      "billed_cash_usd": null,
+      "requested_budget_guard_usd": 1,
+      "guard_overshot": true,
+      "host_reported_model_usage": {
+        "claude-opus-5": {
+          "inputTokens": 2,
+          "outputTokens": 104,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 324187,
+          "webSearchRequests": 0,
+          "costUSD": 3.24448,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 64000,
+          "thinkingTokens": 0,
+          "canonicalModel": "claude-opus-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "stdout_sha256": "b44b7e15a3fd247bc10b3faac152cd89720e9be34dafae2d48bec4c0ab559c86",
+      "duration_seconds_including_client_startup": 9.297000000020489,
+      "collector_diagnostics_present": false,
+      "user_reported_resolution": null
+    },
+    {
+      "session_sha256": "68ed150f7cfaa5f1fed0fac4daba3e9f6bccff010c3354bd4110607f23b31f24",
+      "task_sha256": "a1dcbcef3a07231b0c57fa75c7e38a03b2c9c7166d28082c601eb5a47f39a849",
+      "requested_model": "opus",
+      "resolved_model": "claude-opus-5",
+      "requested_effort": "high",
+      "native_tool_count": 1,
+      "native_mcp_server_count": 0,
+      "mcp_configuration": "empty-for-this-invocation",
+      "event_counts": {
+        "PostToolUse": 1,
+        "PreToolUse": 1,
+        "SessionEnd": 1,
+        "SessionStart": 1,
+        "Stop": 1,
+        "UserPromptSubmit": 1
+      },
+      "native_returncode": 0,
+      "terminal_reason": "completed",
+      "successful_tool_cycle_verified": true,
+      "fixture_value_verified": true,
+      "diagnostic_check_pre_registered": false,
+      "api_equivalent_cost_usd": 0.042224,
+      "billed_cash_usd": null,
+      "requested_budget_guard_usd": 1,
+      "guard_overshot": false,
+      "host_reported_model_usage": {
+        "claude-opus-5": {
+          "inputTokens": 4,
+          "outputTokens": 108,
+          "cacheReadInputTokens": 6368,
+          "cacheCreationInputTokens": 3632,
+          "webSearchRequests": 0,
+          "costUSD": 0.042224,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 64000,
+          "thinkingTokens": 0,
+          "canonicalModel": "claude-opus-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "stdout_sha256": "d2d6a06ace81b64a74d997ac7f6b90d649d9e5d912d9c5d2cdc3d0f736957cb5",
+      "duration_seconds_including_client_startup": 5.4689999999827705,
+      "collector_diagnostics_present": false,
+      "user_reported_resolution": null
+    }
+  ],
+  "limits": [
+    "Read-only compatibility diagnostic, not a representative task or orchestration comparison.",
+    "Final successful invocation kept user hooks but disabled MCP servers only for that invocation.",
+    "The CLI budget guard can overshoot on one request; it is not a guaranteed pre-request dollar cap.",
+    "Host-reported API-equivalent usage is not observed subscription billing or full research cost.",
+    "Human resolution and complete capture remain unknown."
+  ],
+  "all_claude_diagnostic_api_equivalent_usd": 3.286704
+}

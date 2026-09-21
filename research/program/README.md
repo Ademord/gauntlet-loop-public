@@ -48,6 +48,7 @@ Commands in this tool do not dispatch models. Historical [calibration](calibrati
 | EV-TASK-SELECTION | documentation | Ordinary-task selection and reproducible task-packet requirements are specified; fresh tasks remain unselected. |
 | EV-PASSIVE-OBSERVER | engineering | Enrolled-session SQLite metadata collector passed offline privacy, silence, event identity and outcome-separation tests; native integration is unverified. |
 | EV-OBSERVER-NATIVE-001 | engineering | Native Codex request/tool/completion capture and Claude request/failure capture verified on one fixture each; contact classifications and private checkpoint exports passed offline boundary tests. |
+| EV-OBSERVER-NATIVE-002 | engineering | Claude Opus/high captured a native Read and completion cycle with MCP servers disabled for that diagnostic; the prior normal-MCP soft-budget overshoot is retained. Recorder storage is measured and projected separately. |
 
 ## Milestone index
 
@@ -82,14 +83,14 @@ Commands in this tool do not dispatch models. Historical [calibration](calibrati
 | M-027 | Complete attributable accounting | verified_scope | closed | 1 / 0 |
 | M-028 | Order and cache controls | open | blocked | 0 / 0 |
 | M-029 | Identifiable statistical decision | open | blocked | 0 / 0 |
-| M-030 | Failures and attrition included | verified_scope | closed | 3 / 0 |
+| M-030 | Failures and attrition included | verified_scope | closed | 4 / 0 |
 | M-031 | Remove redundant instructions | open | deferred | 2 / 2 |
 | M-032 | Qualify a second host | partial | blocked | 0 / 0 |
 | M-033 | Prefer native enforcement | reuse | ready | 3 / 2 |
 | M-034 | Initial repository context | deferred | deferred | 0 / 0 |
 | M-035 | Within-run state compression | deferred | deferred | 0 / 0 |
-| M-036 | Machine-checkable records | partial | blocked | 3 / 0 |
-| M-037 | Prompt versus controller | partial | blocked | 3 / 0 |
+| M-036 | Machine-checkable records | partial | blocked | 4 / 0 |
+| M-037 | Prompt versus controller | partial | blocked | 4 / 0 |
 | M-038 | Value of clarification | deferred | deferred | 0 / 0 |
 | M-039 | Reuse verification evidence | deferred | deferred | 0 / 0 |
 | M-040 | Requirements changed mid-run | deferred | deferred | 0 / 0 |
