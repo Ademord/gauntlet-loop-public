@@ -36,4 +36,3 @@ The difference is **$18 of proposed screening allocation removed** and **$36 of 
 Realized net savings would require a documented like-for-like counterfactual execution quote minus actual reuse/bridge/research/evaluation costs. That counterfactual and all attributable research costs are not available here. Report net savings as **not measured**.
 
 For this planning turn: no new solver benchmark was dispatched. Literature retrieval and analysis consumed resources; their attributable dollar cost, tool-credit charge and active investigator time are **not measured**, not zero. Previous calibration expenditure is sunk and remains in its own ledger. No budget for all twenty milestones is authorized.
-

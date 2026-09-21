@@ -206,7 +206,7 @@ No new benchmark runs or paid model experiments were launched. This correction p
 raw results, recorded stopping decision and historical sign-test verdicts; it corrects their interpretation.
 
 - **x008 did revise.** The earlier "No rejection, no revision" statement is wrong. In the
-  [arm-B transcript](pairs/x008-intelligence-vlm-call_json/F1-excision/armB.transcript.jsonl), line 182 says the
+  private arm-B transcript (local file `pairs/x008-intelligence-vlm-call_json/F1-excision/armB.transcript.jsonl`), line 182 says the
   lead will address the critic's edge case; line 185 changes the provider exception handler to preserve
   `VLMParseError` as well as `VLMTransportError`; line 195 initiates another independent review. The first
   verdict was PASS with a non-blocking finding. Thus there was no rejection-triggered revision, but there was
