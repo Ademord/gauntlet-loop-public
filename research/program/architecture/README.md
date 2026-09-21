@@ -121,3 +121,6 @@ ADK v2's [graph routes](https://adk.dev/graphs/routes/) and [dynamic workflows](
 Replay deserves explicit qualification. ADK's [version-pinned dynamic-node guidance](https://github.com/google/adk-python/blob/d57c84f13baf53cfd910c2155449f8c4254e01c5/docs/guides/workflow/dynamic_nodes/index.md) says a resumed parent re-executes while completed child results can be replayed. That does not guarantee exactly-once external effects if an action succeeded before its checkpoint was recorded. Keep effects out of an unguarded parent body and reconcile uncertain outcomes.
 
 No framework was installed, no pipeline deployed, no worker experiment run and no milestone promoted in this assessment. The public private-source references support provenance but do not make the private application pipeline independently reproducible from this checkout.
+
+
+Tracker extraction follow-up: [P004](TRACKER-NORMALIZER.md) records a rejected candidate after one repair, retained compatibility failures and separate diagnostic replays. No integration occurred. P003, P002 and the original assessment retain their historical scopes.

@@ -1,0 +1,342 @@
+{
+  "schema_version": 1,
+  "id": "P004",
+  "kind": "engineering_implementation",
+  "date": "2026-09-21",
+  "follows": [
+    "P003",
+    "GRAPH-001",
+    "SVQ-001"
+  ],
+  "performance_evidence": "unproven",
+  "milestone_status_changes": [],
+  "further_paid_execution_authorized_by_this_record": false,
+  "outcome": "rejected",
+  "scope": "Unintegrated candidate transformation and separate controller diagnostics; full contract not met.",
+  "worker": {
+    "model": "claude-opus-5",
+    "effort": "xhigh",
+    "controller_repair_requests": 1
+  },
+  "attempts": [
+    {
+      "phase": "build",
+      "worker_started": true,
+      "native_completion": "failed",
+      "terminal_reason": "budget_exhausted",
+      "native_subtype": "error_max_budget_usd",
+      "process_exit_code": 1,
+      "timed_out": false,
+      "api_equivalent_usd": 2.1697525,
+      "tokens": 308260,
+      "elapsed_seconds": 433.532,
+      "soft_cap_usd": 2.0,
+      "soft_cap_exceeded": true,
+      "artifact_accepted": false,
+      "code_review_blocker_count": 4,
+      "code_review_blockers": [
+        {
+          "id": "R01",
+          "finding": "Required usage document missing."
+        },
+        {
+          "id": "R02",
+          "finding": "Required package banner update missing."
+        },
+        {
+          "id": "R03",
+          "finding": "Worker did not complete its static validation step."
+        },
+        {
+          "id": "R04",
+          "finding": "Valid aware ISO timestamp forms were rejected; frozen cases did not cover them."
+        }
+      ],
+      "tests": {
+        "test_methods": 19,
+        "passed": 19,
+        "failure_entries": 0,
+        "errors": 0,
+        "skipped": 0,
+        "suite_passed": true,
+        "limit": "Failure entries can count subtests; they are not independent task samples."
+      },
+      "launch": {
+        "reference": "private:tracker-normalizer/controller/build/launch.json",
+        "sha256": "f2a42836d9872d72ea086495fdb586e8028eb5de71ccc223d3dbfa8d863dca60"
+      },
+      "completion": {
+        "reference": "private:tracker-normalizer/controller/build/completion.json",
+        "sha256": "4b4e54f0cd7300516d1e734524888af2f6dc148e636ab680b342ce2df0a77438"
+      },
+      "acceptance": {
+        "reference": "private:tracker-normalizer/controller/build/acceptance.json",
+        "sha256": "4ad48e8bd63541cfd230f77de7aecaf257dab1908e57ecff0e18a96c64f9596e"
+      },
+      "review": {
+        "reference": "private:tracker-normalizer/controller/build/review.json",
+        "sha256": "808ea33d13f6b11318cb5ece7b6a60271fc4affdb1c9d93b45320df572d57ac2"
+      }
+    },
+    {
+      "phase": "repair",
+      "worker_started": true,
+      "native_completion": "completed",
+      "terminal_reason": "completed",
+      "native_subtype": "success",
+      "process_exit_code": 0,
+      "timed_out": false,
+      "api_equivalent_usd": 0.35990500000000003,
+      "tokens": 67571,
+      "elapsed_seconds": 60.453,
+      "soft_cap_usd": 1.0,
+      "soft_cap_exceeded": false,
+      "artifact_accepted": false,
+      "code_review_blocker_count": 1,
+      "code_review_blockers": [
+        {
+          "id": "R04",
+          "finding": "Valid aware ISO timestamp forms were rejected; frozen cases did not cover them."
+        }
+      ],
+      "tests": {
+        "test_methods": 19,
+        "passed": 19,
+        "failure_entries": 0,
+        "errors": 0,
+        "skipped": 0,
+        "suite_passed": true,
+        "limit": "Failure entries can count subtests; they are not independent task samples."
+      },
+      "launch": {
+        "reference": "private:tracker-normalizer/controller/repair/launch.json",
+        "sha256": "354da9c8874b5a9af9e3d4da58fe2d805a6ecea8e6d8805f5b67a79b3df909b7"
+      },
+      "completion": {
+        "reference": "private:tracker-normalizer/controller/repair/completion.json",
+        "sha256": "32eed145b19aebba4c493c3c2bdb65c9a9e638d0c5c422307f87796caa7d95fd"
+      },
+      "acceptance": {
+        "reference": "private:tracker-normalizer/controller/repair/acceptance.json",
+        "sha256": "74d26fc794dac2800da7debbc52082d0fd39dae2ef5ee6c40cc2600c7fe5e860"
+      },
+      "review": {
+        "reference": "private:tracker-normalizer/controller/repair/review.json",
+        "sha256": "4ae1b6a517f87e5c4785b96acf2a9e745c52c4dc3afa741b648b79493f0e507f"
+      }
+    }
+  ],
+  "acceptance": {
+    "accepted": false,
+    "tests": {
+      "test_methods": 19,
+      "passed": 19,
+      "failure_entries": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite_passed": true,
+      "limit": "Failure entries can count subtests; they are not independent task samples."
+    },
+    "contract_sha256": "54ad6a5ec7fd95e7dd1c58564f66139c1aec1bbc8820d6f6d1313506b432c431",
+    "evaluator_sha256": "fa46a2698d0425286736156a8a44a3e9907bf68b38775fdbb876fbe409f29308",
+    "review_sha256": "4ae1b6a517f87e5c4785b96acf2a9e745c52c4dc3afa741b648b79493f0e507f",
+    "unresolved_contract_blocker": "Valid aware ISO timestamp forms were rejected; frozen cases did not cover them.",
+    "receipt": {
+      "reference": "private:tracker-normalizer/controller/repair/acceptance.json",
+      "sha256": "74d26fc794dac2800da7debbc52082d0fd39dae2ef5ee6c40cc2600c7fe5e860"
+    },
+    "review": {
+      "reference": "private:tracker-normalizer/controller/repair/review.json",
+      "sha256": "4ae1b6a517f87e5c4785b96acf2a9e745c52c4dc3afa741b648b79493f0e507f"
+    }
+  },
+  "production": {
+    "integrated": false,
+    "package_version": "1.1.5",
+    "frozen_source_bytes_unchanged": true,
+    "normalizer_installed": false,
+    "package_sha256": "938e3d2105ccbb6cb1b1cad666ed6a5d12127b785e09a7935bb99749572b59a1",
+    "baseline_receipt": {
+      "reference": "private:tracker-normalizer/controller/source-manifest.json",
+      "sha256": "c4a50c94ca2a34af8725c9e6765bb766a456a56f6f004d05b04bf6a2f8d9bbca"
+    }
+  },
+  "historical_replay": {
+    "kind": "historical_capture_replay",
+    "jobs": 2,
+    "normalizer_calls": 2,
+    "adapter_inspections": 4,
+    "receipts_equal_reviewed_P003_mapping": true,
+    "original_time_route": {
+      "state": "already_submitted",
+      "action": "none",
+      "stage": null
+    },
+    "expired_time_route": {
+      "state": "reconciliation_required",
+      "action": "reconcile_submission",
+      "stage": null
+    },
+    "fresh_live_observation": false,
+    "source_bytes_unchanged": true,
+    "production_integrated": false,
+    "execution_scope": "Candidate normalizer plus unchanged installed 1.1.5 adapter",
+    "package_version": "1.1.5",
+    "package_sha256": "938e3d2105ccbb6cb1b1cad666ed6a5d12127b785e09a7935bb99749572b59a1",
+    "source_files_checked": 253,
+    "capture_sha256": "7bd10ca65e47c2c70cf918b9566c4bd080e05ea6e2053c9ec5c1f308df69954e",
+    "receipt": {
+      "reference": "private:tracker-normalizer/controller/replay.json",
+      "sha256": "4b04f3feb9ff8267fd55b22b75f2808098df6bc914164b15b427360a25d71ced"
+    },
+    "source_manifest": {
+      "reference": "private:tracker-normalizer/controller/replay/source-tree-manifest.json",
+      "sha256": "0c48839229e017932b3e9131314edee480b0620829716273587af0d12a04ca81"
+    }
+  },
+  "separate_source_probe": {
+    "kind": "separate_controller_source_probe",
+    "jobs": 1,
+    "tracker": "todo",
+    "submission": "unknown",
+    "route": {
+      "state": "unknown",
+      "action": "check_submission",
+      "stage": null
+    },
+    "source_bytes_unchanged": true,
+    "incomplete_job_adapter_probes": 1,
+    "browser_endpoint_checks": 2,
+    "production_integrated": false,
+    "execution_scope": "Candidate-only diagnostic; installed adapter remains 1.1.5",
+    "browser_performed_by": "controller, separate from worker/runtime",
+    "browser_actions": [
+      "navigation",
+      "one employer search",
+      "reject optional cookies"
+    ],
+    "login_forms_submission_performed": false,
+    "source_readiness_finding": "Two saved employer endpoints were unavailable; one employer search did not recover the first selected requisition.",
+    "limitations": [
+      "Two unavailable saved endpoints and one search do not distinguish closed jobs, moved URLs or bad prior links.",
+      "Only one incomplete job received an adapter probe; the second received a separate browser endpoint check.",
+      "Prior submission remains unknown; browser excerpts are not authenticated availability receipts.",
+      "The tracker capture was fresh at inspection; this does not establish present freshness."
+    ],
+    "next_decision": "Refresh authoritative availability before further login/form work for this candidate; no extra infrastructure is justified by this observation alone.",
+    "receipt": {
+      "reference": "private:tracker-normalizer/controller/incomplete-probe-result.json",
+      "sha256": "fffa3854c417b4888cf6689fb991842e35499c9bb3820ef242cce5bfc27bfc4d"
+    },
+    "browser_observation": {
+      "reference": "private:tracker-normalizer/controller/incomplete-probe/browser-observation.json",
+      "sha256": "532dc7acb32a13c50b05920bef31aba8526302ea11c6d57b4652e29b8f668837"
+    },
+    "second_browser_observation": {
+      "reference": "private:tracker-normalizer/controller/incomplete-probe/second-browser-observation.json",
+      "sha256": "ddc7cfe1a11723efc1688b852c9bdaf6aa6fafda22f7f1d36989ed6fbf0787f7"
+    },
+    "source_manifest": {
+      "reference": "private:tracker-normalizer/controller/incomplete-probe/source-tree-manifest.json",
+      "sha256": "0c48839229e017932b3e9131314edee480b0620829716273587af0d12a04ca81"
+    }
+  },
+  "supplementary_ISO_compatibility": {
+    "separate_from_frozen_acceptance": true,
+    "reason": "Independent review found contractually accepted timestamp forms absent from frozen coverage.",
+    "original_score_unchanged": true,
+    "attempts": [
+      {
+        "phase": "build",
+        "cases": 2,
+        "passed": 0,
+        "checks": [
+          {
+            "case": "aware ISO with compact offset",
+            "passed": false
+          },
+          {
+            "case": "basic aware ISO",
+            "passed": false
+          }
+        ],
+        "receipt": {
+          "reference": "private:tracker-normalizer/controller/build/iso-compatibility.json",
+          "sha256": "3dd94039aa282073acd939f19dca84dcc3d82e9fbf305743b45bdb3f4fa3f83f"
+        }
+      },
+      {
+        "phase": "repair",
+        "cases": 2,
+        "passed": 1,
+        "checks": [
+          {
+            "case": "aware ISO with compact offset",
+            "passed": true
+          },
+          {
+            "case": "basic aware ISO",
+            "passed": false
+          }
+        ],
+        "receipt": {
+          "reference": "private:tracker-normalizer/controller/repair/iso-compatibility.json",
+          "sha256": "92777100ef13384cca5797836f2e0698b8e31ec9b90bce91871a379e4d13cc94"
+        }
+      }
+    ]
+  },
+  "qualification_reused": {
+    "scope": "Unchanged static AST/JSON validation only; no general sandbox.",
+    "receipt": {
+      "reference": "private:tracker-normalizer/controller/smoke/qualification.json",
+      "sha256": "947819c51c0ff49f095c05d5ed744d721707d92c2d3b08daada1976579b65b41"
+    },
+    "new_qualification_model_calls": 0
+  },
+  "six_questions": {
+    "claim": "Whether the normalizer satisfies the full frozen transformation contract, including accepted aware ISO timestamp forms. Final answer: no.",
+    "comparison": "Existing careful exact-link mapping and independent review from P003. Historical equality is checked; no performance comparison was run.",
+    "stop": "One build (soft $2 / 600 seconds), at most one repair (soft $1 / 300 seconds). The final artifact still violates the frozen contract: stop, no integration and no third repair. Soft thresholds can overshoot.",
+    "losses": {
+      "native_failed_attempts": 1,
+      "artifact_failed_attempts": 2,
+      "limits": [
+        "Frozen behavioral tests alone did not establish complete delivery or cover every timestamp form.",
+        "Strict wrapper support rejects other capture schemas.",
+        "Capture provenance and timestamp remain trusted inputs.",
+        "Schema maintenance adds implementation effort."
+      ]
+    },
+    "cost": {
+      "execution_api_equivalent_usd": {
+        "total": 2.5296575,
+        "known_subtotal": 2.5296575,
+        "unknown_attempts": 0
+      },
+      "tokens": {
+        "total": 375831,
+        "known_subtotal": 375831,
+        "unknown_attempts": 0
+      },
+      "elapsed_seconds": {
+        "total": 493.985,
+        "known_subtotal": 493.985,
+        "unknown_attempts": 0
+      },
+      "full_research_cost_usd": null,
+      "cash_billed_usd": null,
+      "preparation_usd": null,
+      "controller_evaluation_usd": null,
+      "human_minutes": null
+    },
+    "next_decision": "Stop this round. Retain the candidate and failure evidence; a later explicitly scoped compatibility correction can be considered. Do not add infrastructure or narrow the contract to obtain a pass. Source availability remains a separate unresolved job check."
+  },
+  "user_resolution": null,
+  "limitations": [
+    "Native completion and artifact acceptance are separate; failed or budget-exhausted launches remain in accounting.",
+    "Synthetic methods and two selected historical jobs do not estimate an agent success rate.",
+    "Historical replay is not a refreshed tracker observation; byte binding is not source authentication.",
+    "MAQ-001 stays blocked. No performance milestone, general sandbox or autonomous submission capability is qualified."
+  ]
+}
