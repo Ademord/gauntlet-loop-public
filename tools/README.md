@@ -5,6 +5,8 @@ Most scripts are deterministic. `paired_study/run_pair.py --execute`, its series
 | Tool | What it does | Command |
 | --- | --- | --- |
 | `program.py` | Indexes research claims and scoped evidence, checks prerequisites, freezes plans and records an offline inventory audit; never dispatches models | `python tools/program.py next`; see [workflow](../research/program/WORKFLOW.md) |
+| `readiness.py` | Maps task observations and possible gaps to existing milestones and a small investigation/fix/reuse decision; validates the triage structure without changing research status | `python tools/readiness.py list`; see [readiness](../research/program/readiness/README.md) |
+| `managed_agents.py` | Runs no-model synthetic native sandbox probes and preserves a private qualification report; no worker dispatch or unsandboxed fallback | `python tools/managed_agents.py doctor --profile tools/managed-profile.local.json --output tmp/managed-qualification`; see [managed agents](../ledger/MANAGED-AGENTS.md) |
 | `observer.py` | Records allowlisted hook metadata for enrolled ordinary tasks in local SQLite; silent collection, partial coverage and unknown usage fields | See [passive observer](../ledger/OBSERVER.md); host integration remains separate |
 | `observer_host.py`, `observer_install.py` | Enroll a selected Codex/Claude session and prepare/apply backed-up hook settings using a frozen private runtime | See [host integration](../ledger/OBSERVER.md#installed-host-adapter-and-verification) |
 | `contact_metrics.py` | Classify captured contacts and explicit user resolution outside the worker context, preserving revisions and unknowns | See [contact metrics](../ledger/OBSERVER.md#what-is-implemented) |

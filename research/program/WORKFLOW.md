@@ -2,6 +2,20 @@
 
 Start with the [index](README.md). Pick one unanswered decision; the fifty milestones are a conditional queue, not fifty experiments to fund.
 
+## Engineering readiness comes first
+
+When ordinary work suggests a missing tool, unreliable environment or implementation defect, use the [readiness workflow](readiness/README.md) before opening a performance comparison:
+
+**Real task → observed outcome → competing explanations → review existing milestones/native capabilities → cheapest distinguishing check or justified fix → qualification → resume work.**
+
+```text
+python tools/readiness.py validate
+python tools/readiness.py list
+python tools/readiness.py show P001
+```
+
+Each record separates observations from causal hypotheses, reviews the current milestone catalog, identifies capabilities to reuse and selects one next gap. Passing an engineering check does not promote the linked performance claim. The [managed-agent diagnostic](../../ledger/MANAGED-AGENTS.md) checks a candidate execution boundary without another paid agent experiment. The formal comparison workflow below applies after necessary capabilities are stable.
+
 | Record | Authority |
 | --- | --- |
 | [MILESTONES-50.json](MILESTONES-50.json) | Stable `M-…` IDs, six investor questions, dependencies, research/native support and workflow state |

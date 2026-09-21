@@ -1,0 +1,60 @@
+{
+  "id": "MAQ-001",
+  "kind": "engineering_qualification",
+  "checked_utc": "2026-09-21T12:07:33.992961+00:00",
+  "related_triage": "P001",
+  "related_gap": "P001-G02",
+  "milestone_ids": [
+    "M-006",
+    "M-023",
+    "M-033",
+    "M-048"
+  ],
+  "source": "private:managed-qualification/MAQ-001/qualification.json",
+  "source_sha256": "963a255cfd90ddc6b2506aeef371ec7463a013f2c5eb3f3d46d8feb2e1a450e4",
+  "backend": "installed native Codex Windows sandbox CLI; explicit managed profile",
+  "policy_requested": "workspace writes; denied controller and outside reads/writes; no network",
+  "tool_sha256": "9ab5d1fd627e49e7137d7d4fd4db4b0586ac4220b4f920e33180fd487e0042e6",
+  "tool_revision_note": "This historical hash identifies the diagnostic at execution. Timeout cleanup was subsequently hardened and regression-tested; this run completed normally. Its observations have not been relabeled as a run of the later tool revision.",
+  "executables": {
+    "codex": {
+      "sha256": "960c111d47afd61669954b9df9e56083e302edbfa3ef6962d81dcc14a30051dc"
+    },
+    "python": {
+      "sha256": "1a03cb7cb09e29053ae71a0d0e28555fe0ff3d22bb3a476eb9cc0d3899e73456"
+    }
+  },
+  "checks": {
+    "probe_completed": true,
+    "workspace_write": true,
+    "workspace_read": true,
+    "outside_write_denied": true,
+    "outside_read_denied": false,
+    "controller_read_denied": true,
+    "outside_unchanged": true,
+    "loopback_connect_denied": false,
+    "external_connect_denied": true
+  },
+  "observed_permissions": {
+    "workspace_write": true,
+    "workspace_read": true,
+    "outside_write": false,
+    "outside_read": true,
+    "controller_read": false,
+    "loopback_connect": true,
+    "external_connect": false
+  },
+  "boundary_status": "blocked",
+  "dispatch_allowed": false,
+  "model_calls": 0,
+  "performance_evidence": "unproven",
+  "milestone_status_changes": [],
+  "decision": "Investigate the failed read/loopback boundary or qualify another supported backend before arbitrary candidate-code execution. Reuse observer and native enforcement where appropriate.",
+  "limits": [
+    "Finite synthetic probes on one installed configuration; not a sandbox security certification.",
+    "Positive parent TCP controls distinguish policy denial from unreachable destinations. No application data sent.",
+    "Earlier exploratory sibling-read probes differed; a single favorable file denial is not general read confinement.",
+    "Descendant cancellation, worker validation, host adapter, resource limits and alternate escape paths remain unqualified.",
+    "No paid workers, live task execution, deployment or OS feature installation."
+  ]
+}

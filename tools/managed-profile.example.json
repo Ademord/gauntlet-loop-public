@@ -1,0 +1,7 @@
+{
+  "schema": "gauntlet-managed-profile/v1",
+  "codex": "/absolute/path/to/codex.exe",
+  "python": "/absolute/path/to/python.exe",
+  "external_probe": {"host": "1.1.1.1", "port": 443},
+  "timeout_seconds": 30
+}

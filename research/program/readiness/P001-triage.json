@@ -1,0 +1,320 @@
+{
+  "schema_version": 1,
+  "id": "P001",
+  "mode": "engineering_readiness",
+  "performance_evidence": "unproven",
+  "milestone_status_changes": [],
+  "paid_execution_authorized": false,
+  "source_task": {
+    "id": "P001-pipeline-discovery",
+    "evidence_reference": "private:P001-pipeline-discovery/RESULT.md",
+    "scope": "Single-arm supervised readiness pilot of a local workflow-discovery layer; no competent native comparison arm and no orchestration advantage established.",
+    "outcome": "failed",
+    "deployment": "not_installed",
+    "controller_corrections": 1,
+    "worker_api_equivalent_usd": 4.7742095,
+    "full_research_cost_usd": null,
+    "human_minutes": null,
+    "attempts": [
+      {
+        "number": 1,
+        "evidence_reference": "private:P001-pipeline-discovery/controller/initial-review.json",
+        "terminal_reason": "completed",
+        "acceptance": "failed",
+        "worker_api_equivalent_usd": 2.7197805,
+        "worker_elapsed_seconds": 529.125,
+        "soft_usage_threshold_usd": 3,
+        "mechanical_checks": {
+          "passed": 14,
+          "total": 17
+        }
+      },
+      {
+        "number": 2,
+        "evidence_reference": "private:P001-pipeline-discovery/controller/final-review.json",
+        "terminal_reason": "budget_exhausted",
+        "acceptance": "failed",
+        "worker_api_equivalent_usd": 2.054429,
+        "worker_elapsed_seconds": 304.188,
+        "soft_usage_threshold_usd": 2,
+        "mechanical_checks": {
+          "passed": 15,
+          "total": 17
+        }
+      }
+    ],
+    "stopping_rule": "One initial attempt and at most one repair; a 720-second deadline per attempt and soft usage thresholds of 3 and 2 API-equivalent USD. The second threshold overshot; there was no third attempt.",
+    "resolution": "No user-confirmed resolution recorded.",
+    "preparation_intervention": "The user corrected the controller's role before worker launch; this is distinct from the one controller-to-worker repair."
+  },
+  "milestone_review": {
+    "reviewed_ids": [
+      "M-001",
+      "M-002",
+      "M-003",
+      "M-004",
+      "M-005",
+      "M-006",
+      "M-007",
+      "M-008",
+      "M-009",
+      "M-010",
+      "M-011",
+      "M-012",
+      "M-013",
+      "M-014",
+      "M-015",
+      "M-016",
+      "M-017",
+      "M-018",
+      "M-019",
+      "M-020",
+      "M-021",
+      "M-022",
+      "M-023",
+      "M-024",
+      "M-025",
+      "M-026",
+      "M-027",
+      "M-028",
+      "M-029",
+      "M-030",
+      "M-031",
+      "M-032",
+      "M-033",
+      "M-034",
+      "M-035",
+      "M-036",
+      "M-037",
+      "M-038",
+      "M-039",
+      "M-040",
+      "M-041",
+      "M-042",
+      "M-043",
+      "M-044",
+      "M-045",
+      "M-046",
+      "M-047",
+      "M-048",
+      "M-049",
+      "M-050"
+    ],
+    "unselected_reason": "The other milestone mechanisms were reviewed but are not currently selected; their need is not demonstrated by this single pilot. This prioritizes the observed gaps without establishing that additional roles, parallel scheduling, persistent memory, adaptive routing, environment caching or performance confirmation could never be useful."
+  },
+  "gaps": [
+    {
+      "id": "P001-G01",
+      "observation": "The worker had file tools only and could not execute the installed skill validator. Both generic index skill descriptions still failed that validator after the repair.",
+      "evidence_reference": "private:P001-pipeline-discovery/controller/final-review.json",
+      "classification": "missing_capability",
+      "cause_status": "hypothesis",
+      "cause_assessment": "Execution access was deliberately absent. The hypothesis that supplying it would prevent the invalid descriptions is plausible because the existing validator detects them, but whether the worker would use that feedback or deliver a better result is untested. The missing access is observed; its causal contribution to task failure is unknown.",
+      "alternative_explanations": [
+        "The worker may still miss or ignore a supplied validator.",
+        "The description rule was identified after the repair began and was not silently added to that running request.",
+        "Incomplete repair may reflect task breadth, prioritization or the stopped usage threshold."
+      ],
+      "milestone_ids": [
+        "M-004",
+        "M-001",
+        "M-033"
+      ],
+      "existing_capability": "Native coding agents can execute validation; an installed skill validator already detected the description defect. The pilot configuration withheld execution.",
+      "disposition": "fix",
+      "smallest_action": "Provide managed access to the existing validators and their dependencies inside a qualified execution boundary; keep independent acceptance outside worker control.",
+      "decision_reason": "Qualify a normal development capability with a cheap deterministic check. Successful access would not establish that it caused the prior defects or that it improves worker performance.",
+      "qualification": {
+        "method": "native_no_model",
+        "procedure": "Within the proposed worker boundary, invoke the existing validator on the preserved invalid skill description and on a minimal valid control. Verify the worker can receive exit status and diagnostics.",
+        "pass_condition": "Invalid description fails, valid control passes, and both diagnostics are available through the intended worker tool without escaping its boundary.",
+        "failure_condition": "Either control is misclassified, dependencies cannot load, results are hidden from the worker or validation requires unrestricted host execution.",
+        "status": "not_run",
+        "evidence_references": []
+      }
+    },
+    {
+      "id": "P001-G02",
+      "observation": "The pilot allowed editing staged output but withheld command execution. A useful managed runtime now needs to permit builds and tests without granting access to controller records or unrelated files.",
+      "evidence_reference": "private:P001-pipeline-discovery/controller/preregistration.json",
+      "classification": "missing_capability",
+      "cause_status": "unknown",
+      "cause_assessment": "The file-only pilot did not qualify bounded execution. No sandbox escape or harmful write was observed, and no causal link between the absent qualification and the residual defects is established. A suitable boundary is a prerequisite for enabling execution; the need for additional custom sandbox machinery remains unknown.",
+      "alternative_explanations": [
+        "An existing native sandbox may already satisfy the needed boundary when configured correctly.",
+        "A dedicated environment may be necessary if the installed platform lacks the required native enforcement."
+      ],
+      "milestone_ids": [
+        "M-006",
+        "M-023",
+        "M-033"
+      ],
+      "existing_capability": "Native permission and sandbox facilities exist; staged copies and source hash checks already protected the pilot's deployment decision. These facts do not establish OS-level isolation for arbitrary code.",
+      "disposition": "fix",
+      "smallest_action": "Probe the available native execution boundary with harmless scratch fixtures and use it if it allows intended work while denying prohibited reads, writes and network access.",
+      "decision_reason": "Check the execution boundary before exposing general code execution. Reuse native controls if they suffice; add an adapter only if a concrete unmet requirement is observed.",
+      "qualification": {
+        "method": "native_no_model",
+        "procedure": "Create an allowed scratch workspace and separate controller sentinel. Exercise ordinary local validation, outside-workspace reads/writes, the declared network policy and cancellation with a child process.",
+        "pass_condition": "Intended validation completes; prohibited accesses fail with sentinels unchanged; network behavior matches the declared profile; cancellation leaves no fixture descendant running.",
+        "failure_condition": "A prohibited access succeeds, intended validation is blocked, network behavior exceeds the profile or cancellation leaves a descendant running.",
+        "status": "not_run",
+        "evidence_references": []
+      }
+    },
+    {
+      "id": "P001-G03",
+      "observation": "The second attempt stopped at its usage threshold with unresolved defects. The pilot covered a registry, two host entrypoints, documentation and installation instructions.",
+      "evidence_reference": "private:P001-pipeline-discovery/controller/final-review.json",
+      "classification": "unknown",
+      "cause_status": "unknown",
+      "cause_assessment": "The report establishes budget exhaustion, not that the allowance was too small or that adaptive allocation would improve delivery.",
+      "alternative_explanations": [
+        "Unavailable validation may have increased repair work.",
+        "The deliverable may have been too broad for its allowance.",
+        "Prioritization, unnecessary implementation or incorrect assumptions may have consumed the budget."
+      ],
+      "milestone_ids": [
+        "M-022",
+        "M-011"
+      ],
+      "existing_capability": "Fixed deadlines, per-attempt soft usage thresholds and a one-repair stop already operated. Soft thresholds can overshoot the final request.",
+      "disposition": "investigate",
+      "smallest_action": "Before another worker attempt, narrow the next contract to one coherent deliverable with executable checks and reserve review effort explicitly; retain the existing stop rule.",
+      "decision_reason": "A smaller contract is justified preparation. Adaptive parking, model routing and larger budgets are not established remedies.",
+      "qualification": {
+        "method": "manual",
+        "procedure": "Review the proposed next task packet against its required outputs and available validators without launching a model.",
+        "pass_condition": "One coherent deliverable has explicit acceptance, known tools and dependencies, a bounded allowance, a stopping rule and review provision.",
+        "failure_condition": "Unrelated outputs remain bundled, required checks cannot run or the packet relies on an unqualified capability.",
+        "status": "not_run",
+        "evidence_references": []
+      }
+    },
+    {
+      "id": "P001-G04",
+      "observation": "The repaired registry and job pointers corrected substantive readiness claims, but generic pointers still described working pipelines and referenced removed tables; the README retained the old schema.",
+      "evidence_reference": "private:P001-pipeline-discovery/controller/final-review.json",
+      "classification": "implementation_defect",
+      "cause_status": "unknown",
+      "cause_assessment": "The inconsistent artifact surfaces are observed. Whether the cause was missing checks, incomplete revision or a wrong mental model is unresolved.",
+      "alternative_explanations": [
+        "The repair updated only some dependent documents.",
+        "Mechanical checks did not cover all user-facing claims.",
+        "The worker may have treated earlier statements as valid without rechecking their evidence."
+      ],
+      "milestone_ids": [
+        "M-036",
+        "M-024",
+        "M-012"
+      ],
+      "existing_capability": "Structured registry data and independent review already exist. Schema validity alone does not prove runtime readiness or the truth of prose.",
+      "disposition": "fix",
+      "smallest_action": "Add a targeted consistency check and evidence-backed readiness fields for the registry, pointers and handoff; preserve explicit unknown and blocked states.",
+      "decision_reason": "Repair the specific inconsistent claims before introducing a broader agent memory or reporting framework.",
+      "qualification": {
+        "method": "offline",
+        "procedure": "Check the preserved candidate's registry, generic pointers and README against the observed runtime blockers and schema; include a consistent valid control.",
+        "pass_condition": "Stale readiness/schema claims are identified and the consistent control is accepted; unperformed host-loading and installation checks remain unverified.",
+        "failure_condition": "A stale or unsupported ready claim passes, a valid alternative is rejected or a syntactic pass is reported as proven runtime readiness.",
+        "status": "not_run",
+        "evidence_references": []
+      }
+    },
+    {
+      "id": "P001-G05",
+      "observation": "The installation example printed destination existence without enforcing a per-file no-overwrite condition. It was not executed and nothing was installed.",
+      "evidence_reference": "private:P001-pipeline-discovery/controller/final-review.json",
+      "classification": "implementation_defect",
+      "cause_status": "established",
+      "cause_assessment": "The example omitted enforcement of its safety precondition. No destructive installation was observed.",
+      "alternative_explanations": [
+        "A manual reviewer could stop before overwrite, but that does not make the shown operation enforce its condition."
+      ],
+      "milestone_ids": [
+        "M-042",
+        "M-012"
+      ],
+      "existing_capability": "A staged install manifest and controller review already separated proposal from deployment.",
+      "disposition": "defer",
+      "smallest_action": "Before any eventual installation, replace the illustrative command with a reviewed plan whose destination preconditions are enforced and bound to the reviewed bytes.",
+      "decision_reason": "Installation is downstream of candidate acceptance and is not needed to qualify validation access.",
+      "qualification": {
+        "method": "offline",
+        "procedure": "Use disposable destination fixtures: one absent, one preexisting, and one changed after plan preparation. Do not use real installation roots.",
+        "pass_condition": "The absent case installs only reviewed bytes; existing or changed destinations stop before any overwrite.",
+        "failure_condition": "Any existing or concurrently changed destination is overwritten or installed bytes differ from the reviewed plan.",
+        "status": "not_run",
+        "evidence_references": []
+      }
+    },
+    {
+      "id": "P001-G06",
+      "observation": "Controller validation initially lacked a required YAML dependency, encountered a package-directory permission problem and hit a Windows output encoding error. These were controller failures, not worker defects.",
+      "evidence_reference": "private:P001-pipeline-discovery/controller/initial-review.json",
+      "classification": "native_configuration",
+      "cause_status": "established",
+      "cause_assessment": "The reported environment failures required controller repair. Their contribution to elapsed preparation cost was not priced.",
+      "alternative_explanations": [
+        "A correctly prepared clean environment may suffice; reusable environment caching is not yet necessary.",
+        "A new boundary may expose different dependency or filesystem permissions than the controller's own session."
+      ],
+      "milestone_ids": [
+        "M-004",
+        "M-048"
+      ],
+      "existing_capability": "The existing Python runtime and validators worked after local environment repair; no replacement validator is required.",
+      "disposition": "fix",
+      "smallest_action": "Prepare required dependencies and test a non-ASCII diagnostic plus validator execution using the actual managed account and boundary before launch.",
+      "decision_reason": "Qualification under the worker's real environment prevents repeating known setup failures without adding amortized environment infrastructure.",
+      "qualification": {
+        "method": "native_no_model",
+        "procedure": "Run validator dependency imports and a non-ASCII diagnostic through the actual planned execution profile using a valid disposable artifact.",
+        "pass_condition": "Imports, file access, diagnostics and exit-code capture succeed in the managed environment without unrestricted fallback.",
+        "failure_condition": "Any dependency, encoding or access failure remains, or the check only succeeds under a different account/profile.",
+        "status": "not_run",
+        "evidence_references": []
+      }
+    },
+    {
+      "id": "P001-G07",
+      "observation": "The controller retained both attempts, a separate correction, source hashes, usage reports and independent failed acceptance. Hook completion was not treated as task acceptance.",
+      "evidence_reference": "private:P001-pipeline-discovery/RESULT.md",
+      "classification": "existing_capability",
+      "cause_status": "established",
+      "cause_assessment": "The existing recorder and assessment interfaces already support the needed separation. Full research cost, human minutes and complete hook coverage remain unknown.",
+      "alternative_explanations": [
+        "The new execution profile may affect hook delivery and must be checked separately.",
+        "Recorded evidence can still be incomplete or incorrectly interpreted; a database does not certify an evaluator."
+      ],
+      "milestone_ids": [
+        "M-012",
+        "M-026",
+        "M-027",
+        "M-030"
+      ],
+      "existing_capability": "Explicit observer enrollment, independent outcome records, per-attempt native usage parsing, contact labels and private archive manifests are implemented.",
+      "disposition": "reuse",
+      "smallest_action": "Integrate the existing observer and usage parser into the managed adapter, preserving failures, unknown values and separate acceptance. Do not create another recorder.",
+      "decision_reason": "The pilot exposed no need to replace the observation data model.",
+      "qualification": {
+        "method": "offline",
+        "procedure": "Using synthetic events and native no-model process fixtures, check selected-session enrollment, ignored unenrolled events, an interrupted attempt, missing usage and a separately recorded failed assessment.",
+        "pass_condition": "The selected events and all attempts remain distinguishable; unknown usage stays unknown; Stop cannot become acceptance; existing observer APIs remain the record source.",
+        "failure_condition": "An attempt disappears, missing usage becomes zero, unenrolled events are attributed to the task or process completion is counted as independent acceptance.",
+        "status": "not_run",
+        "evidence_references": []
+      }
+    }
+  ],
+  "next_gap_id": "P001-G01",
+  "limitations": [
+    "Public triage is a sanitized report of private evidence. The private source records and failed artifacts are preserved unchanged and are not independently reconstructible from this repository.",
+    "Mechanical check counts describe checks on one artifact, not independent task samples or a success-rate estimate.",
+    "File-only tool restrictions and controller-supplied source/tracker identity mean this was not a normal native-agent baseline or unaided discovery.",
+    "Execution usage is CLI-reported API-equivalent cost, not verified cash charges. Preparation, controller/evaluator usage and active human effort remain unpriced.",
+    "Restoring validation access is a readiness decision. Missing access is observed; its role in the defects and the benefit of the proposed remedy remain causal hypotheses. No numeric probabilities are assigned, and reusing existing controls without adding a feature remains a valid outcome.",
+    "All qualifications in this triage are proposed. Their results belong in separate evidence records; no milestone status is changed and no paid run is authorized.",
+    "Preexisting application-runtime syntax and version defects remained; no application stage, external write or deployment occurred."
+  ]
+}
