@@ -1,5 +1,7 @@
 # Graph workflows: where they fit
 
+Snapshot follow-up: [P003](SNAPSHOT-ADAPTER.md) records the accepted source adapter, conservative recovery rules and separate read-only real-source inspection. P002 and the original assessment below retain their historical scope.
+
 Implementation follow-up: [P002](IMPLEMENTATION.md) records the accepted controller repair and read-only planner. The assessment below remains the original recommendation and source snapshot.
 
 Decision **GRAPH-001**, 21 September 2026. [Indexed record](GRAPH-001.json). Source inspection of Gauntlet at `ba71895`; private application-pipeline inspection is recorded by hash. This is an architecture assessment, not an implemented controller, benchmark, skill upgrade or permission to dispatch workers.

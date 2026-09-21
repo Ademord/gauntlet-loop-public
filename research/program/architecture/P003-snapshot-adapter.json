@@ -1,0 +1,280 @@
+{
+  "schema_version": 1,
+  "id": "P003",
+  "kind": "engineering_implementation",
+  "date": "2026-09-21",
+  "follows": [
+    "P002",
+    "GRAPH-001",
+    "SVQ-001"
+  ],
+  "performance_evidence": "unproven",
+  "milestone_status_changes": [],
+  "further_paid_execution_authorized_by_this_record": false,
+  "scope": "Read-only adapter for actual local job sources and narrow attributed observations, plus conservative ambiguous-completion recovery before any executor.",
+  "worker": {
+    "model": "claude-opus-5",
+    "effort_requested": "xhigh",
+    "static_qualification_reused": true,
+    "qualification_receipt": {
+      "reference": "private:snapshot-adapter/controller/smoke/qualification.json",
+      "sha256": "947819c51c0ff49f095c05d5ed744d721707d92c2d3b08daada1976579b65b41"
+    },
+    "qualification_usage_excluded_when_reused": true
+  },
+  "implemented": [
+    "Read the existing index, ledger, package and fixed artifact paths without inventing stage evidence",
+    "Bind observation assertions to source bytes and explicit freshness limits; preserve unknown states",
+    "Reconcile contradictory or historical external activity; require an explicit ledger-bound negative reconciliation to clear historical proposals",
+    "Handle H6/H7 partial completion and unknown form facts before proposing prefill",
+    "Return a stable read-only planner decision with source provenance"
+  ],
+  "acceptance": {
+    "frozen_test_methods": 27,
+    "passed": 26,
+    "failed": 0,
+    "skipped": 1,
+    "candidate_unchanged_during_checks": true,
+    "contract_sha256": "bc07c2dee471f5bb6780dd11731d1e4c26f738ecbd90b5679e36820439d018fa",
+    "evaluator_sha256": "57861867dae2f6d6b0f5b2541d7fa18360dfa05ff0f30850e1dc73a58614e35c",
+    "receipt": {
+      "reference": "private:snapshot-adapter/controller/repair/acceptance.json",
+      "sha256": "2197e1ca0542bd65040d0ca17636ab1d37556ad58852efd80cc02c451f15f7dd"
+    },
+    "acceptance_directory": "acceptance-cli-corrected",
+    "fixture_amendment": {
+      "reference": "private:snapshot-adapter/controller/acceptance-cli-corrected/AMENDMENT.json",
+      "sha256": "71cdeb29487a4773a276de543dc40a94e865ad71d17be73549089de7fc928bb7"
+    },
+    "limits": "Frozen synthetic fixtures; not a full live workflow or performance comparison."
+  },
+  "deployment": {
+    "integrated": true,
+    "scope": "private canonical package",
+    "package_version": "1.1.5",
+    "full_package_files": 31,
+    "package_hash_check": "passed",
+    "installed_hashes_match_accepted": true,
+    "receipt": {
+      "reference": "private:snapshot-adapter/controller/integration.json",
+      "sha256": "3c38d811b9b38e465bc07640eae27e0ffdca7586d2439a79ed7cabe47c8a3abc"
+    },
+    "private_git_commit": "fb9edc4b843a07da81091e51e068a8faaf4c267a"
+  },
+  "real_source_inspection": {
+    "status": "passed",
+    "separate_from_frozen_score": true,
+    "jobs_checked": 2,
+    "inspections": 4,
+    "all_routes_matched_expectations": true,
+    "source_bytes_unchanged": true,
+    "source_files_checked": 253,
+    "probes": [
+      {
+        "case": "real-job-1",
+        "routes": {
+          "local_only": {
+            "state": "reconciliation_required",
+            "action": "reconcile_submission",
+            "stage": null
+          },
+          "with_current_tracker": {
+            "state": "already_submitted",
+            "action": "none",
+            "stage": null
+          }
+        },
+        "tracker_capture_agrees": true
+      },
+      {
+        "case": "real-job-2",
+        "routes": {
+          "local_only": {
+            "state": "reconciliation_required",
+            "action": "reconcile_submission",
+            "stage": null
+          },
+          "with_current_tracker": {
+            "state": "already_submitted",
+            "action": "none",
+            "stage": null
+          }
+        },
+        "tracker_capture_agrees": true
+      }
+    ],
+    "capture_sha256": "7bd10ca65e47c2c70cf918b9566c4bd080e05ea6e2053c9ec5c1f308df69954e",
+    "source_tree_manifest_sha256": "e269476145622527720c5fb1d231cdedca62e90f54211fdc256089c56aa4da6c",
+    "receipt": {
+      "reference": "private:snapshot-adapter/controller/live-inspection.json",
+      "sha256": "c7855d0c08ca0673de86090338e32ce455e23a1f923303029119ec621048412b"
+    },
+    "limits": "Selected real-source inspections, not live browser/preflight/submission execution. Capture hashes bind assertions to bytes; they do not authenticate extraction or prove semantic truth."
+  },
+  "candidate_hashes": {
+    "pipeline/NEXT_ACTION.md": "c232750cb5a4a4dc6364ccbf2de290c728dfda38c8bc00ee9f04600f688e5ca1",
+    "pipeline/PACKAGE.json": "938e3d2105ccbb6cb1b1cad666ed6a5d12127b785e09a7935bb99749572b59a1",
+    "pipeline/scripts/next_action.py": "29e97cb9ffd552ef7f2f1e4043b2f3db2be2a5e7db1d19207fc00eab94a8bd84",
+    "pipeline/scripts/snapshot_job.py": "af4c8c9a026b770a9db877b1f7356cff14d8a50bbb564d719cd491dbacfe3c56",
+    "pipeline/skill/SKILL.md": "406ffffe55a638d8f9ec4ff6f9c114f85a69fe9a4cf965996652b4b37a57f8ad"
+  },
+  "attempts": [
+    {
+      "phase": "build",
+      "role": "implementation",
+      "started_worker": true,
+      "terminal_reason": "budget_exhausted",
+      "timed_out": false,
+      "exit_code": 1,
+      "elapsed_seconds": 733.328,
+      "api_equivalent_usd": 4.0494755,
+      "tokens": 1099815,
+      "soft_cap_usd": 4.0,
+      "deadline_seconds": 900,
+      "acceptance_accepted": false,
+      "acceptance_receipt": {
+        "reference": "private:snapshot-adapter/controller/build/acceptance.json",
+        "sha256": "d6481be4995135bef355d84b2841a577295dc59f1050775fcc0517400fd139ac"
+      },
+      "launch": {
+        "reference": "private:snapshot-adapter/controller/build/launch.json",
+        "sha256": "71a09e5171933e1591661cc794fc5f294a8948ad437c737805b0cda727a19e08"
+      },
+      "dispatch": {
+        "reference": "private:snapshot-adapter/controller/build/dispatch.json",
+        "sha256": "7d7bb3f891725d55d61ab77d44ba2777236a52314a4c35bd84bde75bfaaa90d1"
+      },
+      "completion": {
+        "reference": "private:snapshot-adapter/controller/build/completion.json",
+        "sha256": "fc58882aed72cf4875cdbef519af961a7355048b7e75d47bebb41019194d0b2c"
+      }
+    },
+    {
+      "phase": "repair",
+      "role": "implementation",
+      "started_worker": true,
+      "terminal_reason": "completed",
+      "timed_out": false,
+      "exit_code": 0,
+      "elapsed_seconds": 230.891,
+      "api_equivalent_usd": 1.4223125,
+      "tokens": 361035,
+      "soft_cap_usd": 2.0,
+      "deadline_seconds": 600,
+      "acceptance_accepted": true,
+      "acceptance_receipt": {
+        "reference": "private:snapshot-adapter/controller/repair/acceptance.json",
+        "sha256": "2197e1ca0542bd65040d0ca17636ab1d37556ad58852efd80cc02c451f15f7dd"
+      },
+      "launch": {
+        "reference": "private:snapshot-adapter/controller/repair/launch.json",
+        "sha256": "2e184b089c08d7c1def583976fcca533fd9334c197856c6f54abfb114ef48bd9"
+      },
+      "dispatch": {
+        "reference": "private:snapshot-adapter/controller/repair/dispatch.json",
+        "sha256": "7ad8acc052f54988f3a2ad8132f4db1bb850a8d29a7828570d5087cbe513eebe"
+      },
+      "completion": {
+        "reference": "private:snapshot-adapter/controller/repair/completion.json",
+        "sha256": "21f254013ad83f106f3795629fcc38eb6a51b08c61ca12be5235bcb7e0192128"
+      }
+    }
+  ],
+  "supplementary_regressions": {
+    "initial_candidate": {
+      "tests_run": 5,
+      "failures": 7,
+      "errors": 0,
+      "skipped": 0,
+      "passed": false,
+      "candidate_unchanged": true
+    },
+    "accepted_candidate": {
+      "tests_run": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": true,
+      "candidate_unchanged": true
+    },
+    "initial_receipt": {
+      "reference": "private:snapshot-adapter/controller/build/supplementary.json",
+      "sha256": "5c1645f555b7020764d5bf52478301236844f3ecbbf665667c0bec68fcf1f859"
+    },
+    "accepted_receipt": {
+      "reference": "private:snapshot-adapter/controller/repair/supplementary.json",
+      "sha256": "d82b822352d0569f9f0292e7330ac36c1df0686d1a4ffddeedf396fba6f32806"
+    },
+    "probe_sha256": "372a994e5110647ac8cb0938c74d6c99ed6e30f75ea628579cc5e02dd0a2bee9",
+    "limits": "Targeted post-build regressions outside frozen scores; mocked ancestry/change outcomes do not qualify native isolation. Failure entries can outnumber methods because of subtests."
+  },
+  "preparation_incidents": [
+    {
+      "kind": "controller_prelaunch_failure",
+      "worker_started": false,
+      "native_model_calls": 0,
+      "enrollment_completed": false,
+      "worker_repair": false,
+      "controller_cost_usd": null,
+      "original_records_preserved": true,
+      "incident": {
+        "reference": "private:snapshot-adapter/controller/prelaunch-001/incident.json",
+        "sha256": "1bcb5289a203a5f3a228945b0b159b718f836eeb2bc0ae1c904f199c71d456b8"
+      },
+      "launch": {
+        "reference": "private:snapshot-adapter/controller/prelaunch-001/launch.json",
+        "sha256": "ff7e9fd2b9584fdb85d8364a3d4b6c4503fd08dc554911c53e524c557313b7de"
+      },
+      "completion": {
+        "reference": "private:snapshot-adapter/controller/prelaunch-001/completion.json",
+        "sha256": "e4e2f9b27dc8e896a878eac22a9fb87fe338b02b2e009caa2b341203b171052f"
+      }
+    }
+  ],
+  "accounting": {
+    "launched_records": 2,
+    "execution_api_equivalent_usd": 5.471788,
+    "known_execution_api_equivalent_subtotal_usd": 5.471788,
+    "attempts_missing_dollar_measurement": 0,
+    "total_native_tokens": 1460850,
+    "known_native_token_subtotal": 1460850,
+    "attempts_missing_token_measurement": 0,
+    "controller_to_worker_repair_requests": 1,
+    "attempts_with_failing_acceptance_receipt": 1,
+    "native_budget_stops": 1,
+    "controller_prelaunch_incidents": 1,
+    "repair_request_definition": "A dispatched repair with a recorded worker start; initial build and preplanned controller packaging are not corrections.",
+    "human_corrections": null,
+    "active_human_minutes": null,
+    "user_confirmed_resolution": null,
+    "cash_billed_usd": null,
+    "preparation_usd": null,
+    "controller_evaluation_usd": null,
+    "full_research_cost_usd": null,
+    "note": "Includes every recorded P003 launch, including unsuccessful attempts; missing usage remains unknown. Native tokens include cache categories. Reused P002 qualification is not a new expense or double-counted. Controller work and human time are unpriced, not free."
+  },
+  "stop_rule": {
+    "maximum_builds": 1,
+    "maximum_repairs": 1,
+    "reject_failed_candidate": true,
+    "build_soft_usd": 4,
+    "build_seconds": 900,
+    "repair_soft_usd": 2,
+    "repair_seconds": 600,
+    "source": {
+      "reference": "private:snapshot-adapter/controller/acceptance/CONTRACT.md",
+      "sha256": "bc07c2dee471f5bb6780dd11731d1e4c26f738ecbd90b5679e36820439d018fa"
+    }
+  },
+  "next_decision": "Define and qualify source capture and recovery evidence for incomplete jobs before considering any effect executor; action identity alone cannot deduplicate external effects.",
+  "limitations": [
+    "No competent comparison arm; neither P002 nor P003 establishes speed, cost, correction-rate or orchestration gains.",
+    "Legacy ok rows remain unqualified stage evidence; present file hashes do not reconstruct historical input bindings.",
+    "Observation receipts are controller assertions tied to bytes, not authenticated truth or submission authority.",
+    "Real probes cover selected historical jobs, not end-to-end readiness or successful new applications.",
+    "Read-only fixture and selected source-byte checks do not qualify a general sandbox or prove all external effects impossible.",
+    "No live browser/preflight, application submission or tracker-write executor was exercised in this increment.",
+    "MAQ-001 remains unqualified; no framework migration, research milestone promotion or P001 discovery installation.",
+    "Private source and raw evidence are not independently reproducible from the public summary alone."
+  ]
+}
