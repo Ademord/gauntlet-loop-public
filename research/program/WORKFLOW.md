@@ -16,6 +16,8 @@ python tools/readiness.py show P001
 
 Each record separates observations from causal hypotheses, reviews the current milestone catalog, identifies capabilities to reuse and selects one next gap. Passing an engineering check does not promote the linked performance claim. The [managed-agent diagnostic](../../ledger/MANAGED-AGENTS.md) checks a candidate execution boundary without another paid agent experiment. The formal comparison workflow below applies after necessary capabilities are stable.
 
+The [graph-workflow assessment](architecture/README.md) maps fixed control, dynamic work and agent judgment to the existing code and milestones, especially M-037. Its [GRAPH-001 record](architecture/GRAPH-001.json) indexes recommendations and their qualification conditions; it neither implements a controller nor promotes a performance claim.
+
 | Record | Authority |
 | --- | --- |
 | [MILESTONES-50.json](MILESTONES-50.json) | Stable `M-…` IDs, six investor questions, dependencies, research/native support and workflow state |

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "id": "GRAPH-001",
+  "kind": "architecture_assessment",
+  "checked_date": "2026-09-21",
+  "gauntlet_source_commit": "ba71895f89b6372e867babc0c70cbc51b149f91d",
+  "assessment": "research/program/architecture/README.md",
+  "status": "recommendation_only",
+  "performance_evidence": "unproven",
+  "milestone_status_changes": [],
+  "worker_experiments_run": 0,
+  "full_research_cost_usd": null,
+  "private_evidence": {
+    "reference": "private:architecture/GRAPH-001/private-audit.json",
+    "sha256": "e8c6fff5f36ce322c28b90a80b317b8a4504f567863c9a882549d7392f5877e0",
+    "application_controller_sha256": "b5c8cf6ce24d590872afc7c1efd621e8c57ba549ee8e9c31f783909d134f2c6b",
+    "application_controller_syntax": {"passed": false, "line": 296, "error": "unterminated string literal"},
+    "limit": "Private source and installed-path inspection; application stages and external effects were not executed."
+  },
+  "sources": [
+    {"id": "GRAPH-S1", "type": "tutorial", "url": "https://www.youtube.com/watch?v=Mzr7byMFy_4", "inspection": "Supplied screenshots and matching public video listing; no claim of watching the complete video."},
+    {"id": "GRAPH-S2", "type": "official_tutorial", "url": "https://codelabs.developers.google.com/adk2/instructions", "inspection": "Fetched tutorial; function, join, routing and canned-data example inspected."},
+    {"id": "GRAPH-S3", "type": "official_documentation", "url": "https://adk.dev/graphs/routes/", "inspection": "Fetched current routing and join contracts; documents ADK v2 support."},
+    {"id": "GRAPH-S4", "type": "official_documentation", "url": "https://adk.dev/graphs/dynamic/", "inspection": "Fetched dynamic invocation, resume and stable run-identity guidance."},
+    {"id": "GRAPH-S5", "type": "version_pinned_documentation", "url": "https://github.com/google/adk-python/blob/d57c84f13baf53cfd910c2155449f8c4254e01c5/docs/guides/workflow/dynamic_nodes/index.md", "inspection": "Read parent replay and side-effect guidance at this revision; not an exactly-once guarantee."},
+    {"id": "GRAPH-S6", "type": "engineering_guidance", "url": "https://www.anthropic.com/engineering/building-effective-agents", "inspection": "Read workflow/agent distinction and simplicity guidance; original 2024 article, not a current product inventory or comparative study."}
+  ],
+  "decisions": [
+    {
+      "id": "GRAPH-D1",
+      "disposition": "adapt",
+      "claim_ids": ["M-037", "M-036", "M-012", "M-024"],
+      "proposal": "Repair existing application control flow and add one read-only next-action planner before general orchestration.",
+      "expected_value": "Fewer unsupported ready/completed states and skipped prerequisites.",
+      "causal_status": "hypothesis",
+      "qualification": "Known-bad and valid fixtures cover missing status, preflight failure, invalid stages, stale joins, login, absent user facts, prior submission and uncertain submission.",
+      "stop_or_narrow": "False-ready states persist, valid work is blocked, or a smaller native/configuration repair handles the same responsibility."
+    },
+    {
+      "id": "GRAPH-D2",
+      "disposition": "reuse",
+      "claim_ids": ["M-004", "M-026", "M-031", "M-033"],
+      "proposal": "Keep the existing observer and native worker; qualify one named trusted validation capability through its actual interface.",
+      "expected_value": "Development diagnostics become available without replacing recording or enabling unqualified arbitrary execution.",
+      "causal_status": "hypothesis",
+      "qualification": "Preserved invalid input fails, valid control passes, diagnostics identify checked bytes and attempts remain accounted for.",
+      "stop_or_narrow": "The validator executes candidate code outside the qualified boundary, cannot expose reliable diagnostics, or duplicates an adequate native capability."
+    },
+    {
+      "id": "GRAPH-D3",
+      "disposition": "defer",
+      "claim_ids": ["M-006", "M-008", "M-011", "M-015", "M-045"],
+      "proposal": "Use fixed code for known routes; add dynamic fan-out or model routing only for an observed variable task shape or unresolved judgment.",
+      "expected_value": "Potentially reduce independent waiting or handle variable work without unnecessary model calls.",
+      "causal_status": "hypothesis",
+      "qualification": "Independent ownership, bounded concurrency and shared allowance; include failed branches and compare actual elapsed time and total cost.",
+      "stop_or_narrow": "Contention, duplicate work, partial-result mistakes or extra coordination outweigh the specific benefit."
+    },
+    {
+      "id": "GRAPH-D4",
+      "disposition": "defer",
+      "claim_ids": ["M-014", "M-041", "M-042", "M-048"],
+      "proposal": "Evaluate a pinned framework only when durable resume, concurrent workflow ownership or dynamic joins exceed current facilities.",
+      "expected_value": "Possible reduction in recovery errors or implementation and maintenance burden.",
+      "causal_status": "hypothesis",
+      "qualification": "Interrupt before/after a synthetic external effect, replay repeated events, preserve action authorization and deduplication, and compare with an equally equipped small controller.",
+      "stop_or_narrow": "Migration adds cost without resolving the named requirement; uncertain effects duplicate or recovery semantics remain unqualified."
+    }
+  ],
+  "limitations": [
+    "Documentation supports mechanism reuse, not local performance gains or novelty.",
+    "Deterministic control cannot certify semantic truth or compensate for bad input and weak acceptance.",
+    "The application graph exists in code as written but its controller does not currently parse; mutation bypasses remain.",
+    "MAQ-001 remains blocked. Graph control and execution isolation are separate concerns.",
+    "No change to installed skills, existing research freezes, live application state or tracker authority.",
+    "Preparation, evaluation and human effort are unpriced; no savings estimate is asserted."
+  ]
+}
