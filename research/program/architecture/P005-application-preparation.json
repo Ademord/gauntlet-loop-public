@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "id": "P005",
+  "kind": "real_task_preparation",
+  "record_status": "complete_preparation_only",
+  "publication_ready": true,
+  "date": "2026-09-22",
+  "follows": [
+    "P004",
+    "P003",
+    "SVQ-001"
+  ],
+  "outcome": "accepted_after_one_repair",
+  "performance_evidence": "unproven",
+  "milestone_status_changes": [],
+  "further_paid_execution_authorized_by_this_record": false,
+  "scope": "One real application preparation using verified source inputs, two worker-authored JSON artifacts and independently reviewed controller-rendered documents.",
+  "worker": {
+    "model_requested": "claude-opus-5",
+    "effort_requested": "xhigh",
+    "native_model_observed": "claude-opus-5",
+    "native_effort_observed": null,
+    "planned_output_files": 2,
+    "planned_output_roles": [
+      "renderer-compatible draft data",
+      "requirement/evidence/claim mapping"
+    ],
+    "tools": "Native file tools plus the existing strict JSON static validator; no worker shell or browser tool.",
+    "validation_requirement": "A successful native validator result must bind each final JSON file and the unchanged validator by hash, after its last edit.",
+    "static_validation_completed": true,
+    "static_validation_limit": "Syntax validation does not establish factual support, fit, style or PDF layout.",
+    "prior_static_qualification_reused": true,
+    "prior_qualification_usage_charged_again": false,
+    "permissions_limit": "Native host permissions are not a newly qualified operating-system sandbox.",
+    "effort_configuration_evidence": "Both recorded native CLI invocations explicitly used --effort xhigh; internal model effort is not independently measured."
+  },
+  "controller_readiness": {
+    "canonical_python_route": {
+      "full_pipeline_preflight_passed": false,
+      "observed_failed_environment_checks": 3,
+      "failure_categories": [
+        "missing required tools or dependency",
+        "interpreter access failure",
+        "application-control block on a rendering dependency"
+      ],
+      "classification": "controller_environment_preparation",
+      "worker_launched_at_observation": false,
+      "evidence_id": "P005-E01"
+    },
+    "alternate_transport": {
+      "status": "qualified_then_actual_documents_accepted",
+      "method": "Controller uses the unchanged canonical HTML/layout logic and recorded PDF options through a Node/Playwright transport to installed Edge.",
+      "controller_owned": true,
+      "input_mode": "saved local text and JSON only",
+      "execution_context": "Approved controller host invocation; fresh headless browser with Chromium sandbox enabled, offline context and no logged-in user profile.",
+      "security_policy_changed": false,
+      "canonical_pipeline_changed_during_qualification": false,
+      "synthetic_letter_readback_passed": true,
+      "synthetic_advert_readback_passed": true,
+      "independent_visual_activation_review": true,
+      "actual_candidate_render_acceptance": true,
+      "limits": "A transport qualification does not pass the original full Python preflight, certify actual candidate content/layout, establish identical rasterization across engines or qualify arbitrary candidate execution.",
+      "evidence_id": "P005-E02"
+    }
+  },
+  "acceptance": {
+    "status": "accepted_after_one_repair",
+    "accepted": true,
+    "final_contract_sha256": "3db26925bd35b1da56c055dd87785abf66a7ff2da5ca31d0244f889cab9272ad",
+    "final_freeze_sha256": "88599f84c7c8632003f8aa24f1237c2e5c7c627bc8ec61b630c58f8d09078c8c",
+    "prelaunch_render_amendment_sha256": "8dfde3172791c7a338f7595114804295a73b48287f084454435e7c45ea39c3e7",
+    "requirements_checked": null,
+    "passed": null,
+    "failed": null,
+    "skipped": null,
+    "source_grounding_review": "passed after one evidence classification correction",
+    "semantic_style_review": "passed after one grammar correction",
+    "letter_pdf_readback": "complete after one explicitly documented extraction linebreak join",
+    "letter_page_count": 1,
+    "advert_pdf_readback": "complete saved employer body and metadata",
+    "advert_page_count": 2,
+    "visual_review": "all final pages inspected",
+    "final_artifact_hashes_bound_to_review": true,
+    "receipt_sha256": "5c63e16af2e8e0c7e5bb66228804814fccf15e43f7b26d2c45734a4f81e38459",
+    "limits": "Native completion, selected check results and transport readiness are separate from complete preparation acceptance.",
+    "counting_note": "No aggregate test-count claim: content, syntax, hash, readback and visual checks are different checks on one task, not independent samples."
+  },
+  "attempts": [
+    {
+      "phase": "build",
+      "native_terminal_reason": "completed",
+      "native_success": true,
+      "artifact_accepted": false,
+      "execution_api_equivalent_usd": 1.664514,
+      "total_native_tokens": 256281,
+      "elapsed_seconds": 299.141,
+      "native_final_json_validation": true,
+      "final_validated_files": 2,
+      "content_findings": 2,
+      "completion_sha256": "da65d13f927747b70f9435f9ea25041f0c67a86734c925a4365fbaaba9f53e67",
+      "acceptance_sha256": "2946f184d9be2532927b3de343e1d53eed44f4166c893b4f49c9ba690c6cee4d"
+    },
+    {
+      "phase": "repair",
+      "native_terminal_reason": "completed",
+      "native_success": true,
+      "artifact_accepted": true,
+      "execution_api_equivalent_usd": 0.29417150000000003,
+      "total_native_tokens": 80086,
+      "elapsed_seconds": 30.203,
+      "native_final_json_validation": true,
+      "final_validated_files": 2,
+      "content_findings": 0,
+      "completion_sha256": "41b318091db8c53000e33290f4e8eb6a2bbc554d961f64c8fe88674157de47a0",
+      "acceptance_sha256": "5c63e16af2e8e0c7e5bb66228804814fccf15e43f7b26d2c45734a4f81e38459"
+    }
+  ],
+  "accounting": {
+    "status": "complete_native_usage_partial_total_cost",
+    "native_attempts": 2,
+    "execution_api_equivalent_usd": 1.9586855,
+    "total_native_tokens": 336367,
+    "controller_to_worker_repair_requests": 1,
+    "worker_content_revisions": 1,
+    "controller_environment_revisions": null,
+    "controller_source_revisions": null,
+    "acceptance_criteria_amendments": 1,
+    "human_corrections": null,
+    "active_human_minutes": null,
+    "user_confirmed_resolution": null,
+    "cash_billed_usd": null,
+    "preparation_usd": null,
+    "controller_evaluation_usd": null,
+    "full_research_cost_usd": null,
+    "note": "One controller-to-worker repair request corrected two defects; four native Edit calls are not four human corrections. Native usage includes the rejected build and repair. Preparation, orchestration, evaluation, cash billing, active human time and user resolution are unmeasured; reused qualification is not charged again."
+  },
+  "application_outcomes": {
+    "preparation_accepted": true,
+    "prior_submission_resolved": false,
+    "form_readiness": "awaiting_sign_in",
+    "submission": "not_performed",
+    "user_confirmed_resolution": null,
+    "note": "A usable preparation does not establish login readiness, absence of an earlier submission, form completion or a new submission."
+  },
+  "stop_rule": {
+    "maximum_builds": 1,
+    "maximum_repairs": 1,
+    "build_soft_usd": 2,
+    "build_seconds": 600,
+    "repair_soft_usd": 1,
+    "repair_seconds": 300,
+    "soft_limits_can_overshoot": true,
+    "reject_failing_final_artifact": true,
+    "no_silent_scope_or_acceptance_relaxation": true
+  },
+  "investor_questions": {
+    "exact_claim": "On this one real preparation, can a bounded worker deliver grounded application data and honest fit notes that survive independent finished-document checks? Yes, after one repair.",
+    "compared_with": "A capable coding/writing agent with the same verified sources, approved templates and working rendering/check tools is a competent alternative. No comparison arm is run here.",
+    "stop_condition": "One build and at most one repair under the recorded limits. Unsupported factual claims or failed final checks block acceptance; do not relax criteria to obtain a pass.",
+    "losses_and_regressions": "Initial draft had a German case error and an overbroad supported-evidence label. Canonical Python preflight failed; controller used a reviewed local render transport, corrected an advert capture note and documented an extraction newline. Login still blocks form access. No comparison establishes a regression rate.",
+    "actual_cost": "Native execution API-equivalent usage: $1.9586855, including both attempts; 336,367 tokens across all reported input/output/cache categories. Preparation, controller evaluation, cash billing and human time are unknown.",
+    "next_expenditure_decision": "Use the accepted documents for the next authorized application step after sign-in and prior-submission reconciliation. For a later task, reuse the verified render path and check preparation time before deciding whether further infrastructure is worth funding."
+  },
+  "evidence": [
+    {
+      "id": "P005-E01",
+      "kind": "controller_preflight_incidents",
+      "sha256": "79bd7e9b20c240502760091cf55c535db1f8bed2e47795db461db3ec4d388440"
+    },
+    {
+      "id": "P005-E02",
+      "kind": "alternate_transport_readiness",
+      "sha256": "c465d10c6ce5f6a78b2e482f5d592f5adbb344b4284da75a8513252e4c545089"
+    },
+    {
+      "id": "P005-E03",
+      "kind": "synthetic_advert_render_receipt",
+      "sha256": "8f635e9acfad53d3d331e06dec47660c54c08d0a11ebab1c5ad32ae2b9490eba"
+    },
+    {
+      "id": "P005-E04",
+      "kind": "synthetic_advert_readback",
+      "sha256": "e3e7278fcf93966ccaf16b98705a0e6c02a538fc87bb7ee2a28a6ec84e3ab4e1"
+    },
+    {
+      "id": "P005-E05",
+      "kind": "synthetic_letter_render_receipt",
+      "sha256": "43c8257d3a0526e87f118a83a32f040f0f3ec0964b0ae4a8204ce0bcb2746ae7"
+    },
+    {
+      "id": "P005-E06",
+      "kind": "synthetic_letter_readback",
+      "sha256": "5d4f4fdd4fcd30185569bc4648dd8e9cba2884fc045bfb79f5327f2f1422dbbb"
+    },
+    {
+      "id": "P005-E07",
+      "kind": "render_amendment",
+      "sha256": "8dfde3172791c7a338f7595114804295a73b48287f084454435e7c45ea39c3e7"
+    },
+    {
+      "id": "P005-E08",
+      "kind": "initial_content_review",
+      "sha256": "d1afcc30e5da6f3b71f854b06888468295861d8a865d556d765f6c5337d97956"
+    },
+    {
+      "id": "P005-E09",
+      "kind": "final_content_review",
+      "sha256": "dec1e9e71d6e6c13486a285e34f6f8458453647b7446fa48171640ddc5a8023b"
+    },
+    {
+      "id": "P005-E10",
+      "kind": "initial_native_receipts",
+      "sha256": "2b4994426237715b9c8e58ee77f8c7640f439948bca7aa23355269131daf9346"
+    },
+    {
+      "id": "P005-E11",
+      "kind": "final_native_receipts",
+      "sha256": "10bb6b0b6ce4b779d1b08dfa83c3ca2fd0c6737ed877bfba93f6f6bc59a2e196"
+    },
+    {
+      "id": "P005-E12",
+      "kind": "final_letter_readback_resolution",
+      "sha256": "e63bb2fc32b26ff3f98e9576d83af30cc534a4ca3e4809f25326eaea3f2d7f4d"
+    },
+    {
+      "id": "P005-E13",
+      "kind": "final_advert_acceptance",
+      "sha256": "bff321ec067379aee298b2e04ce42e211be6d64581b59513abc2af1e8e075a83"
+    },
+    {
+      "id": "P005-E14",
+      "kind": "final_assessment",
+      "sha256": "9a3bc4c7779c4a3c6ddb1461ce74a0944d7fbef53ba020bbdc9f2e57286d049c"
+    }
+  ],
+  "limitations": [
+    "This is one real task, not an estimate of success rates or a controlled orchestration comparison.",
+    "Preparation, runtime readiness, worker completion, artifact acceptance and application outcomes remain separate.",
+    "Existing source assertions are not independent employment verification; explicit later corrections govern conflicting older wording.",
+    "General candidate execution remains unqualified under MAQ-001.",
+    "P003 and P004 remain unchanged; P004's rejected normalizer is not installed or silently reused as an accepted capability.",
+    "No performance gain, full research cost or user-confirmed resolution is established. Private application evidence limits public independent reproduction."
+  ],
+  "controller_incidents": [
+    {
+      "kind": "environment_preflight",
+      "observed_failed_checks": 3,
+      "worker_correction": false
+    },
+    {
+      "kind": "pre_dispatch_prompt_schema_alignment",
+      "count": 1,
+      "worker_correction": false
+    },
+    {
+      "kind": "render_source_note_duplicate_capture_label",
+      "rejected_actual_advert_renders": 1,
+      "fixed_actual_advert_renders": 1,
+      "worker_correction": false
+    },
+    {
+      "kind": "PDF_text_extraction_linebreak",
+      "affected_letter_renders": 2,
+      "resolution": "Exact one-location newline join backed by unchanged HTML and visual inspection; original mismatches retained.",
+      "worker_correction": false
+    }
+  ]
+}

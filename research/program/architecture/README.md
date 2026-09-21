@@ -1,5 +1,9 @@
 # Graph workflows: where they fit
 
+Real-task follow-up: [P005](APPLICATION-PREPARATION.md) records accepted private application preparation after one repair, controller readiness failures and unresolved form access. No performance claim is established.
+
+Tracker follow-up: [P004](TRACKER-NORMALIZER.md) records a rejected normalizer after one repair; nothing was installed. Its failure remains unchanged.
+
 Snapshot follow-up: [P003](SNAPSHOT-ADAPTER.md) records the accepted source adapter, conservative recovery rules and separate read-only real-source inspection. P002 and the original assessment below retain their historical scope.
 
 Implementation follow-up: [P002](IMPLEMENTATION.md) records the accepted controller repair and read-only planner. The assessment below remains the original recommendation and source snapshot.
