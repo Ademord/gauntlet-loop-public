@@ -1,5 +1,7 @@
 # Managed-agent readiness
 
+A narrower capability is now qualified: [trusted static validation](STATIC-VALIDATION.md) parses Python/JSON without executing candidate code. This does not change MAQ-001 or qualify arbitrary execution.
+
 Current scope: assess the execution boundary and investigate possible missing capabilities. There is no new worker launcher or autonomous experimentation in this increment. The existing observer and usage parser remain the recording layer.
 
 The pieces in a managed setup have distinct jobs:

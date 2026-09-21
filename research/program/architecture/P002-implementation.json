@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "id": "P002",
+  "kind": "engineering_implementation",
+  "date": "2026-09-21",
+  "follows": [
+    "GRAPH-001",
+    "SVQ-001"
+  ],
+  "milestone_ids": [
+    "M-004",
+    "M-012",
+    "M-022",
+    "M-024",
+    "M-026",
+    "M-027",
+    "M-036",
+    "M-037",
+    "M-041"
+  ],
+  "performance_evidence": "unproven",
+  "milestone_status_changes": [],
+  "paid_execution_authorized": false,
+  "scope": "Repair the existing private application controller and add one pure, read-only next-action planner. No execution scheduler or external adapter.",
+  "worker": {
+    "model": "claude-opus-5",
+    "effort_requested": "xhigh",
+    "file_scope": "private staged source and output; restricted host; no shell/browser tool",
+    "development_feedback": "qualified Python AST/JSON MCP parser; behavior checks remained controller-owned"
+  },
+  "implemented": [
+    "Repair broken newline split in existing controller",
+    "Reject unknown stages including force overrides",
+    "Check closed snapshot schema, explicit unknowns, dependency joins and transitive artifact freshness",
+    "Return one deterministic action with a stable snapshot/policy-derived identity",
+    "Reconcile uncertain or legacy submission markers; preserve existing review-after-prefill policy"
+  ],
+  "deployment": {
+    "scope": "private canonical package",
+    "package_version": "1.1.4",
+    "full_package_files": 30,
+    "package_hash_check": "passed",
+    "live_workflow_executed": false,
+    "private_git_commit": "3692778a285070195ec387c849435794190c3215"
+  },
+  "acceptance": {
+    "frozen_test_methods": 15,
+    "passed": 15,
+    "failed": 0,
+    "candidate_unchanged_during_checks": true,
+    "evaluator_sha256": "fb649461d5888809ae5e34765c65ef2a5546a373ebe5d23e9e3a1c936657f794",
+    "contract_sha256": "6de15cd385adce81e2f473af14ef40253656bfb98eb608bca1fa83b4add5997c",
+    "result_reference": "private:graph-implementation/controller/build/acceptance.json",
+    "result_sha256": "2c74874b4c3f670d1e24dd8f7d778cdb5015280d81f2783fd88c45877d0c0130",
+    "limits": "Synthetic fixtures, no-op dependency for narrow controller dispatch, independent code inspection before execution; not real PDF/browser/tracker checks."
+  },
+  "candidate_hashes": {
+    "pipeline/NEXT_ACTION.md": "482fe83fdbe442251c775994e7f557a5c3e73c5eb7194da17c648a58521887c8",
+    "pipeline/PACKAGE.json": "ab15032c574513755dd6fecf3acea6b194e405b37ee9c25b17cb6c2e017cd5de",
+    "pipeline/scripts/next_action.py": "858b36b3b58c9182d1261068a1fef2d516d836360986cde0deaca30db7e85903",
+    "pipeline/scripts/run.py": "67fedd9ef0ad012ebc4810c28d81f0c80560a685b62b34aab463b34ace27f088",
+    "pipeline/skill/SKILL.md": "46dfaa7a6a1e78eff517c089a7a65d98f984c2c8b632c9beba8b8144b8788ab4"
+  },
+  "attempts": [
+    {
+      "phase": "smoke",
+      "role": "interface_qualification",
+      "terminal_reason": "completed",
+      "elapsed_seconds": 13.344,
+      "api_equivalent_usd": 0.09665850000000001,
+      "tokens": 12739,
+      "tool_counts": {
+        "mcp__gauntlet_validation__validate_artifact": 5
+      },
+      "completion_reference": "private:graph-implementation/controller/smoke/completion.json",
+      "completion_sha256": "78dd0a4b721411cd72bd78057971e42fadafd1830a852fd59ad078f205ac7328"
+    },
+    {
+      "phase": "build",
+      "role": "implementation",
+      "terminal_reason": "completed",
+      "elapsed_seconds": 450.546,
+      "api_equivalent_usd": 2.5972910000000002,
+      "tokens": 609143,
+      "tool_counts": {
+        "Glob": 1,
+        "Read": 7,
+        "Grep": 4,
+        "Edit": 4,
+        "Write": 2,
+        "mcp__gauntlet_validation__validate_artifact": 2
+      },
+      "completion_reference": "private:graph-implementation/controller/build/completion.json",
+      "completion_sha256": "a93aefba900df4e4c624a90acbbdff15a334eed40ccb96ae2307ba0913c96a72"
+    }
+  ],
+  "accounting": {
+    "execution_api_equivalent_usd": 2.6939495000000004,
+    "total_native_tokens": 621882,
+    "controller_to_worker_repairs": 0,
+    "human_corrections_observed_in_these_worker_sessions": 0,
+    "active_human_minutes": null,
+    "user_confirmed_resolution": null,
+    "cash_billed_usd": null,
+    "preparation_usd": null,
+    "controller_evaluation_usd": null,
+    "full_research_cost_usd": null,
+    "note": "Includes native smoke and every launched implementation attempt. Native token categories include cache creation/read. Hook coverage remains partial. Preparation and independent review are not free merely because unpriced.",
+    "controller_recording_issue": "Build enrollment used normalized-text request hash while dispatch froze raw CRLF bytes. Both identities are preserved and verified; enrollment is not rewritten. Future launcher records both."
+  },
+  "next_decision": "Exercise the read-only planner with an evidence-producing snapshot adapter before allowing any executor to consume its action. Missing or conflicting external evidence must remain unknown; action identity alone does not deduplicate effects.",
+  "deferred": [
+    "Arbitrary candidate execution (MAQ-001 remains blocked)",
+    "Dynamic scheduling and graph-framework migration",
+    "P001 discovery installation and skill-frontmatter validator",
+    "Live submission and tracker mutation"
+  ],
+  "limitations": [
+    "No competent comparison arm; this run cannot estimate fewer corrections or speed/cost gains.",
+    "Planner validates supplied evidence consistency, not truth of tracker/submission/preflight assertions.",
+    "Existing legacy ledger bypass and incomplete submission evidence remain outside this repair.",
+    "Synthetic replay verifies stable proposals, not exactly-once external effects.",
+    "An H7 failed/unknown marker alone is not a reconciliation trigger in frozen g001/1. Resolve this recovery-policy gap before wiring an executor; do not treat this planner as comprehensive submission recovery.",
+    "Private source and raw evidence are not reproducible from the public record alone."
+  ]
+}

@@ -1,5 +1,7 @@
 # Graph workflows: where they fit
 
+Implementation follow-up: [P002](IMPLEMENTATION.md) records the accepted controller repair and read-only planner. The assessment below remains the original recommendation and source snapshot.
+
 Decision **GRAPH-001**, 21 September 2026. [Indexed record](GRAPH-001.json). Source inspection of Gauntlet at `ba71895`; private application-pipeline inspection is recorded by hash. This is an architecture assessment, not an implemented controller, benchmark, skill upgrade or permission to dispatch workers.
 
 **Recommendation: put stable rules in executable controllers and keep agent judgment inside bounded tasks. Repair and reuse the existing application workflow first. Keep Gauntlet's controller small until actual recovery or scheduling needs justify a framework.**

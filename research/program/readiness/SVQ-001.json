@@ -1,0 +1,110 @@
+{
+  "id": "SVQ-001",
+  "kind": "engineering_qualification",
+  "checked_utc": "2026-09-21T12:50:10.492625+00:00",
+  "related_triage": "P001",
+  "related_gap": "P001-G01",
+  "milestone_ids": ["M-004", "M-026", "M-033", "M-036", "M-048"],
+  "scope": "One trusted static-validation MCP tool: Python AST and JSON parsing, fixed artifact root, byte-bound results and a five-call native Claude compatibility smoke.",
+  "sources": [
+    {
+      "reference": "private:graph-implementation/controller/smoke/completion.json",
+      "sha256": "78dd0a4b721411cd72bd78057971e42fadafd1830a852fd59ad078f205ac7328"
+    },
+    {
+      "reference": "private:graph-implementation/controller/smoke/worker.stream.jsonl",
+      "sha256": "63273dd9eeadf87d40dae469597a3ebad000fa3bff9c162e9cbdec820bb58d3e"
+    },
+    {
+      "reference": "private:graph-implementation/controller/smoke/request.txt",
+      "sha256": "96d144db015ec85ecd6032c70b990cac42ea74cfbb380f9e4323e8df1019cfb1"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "tools/validation_bridge.py",
+      "sha256": "0aa5d850dacb2ebb6f72c621c0b8aa00631bcf20d7e56fd9dde44cfcf0eed632"
+    },
+    {
+      "path": "tests/test_validation_bridge.py",
+      "sha256": "acb2b605ed2fd7328b235849dae1df5814867afe9708d9d361e55ccfe8237263"
+    }
+  ],
+  "tool_contract": {
+    "name": "validate_artifact",
+    "arguments": {"path": "relative path under the fixed root", "validator": ["python_ast", "json"]},
+    "additional_argument_fields": false,
+    "protocol_version": "2025-06-18",
+    "max_request_bytes": 65536,
+    "max_file_bytes": 524288,
+    "candidate_execution": false,
+    "candidate_imports": false,
+    "candidate_writes": false,
+    "shell_or_subprocess_capability": false,
+    "network_capability": false,
+    "result_identity": ["file_sha256", "tool_sha256"]
+  },
+  "offline_suite": {
+    "command": "python -B -m unittest discover -s tests -p test_validation_bridge.py -v",
+    "tests_run": 13,
+    "passed": 12,
+    "failed": 0,
+    "skipped": 1,
+    "skip_reason": "The host did not permit creating native symlink fixtures. The reparse-attribute rejection branch was tested separately.",
+    "observed_checks": [
+      "Real stdio initialization, notification, ping, tool discovery and calls",
+      "Supported protocol negotiation and optional transport metadata",
+      "Valid and invalid Python/JSON controls with diagnostics and byte hashes",
+      "Absolute, traversal, device and alternate-stream path rejection",
+      "File and request size limits with a usable connection afterward",
+      "Malformed JSON, unknown tools, commands and extra argument fields rejected",
+      "Candidate import/write sentinel remains unexecuted; artifact bytes unchanged"
+    ]
+  },
+  "native_smoke": {
+    "host": "claude",
+    "model_requested": "claude-opus-5",
+    "model_reported": "claude-opus-5",
+    "effort_requested": "xhigh",
+    "tool_calls_observed": 5,
+    "dispatches_observed": 0,
+    "permission_denials_reported": 0,
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 13.344,
+    "cases": [
+      {"case": "valid_python", "expected": "valid", "observed": "valid", "file_sha256": "3f441c58bb2e71d1bbe5d18b3dc4c039a2757a2dfe64507f67a581b634150974"},
+      {"case": "invalid_python", "expected": "invalid", "observed": "invalid", "file_sha256": "4fb3f225bec9c87240e17d5472fe3bb9aad1033930bcc545cc356552594c0970"},
+      {"case": "valid_json", "expected": "valid", "observed": "valid", "file_sha256": "a279e7d08cda65913894cb9377745073ead7577384559c2ee509ba6ada18ed7a"},
+      {"case": "invalid_json", "expected": "invalid", "observed": "invalid", "file_sha256": "ce66a532fbc059d2ac9640d34c9950b81e1d896b4fbc4f3cdbca60d9138c4d3f"},
+      {"case": "parent_traversal", "expected": "rejected", "observed": "rejected", "file_sha256": null}
+    ],
+    "tool_sha256_same_in_all_results": true,
+    "total_tokens": 12739,
+    "token_source": "native result.modelUsage; complete four-category sum",
+    "token_categories": {"inputTokens": 4, "outputTokens": 1149, "cacheReadInputTokens": 5047, "cacheCreationInputTokens": 6539},
+    "worker_api_equivalent_usd": 0.0966585,
+    "cost_reconciles": true,
+    "cash_billed_usd": null,
+    "preparation_usd": null,
+    "evaluation_usd": null,
+    "human_minutes": null,
+    "full_research_cost_usd": null
+  },
+  "qualification_status": "passed_within_scope",
+  "arbitrary_execution_boundary": {"record": "MAQ-001", "status": "blocked", "changed_by_this_record": false},
+  "performance_evidence": "unproven",
+  "milestone_status_changes": [],
+  "paid_execution_authorized": false,
+  "decision": "The named static-validation tool is available for a separately authorized, bounded task in this observed configuration. Reuse existing observer and accounting. Do not generalize this result to arbitrary candidate-code execution or performance benefit.",
+  "limits": [
+    "One native compatibility smoke with supplied fixtures and expected statuses; no representative task or comparison arm.",
+    "A successful parse does not establish runtime behavior, functional correctness, schema validity, safe execution or independent task acceptance.",
+    "This bridge does not execute the separate skill-frontmatter validator, so it does not fully resolve P001's original skill-description validation gap.",
+    "The native traversal call was rejected by path-component validation, not evidence that arbitrary filesystem escape routes are excluded.",
+    "Native symlink fixtures were skipped; the isolated attribute test is not complete native reparse-path qualification.",
+    "Request/file bounds and observed path checks are not a general sandbox or resource-limit certification.",
+    "Private evidence is identified by hashes but is not reconstructible from this public record alone.",
+    "Reported costs are API-equivalent usage, not verified billed cash or full research cost. No milestone is promoted and no additional paid run is authorized."
+  ]
+}

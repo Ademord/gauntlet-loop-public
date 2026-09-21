@@ -1,5 +1,7 @@
 # Engineering readiness from real tasks
 
+Implementation follow-up: [SVQ-001](SVQ-001.json) qualifies the narrow static parser, and [P002](../architecture/IMPLEMENTATION.md) records the accepted private controller repair and read-only planner. P001 below remains historical; its separate skill-validation/discovery gaps and MAQ-001 general execution boundary remain unresolved.
+
 Use ordinary work to identify possible gaps before funding more comparisons. A failed delivery can expose an environment problem, an implementation defect, a weak evaluator or an unknown cause. It does not by itself establish that another orchestration feature is needed.
 
 This index is separate from [frozen performance experiments](../WORKFLOW.md). It neither changes milestone status nor authorizes a paid worker. The first record, [P001](P001-triage.json), preserves a failed two-attempt pilot and selects managed access to existing validation as the next engineering prerequisite. The original private pilot remains unchanged.
