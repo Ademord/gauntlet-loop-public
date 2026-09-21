@@ -4,6 +4,11 @@ Most scripts are deterministic. `paired_study/run_pair.py --execute`, its series
 
 | Tool | What it does | Command |
 | --- | --- | --- |
+| `program.py` | Indexes research claims and scoped evidence, checks prerequisites, freezes plans and records an offline inventory audit; never dispatches models | `python tools/program.py next`; see [workflow](../research/program/WORKFLOW.md) |
+| `observer.py` | Records allowlisted hook metadata for enrolled ordinary tasks in local SQLite; silent collection, partial coverage and unknown usage fields | See [passive observer](../ledger/OBSERVER.md); host integration remains separate |
+| `observer_host.py`, `observer_install.py` | Enroll a selected Codex/Claude session and prepare/apply backed-up hook settings using a frozen private runtime | See [host integration](../ledger/OBSERVER.md#installed-host-adapter-and-verification) |
+| `contact_metrics.py` | Classify captured contacts and explicit user resolution outside the worker context, preserving revisions and unknowns | See [contact metrics](../ledger/OBSERVER.md#what-is-implemented) |
+| `observer_checkpoint.py` | Export selected, sanitized observations with a consistent private snapshot hash; no Git or network operations | See [checkpoints](../ledger/OBSERVER.md#git-checkpoints-and-agent-memory) |
 | `validate_package.py` | Checks a skill package: frontmatter, name, version, the expected file count (`--expect-files`, 8 through 5.0.0 and 9 from 5.1.0), size limits (entrypoint 16,000 bytes, single file 110,000 from 5.1.0), local links, YAML examples, forbidden personal patterns | `python tools/validate_package.py --version 5.1.0 --expect-files 9 --export dist/gauntlet-loop-v5-SKILL.md --max-export-bytes 110000` |
 | `build_release.py` | Rebuilds `dist/` from `skill/`: the single file, a reproducible zip, and `package-verification.json` | `python tools/build_release.py` |
 | `export_single_file.py` | Writes one portable Markdown file from any package, references appended with anchors | `python tools/export_single_file.py --package versions/v4 --out v4.md` |
@@ -17,6 +22,6 @@ Local configuration lives in gitignored `*.local.json` files. The schema of the 
 
 ## Measurement correction and calibration
 
-- `python -m unittest discover -s tests -v` checks accounting, prompt binding, grader integrity, stage isolation, and budget/stop behavior without model calls.
+- `python -m unittest discover -s tests -v` checks accounting, prompt binding, grader integrity, stage isolation, budget/stop behavior, evidence scope and immutable research records without model calls.
 - `python tools/paired_study/replay_measurements.py --output research/program/paired-study/results.corrected.jsonl --report research/program/paired-study/measurement-replay.md` creates a derived correction from matching local transcripts. It never rewrites the original rows. A fresh clone lacks gitignored transcripts; unsupported corrections stay unknown.
 - [Review calibration](../research/program/calibration/README.md) documents the frozen six-task comparison, its limits, and explicit prepare/execute commands.

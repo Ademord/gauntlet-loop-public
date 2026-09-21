@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "id": "OBS-PROTOTYPE-001",
+  "date": "2026-09-21",
+  "status": "native_codex_capture_verified_claude_failure_capture_verified",
+  "claim_ids": [
+    "M-030",
+    "M-036",
+    "M-037"
+  ],
+  "intent": "Let an ordinary task proceed in a fresh chat while a separate host collector records metadata for explicitly enrolled sessions.",
+  "worker_context": "Only the user's actual task and its normal instructions. No research-history fork, measurement skill, hypothesis, score or database prompt.",
+  "store": "Owner-local SQLite outside the worker checkout; actual paths live in gitignored local configuration.",
+  "implementation": "tools/observer.py",
+  "instructions": "ledger/OBSERVER.md",
+  "configuration_example": "ledger/observer-session.example.json",
+  "hook_fragment": "tools/observer-hooks.example.json",
+  "source_ids": [
+    "C4",
+    "C10"
+  ],
+  "observation_class": "observational",
+  "implemented_metrics": [
+    "Hook receipt timestamps and event counts for enrolled sessions",
+    "Observed tool starts and ends, with stable tool identity deduplication",
+    "Reported model, permission mode and subagent lifecycle metadata when supplied",
+    "Explicit incomplete coverage and collection diagnostics",
+    "Separately supplied artifact/check-bound outcome records",
+    "Externally classified captured contacts and corrections, with append-only revisions",
+    "Explicit user-reported resolution and scoped first-pass resolution; missing classifications remain unknown",
+    "Explicitly reported active human minutes, never inferred from message timestamps",
+    "Sanitized selected-session manifests linked to consistent private snapshots"
+  ],
+  "unknown_metrics": {
+    "tokens": "No qualified Codex usage adapter in this prototype.",
+    "cost_usd": "No complete metering or observed billing source.",
+    "human_minutes": "Not measured by hook metadata.",
+    "actual_task_wall_time": "Receipt times are not execution boundaries.",
+    "full_tool_coverage": "Some host tool paths do not emit these hooks."
+  },
+  "blinding_claim": "Task instructions need not disclose evaluation; complete inability to discover or infer observation is unverified.",
+  "activation": {
+    "global_hooks_installed": true,
+    "ordinary_task_created": false,
+    "live_capture_verified": {
+      "codex": "request_tool_stop_cycle",
+      "claude": "request_failure_lifecycle"
+    },
+    "codex_native_trust_reviewed": true,
+    "claude_successful_tool_cycle_verified": false,
+    "enrollment": "explicit session or one-shot exact host/directory with expiry",
+    "daily_commit_automation": false,
+    "complete_interruption_or_descendant_coverage_verified": false
+  },
+  "limits": [
+    "Simulated hook tests validate this collector, not native host integration.",
+    "Hook metadata alone cannot establish successful tools, complete reviewers, independent acceptance or causality.",
+    "Collector overhead and missing arrivals may affect observations.",
+    "No skill package was changed or installed.",
+    "Event metadata excludes prompts/tool content/paths. Private pending enrollment stores a directory for routing.",
+    "The native Claude task was blocked by usage credits; its captured failure is preserved.",
+    "Native diagnostic logs and SQLite snapshots remain private.",
+    "First-pass resolution concerns captured, fully classified records with explicit user resolution; it is not complete-conversation success."
+  ],
+  "offline_validation": "research/program/materials/observer-validation.json",
+  "implementations": [
+    "tools/observer.py",
+    "tools/observer_host.py",
+    "tools/contact_metrics.py",
+    "tools/observer_install.py",
+    "tools/observer_checkpoint.py"
+  ],
+  "native_validation": "research/program/materials/observer-native-validation.json",
+  "checkpoint": "research/program/materials/observer-checkpoint-001.json",
+  "latest_offline_validation": "research/program/materials/observer-validation-002.json",
+  "git_memory_note": "research/program/materials/git-memory.md"
+}

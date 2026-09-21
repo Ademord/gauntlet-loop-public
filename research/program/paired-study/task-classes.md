@@ -1,5 +1,7 @@
 # Task classes, and how a class earns its place in the study
 
+Historical design, superseded for current performance studies by the [task-selection policy](../materials/task-selection.json). Admission based on a Gauntlet critic rejecting work can support a labeled mechanism diagnostic, but cannot select a representative improvement sample. The inventory and future-work statements below describe September 19, not current readiness.
+
 Written 19 September 2026, after the first look at flag F1.
 
 ## The problem this document solves

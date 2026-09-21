@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-09-20T23:52:40.782533+00:00",
+  "kind": "offline_engineering_verification",
+  "tests_run": 63,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "passed": true,
+  "source_sha256": {
+    "tools/observer.py": "0937e8a34fc57787a2353edccfb8208367e2af042e8f70191aaff7fe3f9c1733",
+    "tests/test_observer.py": "f35d2d86e77b029b32b91f118139aa92f081345872f48a9c34fab05828d9f993",
+    "tools/observer-hooks.example.json": "671dab142570ca6e8d7680bec1e7c99d2dd1b3c52e49bfe05c33016b1dff191c"
+  },
+  "live_hooks_tested": false,
+  "ordinary_sessions_recorded": 0,
+  "performance_claim": null
+}

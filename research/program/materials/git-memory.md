@@ -1,0 +1,11 @@
+# Git evidence and agent memory
+
+The recorder captures observations outside the worker context. A reviewed Git checkpoint preserves selected artifacts and their evidence identities. A memory system lets agents retrieve previous evidence to choose future work. These are three different capabilities; neither passive logging nor a daily commit demonstrates learning.
+
+Agora supplies a useful design precedent: contributions are actual Git commits whose parents encode dependencies, with indexes derived from the graph. In its reported run, 13 worker accounts contributed 1,699 of 1,703 records across 11 days 19 hours. A weight-transfer evaluator moved from 3.3923 to 1.899044 bits/byte, closing about 62% of a task-specific reference gap. This is a result on that development evaluator, not an estimate of the effect of Git memory. [Paper, sections 3–4](https://arxiv.org/html/2609.18094v1#S3.SS2).
+
+The winning ancestry contains 145 commits. The 165 verification posts cover 95 targets; 40 of the winner's 144 scored ancestors were reproduced. Different agent accounts are not external independent laboratories. The authors checked stored outputs but did not rerun the winning method. The same development evaluator guided selection, and there is no matched no-memory or plain-log control. [Verification and limitations](https://arxiv.org/html/2609.18094v1#S4.SS8).
+
+The reported single mid-run human intervention introduced diversity mechanisms after substantial human setup. It does not mean one total human action or establish human minutes. Our contact labels therefore keep corrections, requirements, approvals and confirmations separate; setup and infrastructure intervention require their own records. [Intervention account](https://arxiv.org/html/2609.18094v1#A3).
+
+For this checkpoint: retain consistent raw snapshots privately; publish reviewed manifests with artifact/collector/check identities and failure status; keep Git parents as code history. Do not claim that ordinary daily commits encode hypothesis dependencies. A later memory experiment would add explicit dependency/reproduction links and compare retrieval against a competent baseline under a frozen task and compute budget. No new memory workflow or daily automation is activated by this note.

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "id": "EXP-031-033-001",
+  "status": "draft",
+  "claim_ids": [
+    "M-031",
+    "M-033"
+  ],
+  "questions": {
+    "claim": "The overlap inventory has resolvable, unchanged clause/source pointers and explicit test discriminators.",
+    "comparator": "Each inventory entry versus the exact incumbent skill lines and the dated native-source registry.",
+    "stop_rule": "Reject the inventory if any excerpt/hash/source/probe record is invalid; zero model execution allowed.",
+    "losses_to_check": "Missing or changed clauses, unsupported source IDs, missing discriminators and overstated probe status.",
+    "cost": "Zero solver/API calls. Preparation, research, evaluation and human dollar costs remain unknown.",
+    "next_decision": "Use the grounded inventory to nominate one candidate; qualify native runtime behavior before comparing a removal."
+  },
+  "metrics": [
+    "entries_checked",
+    "pointer_errors",
+    "native_behavior_probes_executed",
+    "model_calls",
+    "audit_seconds"
+  ],
+  "prerequisites": [
+    {
+      "id": "documentary-inventory",
+      "satisfied": true,
+      "evidence_ids": [
+        "EV-OVERLAP"
+      ],
+      "reason": "Anchored inventory is present; this prerequisite establishes documentary scope only.",
+      "required_scope": "documentary-inventory"
+    }
+  ],
+  "inputs": [
+    "research/program/materials/native-overlap.json"
+  ],
+  "execution": {
+    "kind": "inventory_audit",
+    "material": "research/program/materials/native-overlap.json"
+  },
+  "budget": {
+    "model_execution_usd": 0,
+    "preparation_minutes": null,
+    "evaluation_minutes": null,
+    "human_minutes": null
+  }
+}

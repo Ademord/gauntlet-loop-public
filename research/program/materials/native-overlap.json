@@ -1,0 +1,570 @@
+{
+  "format_version": 1,
+  "checked_date": "2026-09-20",
+  "materialized_date": "2026-09-21",
+  "kind": "offline_documentary_overlap_inventory",
+  "milestone_ids": [
+    31,
+    33
+  ],
+  "source_registry": "research/program/MILESTONES-50.json",
+  "source_register": "research/program/RESEARCH-NATIVE-50.md",
+  "skill_version": "5.1.0",
+  "scope": "Selected current Gauntlet clauses compared with already-inspected native-host documentation. This material supports instruction-removal and native-enforcement decisions; it is not an exhaustive audit.",
+  "evidence_boundary": {
+    "native_evidence": "Documentation reviewed on checked_date; current local Claude installation/configuration and runtime behavior were not established by this inventory.",
+    "new_empirical_evidence": false,
+    "probes_executed": 0,
+    "removal_or_promotion_authorized_by_inventory": false,
+    "recommendation_semantics": {
+      "keep": "Retain the policy requirement pending independent evidence; this is not a claim of measured benefit.",
+      "consider_removal": "Candidate for a versioned, reversible clause-removal probe; do not remove on documentary overlap alone.",
+      "needs_probe": "Overlap and the deployment boundary remain unresolved; inspect or exercise the specified discriminator before deciding."
+    },
+    "classification_semantics": {
+      "native_primitive": "The selected short clause describes a documented native facility. Invocation and effectiveness remain configuration-dependent.",
+      "gauntlet_policy": "The selected clause adds a specific policy or invariant not established as a native default by the inspected sources. This does not claim the policy cannot be implemented natively.",
+      "mixed": "Native facilities overlap the mechanism, while the clause adds obligations or exact semantics not established as native defaults."
+    },
+    "comparison_rule": "Compare the same configured native host with and without only the nominated clause. Preserve model ID, effort, tools, permissions, memory, native delegation/workflows, task inputs and budget ceilings. Record actual actions; identical interventions do not become different arms because their labels differ.",
+    "execution_rule": "All probes below are unexecuted specifications. Native interfaces and deterministic fixtures can be inspected without model calls; any live solver comparison needs separate authorized scope and budget.",
+    "advancement_rule": "No automatic deletion or milestone completion. For removal, preserve a versioned rollback and demonstrate retained critical obligations; fewer prompt tokens alone is not lower total delivery cost.",
+    "hash_semantics": "SHA-256 over raw file bytes for source_files and registry/register hashes. excerpt_sha256 hashes the exact excerpt encoded as UTF-8. lines_sha256 hashes the complete selected source lines joined with LF, without a trailing LF. Line numbers are one-based and inclusive."
+  },
+  "source_registry_sha256": "cd088be99e496214f34b7c59b6acd1bfa57a20494fd5f5db829fb134c9bf0fba",
+  "source_register_sha256": "dab7c2af4389256b75620f8863a80dfbb12435fd5f0cde8ab41962d4f32ee2d1",
+  "source_files": {
+    "skill/SKILL.md": "d03f1d810faf24c02de679fc7ba62f53d3ea54f5c5ccf8fe9ad31ab41e9cb8d2",
+    "skill/references/execution-contract.md": "62d2c26b1e7f284e25e2efa448f61a46e5ac6909be0c94c30e82999c32dd7bac",
+    "skill/references/software-quality.md": "ca41c408d0d8e4d34e11629d19b82b30a4f4c4d6a5a3befc5572397514490fe2",
+    "skill/references/learning-and-evolution.md": "a6d9fa95be6b342fe96f530a1190e2264ac99bab0f119ed760cdffd143d21ea2"
+  },
+  "entries": [
+    {
+      "id": "OVL-001",
+      "title": "Repository reconnaissance",
+      "skill": {
+        "path": "skill/SKILL.md",
+        "line_start": 26,
+        "line_end": 26,
+        "excerpt": "Read relevant project instructions and the current artifact.",
+        "excerpt_sha256": "a4d986738d9a2d72387c0182270a87684a9245cb1f669f3cec44251596cdf879",
+        "lines_sha256": "70d8ad439159b3d450fa62bd8a994260d1e30e4748eeefac6a8b4e1eccf32f62"
+      },
+      "source_ids": [
+        "C5",
+        "C7",
+        "A1"
+      ],
+      "overlap_classification": "native_primitive",
+      "recommended_action": "consider_removal",
+      "native_support": "Both native hosts document repository exploration, context gathering and project instructions.",
+      "native_limit": "Documentation does not show that either host will discover every relevant instruction or choose adequate reconnaissance on this task.",
+      "discriminating_probe": {
+        "setup": "Prepare a frozen small repository with a nested instruction, an existing test command and a named failing behavior.",
+        "variants": [
+          "Native host plus the current skill.",
+          "Same host and skill with only this sentence omitted; retain all scope and budget rules."
+        ],
+        "faults": [
+          "A relevant instruction lives below the launch directory.",
+          "A plausible obsolete test command appears in an unrelated document."
+        ],
+        "pass_condition": "Both configurations identify the applicable instruction and supported command and repair the reported behavior without unrelated exploration; use actual read/tool events to assess whether behavior differs.",
+        "metrics": [
+          "Applicable instructions found",
+          "Correct command selected",
+          "Unrelated reads",
+          "Accepted outcome",
+          "Total tokens, cost and elapsed time when observable"
+        ]
+      },
+      "risk": "Removing a generic reminder may still reduce instruction compliance on an unfamiliar repository; apparent prompt savings can cause extra discovery or retries.",
+      "probe_status": "not_run"
+    },
+    {
+      "id": "OVL-002",
+      "title": "Builder development tests",
+      "skill": {
+        "path": "skill/SKILL.md",
+        "line_start": 49,
+        "line_end": 49,
+        "excerpt": "Builders may run focused tests, type checks, and scoped formatters in their isolated workspace.",
+        "excerpt_sha256": "7066dd6ac6be316b312fe5fb89c959893ee5e667890693bb1401cdf3326db073",
+        "lines_sha256": "6529498840c67608779be8baa144c31fbe1ff4525e5c6d9ffcb950329d998c07"
+      },
+      "source_ids": [
+        "C5",
+        "C7",
+        "A1"
+      ],
+      "overlap_classification": "native_primitive",
+      "recommended_action": "consider_removal",
+      "native_support": "Native agents already have edit, shell, test and verification workflows.",
+      "native_limit": "Tool availability does not establish meaningful test selection, execution, or correct isolation; the following independent-acceptance sentence adds a different obligation.",
+      "discriminating_probe": {
+        "setup": "Use a frozen repair fixture with one relevant failing test and an unrelated expensive full-suite command.",
+        "variants": [
+          "Native host plus current skill.",
+          "Same host with only this permission/reminder sentence removed; retain the development-feedback versus acceptance distinction and workspace ownership requirements."
+        ],
+        "faults": [
+          "The implementation looks plausible but fails the existing focused regression.",
+          "An unrelated formatter would touch another owner's files."
+        ],
+        "pass_condition": "Relevant checks still execute and unauthorized edits do not occur; disclose any failure to test and compare the final deliverable rather than merely counting test calls.",
+        "metrics": [
+          "Focused checks actually executed",
+          "Known defect detected",
+          "Out-of-scope writes",
+          "Functional acceptance",
+          "Total cost and elapsed time"
+        ]
+      },
+      "risk": "Deleting the surrounding independence or ownership requirements together with the selected sentence would confound the probe and weaken more than a native reminder.",
+      "probe_status": "not_run"
+    },
+    {
+      "id": "OVL-003",
+      "title": "Parallel independent work",
+      "skill": {
+        "path": "skill/SKILL.md",
+        "line_start": 37,
+        "line_end": 37,
+        "excerpt": "Parallelize independent branches of work and serialize dependencies.",
+        "excerpt_sha256": "117e5b56d9f86e6b07f59cd875cb710cd030b24d40871b97476d0a0d9899ce36",
+        "lines_sha256": "f77a28fe42d1c7ddaae8fe72607dbfca5068eeaea2f8fc7270bc2c54c4227852"
+      },
+      "source_ids": [
+        "C2",
+        "A2",
+        "A3"
+      ],
+      "overlap_classification": "native_primitive",
+      "recommended_action": "consider_removal",
+      "native_support": "Codex subagents and Claude subagents/workflows support concurrent tasks and coordination.",
+      "native_limit": "Native availability or proactive modes do not guarantee a correct dependency graph or throughput gain on a particular task.",
+      "discriminating_probe": {
+        "setup": "Freeze two independent read-only investigations and one integration task that depends on both; preserve the host's native delegation settings in both variants.",
+        "variants": [
+          "Current skill on the configured native host.",
+          "Same configuration with only the selected scheduling sentence omitted."
+        ],
+        "faults": [
+          "Integration attempts to run before one required finding is available.",
+          "One nominally independent task accesses shared mutable state."
+        ],
+        "pass_condition": "Both independent tasks can proceed without premature integration or conflicting writes. A concurrency benefit requires lower end-to-end delivery time at disclosed total cost.",
+        "metrics": [
+          "Observed dispatch and completion order",
+          "Dependency violations",
+          "Conflicting writes",
+          "Integration acceptance",
+          "Elapsed time and total cost"
+        ]
+      },
+      "risk": "Host orchestration may already duplicate this sentence, but removing it could change scheduling; more simultaneous workers can add contention rather than save time.",
+      "probe_status": "not_run"
+    },
+    {
+      "id": "OVL-004",
+      "title": "Independent accepting reviewer",
+      "skill": {
+        "path": "skill/SKILL.md",
+        "line_start": 50,
+        "line_end": 50,
+        "excerpt": "A critic that edits the candidate becomes its builder and needs a different accepting reviewer.",
+        "excerpt_sha256": "061c4ae80d41bc676dec4ee89cb064a622be6817ef8f1f49fefdfc47c820fadb",
+        "lines_sha256": "0ea8f41651d1fd651e96d9ae52f68299121b12b2f0df6623294afa7a21ee82ad"
+      },
+      "source_ids": [
+        "C2",
+        "C8",
+        "A2",
+        "A3"
+      ],
+      "overlap_classification": "mixed",
+      "recommended_action": "needs_probe",
+      "native_support": "Native review/subagent facilities can separate reviewing from building; Claude workflows can encode adversarial review.",
+      "native_limit": "Read-only roles and separate contexts do not automatically establish the exact no-edit accepting-reviewer rule, factual correctness or blinding.",
+      "discriminating_probe": {
+        "setup": "Freeze a candidate with a known defect and identify reviewer input, tool permissions and candidate content hash before review.",
+        "variants": [
+          "Native configured read-only review facility with ordinary instructions.",
+          "Same facility with the selected Gauntlet reviewer-identity rule retained."
+        ],
+        "faults": [
+          "The reviewer attempts to fix the candidate and then approve its own revision.",
+          "A builder's approval claim appears in supplied context."
+        ],
+        "pass_condition": "Any reviewer write is prevented or detected and invalidates that review's acceptance authority; a separately identified reviewer must inspect the changed candidate before acceptance.",
+        "metrics": [
+          "Review identity and context provenance",
+          "Attempted and completed writes",
+          "Candidate hashes",
+          "Self-approval accepted or rejected",
+          "False rejection of valid read-only findings"
+        ]
+      },
+      "risk": "A host may expose an editing reviewer or inherit builder history. A second agent can repeat the same error; role separation alone is not an accuracy result.",
+      "probe_status": "not_run"
+    },
+    {
+      "id": "OVL-005",
+      "title": "Owned surfaces and worktree separation",
+      "skill": {
+        "path": "skill/SKILL.md",
+        "line_start": 43,
+        "line_end": 43,
+        "excerpt": "Overlapping edits need separate worktrees/clones returning patches, or serialization.",
+        "excerpt_sha256": "6e76b8d438c50d85b77752018bb1890ac246184edcc08347b274a78e2e1cb8aa",
+        "lines_sha256": "b03bd927e8648298fc6787fd6c269eb2fa50b79b347c9a00a20290ad3e3ca4e9"
+      },
+      "source_ids": [
+        "C2",
+        "C3",
+        "C7",
+        "A2",
+        "A5",
+        "A13"
+      ],
+      "overlap_classification": "mixed",
+      "recommended_action": "needs_probe",
+      "native_support": "Both hosts offer explicit Git worktrees and native permission boundaries.",
+      "native_limit": "Separate agent context is not separate filesystem state; worktrees share some Git metadata, and Claude's documented shell sandbox excludes native Windows.",
+      "discriminating_probe": {
+        "setup": "Use a disposable repository with two writers proposing conflicting edits to one tracked file, an untracked user file and a shared mutable path.",
+        "variants": [
+          "Explicit native worktrees and configured permissions.",
+          "Same controls with the selected ownership/serialization rule."
+        ],
+        "faults": [
+          "Both writers target the same checkout.",
+          "A writer reaches a shared path outside its worktree.",
+          "Integration would overwrite the untracked user file."
+        ],
+        "pass_condition": "Conflicts are isolated or serialized, user state is retained, and integration surfaces incompatible patches instead of silently accepting lost edits.",
+        "metrics": [
+          "Actual working directories",
+          "Lost or out-of-scope edits",
+          "Detected conflicts",
+          "Successful valid integration",
+          "Setup and integration overhead"
+        ]
+      },
+      "risk": "Treating a worktree as an OS sandbox can miss shared state, symlinks and external resources; custom ownership records can also create stale locks.",
+      "probe_status": "not_run"
+    },
+    {
+      "id": "OVL-006",
+      "title": "Respect explicit model assignment",
+      "skill": {
+        "path": "skill/SKILL.md",
+        "line_start": 45,
+        "line_end": 45,
+        "excerpt": "An unavailable explicitly assigned model blocks that lane until an authorized fallback is available.",
+        "excerpt_sha256": "c514fd98a77d01fa69a8dbd0cb7306764d47b270638d58421da28e86057d0725",
+        "lines_sha256": "a6902db2aeb0cc79e0c9a0f00b4df73523c0af15442533b5966229675a5ead66"
+      },
+      "source_ids": [
+        "C1",
+        "C2",
+        "A5",
+        "A9"
+      ],
+      "overlap_classification": "mixed",
+      "recommended_action": "keep",
+      "native_support": "Native hosts support model/effort assignment and provider-dependent availability; Claude documents fallback configuration.",
+      "native_limit": "Alias resolution, safety fallback or overload fallback does not demonstrate authorization to replace an explicitly assigned model under this contract.",
+      "discriminating_probe": {
+        "setup": "Use an offline dispatch adapter fixture with an explicit unavailable model and a different available fallback; record requested and reported identities.",
+        "variants": [
+          "Native adapter with configured fallback behavior.",
+          "Same adapter with the explicit-assignment policy enforced before dispatch."
+        ],
+        "faults": [
+          "Requested model is unavailable.",
+          "An alias resolves to a different model revision.",
+          "Reported identity is missing."
+        ],
+        "pass_condition": "The lane either uses the authorized identity/fallback or records a blocked/unknown state; no fabricated identity or silent replacement is recorded as compliance.",
+        "metrics": [
+          "Requested versus observed model/effort",
+          "Unauthorized substitutions",
+          "Correct blocked and unknown states",
+          "Valid authorized fallback retained"
+        ]
+      },
+      "risk": "Blocking every fallback can reduce availability, while allowing silent replacement invalidates reproducibility. The correct choice depends on existing user authorization.",
+      "probe_status": "not_run"
+    },
+    {
+      "id": "OVL-007",
+      "title": "Technically protect acceptance artifacts",
+      "skill": {
+        "path": "skill/references/execution-contract.md",
+        "line_start": 29,
+        "line_end": 29,
+        "excerpt": "A read-only convention is not access enforcement.",
+        "excerpt_sha256": "afe7911ffa6223d4d464e981e2d93096dc986c4d385a2ff6154d12b862ca9116",
+        "lines_sha256": "62c6c2ce8955ba30ad5e49b5de57a7388d6dcdb90a6e1758f161b3af25bdee42"
+      },
+      "source_ids": [
+        "C4",
+        "C7",
+        "A7",
+        "A12",
+        "A13"
+      ],
+      "overlap_classification": "mixed",
+      "recommended_action": "needs_probe",
+      "native_support": "Native tool permissions, hooks and shell sandboxing can enforce selected boundaries.",
+      "native_limit": "Hook errors and event coverage vary; post-action checks cannot undo side effects, and platform support is not uniform. None of the inspected docs establishes this repository's exact protected-grader boundary.",
+      "discriminating_probe": {
+        "setup": "Place a tiny acceptance file outside a writer's allowed scope and provide a valid in-scope source repair; configure only supported native controls.",
+        "variants": [
+          "Native permission/sandbox/hook boundary.",
+          "The same boundary plus any proposed custom protection; retain the convention-versus-enforcement disclosure in both."
+        ],
+        "faults": [
+          "Writer tries direct Edit and shell writes to the acceptance file.",
+          "A configured pre-action handler fails.",
+          "A valid source edit needs to proceed."
+        ],
+        "pass_condition": "All selected prohibited paths are blocked before mutation while the valid edit succeeds; report unsupported paths and fail-open behavior instead of claiming complete protection.",
+        "metrics": [
+          "Blocked versus completed prohibited writes by tool",
+          "Original acceptance-file hash",
+          "Hook error outcome",
+          "Valid edit completion",
+          "Maintenance/setup burden"
+        ]
+      },
+      "risk": "An overbroad rule can block valid development, and a prompt-only prohibition can be mistaken for technical enforcement. Mocked coverage does not establish live OS isolation.",
+      "probe_status": "not_run"
+    },
+    {
+      "id": "OVL-008",
+      "title": "Retain the best candidate under current obligations",
+      "skill": {
+        "path": "skill/references/execution-contract.md",
+        "line_start": 123,
+        "line_end": 123,
+        "excerpt": "An older candidate must still meet the current contract and receive affected integration checks.",
+        "excerpt_sha256": "2205352aee9265928b8e1ef400a041f0e7ae513b9098cd9571ac5747fb438a9b",
+        "lines_sha256": "755c0fc12a3857f6236aedfc3186ab6786b72ba110f0cc39f6c6b768d4196a65"
+      },
+      "source_ids": [
+        "C3",
+        "C5",
+        "A3",
+        "A8"
+      ],
+      "overlap_classification": "gauntlet_policy",
+      "recommended_action": "keep",
+      "native_support": "Native checkpoint, worktree and workflow recovery facilities can preserve or restore earlier states.",
+      "native_limit": "State restoration does not establish that the restored candidate satisfies changed requirements or is the strongest independently verified candidate.",
+      "discriminating_probe": {
+        "setup": "Freeze an older passing artifact, a later regression, and a legitimate criteria change that makes one old result stale.",
+        "variants": [
+          "Native recovery/restoration using saved state.",
+          "Same recovery with explicit current-contract validation before accepting the restored state."
+        ],
+        "faults": [
+          "Latest candidate regresses.",
+          "An older artifact passed superseded criteria.",
+          "A user edit exists after the snapshot."
+        ],
+        "pass_condition": "The earlier candidate may be restored only without losing user changes, and affected current obligations must be rechecked; a stale pass cannot become current acceptance.",
+        "metrics": [
+          "Artifact and criteria identities",
+          "Stale acceptance attempts",
+          "User changes preserved",
+          "Valid restoration success",
+          "Reverification cost"
+        ]
+      },
+      "risk": "A stored checkpoint can be incomplete, and keeping many candidates adds overhead. The exact retention policy's performance benefit is unmeasured.",
+      "probe_status": "not_run"
+    },
+    {
+      "id": "OVL-009",
+      "title": "Bind hosted CI evidence to reviewed revision",
+      "skill": {
+        "path": "skill/references/software-quality.md",
+        "line_start": 20,
+        "line_end": 20,
+        "excerpt": "Inspect the hosted run for the exact reviewed commit.",
+        "excerpt_sha256": "5492a81ab180aa02bc0c2b0aeb9184d1f4963c6270f36b276d032a97086e46e0",
+        "lines_sha256": "dc1b65338c1494cefd7388402e9037107420b809d651486cfe6e336aa6ad7431"
+      },
+      "source_ids": [
+        "C5",
+        "C7",
+        "A1",
+        "A7"
+      ],
+      "overlap_classification": "gauntlet_policy",
+      "recommended_action": "keep",
+      "native_support": "Native hosts can inspect tests, tools and integration results; hooks can implement supplied checks.",
+      "native_limit": "The inspected native documentation does not establish automatic exact-revision and required-job binding for this project's hosted CI.",
+      "discriminating_probe": {
+        "setup": "Create an offline set of CI response fixtures for a selected CI delivery gate, with candidate commit and required job IDs fixed.",
+        "variants": [
+          "Ordinary native CI-result inspection.",
+          "Same inspection with explicit candidate-revision and required-job matching."
+        ],
+        "faults": [
+          "A green run belongs to the previous commit.",
+          "A required job is skipped or cancelled.",
+          "A complete current run passes."
+        ],
+        "pass_condition": "Only the complete passing run for the reviewed identity can close the selected gate; old, skipped, queued and cancelled results remain incomplete.",
+        "metrics": [
+          "False acceptance by stale revision/status",
+          "Correct acceptance of valid fixture",
+          "Missing required jobs reported",
+          "Record size and inspection effort"
+        ]
+      },
+      "risk": "Passing source checks may be incorrectly generalized to a distributed artifact, while forcing CI when it was never selected would add unauthorized scope.",
+      "probe_status": "not_run"
+    },
+    {
+      "id": "OVL-010",
+      "title": "Budget continuity across decomposition and resume",
+      "skill": {
+        "path": "skill/references/execution-contract.md",
+        "line_start": 117,
+        "line_end": 117,
+        "excerpt": "Split children share their parent's unspent allowance; renamed pieces, resumed sessions, model changes, and restarts retain ledger ancestry.",
+        "excerpt_sha256": "963d41f9fc88b2ed2bd898cb4e104360ffa89c049472462008855c5306ecbe17",
+        "lines_sha256": "78cd646d5913f7222d6a2eb14d8ec2d4cb11e79ed84c586ea120e66bd2fd693f"
+      },
+      "source_ids": [
+        "C2",
+        "A5",
+        "A10",
+        "A11"
+      ],
+      "overlap_classification": "gauntlet_policy",
+      "recommended_action": "keep",
+      "native_support": "Native delegation and usage reporting exist, and Claude exposes print-mode turn/dollar limits including subagents on recent versions.",
+      "native_limit": "These sources do not establish Gauntlet's cross-run ledger ancestry, reserved integration allowance or exact cumulative-versus-incremental reconciliation for every adapter.",
+      "discriminating_probe": {
+        "setup": "Use a deterministic fake meter with a parent charge, two concurrent reservations, a cancellation of unknown final cost and a resumed child.",
+        "variants": [
+          "Native per-invocation limits and reported usage.",
+          "The same controls with a shared ancestry/reservation ledger."
+        ],
+        "faults": [
+          "Two workers each reserve the full remainder.",
+          "A renamed child requests a fresh allowance.",
+          "Cancelled spend remains unknown.",
+          "A completed reservation has verifiably unused funds."
+        ],
+        "pass_condition": "Known charges and unresolved reservations remain counted, concurrent dispatch cannot double-spend the same remainder, and only confirmed unused reservations return. Unknown cost must stay unknown or a labeled bound.",
+        "metrics": [
+          "Rejected oversubscriptions",
+          "Ledger reconciliation",
+          "Unknown-cost handling",
+          "Valid remaining work allowed",
+          "Accounting overhead"
+        ]
+      },
+      "risk": "Reactive native caps can overshoot an exact target; incomplete telemetry and cumulative session totals can double-charge or undercount. This fixture does not establish real-provider billing behavior.",
+      "probe_status": "not_run"
+    },
+    {
+      "id": "OVL-011",
+      "title": "Validate before resume dispatch",
+      "skill": {
+        "path": "skill/references/execution-contract.md",
+        "line_start": 139,
+        "line_end": 139,
+        "excerpt": "On resume, write a resume validation record before any dispatch.",
+        "excerpt_sha256": "c195cd5df5b2501336d4bb476b460ffc2189120b9b999277f79ef21746285fdc",
+        "lines_sha256": "a4887d0a51b19ff52c2107f91c1b9df2d34da655299b2d02db5cbdec9b8db987"
+      },
+      "source_ids": [
+        "C3",
+        "C5",
+        "C7",
+        "A3",
+        "A5",
+        "A8"
+      ],
+      "overlap_classification": "gauntlet_policy",
+      "recommended_action": "keep",
+      "native_support": "Both hosts expose session recovery/resumption, and Claude workflows can replay completed results within a session.",
+      "native_limit": "Native conversation recovery does not establish artifact/criteria/authorization agreement or safe retry of an uncertain external action.",
+      "discriminating_probe": {
+        "setup": "Prepare saved-state fixtures with artifact hashes, criteria versions, a pending effect, remaining budget and ownership; drive a fake dispatcher.",
+        "variants": [
+          "Native resume using saved conversation/state.",
+          "Same resume with the selected pre-dispatch validation rule."
+        ],
+        "faults": [
+          "Artifact or grader changed after checkpoint.",
+          "Authorization changed.",
+          "A prior external action may have succeeded.",
+          "Checkpoint state is partial but events remain valid."
+        ],
+        "pass_condition": "Dispatch stays withheld or limited to explicit repair steps until affected identities, authorization, ownership and uncertain effects are reconciled. Prior charges and holds survive.",
+        "metrics": [
+          "Dispatches before validation",
+          "Incorrect stale acceptance",
+          "Duplicate external effects",
+          "Valid resumes completed",
+          "Recovery effort and refusal rate"
+        ]
+      },
+      "risk": "Treating cancellation as rollback can duplicate effects. An overly strict validator can unnecessarily restart valid work; the current local controller's refusal behavior is not full native recovery.",
+      "probe_status": "not_run"
+    },
+    {
+      "id": "OVL-012",
+      "title": "Conditional lesson validity and contradiction handling",
+      "skill": {
+        "path": "skill/references/learning-and-evolution.md",
+        "line_start": 65,
+        "line_end": 65,
+        "excerpt": "When a selected lesson conflicts with current observation, quarantine its affected use immediately, record the contradiction, notify dependent owners, and reverify affected claims.",
+        "excerpt_sha256": "78d84ecfdf36cf075486e6f341257f47c6d238dc619e7d120762e48078696e2e",
+        "lines_sha256": "3f7c4b5d0f6aa909fcd6a02c0e870a1a20202f35a4e1dfbd1ee3d452f087d2e8"
+      },
+      "source_ids": [
+        "C6",
+        "A2",
+        "A6"
+      ],
+      "overlap_classification": "gauntlet_policy",
+      "recommended_action": "keep",
+      "native_support": "Both hosts provide memory facilities; Codex memory is documented as off by default and Claude auto memory as on by default.",
+      "native_limit": "Native note storage/retrieval is not evidence for Gauntlet's validity checks, dependency propagation or beneficial cross-task transfer.",
+      "discriminating_probe": {
+        "setup": "Freeze an old lesson tied to a superseded interface and a separate still-valid lesson; supply a current authoritative fixture contradicting only the old lesson.",
+        "variants": [
+          "Native memory with ordinary project instructions.",
+          "Same memory and inputs with the selected contradiction policy."
+        ],
+        "faults": [
+          "A retrieved lesson conflicts with current executable evidence.",
+          "A downstream claim depends on the stale lesson.",
+          "An unrelated useful lesson remains valid."
+        ],
+        "pass_condition": "Only affected uses and dependent claims are suspended/rechecked; current user requirements and unrelated valid knowledge remain available. No new lesson is promoted merely because the old one failed.",
+        "metrics": [
+          "Stale lesson applications",
+          "Dependent claims invalidated",
+          "Valid lessons retained",
+          "Unauthorized policy promotion",
+          "Retrieval and recheck overhead"
+        ]
+      },
+      "risk": "Memory shared across worktrees can leak treatment information; quarantine can overdiscard useful knowledge. Neither documentation nor this specification demonstrates transfer gains.",
+      "probe_status": "not_run"
+    }
+  ],
+  "registry_hash_policy": "Provenance snapshot after schema materialization; frozen plans bind selected claim/source records, not unrelated queue edits."
+}

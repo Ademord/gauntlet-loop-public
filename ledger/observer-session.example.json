@@ -1,0 +1,12 @@
+{
+  "host": "codex",
+  "client_version": null,
+  "model_id": null,
+  "effort": null,
+  "tools": null,
+  "permissions": null,
+  "memory": null,
+  "workflow": "ordinary user task; actual active configuration still needs recording",
+  "request_sha256": null,
+  "source_snapshot_sha256": null
+}

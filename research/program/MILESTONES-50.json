@@ -1,0 +1,2596 @@
+{
+  "checked_date": "2026-09-20",
+  "scope": "Authoritative claim catalog. Workflow state and queue are distinct; dated Markdown proposals are historical snapshots.",
+  "sources": {
+    "C1": {
+      "title": "Models",
+      "url": "https://learn.chatgpt.com/docs/models",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "C2": {
+      "title": "Subagents",
+      "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "C3": {
+      "title": "Worktrees",
+      "url": "https://learn.chatgpt.com/docs/environments/git-worktrees",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "C4": {
+      "title": "Hooks",
+      "url": "https://learn.chatgpt.com/docs/hooks",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "C5": {
+      "title": "Best practices",
+      "url": "https://learn.chatgpt.com/guides/best-practices",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "C6": {
+      "title": "Memories",
+      "url": "https://learn.chatgpt.com/docs/customization/memories",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "C7": {
+      "title": "Codex CLI",
+      "url": "https://learn.chatgpt.com/docs/codex/cli",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "C8": {
+      "title": "Code review",
+      "url": "https://learn.chatgpt.com/docs/code-review",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "A1": {
+      "title": "How Claude Code works",
+      "url": "https://code.claude.com/docs/en/how-claude-code-works",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "A2": {
+      "title": "Subagents",
+      "url": "https://code.claude.com/docs/en/sub-agents",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "A3": {
+      "title": "Dynamic workflows",
+      "url": "https://code.claude.com/docs/en/workflows",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "A4": {
+      "title": "Agent teams",
+      "url": "https://code.claude.com/docs/en/agent-teams",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "A5": {
+      "title": "CLI reference",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "A6": {
+      "title": "Memory",
+      "url": "https://code.claude.com/docs/en/memory",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "A7": {
+      "title": "Hooks",
+      "url": "https://code.claude.com/docs/en/hooks",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "A8": {
+      "title": "Checkpointing",
+      "url": "https://code.claude.com/docs/en/checkpointing",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "A9": {
+      "title": "Model configuration",
+      "url": "https://code.claude.com/docs/en/model-config",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "A10": {
+      "title": "Costs",
+      "url": "https://code.claude.com/docs/en/costs",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "A11": {
+      "title": "Monitoring",
+      "url": "https://code.claude.com/docs/en/monitoring-usage",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "A12": {
+      "title": "Permissions",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "A13": {
+      "title": "Sandboxing",
+      "url": "https://code.claude.com/docs/en/sandboxing",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "A14": {
+      "title": "Claude Fable",
+      "url": "https://www.anthropic.com/claude/fable",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "R12": {
+      "title": "AgentDojo",
+      "url": "https://arxiv.org/html/2406.13352v3",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": null
+    },
+    "R13": {
+      "title": "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena",
+      "url": "https://arxiv.org/abs/2306.05685",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": null
+    },
+    "E1": {
+      "title": "Calibration decision",
+      "url": "calibration/DECISION.md",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": null
+    },
+    "E2": {
+      "title": "Calibration controller",
+      "url": "../../tools/paired_study/run_calibration.py",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": null
+    },
+    "E3": {
+      "title": "Controller and telemetry test evidence",
+      "url": "RESEARCH-NATIVE-50.md#local-engineering-evidence",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": null
+    },
+    "E4": {
+      "title": "Grader review",
+      "url": "calibration/GRADER-REVIEW.md",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": null
+    },
+    "E5": {
+      "title": "Measurement replay",
+      "url": "paired-study/measurement-replay.md",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": null
+    },
+    "E6": {
+      "title": "Version, release and public-audit evidence",
+      "url": "RESEARCH-NATIVE-50.md#local-engineering-evidence",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": null
+    },
+    "R1": {
+      "title": "Agentless",
+      "url": "https://arxiv.org/html/2407.01489v2",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": null
+    },
+    "R2": {
+      "title": "Self-Refine",
+      "url": "https://arxiv.org/abs/2303.17651",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": null
+    },
+    "R3": {
+      "title": "Reflexion",
+      "url": "https://arxiv.org/abs/2303.11366",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": null
+    },
+    "R4": {
+      "title": "LLMs Cannot Self-Correct Reasoning Yet",
+      "url": "https://arxiv.org/abs/2310.01798",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": null
+    },
+    "R5": {
+      "title": "AI Agents That Matter",
+      "url": "https://arxiv.org/html/2407.01502v1",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": null
+    },
+    "R6": {
+      "title": "Stop Overvaluing Multi-Agent Debate",
+      "url": "https://arxiv.org/pdf/2502.08788v3",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": null
+    },
+    "R7": {
+      "title": "Multi-Agent Reasoning Improves Compute Efficiency",
+      "url": "https://arxiv.org/html/2605.01566v1#S4.SS1",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": null
+    },
+    "R8": {
+      "title": "Towards a Science of Scaling Agent Systems",
+      "url": "https://arxiv.org/html/2512.08296v3#S4",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": null
+    },
+    "R9": {
+      "title": "Why Do Multi-Agent LLM Systems Fail?",
+      "url": "https://arxiv.org/html/2503.13657v3#S3",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": null
+    },
+    "R10": {
+      "title": "EvalPlus",
+      "url": "https://arxiv.org/abs/2305.01210",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": null
+    },
+    "R11": {
+      "title": "Try Again, Don't Look Back",
+      "url": "https://arxiv.org/abs/2607.26117",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": null
+    },
+    "C9": {
+      "title": "Local Codex CLI version/help probe",
+      "url": "RESEARCH-NATIVE-50.md#local-codex-cli-probe",
+      "checked_date": "2026-09-20",
+      "review_status": "active",
+      "review_after_days": 30
+    },
+    "R14": {
+      "title": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
+      "url": "https://arxiv.org/abs/2310.06770",
+      "checked_date": "2026-09-21",
+      "review_status": "active",
+      "review_after_days": null
+    },
+    "R15": {
+      "title": "SWE-bench Goes Live!",
+      "url": "https://arxiv.org/html/2505.23419v2",
+      "checked_date": "2026-09-21",
+      "review_status": "active",
+      "review_after_days": null
+    },
+    "C10": {
+      "title": "Codex App Server: stored thread reads and usage events",
+      "url": "https://learn.chatgpt.com/docs/app-server",
+      "checked_date": "2026-09-21",
+      "review_status": "active",
+      "review_after_days": 30
+    }
+  },
+  "milestones": [
+    {
+      "id": 1,
+      "milestone": "Capable native-agent baseline",
+      "claim": "Use the host's competent ordinary workflow as the control.",
+      "comparator": "Sensibly configured native Codex or Claude Code, with normal tests, revisions and available orchestration.",
+      "advance_or_stop": "Close generic novelty by reuse; freeze actual configuration before a local claim.",
+      "losses_to_disclose": "Baseline failures, unused native features, missing costs.",
+      "allowance": "L",
+      "next_decision": "Freeze a fair native control.",
+      "research_support": {
+        "grade": "P",
+        "label": "✅ Principle; local compliance still checked",
+        "sources": [
+          "R1",
+          "R5"
+        ]
+      },
+      "codex": {
+        "support": "✅ Native loop, tests/review tools; adequate checking is not guaranteed",
+        "sources": [
+          "C5",
+          "C7",
+          "C8"
+        ]
+      },
+      "claude_code": {
+        "support": "✅ Native context/action/verification loop",
+        "sources": [
+          "A1"
+        ]
+      },
+      "claim_id": "M-001",
+      "workflow": {
+        "state": "reuse",
+        "queue": "closed",
+        "priority": 101,
+        "depends_on": [],
+        "scope": "The generic baseline mechanism is established. Six local constructed-task controls ran; representative readiness is not established."
+      },
+      "evidence_ids": [
+        "EV-BASELINE"
+      ],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 2,
+      "milestone": "Additional self-check",
+      "claim": "Extra requested self-check adds a distinct useful intervention.",
+      "comparator": "The same native host working normally; collapse arms if they perform the same actions.",
+      "advance_or_stop": "Reuse conditional literature; require an observed treatment difference before funding a comparison.",
+      "losses_to_disclose": "Spoils, incorrect feedback, duplicate checking.",
+      "allowance": "L",
+      "next_decision": "Retain a distinct control or remove a redundant arm.",
+      "research_support": {
+        "grade": "C",
+        "label": "🟨 Conditional/mixed; no imported effect",
+        "sources": [
+          "R2",
+          "R3",
+          "R4",
+          "R11"
+        ]
+      },
+      "codex": {
+        "support": "◐ Can self-check; an additional pass is instruction-dependent",
+        "sources": [
+          "C5"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ Verification already occurs; extra reflection may duplicate it",
+        "sources": [
+          "A1",
+          "A3"
+        ]
+      },
+      "claim_id": "M-002",
+      "workflow": {
+        "state": "reuse",
+        "queue": "closed",
+        "priority": 102,
+        "depends_on": [],
+        "scope": "Generic self-refinement exists. Local continuations ran; extra self-check is not generally proven better."
+      },
+      "evidence_ids": [
+        "EV-SELF-CHECK"
+      ],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 3,
+      "milestone": "Exact V1 added value",
+      "claim": "The archived V1 package adds enough value beyond a capable native workflow.",
+      "comparator": "Native host and, only if distinct, explicit self-check; same model, tools, tasks and ceilings.",
+      "advance_or_stop": "G against strongest applicable native control; stop on an expensive tie or undefined treatment.",
+      "losses_to_disclose": "Regressions, false critique, timeouts, approval of wrong work.",
+      "allowance": "B",
+      "next_decision": "Keep the winner, including the native host alone.",
+      "research_support": {
+        "grade": "U",
+        "label": "❔ Exact local benefit unproven",
+        "sources": [
+          "R1",
+          "R5",
+          "R6",
+          "R7"
+        ]
+      },
+      "codex": {
+        "support": "◐ Review/subagents exist; exact V1 contract is not a default",
+        "sources": [
+          "C2",
+          "C8"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ Native adversarial review and checker/fix workflows overlap V1",
+        "sources": [
+          "A3"
+        ]
+      },
+      "claim_id": "M-003",
+      "workflow": {
+        "state": "open",
+        "queue": "blocked",
+        "priority": 103,
+        "depends_on": [
+          "M-001",
+          "M-002",
+          "M-021",
+          "M-024",
+          "M-026",
+          "M-027",
+          "M-033"
+        ],
+        "scope": "Exact archived V1 was not executed by the six-task calibration. Native workflows may already implement much of the mechanism."
+      },
+      "evidence_ids": [
+        "EV-GRADER-GAPS"
+      ],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 4,
+      "milestone": "Stronger development feedback",
+      "claim": "One targeted check repairs an observed feedback gap.",
+      "comparator": "Incumbent's existing tests/tools versus the added check.",
+      "advance_or_stop": "Catch frozen known defects and retain valid alternatives; G for a paid delivery claim.",
+      "losses_to_disclose": "Incorrect tests, missed defects, valid solutions rejected.",
+      "allowance": "L→S",
+      "next_decision": "Adopt only a discriminating check.",
+      "research_support": {
+        "grade": "P",
+        "label": "✅ Principle; local compliance still checked",
+        "sources": [
+          "R3",
+          "R10"
+        ]
+      },
+      "codex": {
+        "support": "⚙️ Test tools and custom validation hooks; checks must be supplied",
+        "sources": [
+          "C4",
+          "C5"
+        ]
+      },
+      "claude_code": {
+        "support": "⚙️ Verification tools and configured completion checks",
+        "sources": [
+          "A1",
+          "A7"
+        ]
+      },
+      "claim_id": "M-004",
+      "workflow": {
+        "state": "partial",
+        "queue": "blocked",
+        "priority": 104,
+        "depends_on": [
+          "M-024"
+        ],
+        "scope": "Executable grading and saved counterexamples exist; references and coverage have known gaps."
+      },
+      "evidence_ids": [
+        "EV-GRADER-GAPS"
+      ],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 5,
+      "milestone": "Marginal value of another round",
+      "claim": "A bounded continuation rule earns the next review/revision.",
+      "comparator": "Stop versus continue from the same eligible checkpoint.",
+      "advance_or_stop": "G using incremental rescues/spoils and cost; defer without eligible unresolved evidence.",
+      "losses_to_disclose": "Correct work spoiled, repetition, premature stopping.",
+      "allowance": "L→S",
+      "next_decision": "Freeze a stopping rule.",
+      "research_support": {
+        "grade": "C",
+        "label": "🟨 Conditional/mixed; no imported effect",
+        "sources": [
+          "R2",
+          "R4",
+          "R6",
+          "R7"
+        ]
+      },
+      "codex": {
+        "support": "◐ Agent continuation and Stop hooks; marginal-value rule not established",
+        "sources": [
+          "C4"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ Workflow loops/no-progress stopping; economic optimality unproven",
+        "sources": [
+          "A3"
+        ]
+      },
+      "claim_id": "M-005",
+      "workflow": {
+        "state": "deferred",
+        "queue": "deferred",
+        "priority": 105,
+        "depends_on": [
+          "M-003"
+        ],
+        "scope": "Fixed one-pass stages exist; evidence-based continuation benefit is untested."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 6,
+      "milestone": "Ownership and isolation",
+      "claim": "Safe ownership prevents state interference with acceptable overhead.",
+      "comparator": "Existing native worktrees/read-only controls versus additional machinery.",
+      "advance_or_stop": "Zero lost edits/leaks on frozen faults while valid work completes; no population guarantee.",
+      "losses_to_disclose": "Merge loss, false locks, setup/cleanup cost.",
+      "allowance": "L",
+      "next_decision": "Reuse native isolation; qualify any missing boundary.",
+      "research_support": {
+        "grade": "E",
+        "label": "🔧 Engineering reuse; not a performance paper",
+        "sources": [
+          "R9",
+          "E2",
+          "E3"
+        ]
+      },
+      "codex": {
+        "support": "⚙️ Explicit worktrees and permission boundaries; not every child isolated",
+        "sources": [
+          "C2",
+          "C3",
+          "C7"
+        ]
+      },
+      "claude_code": {
+        "support": "⚙️ Worktree isolation opt-in; context isolation alone is insufficient",
+        "sources": [
+          "A2",
+          "A5",
+          "A13"
+        ]
+      },
+      "claim_id": "M-006",
+      "workflow": {
+        "state": "partial",
+        "queue": "blocked",
+        "priority": 106,
+        "depends_on": [],
+        "scope": "Branch separation, protected graders and reviewer-write detection are verified; concurrent ownership and OS isolation are not thereby established."
+      },
+      "evidence_ids": [
+        "EV-CALIBRATION-CONTROLS"
+      ],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 7,
+      "milestone": "Specialized roles",
+      "claim": "A particular responsibility split improves integrated delivery.",
+      "comparator": "Same decomposition, worker count and model mix with general versus specialized workers.",
+      "advance_or_stop": "G; score the integrated deliverable, not completed subtasks.",
+      "losses_to_disclose": "Interface mismatches, duplication, missing responsibilities.",
+      "allowance": "S",
+      "next_decision": "Keep only useful responsibilities.",
+      "research_support": {
+        "grade": "C",
+        "label": "🟨 Conditional/mixed; no imported effect",
+        "sources": [
+          "R6",
+          "R8",
+          "R9"
+        ]
+      },
+      "codex": {
+        "support": "✅ Built-in/custom subagents and role instructions",
+        "sources": [
+          "C2"
+        ]
+      },
+      "claude_code": {
+        "support": "✅ Built-in/custom agents; custom role/model configuration",
+        "sources": [
+          "A2"
+        ]
+      },
+      "claim_id": "M-007",
+      "workflow": {
+        "state": "deferred",
+        "queue": "deferred",
+        "priority": 107,
+        "depends_on": [
+          "M-006"
+        ],
+        "scope": "Roles are specified and native subagents exist; Gauntlet's incremental performance is unmeasured."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 8,
+      "milestone": "Parallel scheduling",
+      "claim": "Concurrent execution reduces delivery time economically.",
+      "comparator": "Same workers and decomposition scheduled serially versus concurrently.",
+      "advance_or_stop": "At least 20% lower median delivery time, no fewer acceptances, at most 10% extra metered cost.",
+      "losses_to_disclose": "Contention, races, integration delays, idle work.",
+      "allowance": "S",
+      "next_decision": "Enable concurrency only for supported task classes.",
+      "research_support": {
+        "grade": "C",
+        "label": "🟨 Conditional/mixed; no imported effect",
+        "sources": [
+          "R8",
+          "R9"
+        ]
+      },
+      "codex": {
+        "support": "✅ Parallel subagents; Ultra may delegate proactively",
+        "sources": [
+          "C1",
+          "C2"
+        ]
+      },
+      "claude_code": {
+        "support": "⚙️ Parallel subagents/workflows; peer teams experimental opt-in",
+        "sources": [
+          "A2",
+          "A3",
+          "A4"
+        ]
+      },
+      "claim_id": "M-008",
+      "workflow": {
+        "state": "deferred",
+        "queue": "deferred",
+        "priority": 108,
+        "depends_on": [
+          "M-006",
+          "M-007"
+        ],
+        "scope": "Native concurrency is available; local throughput benefit is unmeasured."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 9,
+      "milestone": "Shared findings with evidence",
+      "claim": "Source/scope/status records prevent harmful propagation of claims.",
+      "comparator": "Clear native handoffs versus explicit evidence-linked records.",
+      "advance_or_stop": "Reject frozen stale/unsupported findings, preserve valid ones; G before claiming delivery gains.",
+      "losses_to_disclose": "False facts propagated, useful facts discarded, bookkeeping.",
+      "allowance": "L→S",
+      "next_decision": "Use the smallest useful shared record.",
+      "research_support": {
+        "grade": "C",
+        "label": "🟨 Conditional/mixed; no imported effect",
+        "sources": [
+          "R9"
+        ]
+      },
+      "codex": {
+        "support": "◐ Handoffs and summaries; exact claim-validity policy not established",
+        "sources": [
+          "C2"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ Handoffs/team messages; exact provenance policy not established",
+        "sources": [
+          "A2",
+          "A3",
+          "A4"
+        ]
+      },
+      "claim_id": "M-009",
+      "workflow": {
+        "state": "deferred",
+        "queue": "deferred",
+        "priority": 109,
+        "depends_on": [
+          "M-007"
+        ],
+        "scope": "A shared-evidence protocol is specified; causal delivery benefit is unmeasured."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 10,
+      "milestone": "Dissent and HOLD resolution",
+      "claim": "Evidence-backed dissent blocks bad approvals without deadlock.",
+      "comparator": "Native review/issue handling versus an owned HOLD with a release condition.",
+      "advance_or_stop": "No bad approvals or unresolved false HOLDs in frozen controls; G for a performance claim.",
+      "losses_to_disclose": "Deadlocks, false blocks, legitimate dissent dismissed.",
+      "allowance": "L→S",
+      "next_decision": "Keep or simplify dissent handling.",
+      "research_support": {
+        "grade": "U",
+        "label": "❔ Exact local benefit unproven",
+        "sources": [
+          "R9"
+        ]
+      },
+      "codex": {
+        "support": "◐ Reviewer and hooks; owned evidence-based HOLD requires policy",
+        "sources": [
+          "C4",
+          "C8"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ Review/workflow/hooks; exact HOLD contract requires configuration",
+        "sources": [
+          "A3",
+          "A7"
+        ]
+      },
+      "claim_id": "M-010",
+      "workflow": {
+        "state": "deferred",
+        "queue": "deferred",
+        "priority": 110,
+        "depends_on": [
+          "M-009"
+        ],
+        "scope": "Native review and hooks are primitives; the exact Gauntlet resolution policy is not validated."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 11,
+      "milestone": "Budget allocation and parking",
+      "claim": "A parking policy completes more valuable work within a fixed budget.",
+      "comparator": "Same queue, predeclared values and hard ceiling under current allocation.",
+      "advance_or_stop": "At least 25% more accepted obligations per dollar; no critical obligation abandoned.",
+      "losses_to_disclose": "Starvation, cheap-task selection, premature abandonment, later retries.",
+      "allowance": "L→S",
+      "next_decision": "Choose a portfolio allocation policy.",
+      "research_support": {
+        "grade": "C",
+        "label": "🟨 Conditional/mixed; no imported effect",
+        "sources": [
+          "R5",
+          "R9",
+          "E2"
+        ]
+      },
+      "codex": {
+        "support": "◐ Concurrency controls; economic portfolio parking not established",
+        "sources": [
+          "C2"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ Turn/dollar limits; adaptive portfolio allocation not established",
+        "sources": [
+          "A5"
+        ]
+      },
+      "claim_id": "M-011",
+      "workflow": {
+        "state": "partial",
+        "queue": "blocked",
+        "priority": 111,
+        "depends_on": [
+          "M-005"
+        ],
+        "scope": "Fixed reservations/caps are implemented; adaptive allocation and parking value are not tested."
+      },
+      "evidence_ids": [
+        "EV-CALIBRATION-CONTROLS"
+      ],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 12,
+      "milestone": "Artifact-bound acceptance",
+      "claim": "A verdict cannot remain valid after its relevant identities change.",
+      "comparator": "Conscientious verification versus automated candidate/input/evaluator identity checks.",
+      "advance_or_stop": "No stale-evidence accepts or valid-evidence rejects in frozen replay; accounting reconciles.",
+      "losses_to_disclose": "False accepts, needless revalidation, byte/encoding mistakes.",
+      "allowance": "L",
+      "next_decision": "Reuse the verified integrity controls.",
+      "research_support": {
+        "grade": "E",
+        "label": "🔧 Engineering reuse; not a performance paper",
+        "sources": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      "codex": {
+        "support": "◐ Git/review surfaces; full acceptance identity binding is local code",
+        "sources": [
+          "C3",
+          "C8",
+          "E2"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ Checkpoints/workflows; exact verdict-to-artifact binding not established",
+        "sources": [
+          "A3",
+          "A8"
+        ]
+      },
+      "claim_id": "M-012",
+      "workflow": {
+        "state": "verified_scope",
+        "queue": "closed",
+        "priority": 112,
+        "depends_on": [],
+        "scope": "Experimental frozen identities, protected grading and saved-byte evidence controls have local tests; this is not universal correctness."
+      },
+      "evidence_ids": [
+        "EV-CALIBRATION-CONTROLS"
+      ],
+      "experiment_ids": [],
+      "related_backlog_ids": [
+        "B-031"
+      ],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 13,
+      "milestone": "Best verified candidate",
+      "claim": "Retaining an earlier verified candidate avoids regression from later revision.",
+      "comparator": "Latest versus best-so-far using development evidence only.",
+      "advance_or_stop": "Preserve valid candidates and verified improvements in replay; G for a paid screen.",
+      "losses_to_disclose": "Improvements rejected, regressions retained, selection overhead.",
+      "allowance": "L→S",
+      "next_decision": "Choose a candidate-retention rule.",
+      "research_support": {
+        "grade": "U",
+        "label": "❔ Exact local benefit unproven",
+        "sources": [
+          "E1"
+        ]
+      },
+      "codex": {
+        "support": "◐ Worktree snapshots/revert; automatic best-quality selection not established",
+        "sources": [
+          "C3",
+          "C8"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ Checkpoint/rewind; automatic best-quality selection not established",
+        "sources": [
+          "A8"
+        ]
+      },
+      "claim_id": "M-013",
+      "workflow": {
+        "state": "deferred",
+        "queue": "deferred",
+        "priority": 113,
+        "depends_on": [
+          "M-012"
+        ],
+        "scope": "Snapshots exist; adaptive selection has not been evaluated."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 14,
+      "milestone": "Interruption recovery",
+      "claim": "Resuming preserves obligations and avoids repeated work.",
+      "comparator": "Native resume versus restart at identical declared interruption points.",
+      "advance_or_stop": "At least 50% lower post-interruption duplicate work/cost; no lost obligations or duplicate effects in controlled cases.",
+      "losses_to_disclose": "Stale context, invalid resumes, checkpoint overhead.",
+      "allowance": "L→S",
+      "next_decision": "Add only recovery guarantees missing from the host.",
+      "research_support": {
+        "grade": "U",
+        "label": "❔ Exact local benefit unproven",
+        "sources": [
+          "E2"
+        ]
+      },
+      "codex": {
+        "support": "✅ Saved-session resume; complete side-effect recovery not guaranteed",
+        "sources": [
+          "C5",
+          "C7"
+        ]
+      },
+      "claude_code": {
+        "support": "✅ Resume/fork and workflow replay with documented limits",
+        "sources": [
+          "A3",
+          "A5",
+          "A8"
+        ]
+      },
+      "claim_id": "M-014",
+      "workflow": {
+        "state": "partial",
+        "queue": "blocked",
+        "priority": 114,
+        "depends_on": [
+          "M-012",
+          "M-013"
+        ],
+        "scope": "Hosts support resume. The calibration controller refuses interrupted re-execution; that is not recovery."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 15,
+      "milestone": "Light versus heavy routing",
+      "claim": "A pre-run routing rule lowers cost without degrading acceptance.",
+      "comparator": "Best fixed native route versus a frozen observable-feature rule.",
+      "advance_or_stop": "At least 25% lower cost per acceptance; no acceptance drop in either declared task stratum.",
+      "losses_to_disclose": "Misrouting, underfunding, escalation cost.",
+      "allowance": "S",
+      "next_decision": "Use a validated route with a fallback.",
+      "research_support": {
+        "grade": "C",
+        "label": "🟨 Conditional/mixed; no imported effect",
+        "sources": [
+          "R8"
+        ]
+      },
+      "codex": {
+        "support": "⚙️ Model/effort settings and Ultra; no proven workload-optimal router",
+        "sources": [
+          "C1",
+          "C2"
+        ]
+      },
+      "claude_code": {
+        "support": "⚙️ Effort/model routing and optional ultracode; economic optimality unproven",
+        "sources": [
+          "A3",
+          "A9"
+        ]
+      },
+      "claim_id": "M-015",
+      "workflow": {
+        "state": "deferred",
+        "queue": "deferred",
+        "priority": 115,
+        "depends_on": [
+          "M-003",
+          "M-021"
+        ],
+        "scope": "Native effort/delegation controls exist; old prompt tests do not establish a reliable local router."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 16,
+      "milestone": "Unsupported late judgments",
+      "claim": "Making unsupported late criticism advisory avoids needless revision.",
+      "comparator": "Same naturally occurring late checkpoint with the rule off versus on.",
+      "advance_or_stop": "At least 25% lower remaining cost, no acceptance drop or skipped confirmed defect.",
+      "losses_to_disclose": "Valid concerns dismissed, missed defects, costs displaced.",
+      "allowance": "L→S",
+      "next_decision": "Adopt or defer the evidence ladder.",
+      "research_support": {
+        "grade": "U",
+        "label": "❔ Exact local benefit unproven",
+        "sources": [
+          "R4",
+          "R6",
+          "R7"
+        ]
+      },
+      "codex": {
+        "support": "◐ Configurable review/hooks; exact late-round evidence ladder not established",
+        "sources": [
+          "C4",
+          "C8"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ No-progress workflow controls; exact Gauntlet ladder not established",
+        "sources": [
+          "A3",
+          "A7"
+        ]
+      },
+      "claim_id": "M-016",
+      "workflow": {
+        "state": "deferred",
+        "queue": "deferred",
+        "priority": 116,
+        "depends_on": [
+          "M-005"
+        ],
+        "scope": "Exact late-review rule is specified, not shown effective."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 17,
+      "milestone": "Verified cross-task memory",
+      "claim": "Relevant verified lessons repay retrieval costs on future tasks.",
+      "comparator": "Native memory configuration versus the same host with Gauntlet's lesson policy.",
+      "advance_or_stop": "G on untouched tasks; reject frozen stale/invalid lessons; defer without a usable corpus.",
+      "losses_to_disclose": "Negative transfer, irrelevant context, stale lessons, leakage.",
+      "allowance": "L→S",
+      "next_decision": "Keep selective memory only if it adds value.",
+      "research_support": {
+        "grade": "C",
+        "label": "🟨 Conditional/mixed; no imported effect",
+        "sources": [
+          "R3"
+        ]
+      },
+      "codex": {
+        "support": "⚙️ Local memories exist, off by default; not verified-lesson guarantees",
+        "sources": [
+          "C6"
+        ]
+      },
+      "claude_code": {
+        "support": "✅ Auto memory default-on; notes are context, not enforced policy",
+        "sources": [
+          "A6"
+        ]
+      },
+      "claim_id": "M-017",
+      "workflow": {
+        "state": "deferred",
+        "queue": "deferred",
+        "priority": 117,
+        "depends_on": [
+          "M-009",
+          "M-012"
+        ],
+        "scope": "Native memory exists; a validated transferable Gauntlet lesson corpus does not."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [
+        "B-032"
+      ],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 18,
+      "milestone": "Economic model allocation",
+      "claim": "Role-specific model assignments lower total cost at preserved quality.",
+      "comparator": "Fixed strong-model configuration versus bounded mixed-model assignment.",
+      "advance_or_stop": "At least 25% lower cost per acceptance, no acceptance drop or critical regression; include escalations.",
+      "losses_to_disclose": "Cheap errors causing expensive repair, weak reviewers, retry loops.",
+      "allowance": "S",
+      "next_decision": "Keep supported model assignments.",
+      "research_support": {
+        "grade": "C",
+        "label": "🟨 Conditional/mixed; no imported effect",
+        "sources": [
+          "R5",
+          "R8"
+        ]
+      },
+      "codex": {
+        "support": "⚙️ Per-agent model/effort assignment",
+        "sources": [
+          "C1",
+          "C2"
+        ]
+      },
+      "claude_code": {
+        "support": "⚙️ Per-agent model/effort and fallbacks",
+        "sources": [
+          "A2",
+          "A9"
+        ]
+      },
+      "claim_id": "M-018",
+      "workflow": {
+        "state": "deferred",
+        "queue": "deferred",
+        "priority": 118,
+        "depends_on": [
+          "M-003",
+          "M-027"
+        ],
+        "scope": "Native model assignment exists; optimal Gauntlet allocation is unmeasured."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 19,
+      "milestone": "Integrated confirmation",
+      "claim": "The surviving combination retains its advantage on untouched work.",
+      "comparator": "Strongest simple/native control in another relevant context; later fixed-model replication.",
+      "advance_or_stop": "Predeclare sample size and claim; confidence bound must clear the practical hurdle, otherwise inconclusive.",
+      "losses_to_disclose": "Feature interactions, context dependence, vanished gains, incomplete runs.",
+      "allowance": "Q",
+      "next_decision": "Support a bounded release claim or roll back.",
+      "research_support": {
+        "grade": "P",
+        "label": "✅ Principle; local compliance still checked",
+        "sources": [
+          "R5"
+        ]
+      },
+      "codex": {
+        "support": "? No default independent confirmation of Gauntlet's added value established",
+        "sources": []
+      },
+      "claude_code": {
+        "support": "? No default independent confirmation of Gauntlet's added value established",
+        "sources": []
+      },
+      "claim_id": "M-019",
+      "workflow": {
+        "state": "open",
+        "queue": "blocked",
+        "priority": 119,
+        "depends_on": [
+          "M-021",
+          "M-024",
+          "M-026",
+          "M-027",
+          "M-028",
+          "M-029",
+          "M-030"
+        ],
+        "scope": "No integrated performance confirmation exists; six calibration fixtures are not confirmation."
+      },
+      "evidence_ids": [
+        "EV-GRADER-GAPS"
+      ],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 20,
+      "milestone": "Independent user value",
+      "claim": "Other people voluntarily reuse the method because it reduces their work.",
+      "comparator": "Five prospective users' normal workflows on paired real tasks.",
+      "advance_or_stop": "Early signal: 3/5 voluntarily reuse, at least 25% less active effort, no acceptance decline; actual payment for a payment claim.",
+      "losses_to_disclose": "Non-adoption, setup friction, support cost, unpaid enthusiasm.",
+      "allowance": "Q",
+      "next_decision": "Fund a narrow product, publish a result, simplify or stop.",
+      "research_support": {
+        "grade": "U",
+        "label": "❔ Exact local benefit unproven",
+        "sources": []
+      },
+      "codex": {
+        "support": "? Our users' demand and effort benefit cannot be preinstalled",
+        "sources": []
+      },
+      "claude_code": {
+        "support": "? Our users' demand and effort benefit cannot be preinstalled",
+        "sources": []
+      },
+      "claim_id": "M-020",
+      "workflow": {
+        "state": "open",
+        "queue": "blocked",
+        "priority": 120,
+        "depends_on": [
+          "M-019"
+        ],
+        "scope": "No independent adoption or paid-demand evidence is recorded."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 21,
+      "milestone": "Representative task population",
+      "claim": "The sample supports the intended deployment claim.",
+      "comparator": "Convenience tasks versus frozen eligibility and task strata.",
+      "advance_or_stop": "Cover declared job types and exclusions; stop broad claims from unrepresentative sampling.",
+      "losses_to_disclose": "Selection bias, missing task families, concentration.",
+      "allowance": "L",
+      "next_decision": "Define eligible real work before the bridge.",
+      "research_support": {
+        "grade": "P",
+        "label": "✅ Principle; local compliance still checked",
+        "sources": [
+          "R5",
+          "E1",
+          "R14",
+          "R15"
+        ]
+      },
+      "codex": {
+        "support": "? Representative sampling of our future tasks is study-specific",
+        "sources": []
+      },
+      "claude_code": {
+        "support": "? Representative sampling of our future tasks is study-specific",
+        "sources": []
+      },
+      "claim_id": "M-021",
+      "workflow": {
+        "state": "open",
+        "queue": "ready",
+        "priority": 3,
+        "depends_on": [],
+        "scope": "Selection and reproducibility policy prepared from real-issue benchmark methods. No fresh representative task population is admitted or executed."
+      },
+      "evidence_ids": [
+        "EV-TASK-SELECTION"
+      ],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 22,
+      "milestone": "Unambiguous task contracts",
+      "claim": "Acceptance reflects the intended requirement and allows valid alternatives.",
+      "comparator": "Current specification versus an independent interpretation and boundary controls.",
+      "advance_or_stop": "Resolve material ambiguity before solving; reject no valid control.",
+      "losses_to_disclose": "Ambiguous expectations, overconstrained solutions.",
+      "allowance": "L",
+      "next_decision": "Keep, clarify or exclude the task.",
+      "research_support": {
+        "grade": "P",
+        "label": "✅ Principle; local compliance still checked",
+        "sources": [
+          "R10",
+          "E4"
+        ]
+      },
+      "codex": {
+        "support": "◐ Clarification/review tools; correct task contracts still require work",
+        "sources": [
+          "C5",
+          "C8"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ Context and clarification; valid contracts still require work",
+        "sources": [
+          "A1"
+        ]
+      },
+      "claim_id": "M-022",
+      "workflow": {
+        "state": "partial",
+        "queue": "blocked",
+        "priority": 122,
+        "depends_on": [
+          "M-021"
+        ],
+        "scope": "Independent grader review exists; discovered reference/contract boundaries still limit claims."
+      },
+      "evidence_ids": [
+        "EV-GRADER-GAPS"
+      ],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 23,
+      "milestone": "Answer and holdout isolation",
+      "claim": "The solver sees only permitted evidence.",
+      "comparator": "Worker-visible contents versus a frozen permitted-input manifest.",
+      "advance_or_stop": "Any prohibited solution, hidden-test or sibling-artifact exposure invalidates the affected comparison.",
+      "losses_to_disclose": "Leaked files/history/memory, restrictive isolation breaking useful tools.",
+      "allowance": "L",
+      "next_decision": "Qualify the evaluation boundary.",
+      "research_support": {
+        "grade": "P",
+        "label": "✅ Principle; local compliance still checked",
+        "sources": [
+          "R5",
+          "E2",
+          "E3"
+        ]
+      },
+      "codex": {
+        "support": "◐ Permission/context/worktree primitives; hidden-data boundary must be qualified",
+        "sources": [
+          "C2",
+          "C3",
+          "C7"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ Permissions/worktrees; shared memory/history can still matter",
+        "sources": [
+          "A2",
+          "A6",
+          "A12",
+          "A13"
+        ]
+      },
+      "claim_id": "M-023",
+      "workflow": {
+        "state": "partial",
+        "queue": "blocked",
+        "priority": 123,
+        "depends_on": [
+          "M-021"
+        ],
+        "scope": "Protected copies and branch checks exist; not every possible host access path has been excluded."
+      },
+      "evidence_ids": [
+        "EV-GRADER-GAPS"
+      ],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 24,
+      "milestone": "Independent acceptance coverage",
+      "claim": "The evaluator can distinguish important wrong and valid solutions.",
+      "comparator": "Existing suite/reference versus independent boundary, property and mutation probes.",
+      "advance_or_stop": "Catch known counterexamples and preserve valid controls; narrow claims when gaps remain.",
+      "losses_to_disclose": "Missed defects, wrong references, invalid generated tests.",
+      "allowance": "L",
+      "next_decision": "Repair the evaluator before funding solver improvements.",
+      "research_support": {
+        "grade": "P",
+        "label": "✅ Principle; local compliance still checked",
+        "sources": [
+          "R10",
+          "E1",
+          "E4"
+        ]
+      },
+      "codex": {
+        "support": "◐ Can run/create tests; independent sufficient coverage not guaranteed",
+        "sources": [
+          "C5"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ Can verify outputs; independent sufficient coverage not guaranteed",
+        "sources": [
+          "A1"
+        ]
+      },
+      "claim_id": "M-024",
+      "workflow": {
+        "state": "partial",
+        "queue": "blocked",
+        "priority": 124,
+        "depends_on": [
+          "M-021",
+          "M-022"
+        ],
+        "scope": "Supplementary probes exposed real gaps; their discovery is done, complete coverage is not."
+      },
+      "evidence_ids": [
+        "EV-GRADER-GAPS"
+      ],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 25,
+      "milestone": "Subjective judge qualification",
+      "claim": "A judge supports the intended decision without material order bias.",
+      "comparator": "Proposed model judge versus independently labeled cases with answer-order reversal.",
+      "advance_or_stop": "Predeclare acceptable false-accept/reject limits and order sensitivity; defer an unreliable judge.",
+      "losses_to_disclose": "Order/verbosity bias, confident factual errors, human disagreement.",
+      "allowance": "L→Q",
+      "next_decision": "Use the qualified judge or change evaluation method.",
+      "research_support": {
+        "grade": "C",
+        "label": "🟨 Conditional/mixed; no imported effect",
+        "sources": [
+          "R13"
+        ]
+      },
+      "codex": {
+        "support": "◐ Reviewer available; local judge calibration is not automatic",
+        "sources": [
+          "C8"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ Reviewer available; local judge calibration is not automatic",
+        "sources": [
+          "A3"
+        ]
+      },
+      "claim_id": "M-025",
+      "workflow": {
+        "state": "deferred",
+        "queue": "deferred",
+        "priority": 125,
+        "depends_on": [
+          "M-022"
+        ],
+        "scope": "Needed only when executable acceptance cannot cover the relevant outcome."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 26,
+      "milestone": "Observed treatment fidelity",
+      "claim": "Recorded events establish which intervention actually ran.",
+      "comparator": "Requested stages/topology versus controller events and artifact changes.",
+      "advance_or_stop": "No missing, extra or mislabeled stages; stop causal claims when treatment differs.",
+      "losses_to_disclose": "Prompt labels mistaken for actions, nested agents omitted.",
+      "allowance": "L",
+      "next_decision": "Close duplicate arms and audit each host's actual workflow.",
+      "research_support": {
+        "grade": "E",
+        "label": "🔧 Engineering reuse; not a performance paper",
+        "sources": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      "codex": {
+        "support": "◐ Subagent activity and JSONL events available; trace-to-treatment audit remains local",
+        "sources": [
+          "C2",
+          "C9"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ Workflows/observability expose activity; assigned-vs-actual audit remains local",
+        "sources": [
+          "A3",
+          "A11"
+        ]
+      },
+      "claim_id": "M-026",
+      "workflow": {
+        "state": "verified_scope",
+        "queue": "ready",
+        "priority": 2,
+        "depends_on": [],
+        "scope": "Fixed calibration stages and no nested agents were verified; current native-host and exact-V1 fidelity still need qualification."
+      },
+      "evidence_ids": [
+        "EV-CALIBRATION-CONTROLS"
+      ],
+      "experiment_ids": [],
+      "related_backlog_ids": [
+        "B-034",
+        "B-035"
+      ],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 27,
+      "milestone": "Complete attributable accounting",
+      "claim": "Resource totals reconcile without double charging.",
+      "comparator": "Raw events, inherited counters and shared-prefix allocation versus reported totals.",
+      "advance_or_stop": "Reconcile every metered component; label billed cash, research and human costs unknown when absent.",
+      "losses_to_disclose": "Missing runs/categories, double counting, subscription estimates sold as bills.",
+      "allowance": "L",
+      "next_decision": "Reuse metering; fill only missing cost categories.",
+      "research_support": {
+        "grade": "E",
+        "label": "🔧 Engineering reuse; not a performance paper",
+        "sources": [
+          "E1",
+          "E3",
+          "E5"
+        ]
+      },
+      "codex": {
+        "support": "? Detailed usage-payload accounting not established by inspected Codex sources",
+        "sources": []
+      },
+      "claude_code": {
+        "support": "◐ Usage estimates and optional telemetry; provider bill authoritative",
+        "sources": [
+          "A10",
+          "A11"
+        ]
+      },
+      "claim_id": "M-027",
+      "workflow": {
+        "state": "verified_scope",
+        "queue": "closed",
+        "priority": 127,
+        "depends_on": [],
+        "scope": "CLI-equivalent accounting repairs are verified; full research/human/billed-cash cost is not measured."
+      },
+      "evidence_ids": [
+        "EV-METERING"
+      ],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 28,
+      "milestone": "Order and cache controls",
+      "claim": "Comparison effects can be separated from execution order and cache state.",
+      "comparator": "Fixed-order runs versus predeclared counterbalanced order with cache/session metadata.",
+      "advance_or_stop": "Stop pooling when order/carryover confounds cannot be separated; record both cold and warm conditions if relevant.",
+      "losses_to_disclose": "Asymmetric caches, provider load shifts, carryover.",
+      "allowance": "L→S",
+      "next_decision": "Choose a comparable execution schedule.",
+      "research_support": {
+        "grade": "P",
+        "label": "✅ Principle; local compliance still checked",
+        "sources": [
+          "R5"
+        ]
+      },
+      "codex": {
+        "support": "? Study-specific counterbalancing is not established as a default",
+        "sources": []
+      },
+      "claude_code": {
+        "support": "? Study-specific counterbalancing is not established as a default",
+        "sources": []
+      },
+      "claim_id": "M-028",
+      "workflow": {
+        "state": "open",
+        "queue": "blocked",
+        "priority": 128,
+        "depends_on": [
+          "M-021"
+        ],
+        "scope": "Previous sequential calibration does not establish order-neutral latency."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 29,
+      "milestone": "Identifiable statistical decision",
+      "claim": "The planned evidence can resolve the practical funding question.",
+      "comparator": "Vague score comparison versus a predeclared estimand, sample unit and uncertainty plan.",
+      "advance_or_stop": "Specify detectable effect, clustering and claim count before confirmation; defer unaffordable inconclusive designs.",
+      "losses_to_disclose": "False discoveries, correlated tasks, noisy tiny samples.",
+      "allowance": "L→Q",
+      "next_decision": "Fund a decision-sized study or narrow the claim.",
+      "research_support": {
+        "grade": "P",
+        "label": "✅ Principle; local compliance still checked",
+        "sources": [
+          "R5"
+        ]
+      },
+      "codex": {
+        "support": "? Sample-size/uncertainty design for our claim is not a default",
+        "sources": []
+      },
+      "claude_code": {
+        "support": "? Sample-size/uncertainty design for our claim is not a default",
+        "sources": []
+      },
+      "claim_id": "M-029",
+      "workflow": {
+        "state": "open",
+        "queue": "blocked",
+        "priority": 129,
+        "depends_on": [
+          "M-021"
+        ],
+        "scope": "Exploratory four-task gates are not a powered confirmation design."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 30,
+      "milestone": "Failures and attrition included",
+      "claim": "Reports include every eligible started attempt.",
+      "comparator": "All-run ledger versus success-only or asymmetrically filtered reports.",
+      "advance_or_stop": "Reconcile task denominators and missing rows; fail the report on unexplained exclusion.",
+      "losses_to_disclose": "Timeouts hidden, failed setup dropped, unknown-cost attempts.",
+      "allowance": "L",
+      "next_decision": "Reuse reporting safeguards and expose incomplete outcomes.",
+      "research_support": {
+        "grade": "E",
+        "label": "🔧 Engineering reuse; not a performance paper",
+        "sources": [
+          "E2",
+          "E3",
+          "E5"
+        ]
+      },
+      "codex": {
+        "support": "◐ CLI advertises JSONL events; complete study denominator remains custom",
+        "sources": [
+          "C9"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ Traces support accounting; complete eligible-task denominator is local",
+        "sources": [
+          "A11"
+        ]
+      },
+      "claim_id": "M-030",
+      "workflow": {
+        "state": "verified_scope",
+        "queue": "closed",
+        "priority": 130,
+        "depends_on": [],
+        "scope": "Partial-report and accounting safeguards have tests; each future campaign still needs reconciliation."
+      },
+      "evidence_ids": [
+        "EV-CALIBRATION-CONTROLS",
+        "EV-PASSIVE-OBSERVER",
+        "EV-OBSERVER-NATIVE-001"
+      ],
+      "experiment_ids": [],
+      "related_backlog_ids": [
+        "B-015"
+      ],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 31,
+      "milestone": "Remove redundant instructions",
+      "claim": "Shorter instructions retain useful behavior at lower overhead.",
+      "comparator": "Earned configuration versus a version with specific redundant clauses removed.",
+      "advance_or_stop": "G plus no omitted critical obligation; distinguish token reduction from total delivery savings.",
+      "losses_to_disclose": "Lost requirements, cheaper prompts causing more repairs.",
+      "allowance": "L→S",
+      "next_decision": "Delete unsupported ceremony and retain rollback.",
+      "research_support": {
+        "grade": "C",
+        "label": "🟨 Conditional/mixed; no imported effect",
+        "sources": [
+          "R5"
+        ]
+      },
+      "codex": {
+        "support": "◐ Supports durable instructions; automatic safe removal is not established",
+        "sources": [
+          "C5"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ Supports durable instructions; automatic safe removal is not established",
+        "sources": [
+          "A6"
+        ]
+      },
+      "claim_id": "M-031",
+      "workflow": {
+        "state": "open",
+        "queue": "deferred",
+        "priority": 4,
+        "depends_on": [
+          "M-001",
+          "M-002"
+        ],
+        "scope": "Removal benefit remains unmeasured. The first eight-word candidate is deferred: limited expected value and surviving reconnaissance instructions make native substitution ambiguous. See EXP-031-033-002 selection_review."
+      },
+      "evidence_ids": [
+        "EV-OVERLAP",
+        "EV-INVENTORY-AUDIT"
+      ],
+      "experiment_ids": [
+        "EXP-031-033-001",
+        "EXP-031-033-002"
+      ],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 32,
+      "milestone": "Qualify a second host",
+      "claim": "A minimal adapter preserves the required semantics on another host.",
+      "comparator": "Working backend versus a minimal Codex/Claude Code adapter.",
+      "advance_or_stop": "Pass every required compatibility case; stop portability claims on an unsupported required action.",
+      "losses_to_disclose": "Changed semantics, missing tools, platform-only behavior.",
+      "allowance": "L→Q",
+      "next_decision": "Support that host or document a precise limit.",
+      "research_support": {
+        "grade": "E",
+        "label": "🔧 Engineering reuse; not a performance paper",
+        "sources": [
+          "E6"
+        ]
+      },
+      "codex": {
+        "support": "◐ Codex interface exists; shared cross-host semantics require adaptation",
+        "sources": [
+          "C2",
+          "C4",
+          "C7"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ Claude interface exists; shared cross-host semantics require adaptation",
+        "sources": [
+          "A2",
+          "A3",
+          "A5"
+        ]
+      },
+      "claim_id": "M-032",
+      "workflow": {
+        "state": "partial",
+        "queue": "blocked",
+        "priority": 132,
+        "depends_on": [
+          "M-033"
+        ],
+        "scope": "Host APIs exist, but no Gauntlet cross-host equivalence claim is established."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 33,
+      "milestone": "Prefer native enforcement",
+      "claim": "Native controls satisfy a requirement with less custom machinery.",
+      "comparator": "Existing safe host controls versus extra prompt/custom enforcement.",
+      "advance_or_stop": "Prevent frozen violations while retaining valid work; skip custom code if native behavior suffices.",
+      "losses_to_disclose": "Fail-open hooks, false blocks, maintenance burden.",
+      "allowance": "L",
+      "next_decision": "Adopt native controls and identify exact gaps.",
+      "research_support": {
+        "grade": "E",
+        "label": "🔧 Engineering reuse; not a performance paper",
+        "sources": []
+      },
+      "codex": {
+        "support": "⚙️ Native permissions and trusted hooks; error behavior varies by hook",
+        "sources": [
+          "C4",
+          "C7"
+        ]
+      },
+      "claude_code": {
+        "support": "⚙️ Native permissions/sandbox/hooks; platform and stopping limits apply",
+        "sources": [
+          "A7",
+          "A12",
+          "A13"
+        ]
+      },
+      "claim_id": "M-033",
+      "workflow": {
+        "state": "reuse",
+        "queue": "ready",
+        "priority": 1,
+        "depends_on": [],
+        "scope": "Native-control-first decision is closed; exact deployment configuration and fault behavior are still checked."
+      },
+      "evidence_ids": [
+        "EV-NATIVE-CONTROLS",
+        "EV-OVERLAP",
+        "EV-INVENTORY-AUDIT"
+      ],
+      "experiment_ids": [
+        "EXP-031-033-001",
+        "EXP-031-033-002"
+      ],
+      "related_backlog_ids": [
+        "B-022"
+      ],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 34,
+      "milestone": "Initial repository context",
+      "claim": "Focused discovery reduces cost without hiding needed interfaces.",
+      "comparator": "Native exploration versus an explicit scoped localization/retrieval policy.",
+      "advance_or_stop": "G; stop context trimming on a consequential omission.",
+      "losses_to_disclose": "Missing dependencies, stale snippets, discovery overhead.",
+      "allowance": "S",
+      "next_decision": "Retain useful context selection.",
+      "research_support": {
+        "grade": "C",
+        "label": "🟨 Conditional/mixed; no imported effect",
+        "sources": [
+          "R1",
+          "R8"
+        ]
+      },
+      "codex": {
+        "support": "✅ Native exploration agents and tool-based discovery",
+        "sources": [
+          "C2",
+          "C7"
+        ]
+      },
+      "claude_code": {
+        "support": "✅ Native exploration/subagents; task-local retrieval quality still matters",
+        "sources": [
+          "A1",
+          "A2"
+        ]
+      },
+      "claim_id": "M-034",
+      "workflow": {
+        "state": "deferred",
+        "queue": "deferred",
+        "priority": 134,
+        "depends_on": [
+          "M-021"
+        ],
+        "scope": "Native exploration exists; custom selection value is unmeasured."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 35,
+      "milestone": "Within-run state compression",
+      "claim": "A compact obligation/evidence packet preserves necessary working state.",
+      "comparator": "Native compaction versus an added compact state packet.",
+      "advance_or_stop": "No consequential lost obligation in frozen replay; G for claimed delivery improvement.",
+      "losses_to_disclose": "Altered facts, lost constraints, rehydration cost.",
+      "allowance": "L→S",
+      "next_decision": "Keep only state the host otherwise loses.",
+      "research_support": {
+        "grade": "C",
+        "label": "🟨 Conditional/mixed; no imported effect",
+        "sources": [
+          "R8"
+        ]
+      },
+      "codex": {
+        "support": "✅ Automatic compaction; Astra context-management experiment opt-in",
+        "sources": [
+          "C1",
+          "C5"
+        ]
+      },
+      "claude_code": {
+        "support": "✅ Native compaction/context management; preservation still must be checked",
+        "sources": [
+          "A1"
+        ]
+      },
+      "claim_id": "M-035",
+      "workflow": {
+        "state": "deferred",
+        "queue": "deferred",
+        "priority": 135,
+        "depends_on": [
+          "M-012"
+        ],
+        "scope": "Native compaction exists; this differs from future-task memory."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 36,
+      "milestone": "Machine-checkable records",
+      "claim": "A small schema prevents invalid records from driving decisions.",
+      "comparator": "Free-form interpretation versus a schema consumed by the controller.",
+      "advance_or_stop": "Reject all frozen invalid records and accept valid controls; measure repair overhead.",
+      "losses_to_disclose": "Valid records rejected, syntactically valid false claims.",
+      "allowance": "L",
+      "next_decision": "Keep only fields used by actual decisions.",
+      "research_support": {
+        "grade": "E",
+        "label": "🔧 Engineering reuse; not a performance paper",
+        "sources": [
+          "E2",
+          "E3"
+        ]
+      },
+      "codex": {
+        "support": "⚙️ Installed CLI advertises final-response JSON Schema; not exercised here",
+        "sources": [
+          "C9"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ Structured workflow results; semantic truth requires external checks",
+        "sources": [
+          "A3"
+        ]
+      },
+      "claim_id": "M-036",
+      "workflow": {
+        "state": "partial",
+        "queue": "blocked",
+        "priority": 136,
+        "depends_on": [],
+        "scope": "Calibration records are structured; a schema does not establish factual correctness."
+      },
+      "evidence_ids": [
+        "EV-CALIBRATION-CONTROLS",
+        "EV-PASSIVE-OBSERVER",
+        "EV-OBSERVER-NATIVE-001"
+      ],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 37,
+      "milestone": "Prompt versus controller",
+      "claim": "Explicit stage control improves process compliance enough to repay implementation.",
+      "comparator": "Same workflow followed by instructions versus executable stage transitions.",
+      "advance_or_stop": "No forbidden/extra stages or unreconciled costs in frozen cases; delivery advantage separately needs G.",
+      "losses_to_disclose": "Rigid dead ends, implementation cost, compliant but wrong outputs.",
+      "allowance": "L→S",
+      "next_decision": "Keep only controller responsibilities not met natively.",
+      "research_support": {
+        "grade": "E",
+        "label": "🔧 Engineering reuse; not a performance paper",
+        "sources": [
+          "E2",
+          "E3"
+        ]
+      },
+      "codex": {
+        "support": "◐ Subagent/hook APIs exist; exact staged host adapter is not qualified",
+        "sources": [
+          "C2",
+          "C4"
+        ]
+      },
+      "claude_code": {
+        "support": "✅ Script-controlled native workflows are available, configuration-dependent",
+        "sources": [
+          "A3"
+        ]
+      },
+      "claim_id": "M-037",
+      "workflow": {
+        "state": "partial",
+        "queue": "blocked",
+        "priority": 137,
+        "depends_on": [
+          "M-026",
+          "M-033"
+        ],
+        "scope": "Calibration stage control exists; native Claude workflows overlap substantially; economic advantage is unmeasured."
+      },
+      "evidence_ids": [
+        "EV-CALIBRATION-CONTROLS",
+        "EV-PASSIVE-OBSERVER",
+        "EV-OBSERVER-NATIVE-001"
+      ],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 38,
+      "milestone": "Value of clarification",
+      "claim": "One targeted question prevents a material mistake at acceptable human cost.",
+      "comparator": "A stated assumption versus clarification on preidentified consequential ambiguity.",
+      "advance_or_stop": "Fewer scope/acceptance errors without higher total active human repair; freeze acceptable delay first.",
+      "losses_to_disclose": "Needless interruptions, wrong assumptions, unanswered questions.",
+      "allowance": "L→Q",
+      "next_decision": "Set a bounded clarification policy.",
+      "research_support": {
+        "grade": "U",
+        "label": "❔ Exact local benefit unproven",
+        "sources": []
+      },
+      "codex": {
+        "support": "✅ Native interaction and task steering",
+        "sources": [
+          "C5",
+          "C7"
+        ]
+      },
+      "claude_code": {
+        "support": "✅ Native interactive clarification",
+        "sources": [
+          "A1"
+        ]
+      },
+      "claim_id": "M-038",
+      "workflow": {
+        "state": "deferred",
+        "queue": "deferred",
+        "priority": 138,
+        "depends_on": [],
+        "scope": "Native agents can ask questions; the best local interruption policy is unmeasured."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 39,
+      "milestone": "Reuse verification evidence",
+      "claim": "Change-impact invalidation saves checking without trusting stale passes.",
+      "comparator": "Full re-verification versus explicit dependency-based evidence reuse.",
+      "advance_or_stop": "No stale passing evidence on frozen changes; G before economic claims.",
+      "losses_to_disclose": "Missed dependencies, stale passes, invalidation overhead.",
+      "allowance": "L→S",
+      "next_decision": "Cache only appropriately bound verification.",
+      "research_support": {
+        "grade": "E",
+        "label": "🔧 Engineering reuse; not a performance paper",
+        "sources": [
+          "E2",
+          "E3"
+        ]
+      },
+      "codex": {
+        "support": "◐ Git/diffs support invalidation; exact evidence dependency cache is not established",
+        "sources": [
+          "C3",
+          "C8"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ Workflows can rerun after prompt changes; full change-impact validity not established",
+        "sources": [
+          "A3"
+        ]
+      },
+      "claim_id": "M-039",
+      "workflow": {
+        "state": "deferred",
+        "queue": "deferred",
+        "priority": 139,
+        "depends_on": [
+          "M-012"
+        ],
+        "scope": "Identity checks are a prerequisite; safe selective invalidation is not demonstrated."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 40,
+      "milestone": "Requirements changed mid-run",
+      "claim": "Explicit amendment preserves new requirements and retires superseded ones.",
+      "comparator": "Native steering versus recorded contract amendment and invalidation.",
+      "advance_or_stop": "No lost new obligations or acceptance against obsolete requirements in frozen cases.",
+      "losses_to_disclose": "Obsolete work, ignored correction, wasted sunk effort.",
+      "allowance": "L→S",
+      "next_decision": "Add amendment tracking only where native steering falls short.",
+      "research_support": {
+        "grade": "U",
+        "label": "❔ Exact local benefit unproven",
+        "sources": []
+      },
+      "codex": {
+        "support": "✅ Native steering; immutable contract amendment is an added policy",
+        "sources": [
+          "C7"
+        ]
+      },
+      "claude_code": {
+        "support": "✅ Interactive guidance; formal amendment/invalidation remains extra",
+        "sources": [
+          "A1"
+        ]
+      },
+      "claim_id": "M-040",
+      "workflow": {
+        "state": "deferred",
+        "queue": "deferred",
+        "priority": 140,
+        "depends_on": [
+          "M-012"
+        ],
+        "scope": "Native steering exists; Gauntlet amendment guarantees are unmeasured."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 41,
+      "milestone": "Idempotent operation retries",
+      "claim": "Retrying an uncertain operation does not duplicate its external effect.",
+      "comparator": "Current tool retry handling versus operation identity/status reconciliation in a simulator.",
+      "advance_or_stop": "Zero duplicate effects and unresolved success states in declared fault cases; stop external rollout on reproduced duplicates.",
+      "losses_to_disclose": "Duplicate writes/messages, false success, unreconciled state.",
+      "allowance": "L→Q",
+      "next_decision": "Qualify each consequential operation before enabling retry.",
+      "research_support": {
+        "grade": "E",
+        "label": "🔧 Engineering reuse; not a performance paper",
+        "sources": []
+      },
+      "codex": {
+        "support": "? No universal exactly-once external-action guarantee established",
+        "sources": []
+      },
+      "claude_code": {
+        "support": "? Resume/workflow replay is not an exactly-once side-effect guarantee",
+        "sources": [
+          "A3",
+          "A5"
+        ]
+      },
+      "claim_id": "M-041",
+      "workflow": {
+        "state": "deferred",
+        "queue": "deferred",
+        "priority": 141,
+        "depends_on": [
+          "M-014"
+        ],
+        "scope": "Resume and ordinary retries do not prove external-action idempotency."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 42,
+      "milestone": "Approval bound to concrete action",
+      "claim": "The action executed matches the artifact and scope the user approved.",
+      "comparator": "Current native approval flow versus a preview/commit boundary.",
+      "advance_or_stop": "No material approval/action mismatch in frozen cases; compare active review burden.",
+      "losses_to_disclose": "Changed targets, stale preview, approval fatigue.",
+      "allowance": "L",
+      "next_decision": "Reuse native approval and verify any missing binding.",
+      "research_support": {
+        "grade": "E",
+        "label": "🔧 Engineering reuse; not a performance paper",
+        "sources": []
+      },
+      "codex": {
+        "support": "✅ Permission and review primitives; verify the actual approved action",
+        "sources": [
+          "C7",
+          "C8"
+        ]
+      },
+      "claude_code": {
+        "support": "✅ Permissions/approval primitives; custom hook authority needs care",
+        "sources": [
+          "A7",
+          "A12"
+        ]
+      },
+      "claim_id": "M-042",
+      "workflow": {
+        "state": "partial",
+        "queue": "blocked",
+        "priority": 142,
+        "depends_on": [
+          "M-012"
+        ],
+        "scope": "Native approvals exist; exact artifact-to-action binding must be checked for the integration."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 43,
+      "milestone": "Task data cannot redirect authority",
+      "claim": "An added defense reduces instruction injection without blocking legitimate work.",
+      "comparator": "Native protections versus the proposed extra defense on controlled malicious/benign fixtures.",
+      "advance_or_stop": "Preserve authorized-task utility and prevent targeted unauthorized actions; stop defenses with no added protection.",
+      "losses_to_disclose": "Successful redirection, false blocks, allowed-tool abuse.",
+      "allowance": "L→Q",
+      "next_decision": "Keep only a demonstrated additional defense.",
+      "research_support": {
+        "grade": "C",
+        "label": "🟨 Conditional/mixed; no imported effect",
+        "sources": [
+          "R12"
+        ]
+      },
+      "codex": {
+        "support": "◐ Permission/trust boundaries; additional injection resistance must be measured",
+        "sources": [
+          "C4",
+          "C7"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ Native defenses and sandboxing; task utility and attack success both matter",
+        "sources": [
+          "A12",
+          "A13"
+        ]
+      },
+      "claim_id": "M-043",
+      "workflow": {
+        "state": "deferred",
+        "queue": "deferred",
+        "priority": 143,
+        "depends_on": [
+          "M-033"
+        ],
+        "scope": "Native protections help; no universal immunity or Gauntlet security advantage is established."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 44,
+      "milestone": "Public release boundary",
+      "claim": "The released bundle contains only intended public material.",
+      "comparator": "Source/export bundle versus an explicit content inventory and scans.",
+      "advance_or_stop": "Block on confirmed prohibited content or missing required artifacts; review scanner limits.",
+      "losses_to_disclose": "Secrets/private paths missed, useful files removed, incomplete exports.",
+      "allowance": "L",
+      "next_decision": "Reuse package and public-audit checks.",
+      "research_support": {
+        "grade": "E",
+        "label": "🔧 Engineering reuse; not a performance paper",
+        "sources": [
+          "E6"
+        ]
+      },
+      "codex": {
+        "support": "◐ Can run scanners; Gauntlet's public-content inventory is repo-specific",
+        "sources": [
+          "C5",
+          "E6"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ Can run scanners; Gauntlet's public-content inventory is repo-specific",
+        "sources": [
+          "A1"
+        ]
+      },
+      "claim_id": "M-044",
+      "workflow": {
+        "state": "verified_scope",
+        "queue": "closed",
+        "priority": 144,
+        "depends_on": [],
+        "scope": "Existing package integrity, link and public-audit checks are reusable; scan success is bounded evidence."
+      },
+      "evidence_ids": [
+        "EV-RELEASE"
+      ],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 45,
+      "milestone": "Quota-aware scheduling",
+      "claim": "Admission control improves useful throughput under real contention.",
+      "comparator": "Current bounded scheduler at the same offered load.",
+      "advance_or_stop": "Predeclare load; at least 20% higher accepted throughput with no worse p95 time or critical starvation; include all waiting/cost.",
+      "losses_to_disclose": "Queue relocation, quota errors, starvation, idle workers.",
+      "allowance": "Q",
+      "next_decision": "Add scheduling only after a measured bottleneck.",
+      "research_support": {
+        "grade": "U",
+        "label": "❔ Exact local benefit unproven",
+        "sources": []
+      },
+      "codex": {
+        "support": "◐ Native concurrency cap; production backpressure policy not established",
+        "sources": [
+          "C2"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ Native agent/budget controls; throughput-optimal scheduling not established",
+        "sources": [
+          "A2",
+          "A5"
+        ]
+      },
+      "claim_id": "M-045",
+      "workflow": {
+        "state": "deferred",
+        "queue": "deferred",
+        "priority": 145,
+        "depends_on": [
+          "M-020",
+          "M-027"
+        ],
+        "scope": "Native concurrency/limits exist; sustained-demand policy value is unmeasured."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 46,
+      "milestone": "Safe execution caching",
+      "claim": "Caching other execution outputs, excluding verification evidence covered by 39, saves total cost without stale outcomes.",
+      "comparator": "Uncached execution versus exact-input/version-bound cache of those outputs.",
+      "advance_or_stop": "No stale reuse in frozen changes; at least 25% lower measured cost per acceptance at the real hit rate.",
+      "losses_to_disclose": "Invalidation errors, low hit rate, cache maintenance.",
+      "allowance": "L→Q",
+      "next_decision": "Keep a cache only if it amortizes.",
+      "research_support": {
+        "grade": "E",
+        "label": "🔧 Engineering reuse; not a performance paper",
+        "sources": []
+      },
+      "codex": {
+        "support": "? Validated result/evidence caching is not established by inspected Codex docs",
+        "sources": []
+      },
+      "claude_code": {
+        "support": "◐ Prompt-cache metrics do not establish safe result/evidence caching",
+        "sources": [
+          "A10"
+        ]
+      },
+      "claim_id": "M-046",
+      "workflow": {
+        "state": "deferred",
+        "queue": "deferred",
+        "priority": 146,
+        "depends_on": [
+          "M-012",
+          "M-027"
+        ],
+        "scope": "Provider prompt caching is not validated result/evidence caching."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 47,
+      "milestone": "Amortized environment setup",
+      "claim": "Reusable pinned environments repay their maintenance.",
+      "comparator": "Clean setup per run versus a reusable pinned environment.",
+      "advance_or_stop": "At least 25% lower setup-inclusive cost/time at observed reuse, with no added acceptance failures.",
+      "losses_to_disclose": "Drift, dirty state, setup flakiness, maintenance cost.",
+      "allowance": "L→Q",
+      "next_decision": "Reuse environments only where repetition warrants it.",
+      "research_support": {
+        "grade": "E",
+        "label": "🔧 Engineering reuse; not a performance paper",
+        "sources": []
+      },
+      "codex": {
+        "support": "⚙️ Managed worktrees and setup scripts are available",
+        "sources": [
+          "C3"
+        ]
+      },
+      "claude_code": {
+        "support": "⚙️ Worktrees available; environment reuse still requires qualification",
+        "sources": [
+          "A2",
+          "A5"
+        ]
+      },
+      "claim_id": "M-047",
+      "workflow": {
+        "state": "deferred",
+        "queue": "deferred",
+        "priority": 147,
+        "depends_on": [
+          "M-020",
+          "M-027"
+        ],
+        "scope": "Native worktrees/setup facilities exist; lifecycle savings are unmeasured."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 48,
+      "milestone": "Requalify upgrades",
+      "claim": "A dependency change does not silently inherit obsolete claims.",
+      "comparator": "Last qualified configuration versus one explicitly changed host/model/tool.",
+      "advance_or_stop": "Pass affected regression/compatibility cases; withhold old performance claims if relevant behavior changes.",
+      "losses_to_disclose": "Behavior drift, silent model overrides, changed bills/tools.",
+      "allowance": "L→Q",
+      "next_decision": "Keep, adapt or roll back the changed configuration.",
+      "research_support": {
+        "grade": "P",
+        "label": "✅ Principle; local compliance still checked",
+        "sources": [
+          "R5",
+          "E6"
+        ]
+      },
+      "codex": {
+        "support": "◐ Model/config selection; current behavior must be requalified",
+        "sources": [
+          "C1",
+          "C2"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ Model aliases/overrides; pin actual selection and requalify",
+        "sources": [
+          "A9"
+        ]
+      },
+      "claim_id": "M-048",
+      "workflow": {
+        "state": "partial",
+        "queue": "blocked",
+        "priority": 148,
+        "depends_on": [],
+        "scope": "Source/package versions are preserved; current host/model behavior has not been fully requalified."
+      },
+      "evidence_ids": [
+        "EV-RELEASE"
+      ],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 49,
+      "milestone": "Independent reproduction",
+      "claim": "Someone else can reconstruct the published evidence without private state.",
+      "comparator": "Author-local replay versus clean-room replay of the shareable bundle.",
+      "advance_or_stop": "Reproduce declared outputs/identities and disclose dependencies; stop claims needing undisclosed state.",
+      "losses_to_disclose": "Missing artifacts, private dependencies, reconstruction burden.",
+      "allowance": "L→Q",
+      "next_decision": "Publish a reproducible bounded claim.",
+      "research_support": {
+        "grade": "P",
+        "label": "✅ Principle; local compliance still checked",
+        "sources": [
+          "R5",
+          "E6"
+        ]
+      },
+      "codex": {
+        "support": "◐ Source/CLI tools available; independent evidence reproduction is extra",
+        "sources": [
+          "C7",
+          "E6"
+        ]
+      },
+      "claude_code": {
+        "support": "◐ CLI/workflow scripts available; independent reproduction is extra",
+        "sources": [
+          "A3",
+          "A5"
+        ]
+      },
+      "claim_id": "M-049",
+      "workflow": {
+        "state": "open",
+        "queue": "blocked",
+        "priority": 149,
+        "depends_on": [
+          "M-019",
+          "M-044"
+        ],
+        "scope": "Release checks pass; independent clean-room performance reproduction is not recorded."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    },
+    {
+      "id": 50,
+      "milestone": "Retire expired features",
+      "claim": "Removing a previously adopted feature after host/workload changes improves current net value; initial prompt cleanup is covered by 31.",
+      "comparator": "Retain versus reversibly remove the feature on the current host.",
+      "advance_or_stop": "At least 25% lower attributable overhead with no acceptance drop or critical regression; include maintenance and support.",
+      "losses_to_disclose": "Removal regressions, hidden dependencies, savings that vanish after repair.",
+      "allowance": "L→S",
+      "next_decision": "Retire unsupported complexity or restore it.",
+      "research_support": {
+        "grade": "U",
+        "label": "❔ Exact local benefit unproven",
+        "sources": []
+      },
+      "codex": {
+        "support": "? No automatic retirement decision for Gauntlet's added policies established",
+        "sources": []
+      },
+      "claude_code": {
+        "support": "? No automatic retirement decision for Gauntlet's added policies established",
+        "sources": []
+      },
+      "claim_id": "M-050",
+      "workflow": {
+        "state": "deferred",
+        "queue": "deferred",
+        "priority": 150,
+        "depends_on": [
+          "M-019"
+        ],
+        "scope": "A continuing policy proposal, not proof that any particular feature can already be removed."
+      },
+      "evidence_ids": [],
+      "experiment_ids": [],
+      "related_backlog_ids": [],
+      "performance_evidence": "unproven"
+    }
+  ],
+  "schema_version": 1
+}

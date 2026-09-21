@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "id": "EXP-031-033-002",
+  "status": "draft",
+  "claim_ids": [
+    "M-031",
+    "M-033"
+  ],
+  "questions": {
+    "claim": "Removing only the OVL-001 reconnaissance reminder preserves relevant-instruction discovery on the chosen native host.",
+    "comparator": "Same native model/effort/tools/permissions/memory/workflows plus the incumbent versus the single-sentence removal proposal.",
+    "stop_rule": "Stop on any lost critical instruction or task obligation. A later performance screen must choose its practical quality/cost gate before execution.",
+    "losses_to_check": "Nested instructions missed, obsolete commands selected, extra discovery/repair, unchanged behavior despite different prompts.",
+    "cost": "No execution allocation established here. Quote the concrete host/task comparison; include all unsuccessful attempts and preparation/evaluation/human costs.",
+    "next_decision": "Retain the reminder, remove it in a governed upgrade, or defer because the intervention is indistinguishable or the evidence inadequate."
+  },
+  "metrics": [
+    "applicable_instructions_found",
+    "obsolete_commands_selected",
+    "accepted_tasks",
+    "all_attempt_cost",
+    "human_repair_minutes"
+  ],
+  "prerequisites": [
+    {
+      "id": "native-configuration",
+      "satisfied": false,
+      "evidence_ids": [
+        "EV-NATIVE-CONTROLS"
+      ],
+      "reason": "Pin actual host version/model/effort/tools/memory/workflow settings; documentation alone is insufficient.",
+      "required_scope": "native-configuration"
+    },
+    {
+      "id": "qualified-native-control",
+      "satisfied": false,
+      "evidence_ids": [],
+      "reason": "Exercise the discriminator on the configured host; inventory audit did not execute native behavior.",
+      "required_scope": "qualified-native-control"
+    },
+    {
+      "id": "representative-tasks-and-acceptance",
+      "satisfied": false,
+      "evidence_ids": [
+        "EV-GRADER-GAPS"
+      ],
+      "reason": "Select eligible tasks and independent acceptance controls before execution.",
+      "required_scope": "representative-tasks-and-acceptance"
+    },
+    {
+      "id": "accounting-and-quote",
+      "satisfied": false,
+      "evidence_ids": [
+        "EV-METERING"
+      ],
+      "reason": "Qualify this host accounting and actual spending ceiling; historical Claude metering is not a current Codex adapter.",
+      "required_scope": "accounting-and-quote"
+    }
+  ],
+  "inputs": [
+    "research/program/materials/native-overlap.json",
+    "research/program/materials/OVL-001/incumbent.txt",
+    "research/program/materials/OVL-001/candidate.txt",
+    "research/program/materials/OVL-001/change.json"
+  ],
+  "execution": {
+    "kind": "external",
+    "runner": null,
+    "reason": "Existing six-task calibration runner is not a native-host single-clause comparison executor."
+  },
+  "configuration": {
+    "host": null,
+    "client_version": null,
+    "model_id": null,
+    "effort": null,
+    "tools": null,
+    "permissions": null,
+    "memory": null,
+    "workflow": null
+  },
+  "budget": {
+    "model_execution_usd": 0,
+    "preparation_minutes": null,
+    "evaluation_minutes": null,
+    "human_minutes": null
+  },
+  "selection_review": {
+    "date": "2026-09-21",
+    "decision": "defer",
+    "reason": "Eight words out of 2228 is a weak first funding target. Remaining reconnaissance instructions confound an inference that native behavior replaces the deleted reminder.",
+    "observations": [
+      {
+        "path": "research/program/materials/OVL-001/change.json",
+        "finding": "2228 incumbent words; 2220 candidate words. Token and delivery savings unmeasured."
+      },
+      {
+        "path": "skill/SKILL.md",
+        "line": 26,
+        "finding": "The surviving text still requires identifying interfaces, existing test commands, dependencies and the reported failure."
+      },
+      {
+        "path": "skill/references/software-quality.md",
+        "line": 7,
+        "finding": "When this reference is loaded, it separately instructs repository-instruction inspection."
+      }
+    ],
+    "next_decision": "Qualify one actual native configuration on an existing real failing task with independently specified acceptance. Then select a treatment against an observed overhead or failure.",
+    "reactivation_condition": "A distinct treatment and useful expected decision justify the comparison; qualify controls and quote costs before execution.",
+    "new_model_experiments": 0
+  }
+}

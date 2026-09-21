@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "OBS-OFFLINE-002",
+  "observed_utc": "2026-09-21T00:16:39.236606+00:00",
+  "tests_run": 110,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "elapsed_seconds": 4.85899999999674,
+  "source_sha256": {
+    "tests/test_contact_metrics.py": "c47119c4fd154a9d9dae4fb07188e991fe722b975fcab967d39eca93abd67ae7",
+    "tests/test_observer.py": "3592515ea1b72d3c9dff8daf76bdec6cc5ca3f353290febad80956d98cf0933e",
+    "tests/test_observer_checkpoint.py": "a96dd0803fcf69a26ea16c6a3f405aed35b98b9b673774efd650bcb046f8ae9f",
+    "tests/test_observer_host.py": "b899c1a926582988115aaeaae2c9ea290405d23ede9e9caeb5e69baf4c5f70ef",
+    "tests/test_observer_install.py": "c5c0bff722cb6916c18b38d3132f903424dbd983c3b4e058f53195480914b1c1",
+    "tools/contact_metrics.py": "93d811107eae0768618a01265c0554e5e26da6b896fb0666c6847c83231a96a8",
+    "tools/observer.py": "c3049290a4dfaf8a7f1ae3781cd41f7cce1204e5108366f8664769c084371c65",
+    "tools/observer_checkpoint.py": "5652135da0e0831aac695cc49bcc3ab914c00fec94d7869a75c7fec4d65be5e6",
+    "tools/observer_host.py": "862e6ab4150c0f361e1ce9caaf114183f51333bd7d3095093da393b64ae11353",
+    "tools/observer_install.py": "dfef0b481f597a11d181ce7f3063f233327264c1436fb637b7b2c3a68d81d81f"
+  },
+  "live_test_record": "research/program/materials/observer-native-validation.json",
+  "performance_claim": null
+}

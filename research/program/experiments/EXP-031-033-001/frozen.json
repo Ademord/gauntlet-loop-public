@@ -1,0 +1,346 @@
+{
+  "schema_version": 1,
+  "frozen_at": "2026-09-20T22:55:49.850288+00:00",
+  "sha256": "da2f7734386c8fb994b7a65f85768d933c1726d202fa8e3dcd958de9ab28ce74",
+  "snapshot": {
+    "plan": {
+      "schema_version": 1,
+      "id": "EXP-031-033-001",
+      "status": "draft",
+      "claim_ids": [
+        "M-031",
+        "M-033"
+      ],
+      "questions": {
+        "claim": "The overlap inventory has resolvable, unchanged clause/source pointers and explicit test discriminators.",
+        "comparator": "Each inventory entry versus the exact incumbent skill lines and the dated native-source registry.",
+        "stop_rule": "Reject the inventory if any excerpt/hash/source/probe record is invalid; zero model execution allowed.",
+        "losses_to_check": "Missing or changed clauses, unsupported source IDs, missing discriminators and overstated probe status.",
+        "cost": "Zero solver/API calls. Preparation, research, evaluation and human dollar costs remain unknown.",
+        "next_decision": "Use the grounded inventory to nominate one candidate; qualify native runtime behavior before comparing a removal."
+      },
+      "metrics": [
+        "entries_checked",
+        "pointer_errors",
+        "native_behavior_probes_executed",
+        "model_calls",
+        "audit_seconds"
+      ],
+      "prerequisites": [
+        {
+          "id": "documentary-inventory",
+          "satisfied": true,
+          "evidence_ids": [
+            "EV-OVERLAP"
+          ],
+          "reason": "Anchored inventory is present; this prerequisite establishes documentary scope only.",
+          "required_scope": "documentary-inventory"
+        }
+      ],
+      "inputs": [
+        "research/program/materials/native-overlap.json"
+      ],
+      "execution": {
+        "kind": "inventory_audit",
+        "material": "research/program/materials/native-overlap.json"
+      },
+      "budget": {
+        "model_execution_usd": 0,
+        "preparation_minutes": null,
+        "evaluation_minutes": null,
+        "human_minutes": null
+      }
+    },
+    "claims": [
+      {
+        "id": 31,
+        "milestone": "Remove redundant instructions",
+        "claim": "Shorter instructions retain useful behavior at lower overhead.",
+        "comparator": "Earned configuration versus a version with specific redundant clauses removed.",
+        "advance_or_stop": "G plus no omitted critical obligation; distinguish token reduction from total delivery savings.",
+        "losses_to_disclose": "Lost requirements, cheaper prompts causing more repairs.",
+        "allowance": "L→S",
+        "next_decision": "Delete unsupported ceremony and retain rollback.",
+        "research_support": {
+          "grade": "C",
+          "label": "🟨 Conditional/mixed; no imported effect",
+          "sources": [
+            "R5"
+          ]
+        },
+        "codex": {
+          "support": "◐ Supports durable instructions; automatic safe removal is not established",
+          "sources": [
+            "C5"
+          ]
+        },
+        "claude_code": {
+          "support": "◐ Supports durable instructions; automatic safe removal is not established",
+          "sources": [
+            "A6"
+          ]
+        },
+        "claim_id": "M-031",
+        "related_backlog_ids": [],
+        "performance_evidence": "unproven"
+      },
+      {
+        "id": 33,
+        "milestone": "Prefer native enforcement",
+        "claim": "Native controls satisfy a requirement with less custom machinery.",
+        "comparator": "Existing safe host controls versus extra prompt/custom enforcement.",
+        "advance_or_stop": "Prevent frozen violations while retaining valid work; skip custom code if native behavior suffices.",
+        "losses_to_disclose": "Fail-open hooks, false blocks, maintenance burden.",
+        "allowance": "L",
+        "next_decision": "Adopt native controls and identify exact gaps.",
+        "research_support": {
+          "grade": "E",
+          "label": "🔧 Engineering reuse; not a performance paper",
+          "sources": []
+        },
+        "codex": {
+          "support": "⚙️ Native permissions and trusted hooks; error behavior varies by hook",
+          "sources": [
+            "C4",
+            "C7"
+          ]
+        },
+        "claude_code": {
+          "support": "⚙️ Native permissions/sandbox/hooks; platform and stopping limits apply",
+          "sources": [
+            "A7",
+            "A12",
+            "A13"
+          ]
+        },
+        "claim_id": "M-033",
+        "related_backlog_ids": [
+          "B-022"
+        ],
+        "performance_evidence": "unproven"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "EV-OVERLAP",
+        "kind": "documentation",
+        "observed_on": "2026-09-21",
+        "review_status": "active",
+        "scope": "Twelve exact current clauses mapped to dated native capability sources, with unexecuted discriminators.",
+        "limitations": [
+          "Not an exhaustive audit.",
+          "No native behavior probe or solver comparison executed; no removal adopted."
+        ],
+        "claim_ids": [
+          "M-031",
+          "M-033"
+        ],
+        "source_ids": [
+          "A1",
+          "A10",
+          "A11",
+          "A12",
+          "A13",
+          "A2",
+          "A3",
+          "A5",
+          "A6",
+          "A7",
+          "A8",
+          "A9",
+          "C1",
+          "C2",
+          "C3",
+          "C4",
+          "C5",
+          "C6",
+          "C7",
+          "C8"
+        ],
+        "artifacts": [
+          {
+            "path": "research/program/materials/native-overlap.json",
+            "sha256": "6ddbcecc6d574c9233d260dce687b3fee3d0a7cd72d62d9b20df3a8fe9ab842b"
+          }
+        ],
+        "establishes": [
+          "documentary-inventory"
+        ]
+      }
+    ],
+    "inventory_entry_ids": [
+      "OVL-001",
+      "OVL-002",
+      "OVL-003",
+      "OVL-004",
+      "OVL-005",
+      "OVL-006",
+      "OVL-007",
+      "OVL-008",
+      "OVL-009",
+      "OVL-010",
+      "OVL-011",
+      "OVL-012"
+    ],
+    "driver": {
+      "path": "tools/program.py",
+      "sha256": "f548f5d4603b004503b22d11d6ef3e8639e45b5df0a555aa40314c0d0a4fe46a"
+    },
+    "sources": {
+      "A1": {
+        "title": "How Claude Code works",
+        "url": "https://code.claude.com/docs/en/how-claude-code-works",
+        "checked_date": "2026-09-20",
+        "review_status": "active",
+        "review_after_days": 30
+      },
+      "A10": {
+        "title": "Costs",
+        "url": "https://code.claude.com/docs/en/costs",
+        "checked_date": "2026-09-20",
+        "review_status": "active",
+        "review_after_days": 30
+      },
+      "A11": {
+        "title": "Monitoring",
+        "url": "https://code.claude.com/docs/en/monitoring-usage",
+        "checked_date": "2026-09-20",
+        "review_status": "active",
+        "review_after_days": 30
+      },
+      "A12": {
+        "title": "Permissions",
+        "url": "https://code.claude.com/docs/en/permissions",
+        "checked_date": "2026-09-20",
+        "review_status": "active",
+        "review_after_days": 30
+      },
+      "A13": {
+        "title": "Sandboxing",
+        "url": "https://code.claude.com/docs/en/sandboxing",
+        "checked_date": "2026-09-20",
+        "review_status": "active",
+        "review_after_days": 30
+      },
+      "A2": {
+        "title": "Subagents",
+        "url": "https://code.claude.com/docs/en/sub-agents",
+        "checked_date": "2026-09-20",
+        "review_status": "active",
+        "review_after_days": 30
+      },
+      "A3": {
+        "title": "Dynamic workflows",
+        "url": "https://code.claude.com/docs/en/workflows",
+        "checked_date": "2026-09-20",
+        "review_status": "active",
+        "review_after_days": 30
+      },
+      "A5": {
+        "title": "CLI reference",
+        "url": "https://code.claude.com/docs/en/cli-reference",
+        "checked_date": "2026-09-20",
+        "review_status": "active",
+        "review_after_days": 30
+      },
+      "A6": {
+        "title": "Memory",
+        "url": "https://code.claude.com/docs/en/memory",
+        "checked_date": "2026-09-20",
+        "review_status": "active",
+        "review_after_days": 30
+      },
+      "A7": {
+        "title": "Hooks",
+        "url": "https://code.claude.com/docs/en/hooks",
+        "checked_date": "2026-09-20",
+        "review_status": "active",
+        "review_after_days": 30
+      },
+      "A8": {
+        "title": "Checkpointing",
+        "url": "https://code.claude.com/docs/en/checkpointing",
+        "checked_date": "2026-09-20",
+        "review_status": "active",
+        "review_after_days": 30
+      },
+      "A9": {
+        "title": "Model configuration",
+        "url": "https://code.claude.com/docs/en/model-config",
+        "checked_date": "2026-09-20",
+        "review_status": "active",
+        "review_after_days": 30
+      },
+      "C1": {
+        "title": "Models",
+        "url": "https://learn.chatgpt.com/docs/models",
+        "checked_date": "2026-09-20",
+        "review_status": "active",
+        "review_after_days": 30
+      },
+      "C2": {
+        "title": "Subagents",
+        "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+        "checked_date": "2026-09-20",
+        "review_status": "active",
+        "review_after_days": 30
+      },
+      "C3": {
+        "title": "Worktrees",
+        "url": "https://learn.chatgpt.com/docs/environments/git-worktrees",
+        "checked_date": "2026-09-20",
+        "review_status": "active",
+        "review_after_days": 30
+      },
+      "C4": {
+        "title": "Hooks",
+        "url": "https://learn.chatgpt.com/docs/hooks",
+        "checked_date": "2026-09-20",
+        "review_status": "active",
+        "review_after_days": 30
+      },
+      "C5": {
+        "title": "Best practices",
+        "url": "https://learn.chatgpt.com/guides/best-practices",
+        "checked_date": "2026-09-20",
+        "review_status": "active",
+        "review_after_days": 30
+      },
+      "C6": {
+        "title": "Memories",
+        "url": "https://learn.chatgpt.com/docs/customization/memories",
+        "checked_date": "2026-09-20",
+        "review_status": "active",
+        "review_after_days": 30
+      },
+      "C7": {
+        "title": "Codex CLI",
+        "url": "https://learn.chatgpt.com/docs/codex/cli",
+        "checked_date": "2026-09-20",
+        "review_status": "active",
+        "review_after_days": 30
+      },
+      "C8": {
+        "title": "Code review",
+        "url": "https://learn.chatgpt.com/docs/code-review",
+        "checked_date": "2026-09-20",
+        "review_status": "active",
+        "review_after_days": 30
+      },
+      "R5": {
+        "title": "AI Agents That Matter",
+        "url": "https://arxiv.org/html/2407.01502v1",
+        "checked_date": "2026-09-20",
+        "review_status": "active",
+        "review_after_days": null
+      }
+    },
+    "inputs_sha256": {
+      "research/program/materials/native-overlap.json": "6ddbcecc6d574c9233d260dce687b3fee3d0a7cd72d62d9b20df3a8fe9ab842b",
+      "skill/SKILL.md": "d03f1d810faf24c02de679fc7ba62f53d3ea54f5c5ccf8fe9ad31ab41e9cb8d2",
+      "skill/references/execution-contract.md": "62d2c26b1e7f284e25e2efa448f61a46e5ac6909be0c94c30e82999c32dd7bac",
+      "skill/references/learning-and-evolution.md": "a6d9fa95be6b342fe96f530a1190e2264ac99bab0f119ed760cdffd143d21ea2",
+      "skill/references/software-quality.md": "ca41c408d0d8e4d34e11629d19b82b30a4f4c4d6a5a3befc5572397514490fe2"
+    }
+  }
+}

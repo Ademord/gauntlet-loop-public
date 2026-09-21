@@ -1,0 +1,12 @@
+{
+  "status": "proposal_not_adopted",
+  "overlap_id": "OVL-001",
+  "source_path": "skill/SKILL.md",
+  "source_raw_sha256": "d03f1d810faf24c02de679fc7ba62f53d3ea54f5c5ccf8fe9ad31ab41e9cb8d2",
+  "removed_excerpt": "Read relevant project instructions and the current artifact.",
+  "incumbent_sha256": "d03f1d810faf24c02de679fc7ba62f53d3ea54f5c5ccf8fe9ad31ab41e9cb8d2",
+  "candidate_sha256": "8ddd20ed75a80970eb9234746ada8d180c3476173833e34ed47d00580ab18b24",
+  "incumbent_words": 2228,
+  "candidate_words": 2220,
+  "meaning": "Word difference only; no token, cost, quality or performance benefit measured."
+}

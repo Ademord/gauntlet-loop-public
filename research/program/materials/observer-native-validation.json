@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "id": "OBS-NATIVE-001",
+  "observed_utc": "2026-09-21T00:14:10.747248+00:00",
+  "purpose": "engineering_compatibility_smoke",
+  "runtime_sha256": "be0417d9f90581bc368f3e85e174ff6126d807bdc4b4fa2aa7d3e30c7f0dd0de",
+  "performance_claim": null,
+  "ordinary_tasks_recorded": 0,
+  "hosts": {
+    "claude": {
+      "client_version": "2.1.278",
+      "handlers_installed": 10,
+      "native_trust": "settings_handlers_merged",
+      "event_counts": {
+        "SessionStart": 1,
+        "StopFailure": 1,
+        "UserPromptSubmit": 1
+      },
+      "session_sha256": "320c48b6cdae946a355f807782b88d32028fb837a30ebbac243eca4b8153c28a",
+      "task_sha256": "e0de67bc26f2507f762cf1621fb9617080ebd5d4023fa6084d832a001e5e31c7",
+      "recording": "observed",
+      "successful_tool_cycle_verified": false,
+      "fixture_result": "blocked_usage_credits",
+      "native_returncode": 1,
+      "native_stdout_sha256": "97cd5e8fd5592cf01cad6fa9c6905fb0cfe67733c44ab394fe8a6be9f3c5cb1e",
+      "collector_matches_frozen": true,
+      "collector_diagnostics_present": false,
+      "observed_contacts": 1,
+      "known_corrections": 0,
+      "user_reported_resolution": null,
+      "first_pass_resolution": null,
+      "host_reported_usage": {
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 0,
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "",
+        "iterations": [],
+        "speed": "standard"
+      },
+      "duration_seconds_including_client_startup": 4.375
+    },
+    "codex": {
+      "client_version": "0.154.0-alpha.6.2",
+      "handlers_installed": 9,
+      "native_trust": "reviewed_in_codex_hooks_interface",
+      "event_counts": {
+        "PostToolUse": 3,
+        "PreToolUse": 3,
+        "SessionEnd": 1,
+        "SessionStart": 1,
+        "Stop": 1,
+        "UserPromptSubmit": 1
+      },
+      "session_sha256": "23a208ed9138c4a8932327c172d34c4051c6e558d0ecd43b24fdd6fe68b67c30",
+      "task_sha256": "a94e2f7514a1a064bfc61701343fd66890c21860b9464451653886cdec9cce99",
+      "recording": "observed",
+      "successful_tool_cycle_verified": true,
+      "fixture_result": "passed",
+      "native_returncode": 0,
+      "native_stdout_sha256": "be791abefa5d7a75813ba61bbc35782d32b95e684dedda09107ae0ce8b5ea35c",
+      "collector_matches_frozen": true,
+      "collector_diagnostics_present": false,
+      "observed_contacts": 1,
+      "known_corrections": 0,
+      "user_reported_resolution": null,
+      "first_pass_resolution": null,
+      "host_reported_usage": {
+        "input_tokens": 65732,
+        "cached_input_tokens": 61696,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 303,
+        "reasoning_output_tokens": 136
+      },
+      "duration_seconds_including_client_startup": 23.84299999999348
+    }
+  },
+  "cost_scope": {
+    "billed_cash_usd": null,
+    "preparation_research_evaluation_usd": null,
+    "human_minutes": null
+  },
+  "attempts": [
+    {
+      "host": "codex",
+      "stage": "launcher",
+      "result": "not_started_wrong_executable_path",
+      "model_dispatch": false
+    },
+    {
+      "host": "claude",
+      "stage": "native_run",
+      "result": "usage_credit_limit"
+    },
+    {
+      "host": "codex",
+      "stage": "native_run",
+      "result": "passed_fixture"
+    }
+  ],
+  "limitations": [
+    "Only one request per host; no representative performance comparison.",
+    "Claude successful tools and Stop cycle remain unverified because usage credits were unavailable.",
+    "Complete interruption, descendants and event coverage unverified; recorder overhead unmeasured.",
+    "Other installed hooks retained; complete task blinding unverified.",
+    "Unit tests establish recorder silence; native hook logs do not uniquely attribute every handler response.",
+    "Native usage below is host-reported for this diagnostic only, not a qualified general accounting adapter.",
+    "Fixture acceptance compares text with line endings normalized; it is not user-reported resolution."
+  ],
+  "source_sha256": {
+    "observer.py": "c3049290a4dfaf8a7f1ae3781cd41f7cce1204e5108366f8664769c084371c65",
+    "observer_host.py": "862e6ab4150c0f361e1ce9caaf114183f51333bd7d3095093da393b64ae11353",
+    "contact_metrics.py": "93d811107eae0768618a01265c0554e5e26da6b896fb0666c6847c83231a96a8",
+    "observer_install.py": "dfef0b481f597a11d181ce7f3063f233327264c1436fb637b7b2c3a68d81d81f"
+  }
+}

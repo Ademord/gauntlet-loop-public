@@ -1,0 +1,455 @@
+{
+  "schema_version": 1,
+  "evidence": [
+    {
+      "id": "EV-BASELINE",
+      "kind": "documentation",
+      "observed_on": "2026-09-20",
+      "review_status": "active",
+      "scope": "Reuse the competent-baseline evaluation principle.",
+      "limitations": [
+        "No representative current-host performance claim."
+      ],
+      "claim_ids": [
+        "M-001"
+      ],
+      "source_ids": [
+        "R1",
+        "R5"
+      ],
+      "artifacts": [],
+      "establishes": [
+        "baseline-research-reuse"
+      ]
+    },
+    {
+      "id": "EV-SELF-CHECK",
+      "kind": "documentation",
+      "observed_on": "2026-09-20",
+      "review_status": "active",
+      "scope": "Self-refinement is prior art with conditional results.",
+      "limitations": [
+        "No universal self-check advantage; collapse indistinguishable native interventions."
+      ],
+      "claim_ids": [
+        "M-002"
+      ],
+      "source_ids": [
+        "R2",
+        "R3",
+        "R4",
+        "R11"
+      ],
+      "artifacts": [],
+      "establishes": [
+        "self-check-research-reuse"
+      ]
+    },
+    {
+      "id": "EV-NATIVE-CONTROLS",
+      "kind": "documentation",
+      "observed_on": "2026-09-20",
+      "review_status": "active",
+      "scope": "Native control facilities are documented; prefer reuse before custom machinery.",
+      "limitations": [
+        "Configuration and runtime fault behavior remain unqualified."
+      ],
+      "claim_ids": [
+        "M-033"
+      ],
+      "source_ids": [
+        "C4",
+        "C7",
+        "A7",
+        "A12",
+        "A13"
+      ],
+      "artifacts": [],
+      "establishes": [
+        "documented-native-availability"
+      ]
+    },
+    {
+      "id": "EV-CALIBRATION-CONTROLS",
+      "kind": "engineering",
+      "observed_on": "2026-09-20",
+      "review_status": "active",
+      "scope": "Existing controlled-stage, identity and incomplete-report safeguards are implemented and tested.",
+      "limitations": [
+        "Claude calibration only; not an exact V1 or current Codex/Claude native-host comparison.",
+        "Current tests are inspection artifacts; frozen controller is the historical executed source."
+      ],
+      "claim_ids": [
+        "M-006",
+        "M-011",
+        "M-012",
+        "M-026",
+        "M-030",
+        "M-036",
+        "M-037"
+      ],
+      "source_ids": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "artifacts": [
+        {
+          "path": "research/program/calibration/runs/2026-09-20-pilot-02/frozen/run_calibration.py",
+          "sha256": "ec3b0d94c7b74e7b76480a15c6c8630f35f8bdcec9218ad9006f8854af0f8f73"
+        },
+        {
+          "path": "tests/test_calibration.py",
+          "sha256": "d3a3727f0b1d49526bb103aae731bef2392f2905668a4dc56bc131549a89538e"
+        },
+        {
+          "path": "gauntlet/measurement-repair-2026-09-20/progress.md",
+          "sha256": "5c4be2eafd81dd9322a415b6a4157747d177e5bd5b8293fe0f60a3e88ea26d2c"
+        }
+      ],
+      "establishes": [
+        "historical-claude-calibration-controls"
+      ]
+    },
+    {
+      "id": "EV-METERING",
+      "kind": "engineering",
+      "observed_on": "2026-09-20",
+      "review_status": "active",
+      "scope": "Corrected CLI-equivalent metering and shared-prefix accounting.",
+      "limitations": [
+        "Actual billed cash and preparation/research/human costs remain unknown."
+      ],
+      "claim_ids": [
+        "M-027"
+      ],
+      "source_ids": [
+        "E5"
+      ],
+      "artifacts": [
+        {
+          "path": "research/program/paired-study/measurement-replay.md",
+          "sha256": "ce87435faa5290503bc3163f4ec0b8e06604622cae9fe36fac8a82bbb8aff92b"
+        },
+        {
+          "path": "tests/test_telemetry.py",
+          "sha256": "cb4726ce532cdbde395ee90a4274ce2ebc83ee33f022ec988ef7346ed69b21b6"
+        }
+      ],
+      "establishes": [
+        "historical-metering-replay"
+      ]
+    },
+    {
+      "id": "EV-GRADER-GAPS",
+      "kind": "calibration",
+      "observed_on": "2026-09-20",
+      "review_status": "active",
+      "scope": "Independent review found real reference and coverage gaps.",
+      "limitations": [
+        "Supplementary candidate-informed probes cannot replace an untouched primary evaluation."
+      ],
+      "claim_ids": [
+        "M-003",
+        "M-004",
+        "M-019",
+        "M-022",
+        "M-023",
+        "M-024"
+      ],
+      "source_ids": [
+        "E1",
+        "E4"
+      ],
+      "artifacts": [
+        {
+          "path": "research/program/calibration/DECISION.md",
+          "sha256": "f6a3f2b6cc743bb0aacdc92ddede618b19aa9a9b202ed846b522a5fb5696941e"
+        },
+        {
+          "path": "research/program/calibration/GRADER-REVIEW.md",
+          "sha256": "9a56beb22d2851f645384604229450acda195b8f90be593efc8043868406c568"
+        }
+      ],
+      "establishes": [
+        "synthetic-calibration-grader-gaps"
+      ]
+    },
+    {
+      "id": "EV-RELEASE",
+      "kind": "engineering",
+      "observed_on": "2026-09-20",
+      "review_status": "active",
+      "scope": "Deterministic package identities, local links and public-scan tooling are available and verified.",
+      "limitations": [
+        "Package validity is not orchestration performance; a scan is not exhaustive."
+      ],
+      "claim_ids": [
+        "M-044",
+        "M-048"
+      ],
+      "source_ids": [
+        "E6"
+      ],
+      "artifacts": [
+        {
+          "path": "dist/package-verification.json",
+          "sha256": "dd24c534124d3ef4e0a1f4951b766feef58de7879e1166e63c9290bb2b9546b7"
+        },
+        {
+          "path": "versions/SHA256SUMS",
+          "sha256": "f8ee29f1d484c4122371d96d1cb787cad308470561f77f13829a45c449e637ea"
+        },
+        {
+          "path": "tools/verify_release.py",
+          "sha256": "a7d8a2a2a76bbfb440cc77945254062de27e41991a0ebb4fb650eff22719b824"
+        },
+        {
+          "path": "tools/public_audit.py",
+          "sha256": "eedddeab91701e542b481311e4d4ad895c4326fbd0b0cb010796d6fc84189bd4"
+        }
+      ],
+      "establishes": [
+        "release-integrity-checks"
+      ]
+    },
+    {
+      "id": "EV-OVERLAP",
+      "kind": "documentation",
+      "observed_on": "2026-09-21",
+      "review_status": "active",
+      "scope": "Twelve exact current clauses mapped to dated native capability sources, with unexecuted discriminators.",
+      "limitations": [
+        "Not an exhaustive audit.",
+        "No native behavior probe or solver comparison executed; no removal adopted."
+      ],
+      "claim_ids": [
+        "M-031",
+        "M-033"
+      ],
+      "source_ids": [
+        "A1",
+        "A10",
+        "A11",
+        "A12",
+        "A13",
+        "A2",
+        "A3",
+        "A5",
+        "A6",
+        "A7",
+        "A8",
+        "A9",
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ],
+      "artifacts": [
+        {
+          "path": "research/program/materials/native-overlap.json",
+          "sha256": "6ddbcecc6d574c9233d260dce687b3fee3d0a7cd72d62d9b20df3a8fe9ab842b"
+        }
+      ],
+      "establishes": [
+        "documentary-inventory"
+      ]
+    },
+    {
+      "id": "EV-INVENTORY-AUDIT",
+      "kind": "deterministic_audit",
+      "observed_on": "2026-09-20",
+      "review_status": "active",
+      "scope": "Twelve inventoried clause/source references and proposed probe records passed the frozen offline audit.",
+      "establishes": [
+        "inventory-reference-integrity"
+      ],
+      "limitations": [
+        "No live native behavior was tested.",
+        "Instruction savings and delivery gains are unmeasured.",
+        "Preparation, research, evaluation and human cost remain unknown.",
+        "This checks record structure and source identity, not whether each proposed probe will discriminate in practice."
+      ],
+      "claim_ids": [
+        "M-031",
+        "M-033"
+      ],
+      "source_ids": [],
+      "artifacts": [
+        {
+          "path": "research/program/experiments/EXP-031-033-001/frozen.json",
+          "sha256": "ecd9eaf608009eabefbdd56c50d7007c93c803f21ac1bf973a8f4bd9e1cd9ddc"
+        },
+        {
+          "path": "research/program/experiments/EXP-031-033-001/result.json",
+          "sha256": "b2dc8bc1a4bbbdee5ce108f200318e96cf6f4dc0c647b44e1623830501973344"
+        }
+      ]
+    },
+    {
+      "id": "EV-TASK-SELECTION",
+      "kind": "documentation",
+      "observed_on": "2026-09-21",
+      "review_status": "active",
+      "scope": "Ordinary-task selection and reproducible task-packet requirements are specified; fresh tasks remain unselected.",
+      "limitations": [
+        "No native run, new task admission or representative performance result.",
+        "Small pilot/screen sizes are proposed operational choices, not statistically justified proof."
+      ],
+      "claim_ids": [
+        "M-021"
+      ],
+      "source_ids": [
+        "R14",
+        "R15"
+      ],
+      "artifacts": [
+        {
+          "path": "research/program/materials/task-selection.json",
+          "sha256": "4cabdedf4ca84b2c44fa4b1d4801a3e97ddabeb1db01b2e79c228c07cc7c8457"
+        }
+      ],
+      "establishes": [
+        "task-selection-policy"
+      ]
+    },
+    {
+      "id": "EV-PASSIVE-OBSERVER",
+      "kind": "engineering",
+      "observed_on": "2026-09-21",
+      "review_status": "active",
+      "scope": "Enrolled-session SQLite metadata collector passed offline privacy, silence, event identity and outcome-separation tests; native integration is unverified.",
+      "limitations": [
+        "No live hooks installed or ordinary task created/captured.",
+        "Tokens, dollar cost, human effort and complete event coverage remain unknown.",
+        "Collection is observational; no causal or performance improvement claim.",
+        "Task prompts can omit evaluation, but complete blinding is unverified."
+      ],
+      "claim_ids": [
+        "M-030",
+        "M-036",
+        "M-037"
+      ],
+      "source_ids": [
+        "C4",
+        "C10"
+      ],
+      "artifacts": [
+        {
+          "path": "research/program/materials/observer-v1/tools/observer.py",
+          "sha256": "0937e8a34fc57787a2353edccfb8208367e2af042e8f70191aaff7fe3f9c1733"
+        },
+        {
+          "path": "research/program/materials/observer-v1/tests/test_observer.py",
+          "sha256": "f35d2d86e77b029b32b91f118139aa92f081345872f48a9c34fab05828d9f993"
+        },
+        {
+          "path": "research/program/materials/observer-v1/research/program/materials/passive-observer.json",
+          "sha256": "c7271af5400e41c90bfcb2672e1c3690eca82951ae92278c5627cede45f0640d"
+        },
+        {
+          "path": "research/program/materials/observer-validation.json",
+          "sha256": "8656155a277a8a344b34c1fe8c137279c4bf135122400252bf9cd1dd55603e2e"
+        },
+        {
+          "path": "research/program/materials/observer-v1/tools/observer-hooks.example.json",
+          "sha256": "671dab142570ca6e8d7680bec1e7c99d2dd1b3c52e49bfe05c33016b1dff191c"
+        }
+      ],
+      "establishes": [
+        "offline-passive-collector-boundaries"
+      ]
+    },
+    {
+      "id": "EV-OBSERVER-NATIVE-001",
+      "kind": "engineering",
+      "observed_on": "2026-09-21",
+      "review_status": "active",
+      "scope": "Native Codex request/tool/completion capture and Claude request/failure capture verified on one fixture each; contact classifications and private checkpoint exports passed offline boundary tests.",
+      "limitations": [
+        "Claude successful tools unverified: native attempt ended at usage-credit limit.",
+        "Only diagnostic fixtures; no representative performance improvement or complete blinding.",
+        "Missing events, overhead, whole-conversation human effort and billed cash remain unknown.",
+        "User resolution is explicit and separate from deterministic artifact checks.",
+        "Raw native logs and SQLite snapshot stay private; public records contain selected summaries and evidence hashes."
+      ],
+      "claim_ids": [
+        "M-030",
+        "M-036",
+        "M-037"
+      ],
+      "source_ids": [
+        "C4",
+        "C10",
+        "A7"
+      ],
+      "artifacts": [
+        {
+          "path": "tools/observer.py",
+          "sha256": "c3049290a4dfaf8a7f1ae3781cd41f7cce1204e5108366f8664769c084371c65"
+        },
+        {
+          "path": "tools/observer_host.py",
+          "sha256": "862e6ab4150c0f361e1ce9caaf114183f51333bd7d3095093da393b64ae11353"
+        },
+        {
+          "path": "tools/contact_metrics.py",
+          "sha256": "93d811107eae0768618a01265c0554e5e26da6b896fb0666c6847c83231a96a8"
+        },
+        {
+          "path": "tools/observer_install.py",
+          "sha256": "dfef0b481f597a11d181ce7f3063f233327264c1436fb637b7b2c3a68d81d81f"
+        },
+        {
+          "path": "tools/observer_checkpoint.py",
+          "sha256": "5652135da0e0831aac695cc49bcc3ab914c00fec94d7869a75c7fec4d65be5e6"
+        },
+        {
+          "path": "tests/test_observer.py",
+          "sha256": "3592515ea1b72d3c9dff8daf76bdec6cc5ca3f353290febad80956d98cf0933e"
+        },
+        {
+          "path": "tests/test_observer_host.py",
+          "sha256": "b899c1a926582988115aaeaae2c9ea290405d23ede9e9caeb5e69baf4c5f70ef"
+        },
+        {
+          "path": "tests/test_contact_metrics.py",
+          "sha256": "c47119c4fd154a9d9dae4fb07188e991fe722b975fcab967d39eca93abd67ae7"
+        },
+        {
+          "path": "tests/test_observer_install.py",
+          "sha256": "c5c0bff722cb6916c18b38d3132f903424dbd983c3b4e058f53195480914b1c1"
+        },
+        {
+          "path": "tests/test_observer_checkpoint.py",
+          "sha256": "a96dd0803fcf69a26ea16c6a3f405aed35b98b9b673774efd650bcb046f8ae9f"
+        },
+        {
+          "path": "research/program/materials/passive-observer.json",
+          "sha256": "baf59bbdadf84bf1bd2ccf961ee8e778aa406c32d74fd3930f69e30a27013497"
+        },
+        {
+          "path": "research/program/materials/observer-native-validation.json",
+          "sha256": "912aefdfc16aff06a381e78d33f0caf89e2c93444364bbffb6d88734bc53b617"
+        },
+        {
+          "path": "research/program/materials/observer-validation-002.json",
+          "sha256": "1ed656022997872cda636e5698a90456759ddd7e0bc7bf54798722662ecda782"
+        },
+        {
+          "path": "research/program/materials/observer-checkpoint-001.json",
+          "sha256": "76cecdb54c7f2316c7012349823cd1b77b0998b1243914273581874c37088057"
+        }
+      ],
+      "establishes": [
+        "limited-native-passive-recording",
+        "external-contact-classification",
+        "private-snapshot-manifest-export"
+      ]
+    }
+  ]
+}

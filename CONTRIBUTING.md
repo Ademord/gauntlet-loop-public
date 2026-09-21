@@ -1,10 +1,11 @@
 # Contributing
 
-Three kinds of contribution, each with a fixed path.
+Four kinds of contribution, each with a fixed path.
 
 1. **A paper.** Write one note per paper under `research/scans/<date>/` with [TEMPLATE.md](research/scans/TEMPLATE.md), following [research/INTAKE.md](research/INTAKE.md): the abstract verbatim, the supplied paraphrase checked line by line, limits, where the skill already stands, a bounded proposed change with a falsifier, and a verdict. A note may add one candidate row to the [backlog](research/program/backlog.md).
 2. **A run record.** Gauntlet runs keep a contract, events, state, progress, and evidence under `gauntlet/<run-id>/` and append one milestone line to `gauntlet/runs.jsonl`; see [gauntlet/README.md](gauntlet/README.md). Refer to another project by name only if it is public.
 3. **A change to the skill.** Only through an upgrade run: checks frozen first, the current version as the bar, independent critics, then the steps in [versions/README.md](versions/README.md#adding-a-version). Nobody edits `skill/` directly: the `commit-msg` hook refuses a commit that changes `skill/` unless its message carries `Upgrade-run: <run-id>` for an existing `gauntlet/<run-id>/`.
+4. **A research decision or experiment.** Link source/evidence records to stable milestone IDs in the [program index](research/program/README.md). Follow its [workflow](research/program/WORKFLOW.md): concrete comparison, six investor questions, scoped prerequisites, frozen inputs and an outcome including losses and unknown costs. Update the plan when research or native capabilities change; preserve previous results.
 
 ## Before your first commit
 

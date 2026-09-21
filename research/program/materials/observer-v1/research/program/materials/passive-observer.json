@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "OBS-PROTOTYPE-001",
+  "date": "2026-09-21",
+  "status": "offline_prototype_pending_host_integration",
+  "claim_ids": [
+    "M-030",
+    "M-036",
+    "M-037"
+  ],
+  "intent": "Let an ordinary task proceed in a fresh chat while a separate host collector records metadata for explicitly enrolled sessions.",
+  "worker_context": "Only the user's actual task and its normal instructions. No research-history fork, measurement skill, hypothesis, score or database prompt.",
+  "store": "Owner-local SQLite outside the worker checkout; actual paths live in gitignored local configuration.",
+  "implementation": "tools/observer.py",
+  "instructions": "ledger/OBSERVER.md",
+  "configuration_example": "ledger/observer-session.example.json",
+  "hook_fragment": "tools/observer-hooks.example.json",
+  "source_ids": [
+    "C4",
+    "C10"
+  ],
+  "observation_class": "observational",
+  "implemented_metrics": [
+    "Hook receipt timestamps and event counts for enrolled sessions",
+    "Observed tool starts and ends, with stable tool identity deduplication",
+    "Reported model, permission mode and subagent lifecycle metadata when supplied",
+    "Explicit incomplete coverage and collection diagnostics",
+    "Separately supplied artifact/check-bound outcome records"
+  ],
+  "unknown_metrics": {
+    "tokens": "No qualified Codex usage adapter in this prototype.",
+    "cost_usd": "No complete metering or observed billing source.",
+    "human_minutes": "Not measured by hook metadata.",
+    "actual_task_wall_time": "Receipt times are not execution boundaries.",
+    "full_tool_coverage": "Some host tool paths do not emit these hooks."
+  },
+  "blinding_claim": "Task instructions need not disclose evaluation; complete inability to discover or infer observation is unverified.",
+  "activation": {
+    "global_hooks_installed": false,
+    "ordinary_task_created": false,
+    "live_capture_verified": false,
+    "requires": [
+      "A selected ordinary task/project and enrollment identity",
+      "Concrete host command invocation and normal hook review/trust",
+      "Observed enrolled capture and unenrolled exclusion",
+      "No collector text injected into worker context",
+      "An interruption captured as incomplete work",
+      "Separate acceptance check for the delivered artifact"
+    ],
+    "local_empty_database_initialized": true
+  },
+  "limits": [
+    "Simulated hook tests validate this collector, not native host integration.",
+    "Hook metadata alone cannot establish successful tools, complete reviewers, independent acceptance or causality.",
+    "Collector overhead and missing arrivals may affect observations.",
+    "Task content, raw tool inputs/outputs, working paths and transcript bodies are not stored by this metadata adapter.",
+    "No skill package was changed or installed."
+  ],
+  "offline_validation": "research/program/materials/observer-validation.json"
+}

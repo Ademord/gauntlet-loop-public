@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "experiment_id": "EXP-031-033-001",
+  "freeze_sha256": "da2f7734386c8fb994b7a65f85768d933c1726d202fa8e3dcd958de9ab28ce74",
+  "recorded_at": "2026-09-20T22:55:55.099835+00:00",
+  "evidence_kind": "deterministic_audit",
+  "outcomes": {
+    "entries_checked": 12,
+    "pointer_errors": 0,
+    "native_behavior_probes_executed": 0,
+    "model_calls": 0,
+    "audit_seconds": 0.0
+  },
+  "losses": [],
+  "exclusions": [],
+  "costs": {
+    "model_execution_usd": 0,
+    "preparation_usd": null,
+    "evaluation_usd": null,
+    "research_usd": null,
+    "human_minutes": null
+  },
+  "decision": {
+    "outcome": "reuse",
+    "scope": "Inventory source pointers and proposed probe records only; no rule removal or performance adoption."
+  },
+  "next_decision": "Choose one candidate, then qualify the configured native control before any removal comparison.",
+  "limitations": [
+    "No live native behavior was tested.",
+    "Instruction savings and delivery gains are unmeasured.",
+    "Preparation, research, evaluation and human cost remain unknown."
+  ]
+}

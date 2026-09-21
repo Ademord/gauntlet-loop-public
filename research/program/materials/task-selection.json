@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "id": "TASK-POLICY-001",
+  "date": "2026-09-21",
+  "status": "selection_policy_only_no_fresh_tasks_admitted",
+  "claim_ids": ["M-021"],
+  "purpose": "Select ordinary coding work independently of whether Gauntlet helps, then preserve enough state to rerun the comparison.",
+  "preferred_source": "Fresh requests from the user's actual projects, captured before solving.",
+  "fallback_source": "Existing real issue-resolution tasks with available source snapshots, runnable dependencies and validated checks; public benchmark tasks are an external reference, not proof of relevance to this user's work.",
+  "research_sources": ["R14", "R15"],
+  "research_boundary": "Reuse real-issue task construction and execution validation. The proposed small local sample and its funding gates are our choices, not a research-established effect size or sample-size justification.",
+  "initial_sequence": [
+    "One bounded native-agent pilot on a fresh ordinary task to qualify setup, acceptance and accounting. Treat any task inspected while tuning the procedure as development data.",
+    "After selecting a distinct treatment and freezing its protocol, use the first four eligible requests from the agreed workload, in recorded arrival order, for an exploratory paired screen. Keep the candidate/rejection log.",
+    "If a useful difference appears, quote a separate confirmation on untouched tasks. Four tasks do not establish general superiority or equivalence."
+  ],
+  "example_task_classes_not_selected_issues": [
+    {
+      "class": "ordinary_bug",
+      "request_example": "A validator accepts an invalid record; reject it without rejecting valid boundary cases.",
+      "acceptance_example": "Observed bad input fails before repair; correct behavior and valid edge cases pass afterward, with existing regressions checked."
+    },
+    {
+      "class": "bounded_feature",
+      "request_example": "Add an export that respects the selected filters and preserves the existing output contract.",
+      "acceptance_example": "Inspect the generated file for selected records, escaping and empty results; verify compatibility for existing callers."
+    },
+    {
+      "class": "stateful_user_journey",
+      "request_example": "Fix a guided tour that continues advancing after the user presses pause.",
+      "acceptance_example": "Run a frozen start/pause/resume sequence and observe state transitions; include a browser check when browser behavior is part of the claim."
+    }
+  ],
+  "eligibility": [
+    "A genuine requested outcome in the predeclared workload; no planted defect required to make an orchestration mechanism fire.",
+    "Bounded scope and acceptance requirements understandable without the hidden solution.",
+    "Starting source, input data and dependencies can be preserved and restored in isolated workspaces.",
+    "A claimed bug is reproduced or a requested missing capability is demonstrated before solver work.",
+    "Independent acceptance checks distinguish at least plausible bad outputs from valid behavior; extra hidden requirements are prohibited.",
+    "Environment and grader preparation fit the quoted resources; otherwise log exclusion before model outcomes are seen."
+  ],
+  "exposure_policy": [
+    "Use fresh sessions with the same frozen baseline configuration; do not pass prior solutions or the competing arm's transcript to a solver.",
+    "Preserve normal host tools and orchestration capabilities in the native control. Record memory and context policy for both arms.",
+    "Previously solved tasks and tasks used to tune prompts, checks or routing are development data, never untouched confirmation.",
+    "Public historical solutions may have been encountered during training or evaluation. Freshness reduces some exposure risks but does not prove absence of contamination.",
+    "Do not admit tasks because a Gauntlet critic rejected them. Mechanism diagnostics require a separately labeled conditional population."
+  ],
+  "required_packet_fields": {
+    "task_id_and_origin": "Stable ID, original request/issue and capture time; public reference or private local alias.",
+    "request": "Exact request, supplied context, clarified requirements and non-goals frozen before the comparison.",
+    "starting_artifact": "Commit plus any uncommitted patch, or a complete source snapshot; content hashes and retained files.",
+    "environment": "OS/runtime/tool versions, dependency locks, setup commands and required services; preserve reproducible fixtures for volatile inputs.",
+    "inputs": "Exact datasets/files/reference versions and initial state.",
+    "acceptance": "Requirements, observable checks and regression cases authored independently of solver output; held-out evaluation content kept outside solver access.",
+    "agent_configuration": "Host/client, model, effort, tools, permissions, memory/context, delegation and other workflow settings.",
+    "execution": "Shared ceilings, planned order and repetition policy; count every started run, unsuccessful attempt and intervention.",
+    "exposure_and_selection": "What was previously seen/solved, pilot versus screen versus confirmation, queue position and exclusion reasons."
+  },
+  "reproducibility_boundary": "Reproducible means restoring the task and evaluation conditions. It does not guarantee identical stochastic outputs; provider/model changes can limit exact reruns and must be reported.",
+  "historical_examples": [
+    {
+      "spec": "research/program/paired-study/tasks/001-intelligence-pipeline-sum-check.yaml",
+      "use": "Task-packaging or setup reference only.",
+      "limits": "Tiny historical fix already solved by both arms; an earlier pilot exposed answer history. Source checkout is external to the public spec."
+    },
+    {
+      "spec": "research/program/paired-study/tasks/002-demo-autoplay-on-entry.yaml",
+      "use": "Ordinary feature and generated-build example only.",
+      "limits": "Already solved by both arms; no held-out checks in the spec. External source and dependency packaging need verification; jsdom does not establish actual browser behavior."
+    }
+  ],
+  "full_cost_policy": "Include task capture, environment preparation, grader validation, research, all agent attempts and active human time. Unmeasured categories remain null; reused material is not free research.",
+  "fresh_tasks_selected": [],
+  "performance_results": []
+}
