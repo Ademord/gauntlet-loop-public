@@ -1,6 +1,8 @@
 # Graph workflows: where they fit
 
-Real-task follow-up: [P005](APPLICATION-PREPARATION.md) records accepted private application preparation after one repair, controller readiness failures and unresolved form access. No performance claim is established.
+Controller-boundary follow-up: [P006](GRAPH-HARDENING.md) records the human delivery correction, integrated package 1.2.0, 42 passing synthetic methods and separate actual-task checks. Runner enforcement still excludes direct browser calls; no performance gain or milestone promotion is established.
+
+Historical preparation checkpoint: [P005](APPLICATION-PREPARATION.md) records accepted private application preparation after one repair, controller readiness failures and form access that was unresolved at that time. Its report is unchanged. No performance claim is established.
 
 Tracker follow-up: [P004](TRACKER-NORMALIZER.md) records a rejected normalizer after one repair; nothing was installed. Its failure remains unchanged.
 

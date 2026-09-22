@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "id": "P006",
+  "kind": "controller_boundary_repair",
+  "record_status": "complete_boundary_repair",
+  "publication_ready": true,
+  "date": "2026-09-22",
+  "follows": [
+    "P005",
+    "P003",
+    "P002"
+  ],
+  "outcome": "specified_local_guards_integrated",
+  "performance_evidence": "unproven",
+  "milestone_status_changes": [],
+  "further_paid_execution_authorized_by_this_record": false,
+  "scope": "One real application follow-up exposed a delivery failure; the private controller now checks exact local delivery, failed gate recovery, repeated starts and attachment schema compatibility at the tested interfaces.",
+  "incident": {
+    "classification": "user_detected_controller_delivery_failure",
+    "human_delivery_corrections": 1,
+    "preference_change": false,
+    "description": "The controller reached form review while approved files remained in a drafts folder rather than the required flat folder.",
+    "prior_preparation_record_rewritten": false
+  },
+  "actual_task": {
+    "submission": "confirmed",
+    "explicit_user_submission_authorization": true,
+    "controller_observed_evidence": [
+      "portal confirmation",
+      "matching receipt email",
+      "reconciled singleton tracker"
+    ],
+    "local_delivery_verified": true,
+    "current_form_record_check_passed": true,
+    "already_submitted_precheck_exit_code": 3,
+    "already_submitted_precheck_outcome": "refused_to_start",
+    "historical_runner_checks_reconstructed": false,
+    "recovery_records_preserve_prior_evidence": true,
+    "user_confirmed_resolution": null,
+    "limit": "Observed completion of this task is separate from synthetic guard tests and does not qualify a general browser executor or establish user satisfaction."
+  },
+  "implementation": {
+    "location": "private_repository",
+    "package_version": "1.2.0",
+    "private_commit": "268f4a2ee10b71133a2523db9ae82283156a85ff",
+    "final_installation_receipt_sha256": "caa2179ec1378ac8da2dff6d02fea62121330863fb0d9a28a342131765019929",
+    "installed_file_sha256": {
+      "pipeline/scripts/delivery.py": "e9a53c70455d8767166a1dcc3e329aee17fd9d37ecd74c3f626a9c4a5d731fb3",
+      "pipeline/scripts/checks.py": "862dd76e6fa00b14dbe38102cfa5a036c31a3dfcec8db8145fc1226d07bbac82",
+      "pipeline/scripts/run.py": "d66df64e7fbf52da9125a6d1fa9f8c67eb7c868b748a35d6939397d5c3aec44e",
+      "pipeline/scripts/make_bundle.py": "a2d24a5d77ceb96ba1f7e0a7665cd465be48694f260ba10844266e3a5f04c96c",
+      "pipeline/scripts/next_action.py": "404f471645c42149cd85ba356c65632300f2a361e17da4dbcf9592ddd6a80625",
+      "pipeline/scripts/promote.py": "5aacce9c2b63c982737f0a1dc685be8fde02a9297c268df98cc54b65e7551d7a",
+      "pipeline/scripts/make_form_doc.py": "dcad8391ee9d9456ea3fc3c45f1f2fdeb1670a947cd2356cad341a4f12adf94f",
+      "pipeline/PIPELINE.md": "41ca5268f2ad3aa9cea6eb3f051792c5a4082e6da9de432d8f52991a9348628a",
+      "pipeline/skill/SKILL.md": "67101bc8f67e6597abef13084dc78c5313c7e4c88b19f4357de6d14660c43ae6",
+      "pipeline/NEXT_ACTION.md": "12cbae6f4d7134dd0c3fcaaaf518fac385472b75110a8af6e53eef508a02099c",
+      "pipeline/GRAPH-RISKS.md": "0e0b3c70145b4cd682f4c8a0d343da1fb306240e035c63810253906d3a820aab",
+      "pipeline/PACKAGE.json": "2de9f3fb3a25f2c119d1972c529d25eda695e76b7a4caec7f58865930be04f98",
+      "pipeline/GRAPH-HARDENING.md": "12dbbc8a877aea38ceac66e2d45a4021e599a1c75896a3ad98748f9f9317edcb"
+    },
+    "code_unchanged_after_graph_tests": true,
+    "post_test_changes": "Documentation consistency, package metadata and line-ending cleanup.",
+    "package_hash_check_passed": true,
+    "full_pipeline_runtime_qualified": false,
+    "exclusive_browser_executor_qualified": false,
+    "qualified_stage_receipt_bridge_exists": false,
+    "public_reproduction_limit": "The implementation, fixtures, private application evidence and full receipts are not included in this public checkout. Public hashes support identity checks for holders of those artifacts, not independent reproduction from this repository alone.",
+    "validation_record_commit": "2ddbc2ccc07497fd55bb2400ab618f853ef29a06"
+  },
+  "verification": {
+    "synthetic_methods": {
+      "passed": 42,
+      "failed": 0,
+      "skipped": 0,
+      "delivery": 14,
+      "attachments": 4,
+      "recovery": 12,
+      "independent_boundary": 12,
+      "kind": "synthetic regression methods, not independent real tasks"
+    },
+    "counting_limit": "Engineering methods across partly overlapping suites; neither 42 independent real tasks nor a comparative performance sample.",
+    "graph_test_output_sha256": "211f1a55cdf77d65f3ff151988e45eb9b3e353608c2361b1a19c48e2e3251f21",
+    "test_file_sha256": {
+      "test_delivery_gate.py": "915d31689b4e917fbdeda319c62c9afbdfd0ce3c6f44d54c564bbcdfd199231c",
+      "test_form_attachments.py": "fd98f0ab43b05021a4a88f241da6bdbfc76bdfb51aa3b6a8ea7d10170e7a5bd6",
+      "test_recovery_gate.py": "fbb903f7d40517ae60df48387ce02b935aed820eab230914d1f64544a2c37492",
+      "test_delivery_boundary.py": "2feb9c284d5958dd1a6e590f064395f7d5ed3a8cc7426a4e7dd95aeda958abe3",
+      "baseline/run.py": "67fedd9ef0ad012ebc4810c28d81f0c80560a685b62b34aab463b34ace27f088",
+      "run_graph_tests.py": "640ae3c0235efbf127af81b46863b273c2ac5ff17a3faf9e06906b0912172be4"
+    },
+    "independent_review_sha256": "6621b0d03c0283f21c8ecbf068d24fbbc79313063373283d6af200a219d4a68d",
+    "independent_review_approved_for_integration": true,
+    "independent_reviewer_rerun_methods": 30,
+    "independent_rerun_count_is_subset_not_additional": true,
+    "independent_review_original_code_hashes_match_installed": true,
+    "independent_review_final_documentation_followup_sha256": "a614298ad571c3a7c032f8adc135ce182e452f8ee02bf83a7f49f51c29df0bae",
+    "independent_review_final_documentation_followup_status": "passed_no_blockers",
+    "actual_recovery_receipt_sha256": "cb21987527503aaddd837a3b931871915a7b8985d63b91ed2436921c8b63a309",
+    "native_render_limit": "Attachment compatibility tests check generated HTML and schema handling. They do not independently qualify native PDF rendering or remote uploaded-byte identity.",
+    "skill_validation": {
+      "bundled_validator_passed": true,
+      "existing_yaml_dependency_reused": true,
+      "new_dependencies_installed": false,
+      "initial_missing_dependency_result_preserved": true,
+      "supplement_sha256": "a614298ad571c3a7c032f8adc135ce182e452f8ee02bf83a7f49f51c29df0bae"
+    }
+  },
+  "six_investor_questions": [
+    {
+      "question": "What exact claim are you testing?",
+      "answer": "The tested runner entry points refuse specified invalid local delivery, failed supervision and repeated-start states, while the normal promotion and gate sequence remains usable.",
+      "metric": "42 synthetic regression methods passed; 0 failed or skipped. Separate current private delivery and form checks passed, and an already-submitted H6 precheck refused to start."
+    },
+    {
+      "question": "Compared with what?",
+      "answer": "The previous controller behavior and reproduced failure cases. This is a before/after engineering repair, not a randomized comparison with another capable agent."
+    },
+    {
+      "question": "What result would make you stop?",
+      "answer": "Do not install if a reproduced invalid state reaches H6 through the tested runner entry points, --force bypasses the hard checks, or the normal runner sequence becomes unusable. These were implementation acceptance conditions, not a preregistered performance study."
+    },
+    {
+      "question": "Where did your approach lose?",
+      "answer": "One human correction exposed that the controller had reached form review before delivering files to the required folder. Independent review also found numeric-overflow, malformed-marker and documentation defects; these were corrected before integration. Legacy manifests need reviewed byte identities; old snapshots cannot acquire readiness from delivery evidence alone. Direct browser calls still bypass the runner."
+    },
+    {
+      "question": "What did this really cost?",
+      "answer": "Total cost is unknown. No additional paid worker experiment was launched for this checkpoint, but controller/reviewer usage, failed preparation, evaluation and human time were not fully measured. P005 usage remains in P005 and is not charged again here."
+    },
+    {
+      "question": "What decision does the next expenditure enable?",
+      "answer": "Whether an attributable stage-receipt producer and one owned browser executor are needed to enforce the remaining boundary. This checkpoint alone does not authorize a new paid experiment or claim either component exists."
+    }
+  ],
+  "accounting": {
+    "additional_paid_worker_experiments": 0,
+    "execution_usage_usd": null,
+    "execution_tokens": null,
+    "preparation_cost_usd": null,
+    "evaluation_cost_usd": null,
+    "human_active_minutes": null,
+    "total_research_cost_usd": null,
+    "missing_measurements_mean": "unknown, not zero",
+    "p005_usage_charged_again": false,
+    "human_delivery_corrections": 1,
+    "other_human_contact_counts": null,
+    "controller_to_worker_repair_count": null,
+    "repair_count_note": "This was a controller-led engineering repair with independent review, not a newly enrolled worker comparison."
+  },
+  "remaining_limits": [
+    "Direct browser calls and raw ledger writes can bypass runner checks.",
+    "Raw snapshots emit legacy status labels, not independently qualified stage receipts; delivery alone cannot make them ready.",
+    "No atomic submission reservation or complete crash/uncertain-outcome recovery boundary is implemented.",
+    "Well-shaped gate decisions are not fully bound to all changing inputs.",
+    "Other stage reruns may retain earlier success history.",
+    "File checks are point-in-time local observations, not server-side upload byte verification or a filesystem lock.",
+    "Legacy completion markers require reconciliation; they are not by themselves proof of submission.",
+    "Full pipeline runtime and the managed-agent environment remain unqualified."
+  ],
+  "publication": {
+    "base_public_commit": "d43130d08b3c80a265529fef6ac1e8c4d4b8a118",
+    "public_commit": null,
+    "preserve_p005_reports_unchanged": true,
+    "contains_private_application_identifiers": false
+  }
+}
