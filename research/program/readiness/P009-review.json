@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "reviewer": "independent-readiness-review",
+  "qualification_passed": true,
+  "candidate_sha256": "06f13218db3e22d77e47d093184eca3ccc12d45255da54a92241e62421435ca9",
+  "frozen_before_candidate_inspection": true,
+  "counts": {
+    "valid": {
+      "passed": 8,
+      "total": 8
+    },
+    "known_negative": {
+      "passed": 20,
+      "total": 20
+    }
+  },
+  "reference_counts": {
+    "valid": {
+      "passed": 8,
+      "total": 8
+    },
+    "known_negative": {
+      "passed": 19,
+      "total": 20
+    }
+  },
+  "reference_gap": [
+    "empty_artifact"
+  ],
+  "existing_valid_cases_preserved": true,
+  "blocking_findings": [],
+  "code_review": [
+    "Only standard-library imports; utility reads caller-selected target and never launches a process or writes a file.",
+    "Nonzero return code rejects before receipt matching; missing/empty/nonfile targets and unusable receipts fail.",
+    "One matching record is required across supported complete JSON or JSON-line mixed logs; source/artifact hashes, byte counts and recursively compared options are bound.",
+    "Metadata is preserved. Boolean/number aliases in options and byte counts are rejected; JSON-number equality for int/float options is intentional.",
+    "Matching is point-in-time validation of trusted export data. The function explicitly disclaims freshness, PDF syntax/content/layout and sandbox or provenance enforcement."
+  ],
+  "documentation_review": {
+    "material_overclaim_found": false,
+    "scope": "Reviewed supplied readiness Markdown and triage JSON. Task outcome/cost/worker-repair counts are expressly scoped; complete cost is unknown; no milestone promotion, model comparison, caller adoption, public push or sandbox qualification is asserted. All50 milestone identifiers occur exactly once in the grouping. Did not independently repeat the root historical literature/milestone review.",
+    "nonblocking_note": "G01 alternative explanation says the operating environment explains the failed export. Unless saved diagnostics establish that cause, may explain is the more precise wording. This does not affect utility acceptance.",
+    "qualification_status": "Triage qualification is still not_run and its evidence references empty at review time; root must populate the observed result before describing P009 as a completed checkpoint."
+  },
+  "comparative_boundary": "The actual existing parser and its surrounding nonzero-exit guard were used. All8 specified valid cases pass both; the reference rejects19/20 contract negatives and accepts an empty correctly hashed output, while the utility rejects it. This is narrow added coverage, not evidence of general superiority or speed. It is not a claim of equivalence on every possible input the older permissive parser accepted.",
+  "evidence": {
+    "contract.json": "b56d3fb888cb78bbd42943a61cd2ab28a8ad4f10b790f689574f4c72847b9cf0",
+    "independent/criteria.json": "4833027a3bae3d4ac1dfe794b5a30a7a83993ad0d5af2a9d6a8289ee01bb6d54",
+    "independent/FROZEN.json": "100002039ecaab87f634ade30f101ee5ad71395e9cdf09725119f500427aaffc",
+    "independent/probe_export_receipt.py": "2b358e33a3daa345e29874c5c8bb542ce30b741b0216d6bda26c3151ea5df4fe",
+    "independent/qualification.json": "2c57950b351bbdfecc26d65fbb720337e77c6c5c2041bb9422ffd2c5ed6f95b5",
+    "independent/private-probe-log.json": "9e5448f8e224c40a76bb603c03d00f8ed48d31226d2c63363f57cf7bb0dd7422",
+    "candidate/tools/export_receipt.py": "06f13218db3e22d77e47d093184eca3ccc12d45255da54a92241e62421435ca9",
+    "candidate/research/program/readiness/P009-EXPORT-CHECKS.md": "461d69ee40acdd8e2530fb182ab99b96f0f246eff4b96b6ca1b76b34889c7eaf",
+    "candidate/research/program/readiness/P009-triage.json": "eeac9bb881a38d0315b0f7dd4e45f2cc8851e9154bca115d97eb4c3292fbc94b"
+  },
+  "publication_safety": "Portable probe contains standard-library code and synthetic data only. Sanitized qualification output contains case IDs/hashes/counts/exception classes, not private paths, candidate records or source identities. Raw exception detail is separate private-probe-log.json.",
+  "not_claimed": [
+    "No fresh export or rendering",
+    "No native/paid worker call",
+    "No browser or external service",
+    "No PDF/readability/visual qualification",
+    "No filesystem boundary or concurrency lock",
+    "No proof of fresh execution",
+    "No production caller integration",
+    "No comparative performance or complete-cost result"
+  ]
+}

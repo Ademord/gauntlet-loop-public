@@ -1,0 +1,598 @@
+{
+  "schema_version": 1,
+  "kind": "offline_export_receipt_qualification",
+  "candidate_sha256": "06f13218db3e22d77e47d093184eca3ccc12d45255da54a92241e62421435ca9",
+  "probe_sha256": "2b358e33a3daa345e29874c5c8bb542ce30b741b0216d6bda26c3151ea5df4fe",
+  "candidate_source_unchanged": true,
+  "accepted": true,
+  "counts": {
+    "valid": {
+      "passed": 8,
+      "total": 8
+    },
+    "known_negative": {
+      "passed": 20,
+      "total": 20
+    }
+  },
+  "cases": [
+    {
+      "case": "clean_compact",
+      "expected": "accept",
+      "observed": "returned",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "returned_matching_receipt": true
+    },
+    {
+      "case": "clean_pretty",
+      "expected": "accept",
+      "observed": "returned",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "returned_matching_receipt": true
+    },
+    {
+      "case": "bom_whitespace",
+      "expected": "accept",
+      "observed": "returned",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "returned_matching_receipt": true
+    },
+    {
+      "case": "mixed_plain_logs",
+      "expected": "accept",
+      "observed": "returned",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "returned_matching_receipt": true
+    },
+    {
+      "case": "mixed_json_logs",
+      "expected": "accept",
+      "observed": "returned",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "returned_matching_receipt": true
+    },
+    {
+      "case": "one_stale_one_current",
+      "expected": "accept",
+      "observed": "returned",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "returned_matching_receipt": true
+    },
+    {
+      "case": "extra_metadata",
+      "expected": "accept",
+      "observed": "returned",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "returned_matching_receipt": true
+    },
+    {
+      "case": "empty_input",
+      "expected": "accept",
+      "observed": "returned",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "returned_matching_receipt": true
+    },
+    {
+      "case": "positive_nonzero",
+      "expected": "reject",
+      "observed": "rejected",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "exception_class": "ValueError"
+    },
+    {
+      "case": "negative_exit",
+      "expected": "reject",
+      "observed": "rejected",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "exception_class": "ValueError"
+    },
+    {
+      "case": "empty_stdout",
+      "expected": "reject",
+      "observed": "rejected",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "exception_class": "ValueError"
+    },
+    {
+      "case": "whitespace_stdout",
+      "expected": "reject",
+      "observed": "rejected",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "exception_class": "ValueError"
+    },
+    {
+      "case": "logs_only",
+      "expected": "reject",
+      "observed": "rejected",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "exception_class": "ValueError"
+    },
+    {
+      "case": "malformed_json",
+      "expected": "reject",
+      "observed": "rejected",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "exception_class": "ValueError"
+    },
+    {
+      "case": "invalid_utf8",
+      "expected": "reject",
+      "observed": "rejected",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "exception_class": "UnicodeDecodeError"
+    },
+    {
+      "case": "json_scalar",
+      "expected": "reject",
+      "observed": "rejected",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "exception_class": "ValueError"
+    },
+    {
+      "case": "json_array",
+      "expected": "reject",
+      "observed": "rejected",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "exception_class": "ValueError"
+    },
+    {
+      "case": "missing_artifact",
+      "expected": "reject",
+      "observed": "rejected",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "exception_class": "ValueError"
+    },
+    {
+      "case": "directory_artifact",
+      "expected": "reject",
+      "observed": "rejected",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "exception_class": "ValueError"
+    },
+    {
+      "case": "empty_artifact",
+      "expected": "reject",
+      "observed": "rejected",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "exception_class": "ValueError"
+    },
+    {
+      "case": "stale_input",
+      "expected": "reject",
+      "observed": "rejected",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "exception_class": "ValueError"
+    },
+    {
+      "case": "wrong_input_count",
+      "expected": "reject",
+      "observed": "rejected",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "exception_class": "ValueError"
+    },
+    {
+      "case": "stale_output",
+      "expected": "reject",
+      "observed": "rejected",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "exception_class": "ValueError"
+    },
+    {
+      "case": "wrong_output_count",
+      "expected": "reject",
+      "observed": "rejected",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "exception_class": "ValueError"
+    },
+    {
+      "case": "stale_options",
+      "expected": "reject",
+      "observed": "rejected",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "exception_class": "ValueError"
+    },
+    {
+      "case": "missing_field",
+      "expected": "reject",
+      "observed": "rejected",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "exception_class": "ValueError"
+    },
+    {
+      "case": "duplicate_matches",
+      "expected": "reject",
+      "observed": "rejected",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "exception_class": "ValueError"
+    },
+    {
+      "case": "duplicate_matches_with_logs",
+      "expected": "reject",
+      "observed": "rejected",
+      "passed": true,
+      "source_unchanged": true,
+      "output_unchanged": true,
+      "options_unchanged": true,
+      "exception_class": "ValueError"
+    }
+  ],
+  "scope": "Synthetic process-result/receipt/current-byte-and-options validation only; no renderer, browser, model, external service, PDF syntax/readability/visual assessment, freshness proof, or performance comparison.",
+  "reference": {
+    "source_sha256": "7a8b565fff0f7ec88243438da1b965e6b1f7a5c40e7cd77e2e6df6019718c47b",
+    "source_unchanged": true,
+    "counts_against_contract": {
+      "valid": {
+        "passed": 8,
+        "total": 8
+      },
+      "known_negative": {
+        "passed": 19,
+        "total": 20
+      }
+    },
+    "existing_valid_semantics_preserved": true,
+    "cases": [
+      {
+        "case": "clean_compact",
+        "expected": "accept",
+        "observed": "returned",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "returned_matching_receipt": true
+      },
+      {
+        "case": "clean_pretty",
+        "expected": "accept",
+        "observed": "returned",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "returned_matching_receipt": true
+      },
+      {
+        "case": "bom_whitespace",
+        "expected": "accept",
+        "observed": "returned",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "returned_matching_receipt": true
+      },
+      {
+        "case": "mixed_plain_logs",
+        "expected": "accept",
+        "observed": "returned",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "returned_matching_receipt": true
+      },
+      {
+        "case": "mixed_json_logs",
+        "expected": "accept",
+        "observed": "returned",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "returned_matching_receipt": true
+      },
+      {
+        "case": "one_stale_one_current",
+        "expected": "accept",
+        "observed": "returned",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "returned_matching_receipt": true
+      },
+      {
+        "case": "extra_metadata",
+        "expected": "accept",
+        "observed": "returned",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "returned_matching_receipt": true
+      },
+      {
+        "case": "empty_input",
+        "expected": "accept",
+        "observed": "returned",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "returned_matching_receipt": true
+      },
+      {
+        "case": "positive_nonzero",
+        "expected": "reject",
+        "observed": "rejected",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "exception_class": "ValueError"
+      },
+      {
+        "case": "negative_exit",
+        "expected": "reject",
+        "observed": "rejected",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "exception_class": "ValueError"
+      },
+      {
+        "case": "empty_stdout",
+        "expected": "reject",
+        "observed": "rejected",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "exception_class": "ValueError"
+      },
+      {
+        "case": "whitespace_stdout",
+        "expected": "reject",
+        "observed": "rejected",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "exception_class": "ValueError"
+      },
+      {
+        "case": "logs_only",
+        "expected": "reject",
+        "observed": "rejected",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "exception_class": "ValueError"
+      },
+      {
+        "case": "malformed_json",
+        "expected": "reject",
+        "observed": "rejected",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "exception_class": "ValueError"
+      },
+      {
+        "case": "invalid_utf8",
+        "expected": "reject",
+        "observed": "rejected",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "exception_class": "UnicodeDecodeError"
+      },
+      {
+        "case": "json_scalar",
+        "expected": "reject",
+        "observed": "rejected",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "exception_class": "ValueError"
+      },
+      {
+        "case": "json_array",
+        "expected": "reject",
+        "observed": "rejected",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "exception_class": "ValueError"
+      },
+      {
+        "case": "missing_artifact",
+        "expected": "reject",
+        "observed": "rejected",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "exception_class": "ValueError"
+      },
+      {
+        "case": "directory_artifact",
+        "expected": "reject",
+        "observed": "rejected",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "exception_class": "ValueError"
+      },
+      {
+        "case": "empty_artifact",
+        "expected": "reject",
+        "observed": "returned",
+        "passed": false,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true
+      },
+      {
+        "case": "stale_input",
+        "expected": "reject",
+        "observed": "rejected",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "exception_class": "ValueError"
+      },
+      {
+        "case": "wrong_input_count",
+        "expected": "reject",
+        "observed": "rejected",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "exception_class": "ValueError"
+      },
+      {
+        "case": "stale_output",
+        "expected": "reject",
+        "observed": "rejected",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "exception_class": "ValueError"
+      },
+      {
+        "case": "wrong_output_count",
+        "expected": "reject",
+        "observed": "rejected",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "exception_class": "ValueError"
+      },
+      {
+        "case": "stale_options",
+        "expected": "reject",
+        "observed": "rejected",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "exception_class": "ValueError"
+      },
+      {
+        "case": "missing_field",
+        "expected": "reject",
+        "observed": "rejected",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "exception_class": "ValueError"
+      },
+      {
+        "case": "duplicate_matches",
+        "expected": "reject",
+        "observed": "rejected",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "exception_class": "ValueError"
+      },
+      {
+        "case": "duplicate_matches_with_logs",
+        "expected": "reject",
+        "observed": "rejected",
+        "passed": true,
+        "source_unchanged": true,
+        "output_unchanged": true,
+        "options_unchanged": true,
+        "exception_class": "ValueError"
+      }
+    ],
+    "scope": "Existing parser plus its real caller nonzero-exit guard. Differences identify bounded contract coverage, not general superiority."
+  }
+}

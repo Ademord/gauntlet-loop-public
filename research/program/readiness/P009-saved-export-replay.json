@@ -1,0 +1,50 @@
+{
+  "kind": "saved_export_replay",
+  "candidate_sha256": "06f13218db3e22d77e47d093184eca3ccc12d45255da54a92241e62421435ca9",
+  "cases": [
+    {
+      "case": "saved-failure-1",
+      "expected_acceptance": false,
+      "observed_acceptance": false,
+      "error_type": "ValueError",
+      "source_hashes": {
+        "build-receipt.json": "a413b7c63a0abddf9e754af6e4e9bae0567b9f5ef2e73eb97b8380aedfc3b3bb",
+        "render-request.json": "ad942f350fe7edb0ae26d6d1726cbd461a4ea892ca040b3e5ef53dd245c369f0",
+        "render.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "form-values.html": "c40496b7b7fa88c2da571ed17d30153cccb3158b754bc5f66577924ea4341f62"
+      },
+      "source_bytes_unchanged": true
+    },
+    {
+      "case": "saved-failure-2",
+      "expected_acceptance": false,
+      "observed_acceptance": false,
+      "error_type": "ValueError",
+      "source_hashes": {
+        "build-receipt.json": "b87487c470d7cedf6368668e11deb7a03c3d6e514b53145aea6b2c9820871fe6",
+        "render-request.json": "6152686ac4fe852d5b8e6d42c184d51610fe1ec1750e692b61ac569830a6c2b1",
+        "render.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "form-values.html": "c40496b7b7fa88c2da571ed17d30153cccb3158b754bc5f66577924ea4341f62"
+      },
+      "source_bytes_unchanged": true
+    },
+    {
+      "case": "saved-success",
+      "expected_acceptance": true,
+      "observed_acceptance": true,
+      "error_type": null,
+      "source_hashes": {
+        "build-receipt.json": "9a2382e9c1faf3aa64e7c1c38cf824e597ed57f484b9a6beb7e585017aceb625",
+        "render-request.json": "d1efcf2ac81c8112cc71d3802646d14e2a6321b256c45c0286c435ef1e68c7a8",
+        "render.stdout.txt": "493b85173f08b49c81b6fe15ab18c3688197b847e430cc3310dbf044eb4f5db5",
+        "form-values.html": "e03e247c5e54a2e84c7490443dfc2a9291964bd06be1c8cbe31ce7eac8816d5e",
+        "form-values.pdf": "6287f431db47eaa8f93c34ba63b729cf8885ae97ce4042a7305ada37d1258b8b"
+      },
+      "source_bytes_unchanged": true
+    }
+  ],
+  "passed": 3,
+  "total": 3,
+  "new_renderer_launches": 0,
+  "scope": "Replay of saved failed/successful transport evidence only; no fresh export, PDF review, browser action or general runtime qualification."
+}

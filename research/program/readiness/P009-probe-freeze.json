@@ -1,0 +1,9 @@
+{
+  "frozen_before_candidate_inspection": true,
+  "recorded_at": "2026-09-22T23:53:37.763956+00:00",
+  "files": {
+    "contract.json": "b56d3fb888cb78bbd42943a61cd2ab28a8ad4f10b790f689574f4c72847b9cf0",
+    "independent/criteria.json": "4833027a3bae3d4ac1dfe794b5a30a7a83993ad0d5af2a9d6a8289ee01bb6d54",
+    "independent/probe_export_receipt.py": "2b358e33a3daa345e29874c5c8bb542ce30b741b0216d6bda26c3151ea5df4fe"
+  }
+}

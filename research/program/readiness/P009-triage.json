@@ -1,0 +1,328 @@
+{
+  "schema_version": 1,
+  "id": "P009",
+  "mode": "engineering_readiness",
+  "performance_evidence": "unproven",
+  "milestone_status_changes": [],
+  "paid_execution_authorized": false,
+  "source_task": {
+    "id": "P008-validated-drafting",
+    "evidence_reference": "research/program/architecture/P008-validated-drafting.json",
+    "scope": "One accepted real drafting task plus assisted external completion. This triage inspects its controller residuals; it is not a fresh performance trial.",
+    "outcome": "passed",
+    "deployment": "Scoped documents and task completed; no general runtime qualification.",
+    "controller_corrections": 0,
+    "controller_corrections_definition": "Controller-to-worker repair rounds only. Export failures, browser refreshes, login assistance and layout correction are separate observations; their total intervention count is unknown.",
+    "worker_api_equivalent_usd": 1.2040785,
+    "full_research_cost_usd": null,
+    "human_minutes": null,
+    "attempts": [
+      {
+        "number": 1,
+        "evidence_reference": "research/program/architecture/P008-validated-drafting.json#/worker",
+        "terminal_reason": "completed",
+        "acceptance": "passed",
+        "worker_api_equivalent_usd": 1.2040785,
+        "worker_elapsed_seconds": 229.016,
+        "mechanical_checks": {
+          "passed": 2,
+          "total": 2
+        },
+        "mechanical_check_scope": "Two final-output JSON validator receipts only; factual and visual acceptance were separate."
+      }
+    ]
+  },
+  "milestone_review": {
+    "reviewed_ids": [
+      "M-001",
+      "M-002",
+      "M-003",
+      "M-004",
+      "M-005",
+      "M-006",
+      "M-007",
+      "M-008",
+      "M-009",
+      "M-010",
+      "M-011",
+      "M-012",
+      "M-013",
+      "M-014",
+      "M-015",
+      "M-016",
+      "M-017",
+      "M-018",
+      "M-019",
+      "M-020",
+      "M-021",
+      "M-022",
+      "M-023",
+      "M-024",
+      "M-025",
+      "M-026",
+      "M-027",
+      "M-028",
+      "M-029",
+      "M-030",
+      "M-031",
+      "M-032",
+      "M-033",
+      "M-034",
+      "M-035",
+      "M-036",
+      "M-037",
+      "M-038",
+      "M-039",
+      "M-040",
+      "M-041",
+      "M-042",
+      "M-043",
+      "M-044",
+      "M-045",
+      "M-046",
+      "M-047",
+      "M-048",
+      "M-049",
+      "M-050"
+    ],
+    "unselected_reason": "All fifty current claim statements were reviewed. The observations support a narrow controller contract and reuse of existing validation. They do not select extra roles, parallelism, memory, model routing, compression, caching or a broader benchmark. Task sampling, cost accounting and independent acceptance remain prerequisites for any later performance comparison.",
+    "groups": [
+      {
+        "ids": [
+          "M-004",
+          "M-012",
+          "M-024",
+          "M-036",
+          "M-037",
+          "M-039"
+        ],
+        "decision": "Qualify existing export-result checks and their extraction using valid controls and observed fault classes."
+      },
+      {
+        "ids": [
+          "M-001",
+          "M-002",
+          "M-003",
+          "M-005",
+          "M-007",
+          "M-008",
+          "M-011",
+          "M-015",
+          "M-016",
+          "M-018",
+          "M-019",
+          "M-020",
+          "M-021",
+          "M-022",
+          "M-023",
+          "M-025",
+          "M-028",
+          "M-029",
+          "M-031"
+        ],
+        "decision": "No new comparison: one assisted application cannot estimate marginal orchestration value. Preserve a competent native baseline and require task/cost/acceptance design first."
+      },
+      {
+        "ids": [
+          "M-006",
+          "M-014",
+          "M-032",
+          "M-033",
+          "M-041",
+          "M-042",
+          "M-043",
+          "M-044",
+          "M-045",
+          "M-047",
+          "M-048"
+        ],
+        "decision": "Keep ownership, authorization and native enforcement boundaries explicit. This offline check does not close general execution, browser, upgrade or publication gaps."
+      },
+      {
+        "ids": [
+          "M-009",
+          "M-010",
+          "M-013",
+          "M-017",
+          "M-026",
+          "M-027",
+          "M-030",
+          "M-034",
+          "M-035",
+          "M-038",
+          "M-040",
+          "M-046",
+          "M-049",
+          "M-050"
+        ],
+        "decision": "Reuse evidence and preserved failures. Complete accounting is unresolved. No new memory, cache, compression or feature-retirement policy follows from these cases."
+      }
+    ]
+  },
+  "gaps": [
+    {
+      "id": "P009-G01",
+      "observation": "Two P008 exports exited zero without receipt or PDF. The final private guard already rejects missing output and checks input/output/options hashes; P006 also preserved a nonzero-child outcome issue.",
+      "evidence_reference": "research/program/architecture/P008-validated-drafting.json",
+      "classification": "implementation_defect",
+      "cause_status": "established",
+      "cause_assessment": "Process completion alone is insufficient evidence of an export. A working task-specific guard exists; the current engineering question is whether it can be reused without losing behavior.",
+      "alternative_explanations": [
+        "The operating environment may explain the failed export itself; receipt validation detects it but does not establish the cause or repair permissions.",
+        "A receipt is produced by a trusted renderer; this is not adversarial attestation."
+      ],
+      "existing_capability": "P008 render_receipt_from_stdout plus its caller's nonzero-exit check. Keep the working guard as the competent reference.",
+      "smallest_action": "Utility extraction and offline qualification complete. Before adoption, wire one trusted export caller and check its complete artifact acceptance separately.",
+      "disposition": "fix",
+      "decision_reason": "This failure has concrete saved evidence and can be checked offline without more solver runs.",
+      "milestone_ids": [
+        "M-004",
+        "M-012",
+        "M-024",
+        "M-036",
+        "M-037",
+        "M-039"
+      ],
+      "qualification": {
+        "method": "offline",
+        "procedure": "Exercise nonzero exit, empty stdout, missing/empty file, stale input/output/options, duplicate receipts, valid JSON and mixed-log JSON lines against the extracted utility and reference semantics.",
+        "pass_condition": "Every required invalid case rejected, every required valid case accepted, candidate/reference agree on supported overlap, and source bytes unchanged.",
+        "failure_condition": "Any required invalid case accepted or valid case rejected; no claimed full PDF or freshness qualification.",
+        "status": "passed",
+        "evidence_references": [
+          "research/program/readiness/P009-qualification.json",
+          "research/program/readiness/P009-saved-export-replay.json"
+        ]
+      }
+    },
+    {
+      "id": "P009-G02",
+      "observation": "P008 had two final-byte JSON validations and independent content/PDF acceptance without a worker repair.",
+      "evidence_reference": "research/program/architecture/P008-validated-drafting.json",
+      "classification": "existing_capability",
+      "cause_status": "hypothesis",
+      "cause_assessment": "Access to validation may have helped, but differing tasks and controller work prevent attributing the outcome to it.",
+      "alternative_explanations": [
+        "The task may have been easier than earlier tasks.",
+        "Existing model behavior and improved input preparation may explain acceptance."
+      ],
+      "existing_capability": "Native bounded worker with supplied file tools and the existing static validator; independent content/layout review.",
+      "smallest_action": "Reuse the qualified validator path with actual post-write receipts.",
+      "disposition": "reuse",
+      "decision_reason": "One accepted draft does not justify adding another reviewer role or more prompt stages.",
+      "milestone_ids": [
+        "M-001",
+        "M-004",
+        "M-012",
+        "M-026",
+        "M-033"
+      ],
+      "qualification": {
+        "method": "manual",
+        "procedure": "On the next admitted task verify the provided validator is callable and its last receipts match final artifacts.",
+        "pass_condition": "Observed final-output validation and separately accepted content.",
+        "failure_condition": "Missing access, stale receipt, or failed independent content.",
+        "status": "not_run",
+        "evidence_references": []
+      }
+    },
+    {
+      "id": "P009-G03",
+      "observation": "Browser targets became stale and login required user intervention.",
+      "evidence_reference": "research/program/architecture/P008-validated-drafting.json",
+      "classification": "native_configuration",
+      "cause_status": "hypothesis",
+      "cause_assessment": "Reusing obsolete targets plausibly caused interaction corrections. No precise count or general enforcement guarantee was measured.",
+      "alternative_explanations": [
+        "Asynchronous UI loading and session expiry are distinct causes.",
+        "Text extraction can omit a field value even when the UI contains it."
+      ],
+      "existing_capability": "Existing supported browser state refresh and one controller owner.",
+      "smallest_action": "Use fresh observed targets; qualify any future browser adapter separately before broader automation.",
+      "disposition": "defer",
+      "decision_reason": "A local export check can be completed independently; new browser infrastructure is not needed for it.",
+      "milestone_ids": [
+        "M-006",
+        "M-014",
+        "M-033",
+        "M-041",
+        "M-042"
+      ],
+      "qualification": {
+        "method": "manual",
+        "procedure": "Before an external action, inspect the current page and intended target; reconcile uncertain external effects before retrying.",
+        "pass_condition": "The target and intended state are observed immediately before the action.",
+        "failure_condition": "Target cannot be verified, required sign-in is absent, or external effect remains uncertain.",
+        "status": "not_run",
+        "evidence_references": []
+      }
+    },
+    {
+      "id": "P009-G04",
+      "observation": "Independent review rejected an orphan document heading; a local layout correction later passed.",
+      "evidence_reference": "research/program/architecture/P008-validated-drafting.json",
+      "classification": "existing_capability",
+      "cause_status": "established",
+      "cause_assessment": "Structural syntax/hash checks did not establish acceptable page layout. Separate rendering and visual inspection caught the specific defect.",
+      "alternative_explanations": [
+        "Other layouts or renderers may require different corrections; this is not universal pagination coverage."
+      ],
+      "existing_capability": "Existing page rendering and independent visual acceptance.",
+      "smallest_action": "Keep visual acceptance separate from transport validation and reuse the documented heading rule where relevant.",
+      "disposition": "reuse",
+      "decision_reason": "This does not require an additional agent mechanism; it requires preserving an existing check.",
+      "milestone_ids": [
+        "M-012",
+        "M-024",
+        "M-025",
+        "M-039"
+      ],
+      "qualification": {
+        "method": "manual",
+        "procedure": "Render every delivered page and inspect heading/section placement and content against the source.",
+        "pass_condition": "All pages satisfy the actual layout/content contract.",
+        "failure_condition": "Any orphan heading, clipping, missing content or uninspected page.",
+        "status": "not_run",
+        "evidence_references": []
+      }
+    },
+    {
+      "id": "P009-G05",
+      "observation": "Worker usage is recorded, while controller/reviewer preparation, failed export work and human effort lack complete attributable totals.",
+      "evidence_reference": "research/program/architecture/P008-validated-drafting.json",
+      "classification": "missing_capability",
+      "cause_status": "established",
+      "cause_assessment": "The historical total cannot be computed from the available worker-only figure.",
+      "alternative_explanations": [
+        "Some host telemetry may be unavailable rather than absent from the recorder.",
+        "Human active time is not recoverable from message counts alone."
+      ],
+      "existing_capability": "Existing observer and contact classification; retain unknowns instead of inferring zero.",
+      "smallest_action": "Before a paid comparison, test whole-task accounting coverage and specify unknown-cost treatment.",
+      "disposition": "investigate",
+      "decision_reason": "A cost/acceptance claim cannot be evaluated honestly from worker usage alone.",
+      "milestone_ids": [
+        "M-027",
+        "M-030",
+        "M-038"
+      ],
+      "qualification": {
+        "method": "offline",
+        "procedure": "Reconcile all known roles/attempts and mark coverage for preparation, evaluation and human work on a bounded prospective task.",
+        "pass_condition": "Every category has an observed amount or explicit unknown coverage, with no double counting; funding claims state remaining limits.",
+        "failure_condition": "Omitted unsuccessful work, double-counted shared work, or unknown recorded as zero.",
+        "status": "not_run",
+        "evidence_references": []
+      }
+    }
+  ],
+  "next_gap_id": "P009-G01",
+  "limitations": [
+    "This readiness record does not promote any of the fifty performance milestones.",
+    "Synthetic export checks establish only their named contract; they do not launch a renderer, qualify a sandbox, validate PDF pages or prove fresh execution.",
+    "P008 remains a private task; a public synthetic check does not reproduce that application.",
+    "Controller and reviewer model usage for preparing this checkpoint is unknown. No additional native paid worker experiment is dispatched."
+  ],
+  "implementation_state": "qualified_library_not_wired_to_production_caller",
+  "current_decision": "Reuse this qualified export check at the next trusted caller integration; collect complete per-role accounting before a paid performance comparison."
+}

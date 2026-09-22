@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "kind": "preimplementation_independent_acceptance",
+  "authored_before_candidate_inspection": true,
+  "reference_reviewed": "The existing receipt parser plus its surrounding nonzero-return-code rejection; read as source without executing its controller.",
+  "interface": "check_export_receipt(returncode, stdout_bytes, target_Path, html_raw_bytes, options_dict) returns the matching receipt dictionary or rejects by raising an exception; no exact exception class is prescribed.",
+  "receipt_fields": ["html_sha256", "html_utf8_bytes", "pdf_sha256", "pdf_bytes", "pdf_options_python"],
+  "valid_cases": [
+    "clean compact JSON receipt",
+    "clean pretty JSON receipt",
+    "UTF-8 BOM and surrounding whitespace",
+    "plain log lines surrounding a complete JSON receipt line",
+    "mixed unrelated JSON records and one matching receipt line",
+    "one stale receipt and one matching receipt line",
+    "extra metadata on the matching receipt",
+    "empty input bytes with a nonempty output and exactly matching receipt"
+  ],
+  "known_negative_cases": [
+    "positive nonzero exit with a matching receipt",
+    "negative exit with a matching receipt",
+    "empty stdout",
+    "whitespace-only stdout",
+    "log-only stdout",
+    "malformed JSON without usable receipt",
+    "invalid UTF-8 stdout",
+    "JSON scalar instead of receipt",
+    "JSON array instead of the documented receipt object/JSON-line transport",
+    "missing expected artifact despite claimed success",
+    "directory instead of expected artifact",
+    "empty artifact with otherwise matching receipt",
+    "stale input digest",
+    "wrong input byte count",
+    "stale output digest",
+    "wrong output byte count",
+    "changed nested options",
+    "missing required receipt field",
+    "duplicate matching receipts",
+    "duplicate matching receipts separated by log lines"
+  ],
+  "invariants": [
+    "Valid calls return the selected matching record, preserving metadata.",
+    "Calls do not alter input bytes, options or expected artifact bytes.",
+    "Probe fixtures are synthetic; no renderer, browser, model or external service is invoked.",
+    "The reference comparison preserves existing valid behavior; a synthetic exit-only checker is not substituted for the competent reference.",
+    "Matching receipts can be replayed for identical bytes/options; acceptance is not proof of fresh execution, PDF validity, readability or visual quality."
+  ],
+  "reporting": "Report every case and valid/negative counts; retain raw details privately when requested. Sanitized results contain hashes, case identifiers and exception classes only, never source paths or private source contents. Known reference gaps are observations, not evidence of general speed/quality superiority."
+}

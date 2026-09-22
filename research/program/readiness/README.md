@@ -1,5 +1,7 @@
 # Engineering readiness from real tasks
 
+Current follow-up: [P009](P009-EXPORT-CHECKS.md) extracts the existing export-receipt check, qualifies 8 valid and 20 known-negative cases, and records [five reuse/fix/defer decisions](P009-triage.json) across the fifty milestones. The utility is available in the repository; production caller integration and full cost coverage remain separate work. [Qualification](P009-qualification.json), [frozen contract](P009-contract.json), [probe criteria](P009-probe-criteria.json), [freeze identities](P009-probe-freeze.json).
+
 Implementation follow-up: [SVQ-001](SVQ-001.json) qualifies the narrow static parser, and [P002](../architecture/IMPLEMENTATION.md) records the accepted private controller repair and read-only planner. P001 below remains historical; its separate skill-validation/discovery gaps and MAQ-001 general execution boundary remain unresolved.
 
 Use ordinary work to identify possible gaps before funding more comparisons. A failed delivery can expose an environment problem, an implementation defect, a weak evaluator or an unknown cause. It does not by itself establish that another orchestration feature is needed.
@@ -29,7 +31,7 @@ The JSON records retain `performance_evidence: unproven`, `milestone_status_chan
 
 Do not invent calibrated percentages from one failure. Qualitative confidence tied to evidence is enough. If probabilities are useful later, label them subjective estimates, define the specific outcome and time horizon, and record predictions before checking the result. A probability for a suspected cause and a probability that a proposed change will help are different claims.
 
-## Current decision
+## Historical P001 decision
 
 P001's worker had file tools only. Existing skill validation found invalid descriptions; inconsistent readiness claims and documentation also remained. The lack of execution access is observed. The hypothesis that providing it would prevent these defects is plausible because the existing validator detects them, but worker use of that feedback and any delivery benefit remain untested. Task breadth, incomplete revision and missed requirements are competing explanations.
 

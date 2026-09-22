@@ -5,6 +5,7 @@ Most scripts are deterministic. `paired_study/run_pair.py --execute`, its series
 | Tool | What it does | Command |
 | --- | --- | --- |
 | `program.py` | Indexes research claims and scoped evidence, checks prerequisites, freezes plans and records an offline inventory audit; never dispatches models | `python tools/program.py next`; see [workflow](../research/program/WORKFLOW.md) |
+| `export_receipt.py` | Checks a trusted export result and a receipt bound to current input/output/options; no process launch or PDF/content/visual acceptance | See [P009](../research/program/readiness/P009-EXPORT-CHECKS.md); `python tools/probes/export_receipt_probe.py --candidate tools/export_receipt.py` |
 | `readiness.py` | Maps task observations and possible gaps to existing milestones and a small investigation/fix/reuse decision; validates the triage structure without changing research status | `python tools/readiness.py list`; see [readiness](../research/program/readiness/README.md) |
 | `managed_agents.py` | Runs no-model synthetic native sandbox probes and preserves a private qualification report; no worker dispatch or unsandboxed fallback | `python tools/managed_agents.py doctor --profile tools/managed-profile.local.json --output tmp/managed-qualification`; see [managed agents](../ledger/MANAGED-AGENTS.md) |
 | `validation_bridge.py` | Fixed-root MCP Python AST/JSON checks with byte-bound diagnostics; never executes candidate code | `python -I -B tools/validation_bridge.py --root ARTIFACT_ROOT`; see [static validation](../ledger/STATIC-VALIDATION.md) |

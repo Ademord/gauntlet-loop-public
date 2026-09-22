@@ -1,0 +1,49 @@
+{
+  "id": "P009",
+  "kind": "engineering_readiness_qualification",
+  "created_at_utc": "2026-09-22T23:48:38Z",
+  "outcome": "Qualify and reuse a narrow controller check for trusted export results, based on P006/P008 failures.",
+  "reference": "P008 render_receipt_from_stdout and surrounding return-code check, plus P006 controller outcome handling.",
+  "selected_deliveries": [
+    "local repository checkpoint",
+    "reproducible synthetic qualification",
+    "brief decision"
+  ],
+  "non_goals": [
+    "no paid task comparison",
+    "no browser actions",
+    "no new job applications",
+    "no installed skill upgrade",
+    "no public push",
+    "no general sandbox or PDF visual qualification"
+  ],
+  "requirements": [
+    "A nonzero process result cannot be accepted even when stdout describes success.",
+    "Exit zero without a nonempty expected artifact or usable receipt is rejected.",
+    "Exactly one receipt must match current input bytes, output bytes and options.",
+    "Stale input/output/options and duplicate matching receipts are rejected.",
+    "Valid clean JSON and documented mixed-log JSON-line output are accepted.",
+    "Qualification leaves source inputs unchanged and makes no model or external calls.",
+    "State the boundary: receipt/hash validation is not PDF readability, visual acceptance, or proof of fresh execution."
+  ],
+  "stop_rule": "One bounded implementation and one independent review; at most one repair for a demonstrated in-scope defect. If valid cases fail or invalid cases pass after repair, retain rejected result; do not enlarge into a rendering framework.",
+  "accounting": {
+    "new_paid_worker_runs": 0,
+    "controller_and_review_cost_usd": null,
+    "all_observed_failures_retained": true
+  },
+  "resume_validation": {
+    "checkpoint": "P008",
+    "repository_head": "9d3965c1a0cb01347449fa6a7bb609efa8befa2e",
+    "working_tree": "clean",
+    "installed_skill": "4.0.0",
+    "repository_skill": "5.1.0",
+    "mismatch_resolution": "No skill execution or upgrade claimed; using the repository engineering-readiness workflow. Installed skill unchanged.",
+    "carried_limits": [
+      "public publication of pending checkpoints still unauthorized",
+      "MAQ-001 general boundary unresolved",
+      "full cost unknown"
+    ],
+    "dispatch_note": "A bounded read-only retrospective was dispatched before this record; no candidate or external action was dispatched then."
+  }
+}
