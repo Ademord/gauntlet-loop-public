@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "id": "P008",
+  "kind": "real_task_validated_drafting_and_external_completion",
+  "record_status": "complete_scoped_task",
+  "publication_ready": false,
+  "date": "2026-09-23",
+  "follows": [
+    "P007",
+    "P005"
+  ],
+  "outcome": "draft_accepted_without_worker_repair_and_external_task_completed",
+  "performance_evidence": "unproven",
+  "milestone_status_changes": [],
+  "further_paid_execution_authorized_by_this_record": false,
+  "scope": "One real application task using a bounded drafting worker, independent content/PDF review and a supervising controller for external actions.",
+  "worker": {
+    "model_requested": "claude-opus-5",
+    "native_model_observed": "claude-opus-5",
+    "effort_requested": "xhigh",
+    "native_effort_independently_measured": false,
+    "effort_evidence": "Recorded native invocation uses --effort xhigh.",
+    "build_attempts": 1,
+    "repair_attempts": 0,
+    "native_terminal_reason": "completed",
+    "exit_code": 0,
+    "elapsed_seconds": 229.016,
+    "static_validator_calls": 2,
+    "final_outputs_validated_after_last_write": 2,
+    "prepared_inputs_unchanged": true,
+    "observed_native_scope_issues": 0,
+    "tools": "Native file tools and the existing JSON validator; no worker shell or browser.",
+    "qualification": "Prior validator and renderer qualification reused; no new operating-system sandbox qualification."
+  },
+  "acceptance": {
+    "independent_content_accepted": true,
+    "independent_letter_pdf_accepted": true,
+    "nonblocking_private_note_interpretation_findings": 2,
+    "candidate_content_repair_required": false,
+    "syntax_limit": "Validator receipts bind final JSON bytes; factual support, schema, style and layout require separate review.",
+    "documentation": {
+      "initial_final_dossier_content_passed": true,
+      "initial_final_dossier_visual_passed": false,
+      "finding": "Independent review found an orphan attachment-section heading.",
+      "reflow_created": true,
+      "reflow_review_status": "passed",
+      "final_dossier_content_passed": true,
+      "final_dossier_visual_passed": true,
+      "final_reviewed_pages": 5,
+      "final_review_receipt_sha256": "589d849718b6d09972cfaefb75af766be01066d9d1b63f9b44fc5e81d2ac2c5e",
+      "final_dossier_sha256": "2a9f9c278923acdd40a41c0d3fdee60c5e77e48ea6343099419b14aac92f9c1c",
+      "earlier_failed_review_preserved": true,
+      "candidate_wording_changed_for_reflow": false
+    }
+  },
+  "external_task": {
+    "status": "completed_with_controller_and_access_assistance",
+    "submission_confirmed": true,
+    "recorded_submit_clicks": 1,
+    "portal_confirmation_observed": true,
+    "matching_email_observed": true,
+    "singleton_tracker_readback_confirmed": true,
+    "checked_H6_and_H7_recording_passed": true,
+    "private_completion_checkpoint_pushed_and_remote_head_matched": true,
+    "attachment_count": 4,
+    "local_attachment_hashes_checked": true,
+    "visible_uploaded_filenames_matched": true,
+    "server_side_uploaded_bytes_independently_verified": false,
+    "basis": "Root controller reports actual portal confirmation, matching email and tracker readback; local evidence records retain those observations.",
+    "limit": "One recorded click is not a distributed exactly-once guarantee. Local hashes and visible filenames do not prove the server retained identical bytes. Hiring outcome and user-confirmed resolution are unknown."
+  },
+  "controller_observations": [
+    {
+      "kind": "export_failure",
+      "attempts": 2,
+      "observation": "Export returned exit code zero with empty stdout and no PDF; both attempts were classified as failed and retained."
+    },
+    {
+      "kind": "export_recovery",
+      "attempt_number": 3,
+      "observation": "Offline export succeeded through the reviewed runtime permission route; this was a controller fix, not a worker repair or security-policy change."
+    },
+    {
+      "kind": "browser_state",
+      "observation": "Stale browser indices required controller refresh/correction; frequency and broader cause remain unmeasured."
+    },
+    {
+      "kind": "access",
+      "observation": "Login required intervention; this was not unattended end-to-end execution."
+    },
+    {
+      "kind": "evaluation",
+      "observation": "Explicit UTF-8 corrected an initial reviewer comparison. A single extraction line wrap received narrow independent adjudication with original checks retained."
+    },
+    {
+      "kind": "documentation_layout",
+      "observation": "A later independent review rejected an orphan heading. A local layout-only reflow then passed independent content and visual review on all five pages; the failed review remains preserved."
+    }
+  ],
+  "six_investor_questions": [
+    {
+      "question": "What exact claim are you testing?",
+      "answer": "Operational observation: the existing bounded worker produced two final JSON artifacts with actual syntax/hash validation and independent content/letter-PDF acceptance in one build; the assisted controller then completed the external task.",
+      "metric": "One build, zero worker repairs, two final-output validator receipts; independent content and letter-PDF pass; portal/email/tracker confirmation; checked completion stages and final documentation reflow acceptance."
+    },
+    {
+      "question": "Compared with what?",
+      "answer": "No controlled comparator was run. P005 is a prior reuse reference and P007 supplies local validation context; different tasks and controller work make their outcomes unsuitable for a causal cost/quality comparison."
+    },
+    {
+      "question": "What result would make you stop?",
+      "answer": "The pre-dispatch task contract allowed one soft USD2/600-second build and at most one soft USD1/300-second repair, with all attempts retained. Missing final validator receipts or failed content/layout criteria prevent artifact acceptance; a failed final artifact stops after the repair. External confirmation must be observed, not inferred. A failed documentation visual review prevents marking that document accepted. These are operational acceptance conditions, not a preregistered performance study."
+    },
+    {
+      "question": "Where did your approach lose?",
+      "answer": "Two exports appeared successful by exit code yet produced no PDF, stale browser indices needed correction, and login required intervention. Reviewer decoding/extraction handling needed correction; final documentation had an orphan heading. Two nonblocking note interpretations also required qualification. Zero worker repairs does not mean zero task corrections."
+    },
+    {
+      "question": "What did this really cost?",
+      "answer": "Native worker usage was USD1.2040785, 271938 reported tokens and 229.016 seconds. This includes cache-read and cache-creation token categories. Controller/reviewer usage, failed export work, preparation, evaluation and human time are unknown; total task/research cost is unknown. Prior qualification is not charged again."
+    },
+    {
+      "question": "What decision does the next expenditure enable?",
+      "answer": "First use inexpensive local checks to decide whether export receipt/PDF assertions, heading pagination and fresh browser-target resolution cover the observed failures. Another paid comparison is useful only after defining a competent alternative and collecting fuller costs; this record neither proves gains nor authorizes it."
+    }
+  ],
+  "accounting": {
+    "native_execution_usage_usd": 1.2040785,
+    "native_usage_basis": "List-price usage reported by native result; not a verified invoice or full research cost.",
+    "native_reported_tokens": 271938,
+    "token_categories": [
+      "input",
+      "output",
+      "cache_read_input",
+      "cache_creation_input"
+    ],
+    "native_elapsed_seconds": 229.016,
+    "controller_cost_usd": null,
+    "reviewer_cost_usd": null,
+    "preparation_and_evaluation_cost_usd": null,
+    "human_active_minutes": null,
+    "total_task_cost_usd": null,
+    "missing_measurements_mean": "unknown, not zero",
+    "prior_qualification_charged_again": false
+  },
+  "remaining_limits": [
+    "No controlled gain in quality, cost, speed or orchestration capability is established.",
+    "Native completion, content acceptance, document layout and external outcome are separate observations.",
+    "Direct controller browser calls remain outside an exclusive guarded executor; no exactly-once or general recovery guarantee follows.",
+    "Public aggregates and prior references do not reproduce the private task, inputs or acceptance evidence.",
+    "Scoped task acceptance is complete; public publication remains a separate permission decision."
+  ],
+  "references": [
+    "P007-form-validation.json",
+    "FORM-VALIDATION.md",
+    "P005-application-preparation.json",
+    "APPLICATION-PREPARATION.md"
+  ],
+  "publication": {
+    "status": "staged_locally_not_published",
+    "public_repository_edited": true,
+    "published": false,
+    "contains_private_application_identifiers": false,
+    "contains_private_paths_or_source_content": false
+  }
+}
