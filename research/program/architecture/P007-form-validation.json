@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "id": "P007",
+  "kind": "form_validation_and_gate_freshness_repair",
+  "record_status": "complete_scoped_repair",
+  "publication_ready": true,
+  "date": "2026-09-23",
+  "follows": [
+    "P006"
+  ],
+  "outcome": "specified_local_guards_integrated",
+  "performance_evidence": "unproven",
+  "milestone_status_changes": [],
+  "further_paid_execution_authorized_by_this_record": false,
+  "scope": "Validate the current local form contract and bind the supervision decision to specified current inputs before H6 runner actions.",
+  "actual_task": {
+    "external_application_actions_this_checkpoint": 0,
+    "prior_application_evidence_changed": false,
+    "completed_form_read_only_check_passed": true,
+    "completion_claim": "No new application completion is claimed."
+  },
+  "implementation": {
+    "location": "private_repository",
+    "baseline_package_version": "1.2.0",
+    "package_version": "1.3.0",
+    "private_commit": "0975ddbc78e20d8663a26994b9e1830170d7b905",
+    "final_installation_receipt_sha256": "ba56e7504359cf2060fb4dd0429fd542280e8ed7229a4c92b5517ea5ebd5d487",
+    "installed_file_sha256": {
+      "pipeline/scripts/run.py": "05b72d797734d3d5b70fd1df6a7c8c6a37f1a34ccb518c20b315028b9d596ea2",
+      "pipeline/scripts/gate_inputs.py": "0e150ff258549b4ba309785ef396399944f218d7ec4ce492ede49c459ff79cf1",
+      "pipeline/scripts/checks.py": "5dc6713936dcef20731b7cf367f606546adafb678a5be3ef64a9082000d2a54f",
+      "pipeline/scripts/form_audit.py": "f8af8c4f94ef29c053597f5f5adc518dcf7aabf513f8717655856331509c9c45",
+      "pipeline/skill/SKILL.md": "bdfa90e8f5386bf692cd0f4bf6406856d38dae28145210f1630c652b59ffca7c",
+      "pipeline/PIPELINE.md": "8e026184ef806274be7ccfbec8e89f2b49b26a4908e88aed052ad681deab6aa9",
+      "pipeline/GRAPH-RISKS.md": "8abc674d3cd8d78c14377bfe5f0947fc9eb216935759e9539d912d7964bb665c",
+      "pipeline/FORM-VALIDATION.md": "80d75afbef058317c25095464cb18b3a8f7bc0816534a0e6c6fc1679d9f2b495",
+      "pipeline/tests/graph/run_graph_tests.py": "5a0b09ccb4d0850dc99b56d239aa33579169311a6ed2651a3f34fc1e23275fb1",
+      "pipeline/tests/graph/test_recovery_gate.py": "2218bd44de00a95927e3162f0005b3416c9bffbb33df94031e4df47941507c5b",
+      "pipeline/tests/graph/test_delivery_gate.py": "a8d4908316a8ecc9b5e5c51438a0044f22481d895783ab27239b9b186132913f",
+      "pipeline/tests/graph/test_delivery_boundary.py": "8f85cfc715aa425e1c4478a7a5def93736b2766a8e6bb7cb2082356e9a320555",
+      "pipeline/tests/graph/test_form_attachments.py": "9e65e2157fe6b9ebec2854238fc919dd7180a39656fdad76eb49d4195251722d",
+      "pipeline/tests/graph/test_form_audit.py": "8fb94964768931a8473a026e8e1bcd33dea4ca53ebb660ea7db8a97e6034b34a",
+      "pipeline/tests/graph/test_p007_boundaries.py": "044108112877f2f58b35006d8a11e6a0a00cfaa0cf273701deef0980e4a695bb",
+      "pipeline/PACKAGE.json": "3934959d29c8e93ceb0e23a8b47089f709d5bfe595f9fa7ed87fb3aa233c4f98"
+    },
+    "package_hash_check_passed": true,
+    "full_pipeline_runtime_qualified": false,
+    "exclusive_browser_executor_qualified": false,
+    "qualified_stage_receipt_bridge_exists": false,
+    "public_reproduction_limit": "Implementation, fixtures and full receipts remain private. Public hashes identify artifacts for their holders; this public checkout alone cannot independently reproduce the repair.",
+    "code_hashes_match_independent_review": true
+  },
+  "form_contract": {
+    "hard_failures": [
+      "malformed, duplicate-key or nonfinite JSON",
+      "unsupported top-level or field-pair shape",
+      "invalid attachment object, name/path, hash or page count",
+      "missing/nonregular local file, current-byte mismatch or nested RAV destination"
+    ],
+    "compatibility": [
+      "empty attachment list supported",
+      "blank and scalar field values supported",
+      "free-form timestamps supported",
+      "full SHA256 checked when present",
+      "legacy attachment pairs remain rendering-only"
+    ],
+    "claim_limit": "Local record and current PDF consistency do not prove remote field values, uploaded bytes or employer-specific completeness."
+  },
+  "gate_freshness": {
+    "risk_id": "G04",
+    "status": "specified_inputs_repaired",
+    "bound_inputs": [
+      "configuration",
+      "verdict",
+      "manifest",
+      "latest H5 record",
+      "sorted set of submitted job identities",
+      "gate script identity"
+    ],
+    "checks": [
+      "compare captured inputs before and after the child process",
+      "validate decision values against the captured inputs",
+      "require matching current binding at H6 precheck, do and commit",
+      "regenerate legacy decisions lacking a binding",
+      "form validation failure cannot be overridden by force"
+    ],
+    "claim_limit": "Specified local freshness checks are not general stage provenance, a filesystem lock or control of direct browser actions."
+  },
+  "verification": {
+    "independent_acceptance": {
+      "candidate_passed_methods": 17,
+      "candidate_failed_methods": 0,
+      "baseline_failed_methods": 14,
+      "baseline_passed_controls": 3,
+      "baseline_failed_assertions": 28,
+      "note": "Multiple subcase assertions may fail within one method; 28 is not a count of independent tasks."
+    },
+    "form_subtask_suite": {
+      "passed_methods": 57,
+      "failed_methods": 0,
+      "composition": "42 existing methods plus 15 new form-audit methods before combined gate integration"
+    },
+    "combined_installed_suite": {
+      "passed_methods": 74,
+      "failed_methods": 0,
+      "skipped_methods": 0,
+      "prior_regressions": 42,
+      "form_audit": 15,
+      "independent": 17
+    },
+    "counting_limit": "Partly overlapping synthetic methods, not independent real tasks or a model performance sample. Do not sum the subset reruns.",
+    "final_test_output_sha256": "1c34a490b47bb8990552e7535a6e29f5ee624ff29b7dfd6d73a45d849e234988",
+    "independent_acceptance_receipt_sha256": "0962d01d2e4f46f595a9a1d7ca726014a6c0e9b6640740c3773e4a381ea59435",
+    "valid_real_form_unchanged": true,
+    "final_test_output_stream": "stderr",
+    "skill_validation_passed": true,
+    "separate_current_task_checks": {
+      "form_passed": true,
+      "delivery_passed": true,
+      "already_submitted_start_exit_code": 3,
+      "prior_evidence_unchanged": true
+    }
+  },
+  "six_investor_questions": [
+    {
+      "question": "What exact claim are you testing?",
+      "answer": "The tested form validator rejects malformed records and mismatched local attachment evidence; H6 runner entry points reject gates whose specified inputs changed, while valid controls still progress.",
+      "metric": "74 installed synthetic methods passed, 0 failed or skipped; the 17 independent acceptance methods are included in those 74. Separate current form and delivery checks passed; an already-submitted start was refused with exit code 3."
+    },
+    {
+      "question": "Compared with what?",
+      "answer": "Private package 1.2.0 on the same independent cases: 14 methods failed their acceptance assertions and 3 valid controls passed. This is an engineering repair, not an agent performance comparison."
+    },
+    {
+      "question": "What result would make you stop?",
+      "answer": "Do not install if malformed local evidence or changed gate inputs pass a tested hard check, force bypasses a blocker, or a legitimate control cannot advance. These are implementation acceptance conditions, not a preregistered performance study."
+    },
+    {
+      "question": "Where did your approach lose?",
+      "answer": "The previous checks accepted malformed field rows, fictional page counts and stale gate inputs. Existing test fixtures also used fake PDF bytes and an unsupported field shape; valid-path fixtures now use real synthetic PDFs. Legacy unbound gate records must be regenerated. Direct browser calls remain outside runner enforcement."
+    },
+    {
+      "question": "What did this really cost?",
+      "answer": "Unknown. No additional paid worker experiment was launched, but controller/reviewer usage, implementation, unsuccessful attempts, evaluation and human time are not fully measured. Unknown is not zero; no earlier checkpoint usage is charged again."
+    },
+    {
+      "question": "What decision does the next expenditure enable?",
+      "answer": "Whether an owned browser executor, qualified stage-receipt producer or atomic submission reservation is justified by the next observed failure. This checkpoint does not establish those boundaries or authorize a new paid experiment."
+    }
+  ],
+  "accounting": {
+    "additional_paid_worker_experiments": 0,
+    "execution_usage_usd": null,
+    "execution_tokens": null,
+    "preparation_cost_usd": null,
+    "evaluation_cost_usd": null,
+    "human_active_minutes": null,
+    "total_research_cost_usd": null,
+    "missing_measurements_mean": "unknown, not zero",
+    "earlier_usage_charged_again": false
+  },
+  "remaining_limits": [
+    "Direct browser calls and raw ledger writes can bypass runner checks.",
+    "General stage freshness and a qualified stage-receipt bridge remain incomplete.",
+    "No atomic submission reservation or complete uncertain-outcome recovery boundary is implemented.",
+    "Local checks observe current files; they do not verify server-side upload identity or prevent later mutation.",
+    "Other failed-stage reruns and runtime/managed-agent qualification remain open."
+  ],
+  "publication": {
+    "base_public_commit": "161b403c79c84787808f6d1b737f04dae800fa53",
+    "public_commit": null,
+    "preserve_p006_reports_unchanged": true,
+    "contains_private_application_identifiers": false
+  }
+}

@@ -1,6 +1,8 @@
 # Graph workflows: where they fit
 
-Controller-boundary follow-up: [P006](GRAPH-HARDENING.md) records the human delivery correction, integrated package 1.2.0, 42 passing synthetic methods and separate actual-task checks. Runner enforcement still excludes direct browser calls; no performance gain or milestone promotion is established.
+Form-validation follow-up: [P007](FORM-VALIDATION.md) repairs malformed form records, mismatched local attachment evidence and stale gate decisions. Integrated package 1.3.0 passed 74/74 synthetic methods, including 17 independent acceptance methods. Separate current form/delivery checks passed, and an already-submitted start was refused. Direct browser authority, atomic submission reservation and the general stage-receipt bridge remain open. No performance claim is established.
+
+Historical controller-boundary checkpoint: [P006](GRAPH-HARDENING.md) records the human delivery correction, integrated package 1.2.0, 42 passing synthetic methods and separate actual-task checks. Runner enforcement still excludes direct browser calls; no performance gain or milestone promotion is established.
 
 Historical preparation checkpoint: [P005](APPLICATION-PREPARATION.md) records accepted private application preparation after one repair, controller readiness failures and form access that was unresolved at that time. Its report is unchanged. No performance claim is established.
 
