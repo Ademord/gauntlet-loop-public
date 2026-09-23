@@ -1,0 +1,8 @@
+{
+  "recorded_at": "2026-09-23T10:50:20.726188+00:00",
+  "candidate_inspected": false,
+  "criteria_freeze_sha256": "7e1cb7df00a7ed0e963ebf98f795b45a983d335cbe7e5c6918bcfb491e2e4db0",
+  "probe_sha256": "ebb2258ded616c3e5bd10d2fe402a6a72d8f10bc945a2710e1d87113119c9409",
+  "fixture_groups": 8,
+  "interface_mapping": "Root documented JSON schema; explicit latest resolution checked when emitted, first-pass computation not required."
+}

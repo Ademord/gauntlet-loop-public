@@ -36,6 +36,20 @@ python tools/contact_metrics.py --db /external/private/observations.sqlite3 repo
 
 Classify outside the worker's task using the actual conversation. An auditor must cite evidence for a user-reported resolution; a passing automated check belongs in the separate outcome table. Missing human minutes remain unknown. Setup, infrastructure repairs and research effort need their own cost records; message counts do not measure that labor.
 
+## Audit existing coverage
+
+[P011](../research/program/readiness/P011-RECORDER-COVERAGE.md) distinguishes installed hooks from actual enrollment. Use [observer_coverage.py](../tools/observer_coverage.py) with a consistent private snapshot and a private selection assembled from an independent task inventory:
+
+```text
+python tools/observer_coverage.py --db /private/snapshots/observer.sqlite3 --selection /private/selection.local.json --output /private/coverage-new.json
+```
+
+The selection has a `sessions` list of objects containing host-prefixed `session_id` values, and an optional separate `controller_session_id`. IDs must be distinct. Keep the selection private. The command queries SQLite read-only, does not initialize tables, and writes only a new separate report when requested. Unlike this audit command, the existing contact-report helper initializes its optional tables; do not use that helper for a strictly read-only live audit.
+
+The report distinguishes unenrolled, enrolled-without-events and observed-partial records. Aliases and aggregates replace private identities; no event absence certifies absence of work. Stored values retain their limited scope, while whole-task cost and human-origin correction totals remain unknown. Classifier identity is not prompt authorship; controller repair instructions are not automatically human corrections. No descendant cost roll-up or current native-capture guarantee is supplied.
+
+Future recording scope is a separate decision. This audit changes no hook settings or enrollment behavior. Reuse the existing explicit enrollment commands below where authorized, then verify actual capture before treating future task coverage as established. Earlier missed activity remains missed unless separately reconstructed and labeled as such. The P011 report records the current qualification status.
+
 ## Prepare a local database and enroll a task
 
 Choose an absolute database path outside the worker's checkout. Keep real paths in gitignored `*.local.json` configuration; do not commit the database or diagnostics.

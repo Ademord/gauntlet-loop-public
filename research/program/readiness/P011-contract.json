@@ -1,0 +1,13 @@
+{
+  "id": "P011",
+  "kind": "recorder_coverage_audit",
+  "baseline": "Gauntlet local checkpoint c1e49a9; installed explicitly enrolled metadata observer",
+  "claim": "Determine which selected recent tasks are actually captured and whether their records support complete task cost and human-correction accounting.",
+  "comparison": "Observed task identities from the app versus a consistent read-only snapshot of the installed observer database; inspect the exact installed collector.",
+  "stop_rule": "Keep absent coverage and costs unknown. Do not backdate enrollment, fabricate hook history, infer corrections from all follow-ups, or launch a paid comparison. One bounded audit and independent review.",
+  "losses_to_report": "Unrecorded sessions, metadata-only limits, missing usage/descendant attribution, missing human effort and resolution evidence.",
+  "costs": {"controller_and_review_usd": null, "human_minutes": null, "additional_benchmark_worker_runs": 0},
+  "next_decision": "Choose the smallest prospective coverage fix using the existing recorder after checking actual capture; distinguish retrospective reconstruction from original recording.",
+  "scope": ["Read selected recent task identities", "Inspect hook configuration and exact installed code", "Snapshot private observer DB read-only", "Create a reproducible coverage/accounting report", "Local sanitized checkpoint"],
+  "excluded": ["Broad transcript collection", "Changing global hooks or trust", "Enrolling all future tasks", "Paid worker comparison", "Public push"]
+}

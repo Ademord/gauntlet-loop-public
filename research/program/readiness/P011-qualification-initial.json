@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "kind": "independent_recorder_audit_fixture_result",
+  "accepted": false,
+  "total": 8,
+  "passed": 1,
+  "failures": 0,
+  "errors": 7,
+  "cases": [
+    {
+      "case": "C01",
+      "passed": false
+    },
+    {
+      "case": "C02",
+      "passed": false
+    },
+    {
+      "case": "C03",
+      "passed": false
+    },
+    {
+      "case": "C04",
+      "passed": false
+    },
+    {
+      "case": "C05",
+      "passed": false
+    },
+    {
+      "case": "C06",
+      "passed": false
+    },
+    {
+      "case": "C07",
+      "passed": false
+    },
+    {
+      "case": "C08",
+      "passed": true
+    }
+  ],
+  "candidate_sha256": "5e097766b7736c8edba7ac8b1f377687583050c91c00af19ac2ba66c2302da5f",
+  "probe_sha256": "ebb2258ded616c3e5bd10d2fe402a6a72d8f10bc945a2710e1d87113119c9409",
+  "scope": "Eight synthetic fixture groups; actual audit CLI, no model calls, no real recorder or transcripts. Source database and selection bytes checked unchanged. No whole-task measurement or complete-coverage claim."
+}

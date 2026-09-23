@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "kind": "observer_coverage_audit",
+  "selection_count": 6,
+  "selected": [
+    {
+      "alias": "task-01",
+      "status": "not_enrolled",
+      "event_counts": {},
+      "reported_measurements": {
+        "tokens": {
+          "value": null,
+          "reason": "No attributable measurement in the selected observer record."
+        },
+        "cost_usd": {
+          "value": null,
+          "reason": "No attributable measurement in the selected observer record."
+        },
+        "human_minutes": {
+          "value": null,
+          "reason": "No attributable measurement in the selected observer record."
+        }
+      },
+      "contacts": null,
+      "whole_task_cost_usd": null,
+      "capture_complete": false,
+      "limitation": "No recorded activity does not mean no work. Enrollment and received hooks cannot recover earlier or missing activity."
+    },
+    {
+      "alias": "task-02",
+      "status": "not_enrolled",
+      "event_counts": {},
+      "reported_measurements": {
+        "tokens": {
+          "value": null,
+          "reason": "No attributable measurement in the selected observer record."
+        },
+        "cost_usd": {
+          "value": null,
+          "reason": "No attributable measurement in the selected observer record."
+        },
+        "human_minutes": {
+          "value": null,
+          "reason": "No attributable measurement in the selected observer record."
+        }
+      },
+      "contacts": null,
+      "whole_task_cost_usd": null,
+      "capture_complete": false,
+      "limitation": "No recorded activity does not mean no work. Enrollment and received hooks cannot recover earlier or missing activity."
+    },
+    {
+      "alias": "task-03",
+      "status": "not_enrolled",
+      "event_counts": {},
+      "reported_measurements": {
+        "tokens": {
+          "value": null,
+          "reason": "No attributable measurement in the selected observer record."
+        },
+        "cost_usd": {
+          "value": null,
+          "reason": "No attributable measurement in the selected observer record."
+        },
+        "human_minutes": {
+          "value": null,
+          "reason": "No attributable measurement in the selected observer record."
+        }
+      },
+      "contacts": null,
+      "whole_task_cost_usd": null,
+      "capture_complete": false,
+      "limitation": "No recorded activity does not mean no work. Enrollment and received hooks cannot recover earlier or missing activity."
+    },
+    {
+      "alias": "task-04",
+      "status": "not_enrolled",
+      "event_counts": {},
+      "reported_measurements": {
+        "tokens": {
+          "value": null,
+          "reason": "No attributable measurement in the selected observer record."
+        },
+        "cost_usd": {
+          "value": null,
+          "reason": "No attributable measurement in the selected observer record."
+        },
+        "human_minutes": {
+          "value": null,
+          "reason": "No attributable measurement in the selected observer record."
+        }
+      },
+      "contacts": null,
+      "whole_task_cost_usd": null,
+      "capture_complete": false,
+      "limitation": "No recorded activity does not mean no work. Enrollment and received hooks cannot recover earlier or missing activity."
+    },
+    {
+      "alias": "task-05",
+      "status": "not_enrolled",
+      "event_counts": {},
+      "reported_measurements": {
+        "tokens": {
+          "value": null,
+          "reason": "No attributable measurement in the selected observer record."
+        },
+        "cost_usd": {
+          "value": null,
+          "reason": "No attributable measurement in the selected observer record."
+        },
+        "human_minutes": {
+          "value": null,
+          "reason": "No attributable measurement in the selected observer record."
+        }
+      },
+      "contacts": null,
+      "whole_task_cost_usd": null,
+      "capture_complete": false,
+      "limitation": "No recorded activity does not mean no work. Enrollment and received hooks cannot recover earlier or missing activity."
+    },
+    {
+      "alias": "task-06",
+      "status": "not_enrolled",
+      "event_counts": {},
+      "reported_measurements": {
+        "tokens": {
+          "value": null,
+          "reason": "No attributable measurement in the selected observer record."
+        },
+        "cost_usd": {
+          "value": null,
+          "reason": "No attributable measurement in the selected observer record."
+        },
+        "human_minutes": {
+          "value": null,
+          "reason": "No attributable measurement in the selected observer record."
+        }
+      },
+      "contacts": null,
+      "whole_task_cost_usd": null,
+      "capture_complete": false,
+      "limitation": "No recorded activity does not mean no work. Enrollment and received hooks cannot recover earlier or missing activity."
+    }
+  ],
+  "database_summary": {
+    "sessions": 15,
+    "events": 417,
+    "by_host": {
+      "claude": 14,
+      "codex": 1
+    },
+    "measurement_rows": {
+      "known": 0,
+      "unknown": 45
+    },
+    "contact_labels": 14,
+    "resolution_records": 0,
+    "outcomes": 12
+  },
+  "whole_task_accounting_complete": false,
+  "whole_task_cost_usd": null,
+  "scope": "Selected identities checked against one read transaction. No automatic enrollment, retrospective reconstruction, descendant roll-up or causal performance inference.",
+  "controller": {
+    "alias": "controller",
+    "status": "not_enrolled",
+    "event_counts": {},
+    "reported_measurements": {
+      "tokens": {
+        "value": null,
+        "reason": "No attributable measurement in the selected observer record."
+      },
+      "cost_usd": {
+        "value": null,
+        "reason": "No attributable measurement in the selected observer record."
+      },
+      "human_minutes": {
+        "value": null,
+        "reason": "No attributable measurement in the selected observer record."
+      }
+    },
+    "contacts": null,
+    "whole_task_cost_usd": null,
+    "capture_complete": false,
+    "limitation": "No recorded activity does not mean no work. Enrollment and received hooks cannot recover earlier or missing activity."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "candidate_sha256": "5e097766b7736c8edba7ac8b1f377687583050c91c00af19ac2ba66c2302da5f",
+  "snapshot_sha256": "74d12a5b30fe27e68d5519a28e62eec13540f25a76cae78decc17688595ff23a",
+  "source_snapshot_unchanged": true,
+  "selected_other_sessions": 6,
+  "selected_not_enrolled": 6,
+  "controller_not_enrolled": true,
+  "enrolled_positive_controls": 2,
+  "enrolled_positive_controls_with_events": 2,
+  "positive_event_counts": [
+    10,
+    26
+  ],
+  "coverage_sha256": "69467a1685b35b609a884ceba07f4dc8e4ab9b47dfa72f074fd4606da0ea199c",
+  "positive_control_result_sha256": "c2484a9cdbb2c421af7ef64155c138c65d36a008a0b4320004b812046b7d2188",
+  "full_cost_known": false,
+  "real_transcripts_read": false,
+  "retrospective_events_inserted": 0
+}

@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "id": "P011",
+  "kind": "recorder_coverage_and_accounting_audit",
+  "outcome": "sampled_coverage_gap_and_incomplete_accounting_observed",
+  "publication": {
+    "status": "local_checkpoint_not_published",
+    "public_push_authorized": false
+  },
+  "performance_evidence": "unproven",
+  "milestone_status_changes": [],
+  "observations": {
+    "private_snapshot_bytes": 352256,
+    "private_snapshot_sha256": "74d12a5b30fe27e68d5519a28e62eec13540f25a76cae78decc17688595ff23a",
+    "database_summary": {
+      "sessions": 15,
+      "events": 417,
+      "by_host": {
+        "claude": 14,
+        "codex": 1
+      },
+      "measurement_rows": {
+        "known": 0,
+        "unknown": 45
+      },
+      "contact_labels": 14,
+      "resolution_records": 0,
+      "outcomes": 12
+    },
+    "selected_recent_other_tasks": {
+      "host": "codex",
+      "selected": 6,
+      "not_enrolled": 6,
+      "stored_events": 0,
+      "selection_scope": "Bounded sample from independent task inventory, not a census."
+    },
+    "current_controller": {
+      "status": "not_enrolled",
+      "stored_events": 0
+    },
+    "known_enrolled_positive_controls": {
+      "count": 2,
+      "with_events": 2,
+      "event_counts": [
+        10,
+        26
+      ],
+      "source_snapshot_unchanged": true
+    },
+    "inference_limit": "No stored events for these selected identities does not mean no work, no cost or no records elsewhere.",
+    "installed_modules_match_repository": true,
+    "installed_collector_sha256": "c3049290a4dfaf8a7f1ae3781cd41f7cce1204e5108366f8664769c084371c65",
+    "configured_hook_event_definitions": {
+      "codex": 9,
+      "claude": 10
+    },
+    "current_native_capture_qualified": false,
+    "configuration_limit": "Configured hooks and matching frozen modules do not establish invocation, native trust, broad enrollment or complete capture.",
+    "shared_diagnostics": {
+      "observed_rows": 8,
+      "generic_collector_errors": 8,
+      "sha256": "5bf02af8119587f7d765812e70829341113642048efa05d8d899375c4fc9f450",
+      "session_attribution": "unavailable",
+      "limit": "Bounded shared log; count is not all-time failures or the cause of any selected missing session."
+    }
+  },
+  "recording_semantics": {
+    "current_policy": "Explicit enrollment only; unchanged.",
+    "existing_interfaces": "Register one known host/session ID, or arm one next SessionStart for an exact host/directory with expiry.",
+    "unregistered": "Ignored without storing payload or identity.",
+    "descendants": "No automatic descendant enrollment or complete usage roll-up.",
+    "retrospective_limit": "Prospective enrollment cannot backfill original hook activity. Any later reconstruction must be labeled separately.",
+    "future_scope_decision": "Pending user selection between all future local tasks and selected tasks. No scope change applied."
+  },
+  "qualification": {
+    "candidate_sha256": "5e097766b7736c8edba7ac8b1f377687583050c91c00af19ac2ba66c2302da5f",
+    "corrected_independent_fixture_groups": {
+      "passed": 8,
+      "total": 8
+    },
+    "original_fixture_result": {
+      "total": 8,
+      "assertion_failures": 0,
+      "cleanup_errors": 7,
+      "accepted": false
+    },
+    "amendment": "Fixture SQLite connections were explicitly closed before Windows temporary-directory cleanup. Assertions, inputs, acceptance criteria and candidate bytes were unchanged.",
+    "candidate_repair_requested": false,
+    "final_independent_code_and_privacy_review": "accepted_for_scoped_audit",
+    "native_capture_check": "not_run_in_this_audit",
+    "limit": "Offline qualification of an audit over existing records, not qualification of future native event capture or a new recorder.",
+    "independent_actual_snapshot_review": "accepted"
+  },
+  "accounting_matrix": [
+    {
+      "component": "Selected recent tasks and current controller",
+      "status": "not_recorded_in_selected_observer_snapshot",
+      "source": "Independent task selection reconciled by exact host/session identity with the existing observer snapshot.",
+      "known": "Six selected other tasks plus the controller are not enrolled and have no stored events.",
+      "unknown_reason": "The sample is not a census; discarded or earlier activity cannot be reconstructed from this recorder."
+    },
+    {
+      "component": "Historical P008 worker execution",
+      "status": "known_limited_scope",
+      "source": "../architecture/P008-validated-drafting.json",
+      "cost_usd": 1.2040785,
+      "tokens": 271938,
+      "elapsed_seconds": 229.016,
+      "unknown_reason": "Prior native worker usage only, not subscription billing or whole-task cost. Historical usage is not a new P011 expense and is not charged twice."
+    },
+    {
+      "component": "Controller and independent review",
+      "status": "unknown",
+      "source": "Current controller is unenrolled; hook metadata does not meter usage.",
+      "cost_usd": null,
+      "unknown_reason": "No complete attributable metering across controller/reviewer work."
+    },
+    {
+      "component": "Preparation, environment work and retries",
+      "status": "unknown",
+      "source": "Existing checkpoint records describe work and failures.",
+      "cost_usd": null,
+      "unknown_reason": "Description and event counts do not quantify all resource cost or labor."
+    },
+    {
+      "component": "Descendant usage",
+      "status": "unknown",
+      "source": "Observer subagent lifecycle metadata and enrollment schema.",
+      "cost_usd": null,
+      "unknown_reason": "No complete parent/child enrollment or usage roll-up; inclusive versus exclusive totals are unestablished."
+    },
+    {
+      "component": "Human corrections and effort",
+      "status": "unknown",
+      "source": "Captured contact labels are classifier attestations; all 45 stored measurements are null.",
+      "human_corrections": null,
+      "human_minutes": null,
+      "unknown_reason": "Classifier identity is not prompt authorship. Controller repair prompts are not established human corrections; message timestamps are not active minutes."
+    },
+    {
+      "component": "User resolution and acceptance coverage",
+      "status": "partial_metadata",
+      "source": "Snapshot has 14 contact-label rows, zero resolution rows and 12 outcome rows.",
+      "unknown_reason": "Label rows can be revisions. No stored resolution is not proof of unresolved work; outcomes are supplied assessments rather than verified complete acceptance."
+    }
+  ],
+  "costs": {
+    "additional_benchmark_worker_runs": 0,
+    "whole_task_cost_usd": null,
+    "controller_and_review_usd": null,
+    "human_active_minutes": null,
+    "historical_worker_usage_recounted_as_P011": false
+  },
+  "investor_questions": {
+    "exact_claim": "Determine whether the selected tasks were actually enrolled and what existing records can support about costs, contacts and acceptance.",
+    "comparator": "An independently selected recent-task inventory reconciled with one consistent recorder snapshot and the exact installed code. No competing agent or causal performance comparison.",
+    "stop_criterion": "Stop at evidenced coverage and explicit unknowns. No backdated enrollment, fabricated hook history, inferred human corrections or paid comparison; one bounded audit plus independent review.",
+    "losses": "All six selected other tasks and the controller were unenrolled. All stored measurements are null; human origins, resolution, complete descendant usage and whole-task cost remain unestablished. Original fixture cleanup errors are retained.",
+    "real_cost": "No additional benchmark worker run. Controller/reviewer/preparation and human cost are unknown, not zero. Historical P008 native worker usage remains separate.",
+    "next_expenditure_decision": "After recording scope is selected, reuse the existing enrollment interface and verify actual capture before choosing any benchmark. Require explicit coverage and accounting gaps rather than another recorder."
+  },
+  "next_step": {
+    "depends_on": "User choice of future recording scope",
+    "action": "Use the existing enrollment interface where that scope permits it; confirm enrolled and unenrolled behavior with actual capture evidence before a benchmark.",
+    "current_behavior_changed": false,
+    "paid_comparison_authorized": false,
+    "milestone_links": [
+      "M-027",
+      "M-024"
+    ]
+  },
+  "evidence_sha256": {
+    "audit_contract": "e7c3a006ef769c6668b271c4e41df30d61602a09bbdb0106a441a79f9e556ab2",
+    "selected_identities_private": "fe4374ed1ccf17d634e9da58869221fb39155251475711616fef0cd54fabf331",
+    "coverage_result": "69467a1685b35b609a884ceba07f4dc8e4ab9b47dfa72f074fd4606da0ea199c",
+    "environment_check": "a267fe7e973182106470f167dcf1cabcfa9e956d848b4bd7ce4f4dd157120e2b",
+    "original_fixture_result": "764333db6d73342d45ff4ffc2fc744c549593d5a8064f81ca0985a1036d30692",
+    "fixture_amendment": "1f7b2616ed98de06c6aa2c4418a2c15963e363220251f8f73847521937b0545f",
+    "corrected_fixture_result": "a402ee406336d3d0e9aea7f982effc3b5b0639d014adc14c3ead43a0f9f7769f",
+    "independent_review": "afe7b44baf89c31d24f9a73c49263a480cb3c2601fa18f203e423a945dfbc838",
+    "actual_snapshot_replay": "716d7b781d09e0d26cae6757796a7dd21b2f740c04b411d50dd091686d21a535",
+    "positive_controls": "c2484a9cdbb2c421af7ef64155c138c65d36a008a0b4320004b812046b7d2188",
+    "independent_actual_snapshot_review": "10fd6a8467baf220c546bdcefd85a7ddb2d8e960fc7775f6f146675973668058"
+  },
+  "public_payload_scope": "Aggregate counts, generic reasons and source hashes only. Session IDs, titles, personal paths, configuration, raw diagnostics, transcripts and the database stay private. No new recorder, enrollment rule or research milestone is introduced."
+}

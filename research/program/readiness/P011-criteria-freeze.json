@@ -1,0 +1,10 @@
+{
+  "checkpoint": "P011",
+  "frozen_before_candidate_inspection": true,
+  "recorded_at": "2026-09-23T10:47:56.980768+00:00",
+  "files": {
+    "contract.json": "e7c3a006ef769c6668b271c4e41df30d61602a09bbdb0106a441a79f9e556ab2",
+    "independent/criteria.json": "ac4636ef65f7a49366b34a4edf99b7428fc0ae12a01a708158602d0ea802327e"
+  },
+  "scope": "Behavioral acceptance cases frozen; no candidate inspected or executed."
+}

@@ -1,0 +1,16 @@
+{
+  "recorded_at": "2026-09-23T10:51:06.795356+00:00",
+  "kind": "fixture_cleanup_correction",
+  "original_probe_sha256": "ebb2258ded616c3e5bd10d2fe402a6a72d8f10bc945a2710e1d87113119c9409",
+  "corrected_probe_sha256": "5ca90bbe21ce916f1fa89d59b7e296a43b34b178f05922256a7cdbbd8e816e73",
+  "original_result_sha256": "764333db6d73342d45ff4ffc2fc744c549593d5a8064f81ca0985a1036d30692",
+  "original_result": {
+    "tests": 8,
+    "assertion_failures": 0,
+    "cleanup_errors": 7
+  },
+  "reason": "SQLite connection context managers commit or roll back but do not close connections. Fixture-owned connections remained open during Windows temporary-directory cleanup.",
+  "only_change": "Import contextlib.closing and wrap both fixture connection contexts with closing. Assertions, inputs, candidate and acceptance criteria unchanged.",
+  "candidate_repair_requested": false,
+  "criteria_sha256": "ac4636ef65f7a49366b34a4edf99b7428fc0ae12a01a708158602d0ea802327e"
+}

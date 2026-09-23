@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "checkpoint": "P011",
+  "reviewer": "independent-readiness-review",
+  "recorded_at": "2026-09-23T10:51:46.606393+00:00",
+  "accepted": true,
+  "candidate_sha256": "5e097766b7736c8edba7ac8b1f377687583050c91c00af19ac2ba66c2302da5f",
+  "blockers": [],
+  "fixtures": {
+    "groups": 8,
+    "passed": 8,
+    "assertion_failures": 0,
+    "errors": 0,
+    "result_sha256": "a402ee406336d3d0e9aea7f982effc3b5b0639d014adc14c3ead43a0f9f7769f",
+    "probe_sha256": "5ca90bbe21ce916f1fa89d59b7e296a43b34b178f05922256a7cdbbd8e816e73"
+  },
+  "provenance": {
+    "criteria_frozen_before_candidate_inspection": true,
+    "criteria_sha256": "ac4636ef65f7a49366b34a4edf99b7428fc0ae12a01a708158602d0ea802327e",
+    "original_probe_freeze_sha256": "b30a8ee42712a6b42a24221e7ae1ef8c1e76899a825d7e5bf67a7bede5a496b7",
+    "fixture_amendment_sha256": "1f7b2616ed98de06c6aa2c4418a2c15963e363220251f8f73847521937b0545f",
+    "original_result_preserved": true,
+    "original_result_sha256": "764333db6d73342d45ff4ffc2fc744c549593d5a8064f81ca0985a1036d30692",
+    "original_assertion_failures": 0,
+    "original_fixture_cleanup_errors": 7,
+    "candidate_repairs": 0
+  },
+  "findings": [
+    "Read-only SQLite URI, query_only and one explicit read transaction support consistent source reads. Fixed SELECT queries do not enroll sessions, initialize optional tables or change collector configuration.",
+    "Coverage distinguishes missing enrollment, enrollment without arrivals and observed partial activity. Reported zero measurements remain zero while absent/null values remain null; whole-task cost and completeness stay unknown.",
+    "Contact counts use current label revisions for captured prompts only. Non-prompt labels are excluded; unclassified prompts remain visible. Resolution reports its latest recorded state as an attestation, and first-pass resolution remains unknown.",
+    "Controller prompt authorship is not inferred from classifier identity. Human corrections remain null even when captured labels include corrections. Stop, subagent hooks and evaluator outcomes do not become complete task acceptance or cost.",
+    "Selected identities and private marker text are excluded from successful public output. Database and selection bytes remain unchanged across successful and failed fixture calls; missing database and optional contact tables are not created.",
+    "Existing output paths, database/selection destinations and invalid or duplicate selection are rejected. Errors are generic rather than echoing private inputs."
+  ],
+  "limitations": [
+    "Eight synthetic fixture groups exercise the actual audit CLI, not complete real-session capture or total task cost.",
+    "No real observer database or transcript was read by these probes; actual snapshot inventory is separate controller evidence.",
+    "The first frozen probe had seven cleanup errors because fixture-owned SQLite connections were not closed. Only fixture connection cleanup changed; original probe, result and freeze are preserved.",
+    "No broad malformed-database, hostile-filesystem or concurrent publication certification is claimed. No paid worker or model call was made."
+  ]
+}
