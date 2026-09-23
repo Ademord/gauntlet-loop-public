@@ -2,6 +2,8 @@
 
 Work in progress, updated 23 September 2026. This is the canonical working repository.
 
+Distribution checkpoint: **[GitHub Release v5.1.0](https://github.com/Ademord/gauntlet-loop-public/releases/tag/v5.1.0)** publishes the existing reviewed package with a tag, downloadable assets and its verification manifest. The [Quick start](README.md#quick-start) is one line to paste into an AI coding agent for installation and brief onboarding. This changes distribution and documentation, not the skill behavior.
+
 Repository integration: the accumulated measurement repair, calibration, milestone index, graph/readiness work and recorder checkpoints are brought together on `main`. The usable skill and distribution remain **5.1.0**; archived versions and original evidence are preserved. This integration is not a new skill release or a performance result. The [repository map](README.md#one-project-development-and-releases) explains the different parts, and [contribution rules](CONTRIBUTING.md#branches-and-releases) describe temporary branches and releases.
 
 Possible community improvements are indexed as [B-040 through B-044](research/program/backlog.md#community-candidates-23-september-2026), with selection gates and observable completion criteria. The example domain is undecided. Existing engineering follow-ups remain scoped below; no new paid benchmark is active. Earlier checkpoint references to local-only publication describe their state at the time. This integration includes their sanitized public reports, not private task records or installed host settings.

@@ -1,16 +1,16 @@
 # Gauntlet Loop
 
-Gauntlet Loop is a reusable skill for building, reviewing and revising agent work against a concrete reference and explicit acceptance checks. Its goal is dependable delivery with less human corrective effort. Current skill release: **5.1.0**. A skill directs the process; it cannot guarantee that every result is correct.
+Gauntlet Loop is a reusable skill for building, reviewing and revising agent work against a concrete reference and explicit acceptance checks. Its goal is dependable delivery with less human corrective effort. Current skill release: **[5.1.0](https://github.com/Ademord/gauntlet-loop-public/releases/tag/v5.1.0)**. A skill directs the process; it cannot guarantee that every result is correct.
 
 This repository also holds the tools, experiments and history used to decide how the skill should evolve. [STATUS.md](STATUS.md) separates verified behavior from unproven performance claims. No general performance advantage over a capable native agent has been established.
 
 ## Quick start
 
-1. **Install.** Copy [skill/](skill/SKILL.md) into your host's skills directory under the name `gauntlet-loop`, for example `~/.codex/skills/gauntlet-loop` for Codex or `.claude/skills/gauntlet-loop` for Claude Code. Hosts that take a single file or an upload can use [dist/](dist/README.md).
-2. **Invoke.** Use `$gauntlet-loop` in Codex, or ask by name: "gauntlet this", "make a gauntlet prompt for ...", "loop until it beats X".
-3. **Draft or run.** By default the skill drafts one paste-ready prompt that carries the whole contract. Say "run it" and the agent becomes the lead, with a separate critic.
+Paste this into your AI coding agent:
 
-The [single-file package](dist/gauntlet-loop-v5-SKILL.md) and [zip](dist/gauntlet-loop-v5.zip) contain the released skill. The recorder, research drivers and managed-agent probes are optional repository tools; installing the skill does not install or enable them. See the existing [worked prompts and reference-selection examples](skill/references/bars-and-examples.md). Execution uses independent review; a host without a separate reviewer should not represent self-checking as independent acceptance.
+```text
+Install Gauntlet Loop from https://github.com/Ademord/gauntlet-loop-public/tree/v5.1.0/skill as gauntlet-loop, including its references; explain it in two short sentences, then ask what task I want help with.
+```
 
 ## One project, development and releases
 
