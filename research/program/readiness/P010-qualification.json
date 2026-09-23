@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "kind": "offline_real_export_caller_qualification",
+  "accepted": true,
+  "passed": 21,
+  "total": 21,
+  "cases": [
+    {
+      "case": "valid",
+      "passed": true,
+      "failures": [],
+      "child_calls": 1,
+      "guard_calls": 1,
+      "exit_code": 0,
+      "exception_class": null
+    },
+    {
+      "case": "nonzero",
+      "passed": true,
+      "failures": [],
+      "child_calls": 1,
+      "guard_calls": 1,
+      "exit_code": 3,
+      "exception_class": null
+    },
+    {
+      "case": "empty_stdout",
+      "passed": true,
+      "failures": [],
+      "child_calls": 1,
+      "guard_calls": 1,
+      "exit_code": 3,
+      "exception_class": null
+    },
+    {
+      "case": "missing_artifact",
+      "passed": true,
+      "failures": [],
+      "child_calls": 1,
+      "guard_calls": 1,
+      "exit_code": 3,
+      "exception_class": null
+    },
+    {
+      "case": "empty_artifact",
+      "passed": true,
+      "failures": [],
+      "child_calls": 1,
+      "guard_calls": 1,
+      "exit_code": 3,
+      "exception_class": null
+    },
+    {
+      "case": "stale_input",
+      "passed": true,
+      "failures": [],
+      "child_calls": 1,
+      "guard_calls": 1,
+      "exit_code": 3,
+      "exception_class": null
+    },
+    {
+      "case": "stale_output",
+      "passed": true,
+      "failures": [],
+      "child_calls": 1,
+      "guard_calls": 1,
+      "exit_code": 3,
+      "exception_class": null
+    },
+    {
+      "case": "stale_options",
+      "passed": true,
+      "failures": [],
+      "child_calls": 1,
+      "guard_calls": 1,
+      "exit_code": 3,
+      "exception_class": null
+    },
+    {
+      "case": "duplicate_matches",
+      "passed": true,
+      "failures": [],
+      "child_calls": 1,
+      "guard_calls": 1,
+      "exit_code": 3,
+      "exception_class": null
+    },
+    {
+      "case": "invalid_pdf",
+      "passed": true,
+      "failures": [],
+      "child_calls": 1,
+      "guard_calls": 1,
+      "exit_code": 3,
+      "exception_class": null
+    },
+    {
+      "case": "zero_page_pdf",
+      "passed": true,
+      "failures": [],
+      "child_calls": 1,
+      "guard_calls": 1,
+      "exit_code": 3,
+      "exception_class": null
+    },
+    {
+      "case": "timeout",
+      "passed": true,
+      "failures": [],
+      "child_calls": 1,
+      "guard_calls": 0,
+      "exit_code": 3,
+      "exception_class": null
+    },
+    {
+      "case": "existing_destination",
+      "passed": true,
+      "failures": [],
+      "child_calls": 0,
+      "guard_calls": 0,
+      "exit_code": 3,
+      "exception_class": null
+    },
+    {
+      "case": "destination_race",
+      "passed": true,
+      "failures": [],
+      "child_calls": 1,
+      "guard_calls": 1,
+      "exit_code": 3,
+      "exception_class": null
+    },
+    {
+      "case": "existing_evidence",
+      "passed": true,
+      "failures": [],
+      "child_calls": 0,
+      "guard_calls": 0,
+      "exit_code": 3,
+      "exception_class": null
+    },
+    {
+      "case": "missing_evidence_arg",
+      "passed": true,
+      "failures": [],
+      "child_calls": 0,
+      "guard_calls": 0,
+      "exit_code": 2,
+      "exception_class": null
+    },
+    {
+      "case": "missing_profile_arg",
+      "passed": true,
+      "failures": [],
+      "child_calls": 0,
+      "guard_calls": 0,
+      "exit_code": 2,
+      "exception_class": null
+    },
+    {
+      "case": "unsupported_shots",
+      "passed": true,
+      "failures": [],
+      "child_calls": 0,
+      "guard_calls": 0,
+      "exit_code": 2,
+      "exception_class": null
+    },
+    {
+      "case": "unsupported_append",
+      "passed": true,
+      "failures": [],
+      "child_calls": 0,
+      "guard_calls": 0,
+      "exit_code": 2,
+      "exception_class": null
+    },
+    {
+      "case": "default_html_attachment_compatibility",
+      "passed": true,
+      "comparisons": 17
+    },
+    {
+      "case": "default_legacy_route",
+      "passed": true,
+      "calls": [
+        "render_html",
+        "pdfunite",
+        "pdfinfo"
+      ],
+      "exception_class": null
+    }
+  ],
+  "hashes": {
+    "candidate": "e07d304ec7aa083b7df90b62c6a06aff38b14a3839fc28e941347265a9fc71b7",
+    "helper": "e089b5c4db1f616cd093dc0e7bb3bd4336e8bdcf03bc85642317e50dc81d7533",
+    "qualified_guard": "06f13218db3e22d77e47d093184eca3ccc12d45255da54a92241e62421435ca9",
+    "probe": "cd10c83f068cb5c0bbe83ae84f86c05f909c2efbcbe9455a38d1495a5514f2ae",
+    "baseline": "dcad8391ee9d9456ea3fc3c45f1f2fdeb1670a947cd2356cad341a4f12adf94f"
+  },
+  "scope": "Every subprocess mocked; actual readable synthetic PDF bytes exercise the real caller's parsing/readback/publication path. No fresh Node/browser render, external call, model call or visual qualification."
+}

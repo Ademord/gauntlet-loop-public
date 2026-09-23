@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "authored_before_candidate_inspection": true,
+  "scope": "Real caller CLI with all child processes mocked; no browser/Node execution. Structurally readable synthetic PDF fixtures are permitted after the root PDF-operation marker.",
+  "baseline": "Existing make_form_doc.py pure HTML/attachment behavior and legacy route; no exit-only substitute.",
+  "interface": "make_form_doc.py FORM OUT --export-profile PROFILE --evidence-dir NEW_DIR; profile schema1 with node_executable, playwright_module and browser_channel msedge. Optional route rejects unsupported shots/append explicitly.",
+  "cases": [
+    "Valid readable PDF: exact qualified guard receives actual child result/input/options/expected file, then local publication remains pending visual review",
+    "Nonzero child exit even with matching receipt and valid PDF",
+    "Empty stdout despite valid PDF",
+    "Missing expected child artifact",
+    "Empty child artifact with matching receipt",
+    "Stale input digest",
+    "Stale output digest",
+    "Changed options",
+    "Duplicate matching receipts",
+    "Matching receipt around non-PDF bytes",
+    "Matching receipt around a valid zero-page PDF",
+    "Child timeout with partial stdout/stderr",
+    "Preexisting destination remains byte-identical and child is not called",
+    "Destination appearing during child completion is preserved rather than overwritten",
+    "Preexisting evidence directory is rejected without changing its sentinel or running a child",
+    "Missing profile/evidence argument partner rejects before child execution",
+    "Optional route rejects screenshots and append explicitly",
+    "Current and legacy attachment rendering and invalid-input behavior match the baseline",
+    "Default legacy CLI still follows its established renderer/merge/readback route without opting into new evidence behavior"
+  ],
+  "observations_required": [
+    "Failed process/artifact/receipt/PDF paths never create or overwrite requested publication output",
+    "Invoked-child failures preserve actual raw stdout/stderr and a failure result",
+    "Every call preserves source form/profile and existing output/evidence where relevant",
+    "New route uses the fixed offline renderer and finite timeout without shell=True",
+    "Success result says published_pending_visual_review, visual_review pending and receipt_checked true",
+    "No synthetic result is counted as a fresh native render or visual acceptance"
+  ],
+  "limits": [
+    "Native runtime availability and fresh PDF visual inspection remain the root's separate qualification",
+    "No OS/network sandbox or race-free filesystem transaction guarantee beyond the tested exclusive destination behavior",
+    "No historical application evidence is edited, and no model or external service is called"
+  ]
+}

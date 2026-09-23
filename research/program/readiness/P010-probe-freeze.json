@@ -1,0 +1,10 @@
+{
+  "frozen_before_candidate_inspection": true,
+  "recorded_at": "2026-09-23T00:21:12.039498+00:00",
+  "pdf_marker_authorization": "Root confirmed the successful marker before these fixtures may be generated. No fixture created yet.",
+  "files": {
+    "contract.json": "1b5582b34dbb2107652eaa7df3013b0d51cf37eac4453f3d0be2b2961a1e4b92",
+    "independent/criteria.json": "ed34058008fb38cea64ecdf7b95636482db730b2efd405ff2aa2a292de1ddf7f",
+    "independent/probe_checked_export.py": "cd10c83f068cb5c0bbe83ae84f86c05f909c2efbcbe9455a38d1495a5514f2ae"
+  }
+}

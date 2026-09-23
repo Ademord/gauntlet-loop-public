@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "id": "P010",
+  "kind": "engineering_readiness_integration",
+  "outcome": "qualified_for_tested_standalone_export_route",
+  "publication": {
+    "status": "local_checkpoint_not_published",
+    "public_push_authorized": false
+  },
+  "performance_evidence": "unproven",
+  "milestone_status_changes": [],
+  "integration": {
+    "private_package_before": "1.3.0",
+    "private_package_after": "1.4.0",
+    "qualified_guard_sha256": "06f13218db3e22d77e47d093184eca3ccc12d45255da54a92241e62421435ca9",
+    "guard_reused_unchanged": true,
+    "scope": "Optional standalone form/confirmation PDF caller using a fixed trusted Node/Edge renderer in a fresh offline page context.",
+    "default_route": "Existing pure HTML and attachment behavior preserved; legacy CLI execution was compared with mocked processes.",
+    "success_boundary": "Receipt binding and structural PDF readback permit writing a new local destination; every final page still requires visual review. No submission or external delivery follows.",
+    "destination_filesystem_requirement": "Destination filesystem must support the exclusive hard-link publication used by this route. No general crash-recovery or concurrent-filesystem transaction guarantee."
+  },
+  "qualification": {
+    "integrated_graph_methods": {
+      "passed": 93,
+      "total": 93
+    },
+    "independent_top_level_cases": {
+      "passed": 21,
+      "total": 21
+    },
+    "nested_compatibility_comparisons": {
+      "passed": 17,
+      "total": 17,
+      "included_in_one_top_level_case": true
+    },
+    "counting_note": "These are separate suite descriptions, not a combined count of independent observations. The 17 compatibility comparisons are not additional top-level cases.",
+    "independent_offline_child_processes": 0,
+    "fresh_native_exports": 1,
+    "native_render_passed": true,
+    "independent_visual_passed": true,
+    "pages": 1,
+    "pdf_bytes": 54296,
+    "pdf_sha256": "7920e071f0ed96a9dcfdf65433b66183f5238ff8d8d44cad9ed14abe8b83294c",
+    "caller_elapsed_seconds": 2.6533826999366283,
+    "timing_scope": "One observation, without a timing comparator; not a speedup or a complete task duration.",
+    "source_text_recovered": true,
+    "input_bytes_unchanged": true,
+    "output_hash_matches_receipt": true,
+    "canonical_package_hashes": {
+      "passed": 39,
+      "total": 39
+    },
+    "historical_watch": {
+      "unchanged": 38,
+      "total": 38,
+      "scope": "Selected previously delivered evidence; not a full filesystem audit."
+    },
+    "implementation_repairs_requested": 0
+  },
+  "runtime_scope": {
+    "playwright_version": "1.62.1",
+    "edge_version": "153.0.4234.32",
+    "fresh_context": true,
+    "page_offline": true,
+    "javascript_enabled": false,
+    "chromium_sandbox_enabled": true,
+    "scope_limit": "Observed page configuration and one successful route; not an operating-system or network-isolation certificate.",
+    "legacy_preflight_passed": false,
+    "legacy_unavailable_dependencies": [
+      "pdftotext",
+      "pdfunite",
+      "Python Playwright"
+    ],
+    "optional_screenshots_qualified": false,
+    "optional_append_qualified": false,
+    "external_browser_workflow_qualified": false
+  },
+  "investor_questions": {
+    "exact_claim": "The tested caller invokes the unchanged P009 receipt check with actual process/input/output/options, preserves failed attempts and refuses invalid output promotion; one fresh standalone export passed structural and independent visual review.",
+    "comparator": "The functioning P009 guard plus the existing caller's pure HTML/attachment semantics and legacy CLI path on their supported overlap. No model-performance or elapsed-time comparator.",
+    "stop_criterion": "Stop adoption if required invalid cases leak success, supported valid cases fail, prior evidence changes, or native rendering remains unavailable after one diagnosed retry. At most one repair for an established defect.",
+    "losses_and_limits": "Legacy preflight still fails three dependency checks. Screenshots, append and external browser work are outside this route. One fixture does not establish all layouts, exact crash recovery, comprehensive concurrency safety or general sandboxing. Earlier export failures remain in P008.",
+    "real_cost": "No new native worker run. Controller, reviewer, environment preparation, deterministic checking and human time still have unknown total cost; zero paid experiments is not zero research cost.",
+    "next_expenditure_decision": "Audit whole-task cost and acceptance coverage using existing records before funding another comparison. Determine whether controller/reviewer/retry/preparation and human effort can be attributed without invented totals."
+  },
+  "costs": {
+    "new_native_worker_runs": 0,
+    "full_task_cost_usd": null,
+    "controller_and_review_cost_usd": null,
+    "human_active_minutes": null,
+    "coverage": "Unknown full attribution; historical task usage is not counted again."
+  },
+  "next_step": {
+    "kind": "whole_task_cost_and_acceptance_coverage_audit",
+    "milestone_links": [
+      "M-027",
+      "M-024"
+    ],
+    "method": "Reuse observer and checkpoint records to enumerate phases, failed attempts, preparation, review, tools and human corrections. Expose missing attribution before selecting one prospective task for measurement.",
+    "qualification": "Every required phase has an attributable amount/duration or an explicit unknown with provenance. Mark the cost total incomplete while any required component is unknown; avoid duplicate counts.",
+    "stop": "If required attribution cannot be obtained, retain unknowns and defer a cost-efficiency comparison; do not add a second recorder or invent rates.",
+    "paid_comparison_authorized": false
+  },
+  "evidence_sha256": {
+    "frozen_contract_private": "1b5582b34dbb2107652eaa7df3013b0d51cf37eac4453f3d0be2b2961a1e4b92",
+    "independent_review": "d5c676aa3affdfd5744c3dba2f489247e8a194fa1a41573e58a34cbe1100741e",
+    "independent_offline_qualification": "0c22d075fd8c0cee09f29383d51b95bf7b42de1d179f580515cb6d2ef9a84177",
+    "independent_visual_acceptance": "07e8bc299c352fd777f1fb6bd00e06f3ae461f1edb015b2bf47a561dce096a8d",
+    "integrated_regression_result": "5dd20740fada7f5faf26489da95179861a8a971242e844e87d29bd4b67c12af8",
+    "historical_preservation_result": "769a86e9fe2eb22f6662960f79cc2dd70d8a309d0c096d4fa7ff5d81017b573d",
+    "fresh_native_run_private": "f764e379187dc8d570cfe49ab8f07bc57992bb706306dac37294e4b225900169",
+    "reviewed_probe": "cd10c83f068cb5c0bbe83ae84f86c05f909c2efbcbe9455a38d1495a5514f2ae"
+  },
+  "public_payload_scope": "Aggregate results, generic protocol fixtures and hashes only. Private caller/template source, host configuration, raw process output, HTML, PDF/images and task records remain private. Hashes identify saved evidence; they are not independent proof of semantic truth or fresh execution."
+}

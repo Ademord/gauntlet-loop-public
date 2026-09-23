@@ -1,5 +1,7 @@
 # Graph workflows: where they fit
 
+Export integration follow-up: [P010](../readiness/P010-CHECKED-EXPORT.md) puts the unchanged P009 guard into a trusted standalone export caller. Ninety-three graph methods, 21 independent top-level cases and one fresh PDF with independent visual review passed. This narrow route does not qualify full legacy preflight, screenshots, append or external browser work. Next: whole-task cost and acceptance coverage. Total cost remains unknown; this checkpoint is local and no performance claim is established.
+
 Validated-drafting follow-up: [P008](VALIDATED-DRAFTING.md) records one accepted native build, independent content/PDF review and a confirmed external task. Worker usage was $1.2040785 with no worker repair; controller export failures, stale browser indices, login intervention and a documentation reflow remain recorded. Full cost and comparative gains are unknown. This local checkpoint does not establish exclusive browser enforcement and awaits public publication permission.
 
 Form-validation follow-up: [P007](FORM-VALIDATION.md) repairs malformed form records, mismatched local attachment evidence and stale gate decisions. Integrated package 1.3.0 passed 74/74 synthetic methods, including 17 independent acceptance methods. Separate current form/delivery checks passed, and an already-submitted start was refused. Direct browser authority, atomic submission reservation and the general stage-receipt bridge remain open. No performance claim is established.

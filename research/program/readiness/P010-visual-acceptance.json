@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "reviewer": "independent-readiness-review",
+  "accepted": true,
+  "visual_review_passed": true,
+  "native_fresh_run_evidence_verified": true,
+  "page_count": 1,
+  "pages_independently_viewed": [
+    1
+  ],
+  "pdf_sha256": "7920e071f0ed96a9dcfdf65433b66183f5238ff8d8d44cad9ed14abe8b83294c",
+  "png_sha256": "788513d2c3518377e703a3b3e5d064aa1f42b443f57990eaceb938cdf2dac2a0",
+  "canonical_source_matches_reviewed_candidate": true,
+  "canonical_source_hashes": {
+    "make_form_doc.py": "e07d304ec7aa083b7df90b62c6a06aff38b14a3839fc28e941347265a9fc71b7",
+    "checked_export.py": "e089b5c4db1f616cd093dc0e7bb3bd4336e8bdcf03bc85642317e50dc81d7533",
+    "offline_export.cjs": "2e2099e0c435280be758aaec867459a3212f2744d00ed041e634bcccb5797fa1",
+    "export_receipt.py": "06f13218db3e22d77e47d093184eca3ccc12d45255da54a92241e62421435ca9"
+  },
+  "actual_process_result": {
+    "returncode": 0,
+    "elapsed_seconds": 2.6533826999366283,
+    "receipt_checked": true,
+    "published_before_visual_status": "published_pending_visual_review",
+    "new_native_model_calls": 0
+  },
+  "content_checks": {
+    "source_field_pairs_present": 10,
+    "source_note_present": true,
+    "input_files_still_match_recorded_before_hashes": true,
+    "saved_raw_child_receipt_revalidated_with_exact_qualified_guard": true,
+    "one_nonempty_pdf_page": true,
+    "replacement_characters_found": false
+  },
+  "visual_findings": [],
+  "visual_observations": [
+    "Complete title/header, ten-row table and explanatory note are legible.",
+    "Margins and column boundaries are intact; no overlap, clipping or stranded heading.",
+    "Unicode accents/umlauts and ampersand are correctly rendered.",
+    "Document is clearly labeled as a local qualification fixture, not an application record or permission to submit."
+  ],
+  "evidence_hashes": {
+    "fresh_run": "f764e379187dc8d570cfe49ab8f07bc57992bb706306dac37294e4b225900169",
+    "child_result": "4fc88d6005306500924b9f67af6a8125e730b5465fb3b0bd1a9234ebbc7d68d0",
+    "request": "2557cb5cc9170379edd970cfd76a474e7f782d47ab766c74e0a9608af47f50aa",
+    "raw_child_stdout": "20d8d509e32c4d5102f74cae17ccf47d9e777376ad28427bfc4082d45c217881",
+    "raw_child_stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "renderer_receipt": "ecf87f617bec16b576a923a47aecd6a1b796efe8d56e15e2f30945a863e6d664",
+    "synthetic_form": "f6654dbc37063d859911cbde2a3a2f194b8a6808f518a8b9b6db77e21bc0619e"
+  },
+  "limits": [
+    "Root executed the fresh canonical caller. Reviewer inspected saved process evidence, revalidated hashes/receipt, independently read the PDF and viewed the supplied rendered page; no render rerun occurred.",
+    "This verifies one fresh standalone optional-route export on this host. It does not establish all layouts, legacy preflight, screenshots/append support, external account behavior or an OS/network sandbox.",
+    "No application action, comparative model-performance gain, complete-cost total or worker-quality improvement is asserted.",
+    "This receipt contains metadata only. Personalized inherited template text, PDF, raw HTML, paths and private exception details are excluded from public metadata."
+  ]
+}
