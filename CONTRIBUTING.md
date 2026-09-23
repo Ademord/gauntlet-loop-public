@@ -7,6 +7,18 @@ Four kinds of contribution, each with a fixed path.
 3. **A change to the skill.** Only through an upgrade run: checks frozen first, the current version as the bar, independent critics, then the steps in [versions/README.md](versions/README.md#adding-a-version). Nobody edits `skill/` directly: the `commit-msg` hook refuses a commit that changes `skill/` unless its message carries `Upgrade-run: <run-id>` for an existing `gauntlet/<run-id>/`.
 4. **A research decision or experiment.** Link source/evidence records to stable milestone IDs in the [program index](research/program/README.md). Follow its [workflow](research/program/WORKFLOW.md): concrete comparison, six investor questions, scoped prerequisites, frozen inputs and an outcome including losses and unknown costs. Update the plan when research or native capabilities change; preserve previous results.
 
+## Branches and releases
+
+`main` is the continuing project home. It contains the usable skill, optional tooling, research, including unsuccessful experiments, and the historical versions. A research checkpoint is not a skill release, and merging its report does not promote a performance claim.
+
+Use short-lived `codex/` branches for changes that need isolation; small documentation changes can land directly on `main` after checks. Integrate reviewed work without rewriting historical records. An integrated branch is no longer a parallel development home. Preserve archived versions, frozen inputs and original results; record corrections as dated additions or derived records.
+
+The current released package remains 5.1.0 until a reviewed skill change warrants a version change. Skill changes still require the upgrade run described above, an incumbent snapshot, the version archive and release notes, rebuilt distribution artifacts, and independent acceptance. Tag the accepted release commit with its exact version when publishing a new release. Documentation, recorder changes or new evidence alone do not require a skill version bump.
+
+For branch integration, verify the release and historical hashes, run the package validator, the relevant regression tests, `python tools/program.py validate`, `python tools/program.py render --check`, `python tools/readiness.py validate`, and the public-readiness audit. Inspect findings rather than interpreting a scanner exit code as acceptance. Keep raw task records, personal data and local settings private; publish only the selected sanitized evidence. Keep current status pages current while preserving checkpoint statements as dated history.
+
+Community ideas are [backlog candidates](research/program/backlog.md#community-candidates-23-september-2026), not automatic release commitments. Reuse the existing milestone and readiness indexes when taking one up. Do not add another research queue or require repository instrumentation just to use the skill.
+
 ## Before your first commit
 
 - Run `pip install --target .validation-deps pyyaml pytest`, then `git config core.hooksPath tools/hooks`. The pre-commit guard refuses staged text containing personal paths, machine or personal identity, secrets, or any term in your local `tools/private_terms.local.json`.

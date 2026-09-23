@@ -1,8 +1,34 @@
 # Gauntlet Loop
 
-A skill for coding agents that turns an ambitious goal into a deliverable that survives comparison with a real reference and independent, evidence-based checks. The agent builds, a separate critic with fresh context judges the actual artifact against a concrete bar, and the work is revised until it wins or its budget runs out. Current skill: 5.1.0. This is work in progress: [STATUS.md](STATUS.md) distinguishes verified behavior from unproven performance claims.
+Gauntlet Loop is a reusable skill for building, reviewing and revising agent work against a concrete reference and explicit acceptance checks. Its goal is dependable delivery with less human corrective effort. Current skill release: **5.1.0**. A skill directs the process; it cannot guarantee that every result is correct.
 
-The September 20 [measurement correction](research/program/paired-study/measurement-replay.md) preserves the original study and corrects its token totals. The completed [review calibration](research/program/calibration/DECISION.md) found equal frozen scores, plus real repairs and a regression in supplementary checks. It does not benchmark full skill versions or establish a general benefit from orchestration.
+This repository also holds the tools, experiments and history used to decide how the skill should evolve. [STATUS.md](STATUS.md) separates verified behavior from unproven performance claims. No general performance advantage over a capable native agent has been established.
+
+## Quick start
+
+1. **Install.** Copy [skill/](skill/SKILL.md) into your host's skills directory under the name `gauntlet-loop`, for example `~/.codex/skills/gauntlet-loop` for Codex or `.claude/skills/gauntlet-loop` for Claude Code. Hosts that take a single file or an upload can use [dist/](dist/README.md).
+2. **Invoke.** Use `$gauntlet-loop` in Codex, or ask by name: "gauntlet this", "make a gauntlet prompt for ...", "loop until it beats X".
+3. **Draft or run.** By default the skill drafts one paste-ready prompt that carries the whole contract. Say "run it" and the agent becomes the lead, with a separate critic.
+
+The [single-file package](dist/gauntlet-loop-v5-SKILL.md) and [zip](dist/gauntlet-loop-v5.zip) contain the released skill. The recorder, research drivers and managed-agent probes are optional repository tools; installing the skill does not install or enable them. See the existing [worked prompts and reference-selection examples](skill/references/bars-and-examples.md). Execution uses independent review; a host without a separate reviewer should not represent self-checking as independent acceptance.
+
+## One project, development and releases
+
+`main` is the continuing home for the skill, supporting tools, research and version history. Development branches hold unfinished changes temporarily. Reviewed work is integrated into `main`; a release identifies a particular usable skill package. New research or tooling on `main` does not automatically change that package or its version.
+
+The work developed on `codex/calibration-and-measurement-repair` belongs in this same project:
+
+| Work | Where it lives | What it contributes |
+| --- | --- | --- |
+| Current usable skill and portable package | [skill/](skill/SKILL.md), [dist/](dist/README.md) | The reviewed 5.1.0 behavior, unchanged by the research integration |
+| Chronological versions and release reviews | [versions/](versions/README.md), [gauntlet/](gauntlet/README.md) | What changed, why, and how each release was checked |
+| Fifty milestones, research and experiment records | [research/program/](research/program/README.md) | Candidate decisions with scoped evidence; not fifty required features |
+| Graph assessments and task-driven repairs | [architecture/](research/program/architecture/README.md), [readiness/](research/program/readiness/README.md) | What real work exposed, what was repaired or rejected, and remaining boundaries |
+| Recorder, validation and research utilities | [tools/](tools/README.md), [observer](ledger/OBSERVER.md) | Optional support for measurement and checks, with documented limits |
+
+Some observations justify code changes, others a later skill revision, and others a decision to stop. Retaining a failed experiment on `main` preserves evidence; it does not endorse the failed candidate. Original results and archived versions remain intact. Raw recordings, personal documents and local configuration remain outside the public repository.
+
+The [community backlog](research/program/backlog.md#community-candidates-23-september-2026) records possible improvements to onboarding, a portable demonstration and outcome measurement. The demonstration's domain remains undecided; no new framework, paid experiment or skill release is scheduled by those entries. See [contribution and release rules](CONTRIBUTING.md#branches-and-releases).
 
 ## How it works
 
@@ -19,12 +45,6 @@ flowchart TD
 ```
 
 Findings are classed as deterministic, external, or judgment. From a piece's third review round, a judgment alone can no longer force a revision. Every run records its difficulty estimate, topology, reviews, and outcome, so later runs can test where the extra machinery pays.
-
-## Quick start
-
-1. **Install.** Copy [skill/](skill/SKILL.md) into your host's skills directory under the name `gauntlet-loop`, for example `~/.codex/skills/gauntlet-loop` for Codex or `.claude/skills/gauntlet-loop` for Claude Code. Hosts that take a single file or an upload can use [dist/](dist/README.md).
-2. **Invoke.** Use `$gauntlet-loop` in Codex, or ask by name: "gauntlet this", "make a gauntlet prompt for ...", "loop until it beats X".
-3. **Draft or run.** By default the skill drafts one paste-ready prompt that carries the whole contract. Say "run it" and the agent becomes the lead, with a separate critic.
 
 ## How it evolved
 
@@ -52,6 +72,7 @@ Across these versions the skill grew from about 1,400 to 12,400 words, almost ni
 | follow or join the research program | [research/program/](research/program/README.md) for indexed milestones, evidence and experiment records |
 | inspect a complete real run: the one that produced v5 | [gauntlet/](gauntlet/README.md) |
 | run the tooling | [tools/](tools/README.md) |
+| inspect optional community improvements | [backlog candidates](research/program/backlog.md#community-candidates-23-september-2026) |
 | see what is verified, untested, and next | [STATUS.md](STATUS.md) |
 | contribute a paper, a run, or a change | [CONTRIBUTING.md](CONTRIBUTING.md) |
 
