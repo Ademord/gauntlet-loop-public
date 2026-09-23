@@ -44,9 +44,15 @@ class ObserverInstallTest(unittest.TestCase):
             target.write_bytes(content)
             self.before[host] = content
 
-    def prepare(self, targets=None):
+    def prepare(self, targets=None, **kwargs):
         with patch.object(installer, '__file__', str(self.source / 'observer_install.py')):
-            return installer.prepare(self.private, self.database, targets or self.targets, python=sys.executable)
+            return installer.prepare(self.private, self.database, targets or self.targets, python=sys.executable, **kwargs)
+
+    def installed_old(self):
+        plan = self.prepare()
+        installer.apply(plan, self.backups)
+        (self.source / 'observer_host.py').write_bytes(b'# new frozen host fixture\n')
+        return plan
 
     def assert_original_settings(self):
         for host, target in self.targets.items():
@@ -182,6 +188,175 @@ class ObserverInstallTest(unittest.TestCase):
             installer.apply(plan, self.backups)
         self.assert_original_settings()
         self.assertEqual(backup.read_bytes(), b'preexisting second-host backup with wrong identity')
+
+    def test_fresh_auto_enrollment_is_explicit_and_appends_flag_for_both_hosts(self):
+        self.assertFalse(self.prepare()['auto_enroll'])
+        plan = self.prepare(auto_enroll=True)
+        self.assertTrue(plan['auto_enroll'])
+        self.assert_original_settings()
+        for change in plan['changes']:
+            settings = json.loads(change['after_utf8'])
+            for event in installer.EVENTS[change['host']]:
+                handler = settings['hooks'][event][-1]['hooks'][0]
+                if change['host'] == 'claude':
+                    self.assertEqual(handler['args'][-2:], ['hook', '--auto-enroll'])
+                else:
+                    self.assertTrue(handler['command'].endswith('hook --auto-enroll'))
+
+    def test_upgrade_replaces_owned_handlers_preserving_shared_wrappers_and_frozen_runtime(self):
+        old = self.installed_old()
+        frozen = {name: (Path(old['runtime']) / name).read_bytes() for name in installer.MODULES}
+        neighbor = {'type': 'command', 'command': 'another-python-task', 'timeout': 7}
+        before_upgrade = {}
+        for host, target in self.targets.items():
+            settings = json.loads(target.read_bytes())
+            for event in installer.EVENTS[host]:
+                settings['hooks'][event][-1]['hooks'].insert(0, copy.deepcopy(neighbor))
+            settings['custom']['later-user-edit'] = host
+            target.write_text(json.dumps(settings), encoding='utf-8')
+            before_upgrade[host] = target.read_bytes()
+        plan = self.prepare(auto_enroll=True, previous_plan=old)
+        self.assertNotEqual(plan['runtime'], old['runtime'])
+        self.assertEqual({host: p.read_bytes() for host, p in self.targets.items()}, before_upgrade)
+        installer.apply(plan, self.root / 'upgrade-backups')
+        for host, target in self.targets.items():
+            current = json.loads(target.read_bytes())
+            self.assertEqual(current['custom']['later-user-edit'], host)
+            self.assertEqual(current['permissions'], self.settings['permissions'])
+            self.assertEqual(current['hooks']['UnrelatedEvent'], self.settings['hooks']['UnrelatedEvent'])
+            self.assertEqual(current['hooks']['PreToolUse'][0], self.settings['hooks']['PreToolUse'][0])
+            for event in installer.EVENTS[host]:
+                shared = current['hooks'][event][-1]
+                self.assertEqual(shared['hooks'][0], neighbor)
+                self.assertEqual(len(shared['hooks']), 2)
+                self.assertNotIn(old['runtime'].replace('\\', '/'), json.dumps(shared['hooks'][1]).replace('\\\\', '/'))
+                self.assertIn('--auto-enroll', json.dumps(shared['hooks'][1]))
+            backup = self.root / 'upgrade-backups' / (host + '-' + installer.digest(before_upgrade[host]) + '.json')
+            self.assertEqual(backup.read_bytes(), before_upgrade[host])
+        self.assertEqual({name: (Path(old['runtime']) / name).read_bytes() for name in installer.MODULES}, frozen)
+
+    def test_previous_plan_path_and_repeated_current_plan_upgrade_are_idempotent(self):
+        old = self.installed_old()
+        path = self.root / 'previous-plan.json'
+        path.write_text(json.dumps(old), encoding='utf-8')
+        plan = self.prepare(auto_enroll=True, previous_plan=path)
+        installer.apply(plan, self.root / 'upgrade-backups')
+        repeated = self.prepare(auto_enroll=True, previous_plan=plan)
+        self.assertTrue(all(c['before_sha256'] == c['after_sha256'] for c in repeated['changes']))
+        self.assertTrue(all(r['status'] == 'unchanged' for r in installer.apply(repeated, self.root / 'repeat-backups')))
+
+    def test_auto_upgrade_without_previous_plan_refuses_duplicate_recorders(self):
+        self.installed_old()
+        before = {host: path.read_bytes() for host, path in self.targets.items()}
+        with self.assertRaises(ValueError):
+            self.prepare(auto_enroll=True)
+        self.assertEqual(before, {host: path.read_bytes() for host, path in self.targets.items()})
+
+    def test_previous_plan_rejects_database_python_target_command_and_content_mismatch(self):
+        old = self.installed_old()
+        variants = []
+        for field, value in [('database', str(self.root / 'different.sqlite3')),
+                             ('python', str(self.root / 'other-python.exe'))]:
+            variant = copy.deepcopy(old)
+            variant[field] = value
+            variants.append(variant)
+        for field, value in [('target', str(self.root / 'other-hooks.json')),
+                             ('command', 'unrelated-command'), ('after_utf8', '{}')]:
+            variant = copy.deepcopy(old)
+            variant['changes'][0][field] = value
+            variants.append(variant)
+        variant = copy.deepcopy(old)
+        variant['changes'].append(copy.deepcopy(variant['changes'][0]))
+        variants.append(variant)
+        before = {host: path.read_bytes() for host, path in self.targets.items()}
+        for number, variant in enumerate(variants):
+            with self.subTest(case=number), self.assertRaises(ValueError):
+                self.prepare(auto_enroll=True, previous_plan=variant)
+        self.assertEqual(before, {host: path.read_bytes() for host, path in self.targets.items()})
+
+    def test_previous_frozen_runtime_tampering_is_rejected(self):
+        old = self.installed_old()
+        (Path(old['runtime']) / 'observer.py').write_bytes(b'# changed old runtime')
+        with self.assertRaises(ValueError):
+            self.prepare(auto_enroll=True, previous_plan=old)
+
+    def test_modified_missing_duplicate_or_wrong_event_owned_hooks_refuse_upgrade(self):
+        old = self.installed_old()
+        target = self.targets['claude']
+        baseline = target.read_bytes()
+        for changed in ('missing', 'duplicate', 'timeout', 'arguments', 'matcher', 'event', 'wrapper-extra'):
+            settings = json.loads(baseline)
+            entry = settings['hooks']['PreToolUse'][-1]
+            if changed == 'missing':
+                settings['hooks']['PreToolUse'].pop()
+            elif changed == 'duplicate':
+                entry['hooks'].append(copy.deepcopy(entry['hooks'][0]))
+            elif changed == 'timeout':
+                entry['hooks'][0]['timeout'] = 30
+            elif changed == 'arguments':
+                entry['hooks'][0]['args'].append('--unexpected')
+            elif changed == 'matcher':
+                entry['matcher'] = 'Read'
+            elif changed == 'event':
+                settings['hooks']['OtherStart'] = [settings['hooks']['PreToolUse'].pop()]
+            else:
+                entry['extra'] = True
+            target.write_text(json.dumps(settings), encoding='utf-8')
+            before = {host: path.read_bytes() for host, path in self.targets.items()}
+            with self.subTest(change=changed), self.assertRaises(ValueError):
+                self.prepare(auto_enroll=True, previous_plan=old)
+            self.assertEqual(before, {host: path.read_bytes() for host, path in self.targets.items()})
+
+    def test_both_old_and_new_definitions_are_ambiguous(self):
+        old = self.installed_old()
+        plan = self.prepare(auto_enroll=True, previous_plan=old)
+        change = next(c for c in plan['changes'] if c['host'] == 'codex')
+        settings = json.loads(self.targets['codex'].read_bytes())
+        settings['hooks']['Stop'].append(json.loads(change['after_utf8'])['hooks']['Stop'][-1])
+        self.targets['codex'].write_text(json.dumps(settings), encoding='utf-8')
+        with self.assertRaises(ValueError):
+            self.prepare(auto_enroll=True, previous_plan=old)
+
+    def test_modified_new_definition_beside_old_is_rejected(self):
+        old = self.installed_old()
+        plan = self.prepare(auto_enroll=True, previous_plan=old)
+        change = next(c for c in plan['changes'] if c['host'] == 'claude')
+        settings = json.loads(self.targets['claude'].read_bytes())
+        new = json.loads(change['after_utf8'])['hooks']['Stop'][-1]
+        new['hooks'][0]['args'].append('--unexpected')
+        settings['hooks']['Stop'].append(new)
+        self.targets['claude'].write_text(json.dumps(settings), encoding='utf-8')
+        with self.assertRaises(ValueError):
+            self.prepare(auto_enroll=True, previous_plan=old)
+
+    def test_auto_reprepare_rejects_modified_or_duplicate_current_definition(self):
+        plan = self.prepare(auto_enroll=True)
+        installer.apply(plan, self.backups)
+        self.assertTrue(all(c['before_sha256'] == c['after_sha256'] for c in self.prepare(auto_enroll=True)['changes']))
+        target = self.targets['codex']
+        baseline = target.read_bytes()
+        for changed in ('timeout', 'duplicate', 'missing'):
+            settings = json.loads(baseline)
+            if changed == 'timeout':
+                settings['hooks']['Stop'][-1]['hooks'][0]['timeout'] = 99
+            elif changed == 'duplicate':
+                settings['hooks']['Stop'].append(copy.deepcopy(settings['hooks']['Stop'][-1]))
+            else:
+                settings['hooks']['Stop'].pop()
+            target.write_text(json.dumps(settings), encoding='utf-8')
+            with self.subTest(change=changed), self.assertRaises(ValueError):
+                self.prepare(auto_enroll=True)
+
+    def test_upgrade_retains_all_target_apply_preconditions(self):
+        old = self.installed_old()
+        plan = self.prepare(auto_enroll=True, previous_plan=old)
+        codex_before = self.targets['codex'].read_bytes()
+        self.targets['claude'].write_bytes(b'{"concurrent":true}')
+        backups = self.root / 'upgrade-backups'
+        with self.assertRaises(ValueError):
+            installer.apply(plan, backups)
+        self.assertEqual(self.targets['codex'].read_bytes(), codex_before)
+        self.assertFalse(backups.exists())
 
 
 if __name__ == '__main__':

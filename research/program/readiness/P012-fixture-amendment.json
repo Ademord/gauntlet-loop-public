@@ -1,0 +1,28 @@
+{
+  "kind": "independent_fixture_compatibility_amendment",
+  "recorded_at": "2026-09-23T11:22:16.505874+00:00",
+  "original_probe_sha256": "5c5e9188fbe210c5eaf0a0ea3144951001e6ee829930fe674a5dd9a2d2b4169e",
+  "corrected_probe_sha256": "9a820d9b9a0c8164f902c6f22fda976e623c370be14a13ee84d5ac7deab6632a",
+  "criteria_sha256": "9f1e3f2f914276cc16d03d0737c9d9b11b85be028e01fa7cf045a4f69b8cc568",
+  "contract_sha256": "0f86809c6217a8b84e516babf2f0e360ad8dcca9875ed9c70bf9c58f42163546",
+  "original_result_sha256": "9727df479f04aa0347e0c057e3bfd462ce848ca93bc42667c6668d25bc23d5dd",
+  "original_result": {
+    "groups": 8,
+    "passed_groups": 6,
+    "assertion_failures": 0,
+    "errors": 5,
+    "affected_groups": [
+      "C06",
+      "C08"
+    ]
+  },
+  "interpretation": "The nominal installer fixture added an unknown wrapper-note field. Exact-wrapper ownership intentionally rejects unknown semantics, permitted by frozen C07. That rejection prevented nominal upgrade and apply-precondition checks; it is not grounds to loosen ownership. The original C07 variants also encountered that earlier rejection and did not independently establish their intended boundaries.",
+  "changes": [
+    "Remove unknown wrapper-note from positive installation setup; shared unrelated hook neighbor remains.",
+    "Locate the preserved shared wrapper by its unchanged unrelated hook rather than the removed note.",
+    "Add unknown wrapper-note as an explicit C07 rejection variant. No other expected result, host fixture or acceptance requirement changes."
+  ],
+  "controller_adjudication": "Root accepted this documented fixture correction and cancelled speculative installer-policy loosening.",
+  "candidate_change_required": false,
+  "required_installer_sha256": "905b3c3953918717ae397f62858f9df8b671ca7692af7e0a029ff7866221acbc"
+}

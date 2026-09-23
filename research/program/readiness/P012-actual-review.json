@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "kind": "independent_installed_metadata_observer_review",
+  "reviewer": "independent-readiness-review",
+  "recorded_at": "2026-09-23T11:31:14.758036+00:00",
+  "accepted": true,
+  "blockers": [],
+  "source_hashes": {
+    "baseline_snapshot": "74d12a5b30fe27e68d5519a28e62eec13540f25a76cae78decc17688595ff23a",
+    "final_snapshot": "ed93a590458b9ba0be27ee52d3d0730dc2de92366b1c280b2879aa117a3f7214",
+    "baseline.json": "4f79687668ffe13916634d68983cc381e4eec7db850faa9f4a8674012a7b870e",
+    "preservation-final.json": "b7c1f5012b7b631696d146660112f7efe1dbbe6f6b84e6e625721586f67b5e1d",
+    "new-sessions-final.json": "f83357810ef92289ce8f15708131b9c536d632a22a574f76181203258b043f57",
+    "native-launches.json": "e2d8e6c0c5e2404ba812e336c77ddec3f55a46b24dedc7ffe23c7ab2356e3968",
+    "native-exits.json": "3e2d74ff854c25ef0fa9904633cd39583c723cf0b9673baae99e2a38c8bed14d",
+    "native-trust-ui.json": "ad9430a62d2ac4c543cdf71b668a5a78311c49655de2ed8697e82a14cbd8f6a3",
+    "codex-native-before.json": "4a98ab2f20d86acb96fa35f65fab12a4a51276905a5983768284c4ad4ea66a6c",
+    "codex-native-after.json": "8374e2f9dab5b71f6d8afb6558c4ca848995dc1864d0385b4a95d2564245c9ca",
+    "codex-native-final.json": "a8b5e1a8e821816be806681e50f436603be1b9d0705ce40efc26dd74610d661e",
+    "regressions.json": "bac60850fecafe9cc5f50b24b3a634c0d9c5ffa82f6ad1a3b0efc37e570b9182",
+    "installation-evidence-review.json": "f98840fee45a6ab73550036f2e296b1404fd2d9d59ccc709c78e9149b56b9360"
+  },
+  "verified": {
+    "historical_rows": {
+      "contact_labels": {
+        "historical_rows": 14,
+        "unchanged": true,
+        "new_rows": 0
+      },
+      "contact_resolutions": {
+        "historical_rows": 0,
+        "unchanged": true,
+        "new_rows": 0
+      },
+      "events": {
+        "historical_rows": 417,
+        "unchanged": true,
+        "new_rows": 6
+      },
+      "measurements": {
+        "historical_rows": 45,
+        "unchanged": true,
+        "new_rows": 12
+      },
+      "outcomes": {
+        "historical_rows": 12,
+        "unchanged": true,
+        "new_rows": 0
+      },
+      "pending_enrollments": {
+        "historical_rows": 1,
+        "unchanged": true,
+        "new_rows": 0
+      },
+      "sessions": {
+        "historical_rows": 15,
+        "unchanged": true,
+        "new_rows": 4
+      }
+    },
+    "old_runtime_unchanged": true,
+    "core_collector_unchanged": true,
+    "settings": {
+      "codex": {
+        "exact_prepared_bytes": true,
+        "unrelated_values_preserved": true,
+        "replaced_handlers": 9,
+        "exact_backup_preserved": true,
+        "before_sha256": "cfc06c613d0b657379e66c4b2b5d5f6e522f26ead5fdf27b744bc68264f74e53",
+        "after_sha256": "d82723c8c2ef032990d17782176f9aedc3b314ecce9b80fdfd138be831d4725c"
+      },
+      "claude": {
+        "exact_prepared_bytes": true,
+        "unrelated_values_preserved": true,
+        "replaced_handlers": 10,
+        "exact_backup_preserved": true,
+        "before_sha256": "e85861a54b0c22f78d10d2d13b15a04c0393e42ae26cc5e1eefcd0b6654c4c17",
+        "after_sha256": "aee1209adf46471baedae89b9577271c12f2d66b1ddce4ca5e50605f2dc9c29e"
+      }
+    },
+    "codex_native_inventory": {
+      "before": {
+        "matched_definitions": 9,
+        "trust_status": "trusted",
+        "auto_enroll": false,
+        "enabled": true
+      },
+      "after": {
+        "matched_definitions": 9,
+        "trust_status": "modified",
+        "auto_enroll": true,
+        "enabled": true
+      },
+      "final": {
+        "matched_definitions": 9,
+        "trust_status": "trusted",
+        "auto_enroll": true,
+        "enabled": true
+      }
+    },
+    "new_sessions": 4,
+    "new_events": 6,
+    "new_measurements_unknown": 12,
+    "native_launch_matches": [
+      {
+        "host": "codex",
+        "purpose": "native-hook-review",
+        "events": {
+          "SessionEnd": 1
+        },
+        "identity_basis": "controller launch receipt citing native exit response",
+        "exit_code": 0,
+        "full_lifecycle_verified": false
+      },
+      {
+        "host": "codex",
+        "purpose": "fresh-after-native-trust",
+        "events": {
+          "SessionEnd": 1
+        },
+        "identity_basis": "saved native exit text",
+        "exit_code": 0,
+        "full_lifecycle_verified": false
+      },
+      {
+        "host": "claude",
+        "purpose": "explicit-session lifecycle diagnostic",
+        "events": {
+          "SessionStart": 1,
+          "SessionEnd": 1
+        },
+        "identity_basis": "preselected CLI session identity in controller launch receipt matched to recorded session",
+        "cli_version": "2.1.280",
+        "exit_code": 0,
+        "start_and_end_observed": true,
+        "task_or_tool_coverage_verified": false
+      }
+    ],
+    "remaining_claude_start_end_observation": {
+      "count": 1,
+      "specific_launch_identity_verified": false
+    },
+    "snapshot_bytes_unchanged_during_review": true,
+    "current_root_or_ongoing_desktop_capture_verified": false,
+    "whole_task_cost_usd": null,
+    "performance_gain_established": false
+  },
+  "scope": "Read-only saved snapshots, exact prepared settings/backups/runtimes and native metadata receipts. No installation, trust change, replayed hook, transcript collection or model request performed by this review.",
+  "limitations": [
+    "The fresh Codex exit ID is directly present in saved exit text. The earlier Codex review-session match uses the controller receipt citing its native exit response; both have only SessionEnd recorded, so full lifecycle is not verified.",
+    "The explicitly identified Claude diagnostic has recorded SessionStart and SessionEnd; task prompts and tool events were not exercised. A prior Claude start/end pair remains unbound to a specific native launch.",
+    "Nine final Codex definitions are enabled, trusted and automatic in saved native inventory. Current root and already running desktop capture remain unverified; this is not universal hook coverage.",
+    "Controller records no submitted task prompts or paid benchmark workers. No model-usage receipt was produced; complete controller, preparation, review and human cost remain unknown.",
+    "The saved Claude launch receipts report two CLI versions across attempts; results are observations of those recorded environments, not a general compatibility guarantee.",
+    "Enrollment and event insertion remain separate transactions. No history backfill, complete usage accounting, measured human-correction total or performance gain is claimed."
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "checkpoint": "P012",
+  "reviewer": "independent-readiness-review",
+  "recorded_at": "2026-09-23T11:23:21.646573+00:00",
+  "accepted": true,
+  "blockers": [],
+  "reviewed_files": {
+    "tools/observer.py": "c3049290a4dfaf8a7f1ae3781cd41f7cce1204e5108366f8664769c084371c65",
+    "tools/observer_host.py": "d38725f4548ac2c32446c9a8dfe348d03846b72c764e65f33633c827744f4005",
+    "tools/observer_install.py": "905b3c3953918717ae397f62858f9df8b671ca7692af7e0a029ff7866221acbc",
+    "tools/contact_metrics.py": "93d811107eae0768618a01265c0554e5e26da6b896fb0666c6847c83231a96a8",
+    "tests/test_observer_host.py": "1209f6b4b527c88a16d1ca8294af8821643753205a980dc1ffdab4255821c032",
+    "tests/test_observer_install.py": "cea45c729300c093920ee320ead7f0e0c4e46e53491ae36892547748f3bb2c81"
+  },
+  "independent_qualification": {
+    "groups": 8,
+    "passed_groups": 8,
+    "failures": 0,
+    "errors": 0,
+    "result_sha256": "3f6595188ad9980c33188804b25acb0bda919242d4dd3047f6ac967a480b4534",
+    "probe_sha256": "9a820d9b9a0c8164f902c6f22fda976e623c370be14a13ee84d5ac7deab6632a",
+    "criteria_sha256": "9f1e3f2f914276cc16d03d0737c9d9b11b85be028e01fa7cf045a4f69b8cc568",
+    "contract_sha256": "0f86809c6217a8b84e516babf2f0e360ad8dcca9875ed9c70bf9c58f42163546"
+  },
+  "provenance": {
+    "behavioral_criteria_and_original_probe_frozen_before_candidate_inspection": true,
+    "original_probe_sha256": "5c5e9188fbe210c5eaf0a0ea3144951001e6ee829930fe674a5dd9a2d2b4169e",
+    "original_result_sha256": "9727df479f04aa0347e0c057e3bfd462ce848ca93bc42667c6668d25bc23d5dd",
+    "original_errors": 5,
+    "original_affected_groups": [
+      "C06",
+      "C08"
+    ],
+    "amendment_sha256": "eb678c3d03e52b46ae6fa08f5a81b833b6150b1497608c629fb4e8b1162aa205",
+    "original_candidate_retained": true,
+    "explanation": "Original positive fixture added an unsupported wrapper-note. Exact-wrapper refusal was consistent with frozen C07. The amended positive fixture retains supported shared-hook neighbors; unknown wrapper-note is now an explicit refusal case. Original failures remain preserved. A speculative installer-policy change was cancelled and is not the reviewed version."
+  },
+  "findings": [
+    "Both host namespaces enroll from a valid first ongoing event only when explicitly opted in. Existing registrations and matching SessionStart arms keep their attribution; unrelated hosts/directories do not consume an arm.",
+    "Concurrent stable-identity arrivals create one session, one three-row unknown measurement set and one event. Default manual mode still ignores unregistered sessions, and opt-in hook CLI is silent.",
+    "Unsupported or malformed first payloads do not enroll. Synthetic raw prompt, cwd, tool input and response content are absent from stored task/config/event metadata. The core collector is byte-identical to baseline.",
+    "Exact prior runtime, database, target and handler identities govern upgrades. Shared unrelated hook neighbors and other settings survive. Missing, modified, duplicate or unsupported-wrapper ownership is rejected rather than guessed.",
+    "Synthetic upgrade apply preserves exact backups, source database bytes and prior runtime bytes. Settings, prepared-content, runtime and backup preconditions reject before target changes.",
+    "Static implementation review found no native trust-storage edit, implicit trust approval or host-reload action."
+  ],
+  "limitations": [
+    "Synthetic qualification only. Native capture, installation and host reload/trust state require separate controller evidence.",
+    "Enrollment/arm decision is atomic, but core event insertion is a subsequent transaction; a later failure can leave an enrolled session with zero captured events. This must remain observable as incomplete coverage.",
+    "All-local means eligible local hook deliveries to the configured adapter, not guaranteed delivery from every host or every tool. No missing history is backfilled.",
+    "No complete token/dollar/human-time accounting, human-correction total or performance gain is established.",
+    "Apply checks preconditions for all targets before beginning, then replaces target files separately. It is not a multi-file crash-atomic transaction or broad concurrency certification."
+  ]
+}

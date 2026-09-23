@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "kind": "independent_auto_enrollment_qualification",
+  "accepted": true,
+  "groups": 8,
+  "passed_groups": 8,
+  "failures": 0,
+  "errors": 0,
+  "cases": [
+    {
+      "case": "C01",
+      "passed": true
+    },
+    {
+      "case": "C02",
+      "passed": true
+    },
+    {
+      "case": "C03",
+      "passed": true
+    },
+    {
+      "case": "C04",
+      "passed": true
+    },
+    {
+      "case": "C05",
+      "passed": true
+    },
+    {
+      "case": "C06",
+      "passed": true
+    },
+    {
+      "case": "C07",
+      "passed": true
+    },
+    {
+      "case": "C08",
+      "passed": true
+    }
+  ],
+  "candidate_hashes": {
+    "observer.py": "c3049290a4dfaf8a7f1ae3781cd41f7cce1204e5108366f8664769c084371c65",
+    "observer_host.py": "d38725f4548ac2c32446c9a8dfe348d03846b72c764e65f33633c827744f4005",
+    "observer_install.py": "905b3c3953918717ae397f62858f9df8b671ca7692af7e0a029ff7866221acbc",
+    "contact_metrics.py": "93d811107eae0768618a01265c0554e5e26da6b896fb0666c6847c83231a96a8"
+  },
+  "probe_sha256": "9a820d9b9a0c8164f902c6f22fda976e623c370be14a13ee84d5ac7deab6632a",
+  "scope": "Synthetic temporary databases and host settings only; actual host CLI and installer functions. No live installation, host trust approval, native application reload, model call or completeness claim."
+}

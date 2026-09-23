@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "kind": "historical_evidence_artifact_relocation",
+  "evidence_id": "EV-OBSERVER-NATIVE-001",
+  "baseline_commit": "887e3223528d8347cd1287d06646f8e32073aa23",
+  "reason": "Active observer code and tests evolved. Preserve the original smoke-test artifact identities in a frozen directory.",
+  "relocations": [
+    {
+      "original_path": "tools/observer.py",
+      "frozen_path": "research/program/materials/observer-native-001/tools/observer.py",
+      "sha256": "c3049290a4dfaf8a7f1ae3781cd41f7cce1204e5108366f8664769c084371c65",
+      "bytes": 14201
+    },
+    {
+      "original_path": "tools/observer_host.py",
+      "frozen_path": "research/program/materials/observer-native-001/tools/observer_host.py",
+      "sha256": "862e6ab4150c0f361e1ce9caaf114183f51333bd7d3095093da393b64ae11353",
+      "bytes": 7832
+    },
+    {
+      "original_path": "tools/contact_metrics.py",
+      "frozen_path": "research/program/materials/observer-native-001/tools/contact_metrics.py",
+      "sha256": "93d811107eae0768618a01265c0554e5e26da6b896fb0666c6847c83231a96a8",
+      "bytes": 13139
+    },
+    {
+      "original_path": "tools/observer_install.py",
+      "frozen_path": "research/program/materials/observer-native-001/tools/observer_install.py",
+      "sha256": "dfef0b481f597a11d181ce7f3063f233327264c1436fb637b7b2c3a68d81d81f",
+      "bytes": 7852
+    },
+    {
+      "original_path": "tools/observer_checkpoint.py",
+      "frozen_path": "research/program/materials/observer-native-001/tools/observer_checkpoint.py",
+      "sha256": "5652135da0e0831aac695cc49bcc3ab914c00fec94d7869a75c7fec4d65be5e6",
+      "bytes": 6687
+    },
+    {
+      "original_path": "tests/test_observer.py",
+      "frozen_path": "research/program/materials/observer-native-001/tests/test_observer.py",
+      "sha256": "3592515ea1b72d3c9dff8daf76bdec6cc5ca3f353290febad80956d98cf0933e",
+      "bytes": 13369
+    },
+    {
+      "original_path": "tests/test_observer_host.py",
+      "frozen_path": "research/program/materials/observer-native-001/tests/test_observer_host.py",
+      "sha256": "b899c1a926582988115aaeaae2c9ea290405d23ede9e9caeb5e69baf4c5f70ef",
+      "bytes": 8390
+    },
+    {
+      "original_path": "tests/test_contact_metrics.py",
+      "frozen_path": "research/program/materials/observer-native-001/tests/test_contact_metrics.py",
+      "sha256": "c47119c4fd154a9d9dae4fb07188e991fe722b975fcab967d39eca93abd67ae7",
+      "bytes": 12504
+    },
+    {
+      "original_path": "tests/test_observer_install.py",
+      "frozen_path": "research/program/materials/observer-native-001/tests/test_observer_install.py",
+      "sha256": "c5c0bff722cb6916c18b38d3132f903424dbd983c3b4e058f53195480914b1c1",
+      "bytes": 10176
+    },
+    {
+      "original_path": "tests/test_observer_checkpoint.py",
+      "frozen_path": "research/program/materials/observer-native-001/tests/test_observer_checkpoint.py",
+      "sha256": "a96dd0803fcf69a26ea16c6a3f405aed35b98b9b673774efd650bcb046f8ae9f",
+      "bytes": 9611
+    }
+  ],
+  "original_recorded_hashes_preserved": true,
+  "all_ten_source_hashes_verified": true,
+  "claims_scope_limitations_and_noncode_artifacts_unchanged": true,
+  "other_evidence_entries_unchanged": true,
+  "evidence_json_before_sha256": "ea0e35dcb9f6e3a69b0ea15f6ff1569e8f70e8d4b5caf895c278c77cc803ae4c",
+  "evidence_json_after_sha256": "b28f747d098852e8bb59cdcdd7240f6f8795f8c3965fcd2f2eadb5bae88e2238",
+  "scope": "Path-only provenance relocation; no rerun, rebaseline, new qualification, or change to the original native smoke claims."
+}

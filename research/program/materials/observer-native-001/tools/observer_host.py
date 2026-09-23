@@ -1,8 +1,7 @@
-"""Explicit or opt-in first-event host enrollment; never installs hooks."""
+"""Explicit host enrollment for the metadata observer; never installs hooks."""
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import os
 from pathlib import Path
@@ -87,50 +86,37 @@ def arm(path, host, cwd, task_id, config, ttl_seconds=300):
             "cwd": cwd, "expires_unix": now + ttl_seconds}
 
 
-def _enroll_hook(path, host, payload, auto_enroll):
-    """Preserve existing sessions; prefer a matching arm, then optional auto-enrollment.
-
-    The registration/arm decision is one transaction. Activity before this first
-    received event is unknown; no transcript or history is reconstructed.
-    """
+def _enroll_start(path, host, payload):
+    """Consume and register atomically; repeated starts cannot consume another arm."""
     with observer._db(path) as conn:
         conn.execute("BEGIN IMMEDIATE")
         if conn.execute("SELECT 1 FROM sessions WHERE session_id=?",
                         (payload["session_id"],)).fetchone():
             return
-        enrollment = None
-        if payload["hook_event_name"] == "SessionStart" and payload.get("cwd"):
-            cwd = _cwd(payload["cwd"])
-            if conn.execute("SELECT 1 FROM sqlite_master WHERE type='table' "
+        if not payload.get("cwd"):
+            return
+        cwd = _cwd(payload["cwd"])
+        if not conn.execute("SELECT 1 FROM sqlite_master WHERE type='table' "
                             "AND name='pending_enrollments'").fetchone():
-                enrollment = conn.execute("SELECT * FROM pending_enrollments WHERE host=? AND cwd=? "
-                                          "AND consumed_session_id IS NULL AND expires_unix>? "
-                                          "ORDER BY id LIMIT 1", (host, cwd, time.time())).fetchone()
-        if enrollment is None and not auto_enroll:
+            return
+        enrollment = conn.execute("SELECT * FROM pending_enrollments WHERE host=? AND cwd=? "
+                                  "AND consumed_session_id IS NULL AND expires_unix>? "
+                                  "ORDER BY id LIMIT 1", (host, cwd, time.time())).fetchone()
+        if enrollment is None:
             return
         # Validate the metadata before consuming an enrollment. Payload contents
         # remain outside storage; the core retains only allowed metadata/hash.
         for key in observer.FIELDS:
             if key in payload:
                 observer._text(payload[key])
-        if auto_enroll and "cwd" in payload and payload["cwd"] is not None:
-            _cwd(payload["cwd"])  # Validate if present, never persist the auto-enrollment cwd.
-        if enrollment is not None:
-            config = _config(host, json.loads(enrollment["config_json"]))
-            task_id = enrollment["task_id"]
-        else:
-            task_id = "auto:" + hashlib.sha256(payload["session_id"].encode("utf-8")).hexdigest()
-            config = {"host": host, "capture_scope": "all-local-from-first-observed-event"}
-        observer._register(conn, payload["session_id"], task_id, config)
-        if enrollment is not None:
-            conn.execute("UPDATE pending_enrollments SET consumed_utc=?,consumed_session_id=? "
-                         "WHERE id=?", (observer._now(), payload["session_id"], enrollment["id"]))
+        config = _config(host, json.loads(enrollment["config_json"]))
+        observer._register(conn, payload["session_id"], enrollment["task_id"], config)
+        conn.execute("UPDATE pending_enrollments SET consumed_utc=?,consumed_session_id=? "
+                     "WHERE id=?", (observer._now(), payload["session_id"], enrollment["id"]))
 
 
-def ingest_hook(path, host, payload, auto_enroll=False):
+def ingest_hook(path, host, payload):
     host = _host(host)
-    if type(auto_enroll) is not bool:
-        raise ValueError("auto_enroll must be explicitly true or false")
     if not isinstance(payload, dict):
         raise ValueError("Hook payload must be an object")
     if payload.get("hook_event_name") not in observer.EVENTS:
@@ -140,8 +126,8 @@ def ingest_hook(path, host, payload, auto_enroll=False):
     payload = dict(payload, session_id=_session(host, payload["session_id"]))
     if len(observer._json(payload).encode("utf-8")) > observer.MAX_PAYLOAD:
         raise ValueError("Hook payload exceeds limit")
-    if payload["hook_event_name"] == "SessionStart" or auto_enroll:
-        _enroll_hook(path, host, payload, auto_enroll)
+    if payload["hook_event_name"] == "SessionStart":
+        _enroll_start(path, host, payload)
     return observer.ingest_hook(path, payload)
 
 
@@ -166,9 +152,7 @@ def main(argv=None):
     enrollment.add_argument("--task", required=True)
     enrollment.add_argument("--config", required=True)
     enrollment.add_argument("--ttl-seconds", type=int, default=300)
-    hook = commands.add_parser("hook")
-    hook.add_argument("--auto-enroll", action="store_true",
-                      help="Opt in to metadata capture from each session's first received event")
+    commands.add_parser("hook")
     reporting = commands.add_parser("report")
     reporting.add_argument("session_id")
     args = parser.parse_args(argv)
@@ -177,7 +161,7 @@ def main(argv=None):
             raw = sys.stdin.buffer.read(observer.MAX_PAYLOAD + 1)
             if len(raw) > observer.MAX_PAYLOAD or not Path(args.db).is_file():
                 raise ValueError("Observer unavailable or payload too large")
-            ingest_hook(args.db, args.host, json.loads(raw), auto_enroll=args.auto_enroll)
+            ingest_hook(args.db, args.host, json.loads(raw))
         except Exception:
             observer._diagnostic(args.db)
         return 0

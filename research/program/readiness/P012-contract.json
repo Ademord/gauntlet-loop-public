@@ -1,0 +1,12 @@
+{
+  "id": "P012",
+  "kind": "prospective_metadata_recording_scope_upgrade",
+  "authorization": "User selected all local tasks, following the explicit Codex/Claude metadata-only scope question.",
+  "claim": "Opt-in installed adapters enroll local sessions from their first valid observed event, preserve prior records and explicit enrollment, and do not store prompt/document/tool content.",
+  "comparator": "The existing explicitly enrolled recorder, retained as default behavior and historical evidence.",
+  "acceptance": ["Both hosts, including ongoing sessions", "Atomic idempotent enrollment with explicit SessionStart arm priority", "Malformed or unsupported events do not enroll", "No raw payload, cwd, prompt, tool inputs or outputs stored", "Core collector bytes and historical rows preserved", "Exact old observer handlers replaced; unrelated settings preserved", "No host trust bypass", "Synthetic qualification and actual native capture reported separately"],
+  "stop_rule": "One bounded implementation and independent review; finish safe configuration and checkpoint. If native trust or reload requires user action, report it explicitly without claiming native coverage.",
+  "non_claims": ["No backfill of missed events", "No complete token/dollar accounting", "No inferred human corrections", "No performance gain", "No universal event coverage guarantee"],
+  "costs": {"additional_benchmark_worker_runs": 0, "whole_task_cost_usd": null, "human_minutes": null},
+  "publication": "Local checkpoint; raw settings, IDs and database remain private."
+}

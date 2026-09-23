@@ -1,6 +1,6 @@
 # Passive observation of ordinary tasks
 
-Use a fresh task with only the user's ordinary request. The collector is a host process; it is not an agent-loaded skill. Keep its SQLite database, research plans and evaluator records outside the working task's checkout. Only explicitly registered session IDs are recorded.
+Use a fresh task with only the user's ordinary request. The collector is a host process; it is not an agent-loaded skill. Keep its SQLite database, research plans and evaluator records outside the working task's checkout. The generic adapter defaults to explicit enrollment. The user-selected P012 installation adds automatic enrollment for all local Codex and Claude sessions from their first valid received hook event; no earlier activity is reconstructed.
 
 ```mermaid
 flowchart LR
@@ -48,7 +48,7 @@ The selection has a `sessions` list of objects containing host-prefixed `session
 
 The report distinguishes unenrolled, enrolled-without-events and observed-partial records. Aliases and aggregates replace private identities; no event absence certifies absence of work. Stored values retain their limited scope, while whole-task cost and human-origin correction totals remain unknown. Classifier identity is not prompt authorship; controller repair instructions are not automatically human corrections. No descendant cost roll-up or current native-capture guarantee is supplied.
 
-Future recording scope is a separate decision. This audit changes no hook settings or enrollment behavior. Reuse the existing explicit enrollment commands below where authorized, then verify actual capture before treating future task coverage as established. Earlier missed activity remains missed unless separately reconstructed and labeled as such. The P011 report records the current qualification status.
+P011 changed no recording behavior. The user subsequently selected all local Codex and Claude tasks; [P012](../research/program/readiness/P012-AUTOMATIC-RECORDING.md) installs that policy. The adapter enrolls on the first valid delivered event when `hook --auto-enroll` is set. Earlier missed activity stays missing. Native receipt scope and ongoing desktop gaps are explicit in the P012 report.
 
 ## Prepare a local database and enroll a task
 
@@ -70,13 +70,13 @@ The `hook` command consumes JSON on stdin. Unregistered sessions are ignored. Ho
 
 Codex [hook documentation](https://learn.chatgpt.com/docs/hooks) specifies lifecycle events, silent success, and review/trust of exact hook definitions. Do not bypass that trust step. The fragment emits no instructions or scores. Tool hooks do not cover every specialized path, and transcript format is not a stable hook interface.
 
-Before counting observations, verify one enrolled session is captured, one unenrolled session is ignored, no collector text enters the worker context, and interrupted work remains visible as incomplete. Unit tests using simulated events do not complete this host-integration check. No live task or global hook installation is implied by creating this prototype.
+In explicit-only mode, verify one enrolled session is captured and one unenrolled session is ignored. For either mode, verify no collector text enters the worker context, and interrupted work remains visible as incomplete. Unit tests using simulated events do not complete this host-integration check. No live task or global hook installation is implied by creating this prototype.
 
 An independent acceptance result is recorded separately with `record_outcome` in the Python module. A host `Stop`, an assistant saying “done”, and independent acceptance are different facts. The outcome API stores an assessment and its evidence identities; it does not run or certify the evaluator.
 
 ## Installed host adapter and verification
 
-[observer_host.py](../tools/observer_host.py) prefixes session keys with `codex:` or `claude:`. It can enroll an existing ID or arm the next session at one exact host and directory for up to one hour. Arming is explicit, expires, and can be consumed only once. Other sessions are ignored. Use the frozen runtime path recorded by the installation plan for enrollment/report commands; editing the repository does not silently change installed code.
+[observer_host.py](../tools/observer_host.py) prefixes session keys with `codex:` or `claude:`. It can enroll an existing ID or arm the next session at one exact host and directory for up to one hour. Arming is explicit, expires, and can be consumed only once. Without `hook --auto-enroll`, other sessions are ignored. With that explicit option, a valid first event creates a host-prefixed session and opaque task ID; existing enrollments and matching SessionStart arms take priority. Automatic enrollment stores no working directory. Costs and human minutes remain unknown. Use the frozen runtime path recorded by the installation plan for enrollment/report commands; editing the repository does not silently change installed code.
 
 The private pending-enrollment table stores the selected directory for routing. Event records still exclude working paths. Raw host diagnostic transcripts used for smoke verification also remain private; the metadata recorder does not copy those transcripts.
 
@@ -85,7 +85,7 @@ python /private/runtime/observer_host.py --db /private/observations.sqlite3 --ho
 python /private/runtime/observer_host.py --db /private/observations.sqlite3 --host claude register SESSION-ID TASK-ID --config /private/task.local.json
 ```
 
-[observer_install.py](../tools/observer_install.py) prepares an additive merge, freezes the collector modules outside the checkout, preserves existing settings/handlers, checks for concurrent edits and creates exact backups before applying. Its private plan contains local settings and must never be committed. Claude uses its documented executable-plus-arguments form; Codex uses a command verified on this Windows installation. Codex trust was granted through its native review interface. The installer never modifies trust storage or bypasses it. [Claude hook contract](https://code.claude.com/docs/en/hooks), [Codex hook contract](https://learn.chatgpt.com/docs/hooks).
+[observer_install.py](../tools/observer_install.py) prepares either a default additive merge or an explicit upgrade using `--previous-plan`, freezes collector modules outside the checkout, preserves unrelated settings/handlers, checks for concurrent edits and creates exact backups before applying. `--auto-enroll` selects the broader policy. An upgrade verifies the prior runtime, database, settings target and exact handler/wrapper identities before replacing recorder entries; ambiguous or modified ownership is refused. Its private plan contains local settings and must never be committed. Claude uses its documented executable-plus-arguments form; Codex uses a command verified on this Windows installation. Codex trust was granted through its native review interface, including the changed P012 definitions. The installer never modifies trust storage or bypasses it. [Claude hook contract](https://code.claude.com/docs/en/hooks), [Codex hook contract](https://learn.chatgpt.com/docs/hooks).
 
 The September 21 smoke test installed ten Claude handlers and nine Codex handlers. Codex captured a real request, three tool starts/ends, Stop and SessionEnd; an external diagnostic content check passed. Claude first captured a usage-credit failure. A later Opus/high invocation with normal MCP configuration overshot its soft $1 guard ($3.24448 API-equivalent usage) on the first model request. A Read-only Opus/high invocation with MCP servers disabled for that invocation completed the request, tool and Stop/SessionEnd cycle, reporting $0.042224. Both failed attempts remain recorded. These fixtures establish engineering compatibility only, not full MCP coverage or a representative performance comparison. See the [initial record](../research/program/materials/observer-native-validation.json) and [Opus follow-up](../research/program/materials/observer-native-validation-002.json).
 

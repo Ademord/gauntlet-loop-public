@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "checkpoint": "P012",
+  "candidate_inspected": false,
+  "scope": "Eight independent synthetic groups for explicit all-local metadata enrollment and exact prior-handler upgrade. No live installation or claim of native hook coverage.",
+  "cases": [
+    {"id":"C01","claim":"An opt-in valid first ongoing hook enrolls and records both host namespaces without inventing earlier history.","checks":["A supported event other than SessionStart enrolls from the first observed event.","The same raw session ID under codex and claude produces distinct sessions.","Three usage/human measurements remain null; coverage remains incomplete."]},
+    {"id":"C02","claim":"Concurrent delivery is idempotent for enrollment and stable event identities.","checks":["Concurrent calls for one valid session leave one enrollment and one measurement set.","Repeated stable prompt identity leaves one recorded event without duplicate-registration failures."]},
+    {"id":"C03","claim":"Explicit enrollment and exact one-shot enrollment retain precedence and metadata.","checks":["Automatic mode does not replace existing task/config/enrollment identity.","Active matching arm wins on SessionStart and is consumed once.","An unrelated host or directory cannot consume that arm.","Subsequent unregistered tasks may auto-enroll after the arm has been consumed."]},
+    {"id":"C04","claim":"Invalid/unsupported payloads cannot create enrollment, and automatic records exclude raw content.","checks":["Unsupported events, malformed IDs/metadata, oversize or invalid JSON payload values leave enrollment/event counts unchanged.","Auto task/config excludes raw prompt/tool arguments/results/cwd; events retain only core allowlisted metadata and hashes.","No retroactive event insertion or whole-task usage inference."]},
+    {"id":"C05","claim":"Manual mode and core collector semantics remain unchanged.","checks":["Default ingest ignores unregistered sessions.","Existing manual register/arm workflows remain usable.","Candidate observer.py is byte-identical to the baseline; old rows are preserved.","Hook CLI is silent and accepts explicit --auto-enroll."]},
+    {"id":"C06","claim":"Installer upgrade replaces only exact known prior handlers and preserves unrelated settings.","checks":["Both hosts retain unrelated settings, events, handlers and wrapper metadata.","Expected prior observer handlers are replaced without duplicate old/new handlers.","New commands opt in explicitly; default preparation stays manual.","Applying to synthetic settings creates exact backups and never alters the prior runtime or source database."]},
+    {"id":"C07","claim":"Changed or ambiguous prior installation cannot be silently replaced.","checks":["Missing or changed expected prior handler causes preparation failure.","Unsupported wrapper/matcher changes are either exactly preserved with documented semantics or rejected.","The installer cannot identify or remove unrelated handlers by substring alone."]},
+    {"id":"C08","claim":"Prepared upgrade preconditions and immutable runtime are enforced.","checks":["Changed settings, tampered prepared content or runtime, and conflicting backups reject before target settings are changed.","Prior runtime bytes remain unchanged on success and failure.","No native trust manipulation or hidden host reload is performed."]}
+  ],
+  "grading_notes": [
+    "APIs and field spellings may be mapped to the builders' documented interfaces before execution; behavioral criteria remain fixed.",
+    "Synthetic success does not prove every native hook fires, that an already running host has reloaded settings, or that native trust is approved.",
+    "Tests use temporary databases and settings only. No paid workers, model calls, history backfill or global installation."
+  ]
+}

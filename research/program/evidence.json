@@ -389,43 +389,43 @@
       ],
       "artifacts": [
         {
-          "path": "tools/observer.py",
+          "path": "research/program/materials/observer-native-001/tools/observer.py",
           "sha256": "c3049290a4dfaf8a7f1ae3781cd41f7cce1204e5108366f8664769c084371c65"
         },
         {
-          "path": "tools/observer_host.py",
+          "path": "research/program/materials/observer-native-001/tools/observer_host.py",
           "sha256": "862e6ab4150c0f361e1ce9caaf114183f51333bd7d3095093da393b64ae11353"
         },
         {
-          "path": "tools/contact_metrics.py",
+          "path": "research/program/materials/observer-native-001/tools/contact_metrics.py",
           "sha256": "93d811107eae0768618a01265c0554e5e26da6b896fb0666c6847c83231a96a8"
         },
         {
-          "path": "tools/observer_install.py",
+          "path": "research/program/materials/observer-native-001/tools/observer_install.py",
           "sha256": "dfef0b481f597a11d181ce7f3063f233327264c1436fb637b7b2c3a68d81d81f"
         },
         {
-          "path": "tools/observer_checkpoint.py",
+          "path": "research/program/materials/observer-native-001/tools/observer_checkpoint.py",
           "sha256": "5652135da0e0831aac695cc49bcc3ab914c00fec94d7869a75c7fec4d65be5e6"
         },
         {
-          "path": "tests/test_observer.py",
+          "path": "research/program/materials/observer-native-001/tests/test_observer.py",
           "sha256": "3592515ea1b72d3c9dff8daf76bdec6cc5ca3f353290febad80956d98cf0933e"
         },
         {
-          "path": "tests/test_observer_host.py",
+          "path": "research/program/materials/observer-native-001/tests/test_observer_host.py",
           "sha256": "b899c1a926582988115aaeaae2c9ea290405d23ede9e9caeb5e69baf4c5f70ef"
         },
         {
-          "path": "tests/test_contact_metrics.py",
+          "path": "research/program/materials/observer-native-001/tests/test_contact_metrics.py",
           "sha256": "c47119c4fd154a9d9dae4fb07188e991fe722b975fcab967d39eca93abd67ae7"
         },
         {
-          "path": "tests/test_observer_install.py",
+          "path": "research/program/materials/observer-native-001/tests/test_observer_install.py",
           "sha256": "c5c0bff722cb6916c18b38d3132f903424dbd983c3b4e058f53195480914b1c1"
         },
         {
-          "path": "tests/test_observer_checkpoint.py",
+          "path": "research/program/materials/observer-native-001/tests/test_observer_checkpoint.py",
           "sha256": "a96dd0803fcf69a26ea16c6a3f405aed35b98b9b673774efd650bcb046f8ae9f"
         },
         {

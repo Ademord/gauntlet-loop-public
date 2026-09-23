@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "id": "P012",
+  "kind": "prospective_metadata_recording_scope_upgrade",
+  "outcome": "installed_with_native_lifecycle_receipts_and_partial_coverage",
+  "authorization": "User selected all local Codex and Claude tasks for metadata-only recording.",
+  "performance_evidence": "unproven",
+  "milestone_status_changes": [],
+  "publication": {
+    "status": "local_checkpoint_not_published"
+  },
+  "recording": {
+    "default_on_this_installation": "all-local-from-first-observed-event",
+    "generic_adapter_default": "explicit_only_unless_hook_auto_enroll_flag",
+    "hosts": [
+      "codex",
+      "claude"
+    ],
+    "earlier_activity": "not_backfilled",
+    "stored": "host/session identity, opaque auto task ID, receipt times, allowlisted event metadata and payload hash",
+    "excluded": "prompts, document contents, tool arguments/results, transcript contents and automatic cwd storage",
+    "historical_manual_enrollments": "preserved",
+    "unknown": "complete usage, billed cost, human active time, prompt authorship and correction totals"
+  },
+  "installation": {
+    "runtime_sha256": "1fea8686cec5f734b0038c0e9549531cbd8db4000ad24fede3b21fd0047fd512",
+    "module_hashes": {
+      "observer.py": "c3049290a4dfaf8a7f1ae3781cd41f7cce1204e5108366f8664769c084371c65",
+      "observer_host.py": "d38725f4548ac2c32446c9a8dfe348d03846b72c764e65f33633c827744f4005",
+      "contact_metrics.py": "93d811107eae0768618a01265c0554e5e26da6b896fb0666c6847c83231a96a8"
+    },
+    "replaced_handlers": {
+      "codex": 9,
+      "claude": 10
+    },
+    "unrelated_settings_preserved": true,
+    "backups": "exact private pre-upgrade bytes",
+    "native_codex_trust": "nine exact definitions reviewed through native CLI; native hooks/list confirms trusted",
+    "trust_bypass_used": false
+  },
+  "qualification": {
+    "integrated_regressions": {
+      "scope": "integrated core observer, host adapter and installer",
+      "tests": 61,
+      "failures": 0,
+      "errors": 0,
+      "passed": true
+    },
+    "independent_groups": {
+      "passed": 8,
+      "total": 8
+    },
+    "initial_fixture": {
+      "assertion_failures": 0,
+      "errors": 5,
+      "affected_groups": 2,
+      "accepted": false
+    },
+    "amendment": "Unknown wrapper metadata was removed from the nominal shared-wrapper fixture and added to refusal cases. Original candidate retained; failures preserved.",
+    "native_claude": "Known session ID captured SessionStart and SessionEnd; no task prompt. First additional Claude diagnostic has unattributed session identity in its launch receipt.",
+    "native_codex": "Known review session and fresh post-trust session each captured SessionEnd only; no SessionStart or working-turn lifecycle established.",
+    "native_cli_versions": {
+      "codex": "0.154.0-alpha.6.2",
+      "claude_known_identity": "2.1.280",
+      "claude_initial": "2.1.278"
+    },
+    "version_note": "Claude native updater changed version between diagnostics; no explicit update command issued.",
+    "ongoing_desktop_tasks": "not_yet_native_qualified; host must load updated configuration and deliver supported events"
+  },
+  "preservation": {
+    "old_rows": {
+      "contact_labels": {
+        "historical_rows": 14,
+        "unchanged": true
+      },
+      "contact_resolutions": {
+        "historical_rows": 0,
+        "unchanged": true
+      },
+      "events": {
+        "historical_rows": 417,
+        "unchanged": true
+      },
+      "measurements": {
+        "historical_rows": 45,
+        "unchanged": true
+      },
+      "outcomes": {
+        "historical_rows": 12,
+        "unchanged": true
+      },
+      "pending_enrollments": {
+        "historical_rows": 1,
+        "unchanged": true
+      },
+      "sessions": {
+        "historical_rows": 15,
+        "unchanged": true
+      }
+    },
+    "all_historical_rows_unchanged": true,
+    "old_runtime_unchanged": true,
+    "new_sessions": [
+      {
+        "host": "codex",
+        "capture_scope": "all-local-from-first-observed-event",
+        "events": {
+          "SessionEnd": 1
+        }
+      },
+      {
+        "host": "claude",
+        "capture_scope": "all-local-from-first-observed-event",
+        "events": {
+          "SessionEnd": 1,
+          "SessionStart": 1
+        }
+      },
+      {
+        "host": "codex",
+        "capture_scope": "all-local-from-first-observed-event",
+        "events": {
+          "SessionEnd": 1
+        }
+      },
+      {
+        "host": "claude",
+        "capture_scope": "all-local-from-first-observed-event",
+        "events": {
+          "SessionEnd": 1,
+          "SessionStart": 1
+        }
+      }
+    ],
+    "after_snapshot_sha256": "ed93a590458b9ba0be27ee52d3d0730dc2de92366b1c280b2879aa117a3f7214",
+    "before_snapshot_sha256": "74d12a5b30fe27e68d5519a28e62eec13540f25a76cae78decc17688595ff23a",
+    "performance_evidence": "unproven"
+  },
+  "limitations": [
+    "Receipt of supported events is partial coverage, not a census of all tasks or tools.",
+    "Enrollment commits before core event insertion; later failure can leave an enrolled session with no events.",
+    "Installation checks all targets before writing, then replaces files separately; it is not a multi-file crash-atomic transaction.",
+    "Older running sessions may retain previously loaded hooks; no reload of unrelated active work was forced."
+  ],
+  "costs": {
+    "native_prompt_free_diagnostic_sessions": 4,
+    "additional_benchmark_worker_runs": 0,
+    "whole_task_cost_usd": null,
+    "controller_and_review_usd": null,
+    "human_active_minutes": null
+  },
+  "investor_questions": {
+    "exact_claim": "An explicit all-local policy enrolls a valid first observed event while preserving existing records and metadata exclusions.",
+    "comparator": "Existing manual enrollment behavior, retained as the generic adapter default; no competing agent trial.",
+    "stop_criterion": "Do not claim installed equals complete capture. Stop after bounded implementation, independent checks and prompt-free native receipts; leave missing working-turn evidence explicit.",
+    "losses": "Original installer fixture blocked two groups; evaluator amendment retained. Codex probes did not capture SessionStart. First Claude launch lacked a predetermined identity and required one additional identified probe. Ongoing desktop turn coverage remains unqualified.",
+    "real_cost": "Four prompt-free native diagnostics, implementation, review and setup. No benchmark worker run; complete resource and human cost remain unknown.",
+    "next_expenditure_decision": "Reconcile the next ordinary local tasks against actual enrolled IDs and request/tool/stop events before funding a comparison. Use external evidence for human corrections; prompt counts are not corrections."
+  },
+  "evidence_sha256": {
+    "contract": "0f86809c6217a8b84e516babf2f0e360ad8dcca9875ed9c70bf9c58f42163546",
+    "criteria": "9f1e3f2f914276cc16d03d0737c9d9b11b85be028e01fa7cf045a4f69b8cc568",
+    "qualification": "3f6595188ad9980c33188804b25acb0bda919242d4dd3047f6ac967a480b4534",
+    "initial_fixture": "9727df479f04aa0347e0c057e3bfd462ce848ca93bc42667c6668d25bc23d5dd",
+    "amendment": "eb678c3d03e52b46ae6fa08f5a81b833b6150b1497608c629fb4e8b1162aa205",
+    "independent_review": "2893562779225a6a0519ad06c350d47bb0046d5718289a4f5ece415fa5f5f318",
+    "actual_review": "0c76ca0e5ab9ac36f2bcaaf87def1bacbe40a7c351e0175cd960e9469fb38482",
+    "native_trust": "af2b7809b748e86fb0d8551395721a43135f030d063b45c351829637381e2212",
+    "preservation": "b7c1f5012b7b631696d146660112f7efe1dbbe6f6b84e6e625721586f67b5e1d",
+    "regressions": "bac60850fecafe9cc5f50b24b3a634c0d9c5ffa82f6ad1a3b0efc37e570b9182"
+  },
+  "public_payload": "Code, generic probes, aggregate facts and hashes; raw settings, IDs, databases and native UI receipts remain private.",
+  "historical_evidence": {
+    "id": "EV-OBSERVER-NATIVE-001",
+    "frozen_source_artifacts": 10,
+    "hashes_rebaselined": false,
+    "claims_changed": false,
+    "relocation_receipt": "research/program/materials/observer-native-001/relocation.json",
+    "reason": "Initial program validation flagged four evolved source paths; old artifact bytes and identities are now preserved separately."
+  }
+}
