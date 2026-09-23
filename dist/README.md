@@ -6,11 +6,13 @@ Prefer the one-line [AI setup prompt](../README.md#quick-start). This directory 
 
 ## Optional terminal installation
 
-From the project where you want to use the skill, run:
+For a fresh installation of **v5.1.0**, run this from the project where you want to use the skill:
 
 ```sh
 npx skills add https://github.com/Ademord/gauntlet-loop-public/tree/v5.1.0/skill
 ```
+
+For an existing installation, follow the [install/update guide](../INSTALL.md) first to check versions, duplicates and local edits before replacement.
 
 This uses the third-party [skills CLI](https://github.com/vercel-labs/skills); the tested 1.7.0 version requires Node.js 22.20 or later, npm and Git. The exact folder URL selects this release's skill rather than the archived versions. Select your agent and installation scope when prompted. For a scripted project-local copy, append `--agent codex --copy --yes`, or substitute `claude-code`. Installing the skill alone does not enable the repository's recorder or research tools.
 

@@ -9,7 +9,7 @@ This repository also holds the tools, experiments and history used to decide how
 Paste this into your AI coding agent:
 
 ```text
-Install Gauntlet Loop from https://github.com/Ademord/gauntlet-loop-public/tree/v5.1.0/skill as gauntlet-loop, including its references; explain it in two short sentences, then ask what task I want help with.
+Install or update Gauntlet Loop to its latest published release by following https://github.com/Ademord/gauntlet-loop-public/blob/main/INSTALL.md; check existing installs and preserve local changes, then explain it in two short sentences and ask what task I want help with.
 ```
 
 ## One project, development and releases
