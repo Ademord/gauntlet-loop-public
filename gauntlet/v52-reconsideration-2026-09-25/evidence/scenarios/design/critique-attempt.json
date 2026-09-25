@@ -1,0 +1,38 @@
+{
+  "id": "scenario-design-critique",
+  "configured_model": "claude-opus-5-5",
+  "configured_effort": "xhigh",
+  "timeout_seconds": 150,
+  "cost_usd": 0.08094379999999998,
+  "status": "success",
+  "is_error": false,
+  "duration_ms": 35326,
+  "exact_model_confirmed": true,
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 2118,
+    "cache_read_input_tokens": 1459,
+    "output_tokens": 3185,
+    "thinking_tokens": 2367
+  },
+  "model_usage": {
+    "claude-opus-5-5": {
+      "inputTokens": 2,
+      "outputTokens": 3185,
+      "cacheReadInputTokens": 1459,
+      "cacheCreationInputTokens": 2118,
+      "thinkingTokens": 2367,
+      "costUSD": 0.08094379999999998,
+      "canonicalModel": "claude-opus-5-5",
+      "costBasis": "list"
+    }
+  },
+  "input": "critique-input.txt",
+  "input_sha256": "72512e5e6ba65e3c6906f78b34dda90c2432a6650dd19af87d6931d2fddf1dfe",
+  "response": "critique-response.txt",
+  "response_sha256": "19c41023d108264040da2312fec317d8eaf0256d6529793e8b2126034a00dc71",
+  "requested_max_words": 300,
+  "response_words_whitespace_split": 369,
+  "response_is_acceptance": false,
+  "exceeds_requested_words": true
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "literal": "Use the supplied Gauntlet skill instructions for the following simulated scenario. Scenario tools and artifacts are hypothetical; describe proposed actions, and do not claim that you performed real actions. Give next actions and a brief user-facing response in at most 180 words.\n\n<skill>\n"
+  },
+  {
+    "source": "../sources/skill/SKILL.md.txt"
+  },
+  {
+    "literal": "\n</skill>\n<execution_reference>\n"
+  },
+  {
+    "source": "../sources/skill/references/execution-contract.md.txt"
+  },
+  {
+    "literal": "\n</execution_reference>\n<scenario>\nYou are preparing a local exhibition guide. The accepted task is to validate the generated PDF and then deliver PDF and HTML in the agreed output folder. The PDF validator is running; the HTML exists, but output-folder verification remains unfinished. A helper is checking image credits. The user sends: 'How is it going? Also add a short accessibility note to the HTML when you get a chance.' No note was previously requested. The guide contains verified step-free access details that can support it. An additional bounded helper is available, and no publication is authorized. Show your next actions and a brief user-facing response.\n</scenario>"
+  }
+]

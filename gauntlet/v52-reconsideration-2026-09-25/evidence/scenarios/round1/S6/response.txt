@@ -1,0 +1,16 @@
+**Next actions**
+
+1. Checkpoint your feedback as a whole-flow reconsideration. Pause edits to the current flow. Keep the current prototype as the retained best.
+2. Record the assumption being questioned: that onboarding should be one fixed sequence of steps. Note where it matters: the first screen, skipping, errors and finishing.
+3. Build three local static HTML wireframes that walk the same user through the same states:
+   - the current flow
+   - **A:** act first, set up later
+   - **B:** a short checklist with skippable steps
+4. Preview them in the browser to check rendering and click-through. No installs or paid services.
+5. Checkpoint again, then present the options with a recommendation. Prototype edits wait for your choice.
+
+**Response**
+
+Good call. I'll stop changing the current flow and make two alternatives as simple clickable wireframes. They'll sit next to the current version, with the same scenario in each so you can compare them directly.
+
+One caveat: there's no second reviewer here, so the comparison will be my own. Wireframes also show structure, not proven usability. I'll suggest which one I'd pick and why, and you decide.

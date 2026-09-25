@@ -1,0 +1,14 @@
+**Next actions (proposed, not performed)**
+
+1. **Block the publish first.** Cancel or disable the scheduled publishing operation, then re-read its status. Mark it `confirmed cancelled` only if the scheduler shows it was never sent. If the status is unclear, record the effect as `unknown`, check the destination for a live post, and do not retry anything.
+2. **Halt the run.** Stop all builders and critics, and dispatch no further reviews or edits.
+3. **Inspect the local draft read-only.** Record its path and identity. Leave it intact, with no deletion or cleanup, since that wasn't requested.
+4. **Checkpoint.** Record run state `stopped_user`, the publish effect's status, the draft's identity, and the budget spent. Then release ownership and schedule nothing.
+
+**Response to user** (sent only once step 1's status is known)
+
+> Stopped. All work on the announcement has halted, and the scheduled publish was cancelled before it went out, so nothing was published. The preview draft is still saved locally at `<path>`, unchanged. Nothing else is scheduled.
+
+If cancellation can't be confirmed, the first two sentences become:
+
+> I requested cancellation but can't yet confirm it didn't send. I'm checking the destination now and won't retry anything.

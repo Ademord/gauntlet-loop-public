@@ -1,0 +1,16 @@
+**Next actions (proposed)**
+
+1. **Record a contract amendment** sourced to your message: option B adopted. Required checks:
+   - **C1:** each session has 12 or fewer people.
+   - **C2:** every attending friend pair is in the same session.
+   - **C3:** each person is assigned only to a date they can attend.
+   - **C4:** all 14 people are assigned exactly once.
+   - **C5:** nothing leaves this machine; no invitations are sent.
+2. **Topology `light`:** the difficulty is low and all checks are deterministic.
+3. **Build the schedule locally** from the verified availability data and record its identity.
+4. **Independent review:** a separate critic reruns C1–C5 against the schedule file and records a verdict.
+5. **Checkpoint:** schedule identity, verdict, one review used, and the next action.
+
+**Response to you**
+
+> Continuing with option B, as you chose. I'll split the 14 attendees across the two dates so every friend pair stays together, each session has 12 or fewer people, and everyone gets a date they can attend. The schedule stays local, and no invitations will go out. I'll share the draft once an independent check confirms those constraints.

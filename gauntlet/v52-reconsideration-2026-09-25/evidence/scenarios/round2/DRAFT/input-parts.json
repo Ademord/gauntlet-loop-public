@@ -1,0 +1,17 @@
+[
+  {
+    "literal": "Use the supplied Gauntlet skill and drafting instructions. Produce one complete standalone prompt of at most 650 words, with no commentary and without executing the task.\n\n<skill>\n"
+  },
+  {
+    "source": "../sources/skill/SKILL.md.txt"
+  },
+  {
+    "literal": "\n</skill>\n<drafting_reference>\n"
+  },
+  {
+    "source": "../sources/skill/references/prompt-drafting.md.txt"
+  },
+  {
+    "literal": "\n</drafting_reference>\n<user_request>\nDraft a paste-ready Gauntlet prompt to improve this complete current setup-notice artifact: \"Update ready. Start now.\" The verified product fact is: users must finish initial setup before selecting Start. The audience is first-time users. The goal is to make that prerequisite clear while keeping the notice short and easy to understand. Authorized scope is the notice text only; do not change button labels, application behavior or other copy. Deliver the revised notice in chat. There is no installation, publication or external communication. The full incumbent and verified fact are provided here, so no external source is needed. I want the prompt, not execution now.\n</user_request>"
+  }
+]

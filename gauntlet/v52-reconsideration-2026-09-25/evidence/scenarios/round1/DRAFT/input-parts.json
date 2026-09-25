@@ -1,0 +1,17 @@
+[
+  {
+    "literal": "Use the supplied Gauntlet skill and drafting instructions. Produce only the requested standalone prompt, with no extra commentary.\n\n<skill>\n"
+  },
+  {
+    "source": "../sources/skill/SKILL.md.txt"
+  },
+  {
+    "literal": "\n</skill>\n<drafting_reference>\n"
+  },
+  {
+    "source": "../sources/skill/references/prompt-drafting.md.txt"
+  },
+  {
+    "literal": "\n</drafting_reference>\n<user_request>\nDraft a paste-ready Gauntlet prompt for an agent continuing a local exhibition guide. It has an existing approved edition to compare against and verified venue information. The result should be a revised PDF and HTML in the project's existing output folder. Keep the approved content unless facts require correction; check document legibility, keyboard navigation and image credits. I may send progress questions, corrections or small additions while it works. No publication or external communication is part of the task. I want the prompt, not execution now.\n</user_request>"
+  }
+]

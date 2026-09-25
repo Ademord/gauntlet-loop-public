@@ -1,10 +1,10 @@
 # Status
 
-Work in progress, updated 23 September 2026. This is the canonical working repository.
+Work in progress, updated 25 September 2026. This is the canonical working repository.
 
-Distribution checkpoint: **[GitHub Release v5.1.0](https://github.com/Ademord/gauntlet-loop-public/releases/tag/v5.1.0)** publishes the existing reviewed package with a tag, downloadable assets and its verification manifest. The [Quick start](README.md#quick-start) is one line to paste into an AI coding agent for installation and brief onboarding. This changes distribution and documentation, not the skill behavior.
+Current skill: **5.2.0**, with bounded reconsideration when feedback challenges the problem interpretation and continuity across incoming messages. The [upgrade record](gauntlet/v52-reconsideration-2026-09-25/progress.md) separates frozen checks, scenario outputs, independent review and publication. The [Quick start](README.md#quick-start) still resolves the latest published release. Native host interruption scheduling is not controlled by this Markdown skill.
 
-Repository integration: the accumulated measurement repair, calibration, milestone index, graph/readiness work and recorder checkpoints are brought together on `main`. The usable skill and distribution remain **5.1.0**; archived versions and original evidence are preserved. This integration is not a new skill release or a performance result. The [repository map](README.md#one-project-development-and-releases) explains the different parts, and [contribution rules](CONTRIBUTING.md#branches-and-releases) describe temporary branches and releases.
+`main` remains the project home. Prior skill 5.1.0 is archived byte for byte; original research and run records remain intact. The private installed customization and active pilot versions are separate from this public package. No performance advantage or reduced human correction burden has been established.
 
 Possible community improvements are indexed as [B-040 through B-044](research/program/backlog.md#community-candidates-23-september-2026), with selection gates and observable completion criteria. The example domain is undecided. Existing engineering follow-ups remain scoped below; no new paid benchmark is active. Earlier checkpoint references to local-only publication describe their state at the time. This integration includes their sanitized public reports, not private task records or installed host settings.
 
@@ -40,14 +40,15 @@ The independent September 20 audit found incomplete token accounting, a missed c
 
 The historical F1 arms both allow revision after rejection and use generated prompts, not the full installed skill. They therefore do not establish a benefit of the revision loop or a version-to-version gain. Of 76 counted arms, 76 passed their exposed suites and 74 met scope acceptance; only two arms, on one task, had held-out tests.
 
-The [six-task review calibration](research/program/calibration/DECISION.md) is complete: baseline, builder self-check, and fresh review plus one correction all passed 6/6 frozen suites, at $0.98, $2.82 and $3.35 respectively across six tasks including each branch's shared builds. Total physical usage was $5.77 including the stopped first attempt and diagnostics. Supplementary probes found real repairs in both extra-work paths and a self-check regression that the frozen tests missed. These selected boundary cases cannot estimate general comparative performance. Production skill 5.1.0 remains unchanged. The next performance study requires real tasks sampled independently of reviewer usefulness and independently authored acceptance checks; no further paid run is active.
+The [six-task review calibration](research/program/calibration/DECISION.md) is complete: baseline, builder self-check, and fresh review plus one correction all passed 6/6 frozen suites, at $0.98, $2.82 and $3.35 respectively across six tasks including each branch's shared builds. Total physical usage was $5.77 including the stopped first attempt and diagnostics. Supplementary probes found real repairs in both extra-work paths and a self-check regression that the frozen tests missed. These selected boundary cases cannot estimate general comparative performance. That calibration did not change production skill 5.1.0; the later 5.2 upgrade is separate. The next performance study requires real tasks sampled independently of reviewer usefulness and independently authored acceptance checks; no further paid run is active.
 
 ## Where things stand
 
 | Area | State | Where |
 | --- | --- | --- |
-| Skill 5.1.0 | Accepted by a gauntlet run under 5.0.0: nine frozen checks, eight scenario probes frozen before building, four independent critics over four review rounds. It restores what v4 dropped and fixes wording the v5 run left ambiguous; no new mechanism, and nothing benchmarked. 5.0.0 is preserved byte for byte in versions/v5/ | [skill/](skill/SKILL.md), [dist/](dist/README.md), [gauntlet/v51-upgrade-2026-09-19/](gauntlet/v51-upgrade-2026-09-19/progress.md) |
-| Version history | Complete from v1 to v5.1; every stored file checksummed | [versions/](versions/README.md) |
+| Skill 5.1.0 (historical) | Accepted by a gauntlet run under 5.0.0: nine frozen checks, eight scenario probes frozen before building, four independent critics over four review rounds. It restores what v4 dropped and fixes wording the v5 run left ambiguous; no new mechanism, and nothing benchmarked. 5.0.0 is preserved byte for byte in versions/v5/ | [archive](versions/v5.1.0/SKILL.md), [gauntlet/v51-upgrade-2026-09-19/](gauntlet/v51-upgrade-2026-09-19/progress.md) |
+| Skill 5.2.0 | Reconsideration and message continuity; see scoped checks and remaining uncertainty in the upgrade record | [skill/](skill/SKILL.md), [upgrade](gauntlet/v52-reconsideration-2026-09-25/progress.md) |
+| Version history | Complete from v1 to v5.2; every stored file checksummed | [versions/](versions/README.md) |
 | Research | Six papers noted with verbatim abstracts; the v5 thesis; a research program with a pre-registered paired-study protocol, amended 19 September for harness isolation and measurement | [research/](research/README.md) |
 | Run ledger | Scripts ready. The first ingest over the author's projects found three recorded runs and five run folders without a machine-readable record; every cell is below threshold. Outputs stay local | [tools/ledger/](tools/README.md), [ledger/SCHEMA.md](ledger/SCHEMA.md) |
 | Passive observer | Codex and Claude Opus/high request/tool/completion capture verified on bounded fixtures. Failures preserved; human contacts classified separately from explicit resolution. Claude success used only Read and no MCP servers | [observer](ledger/OBSERVER.md), [Opus validation](research/program/materials/observer-native-validation-002.json) |
@@ -59,7 +60,7 @@ The [six-task review calibration](research/program/calibration/DECISION.md) is c
 - Only the abstracts of the six v5 papers were read.
 - The difficulty estimate every run records is the lead's self-report.
 - The v5 critics were language models judging text about language-model critics, and the scenario probes were written by the same lead who wrote the candidate.
-- The last consistency fix of the v5 run was verified deterministically after the last critic read it; see [dist/RELEASE-REVIEW.md](dist/RELEASE-REVIEW.md).
+- The last consistency fix of the v5 run was verified deterministically after the last critic read it; see the [preserved release review](versions/v5.1.0-RELEASE-REVIEW.md).
 - v4 and v5.0 dropped the worked examples and the bar table that v1 to v3 carried; 5.1 restored them, and the effect of neither the dropping nor the restoring was measured.
 - The twelve mutation tasks all come from one repository and are one-token defects; results on them generalize only to that class.
 - No first critic review was recorded as negative across the 76 counted arms. That does not imply no review-driven edit: x008 changed exception handling after a nonblocking finding. Agent/Task dispatch counts are not verified reviewer counts; see the dated study erratum.

@@ -1,0 +1,13 @@
+**Next actions (proposed)**
+
+1. **Stop dispatch first.** Cancel or disable the scheduled publish, then read its status back to confirm it shows cancelled and unsent. Stopping is not rollback, so I'll check the send log for any partial send.
+2. **Record the change.** Amend the contract: "do not send" becomes a standing obligation, and the old date is marked invalid. Flag the date checks, the draft copy and the booking suggestions for re-checking.
+3. **Keep valid work.** Leave the rest of the draft as is and swap the date for a placeholder.
+4. **Check dates against real data.** Pull the venue's calendar or closure notice and list open dates. I won't guess availability.
+5. **Checkpoint.** Save the draft identity, the confirmed cancel status and the next action.
+
+**Response**
+
+> Understood. I'm cancelling the scheduled send and will check that it shows as unsent before doing anything else. I'll tell you if it doesn't. The draft stays unpublished, with the date replaced by a placeholder until you pick a new one.
+>
+> For the replacement date, I'll check the venue's actual calendar and bring you two or three open dates. Anything to avoid, such as weekdays, holidays or a deadline?

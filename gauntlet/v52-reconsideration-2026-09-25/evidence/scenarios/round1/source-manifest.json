@@ -1,0 +1,44 @@
+{
+  "stage": "round1",
+  "captured_utc": "2026-09-25T09:50:27.655559+00:00",
+  "sources": {
+    "skill/SKILL.md": {
+      "file": "sources/skill/SKILL.md.txt",
+      "sha256": "f667c2285104072de73c16276e80d77850e6c4a164ec24333c3e08652dbcba1f",
+      "bytes": 15916,
+      "used_in_one_or_more_calls_in_round": true
+    },
+    "skill/references/execution-contract.md": {
+      "file": "sources/skill/references/execution-contract.md.txt",
+      "sha256": "17843017cd2f6a03cbc02239e6f725b63c71458da137b8823d4d38245200d582",
+      "bytes": 25603,
+      "used_in_one_or_more_calls_in_round": true
+    },
+    "skill/references/prompt-drafting.md": {
+      "file": "sources/skill/references/prompt-drafting.md.txt",
+      "sha256": "049eb5d63cce155dcfcf76c91796bea5424fb4b03798b10ba405db70a6c059f3",
+      "bytes": 7826,
+      "used_in_one_or_more_calls_in_round": true
+    },
+    "dist/package-verification.json": {
+      "file": "sources/dist/package-verification.json.txt",
+      "sha256": "e3f63df3a167f7ed057acabcc424242505ecb98fe70c54212d83a80b8c04d280",
+      "bytes": 1285,
+      "used_in_one_or_more_calls_in_round": false
+    }
+  },
+  "configured_model": "claude-opus-5-5",
+  "configured_effort": "xhigh",
+  "maximum_concurrent_calls": 2,
+  "per_call_soft_usage_guard_usd": 1,
+  "rubric_supplied_to_workers": false,
+  "builder_commentary_supplied_to_workers": false,
+  "probes": "../probes.json",
+  "probes_sha256": "1decd3b01e638e91c26201a7e2bfc31f2703a6bb1e5954d6c2f45ff67370673f",
+  "extracted_probes": "../extracted-probes.json",
+  "extracted_probes_sha256": "bc843803458f50c7a5d6be8c4fb8e416c4858f90f97ca5927b960acb5ade3549",
+  "input_recipe": "Per-attempt input-parts.json lists literal text and deduplicated source files. Read source text with universal newline normalization, join all parts, then UTF-8 encode to reproduce input_sha256. Source snapshots retain original bytes.",
+  "package_manifest_note": "The dist verification record is a provenance snapshot, not proof it matches the supplied source files. The actual source hashes above govern each tested identity.",
+  "reason": "First candidate forward checks; original S4 and S5 variants were isolated into separate calls.",
+  "per_attempt_source_note": "Each attempt explicitly lists the source files actually supplied. In particular, draft calls received SKILL.md and prompt-drafting.md, not execution-contract.md."
+}

@@ -1,0 +1,15 @@
+{
+  "review_id": "candidate-acceptance/round3",
+  "section": "B: Generated DRAFT",
+  "source_result_sha256": "542f9c8a9d16d851284d3cbf857538b419425ead8c8aa74ecb6e068b0b1882ec",
+  "excerpt_sha256": "d843cd00edf46eb1e48cc2429fb0fa7323d6e97d281ee53a66f4731146d756c8",
+  "actual_reviewer_models": [
+    "claude-opus-5-5"
+  ],
+  "earlier_generated_prompt": "../round2/DRAFT/response.txt",
+  "earlier_generated_prompt_preserved": true,
+  "earlier_generated_prompt_disposition": "REVISE: material portable-instruction omissions; generation success was not acceptance.",
+  "review_call_in_subtask_cost_totals": false,
+  "repair_classification": "One feedback-guided revision explicitly supplied prior output and actual review findings. It is not a fresh blind forward probe or proof of improved source compliance.",
+  "features_record_correction": "The prior generated prompt said features:none despite using evidence_ladder. Repair is explicitly instructed to include evidence_ladder; the historical prompt remains unchanged."
+}

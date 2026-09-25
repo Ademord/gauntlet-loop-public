@@ -1,0 +1,57 @@
+{
+  "kind": "reported_live_pilot_observations",
+  "observed_on": "2026-09-25",
+  "source": "Checkpoint reports from two cooperating design tasks; private task and artifact pointers retained privately.",
+  "independently_reproduced_here": false,
+  "pilots": [
+    {
+      "alias": "design-A",
+      "reported_observation": "Independent proposals followed by written cross-examination exposed a combined date-and-attendance action and missing consequences. Some reviewer suggestions introduced unsupported assumptions and were rejected by the lead.",
+      "decision": "Routine factual and interaction corrections proceeded; materially different product approaches remained available for the user's choice.",
+      "artifact_state": "Concept boards reportedly delivered and separately reviewed; no implementation or live participant changes.",
+      "user_acceptance": "positive reported selection of five underlying concepts; no layout or implementation approval",
+      "known_review_execution_usd": 0.8256834,
+      "cost_exclusions": [
+        "lead",
+        "image generation",
+        "preparation",
+        "human time"
+      ],
+      "reduced_corrections": "not measured",
+      "later_checkpoint": {
+        "reported_observation": "A concrete two-route scenario showed that clarifying an upstream requirement could remove a downstream reassignment question. A worker incorrectly generalized one group capacity to another; the source check rejected this.",
+        "decisions_preserved": "Two structural alternatives remained: complete plans versus a current draft with attached decisions. No preference winner established.",
+        "handoff_failure": "Three initial read-only attempts failed because exact image filenames were omitted; corrected paths supported two independent retries and one shared challenge.",
+        "calls": 6,
+        "known_execution_usd": 1.5062328,
+        "final_shared_review_seconds": 263.81,
+        "final_shared_review_execution_usd": 0.7137896,
+        "user_response_to_synthesis": "unknown",
+        "interpretation": "A specific scenario exposed a wrong implied sequence. This does not identify the cause of user satisfaction or establish net savings."
+      }
+    },
+    {
+      "alias": "design-B",
+      "reported_observation": "An abbreviated source brief caused independent workers to infer insufficient content. Supplying already available facts corrected that inference. Agreement was not treated as evidence of user value.",
+      "decision": "Factual repairs proceeded; subject relevance remained for the user's reaction to a concrete visual proposal. A previously planned element was explicitly excluded from pilot-caused improvements.",
+      "artifact_state": "Three concept pages reportedly generated and independently reviewed; no image correction this round.",
+      "user_acceptance": "positive reported response to delivered concepts and emerging workflow",
+      "failed_opus_calls": 2,
+      "failed_call_timeout_seconds_each": 75,
+      "failed_call_wall_seconds": 75,
+      "timing_correction": "Calls ran concurrently; the earlier reported 150 seconds was aggregate call time, not elapsed wait.",
+      "failed_call_cost_usd": null,
+      "additional_costs": "unknown",
+      "reduced_corrections": "not measured",
+      "response_update": "A later checkpoint reported that the user liked the result and found it closer to the intended experience; no software/publication approval or causal effect inferred."
+    }
+  ],
+  "scope": "Motivates preserving source sufficiency, dissent, user authority and honest failure accounting in the protocol.",
+  "limitations": [
+    "These reports are observational, involve different tasks and contain no competent controlled comparator.",
+    "Independent review reported by a task is not user acceptance.",
+    "They do not isolate the contribution of extra agents, discussion, reframing, or additional effort.",
+    "The public skill is not silently updated in either active pilot.",
+    "Pilot costs are separate from this upgrade's execution accounting."
+  ]
+}

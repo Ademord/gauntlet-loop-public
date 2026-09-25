@@ -1,0 +1,25 @@
+{
+  "exit_code": 0,
+  "is_error": false,
+  "elapsed_seconds": 59.016,
+  "requested_effort": "xhigh",
+  "model_usage": {
+    "claude-opus-5-5": {
+      "inputTokens": 2,
+      "outputTokens": 6613,
+      "cacheReadInputTokens": 1459,
+      "cacheCreationInputTokens": 32445,
+      "webSearchRequests": 0,
+      "costUSD": 0.3921198,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 5407,
+      "canonicalModel": "claude-opus-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "cost_usd": 0.3921198,
+  "result": "**Verdict: REVISE.** One blocker, a single-phrase fix. C7–C8 remain pending. Consistency does not show improved performance.\n\n**Assessment**\n\n- **C1 passes.** Stops reach workers and pending external actions (\"including affected workers and pending external actions\") in the contract, the template and both examples. Stale results are covered by \"check delayed results against current requirements\" and, in team-method.md, \"a late response must not act on a newer target\". The prompt's \"immediately\" versus the contract's \"promptly\" makes the prompt stricter, not contradictory.\n- **C3 passes.** The contract gets interpretations before preferred solutions (\"Obtain initial interpretations before sharing preferred solutions\") and records \"a situation where it matters\". Dissent is kept (\"retain dissent, do not vote\"). Budget stays inside the original allowance: \"within the remaining allowance\" and \"Preserve lineage, review index, budgets and reserve\". \"Discussion is diagnosis, not independent artifact acceptance\" keeps discussion out of acceptance.\n- **C4 passes.** Agent hypotheses stay separate from explicit constraints (\"A proposed interpretation by agents is not a user instruction\"; \"Keep interpretations tentative\"). Planned and confirmed effects are split (\"Report proposed actions separately from confirmed effects\"). Concrete options coexist with preparation (\"while independent preparation continues\"). Settled choices are not reopened for routine consequences.\n- **C6 passes.** Missing independent help is disclosed (\"disclose self-review\"). Visuals are optional and vendor-free (\"respecting requested representations\", \"illustrations do not prove functionality\").\n- **Reductions:** I found no relaxation of budgets, acceptance, review independence or resume rules. SKILL.md now defers resume detail to the contract, which still requires \"write a resume validation record before any dispatch\" and still preserves charges and holds.\n\n**Blocker (C2 carried through C5)**\n\n- **What the text says:** The prior template and both worked examples said \"triggers reconsideration **before affected edits** even if checks pass.\" The candidate prompt-drafting.md and both bars-and-examples.md prompts now say only \"Conceptual dissatisfaction triggers reconsideration even if checks pass.\" The very next paragraph says \"After two repeated unresolved-gap verdicts, diagnose before editing.\"\n- **My judgment:** A fresh session holding only the portable prompt loses the timing rule, \"before further affected edits, without waiting for two critic verdicts\". It could let in-flight edits continue, or treat the two-verdict rule as the gate. SKILL.md and the contract still state the timing, so the loss is only in the portable carriers that C5 requires.\n- **Fix:** Restore \"before further affected edits, without waiting for two verdicts\" in all three prompts.\n\n**Non-blocking notes**\n\n- execution-contract.md: \"do not demand that the incumbent fail a test before establishing what is feasible\" reads awkwardly beside the rules that checks must discriminate. The prompt's \"not a desired failure\" is clearer; consider reusing it.\n- bars-and-examples.md: \"the entrypoint defers benchmarking\" no longer matches the entrypoint, which now says \"Benchmarking is separate, explicitly requested work.\"\n- SKILL.md: \"Use the existing progress surface\" says nothing about projects that have none. The prompt's \"Keep a readable progress file\" and the contract's `gauntlet/` layout cover that case.\n- execution-contract.md: \"every 5.1 record\" and \"never empty in a 5.1 record\" are stale version labels. This predates the diff.",
+  "sent_prompt_sha256": "dbe4b495e93bb0a42b0f0836a71dc32632f91f8602fa795cc0c7e107109bd704"
+}

@@ -1,20 +1,20 @@
 {
-  "version": "5.1.0",
+  "version": "5.2.0",
   "files": 9,
   "package_files_sha256": {
     "references/agent-language.md": "9ffba5b8cc9ad2dffb2fd650b09caaef4538ca599f1daf430a5a120abfe250a8",
-    "references/bars-and-examples.md": "bb27fe6985b839bdbed18a03a92063b7c2b26b30a83976893fa187e630da75b9",
-    "references/execution-contract.md": "62d2c26b1e7f284e25e2efa448f61a46e5ac6909be0c94c30e82999c32dd7bac",
+    "references/bars-and-examples.md": "c687184aec2a83afa61179a876276c9ef4b86d10876cb09744931d1cd39e6e3c",
+    "references/execution-contract.md": "35a141086d823f9e63ac9be77ece362296633e52e7580f52fa20e46d2a7ad777",
     "references/learning-and-evolution.md": "a6d9fa95be6b342fe96f530a1190e2264ac99bab0f119ed760cdffd143d21ea2",
-    "references/prompt-drafting.md": "28a5b86c5e4c65f6105dfd9f68d11b69f2b4aaa99226b60f8e5671003b1b5560",
+    "references/prompt-drafting.md": "c66751705be020385d08f2039b009ffb040f70a2467e002e252dd3e76651b009",
     "references/research-basis.md": "5b72181615884c186e66b488460f6849a6e105c2f39f4612b1a0cb502fcf2c0f",
     "references/software-quality.md": "ca41c408d0d8e4d34e11629d19b82b30a4f4c4d6a5a3befc5572397514490fe2",
-    "references/team-method.md": "db09218a9bcfe1d6ba8983b9337a14ca32549d220fcb474059af9b5dfa49a6be",
-    "SKILL.md": "d03f1d810faf24c02de679fc7ba62f53d3ea54f5c5ccf8fe9ad31ab41e9cb8d2"
+    "references/team-method.md": "06d6495cd8178c3ab062f1cab094f54ca0e858d6de0774bf84101875c4986b67",
+    "SKILL.md": "53924856405d2c3354b84854c1cd1733e3064adf3afc67c3d5975f30ec695b97"
   },
-  "archive_sha256": "7fb1ca09c70fd3d25a0b931153830690fad3f97c0122ad99df64b5d85df49d44",
-  "portable_sha256": "1e7cf543ea77c60afabfbf7c8c57d1eaf6bb26fdf8e9c5c22b00b5d04881725f",
-  "portable_bytes": 105502,
+  "archive_sha256": "2660f5529c9fc0920a24e490aab54b56560c36f0a8c0589f6160c57a8dd98a49",
+  "portable_sha256": "95371cee17288e1ef1fc2b189286ed4f43713fbca0aeee70b69cbd6490a993c4",
+  "portable_bytes": 109983,
   "zip_matches_package": true,
   "benchmarks_run": false
 }

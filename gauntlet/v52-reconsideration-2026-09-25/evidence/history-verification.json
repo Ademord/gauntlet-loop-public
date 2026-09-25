@@ -1,0 +1,6 @@
+{
+  "outgoing_5_1_files": 9,
+  "older_archive_files": 25,
+  "all_original_hashes_match": true,
+  "method": "Compared stored outgoing identities and the original version-sums bytes with actual archived files before validating the new aggregate sums."
+}

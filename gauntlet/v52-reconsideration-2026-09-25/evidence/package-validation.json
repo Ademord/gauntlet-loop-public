@@ -1,0 +1,33 @@
+[
+  {
+    "command": [
+      "tools/validate_package.py",
+      "--version",
+      "5.2.0",
+      "--expect-files",
+      "9",
+      "--export",
+      "dist/gauntlet-loop-v5-SKILL.md",
+      "--max-export-bytes",
+      "110000"
+    ],
+    "returncode": 0,
+    "output": "{\n  \"package\": \"skill\",\n  \"version\": \"5.2.0\",\n  \"files\": 9,\n  \"skill_md_bytes\": 14598,\n  \"export_bytes\": 109936,\n  \"local_links_checked\": 16,\n  \"yaml_blocks_parsed\": 3,\n  \"failures\": [],\n  \"passed\": true,\n  \"benchmarks_run\": false\n}\n"
+  },
+  {
+    "command": [
+      "tools/program.py",
+      "validate"
+    ],
+    "returncode": 0,
+    "output": "{\n  \"errors\": [],\n  \"warnings\": [\n    \"EV-RELEASE: hash changed: dist/package-verification.json\",\n    \"EV-RELEASE: hash changed: versions/SHA256SUMS\"\n  ],\n  \"milestones\": 50,\n  \"evidence\": 13,\n  \"experiments\": 2\n}\n"
+  },
+  {
+    "command": [
+      "tools/readiness.py",
+      "validate"
+    ],
+    "returncode": 0,
+    "output": "{\n  \"errors\": [],\n  \"triage_records\": 2,\n  \"catalog_milestones\": 50,\n  \"mode\": \"engineering_readiness\",\n  \"limit\": \"Structure checked; no execution, factual certification or milestone promotion.\"\n}\n"
+  }
+]

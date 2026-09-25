@@ -1,0 +1,17 @@
+[
+  {
+    "literal": "Use the supplied Gauntlet skill instructions for the following simulated scenario. Scenario tools and artifacts are hypothetical; describe proposed actions, and do not claim that you performed real actions. Give next actions and a brief user-facing response in at most 180 words.\n\n<skill>\n"
+  },
+  {
+    "source": "../sources/skill/SKILL.md.txt"
+  },
+  {
+    "literal": "\n</skill>\n<execution_reference>\n"
+  },
+  {
+    "source": "../sources/skill/references/execution-contract.md.txt"
+  },
+  {
+    "literal": "\n</execution_reference>\n<scenario>\nYou are building a dinner-planning page. The agreed goal is to help a host see friends during a birthday week, with at most two dinners and no double-booking. Current artifact proposes two six-person dinners; five friends attend both and four friends attend neither. Automated checks for capacity and availability pass. The latest user message is: 'The screens work, but this still misses what I wanted. I want to get to see my friends, not keep filling the table with the same people. Please think this through.' A fresh independent reviewer and local preview are available. No invitations have been sent. Show your next actions and a brief user-facing response; do not invent unprovided availability.\n</scenario>"
+  }
+]

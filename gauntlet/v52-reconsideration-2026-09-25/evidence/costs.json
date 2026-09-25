@@ -1,0 +1,54 @@
+{
+  "kind": "recorded-delegated-execution-subtotal",
+  "components": [
+    {
+      "part": "design-critique",
+      "known_execution_usd": 0.4248518
+    },
+    {
+      "part": "scenario-design-execution-and-draft-repair",
+      "known_execution_usd": 2.657925
+    },
+    {
+      "part": "candidate-review-1",
+      "known_execution_usd": 0.6042438000000001
+    },
+    {
+      "part": "candidate-review-2",
+      "known_execution_usd": 0.3921198
+    },
+    {
+      "part": "candidate-review-3",
+      "known_execution_usd": 0.6527718
+    },
+    {
+      "part": "candidate-review-4",
+      "known_execution_usd": 0.5285798
+    }
+  ],
+  "known_api_equivalent_execution_usd": 5.260492,
+  "captured_provider_invocations": 22,
+  "unknown_cost_attempts": [
+    "design/generation-timeout.json",
+    "round1/DRAFT/attempt.json"
+  ],
+  "complete_execution_usd": null,
+  "lead_usd": null,
+  "preparation_usd": null,
+  "human_minutes": null,
+  "subscription_cash_usd": null,
+  "soft_usage_target_usd": 8,
+  "soft_target_fully_verified": false,
+  "critic_attempts_charged": 7,
+  "critic_hard_cap": 12,
+  "critic_accounting": "One design critique, two scenario-design/critique attempts including the timeout, and four candidate/integration reviews. Synthetic answer generation and draft builds are provider requests, not critic reviews.",
+  "model": "claude-opus-5-5",
+  "effort_configured": "xhigh",
+  "returned_model_verified": "all successful recorded calls; timeout model return unknown",
+  "limitations": [
+    "CLI list-price usage is not billed cash.",
+    "Timeouts prevent a complete cap assertion.",
+    "Pilot costs are separate and exclude their lead, image generation and human time.",
+    "Native orchestration-agent and preparation effort are not included in the subtotal."
+  ]
+}

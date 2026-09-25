@@ -1,0 +1,9 @@
+{
+  "command": "python -m unittest discover -s tests",
+  "returncode": 0,
+  "wall_seconds": 6.968,
+  "output": ".................................................................................................................................................................................s....\n----------------------------------------------------------------------\nRan 182 tests in 6.798s\n\nOK (skipped=1)\n",
+  "input_binding": "validation-inputs.json",
+  "input_binding_sha256": "a148b0c658053ba132b3f1968800be00b8bd8d57b3350c5d8833336fdcd8e150",
+  "scope": "Actual final rerun of existing offline suite; no model compliance, live scheduler or performance claim."
+}

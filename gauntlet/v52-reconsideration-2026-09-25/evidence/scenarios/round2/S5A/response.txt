@@ -1,0 +1,15 @@
+**Next actions (proposed, not performed)**
+- Record the choice as a pending user decision in the local progress record. It's a priority tradeoff (reach vs. keeping friends together), so it's a `judgment` call. More critic reviews or a vote can't settle it, so none will be dispatched.
+- Keep both verified arrangements saved locally. Send no invitations.
+- Once you choose, record it as a contract amendment. Then re-confirm the final attendee list and capacity (≤12 per date) before handoff.
+
+**Response**
+
+Both options are verified, feasible and equal in cost. The choice depends on what "welcoming" means to you:
+
+- **A:** 18 people attend, but 3 of them attend without their friend.
+- **B:** 14 people attend, and every friend pair stays together. That means 4 fewer people are included.
+
+I recommend **A**. It gives four more people a place, and the cost falls on three people who still attend. Choose **B** if keeping friends together matters more to you than reaching more people.
+
+Which should I finalize? Nothing has been sent, and scheduling stays local until you authorize invitations.

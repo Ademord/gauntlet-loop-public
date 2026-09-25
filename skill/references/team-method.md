@@ -2,6 +2,8 @@
 
 Use when multiple agents need explicit coordination, especially a requested full-team gauntlet. Select the organization from the work's dependency structure; keep the smallest useful topology. This is a project workflow, not a new authority layer.
 
+For conceptual dissatisfaction, use reconsideration in the [execution contract](execution-contract.md). Bind briefs to contract versions, notify/stop invalidated assignments, and check delayed results before integration. Preserve unaffected work; return reservations only after confirmed worker completion or stop.
+
 ## Purpose before decomposition
 
 Start with what the user wants to finish, their normal first action, important secondary actions, and observable success. For interfaces, inspect the complete visible journey, including focus, drafts, selection, scroll, switching, cancellation, and return paths when affected. A style reference does not establish how the user's actual task should work.

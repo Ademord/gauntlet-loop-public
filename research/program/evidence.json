@@ -182,7 +182,8 @@
       "review_status": "active",
       "scope": "Deterministic package identities, local links and public-scan tooling are available and verified.",
       "limitations": [
-        "Package validity is not orchestration performance; a scan is not exhaustive."
+        "Package validity is not orchestration performance; a scan is not exhaustive.",
+        "The 5.1.0 manifest and historical version sums were relocated byte for byte on 2026-09-25; their original hashes and paths are retained. Current release evidence is separate."
       ],
       "claim_ids": [
         "M-044",
@@ -193,12 +194,16 @@
       ],
       "artifacts": [
         {
-          "path": "dist/package-verification.json",
-          "sha256": "dd24c534124d3ef4e0a1f4951b766feef58de7879e1166e63c9290bb2b9546b7"
+          "path": "versions/v5.1.0-package-verification.json",
+          "sha256": "dd24c534124d3ef4e0a1f4951b766feef58de7879e1166e63c9290bb2b9546b7",
+          "original_path": "dist/package-verification.json",
+          "relocated_on": "2026-09-25"
         },
         {
-          "path": "versions/SHA256SUMS",
-          "sha256": "f8ee29f1d484c4122371d96d1cb787cad308470561f77f13829a45c449e637ea"
+          "path": "versions/v5.1.0-SHA256SUMS",
+          "sha256": "f8ee29f1d484c4122371d96d1cb787cad308470561f77f13829a45c449e637ea",
+          "original_path": "versions/SHA256SUMS",
+          "relocated_on": "2026-09-25"
         },
         {
           "path": "tools/verify_release.py",
@@ -498,6 +503,86 @@
         "bounded-claude-native-capture",
         "soft-budget-overshoot-observed",
         "recorder-storage-magnitude"
+      ]
+    },
+    {
+      "id": "EV-V52-PROTOCOL",
+      "kind": "engineering",
+      "observed_on": "2026-09-25",
+      "review_status": "active",
+      "scope": "Source-level reconsideration and message-continuity rules reviewed in Gauntlet 5.2; targeted next-action probes retain failed outputs and limitations.",
+      "limitations": [
+        "No live scheduler enforcement, controlled benefit, or performance promotion.",
+        "A generated prompt omitted required semantics; any coached repair is separate from the initial forward probe.",
+        "Pilot reports are observational and not independently reproduced here.",
+        "Timeout usage and full lead/preparation/human cost are unknown."
+      ],
+      "claim_ids": [
+        "M-007",
+        "M-019",
+        "M-020",
+        "M-038",
+        "M-040"
+      ],
+      "source_ids": [],
+      "establishes": [
+        "reviewed-portable-protocol-source",
+        "scoped-next-action-failures-and-repairs"
+      ],
+      "artifacts": [
+        {
+          "path": "gauntlet/v52-reconsideration-2026-09-25/contract.yaml",
+          "sha256": "0ff1e7a14102208a044efedebad6721cd59d4c6a72cd8bd2e70cb5957e6020c6"
+        },
+        {
+          "path": "gauntlet/v52-reconsideration-2026-09-25/evidence/reviews/round-3.json",
+          "sha256": "09920295fa19b4fccf69a405a796a5cae03f6bf66f642bdbfe16aebdf1a86319"
+        },
+        {
+          "path": "gauntlet/v52-reconsideration-2026-09-25/evidence/scenarios/index.json",
+          "sha256": "6ce14d2c60b38197b8a2c32173547bc7b3f39b51de867617cbd257a1dc9b2433"
+        },
+        {
+          "path": "gauntlet/v52-reconsideration-2026-09-25/evidence/pilot-observations.json",
+          "sha256": "39717e7248e877e16fcddc363daebd9cf8296edaf7cd5357f25f61dfc6e1c510"
+        },
+        {
+          "path": "gauntlet/v52-reconsideration-2026-09-25/evidence/reviews/round-4.json",
+          "sha256": "202ca8f5e61c5b648337f287d70f1f04d2f5d42a3dd53ed0aa92ace234e01e21"
+        }
+      ]
+    },
+    {
+      "id": "EV-V52-RELEASE",
+      "kind": "engineering",
+      "observed_on": "2026-09-25",
+      "review_status": "active",
+      "scope": "Versioned skill identities, byte-preserved outgoing package, portable archive and targeted package checks for 5.2.",
+      "limitations": [
+        "Package integrity is not correctness of every generated prompt or an orchestration performance result.",
+        "Publication status is recorded separately from package verification."
+      ],
+      "claim_ids": [
+        "M-044",
+        "M-048"
+      ],
+      "source_ids": [],
+      "establishes": [
+        "version-5-2-package-identity-and-archive-preservation"
+      ],
+      "artifacts": [
+        {
+          "path": "gauntlet/v52-reconsideration-2026-09-25/evidence/candidate-identity.json",
+          "sha256": "3d34186c05d58ddcfc73942b5b13c86fbfe9dc41dd54ff962d7b58e6122a226d"
+        },
+        {
+          "path": "gauntlet/v52-reconsideration-2026-09-25/evidence/history-verification.json",
+          "sha256": "2765dafcc14cbad649ad14fc208514fbaf85bd142f51ef28d98d577404443669"
+        },
+        {
+          "path": "gauntlet/v52-reconsideration-2026-09-25/evidence/final-validation.json",
+          "sha256": "32855b95c5c48de85fc1e9d1d6eb320ed8ea4b8ebba934fec145cc00c1e37f28"
+        }
       ]
     }
   ]

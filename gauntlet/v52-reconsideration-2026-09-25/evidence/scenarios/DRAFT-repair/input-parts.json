@@ -1,0 +1,35 @@
+[
+  {
+    "literal": "Repair the previous generated standalone prompt using the actual review feedback below. This is one feedback-guided revision, not a clean forward probe. Return only one complete portable prompt of at most 650 words, without commentary and without executing its task. Compress other wording while preserving all acceptance, independence, evidence-ladder, budget, checkpoint, resume and honest-capability behavior. Retain compatible additions as pending; stop or notify the affected in-flight critic and reject stale verdicts under superseded criteria; get independent initial interpretations when useful and available before comparing concrete examples; preserve dissent without voting; discussion is not independent acceptance; ordinary defects get ordinary fixes; ground revised checks in requirements and verified facts. Correct the generated features record to include evidence_ladder, as required by the current full execution contract; the template's pre-existing or-none option must not override that requirement. Do not execute the task or invent tool results.\n\n<skill>\n"
+  },
+  {
+    "source": "sources/skill/SKILL.md.txt"
+  },
+  {
+    "literal": "\n</skill>\n<drafting_reference>\n"
+  },
+  {
+    "source": "sources/skill/references/prompt-drafting.md.txt"
+  },
+  {
+    "literal": "\n</drafting_reference>\n<original_user_request>\n"
+  },
+  {
+    "source": "task.txt"
+  },
+  {
+    "literal": "\n</original_user_request>\n<previous_generated_prompt>\n"
+  },
+  {
+    "source": "../round2/DRAFT/response.txt"
+  },
+  {
+    "literal": "\n</previous_generated_prompt>\n<actual_review_feedback>\n"
+  },
+  {
+    "source": "review-feedback.txt"
+  },
+  {
+    "literal": "\n</actual_review_feedback>"
+  }
+]

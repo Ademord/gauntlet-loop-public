@@ -1,0 +1,8 @@
+{
+  "facts": [
+    "The first generation attempt timed out without a result. The controller authored and froze the six scenarios/rubric before skill implementation; the shorter independent critique was supplemental and did not rewrite frozen prompts.",
+    "The critique incorrectly says all six cases are event/dinner tasks. S3 concerns an exhibition guide and S6 an onboarding prototype; coding-task transfer still was not tested.",
+    "Suggested live-interrupt and cue-stripped supplemental probes were not executed in this evidence batch."
+  ],
+  "separation": "Scoring rubric and builder commentary were withheld from all scenario/draft execution workers. The scenario-design critique saw the frozen prompts only."
+}

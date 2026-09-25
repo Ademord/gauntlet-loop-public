@@ -1,0 +1,25 @@
+```text
+Revise one setup notice for first-time users. Incumbent and reference bar (complete, verbatim): "Update ready. Start now." Verified product fact: users must finish initial setup before selecting Start. Goal: make that prerequisite clear while keeping the notice short and easy to understand. Scope: notice text only; do not change button labels, application behavior, or other copy. No installation, publication, external communication or sources, or file changes.
+
+Required checks, criteria v1:
+1. Prerequisite: says initial setup must be finished before selecting Start.
+2. Accuracy: does not invite starting immediately or add claims beyond the incumbent and verified fact (no setup duration or steps).
+3. Label: references the button exactly as "Start".
+4. Brevity: at most two sentences and 15 words (assumed ceiling).
+5. Readability: plain words a first-time user understands without product knowledge.
+Checks 1-4 are deterministic; 5 and preference are judgment. Preference: which notice first-time users more reliably understand and act on correctly. Comprehension evidence: answer "What must I do before selecting Start?" from the notice alone.
+
+Difficulty: low (one short string, one fact, no interacting components or prior failures). Task class: writing. Features enabled: evidence_ladder. Light is ineligible (judgment-class preference check), so use compact: the lead drafts, a separate fresh-context critic judges, no delegates. Lead self-checks are development feedback, not acceptance. Inherit configured models; record actual assignments where observable, else unknown.
+
+The critic receives the candidate, retained best when different, incumbent, and checks, never the builder's transcript, self-rating, or preferred verdict. Each verdict records candidate text and version, reference snapshot, criteria version, winner ours/bar/none, biggest actionable gap, all blocking findings, each check as passed/failed/blocked/not selected/not applicable, any HOLD, and concrete evidence. Class every finding deterministic, external, or judgment. Settle disputed facts by observation, not vote. For a close preference, run one fresh order-swapped comparison; reversal yields none. Never resample critics until one approves. From round three on, a judgment finding uncorroborated by a discriminating observation or second order-swapped comparison is advisory and cannot force revision or block acceptance. A critic who edits becomes a builder and cannot accept.
+
+Revise against the biggest evidenced gap. Compare each revision with the incumbent and retained best; name drift (hedging, lost clarity, length or scope creep); end word-reshuffling loops. If two consecutive verdicts repeat an unresolved gap, diagnose before editing. Accept only with winner ours, checks 1-5 passed on the exact delivered text, and no blocking HOLD. Ties and uncertainty never win.
+
+Budget (soft/hard): reviews 6/9 per piece, 24/30 shared; observable requests 120/180 per piece, 480/600 shared. Reserve the last 6 reviews and 120 requests for final verification and handoff. One ledger; retries and resumption never refill it. At soft limits converge; at hard limits park the best candidate without claiming acceptance. Disclose unobservable usage.
+
+When new messages arrive, keep the unfinished objective and retain compatible additions as pending. Honor stops immediately and invalidating corrections before affected work: stop or notify the in-flight critic; stopping is not rollback. Version corrected criteria without resetting budget or lineage; reject verdicts under superseded criteria. Answer questions briefly, then resume. If feedback challenges the notice's purpose, reconsider the interpretation before further edits even when checks pass; ordinary defects get ordinary fixes. When useful and available, get independent initial interpretations before comparing concrete examples; preserve dissent without voting. Discussion is not independent acceptance. Ground revised checks in requirements and verified facts. For consequential unresolved choices, offer concrete options with a recommendation. User instructions are not advisory criticism.
+
+Checkpoint in chat after each verdict: current and best text, criteria version, holds, next action, remaining budget. After any pause, record resume, repair-then-resume, restart-from-evidence, or withhold before continuing. If independent review is unavailable, self-check and report no independent acceptance.
+
+Stop at acceptance or hard-limit parking, stopping any workers. Deliver in chat: final notice verbatim, winner, check statuses, known gaps, and run summary (difficulty, task class, topology, features, reviews, outcome, wall-clock or unknown).
+```

@@ -1,0 +1,26 @@
+{
+  "exit_code": 0,
+  "is_error": false,
+  "elapsed_seconds": 128.531,
+  "requested_effort": "xhigh",
+  "model_usage": {
+    "claude-opus-5-5": {
+      "inputTokens": 2,
+      "outputTokens": 13466,
+      "cacheReadInputTokens": 1459,
+      "cacheCreationInputTokens": 32370,
+      "webSearchRequests": 0,
+      "costUSD": 0.5285798,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 11921,
+      "canonicalModel": "claude-opus-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "cost_usd": 0.5285798,
+  "result": "## 1. Repaired standalone prompt: **ACCEPT** (scoped to a coached repair)\n\n**Provenance.** The repair input's SKILL.md and prompt-drafting.md hashes match the candidate identity, so it used current bytes, unlike the reviewed draft. execution-contract.md was not supplied. The `evidence_ladder` correction therefore came from the repair instruction, not from the source.\n\n**All four section-B items are closed:**\n- **Additions:** \"retain compatible additions as pending\" alongside the objective.\n- **Affected worker and stale results:** \"stop or notify the in-flight critic\" and \"reject verdicts under superseded criteria\".\n- **Reconsideration:** independent initial interpretations before concrete examples, dissent kept without voting, \"discussion is not independent acceptance\", ordinary fixes for ordinary defects, and revised checks grounded in requirements and verified facts.\n- **Features:** \"Features enabled: evidence_ladder.\"\n\n**No regression from the previous draft.** Verdict fields, the ladder, order-swap, drift, budgets, reserve, single ledger, checkpoint, resume decision and unavailable-review honesty all remain. Scope now says \"button labels\", which matches the request. The prompt is 643 words, within the 650 cap.\n\n**Non-blocking gaps:**\n- The trigger says \"feedback\", not \"feedback or observations\".\n- \"Preserve constraints and valid work\" and \"act on settled choices\" are missing.\n- There is no disclosure if independent interpretations are unavailable.\n- It exceeds the 500-word target without naming a reason, because commentary was forbidden.\n\n**Limits.** The exact phrases were supplied, it is one sample, and it was not executed. It is not evidence that the template alone produces this. No clean forward generation from the final bytes exists.\n\n## 2. C1–C8 release readiness: **HOLD** (no source change needed)\n\n**C1–C6: ACCEPT.** All nine hashes match the candidate identity and round 3. Round-3 section A stands, and section B is now closed by coached repair only. The template's \"or none\" residual is disclosed.\n\n**C7: HOLD.**\n- Package, ZIP and portable identities, 34 archived originals, links, YAML, render and readiness pass structurally.\n- `tests.json` is a receipt reconstructed from an earlier point in the upgrade, not bound to the final tree.\n- The validation receipt has no final tree or index binding.\n- Reconcile the 37 version files counted by `verify_release` with the 34 in the history record.\n- The portable file has only 17 bytes of headroom.\n\n**C8: REVISE (text only).** The evidence classes are mostly separated correctly:\n- structural (validation, history, identities);\n- one-sample simulated scenarios (round-1 blocking failures retained, round-2 targeted fixes with the S1 advisory);\n- coached repair;\n- reported, unreproduced pilots;\n- no causal performance.\n\nCorrections to RELEASE-REVIEW:\n1. Replace \"any feedback-guided repair\" with: one coached repair, 643 words, scoped ACCEPT here, not clean-forward evidence, and no forward generation on the final bytes.\n2. State the test-receipt provenance, or replace it with a rerun on the final tree.\n3. Link `pilot-observations.json` and state `independently_reproduced_here: false`. Name its failures:\n   - omitted image filenames breaking handoff;\n   - a capacity over-generalization;\n   - two design-B timeouts of unknown cost;\n   - user response unknown.\n4. Say the software-reference advisory was settled by the lead's own reading, not by independent review.\n5. Publish known usage as $4.7319122 plus this review's recorded charge. Label it an API-equivalent subtotal that excludes the two timeouts, lead, preparation, human time and subscription allocation. Keep pilot costs separate. Known usage stays under the $8 soft guard.\n\n**Pending mechanical gates** (no evidence supplied that any is complete):\n- Record this review's verdict and cost in a separate review record. Do not mutate the frozen index; if it must change, re-freeze and rebind it.\n- Bind the final index hash. Then rerun all five deterministic checks and `python -m unittest discover -s tests` on the final tree, after the C8 edits. Store the receipts with their identities.\n- Complete the public/staged privacy scan: pilot pointers, local paths, session and auth data.\n- Main integration and the release commit or tag are not evidenced.\n\n`state.yaml` was not supplied and was not assessed. Nothing here is a speed, token or performance finding.",
+  "sent_prompt_sha256": "073ae4ad5b43c1277281deb6748505024e3004374fdf416a7bcb25c0125cefdd",
+  "known_upgrade_usage_including_this_review_usd": "5.2604920000000001"
+}

@@ -44,3 +44,7 @@ An explicit current user requirement remains a requirement regardless of whether
 The [observer](../../../ledger/OBSERVER.md) collects allowlisted event metadata and excludes prompts and message text. It does not extract these concerns, retrieve them, identify dissatisfaction, or update a policy. The feedback check currently runs through project instructions and explicit lead/reviewer records; there is no background learner, database migration or automatic hook injection. Installing the released skill elsewhere does not enable this project's private feedback configuration.
 
 The first checkpoint establishes a source-linked register and a retrieval procedure. It does not establish better design judgment, less user effort, complete recorder coverage or a performance advantage. Check whether a later real task uses the procedure and whether the resulting experience is accepted before expanding it.
+
+## Product connection
+
+The current skill's [execution contract](../../../skill/references/execution-contract.md) handles incoming feedback and bounded reconsideration without this private register. This project check supplies relevant prior context when enabled; it is not the runtime implementation. The [5.2 upgrade](../../../gauntlet/v52-reconsideration-2026-09-25/progress.md) records the portable behavior and its verification scope.

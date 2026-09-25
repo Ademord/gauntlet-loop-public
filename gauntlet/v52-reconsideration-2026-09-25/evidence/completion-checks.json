@@ -1,0 +1,32 @@
+{
+  "test_input_binding_unchanged": true,
+  "scenario_index_unchanged": true,
+  "release_review_unchanged": true,
+  "checks": [
+    {
+      "command": [
+        "tools/program.py",
+        "validate"
+      ],
+      "returncode": 0,
+      "output": "{\n  \"errors\": [],\n  \"warnings\": [],\n  \"milestones\": 50,\n  \"evidence\": 15,\n  \"experiments\": 2\n}\n"
+    },
+    {
+      "command": [
+        "tools/program.py",
+        "render",
+        "--check"
+      ],
+      "returncode": 0,
+      "output": "\"research\\\\program\\\\README.md\"\n"
+    },
+    {
+      "command": [
+        "tools/verify_release.py"
+      ],
+      "returncode": 0,
+      "output": "{\"package_files_verified\": 9, \"zip\": \"verified\", \"portable\": \"verified\", \"version_files_verified\": 37, \"markdown_links\": \"verified\", \"benchmarks_run\": false}\n"
+    }
+  ],
+  "publication": "pending"
+}

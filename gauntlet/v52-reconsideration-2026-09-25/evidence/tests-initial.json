@@ -1,0 +1,11 @@
+{
+  "command": "python -m unittest discover -s tests",
+  "tests_run": 182,
+  "skipped": 1,
+  "failures": 0,
+  "errors": 0,
+  "elapsed_seconds": 6.537,
+  "provenance": "Lead observed successful command earlier in this upgrade; compact receipt reconstructed from its tool output, not a copied full test transcript. Subsequent changes were skill/docs/evidence; executable validator source unchanged.",
+  "validator_sha256": "5e1e8bc666a2a017df924b1564ce9a3890208581c8f07332634adb249b2d287f",
+  "scope": "Existing offline suite; not model compliance, live orchestration, or performance."
+}

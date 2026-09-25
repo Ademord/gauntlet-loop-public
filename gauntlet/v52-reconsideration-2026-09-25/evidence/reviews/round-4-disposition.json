@@ -1,0 +1,22 @@
+{
+  "source": "round-4.json",
+  "closure_kind": "deterministic and factual-reporting corrections requested by reviewer; no further model review",
+  "record_corrections": [
+    "Review wording said all nine files match round3; round3 actually records five changed files. All nine match the package manifest and those five match round3.",
+    "The software reference was directly inspected by the acceptance lane; it was not supplied to the fresh Claude reviewer."
+  ],
+  "C7": [
+    "Final executable/package/test inputs bound in validation-inputs.json; actual suite rerun in tests.json.",
+    "Scenario index frozen; 34 original source files versus37 entries explained.",
+    "Final deterministic/index checks and staged/public scans required before commit.",
+    "Commit/main/tag/publication identities recorded after the external actions; no advance claim of publication."
+  ],
+  "C8": [
+    "Release review now states coached643-word repair accepted and lack of clean-forward proof.",
+    "Known usage includes final review; unknown full costs and pilot exclusions retained.",
+    "Reported/unreproduced pilot failures and scoped unknown user outcomes linked."
+  ],
+  "performance_claim": false,
+  "publication_guard_repair": "Final staged guard caught personal absolute paths in a copied reviewer manifest. Replaced paths with logical aliases, retained hashes, and repeated scans. Raw manifest stays private.",
+  "whitespace_exception": "Preserved the trailing blank line in scenarios/DRAFT-repair/review-feedback.txt because it is exact hashed feedback input; other changed files pass whitespace inspection."
+}

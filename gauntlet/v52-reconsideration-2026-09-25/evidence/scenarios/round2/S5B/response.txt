@@ -1,0 +1,15 @@
+**Next actions (proposed):**
+
+1. **Record the decision.** Log option B as a sourced contract amendment quoting your instruction. Freeze the checks. Record the 14 vs. 18 attendance trade-off as accepted, not as an open gap.
+2. **Build the schedule locally.** Assign the 14 attendees to the two dates from verified availability. Keep each attending friend pair on the same date.
+3. **Define deterministic checks:**
+   - each date has at most 12 people
+   - there are exactly 14 distinct attendees
+   - every attending pair is on the same date
+   - every assignment matches that person's verified availability
+4. **Independent review.** A separate critic re-derives these checks from the roster and availability data, not from the builder's summary. The critic may not reopen the A/B choice.
+5. **Checkpoint.** Save the schedule, verdict, evidence and review count. Mark invitations `not selected`.
+
+**Response to you:**
+
+> Continuing with option B as you chose. I'm preparing a local schedule for 14 attendees across the two dates, with every attending friend pair on the same date and no date over 12. A separate check will confirm capacity, pairs and availability before I call it ready. No invitations will be sent.

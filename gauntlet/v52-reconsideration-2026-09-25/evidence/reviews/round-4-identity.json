@@ -1,0 +1,89 @@
+{
+  "source_files": {
+    "references/agent-language.md": "9ffba5b8cc9ad2dffb2fd650b09caaef4538ca599f1daf430a5a120abfe250a8",
+    "references/bars-and-examples.md": "c687184aec2a83afa61179a876276c9ef4b86d10876cb09744931d1cd39e6e3c",
+    "references/execution-contract.md": "35a141086d823f9e63ac9be77ece362296633e52e7580f52fa20e46d2a7ad777",
+    "references/learning-and-evolution.md": "a6d9fa95be6b342fe96f530a1190e2264ac99bab0f119ed760cdffd143d21ea2",
+    "references/prompt-drafting.md": "c66751705be020385d08f2039b009ffb040f70a2467e002e252dd3e76651b009",
+    "references/research-basis.md": "5b72181615884c186e66b488460f6849a6e105c2f39f4612b1a0cb502fcf2c0f",
+    "references/software-quality.md": "ca41c408d0d8e4d34e11629d19b82b30a4f4c4d6a5a3befc5572397514490fe2",
+    "references/team-method.md": "06d6495cd8178c3ab062f1cab094f54ca0e858d6de0774bf84101875c4986b67",
+    "SKILL.md": "53924856405d2c3354b84854c1cd1733e3064adf3afc67c3d5975f30ec695b97"
+  },
+  "sent_files": {
+    "contract.yaml": {
+      "path": "gauntlet/v52-reconsideration-2026-09-25/contract.yaml",
+      "sha256": "0ff1e7a14102208a044efedebad6721cd59d4c6a72cd8bd2e70cb5957e6020c6"
+    },
+    "prior-independent-review-round3.json": {
+      "path": "gauntlet/v52-reconsideration-2026-09-25/evidence/reviews/round-3.json",
+      "sha256": "09920295fa19b4fccf69a405a796a5cae03f6bf66f642bdbfe16aebdf1a86319"
+    },
+    "final-validation.json": {
+      "path": "gauntlet/v52-reconsideration-2026-09-25/evidence/final-validation.json",
+      "sha256": "32855b95c5c48de85fc1e9d1d6eb320ed8ea4b8ebba934fec145cc00c1e37f28"
+    },
+    "history-verification.json": {
+      "path": "gauntlet/v52-reconsideration-2026-09-25/evidence/history-verification.json",
+      "sha256": "2765dafcc14cbad649ad14fc208514fbaf85bd142f51ef28d98d577404443669"
+    },
+    "tests.json": {
+      "path": "gauntlet/v52-reconsideration-2026-09-25/evidence/tests.json",
+      "sha256": "1b5ebf9a43c0331e639f0691d6c3abf7660c1dcf8cb25cd41af934ea62393ea1"
+    },
+    "candidate-identity.json": {
+      "path": "gauntlet/v52-reconsideration-2026-09-25/evidence/candidate-identity.json",
+      "sha256": "3d34186c05d58ddcfc73942b5b13c86fbfe9dc41dd54ff962d7b58e6122a226d"
+    },
+    "pilot-observations.json": {
+      "path": "gauntlet/v52-reconsideration-2026-09-25/evidence/pilot-observations.json",
+      "sha256": "39717e7248e877e16fcddc363daebd9cf8296edaf7cd5357f25f61dfc6e1c510"
+    },
+    "scenarios/index.json": {
+      "path": "gauntlet/v52-reconsideration-2026-09-25/evidence/scenarios/index.json",
+      "sha256": "6ce14d2c60b38197b8a2c32173547bc7b3f39b51de867617cbd257a1dc9b2433"
+    },
+    "scenarios/round1/scoring.json": {
+      "path": "gauntlet/v52-reconsideration-2026-09-25/evidence/scenarios/round1/scoring.json",
+      "sha256": "397338bd3bfc6959e2ea450381319072e5fa7c5f4033f64f7ac6c7d12a313c9d"
+    },
+    "scenarios/round2/scoring.json": {
+      "path": "gauntlet/v52-reconsideration-2026-09-25/evidence/scenarios/round2/scoring.json",
+      "sha256": "9c771eb9908dfc8634ebc874de7f4959c573ea3db6439f8208dccc04723db6ee"
+    },
+    "dist/RELEASE-REVIEW.md": {
+      "path": "dist/RELEASE-REVIEW.md",
+      "sha256": "d88fea6701614b03a7e92d5f70b58694b3f2d586e2106e944445351aad1fff31"
+    },
+    "repair/input.txt": {
+      "path": "private:repair/input.txt",
+      "sha256": "8581eebda2625262520ab27943bb7df5726ab9f82f710402cebb687e9a63c2b8"
+    },
+    "repair/response.txt": {
+      "path": "private:repair/response.txt",
+      "sha256": "7a76f18a4433a9050ab38e111eb86b64d9602ef262bd1ddb48056443b59670de"
+    },
+    "repair/previous-draft.txt": {
+      "path": "private:repair/previous-draft.txt",
+      "sha256": "7f827990e8ee0eecb87b9a4fccd5ae1d823126f2a0b53d6c13e501e9dcc5d140"
+    },
+    "repair/review-feedback.txt": {
+      "path": "private:repair/review-feedback.txt",
+      "sha256": "d843cd00edf46eb1e48cc2429fb0fa7323d6e97d281ee53a66f4731146d756c8"
+    },
+    "repair/metadata.json": {
+      "path": "private:repair/metadata.json",
+      "sha256": "c9218802dca1883c43289c89f055628afb22d04439247ef76872fd974c5cc5b8"
+    }
+  },
+  "sent_prompt_sha256": "073ae4ad5b43c1277281deb6748505024e3004374fdf416a7bcb25c0125cefdd",
+  "requested_model": "claude-opus-5-5",
+  "requested_effort": "xhigh",
+  "timeout_seconds": 180,
+  "soft_budget_usd": 0.8,
+  "started_utc": "2026-09-25T10:17:10.056226+00:00",
+  "public_redaction": {
+    "original_private_manifest_sha256": "41ff8d28cd0fe8758920491f6af069e085b32ec09fd593f1b1fff2b6db9a5d4a",
+    "change": "Personal absolute paths replaced with repository-relative paths or logical private:repair aliases. Sent-content hashes retained. Private repair input is reconstructable using evidence/scenarios/DRAFT-repair/input-parts.json; public attempts are scoped extracts."
+  }
+}

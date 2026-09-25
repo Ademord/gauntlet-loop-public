@@ -1,0 +1,21 @@
+{
+  "captured_at_start_utc": "2026-09-25T10:11:01.230799+00:00",
+  "sources": {
+    "skill/SKILL.md": {
+      "file": "sources/skill/SKILL.md.txt",
+      "sha256": "53924856405d2c3354b84854c1cd1733e3064adf3afc67c3d5975f30ec695b97",
+      "bytes": 14450
+    },
+    "skill/references/prompt-drafting.md": {
+      "file": "sources/skill/references/prompt-drafting.md.txt",
+      "sha256": "c66751705be020385d08f2039b009ffb040f70a2467e002e252dd3e76651b009",
+      "bytes": 7986
+    }
+  },
+  "classification": "feedback-guided revision of a previously rejected generated prompt",
+  "actual_feedback": "review-feedback.txt",
+  "prior_prompt": "../round2/DRAFT/response.txt",
+  "task": "task.txt",
+  "clean_forward_evidence": false,
+  "source_compliance_proof": false
+}

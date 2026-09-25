@@ -1,0 +1,25 @@
+{
+  "exit_code": 0,
+  "is_error": false,
+  "elapsed_seconds": 151.781,
+  "requested_effort": "xhigh",
+  "model_usage": {
+    "claude-opus-5-5": {
+      "inputTokens": 2,
+      "outputTokens": 17074,
+      "cacheReadInputTokens": 1459,
+      "cacheCreationInputTokens": 38874,
+      "webSearchRequests": 0,
+      "costUSD": 0.6527718,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 15646,
+      "canonicalModel": "claude-opus-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "cost_usd": 0.6527718,
+  "result": "## A: Source-level closure (C1–C6): **ACCEPT**\n\n- **Timing is explicit in all four places.**\n  - Entrypoint step 6 says \"before further affected edits … even if checks pass\", separate from the two-verdict diagnosis.\n  - The template and both examples now say \"before further affected edits, without waiting for two verdicts\".\n  - This matches the contract's \"do not wait for two critic failures\".\n  - The next line, \"after two repeated unresolved-gap verdicts, diagnose\", is a different trigger, not a contradiction.\n- **Software paragraph: no substantive loss.** \"Selection makes an outcome required\" is still carried by the \"selected/required\" pairing, by step 7 (verify each selected surface), and by the contract rule that a selected check without evidence is `blocked`. The dropped list of surfaces was illustrative.\n  - Advisory only: I could not see software-quality.md. If it does not mark tours and documentation additions as opt-in, restore those two words.\n- **Budgets, acceptance, independence and resume rules:** the diffs don't touch them. The execution-contract and team-method diffs are empty.\n- **Pre-existing, outside this diff, not a C1–C6 blocker:** the template's \"[features enabled or none]\" contradicts the contract (\"evidence_ladder … always on … never empty\"). Suggested fix: \"[features enabled, always including evidence_ladder]\".\n\n## B: Generated DRAFT: **REVISE**\n\n**Provenance.** The input contains prior-candidate wording (the old software paragraph and \"triggers reconsideration even if checks pass\"). The manifest hashes execution-contract.md, but it was not in the input. So the DRAFT is evidence about the prior source only and cannot test the new template sentence.\n\n**Preserved:**\n- The active objective, immediate stops, and \"stopping is not rollback\".\n- Invalidating corrections applied before affected work; versioning without resetting budget or lineage.\n- Reconsideration timing (\"before editing even when checks pass\"), apparently taken from the entrypoint.\n- Concrete options plus a recommendation for consequential choices.\n- Verdict fields, acceptance tied to the exact delivered text, and critic isolation.\n- Default budgets, reserve and single ledger; the resume decision; honest reporting when independent review is unavailable.\n- The word ceiling is labeled as an assumption, and the prompt is about 635 words, under the 650 cap.\n\n**Deterministic omissions (the instruction was in the input, the DRAFT did not follow it):**\n1. Additions are not retained; it only says \"answer questions briefly, then resume\".\n2. There is no \"affected workers\", \"notify workers\" or \"check delayed results\".\n3. Reconsideration lacks independent initial interpretations, distinguishing examples, retained dissent / no voting on preferences, \"discussion is not independent acceptance\", \"ordinary defects get ordinary fixes\", and \"ground changed checks in requirements and verified facts\".\n4. \"Features enabled: none\" while the ladder is in effect. The template's \"or none\" invited this, so it is non-blocking here.\n\n**Materiality (my judgment):**\n- Items 1–3 are material. The in-flight critic is the affected worker, so its verdict under criteria v1 could accept text after a v2 correction. Reconsideration discussion with the same critic could also stand in for independent acceptance.\n- Pending external actions, visuals and intended-vs-confirmed reporting matter little here, because the task is chat-only text with no external effects.\n\n**Blocking phrases to add (about 50 words):**\n- \"retain additions as pending alongside the objective\"\n- \"a stop or invalidating correction also stops or notifies the in-flight critic; discard verdicts made under superseded criteria\"\n- \"when available, get an independent initial interpretation before comparing concrete examples; retain dissent, do not vote; discussion is not acceptance; ordinary defects get ordinary fixes; ground changed checks in verified facts\"\n\n## Limits\n\n- No tools and no execution. The generated prompt was not run.\n- Hashes were not recomputed. software-quality.md and research-basis.md were not seen.\n- The current versions of the full files are assumed from the supplied diffs.\n- C7–C8 package and external evidence remain pending. None of this is a performance finding.",
+  "sent_prompt_sha256": "1742c6ccf5e6e2ebf744aa645b32f772ff64003da0cf474285b7e8a0812f693c"
+}

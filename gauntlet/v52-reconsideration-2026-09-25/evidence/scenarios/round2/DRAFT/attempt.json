@@ -1,0 +1,48 @@
+{
+  "id": "DRAFT",
+  "started_utc": "2026-09-25T09:59:11.355460+00:00",
+  "input_sha256": "2f3a134ba94046156047914f130c97f89e6c1db656d8c12ca21bfec36e48e96a",
+  "configured_model": "claude-opus-5-5",
+  "configured_effort": "xhigh",
+  "timeout_seconds": 180,
+  "cost_usd": 0.3949158,
+  "process_exit_code": 0,
+  "status": "success",
+  "is_error": false,
+  "duration_ms": 134210,
+  "exact_model_confirmed": true,
+  "wall_seconds": 135.359,
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 8157,
+    "cache_read_input_tokens": 1459,
+    "output_tokens": 16468,
+    "thinking_tokens": 15007
+  },
+  "model_usage": {
+    "claude-opus-5-5": {
+      "inputTokens": 2,
+      "outputTokens": 16468,
+      "cacheReadInputTokens": 1459,
+      "cacheCreationInputTokens": 8157,
+      "thinkingTokens": 15007,
+      "costUSD": 0.3949158,
+      "canonicalModel": "claude-opus-5-5",
+      "costBasis": "list"
+    }
+  },
+  "input_parts": "input-parts.json",
+  "stage": "round2",
+  "worker_request_kind": "standalone-prompt-generation",
+  "response": "response.txt",
+  "response_sha256": "7f827990e8ee0eecb87b9a4fccd5ae1d823126f2a0b53d6c13e501e9dcc5d140",
+  "response_words_whitespace_split": 639,
+  "requested_max_words": 650,
+  "exceeds_requested_words": false,
+  "response_is_acceptance": false,
+  "stderr_bytes": 0,
+  "instruction_source_files": [
+    "../sources/skill/SKILL.md.txt",
+    "../sources/skill/references/prompt-drafting.md.txt"
+  ]
+}

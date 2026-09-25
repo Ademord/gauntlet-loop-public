@@ -20,3 +20,7 @@ Paths inside this record refer to the repository layout of 17 September 2026. Si
 ## Starting a new run record
 
 Follow the execution contract in [skill/references/execution-contract.md](../skill/references/execution-contract.md): create `gauntlet/<run-id>/` with the files above and append the milestone line to `runs.jsonl` at the stopping milestone. Refer to another project by name only if it is public; the pre-commit guard blocks local paths and private terms.
+
+## v52-reconsideration-2026-09-25
+
+The upgrade for conceptual reconsideration and continuity across incoming messages. See the [frozen contract](v52-reconsideration-2026-09-25/contract.yaml), [scenarios](v52-reconsideration-2026-09-25/probes.md) and [progress/evidence](v52-reconsideration-2026-09-25/progress.md). Scope is instruction consistency and simulated behavior; live task benefits are unproven.

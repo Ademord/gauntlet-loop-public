@@ -1,0 +1,32 @@
+[
+  {
+    "command": [
+      "tools/build_release.py"
+    ],
+    "returncode": 0,
+    "output": "<repo>\\dist\\gauntlet-loop-v5-SKILL.md\n{\"archive\": \"dist\\\\gauntlet-loop-v5.zip\", \"record\": \"dist\\\\package-verification.json\", \"files\": 9, \"archive_sha256\": \"7dca3ba2d81b4a777d5862ece2a0fb9fcb500788f27e9d9b3cce78f40b85ed12\"}\n"
+  },
+  {
+    "command": [
+      "tools/verify_release.py",
+      "--write-version-sums"
+    ],
+    "returncode": 0,
+    "output": "{\"package_files_verified\": 9, \"zip\": \"verified\", \"portable\": \"verified\", \"version_files_verified\": 35, \"markdown_links\": \"verified\", \"benchmarks_run\": false}\n"
+  },
+  {
+    "command": [
+      "tools/validate_package.py",
+      "--version",
+      "5.2.0",
+      "--expect-files",
+      "9",
+      "--export",
+      "dist/gauntlet-loop-v5-SKILL.md",
+      "--max-export-bytes",
+      "110000"
+    ],
+    "returncode": 1,
+    "output": "Traceback (most recent call last):\n  File \"<repo>\\tools\\validate_package.py\", line 16, in <module>\n    import yaml  # noqa: E402\n    ^^^^^^^^^^^\nModuleNotFoundError: No module named 'yaml'\n"
+  }
+]

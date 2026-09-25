@@ -1,0 +1,71 @@
+{
+  "run_id": "v52-reconsideration-2026-09-25",
+  "governing_skill": "5.1.0",
+  "candidate_version": "5.2.0",
+  "created_utc": "2026-09-25T09:39:16.989837+00:00",
+  "contract_version": 1,
+  "criteria_version": 1,
+  "outcome": "Deliver a portable Gauntlet reconsideration step and continuity for incoming user messages.",
+  "reference": "Existing public skill 5.1.0 at base commit 3a10854",
+  "scope": [
+    "skill instructions and existing references",
+    "upgrade evidence and existing research indexes",
+    "archive, package, main integration and release"
+  ],
+  "non_goals": [
+    "host scheduler or hook changes",
+    "new graph framework",
+    "automatic learning",
+    "global skill overwrite during active pilots",
+    "comparative performance benchmark"
+  ],
+  "difficulty": {
+    "estimate": "medium",
+    "proxies": [
+      "interacting review and authority rules",
+      "multiple delivery forms",
+      "active cross-project pilots"
+    ]
+  },
+  "topology": "compact+delegates",
+  "task_class": "skill",
+  "features_enabled": [
+    "delegates",
+    "evidence_ladder",
+    "isolation"
+  ],
+  "checks": {
+    "C1": "Incoming questions/additions remain pending alongside the active objective; stop/cancel and invalidating corrections affect the relevant work promptly, including delegated work and stale results.",
+    "C2": "Concept-level dissatisfaction or evidence of a mistaken problem interpretation triggers reconsideration before further affected edits without waiting for two critic verdicts; ordinary local fixes do not require a meeting.",
+    "C3": "Reconsideration uses independent initial interpretations before comparison when useful and available, concrete distinguishing scenarios, preserved dissent, and the original budget; discussion is not independent acceptance.",
+    "C4": "Existing explicit constraints and useful work survive; resolved/reversible choices proceed while consequential unresolved user priorities get concrete choices; changed checks have sources and versioning.",
+    "C5": "The behavior is discoverable in the skill entrypoint and carried by the standalone drafting template, worked examples and portable distribution without private configuration.",
+    "C6": "Absent independent workers or visual tools are reported honestly; available appropriate representations aid decisions without a fixed vendor or mandatory image generation.",
+    "C7": "Outgoing 5.1.0 and all previous archives retain original bytes; new package hashes, YAML/frontmatter, links, generated views and required repository checks pass.",
+    "C8": "Published evidence distinguishes scenario/consistency checks from live-task observations and causal performance; failures, known execution usage and unknown full costs remain visible."
+  },
+  "budget": {
+    "reviews_hard": 12,
+    "reviews_soft": 9,
+    "integration_reviews_reserved": 3,
+    "external_worker_usage_soft_usd": 8,
+    "accounting": "CLI API-equivalent execution usage; lead, preparation, human time and subscription allocation unknown; CLI guard is not a guaranteed hard cap"
+  },
+  "stop_rule": "Do not release with a blocking check; preserve candidate and findings if budget/capability prevents closure.",
+  "comparison": "Independent rule consistency and requirement-derived behavioral scenario checks against incumbent; no speed or cost superiority claim.",
+  "costs": {
+    "worker_execution_usd": null,
+    "lead_usd": null,
+    "preparation_usd": null,
+    "human_minutes": null
+  },
+  "losses_to_check": [
+    "unnecessary reconsideration",
+    "delayed stop",
+    "discarded commitments",
+    "stale delegated results",
+    "review independence lost",
+    "more user questions without a real choice"
+  ],
+  "next_expenditure_decision": "Determine whether the portable behavioral correction is coherent enough to release; live pilots may later inform usefulness."
+}

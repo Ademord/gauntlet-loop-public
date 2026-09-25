@@ -1,0 +1,56 @@
+[
+  {
+    "id": "S1",
+    "metadata": "S1/attempt.json",
+    "status": "success",
+    "cost_usd": 0.1540718
+  },
+  {
+    "id": "S2",
+    "metadata": "S2/attempt.json",
+    "status": "success",
+    "cost_usd": 0.1709158
+  },
+  {
+    "id": "S4A",
+    "metadata": "S4A/attempt.json",
+    "status": "success",
+    "cost_usd": 0.1257438
+  },
+  {
+    "id": "S3",
+    "metadata": "S3/attempt.json",
+    "status": "success",
+    "cost_usd": 0.1374398
+  },
+  {
+    "id": "S4B",
+    "metadata": "S4B/attempt.json",
+    "status": "success",
+    "cost_usd": 0.1290358
+  },
+  {
+    "id": "S5A",
+    "metadata": "S5A/attempt.json",
+    "status": "success",
+    "cost_usd": 0.1354838
+  },
+  {
+    "id": "S5B",
+    "metadata": "S5B/attempt.json",
+    "status": "success",
+    "cost_usd": 0.1355318
+  },
+  {
+    "id": "S6",
+    "metadata": "S6/attempt.json",
+    "status": "success",
+    "cost_usd": 0.1456878
+  },
+  {
+    "id": "DRAFT",
+    "metadata": "DRAFT/attempt.json",
+    "status": "timeout",
+    "cost_usd": null
+  }
+]

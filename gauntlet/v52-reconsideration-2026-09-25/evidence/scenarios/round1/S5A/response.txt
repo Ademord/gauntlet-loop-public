@@ -1,0 +1,15 @@
+**Proposed next actions (simulated; nothing performed):**
+
+1. Record in the local progress file that choosing between reach and keeping pairs together is a user decision. Log both verified options, A (18 attend, 3 separated from their friend) and B (14 attend, all pairs intact), plus my recommendation.
+2. Keep both rosters ready locally. For A, draft a welcome plan that gives each of the three separated attendees a named host or buddy.
+3. Send no invitations. Wait for the user's choice, then finalize only the chosen roster locally.
+
+---
+
+**Response to user:**
+
+I recommend **A**. It includes 4 more people, and leaving someone out entirely seems less welcoming than seating three people apart from their friend. We can soften that by pairing each of the three with a host or buddy and telling them in advance.
+
+Choose **B** if you think arriving with a friend is what makes newcomers comfortable enough to come back. That would be a reasonable priority. I don't have evidence of what attendees prefer, so this is a judgment call, not a verified result.
+
+Which do you want? I'll finalize that roster locally. No invitations will go out until you authorize them.

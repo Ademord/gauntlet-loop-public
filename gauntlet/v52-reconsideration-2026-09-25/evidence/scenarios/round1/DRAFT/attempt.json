@@ -1,0 +1,26 @@
+{
+  "id": "DRAFT",
+  "started_utc": "2026-09-25T09:51:45.139684+00:00",
+  "input_sha256": "cbc89f80e1f938d5c6d9be35eadb4eda866a0c45771e2c43aa391d13aa94a3ae",
+  "configured_model": "claude-opus-5-5",
+  "configured_effort": "xhigh",
+  "timeout_seconds": 120,
+  "cost_usd": null,
+  "status": "timeout",
+  "wall_seconds": 120.047,
+  "usage": null,
+  "model_usage": {},
+  "input_parts": "input-parts.json",
+  "stage": "round1",
+  "worker_request_kind": "standalone-prompt-generation",
+  "response": null,
+  "timeout_partial_output_bytes": {
+    "stdout.partial": 0,
+    "stderr.partial": 0
+  },
+  "failure_note": "No complete model result returned before timeout. Configured model is known; actual model/usage are not confirmed by a final result.",
+  "instruction_source_files": [
+    "../sources/skill/SKILL.md.txt",
+    "../sources/skill/references/prompt-drafting.md.txt"
+  ]
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "S4A",
+    "metadata": "S4A/attempt.json",
+    "status": "success",
+    "cost_usd": 0.1381558
+  },
+  {
+    "id": "S1",
+    "metadata": "S1/attempt.json",
+    "status": "success",
+    "cost_usd": 0.1520638
+  },
+  {
+    "id": "S5B",
+    "metadata": "S5B/attempt.json",
+    "status": "success",
+    "cost_usd": 0.1268238
+  },
+  {
+    "id": "S5A",
+    "metadata": "S5A/attempt.json",
+    "status": "success",
+    "cost_usd": 0.14927580000000001
+  },
+  {
+    "id": "DRAFT",
+    "metadata": "DRAFT/attempt.json",
+    "status": "success",
+    "cost_usd": 0.3949158
+  }
+]

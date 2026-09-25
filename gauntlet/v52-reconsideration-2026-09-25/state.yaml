@@ -1,0 +1,28 @@
+{
+  "state": "accepted",
+  "phase": "package-accepted-awaiting-publication",
+  "candidate_version": "5.2.0",
+  "criteria_version": 1,
+  "candidate_manifest_sha256": "3d34186c05d58ddcfc73942b5b13c86fbfe9dc41dd54ff962d7b58e6122a226d",
+  "checks": {
+    "C1": "passed: source-level continuity/worker propagation; scenarios S3/S4; no live scheduler enforcement",
+    "C2": "passed: immediate conceptual trigger restored in all carriers; local fixes exempt",
+    "C3": "passed: independent interpretation, concrete cases, dissent and original allowance; agreement is not acceptance",
+    "C4": "passed: constraints, factual check changes and user priority authority retained; targeted response repairs inspected",
+    "C5": "passed for reviewed source/template/examples/package and independently inspected coached prompt; initial draft failed and remains recorded",
+    "C6": "passed for capability disclosure and optional representations; single-agent scenario does not invent review",
+    "C7": "passed: same reviewed source hashes, package/history/link/index checks, existing suite and publication scan",
+    "C8": "passed for bounded reporting: failures/unknowns preserved; no performance or causal claim"
+  },
+  "holds": [],
+  "next_action": "Commit reviewed package, fast-forward clean main, push and publish v5.2.0; verify remote identities.",
+  "publication": "not yet observed in this prepublication snapshot",
+  "known_worker_execution_usd": 5.260492,
+  "budget": {
+    "critic_attempts": 7,
+    "hard": 12,
+    "remaining": 5,
+    "integration_reviews_used": 1
+  },
+  "global_installation": "unchanged; private customized installation preserved"
+}

@@ -1,0 +1,18 @@
+**Discriminative value**
+- **Strongest:** S4 and S5. Each starts from one state and varies only the user's intent. S4 separates *stop* from *redirect*. S5 separates *surface the trade-off* from *don't relitigate a decision*. S1 separates "checks pass, so done" from goal-level rework.
+- **Weaker:** A capable base model probably passes S2 and S6 without the skill. They still guard against over-routing (S2) and false capability claims (S6), but add little signal without a no-skill baseline.
+- **S3** tests interrupt triage: answer the status question and take on the scoped addition. It hides an ordering issue: editing the HTML during output-folder verification should force re-verification. Make sure the rubric scores that.
+
+**Confounds and gaps**
+- **Cue leakage:** "Fresh independent reviewer," "bounded helper," "think this through," and S6's explicit capability list tell the model what to do. A pass may reflect prompt-following rather than skill routing.
+- **Bundled variants:** S4 and S5 put both variants in one prompt. That makes the contrast explicit and invites cross-contamination. Run each variant as its own session.
+- **S5 variant A** has no single correct answer. The rubric should reward a clear recommendation with the trade-off stated, not a preferred option, or it measures taste.
+- **Missing coverage:** a verification that fails or a reviewer who disagrees (honest reporting), and a non-triggering control. All six are event/dinner tasks, so transfer to coding tasks is untested.
+
+**Can they prove live continuity or performance?**
+No. These are single-turn, self-reported "next actions." They show intended routing only. They cannot show that a running check was actually resumed or re-run, that dispatch was actually prevented, or that state survives multiple turns or summarization. They also say nothing about latency, cost, or artifact quality. Treat them as routing smoke tests.
+
+**Supplemental probes**
+1. **Live interrupt:** Run S2 in a real harness with a long check in progress and inject the typo message mid-run. Confirm from tool logs that the edit was minimal, the check re-ran afterward, and its result was reported accurately.
+2. **Cue-stripped S1:** Remove the reviewer and "think this through" hints and see whether goal-level rework still triggers.
+3. **Implicit capability absence:** Run S6 without listing the missing tools. Confirm the model claims no delegation or independent review.

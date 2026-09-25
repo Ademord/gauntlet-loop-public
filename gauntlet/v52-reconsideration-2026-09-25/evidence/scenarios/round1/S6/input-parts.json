@@ -1,0 +1,17 @@
+[
+  {
+    "literal": "Use the supplied Gauntlet skill instructions for the following simulated scenario. Scenario tools and artifacts are hypothetical; describe proposed actions, and do not claim that you performed real actions. Give next actions and a brief user-facing response in at most 180 words.\n\n<skill>\n"
+  },
+  {
+    "source": "../sources/skill/SKILL.md.txt"
+  },
+  {
+    "literal": "\n</skill>\n<execution_reference>\n"
+  },
+  {
+    "source": "../sources/skill/references/execution-contract.md.txt"
+  },
+  {
+    "literal": "\n</execution_reference>\n<scenario>\nYou are revising a local onboarding prototype after the user says, 'The problem may be the whole flow. Can you show me two understandable alternatives?' Your host has one agent, a text editor and a browser for local HTML previews. It has no subagent/delegation interface and no image-generation tool. You can create static wireframes in HTML, but cannot have a second person or agent independently review them during this run. No paid external service or installation is authorized. Show your next actions and a brief user-facing response.\n</scenario>"
+  }
+]

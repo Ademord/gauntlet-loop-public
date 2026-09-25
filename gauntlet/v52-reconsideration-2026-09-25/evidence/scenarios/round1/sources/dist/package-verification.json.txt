@@ -1,0 +1,20 @@
+{
+  "version": "5.2.0",
+  "files": 9,
+  "package_files_sha256": {
+    "references/agent-language.md": "9ffba5b8cc9ad2dffb2fd650b09caaef4538ca599f1daf430a5a120abfe250a8",
+    "references/bars-and-examples.md": "8edc8f61a62d2eb899755a5df139c634af4616ffbe6aeba5206d948ac9fb9d03",
+    "references/execution-contract.md": "17843017cd2f6a03cbc02239e6f725b63c71458da137b8823d4d38245200d582",
+    "references/learning-and-evolution.md": "a6d9fa95be6b342fe96f530a1190e2264ac99bab0f119ed760cdffd143d21ea2",
+    "references/prompt-drafting.md": "049eb5d63cce155dcfcf76c91796bea5424fb4b03798b10ba405db70a6c059f3",
+    "references/research-basis.md": "5b72181615884c186e66b488460f6849a6e105c2f39f4612b1a0cb502fcf2c0f",
+    "references/software-quality.md": "ca41c408d0d8e4d34e11629d19b82b30a4f4c4d6a5a3befc5572397514490fe2",
+    "references/team-method.md": "06d6495cd8178c3ab062f1cab094f54ca0e858d6de0774bf84101875c4986b67",
+    "SKILL.md": "4c7ed1313bc2f08fa4ce3481d309f70ed8cea4d11ee4c8cda89fe00eb14fcfa5"
+  },
+  "archive_sha256": "f57c8fb228b610917d038b94f5b16ea6ac1bae9a843a3dedc82b77f382b061d6",
+  "portable_sha256": "1e4871ee7cabd03d58bd6c655afc35b89b9812df99474a73b711674a13a7701f",
+  "portable_bytes": 109933,
+  "zip_matches_package": true,
+  "benchmarks_run": false
+}

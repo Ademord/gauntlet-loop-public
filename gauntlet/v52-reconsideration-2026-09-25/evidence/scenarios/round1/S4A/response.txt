@@ -1,0 +1,11 @@
+**Next actions (proposed):**
+
+1. Cancel the pending scheduled publish before it dispatches, then confirm it no longer appears in the queue.
+2. Stop any active builder or critic workers, halt further edits, and release ownership.
+3. Check the local draft and publishing state to confirm nothing was sent. If any external effect is unclear, report it as `unknown` rather than assuming it was rolled back.
+4. Write a final checkpoint: run state `stopped_user`, the draft preview's identity, the cancelled dispatch and its confirmation status, and budget spent.
+5. Leave the local draft untouched. Deleting it wasn't requested.
+
+**Response to user:**
+
+> Stopped. I've blocked the scheduled announcement from sending and ended the task. I checked the publishing state and nothing was published. [If the check is inconclusive, replace that sentence with: "I couldn't confirm whether it was sent. Here's what I found: …"] The draft preview is still saved locally. Tell me if you want it deleted; otherwise I'll leave it. Nothing further will run unless you ask.

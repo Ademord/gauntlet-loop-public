@@ -1,0 +1,11 @@
+**Next actions (proposed)**
+
+1. Pause scheduling edits. Record contract v2 from your message: the primary goal is the most distinct friends seen. Keep at most two dinners, capacity limits and no double-booking. Mark the prior pass as needing revalidation.
+2. Reconsider: give the fresh reviewer the goal, your feedback (including that the screens work) and the current plan. Get its reading before sharing ours.
+3. Add a deterministic coverage check against recorded availability. The current plan must fail it, and a hand-built correct example must pass.
+4. Revise the scheduling logic only. Keep the screens and retain the current version as a fallback.
+5. Do an independent review in local preview, then checkpoint. Send no invitations.
+
+**Response**
+
+You're right. The plan filled tables instead of helping you see people. Only 7 of your 11 friends appear: five come twice and four never do. I'll make the goal "as many different friends as availability allows," still with two dinners and no double-booking. I haven't confirmed the four can attend; I'll check the recorded availability and name anyone who truly can't. One choice: rather than repeating someone to fill a seat, would you accept a smaller dinner? I recommend yes.

@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "scope": "Public-safe evidence for this bounded validation subtask; not all upgrade work or cost.",
+  "frozen_probes": {
+    "file": "probes.json",
+    "sha256": "1decd3b01e638e91c26201a7e2bfc31f2703a6bb1e5954d6c2f45ff67370673f",
+    "count": 6,
+    "execution_variants": "extracted-probes.json"
+  },
+  "frozen_rubric": {
+    "file": "rubric.json",
+    "sha256": "831f3996e95c4eee57ce698d095c9cdb4d7ea2ea26089283dbb6dab8630ffdc0",
+    "withheld_from_execution_workers": true
+  },
+  "design": {
+    "unsuccessful_generation": "design/generation-timeout.json",
+    "independent_critique": "design/critique-attempt.json",
+    "scope_notes": "design/scope-notes.json"
+  },
+  "rounds": [
+    {
+      "stage": "round1",
+      "sources": "round1/source-manifest.json",
+      "attempts": "round1/attempts.json",
+      "scoring": "round1/scoring.json",
+      "known_cost_usd": 1.1339104
+    },
+    {
+      "stage": "round2",
+      "sources": "round2/source-manifest.json",
+      "attempts": "round2/attempts.json",
+      "scoring": "round2/scoring.json",
+      "known_cost_usd": 0.961235
+    }
+  ],
+  "totals": {
+    "attempts": 17,
+    "successful_results": 15,
+    "timeouts": 2,
+    "known_api_equivalent_cost_usd": 2.657925,
+    "unknown_cost_attempts": [
+      "design/generation-timeout.json",
+      "round1/DRAFT/attempt.json"
+    ],
+    "complete_cost_usd": null,
+    "reported_tokens_successful_results_only": {
+      "input_tokens": 30,
+      "cache_creation_input_tokens": 192051,
+      "cache_read_input_tokens": 21885,
+      "output_tokens": 55851
+    }
+  },
+  "outcome": "Round1 was not an all-pass result. Round2 corrected targeted material scenario failures with an S1 advisory. Its generated draft subsequently received REVISE for material portable-instruction omissions. One explicitly feedback-guided repair returned a 643-word prompt; this generation result is not independent acceptance or clean source-compliance evidence. Original failed outputs remain preserved.",
+  "later_worktree_source_observation": {
+    "observed_utc": "2026-09-25T10:09:08.935743+00:00",
+    "files": {
+      "skill/SKILL.md": {
+        "observed_sha256": "53924856405d2c3354b84854c1cd1733e3064adf3afc67c3d5975f30ec695b97",
+        "same_as_round2_tested_snapshot": false,
+        "round2_tested_sha256": "17dfaea9e2fe396c1d82e6879af24551fad52b7180f7432083226c97ddd732c6"
+      },
+      "skill/references/execution-contract.md": {
+        "observed_sha256": "35a141086d823f9e63ac9be77ece362296633e52e7580f52fa20e46d2a7ad777",
+        "same_as_round2_tested_snapshot": true,
+        "round2_tested_sha256": "35a141086d823f9e63ac9be77ece362296633e52e7580f52fa20e46d2a7ad777"
+      },
+      "skill/references/prompt-drafting.md": {
+        "observed_sha256": "c66751705be020385d08f2039b009ffb040f70a2467e002e252dd3e76651b009",
+        "same_as_round2_tested_snapshot": false,
+        "round2_tested_sha256": "591146101e225a25280491f05c5fb55c5341c44f84a0a79101e1ab4f9481f7f1"
+      }
+    },
+    "note": "The worktree changed after round2 snapshot capture. Each result applies only to its supplied source hashes; later review/evidence must justify any reuse for changed release bytes."
+  },
+  "caveats": [
+    "These are one-sample simulated next-action responses, not live continuation, cancellation or delivery tests.",
+    "No incumbent/no-skill execution control, user-effort measure or performance benefit is established.",
+    "Round1 failures, both timeouts, round2 S1 advisory and requested-word-limit overruns are retained; process success is not a passing verdict.",
+    "Known usage excludes the two timed-out calls and lead/controller/human work. Soft usage guards and a known subtotal do not prove a complete cost cap.",
+    "Some source snapshots predate distribution rebuilds. Actual supplied-file hashes govern; a package-verification snapshot does not override them.",
+    "Source contexts are stored once per round with lossless input reconstruction recipes. Auth, session IDs, raw provider runtime details and repeated cached-context payloads are omitted.",
+    "Returned response text is preserved verbatim as UTF-8; scoring paths are adjusted only to resolve within this evidence folder."
+  ],
+  "payload": {
+    "files_excluding_index": 73,
+    "bytes_excluding_index": 235018
+  },
+  "feedback_guided_repair": {
+    "attempt": "DRAFT-repair/attempt.json",
+    "response": "DRAFT-repair/response.txt",
+    "feedback": "DRAFT-repair/review-feedback.txt",
+    "provenance": "DRAFT-repair/feedback-provenance.json",
+    "sources": "DRAFT-repair/source-manifest.json",
+    "status": "success",
+    "not_clean_forward_evidence": true,
+    "independent_acceptance": "not assessed by this consolidation"
+  }
+}

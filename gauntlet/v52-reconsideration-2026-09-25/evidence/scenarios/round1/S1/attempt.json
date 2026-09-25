@@ -1,0 +1,48 @@
+{
+  "id": "S1",
+  "started_utc": "2026-09-25T09:50:27.659562+00:00",
+  "input_sha256": "06c39709ab6ebe13076ef1f1f70b5516f7edff4cffc1932803971d7eba6cce80",
+  "configured_model": "claude-opus-5-5",
+  "configured_effort": "xhigh",
+  "timeout_seconds": 120,
+  "cost_usd": 0.1540718,
+  "process_exit_code": 0,
+  "status": "success",
+  "is_error": false,
+  "duration_ms": 21774,
+  "exact_model_confirmed": true,
+  "wall_seconds": 22.875,
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 14374,
+    "cache_read_input_tokens": 1459,
+    "output_tokens": 1939,
+    "thinking_tokens": 1537
+  },
+  "model_usage": {
+    "claude-opus-5-5": {
+      "inputTokens": 2,
+      "outputTokens": 1939,
+      "cacheReadInputTokens": 1459,
+      "cacheCreationInputTokens": 14374,
+      "thinkingTokens": 1537,
+      "costUSD": 0.1540718,
+      "canonicalModel": "claude-opus-5-5",
+      "costBasis": "list"
+    }
+  },
+  "input_parts": "input-parts.json",
+  "stage": "round1",
+  "worker_request_kind": "simulated-next-actions",
+  "response": "response.txt",
+  "response_sha256": "0c54fdfffd8b6a87d57ce0b9af1af1d37077f821525e39e4f5f3f2bf602d6376",
+  "response_words_whitespace_split": 198,
+  "requested_max_words": 180,
+  "exceeds_requested_words": true,
+  "response_is_acceptance": false,
+  "stderr_bytes": 0,
+  "instruction_source_files": [
+    "../sources/skill/SKILL.md.txt",
+    "../sources/skill/references/execution-contract.md.txt"
+  ]
+}

@@ -1,0 +1,10 @@
+**Next actions (proposed)**
+
+1. Record the message in the progress file: the status question needs no amendment. The accessibility note becomes contract v2 with a new check: the note's claims match the guide's verified step-free access details (HTML only). The PDF validator and the credits helper keep running.
+2. Give the spare helper one bounded task: draft the note in an isolated HTML copy, using only the verified access details, and return a patch.
+3. Integrate the patch. A separate critic then checks the note against its source and checks that the HTML still renders.
+4. Finish output-folder verification after integration, because the current HTML folder check would be stale. Checkpoint after each verdict. Publish nothing.
+
+**Response to user**
+
+> It's going well, but nothing is delivered yet. The PDF validator is still running, and image credits are being checked. The HTML is built, but I haven't finished verifying the output folder. I've added your accessibility note to the plan. A helper will write it from the guide's verified step-free access details, and it will be checked against those details. After that, I'll verify both files in the agreed folder. Nothing will be published.

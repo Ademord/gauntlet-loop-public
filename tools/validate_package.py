@@ -89,6 +89,13 @@ def example_includes(package):
         'budget and reserve': ['Budget:'],
         'checkpoint': ['Checkpoint after each verdict'],
     }
+    metadata, _ = frontmatter((package / 'SKILL.md').read_text(encoding='utf-8'))
+    version = tuple(int(n) for n in str(metadata.get('metadata', {}).get('version', '0.0')).split('.')[:2])
+    if version >= (5, 2):
+        markers.update({
+            'incoming-message continuity': ['Keep unfinished objectives'],
+            'conceptual reconsideration': ['Conceptual dissatisfaction'],
+        })
     failures = []
     # The marker table is written by hand against the include list, so it can drift from it exactly as the three
     # vocabulary copies did. Bind them: if the include list changes length, this check must be revisited.

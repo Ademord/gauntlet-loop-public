@@ -1,0 +1,12 @@
+**Next actions**
+
+1. Let the running keyboard check finish without editing the page under it. Record its result for the pre-fix page only. It cannot count as acceptance for the corrected page.
+2. Log the typo fix as a user correction. The accepted arrangement, navigation and wording stay as they are.
+3. Change the heading from "Firday" to "Friday." Search the page for other "Firday" occurrences (title, anchor IDs, labels) and report any instead of changing them silently.
+4. Record the new page identity and confirm the diff touches only the heading text.
+5. Have a separate reviewer confirm the heading reads "Friday" and rerun the full keyboard-navigation check on the corrected page.
+6. Save a checkpoint, and deliver only if both checks pass.
+
+**Response to user**
+
+> Got it. I'll change "Firday" to "Friday" once the keyboard check that's running finishes, so I'm not editing the page while it's being tested. Nothing else will change. Because the page will be different after the fix, I'll rerun the keyboard check on the corrected version and confirm the heading before calling it done. If the typo shows up anywhere else, I'll check with you first.

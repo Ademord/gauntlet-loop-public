@@ -49,6 +49,8 @@ Commands in this tool do not dispatch models. Historical [calibration](calibrati
 | EV-PASSIVE-OBSERVER | engineering | Enrolled-session SQLite metadata collector passed offline privacy, silence, event identity and outcome-separation tests; native integration is unverified. |
 | EV-OBSERVER-NATIVE-001 | engineering | Native Codex request/tool/completion capture and Claude request/failure capture verified on one fixture each; contact classifications and private checkpoint exports passed offline boundary tests. |
 | EV-OBSERVER-NATIVE-002 | engineering | Claude Opus/high captured a native Read and completion cycle with MCP servers disabled for that diagnostic; the prior normal-MCP soft-budget overshoot is retained. Recorder storage is measured and projected separately. |
+| EV-V52-PROTOCOL | engineering | Source-level reconsideration and message-continuity rules reviewed in Gauntlet 5.2; targeted next-action probes retain failed outputs and limitations. |
+| EV-V52-RELEASE | engineering | Versioned skill identities, byte-preserved outgoing package, portable archive and targeted package checks for 5.2. |
 
 ## Milestone index
 
@@ -60,7 +62,7 @@ Commands in this tool do not dispatch models. Historical [calibration](calibrati
 | M-004 | Stronger development feedback | partial | blocked | 1 / 0 |
 | M-005 | Marginal value of another round | deferred | deferred | 0 / 0 |
 | M-006 | Ownership and isolation | partial | blocked | 1 / 0 |
-| M-007 | Specialized roles | deferred | deferred | 0 / 0 |
+| M-007 | Specialized roles | deferred | deferred | 1 / 0 |
 | M-008 | Parallel scheduling | deferred | deferred | 0 / 0 |
 | M-009 | Shared findings with evidence | deferred | deferred | 0 / 0 |
 | M-010 | Dissent and HOLD resolution | deferred | deferred | 0 / 0 |
@@ -72,8 +74,8 @@ Commands in this tool do not dispatch models. Historical [calibration](calibrati
 | M-016 | Unsupported late judgments | deferred | deferred | 0 / 0 |
 | M-017 | Verified cross-task memory | deferred | deferred | 0 / 0 |
 | M-018 | Economic model allocation | deferred | deferred | 0 / 0 |
-| M-019 | Integrated confirmation | open | blocked | 1 / 0 |
-| M-020 | Independent user value | open | blocked | 0 / 0 |
+| M-019 | Integrated confirmation | open | blocked | 2 / 0 |
+| M-020 | Independent user value | open | blocked | 1 / 0 |
 | M-021 | Representative task population | open | ready | 1 / 0 |
 | M-022 | Unambiguous task contracts | partial | blocked | 1 / 0 |
 | M-023 | Answer and holdout isolation | partial | blocked | 1 / 0 |
@@ -91,16 +93,16 @@ Commands in this tool do not dispatch models. Historical [calibration](calibrati
 | M-035 | Within-run state compression | deferred | deferred | 0 / 0 |
 | M-036 | Machine-checkable records | partial | blocked | 4 / 0 |
 | M-037 | Prompt versus controller | partial | blocked | 4 / 0 |
-| M-038 | Value of clarification | deferred | deferred | 0 / 0 |
+| M-038 | Value of clarification | deferred | deferred | 1 / 0 |
 | M-039 | Reuse verification evidence | deferred | deferred | 0 / 0 |
-| M-040 | Requirements changed mid-run | deferred | deferred | 0 / 0 |
+| M-040 | Requirements changed mid-run | deferred | deferred | 1 / 0 |
 | M-041 | Idempotent operation retries | deferred | deferred | 0 / 0 |
 | M-042 | Approval bound to concrete action | partial | blocked | 0 / 0 |
 | M-043 | Task data cannot redirect authority | deferred | deferred | 0 / 0 |
-| M-044 | Public release boundary | verified_scope | closed | 1 / 0 |
+| M-044 | Public release boundary | verified_scope | closed | 2 / 0 |
 | M-045 | Quota-aware scheduling | deferred | deferred | 0 / 0 |
 | M-046 | Safe execution caching | deferred | deferred | 0 / 0 |
 | M-047 | Amortized environment setup | deferred | deferred | 0 / 0 |
-| M-048 | Requalify upgrades | partial | blocked | 1 / 0 |
+| M-048 | Requalify upgrades | partial | blocked | 2 / 0 |
 | M-049 | Independent reproduction | open | blocked | 0 / 0 |
 | M-050 | Retire expired features | deferred | deferred | 0 / 0 |

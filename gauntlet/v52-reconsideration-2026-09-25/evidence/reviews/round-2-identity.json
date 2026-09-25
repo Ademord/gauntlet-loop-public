@@ -1,0 +1,23 @@
+{
+  "contract": "0ff1e7a14102208a044efedebad6721cd59d4c6a72cd8bd2e70cb5957e6020c6",
+  "candidate_files": {
+    "SKILL.md": "17dfaea9e2fe396c1d82e6879af24551fad52b7180f7432083226c97ddd732c6",
+    "references/execution-contract.md": "35a141086d823f9e63ac9be77ece362296633e52e7580f52fa20e46d2a7ad777",
+    "references/team-method.md": "06d6495cd8178c3ab062f1cab094f54ca0e858d6de0774bf84101875c4986b67",
+    "references/prompt-drafting.md": "591146101e225a25280491f05c5fb55c5341c44f84a0a79101e1ab4f9481f7f1",
+    "references/bars-and-examples.md": "e82b31f953c406e72d694861087e1b24b68dc09b2553a7d94fbf585f2a4fece6"
+  },
+  "prior_candidate_files": {
+    "SKILL.md": "f667c2285104072de73c16276e80d77850e6c4a164ec24333c3e08652dbcba1f",
+    "references/execution-contract.md": "17843017cd2f6a03cbc02239e6f725b63c71458da137b8823d4d38245200d582",
+    "references/team-method.md": "06d6495cd8178c3ab062f1cab094f54ca0e858d6de0774bf84101875c4986b67",
+    "references/prompt-drafting.md": "049eb5d63cce155dcfcf76c91796bea5424fb4b03798b10ba405db70a6c059f3",
+    "references/bars-and-examples.md": "8edc8f61a62d2eb899755a5df139c634af4616ffbe6aeba5206d948ac9fb9d03"
+  },
+  "sent_prompt_sha256": "dbe4b495e93bb0a42b0f0836a71dc32632f91f8602fa795cc0c7e107109bd704",
+  "requested_model": "claude-opus-5-5",
+  "requested_effort": "xhigh",
+  "timeout_seconds": 150,
+  "soft_budget_usd": 1.2,
+  "started_utc": "2026-09-25T09:58:28.683044+00:00"
+}

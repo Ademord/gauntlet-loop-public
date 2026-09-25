@@ -1,0 +1,29 @@
+{
+  "contract": "0ff1e7a14102208a044efedebad6721cd59d4c6a72cd8bd2e70cb5957e6020c6",
+  "candidate_files": {
+    "SKILL.md": "53924856405d2c3354b84854c1cd1733e3064adf3afc67c3d5975f30ec695b97",
+    "references/execution-contract.md": "35a141086d823f9e63ac9be77ece362296633e52e7580f52fa20e46d2a7ad777",
+    "references/team-method.md": "06d6495cd8178c3ab062f1cab094f54ca0e858d6de0774bf84101875c4986b67",
+    "references/prompt-drafting.md": "c66751705be020385d08f2039b009ffb040f70a2467e002e252dd3e76651b009",
+    "references/bars-and-examples.md": "c687184aec2a83afa61179a876276c9ef4b86d10876cb09744931d1cd39e6e3c"
+  },
+  "prior_candidate_files": {
+    "SKILL.md": "17dfaea9e2fe396c1d82e6879af24551fad52b7180f7432083226c97ddd732c6",
+    "references/execution-contract.md": "35a141086d823f9e63ac9be77ece362296633e52e7580f52fa20e46d2a7ad777",
+    "references/team-method.md": "06d6495cd8178c3ab062f1cab094f54ca0e858d6de0774bf84101875c4986b67",
+    "references/prompt-drafting.md": "591146101e225a25280491f05c5fb55c5341c44f84a0a79101e1ab4f9481f7f1",
+    "references/bars-and-examples.md": "e82b31f953c406e72d694861087e1b24b68dc09b2553a7d94fbf585f2a4fece6"
+  },
+  "draft_artifacts": {
+    "manifest.json": "eac5bab03a1d90b82749574cd73689943bbb5028831fe641d3fca08ea321cdeb",
+    "DRAFT/input.txt": "11e6574bd390d0f5f36b7b0e61a1591908dde694fb5c648eabe71b5e75cacc59",
+    "DRAFT/response.txt": "29338c05c60ac9bea845e5ff65cbe78008155ee194ebca480c2940df59333e07",
+    "DRAFT/metadata.json": "6470c71c472229051c005b3263accc536a8bf8e582fb935ba6f1a21c88a8edcf"
+  },
+  "sent_prompt_sha256": "1742c6ccf5e6e2ebf744aa645b32f772ff64003da0cf474285b7e8a0812f693c",
+  "requested_model": "claude-opus-5-5",
+  "requested_effort": "xhigh",
+  "timeout_seconds": 180,
+  "soft_budget_usd": 0.8,
+  "started_utc": "2026-09-25T10:06:03.967585+00:00"
+}

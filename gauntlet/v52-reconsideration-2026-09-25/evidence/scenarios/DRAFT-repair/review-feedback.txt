@@ -1,0 +1,28 @@
+## B: Generated DRAFT: **REVISE**
+
+**Provenance.** The input contains prior-candidate wording (the old software paragraph and "triggers reconsideration even if checks pass"). The manifest hashes execution-contract.md, but it was not in the input. So the DRAFT is evidence about the prior source only and cannot test the new template sentence.
+
+**Preserved:**
+- The active objective, immediate stops, and "stopping is not rollback".
+- Invalidating corrections applied before affected work; versioning without resetting budget or lineage.
+- Reconsideration timing ("before editing even when checks pass"), apparently taken from the entrypoint.
+- Concrete options plus a recommendation for consequential choices.
+- Verdict fields, acceptance tied to the exact delivered text, and critic isolation.
+- Default budgets, reserve and single ledger; the resume decision; honest reporting when independent review is unavailable.
+- The word ceiling is labeled as an assumption, and the prompt is about 635 words, under the 650 cap.
+
+**Deterministic omissions (the instruction was in the input, the DRAFT did not follow it):**
+1. Additions are not retained; it only says "answer questions briefly, then resume".
+2. There is no "affected workers", "notify workers" or "check delayed results".
+3. Reconsideration lacks independent initial interpretations, distinguishing examples, retained dissent / no voting on preferences, "discussion is not independent acceptance", "ordinary defects get ordinary fixes", and "ground changed checks in requirements and verified facts".
+4. "Features enabled: none" while the ladder is in effect. The template's "or none" invited this, so it is non-blocking here.
+
+**Materiality (my judgment):**
+- Items 1–3 are material. The in-flight critic is the affected worker, so its verdict under criteria v1 could accept text after a v2 correction. Reconsideration discussion with the same critic could also stand in for independent acceptance.
+- Pending external actions, visuals and intended-vs-confirmed reporting matter little here, because the task is chat-only text with no external effects.
+
+**Blocking phrases to add (about 50 words):**
+- "retain additions as pending alongside the objective"
+- "a stop or invalidating correction also stops or notifies the in-flight critic; discard verdicts made under superseded criteria"
+- "when available, get an independent initial interpretation before comparing concrete examples; retain dissent, do not vote; discussion is not acceptance; ordinary defects get ordinary fixes; ground changed checks in verified facts"
+

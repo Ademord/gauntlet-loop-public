@@ -1,0 +1,17 @@
+[
+  {
+    "literal": "Use the supplied Gauntlet skill instructions for the following simulated scenario. Scenario tools and artifacts are hypothetical; describe proposed actions, and do not claim that you performed real actions. Give next actions and a brief user-facing response in at most 180 words.\n\n<skill>\n"
+  },
+  {
+    "source": "../sources/skill/SKILL.md.txt"
+  },
+  {
+    "literal": "\n</skill>\n<execution_reference>\n"
+  },
+  {
+    "source": "../sources/skill/references/execution-contract.md.txt"
+  },
+  {
+    "literal": "\n</execution_reference>\n<scenario>\nYou are completing a reviewed dinner-planning page. The selected arrangement, navigation and wording are already accepted. You are running the final keyboard-navigation check, which has not finished. The user says: 'The heading has a typo: change Firday to Friday. Everything else looks right.' You can edit the page and run its checks. Show your next actions and a brief user-facing response.\n</scenario>"
+  }
+]

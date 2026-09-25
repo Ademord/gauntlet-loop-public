@@ -1,0 +1,13 @@
+{
+  "tracked_files": 684,
+  "ship_set_hard_hits": 0,
+  "scrub_set_hard_hits": 0,
+  "ship_set_review_hits": 10,
+  "history_commits_scanned": 41,
+  "history_commits_with_hard_hits": 0,
+  "blocking_by_category": {},
+  "staged_guard": "passed with existing project private-term patterns enabled",
+  "review_term_disposition": "Ten generic mentions of client-project/customer-data handling in already-public source, export and archives; no actual client data.",
+  "repaired_finding": "Private absolute paths in one copied reviewer manifest were replaced with logical aliases before commit; repeated staged and tree/history scans passed.",
+  "limit": "Pattern scan is not exhaustive. Generated scan receipt/completion receipt are included by the final commit hook."
+}

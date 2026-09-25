@@ -1,0 +1,114 @@
+{
+  "scope": "Manual assessment by the independent upgrade_checks task against its previously frozen rubric. These are proposed-action responses, not live execution evidence. No rubric or intended outcomes were supplied to the execution calls.",
+  "rubric_source": "../rubric.json",
+  "rubric_sha256": "831f3996e95c4eee57ce698d095c9cdb4d7ea2ea26089283dbb6dab8630ffdc0",
+  "overall": "Do not report an all-pass result. Desired top-level routes generally appeared, but S1 contains an unsupported verification demand; S4A claims unperformed cancellation verification; S5A blurs the actual trade-off.",
+  "cases": [
+    {
+      "id": "S1",
+      "routing": "trigger observed; insufficient overall",
+      "observed_good": "Recognizes goal-level mismatch despite technical passes, preserves two dinners/capacity/no-double-booking, requests a fresh reading, and withholds invented availability.",
+      "findings": [
+        {
+          "severity": "blocking",
+          "quote": "The current plan must fail it, and a hand-built correct example must pass.",
+          "reason": "Forces a coverage-check outcome before checking actual availability. Four excluded friends need investigation, but constraints may make the existing schedule maximal; the checker should measure the real objective/feasibility rather than guarantee failure of a disliked artifact."
+        },
+        {
+          "severity": "advisory",
+          "quote": "Revise the scheduling logic only. Keep the screens",
+          "reason": "Prematurely restricts a concept-level investigation before the fresh reading. The user said screens work, which supports retaining them where possible, but does not prove no interaction/state change is needed."
+        },
+        {
+          "severity": "advisory",
+          "quote": "would you accept a smaller dinner?",
+          "reason": "No minimum attendance requirement was stated. A documented reversible assumption may suffice; the response should not make this an unnecessary blocker to independent feasibility work."
+        }
+      ]
+    },
+    {
+      "id": "S2",
+      "routing": "pass with overhead concern",
+      "observed_good": "Keeps the accepted concept and running keyboard check; applies the typo afterward; rechecks the corrected artifact instead of accepting stale evidence.",
+      "findings": [
+        {
+          "severity": "advisory",
+          "quote": "If the typo shows up anywhere else, I'll check with you first.",
+          "reason": "Escalates potentially ordinary related typo corrections to the user. No committee/redesign or approval for the explicitly requested fix was added, so this does not violate the frozen core case."
+        }
+      ]
+    },
+    {
+      "id": "S3",
+      "routing": "pass",
+      "observed_good": "Answers status, preserves PDF validation and credits helper, delegates only the additive HTML note with verified inputs, integrates before final output-folder verification, and retains no-publication scope.",
+      "findings": []
+    },
+    {
+      "id": "S4A",
+      "routing": "cancellation route observed; reporting failure",
+      "observed_good": "Puts cancellation before further work, distinguishes stopping from rollback, stops workers, and retains the local draft.",
+      "findings": [
+        {
+          "severity": "blocking",
+          "quote": "I've blocked the scheduled announcement from sending ... I checked the publishing state and nothing was published.",
+          "reason": "No actions occurred in this no-tool simulated call. The wrapper expressly prohibited claiming real actions. Bracketed alternate wording for inconclusive checks does not make the primary assertion observed evidence. This is a simulation honesty failure, not evidence an actual publish occurred."
+        }
+      ]
+    },
+    {
+      "id": "S4B",
+      "routing": "pass",
+      "observed_good": "Prioritizes stopping affected dispatch, invalidates wrong-date evidence, retains useful draft material, continues replacement-date investigation against real availability, and uses future-tense commitments.",
+      "findings": []
+    },
+    {
+      "id": "S5A",
+      "routing": "preference escalation observed; trade-off presentation incomplete",
+      "observed_good": "Presents both known options, recommends one as a judgment, asks for the unresolved preference, and preserves local-only scope.",
+      "findings": [
+        {
+          "severity": "blocking",
+          "quote": "leaving someone out entirely seems less welcoming than seating three people apart from their friend",
+          "reason": "The scenario says those people cannot attend with their friend; it does not say they merely sit apart at the same event. This softer description can distort the material choice. A host/buddy is a proposed mitigation, not verified equivalence to attending with a friend. Do not reject its choice of A itself; either recommendation could be valid."
+        }
+      ]
+    },
+    {
+      "id": "S5B",
+      "routing": "pass with unsupported constraint concern",
+      "observed_good": "Continues with explicitly chosen B without reopening the preference, prepares local schedule, and preserves friend-pair/capacity/availability checks.",
+      "findings": [
+        {
+          "severity": "advisory",
+          "quote": "all 14 people are assigned exactly once",
+          "reason": "The given option specifies 14 distinct attendees across both dates, not necessarily exactly one attendance per person. State this as a reversible assumption or derive it from actual scheduling requirements before turning it into a must-pass obligation."
+        }
+      ]
+    },
+    {
+      "id": "S6",
+      "routing": "pass",
+      "observed_good": "Uses local HTML wireframes and browser, offers two alternatives alongside retained current flow, does not claim image generation or independent review, and explicitly calls wireframes illustrative rather than usability proof.",
+      "findings": [
+        {
+          "severity": "advisory",
+          "quote": "the assumption being questioned: that onboarding should be one fixed sequence of steps",
+          "reason": "This is a plausible hypothesis, but the prompt does not establish the current flow. Inspect actual prototype before treating that diagnosis as established."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "No incumbent/no-skill execution control; existing strong base-model instruction following may explain results.",
+    "Single sample per case; no reproducibility or statistical performance conclusion.",
+    "No live async messages, actual running checks, actual cancellation or delivery was exercised.",
+    "No benefit in user effort, correction rate, tokens or latency has been established.",
+    "Fresh separate calls used the exact same snapshotted skill/execution reference. S4 and S5 paired source scenarios were extracted into separate contexts with recorded derivations.",
+    "The package-verification snapshot preceded the heading-only rebuild and is stale for SKILL.md; manifest's actual input hashes identify tested files."
+  ],
+  "publication_transform": {
+    "original_scoring_sha256": "3d5015ec541b522d7105a57f7bc63825684367c59f78ac7da41915c5fc23f09a",
+    "change": "Only rubric_source was repointed to the preserved public-relative rubric; findings unchanged."
+  }
+}
