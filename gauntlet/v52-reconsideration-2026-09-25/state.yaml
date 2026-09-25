@@ -1,6 +1,6 @@
 {
   "state": "accepted",
-  "phase": "package-accepted-awaiting-publication",
+  "phase": "published",
   "candidate_version": "5.2.0",
   "criteria_version": 1,
   "candidate_manifest_sha256": "3d34186c05d58ddcfc73942b5b13c86fbfe9dc41dd54ff962d7b58e6122a226d",
@@ -15,8 +15,8 @@
     "C8": "passed for bounded reporting: failures/unknowns preserved; no performance or causal claim"
   },
   "holds": [],
-  "next_action": "Commit reviewed package, fast-forward clean main, push and publish v5.2.0; verify remote identities.",
-  "publication": "not yet observed in this prepublication snapshot",
+  "next_action": "Observe ordinary tasks and record scoped outcomes before selecting another product change or comparative study.",
+  "publication": "Verified GitHub latest stable release, remote main/tag and all three uploaded asset digests; see publication.json.",
   "known_worker_execution_usd": 5.260492,
   "budget": {
     "critic_attempts": 7,
@@ -24,5 +24,7 @@
     "remaining": 5,
     "integration_reviews_used": 1
   },
-  "global_installation": "unchanged; private customized installation preserved"
+  "global_installation": "unchanged; private customized installation preserved",
+  "release_commit": "e53c76a6c99cdd7a4c39a99c5d05ad8648949b5c",
+  "release_url": "https://github.com/Ademord/gauntlet-loop-public/releases/tag/v5.2.0"
 }

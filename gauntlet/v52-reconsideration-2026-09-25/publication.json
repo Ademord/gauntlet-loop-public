@@ -1,0 +1,37 @@
+{
+  "release": "5.2.0",
+  "release_url": "https://github.com/Ademord/gauntlet-loop-public/releases/tag/v5.2.0",
+  "published_at": "2026-09-25T10:26:31Z",
+  "latest_stable_verified": true,
+  "release_commit": "e53c76a6c99cdd7a4c39a99c5d05ad8648949b5c",
+  "release_tree": "774d323685cc776cd1bf1e52520e482dc8e674cd",
+  "remote_main_at_publication_verification": "e53c76a6c99cdd7a4c39a99c5d05ad8648949b5c",
+  "remote_annotated_tag_object": "4feb39569a1cf9337ca94e5e0554dd7ffcfc62d0",
+  "peeled_tag_matches_release_commit": true,
+  "assets": [
+    {
+      "name": "gauntlet-loop-v5-SKILL.md",
+      "size": 109983,
+      "sha256": "95371cee17288e1ef1fc2b189286ed4f43713fbca0aeee70b69cbd6490a993c4",
+      "github_digest_matches_local": true,
+      "url": "https://github.com/Ademord/gauntlet-loop-public/releases/download/v5.2.0/gauntlet-loop-v5-SKILL.md"
+    },
+    {
+      "name": "gauntlet-loop-v5.zip",
+      "size": 45638,
+      "sha256": "2660f5529c9fc0920a24e490aab54b56560c36f0a8c0589f6160c57a8dd98a49",
+      "github_digest_matches_local": true,
+      "url": "https://github.com/Ademord/gauntlet-loop-public/releases/download/v5.2.0/gauntlet-loop-v5.zip"
+    },
+    {
+      "name": "package-verification.json",
+      "size": 1285,
+      "sha256": "5ae271d426d71947d88af259be15619320a13b1255113855453809c1bf75bdcf",
+      "github_digest_matches_local": true,
+      "url": "https://github.com/Ademord/gauntlet-loop-public/releases/download/v5.2.0/package-verification.json"
+    }
+  ],
+  "package_manifest_sha256": "5ae271d426d71947d88af259be15619320a13b1255113855453809c1bf75bdcf",
+  "integration": "Clean canonical main fast-forwarded from3a10854; main and annotated tag pushed atomically.",
+  "note": "This receipt is a follow-up documentation checkpoint. The release tag remains pinned to the accepted package commit; later main documentation does not change that release."
+}

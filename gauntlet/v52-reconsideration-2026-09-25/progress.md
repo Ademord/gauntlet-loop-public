@@ -1,6 +1,6 @@
 # 5.2 reconsideration and continuity upgrade
 
-**Accepted package; publication follows this checkpoint.** Version 5.2.0 is governed by 5.1.0 at base `3a10854`. [State](state.yaml), [frozen contract](contract.yaml), [events](events.jsonl), [package identities](evidence/candidate-identity.json).
+**Published as GitHub release 5.2.0.** [Publication receipt](publication.json) verifies the release commit, remote tag/main and all three uploaded assets. Version 5.2.0 is governed by 5.1.0 at base `3a10854`. [State](state.yaml), [frozen contract](contract.yaml), [events](events.jsonl), [package identities](evidence/candidate-identity.json).
 
 The change connects conceptual dissatisfaction to bounded reconsideration inside the existing loop. Incoming messages retain unfinished work, with immediate stops and scoped corrections. Source changes are in five existing skill files. The optional private feedback intake is context, not a replacement workflow or a background learner.
 
@@ -26,7 +26,7 @@ Eight requirements and six independently authored prompts were frozen before edi
 | Scenario round 1 | Invented required failure before checking feasibility; described planned stop as completed; weakened an attendance trade-off. Preserved failures informed a bounded correction. |
 | Source review 2 | Compression dropped immediate reconsideration timing; restored the phrase in template and both examples. |
 | Four targeted reruns | Corrected the material defects; S1 still overweights avoiding repeats, and several replies exceed requested length. These are one-sample responses, not live actions. |
-| Source review 3 | Accepted C1–C6 on exact source diffs. Independently rejected the generated prompt for omissions, despite its successful generation. |
+| Source review 3 | Accepted C1â€“C6 on exact source diffs. Independently rejected the generated prompt for omissions, despite its successful generation. |
 | Prompt repair + integration | One feedback-guided revision, inspected separately in [review 4](evidence/reviews/round-4.json). The initial draft is still a failed forward probe; repair does not establish automatic compliance. |
 
 The final source differs from the round-2 behavioral snapshot only in the portable trigger timing and entrypoint compression documented by review 3. Reuse of earlier scenario evidence is limited to unchanged semantics; no claim says the entire final package was rerun on every case.
