@@ -72,6 +72,7 @@ Across these versions the skill grew from about 1,400 to 12,400 words, almost ni
 | follow or join the research program | [research/program/](research/program/README.md) for indexed milestones, evidence and experiment records |
 | inspect a complete real run: the one that produced v5 | [gauntlet/](gauntlet/README.md) |
 | run the tooling | [tools/](tools/README.md) |
+| use prior feedback during project work | [project feedback check](research/program/feedback/README.md), enabled only with private local configuration |
 | inspect optional community improvements | [backlog candidates](research/program/backlog.md#community-candidates-23-september-2026) |
 | see what is verified, untested, and next | [STATUS.md](STATUS.md) |
 | contribute a paper, a run, or a change | [CONTRIBUTING.md](CONTRIBUTING.md) |
