@@ -1,0 +1,100 @@
+--- prior/skill/SKILL.md
++++ amended/skill/SKILL.md
+@@ -27,7 +27,7 @@
+ 
+ 1. **Inspect just enough.** Read project instructions, the current artifact, supported interfaces, checks, dependencies and reported failure. Map unfamiliar paths only when useful; reconnaissance spends the same budget and does not authorize new infrastructure.
+ 2. **Make the bar real.** Use a supplied or previously accepted artifact that is [named, accessible, and comparable](references/bars-and-examples.md). Capture its version/date and the view, excerpt, behavior, or data actually used. Match audience, task, length, viewport, and constraints where relevant. A product name without the inspected surface is insufficient.
+-3. **Resolve only material ambiguity.** If no bar is established, reuse an obvious existing baseline and state the assumption for reversible work. When choosing the bar would materially change the product or scope, offer two or three concrete options and continue independent preparation while the choice is pending. An inaccessible required reference blocks the comparison, not every useful action. Do not invent what it looks like or silently substitute another.
++3. **Resolve only material ambiguity.** At request start, record uncertainty as low, medium or high with observable reasons; the label is not a calibrated probability. Ask when an unresolved choice materially changes scope, cost or acceptance; reuse the user’s decision and continue safe groundwork. If no bar is established, reuse an obvious existing baseline and state the assumption for reversible work. When choosing the bar would materially change the product or scope, offer two or three concrete options and continue independent preparation while the choice is pending. An inaccessible required reference blocks the comparison, not every useful action. Do not invent what it looks like or silently substitute another.
+ 4. **Separate preference from correctness.** Define the comparison dimension and observable must-pass requirements. A polished page cannot compensate for broken interactions; clean code cannot compensate for wrong behavior. For a repair, the failing original plus a concrete behavior contract and trusted examples can be the bar; an unrelated prestige product is unnecessary.
+ 5. **Freeze the obligations.** Record versioned criteria and their sources before judging. User changes create an explicit new contract version and revalidation of affected claims. Legitimate test corrections need independent evidence and versioning. Neither a builder nor a critic may lower the bar to approve its current candidate.
+ 6. **Estimate difficulty and verifiability.** Record `low | medium | high` with its observable proxies (scope, interacting components, novelty, prior failures) and whether the required checks are `deterministic`, `external`, or `judgment` only. A recorded self-report.
+--- prior/skill/references/bars-and-examples.md
++++ amended/skill/references/bars-and-examples.md
+@@ -40,7 +40,7 @@
+ README evidence.
+ 
+ ```text
+-Build a running-brand landing page for young runners in the existing repository, stack and hosting. Compare the result against Nike's running campaign page on visual impact and interactions: inspect it and capture today's 1440px/390px views. Required: tests on the reviewed commit; hosted demo serving that build, linked from README with a real screenshot; working desktop/mobile controls, keyboard and reduced motion. Reuse authorization and constraints. Task class is code-feature; features enabled are evidence_ladder, delegates, isolation and blinding.
++Build a running-brand landing page for young runners in the existing repository, stack and hosting. Compare the result against Nike's running campaign page on visual impact and interactions: inspect it and capture today's 1440px/390px views. Required: tests on the reviewed commit; hosted demo serving that build, linked from README with a real screenshot; working desktop/mobile controls, keyboard and reduced motion. Assess low/medium/high uncertainty with reasons at the start; ask only about a material scope, cost or acceptance choice, reuse prior decisions and keep safe groundwork moving. Reuse authorization and constraints. Task class is code-feature; features enabled are evidence_ladder, delegates, isolation and blinding.
+ 
+ Difficulty is medium: new motion and three delivery surfaces; checks are deterministic for CI and judgment for visuals. Use compact+delegates: lead/builder, separate fresh-context critic and bounded independent workers. Assign hero, motion, typography and mobile work by dependencies; one writer per surface and one browser owner. Builders may run focused tests and formatters in isolation. The critic inspects the real page and label-stripped captures beside the reference. Inherit the configured models; record observed assignments.
+ 
+@@ -58,7 +58,7 @@
+ The user picks the Julia Evans post.
+ 
+ ```text
+-Write a 2000-word vector-database explainer for non-engineers; code samples at most five lines. Compare the result against Julia Evans' post on how databases work on speed to an accurate mental model. Inspect today's retrieved post under comparable length/format conditions. Required: named sources for claims, jargon explained on first use, three named misconceptions addressed, and a non-engineer can explain the purpose after one read. Reuse authorization and constraints. Task class is writing; features enabled are evidence_ladder, delegates and blinding.
++Write a 2000-word vector-database explainer for non-engineers; code samples at most five lines. Compare the result against Julia Evans' post on how databases work on speed to an accurate mental model. Inspect today's retrieved post under comparable length/format conditions. Required: named sources for claims, jargon explained on first use, three named misconceptions addressed, and a non-engineer can explain the purpose after one read. Assess low/medium/high uncertainty with reasons at the start; ask only about a material scope, cost or acceptance choice, reuse prior decisions and keep safe groundwork moving. Reuse authorization and constraints. Task class is writing; features enabled are evidence_ladder, delegates and blinding.
+ 
+ Difficulty is medium: audience translation and jargon risks. Checks are judgment except deterministic source traces. Use compact+delegates: lead/writer, separate fresh-context critic and bounded section writers, one owner each. Writers may verify sources; their own feedback is not acceptance. The critic compares byline-stripped drafts with the reference. Inherit the configured models; record observed assignments.
+ 
+--- prior/skill/references/execution-contract.md
++++ amended/skill/references/execution-contract.md
+@@ -19,6 +19,10 @@
+ - Task class and the features enabled, from the closed vocabularies below. They exist so that later analysis can group comparable runs instead of guessing from prose.
+ 
+ Capture a starting artifact before editing. Use a commit plus dirty-diff/untracked-input identity, or an immutable copy/content manifest for non-Git work. HEAD alone cannot identify a dirty checkout. For external state include the resource/revision and observed time. Never hash or copy secrets into evidence; scope manifests to relevant authorized inputs.
++
++## Beginning-of-request uncertainty
++
++After bounded inspection, record low/medium/high uncertainty and its concrete cause, separately from difficulty. Clear outcomes/checks/resource bounds support low; unresolved dependencies or interpretations raise it. The label is not a calibrated probability. Ask the user when the remaining uncertainty changes a consequential choice about scope, cost, reversibility or acceptance; present the smallest useful options and a recommendation. Inspect retrievable facts first and continue independent authorized groundwork. Reuse existing decisions, including the shared change-request allowance; workers, retries and follow-ups do not repeat the question or refill it. Unknown usage remains unknown.
+ 
+ ## Acceptance checks and changing expectations
+ 
+--- prior/skill/references/prompt-drafting.md
++++ amended/skill/references/prompt-drafting.md
+@@ -18,7 +18,7 @@
+ The following template illustrates the semantics. Replace every bracketed field and adapt the wording before returning it:
+ 
+ ```text
+-Complete [specific outcome and audience] within [scope]. Compare the result against [concrete accessible reference] on [comparison dimension], using [captured version and comparable conditions]. Inspect the real reference first. Required checks and selected delivery outputs are [observable requirements and evidence]. Reuse existing authorization and project constraints.
++Complete [specific outcome and audience] within [scope]. Compare the result against [concrete accessible reference] on [comparison dimension], using [captured version and comparable conditions]. Inspect the real reference first. Required checks and selected delivery outputs are [observable requirements and evidence]. Assess low/medium/high uncertainty with reasons at the start; ask only about a material scope, cost or acceptance choice, reuse prior decisions and keep safe groundwork moving. Reuse existing authorization and project constraints.
+ 
+ Difficulty is [low | medium | high] because [observable proxies]; required checks are [deterministic | external | judgment]. Task class is [task class] and the features enabled are [features enabled including evidence_ladder], from the closed vocabularies. Use the lightest topology whose gate is met: light (one bounded build, one independent evidence-based review) only for low-difficulty work with deterministic or external checks, otherwise a lead/builder with a separate critic in fresh context. A light review that does not accept escalates to compact; otherwise change topology only at a recorded stall diagnosis. Delegate independent bounded pieces and serialize dependencies; one writer per shared surface, one owner per live environment. Builders may run focused tests and formatters in isolation; the independent critic inspects the actual artifact against requirement-derived expectations. Inherit configured models and record actual assignments where observable.
+ 
+--- prior/skill/references/research-basis.md
++++ amended/skill/references/research-basis.md
+@@ -18,28 +18,10 @@
+ 
+ ## Earlier basis retained
+ 
+-The six v5 sources were assessed from abstracts on 17 September 2026. Their transfer is the skill's inference; thresholds remain manual defaults.
++V5's six sources were assessed from abstracts on17September2026: [Loop-Back Authority](https://arxiv.org/abs/2609.14767) motivates evidence classes/drift/ladder; [Difficulty-Aware Topology](https://arxiv.org/abs/2609.13890) motivates recorded difficulty/light routing; [LIMBO](https://arxiv.org/abs/2609.14138) motivates retrieval budgeting; [Interactive Memory Learning](https://arxiv.org/abs/2609.17088) motivates downstream utility records; [Recoverability](https://arxiv.org/abs/2609.13672) motivates evidence-bound resume decisions; [PipeSwift](https://arxiv.org/abs/2609.16491) motivates completion-time/dependency accounting only. Reporting, verified coding, conversational memory and serving results do not establish this skill's thresholds or benefits. Self-reports/utility attribution remain uncalibrated/confounded; no trained router or learned allocator is installed.
+ 
+-- **[Loop-Back Authority](https://arxiv.org/abs/2609.14767)**: a paired reporting experiment motivates evidence classes, drift checks and the judgment ladder; one task and model judges do not establish an optimal stopping threshold.
+-- **[Difficulty-Aware Topology Selection](https://arxiv.org/abs/2609.13890)**: verifier-backed coding motivates recording difficulty and the lightest useful topology. This skill uses a self-report, not the paper's trained router.
+-- **[LIMBO](https://arxiv.org/abs/2609.14138)**: memory competes with reasoning/verification for resources. Motivates the retrieval allowance and cost ledger, not its learned policy or demonstrated savings here.
+-- **[Interactive Memory Learning](https://arxiv.org/abs/2609.17088)**: delayed conversational feedback motivates downstream utility records. Manual attribution remains confounded, not causal proof.
+-- **[Recoverability](https://arxiv.org/abs/2609.13672)**: restoration and later completion can conceal an invalid starting point. Motivates resume validation, current authority and version amendments, without host enforcement.
+-- **[PipeSwift](https://arxiv.org/abs/2609.16491)**: completion-oriented serving motivates dependency-aware dispatch and timing only; serving gains do not transfer to this workflow.
+-
+-V4, 12 September 2026, adapted these sources:
+-
+-- **[ExecCritic](https://arxiv.org/html/2609.09133v1)**: independently qualify behavioral tests and protect them from repair-driven weakening. Failure on the original alone does not prove the expectation correct.
+-- **[Long-running harnesses](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)** and **[application harness design](https://www.anthropic.com/engineering/harness-design-long-running-apps)**: progress artifacts, recovery and separate evaluation; engineering reports, not universal comparisons.
+-- **[MAPLE](https://arxiv.org/abs/2609.11636)**: retain actual programs, plans and candidates; no optimizer is required.
+-- **[Grounding Agent Memory](https://arxiv.org/html/2609.11060v1)**: scoped environment probes before admission; domain-specific results and curation costs limit transfer.
+-- **[Fortunate Recall](https://arxiv.org/html/2609.10413v1)** and **[What Should an Agent Forget?](https://arxiv.org/html/2609.10263v1)**: lifecycle validity and stored/current/history views; neither qualifies concurrent coding memory.
+-- **[Studying Without a Syllabus](https://arxiv.org/html/2609.10824v1)**: bounded preparation; extra context can mislead.
+-- **[ORCH](https://arxiv.org/html/2609.11737v1)**: coordination follows dependencies; prepared simulations do not establish online hierarchy evolution.
+-- **[RobustSGPO](https://arxiv.org/abs/2609.09646)**: scoped between-run patches, retained snapshots and rollback, without importing search schedules or scores.
++V4's12September2026 sources: [ExecCritic](https://arxiv.org/html/2609.09133v1) for independently qualified/protected behavioral tests; [long-running harnesses](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents) and [application harnesses](https://www.anthropic.com/engineering/harness-design-long-running-apps) for progress/recovery/evaluation; [MAPLE](https://arxiv.org/abs/2609.11636) for actual retained artifacts; [Grounding Agent Memory](https://arxiv.org/html/2609.11060v1) for scoped environment probes; [Fortunate Recall](https://arxiv.org/html/2609.10413v1) and [What Should an Agent Forget?](https://arxiv.org/html/2609.10263v1) for lifecycle/current/history separation; [Studying Without a Syllabus](https://arxiv.org/html/2609.10824v1) for bounded preparation; [ORCH](https://arxiv.org/html/2609.11737v1) for dependency-aware coordination; [RobustSGPO](https://arxiv.org/abs/2609.09646) for scoped between-run patches/rollback. These domain-specific papers/reports do not qualify concurrent coding memory, universal orchestration or online evolution here. A test failing on an original artifact alone does not validate its expectation. More preparation/curation can cost resources and mislead. Original detailed assessments remain archived.
+ 
+ ## Engineering choices
+ 
+-Budgets/reserve, ownership, evidence identities, two-review judgment threshold, light topology, three-lesson allowance, lesson statuses and resume decisions are adjustable choices, not research-established optima. The skill does not itself protect tests, enforce billing, provide a truth oracle, learn a router or guarantee interruption control. Optional tools qualify only their actual callers and declared inputs.
+-
+-The identifier and conditional-reference packaging are preserved. Models/capabilities are discovered at use time; vendor rankings remain absent. Legible optional language, scoped challenges and existing authority boundaries remain practical rules. No persistent swarm, compression infrastructure or autonomous business goals are implied.
++Budgets, reserves, ownership, evidence identities, ladder thresholds, topology, retrieval/admission and resume decisions are adjustable choices, not measured optima. The skill cannot itself enforce billing, semantic truth, test protection or interruption. Capability/model discovery remains live; no vendor ranking, persistent swarm, new database or autonomous business goal follows.
+--- prior/skill/references/software-quality.md
++++ amended/skill/references/software-quality.md
+@@ -10,7 +10,7 @@
+ 
+ ## Optional delivery extensions
+ 
+-Each section below describes how to satisfy an extension **after it has been selected**. CI, hosting, demo experience, portable/offline delivery, a clean public working copy, README images, onboarding, and deeper project-specific coverage can be chosen separately or together. Selecting a demo does not automatically select public hosting, offline support, or a repository split.
++Select CI, hosting, demo, portable delivery, public copy, README images and deeper coverage independently; one does not imply another.
+ 
+ ### Repository and CI
+ 

@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "frozen_at": "2026-10-30T16:52:56.238044+00:00",
+  "baseline_commit": "17161321b3cd1603ae7b5d710e3e85a837331cb8",
+  "candidate_read": false,
+  "fixture_count": 16,
+  "structural_checks": "passed; not candidate-behavior results",
+  "files": {
+    "requirements.md": {
+      "sha256": "1b026bbed816675c804dbbb9273f72416119eeac2bcfe00f81708b17d72652f3",
+      "bytes": 8122
+    },
+    "scenarios.json": {
+      "sha256": "ff91361b903f832ca2d666b6744f45c3aad3f8ccdf9f60a4e00eff4f33ad0217",
+      "bytes": 15977
+    },
+    "oracle.json": {
+      "sha256": "c494b84886dd5ed92fa3deef67514024c8ed6986a9957a8d9c423cd2c1641801",
+      "bytes": 9427
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "state": "accepted",
+  "candidate": "accepted_release_5.3.0",
+  "candidate_version": "5.3.0",
+  "review_attempts": 8,
+  "review_hard_cap": 12,
+  "remaining_review_allowance": 4,
+  "candidate_source_manifest": "5495ef47e95d6adf29eef47a2129fbda68171571f84ff258b7132edbb04a2d74",
+  "portable_sha256": "9028e88a36ccc2428c70da70a2ca63b88767c2088baffb8deab6535204544b07",
+  "checks": {
+    "C1": "passed",
+    "C2": "passed",
+    "C3": "passed",
+    "C4": "passed",
+    "C5": "passed",
+    "C6": "passed",
+    "C7": "passed",
+    "C8": "passed",
+    "C9": "passed",
+    "C10": "passed"
+  },
+  "remaining": [],
+  "remote_publication": "authorized_pending_readback",
+  "atlas_integration": "not_started",
+  "costs": "unknown",
+  "updated_at": "2026-10-30T17:11:39.889010+00:00",
+  "acceptance_sha256": "d3b222955664fc59f61e957705415edbc26e7c6d40391ba1adaf7ac37d42e4fc",
+  "amendment": "Independent source/package amendment accepted"
+}

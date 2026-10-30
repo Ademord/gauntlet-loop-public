@@ -14,11 +14,11 @@ Papers arrive faster than versions should. This is the fixed path from "interest
 
 ## 2. The note, and the three rules that keep it honest
 
-Fetch the arXiv abstract page (or the publisher page) and record the abstract verbatim in a quote block. The v5 fidelity critic re-fetched every abstract and compared character by character; write the note so that check passes. Three rules:
+Fetch the version-pinned primary source and record its URL, date, identifiers and reading coverage. Summarize the abstract in your own words; use only short quotations permitted by the source license and applicable copyright limits. Preserve source fidelity through precise locators, not mandatory reproduction. The historical v5 notes used verbatim abstracts; they remain preserved. Three rules:
 
-1. Verbatim means verbatim. Expand a broken macro only with an annotation line above the block. Every number the note attributes to the paper must appear in the abstract as written, unrounded.
-2. Check the supplied scan against the abstract line by line in a table (claim, abstract wording, status). Feeds paraphrase; some paraphrases are wrong in ways that matter (the v5 scan's "ICML" was the method's acronym, not the conference).
-3. Label every inference beyond the abstract as ASSUMPTION. "Only the abstract was read" is a limit stated in every note until someone reads the full text (backlog B-011 is the standing item for that).
+1. Source claims need exact support in the inspected abstract or full text, with a locator and accurate denominator/conditions. Distinguish version dates from index dates. Reading an abstract is not reading the paper; document body, appendix and figure/table coverage honestly.
+2. Check supplied summaries against the primary source, separating supported, qualified, contradicted and unverified claims. Include controls, candidate selection, missing trials, costs and regressions, not just headline scores. Feeds are context, not findings.
+3. Distinguish source findings from workflow inferences and untested hypotheses. A supported full-text claim is not an assumption merely because it is absent from the abstract. Full reading is not reproduction. Retain contrary evidence and state what would falsify the proposed transfer.
 
 Then the judgment, in this order: what the abstract does not establish; where the current skill already stands (quote the current version's sentences); the gap; the proposed change as a bounded rule with a gate; the observation that would falsify the design choice; the verdict `adopt | adapt | reject | defer` with the reason. Adapt is the usual verdict: the papers are about their domains, the skill is a workflow, and the transfer is the skill's inference, never the paper's claim.
 

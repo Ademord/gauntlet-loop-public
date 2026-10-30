@@ -21,7 +21,6 @@ Commands in this tool do not dispatch models. Historical [calibration](calibrati
 
 ## Next eligible research work
 
-- **M-033** Prefer native enforcement: Adopt native controls and identify exact gaps.
 - **M-026** Observed treatment fidelity: Close duplicate arms and audit each host's actual workflow.
 - **M-021** Representative task population: Define eligible real work before the bridge.
 

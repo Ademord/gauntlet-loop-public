@@ -1,0 +1,324 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-30",
+  "reading_party": "Release review team",
+  "baseline": {
+    "skill_version": "5.2.0",
+    "commit": "17161321b3cd1603ae7b5d710e3e85a837331cb8"
+  },
+  "papers": [
+    {
+      "version": "2610.08900v2",
+      "first_submission_date": "2026-10-06",
+      "version_date": "2026-10-08",
+      "full_body_references_appendices_read": true,
+      "pdf_pages": 14,
+      "figures_read": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "tables_read": [
+        1,
+        2
+      ],
+      "visual_pdf_pages": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        14
+      ],
+      "all_pages_visually_inspected": false,
+      "sources": {
+        "html": {
+          "url": "https://arxiv.org/html/2610.08900v2",
+          "sha256": "8ca837e778f2ca297bdb64d41e17bf861c2e6973d9ca5f7466afa2f70661c84b",
+          "bytes": 176769
+        },
+        "pdf": {
+          "url": "https://arxiv.org/pdf/2610.08900v2",
+          "sha256": "be9c8aff9a2b06dd4ac553e46d5c3b1761a831cf0c4e306b4743f9235b0411e5",
+          "bytes": 324914
+        }
+      }
+    },
+    {
+      "version": "2610.27435v1",
+      "first_submission_date": "2026-10-20",
+      "version_date": "2026-10-20",
+      "full_body_references_appendices_read": true,
+      "pdf_pages": 38,
+      "figures_read": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "tables_read": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "visual_pdf_pages": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        33,
+        34,
+        35,
+        36,
+        37
+      ],
+      "all_pages_visually_inspected": false,
+      "sources": {
+        "html": {
+          "url": "https://arxiv.org/html/2610.27435v1",
+          "sha256": "56f766a32f77f99498c941e55c40b85e4546010456c26422156446b296576dd2",
+          "bytes": 560571
+        },
+        "pdf": {
+          "url": "https://arxiv.org/pdf/2610.27435v1",
+          "sha256": "30d1105c89200d9b32e0c98b67a7187422a9048859a4938d4bacbcf57ea65c56",
+          "bytes": 7997157
+        }
+      }
+    },
+    {
+      "version": "2609.33517v1",
+      "first_submission_date": "2026-09-27",
+      "version_date": "2026-09-27",
+      "full_body_references_appendices_read": true,
+      "pdf_pages": 41,
+      "figures_read": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "tables_read": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "visual_pdf_pages": [
+        2,
+        4,
+        6,
+        7,
+        8,
+        9,
+        29,
+        39
+      ],
+      "all_pages_visually_inspected": false,
+      "sources": {
+        "html": {
+          "url": "https://arxiv.org/html/2609.33517v1",
+          "sha256": "cb10f59562d797b845a1519c2316b18b0901ec100c2ed5e4e2de337883ebb82d",
+          "bytes": 665363
+        },
+        "pdf": {
+          "url": "https://arxiv.org/pdf/2609.33517v1",
+          "sha256": "a685b0406d8e13945dfe93a1d3b48cfa4fd47cc8245d8cdb599b3087c9b17669",
+          "bytes": 1637520
+        }
+      }
+    },
+    {
+      "version": "2610.38573v1",
+      "first_submission_date": "2026-10-28",
+      "version_date": "2026-10-28",
+      "full_body_references_appendices_read": true,
+      "pdf_pages": 25,
+      "figures_read": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "tables_read": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "visual_pdf_pages": [
+        1,
+        4,
+        7,
+        8,
+        20
+      ],
+      "all_pages_visually_inspected": false,
+      "sources": {
+        "html": {
+          "url": "https://arxiv.org/html/2610.38573v1",
+          "sha256": "b784b37d2b5526f3196b7c8681628a80b963680233604a17c277696c513a6306",
+          "bytes": 556315
+        },
+        "pdf": {
+          "url": "https://arxiv.org/pdf/2610.38573v1",
+          "sha256": "2076f9c292fd9f3efe2458beef560f7c1c81577c39273fa33795b5b3cbb6b72c",
+          "bytes": 1387784
+        }
+      }
+    },
+    {
+      "version": "2610.01244v1",
+      "first_submission_date": "2026-10-01",
+      "version_date": "2026-10-01",
+      "full_body_references_appendices_read": true,
+      "pdf_pages": 44,
+      "figures_read": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "tables_read": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "visual_pdf_pages": [
+        2,
+        5,
+        7,
+        9,
+        18,
+        22,
+        39,
+        40,
+        41,
+        43
+      ],
+      "all_pages_visually_inspected": false,
+      "sources": {
+        "html": {
+          "url": "https://arxiv.org/html/2610.01244v1",
+          "sha256": "3b84968667568c886e4bd7125547db9880244e1822febf38f006079a549d8414",
+          "bytes": 732696
+        },
+        "pdf": {
+          "url": "https://arxiv.org/pdf/2610.01244v1",
+          "sha256": "4ac91c728f39efaa480087fdc58b677c3d7909407505b2323b47e2d9f6c0a612",
+          "bytes": 1647382
+        }
+      }
+    },
+    {
+      "version": "2610.34767v1",
+      "first_submission_date": "2026-10-26",
+      "version_date": "2026-10-26",
+      "full_body_references_appendices_read": true,
+      "pdf_pages": 25,
+      "appendices_read": "A-I",
+      "visual_pdf_pages": [
+        7,
+        8,
+        9
+      ],
+      "visual_scope": "Main reported comparisons, controls, caveats and selected sensitivity figures/tables",
+      "all_pages_visually_inspected": false,
+      "sources": {
+        "html": {
+          "url": "https://arxiv.org/html/2610.34767v1",
+          "sha256": "1322324fe4fa87244915cfd59a6afaedd1b1aefcf72d67be7516226d9214acb0",
+          "bytes": 361435
+        },
+        "pdf": {
+          "url": "https://arxiv.org/pdf/2610.34767v1",
+          "sha256": "310c9812a757e669ca56f0d1b8bf97631a4cc3f11acebe406522a41058b4e6ca",
+          "bytes": 545280
+        }
+      }
+    },
+    {
+      "version": "2610.27406v1",
+      "first_submission_date": "2026-10-19",
+      "version_date": "2026-10-19",
+      "full_body_references_appendices_read": true,
+      "pdf_pages": 31,
+      "appendices_read": "A-H",
+      "visual_pdf_pages": [
+        6,
+        7,
+        10,
+        27,
+        29,
+        31
+      ],
+      "visual_scope": "Main reported comparisons, controls, caveats and selected sensitivity figures/tables",
+      "all_pages_visually_inspected": false,
+      "sources": {
+        "html": {
+          "url": "https://arxiv.org/html/2610.27406v1",
+          "sha256": "da428cc4d606ba5850db147e29baa5f780e440198ace170476d03e292984131c",
+          "bytes": 795123
+        },
+        "pdf": {
+          "url": "https://arxiv.org/pdf/2610.27406v1",
+          "sha256": "d286fe0f9c7361e09527a8869bcf93b2b313b43de367dfd528490892c7201a52",
+          "bytes": 1711833
+        }
+      }
+    }
+  ],
+  "experiments_reproduced": false,
+  "authors_implementations_audited": false,
+  "scope": "Full text assessment; selected visual verification. Reading does not establish the claims independently or measure this workflow.",
+  "raw_sources_included": false
+}

@@ -1,0 +1,42 @@
+{
+  "checker-round1.md": {
+    "source_sha256": "10a84a8b27a7567c90676674db8fe3d72e94ee62f87a43e0965dc36913078a0e",
+    "public_sha256": "ef111c02a0f072612b1e189e620563ed26903c4b170dc56789f91aecdd58cde6",
+    "normalization": "owned private paths replaced; original private artifacts preserved"
+  },
+  "checker-round2.md": {
+    "source_sha256": "04b8ca430ef10c1c56e7dc71e87587377f6bd9375331f06801aced3fb8dcc9f2",
+    "public_sha256": "ffdb0025ce4f2c8d6f26a78af71554fb3957d5e60cd6af0805cb9353f450e476",
+    "normalization": "owned private paths replaced; original private artifacts preserved"
+  },
+  "source-round1.json": {
+    "source_sha256": "2a43b9498c8856c2882ed6250a8069d0835871eef69b1080dae9bbc433646966",
+    "public_sha256": "2a43b9498c8856c2882ed6250a8069d0835871eef69b1080dae9bbc433646966",
+    "normalization": "owned private paths replaced; original private artifacts preserved"
+  },
+  "source-round2.json": {
+    "source_sha256": "74a5c09fb74ac8227f40537d92faf74467855281fd0152de0c2ab2a80f0c3678",
+    "public_sha256": "74a5c09fb74ac8227f40537d92faf74467855281fd0152de0c2ab2a80f0c3678",
+    "normalization": "owned private paths replaced; original private artifacts preserved"
+  },
+  "behavior-grading.json": {
+    "source_sha256": "b59585173820c2a0b3ccdde173243143db7a65eecb8fac5b440d2962c6c2f542",
+    "public_sha256": "b59585173820c2a0b3ccdde173243143db7a65eecb8fac5b440d2962c6c2f542",
+    "normalization": "owned private paths replaced; original private artifacts preserved"
+  },
+  "behavior-review.md": {
+    "source_sha256": "f8da8bd7ec2a7fbfacb082d6fbe9448d760cf704a28ef6a1b8a4fd5ab7812ae1",
+    "public_sha256": "dc8070ea3fd7677092f89ec6e402527c44e08120728d4d6682a79c5efc143122",
+    "normalization": "owned private paths replaced; original private artifacts preserved; local grading link rebased to public filename"
+  },
+  "arm-A.json": {
+    "source_sha256": "6f28c57bb79f6951a0fbead58a35be34f8dc23a03be44130ddd394b78586fe32",
+    "public_sha256": "6f28c57bb79f6951a0fbead58a35be34f8dc23a03be44130ddd394b78586fe32",
+    "normalization": "owned private paths replaced; original private artifacts preserved"
+  },
+  "arm-B.json": {
+    "source_sha256": "9710c74704c53b80f98b5a61aababdd2720d1c999d15015bf702d312f5bdf893",
+    "public_sha256": "9710c74704c53b80f98b5a61aababdd2720d1c999d15015bf702d312f5bdf893",
+    "normalization": "owned private paths replaced; original private artifacts preserved"
+  }
+}

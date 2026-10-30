@@ -1,0 +1,25 @@
+{
+  "mode": "Independent static reading controls, not executed workflow/model decisions",
+  "controls": [
+    {
+      "case": "Clear reversible heading correction",
+      "source_expected": "Record low uncertainty with observable clear outcome/check/resource reasons, perform the bounded correction and verification; no material user choice means no question.",
+      "finding": "Supported by beginning-of-request paragraph and existing reversible-baseline rule."
+    },
+    {
+      "case": "Potentially missing but locally retrievable configuration fact",
+      "source_expected": "Inspect retrievable facts before escalating; do not ask a user to provide a fact already available through authorized bounded inspection. Independent safe work continues.",
+      "finding": "Explicitly supported; no new global stop is introduced."
+    },
+    {
+      "case": "Remaining choice materially changes scope, cost, reversibility or acceptance",
+      "source_expected": "Ask the user for the smallest useful options and recommendation; preserve independent authorized groundwork while that decision is pending.",
+      "finding": "Explicit decision trigger in execution paragraph; existing pending-material-bar and unresolved-priority language preserves the user decision."
+    },
+    {
+      "case": "Worker, retry or follow-up encounters the already-settled shared USD20 change-request ceiling",
+      "source_expected": "Reuse the settled shared allowance; do not repeat the budget question or treat it as a new per-worker allowance. Unknown usage is not converted into a claimed observed remaining balance.",
+      "finding": "Shared-allowance sentence and unchanged budget ancestry/unknown-telemetry clauses support this. No actual dollar meter or automated enforcement is claimed."
+    }
+  ]
+}

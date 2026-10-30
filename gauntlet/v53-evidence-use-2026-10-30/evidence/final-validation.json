@@ -1,0 +1,94 @@
+{
+  "observed_at": "2026-10-30T17:16:48.670846+00:00",
+  "commands": [
+    {
+      "command": [
+        "python3.13",
+        "tools/validate_package.py",
+        "--version",
+        "5.3.0",
+        "--expect-files",
+        "9",
+        "--export",
+        "dist/gauntlet-loop-v5-SKILL.md",
+        "--max-export-bytes",
+        "110000"
+      ],
+      "exit": 0,
+      "stdout": "{\n  \"package\": \"skill\",\n  \"version\": \"5.3.0\",\n  \"files\": 9,\n  \"skill_md_bytes\": 15093,\n  \"export_bytes\": 109869,\n  \"local_links_checked\": 16,\n  \"yaml_blocks_parsed\": 3,\n  \"failures\": [],\n  \"passed\": true,\n  \"benchmarks_run\": false\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3.13",
+        "tools/verify_release.py"
+      ],
+      "exit": 0,
+      "stdout": "{\"package_files_verified\": 9, \"zip\": \"verified\", \"portable\": \"verified\", \"version_files_verified\": 46, \"markdown_links\": \"verified\", \"benchmarks_run\": false}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3.13",
+        "tools/program.py",
+        "validate"
+      ],
+      "exit": 0,
+      "stdout": "{\n  \"errors\": [],\n  \"warnings\": [\n    \"A10: source review due; last checked 2026-09-20\",\n    \"A11: source review due; last checked 2026-09-20\",\n    \"A12: source review due; last checked 2026-09-20\",\n    \"A13: source review due; last checked 2026-09-20\",\n    \"A14: source review due; last checked 2026-09-20\",\n    \"A1: source review due; last checked 2026-09-20\",\n    \"A2: source review due; last checked 2026-09-20\",\n    \"A3: source review due; last checked 2026-09-20\",\n    \"A4: source review due; last checked 2026-09-20\",\n    \"A5: source review due; last checked 2026-09-20\",\n    \"A6: source review due; last checked 2026-09-20\",\n    \"A7: source review due; last checked 2026-09-20\",\n    \"A8: source review due; last checked 2026-09-20\",\n    \"A9: source review due; last checked 2026-09-20\",\n    \"C10: source review due; last checked 2026-09-21\",\n    \"C1: source review due; last checked 2026-09-20\",\n    \"C2: source review due; last checked 2026-09-20\",\n    \"C3: source review due; last checked 2026-09-20\",\n    \"C4: source review due; last checked 2026-09-20\",\n    \"C5: source review due; last checked 2026-09-20\",\n    \"C6: source review due; last checked 2026-09-20\",\n    \"C7: source review due; last checked 2026-09-20\",\n    \"C8: source review due; last checked 2026-09-20\",\n    \"C9: source review due; last checked 2026-09-20\"\n  ],\n  \"milestones\": 50,\n  \"evidence\": 15,\n  \"experiments\": 2\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3.13",
+        "tools/program.py",
+        "render",
+        "--check"
+      ],
+      "exit": 0,
+      "stdout": "\"research/program/README.md\"\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3.13",
+        "tools/readiness.py",
+        "validate"
+      ],
+      "exit": 0,
+      "stdout": "{\n  \"errors\": [],\n  \"triage_records\": 2,\n  \"catalog_milestones\": 50,\n  \"mode\": \"engineering_readiness\",\n  \"limit\": \"Structure checked; no execution, factual certification or milestone promotion.\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3.13",
+        "tools/public_audit.py"
+      ],
+      "exit": 0,
+      "stdout": "{\n  \"verdict\": \"READY FOR A CURATED PUBLIC COPY\",\n  \"tracked_files\": 726,\n  \"ship_set_hard_hits\": 0,\n  \"scrub_set_hard_hits\": 0,\n  \"ship_set_review_hits\": 11,\n  \"history_commits_scanned\": 43,\n  \"history_commits_with_hard_hits\": 0,\n  \"blocking_by_category\": {}\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3.13",
+        "tools/hooks/check_staged.py"
+      ],
+      "exit": 0,
+      "stdout": "check_staged: 61 staged files clean\n",
+      "stderr": ""
+    }
+  ],
+  "tests": {
+    "command": "PYTHONPATH=.validation-deps TMPDIR=canonical-private-temp python3.13 -m unittest discover -s tests -q",
+    "count": 202,
+    "skipped": 1,
+    "failed": 0,
+    "raw_sha256": "c74d62e6ed2cb5b9726da7a4ee5f92e406d9e0ae90c59650356c6eb704f93ae3"
+  },
+  "review_attempts_charged": 7,
+  "publication_audit": {
+    "review_terms": "11 generic privacy-exclusion phrases (customer data/client project), including unchanged archives and packaged copies; inspected, not confidential source material",
+    "legacy_report_limit": "Canned private-to-public migration prose in the audit report does not apply to the already-public repository; pattern results interpreted separately"
+  },
+  "source_due_warnings": "24 retained existing source review reminders; not falsely refreshed",
+  "scope": "Local package integration; no commit/push/tag/publication; no general effectiveness claim"
+}

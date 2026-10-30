@@ -1,0 +1,14 @@
+{
+  "all9_index_files_exact_prior_accepted_source": true,
+  "files": {
+    "SKILL.md": true,
+    "references/agent-language.md": true,
+    "references/bars-and-examples.md": true,
+    "references/execution-contract.md": true,
+    "references/learning-and-evolution.md": true,
+    "references/prompt-drafting.md": true,
+    "references/research-basis.md": true,
+    "references/software-quality.md": true,
+    "references/team-method.md": true
+  }
+}

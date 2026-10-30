@@ -1,0 +1,148 @@
+{
+  "observed_utc": "2026-10-30T17:40:58.595317+00:00",
+  "scope": "Bounded source/package amendment review; not final public metadata or publication acceptance",
+  "prior_acceptance": {
+    "verdict_sha256": "d3b222955664fc59f61e957705415edbc26e7c6d40391ba1adaf7ac37d42e4fc",
+    "package_manifest_sha256": "5495ef47e95d6adf29eef47a2129fbda68171571f84ff258b7132edbb04a2d74",
+    "preserved": true
+  },
+  "contract_sha256": "39bd4e5d6f144d682650ba309e2c3abc8e32d3c18e08b29bfbe4428294d8130b",
+  "criteria_version": 2,
+  "package_manifest_sha256": "11bdcf9f79d157bc95a78e422a8e3a1319cac1a1e143b696a65e9db6415290d2",
+  "package": {
+    "SKILL.md": {
+      "sha256": "891c9eef23f0c348606edd8167cf9c72f6fa162d51e9271d3077effac026011c",
+      "bytes": 15355
+    },
+    "references/agent-language.md": {
+      "sha256": "9ffba5b8cc9ad2dffb2fd650b09caaef4538ca599f1daf430a5a120abfe250a8",
+      "bytes": 2943
+    },
+    "references/bars-and-examples.md": {
+      "sha256": "9b517834232034d41a3e916066d315a6e36203b91729334578df547fdaf97322",
+      "bytes": 13331
+    },
+    "references/execution-contract.md": {
+      "sha256": "8af01ec9ff6f9cc5bcaf1e3e38b4e2da6a328e2140cab2e70eeeb5b46ef84fab",
+      "bytes": 28672
+    },
+    "references/learning-and-evolution.md": {
+      "sha256": "23ca39c5f191440d78aaa9340e769ee497d35c8a10a90d860503faaa67baf9c3",
+      "bytes": 12266
+    },
+    "references/prompt-drafting.md": {
+      "sha256": "4034a1461a9851197e608a5c2e41ff2e740a8e5aef62e11164d88a13a775a915",
+      "bytes": 8638
+    },
+    "references/research-basis.md": {
+      "sha256": "21fdb484b9e66e34238f5b20e2a3674621ca4e9c2d531bdd76327e727b1b490b",
+      "bytes": 6229
+    },
+    "references/software-quality.md": {
+      "sha256": "fbb6c03805c042035dd2b288548592b2fe9a675a926d81a37f213942be5f9834",
+      "bytes": 14021
+    },
+    "references/team-method.md": {
+      "sha256": "06d6495cd8178c3ab062f1cab094f54ca0e858d6de0774bf84101875c4986b67",
+      "bytes": 8090
+    }
+  },
+  "changed_source_files": [
+    "SKILL.md",
+    "references/bars-and-examples.md",
+    "references/execution-contract.md",
+    "references/prompt-drafting.md",
+    "references/research-basis.md",
+    "references/software-quality.md"
+  ],
+  "unchanged_source_files": [
+    "references/agent-language.md",
+    "references/learning-and-evolution.md",
+    "references/team-method.md"
+  ],
+  "helper_files": {
+    "tools/evidence_use.py": {
+      "sha256": "599860390ffe45502e948a52ce371e526ffec49686237da56a7850f88c7c1cb6",
+      "unchanged": true
+    },
+    "tests/test_evidence_use.py": {
+      "sha256": "5b5cb77440881aa81a38d6b176d30e328d2bb1ef746f58005a27e00e489b06d3",
+      "unchanged": true
+    }
+  },
+  "artifacts": {
+    "dist/gauntlet-loop-v5-SKILL.md": {
+      "sha256": "e1fb594936603345629490525e683a3cb6e64db6e39e07e478c78a107602f0eb",
+      "bytes": 109968
+    },
+    "dist/gauntlet-loop-v5.zip": {
+      "sha256": "97aa339731a3b2dcb960b21d8f6fa79ba40b7d21b83e05955ca94e276e45c639",
+      "bytes": 45499
+    },
+    "dist/package-verification.json": {
+      "sha256": "05f7fe0888acc993c13a37a4133ec871da9bfa8cd12a7fd6884c9ee7f57c8dab",
+      "bytes": 1265
+    }
+  },
+  "entrypoint_margin_bytes": 645,
+  "portable_margin_bytes": 32,
+  "package_matches_record": true,
+  "portable_exact_reconstruction": true,
+  "archive_manifest_unchanged": true,
+  "earlier_citations": {
+    "prior_count": 16,
+    "current_count": 16,
+    "exact_urls_retained": true,
+    "missing": []
+  },
+  "zip": {
+    "entries": 9,
+    "exact_names": true,
+    "exact_payloads": true,
+    "no_duplicates": true,
+    "crc_failure": null,
+    "exact_independent_rebuild": true
+  },
+  "commands": {
+    "package-validator": {
+      "argv": [
+        "python3.13",
+        "-B",
+        "tools/validate_package.py",
+        "--version",
+        "5.3.0",
+        "--expect-files",
+        "9",
+        "--export",
+        "dist/gauntlet-loop-v5-SKILL.md",
+        "--max-export-bytes",
+        "110000"
+      ],
+      "exit": 0,
+      "stdout": "{\n  \"package\": \"skill\",\n  \"version\": \"5.3.0\",\n  \"files\": 9,\n  \"skill_md_bytes\": 15355,\n  \"export_bytes\": 109968,\n  \"local_links_checked\": 16,\n  \"yaml_blocks_parsed\": 3,\n  \"failures\": [],\n  \"passed\": true,\n  \"benchmarks_run\": false\n}\n",
+      "stderr": ""
+    },
+    "release-verifier": {
+      "argv": [
+        "python3.13",
+        "-B",
+        "tools/verify_release.py"
+      ],
+      "exit": 0,
+      "stdout": "{\"package_files_verified\": 9, \"zip\": \"verified\", \"portable\": \"verified\", \"version_files_verified\": 46, \"markdown_links\": \"verified\", \"benchmarks_run\": false}\n",
+      "stderr": ""
+    },
+    "portable-reconstruction": {
+      "argv": [
+        "python3.13",
+        "-B",
+        "tools/export_single_file.py",
+        "--out",
+        "private:upgrade-workspace/audit/final-release-review/amendment/reconstructed-portable.md"
+      ],
+      "exit": 0,
+      "stdout": "private:upgrade-workspace/audit/final-release-review/amendment/reconstructed-portable.md\n",
+      "stderr": ""
+    }
+  }
+}

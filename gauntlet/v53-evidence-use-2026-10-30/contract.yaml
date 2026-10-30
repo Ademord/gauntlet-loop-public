@@ -1,0 +1,75 @@
+{
+  "run_id": "v53-evidence-use-2026-10-30",
+  "governing_skill": "5.2.0",
+  "candidate_version": "5.3.0",
+  "baseline_commit": "17161321b3cd1603ae7b5d710e3e85a837331cb8",
+  "created_utc": "2026-10-30T16:54:40.812010+00:00",
+  "contract_version": 2,
+  "criteria_version": 2,
+  "task_class": "skill",
+  "difficulty": "high",
+  "topology": "compact+delegates",
+  "features_enabled": [
+    "evidence_ladder",
+    "delegates",
+    "isolation"
+  ],
+  "outcome": "Release a bounded evidence-use and retained-state improvement; then qualify its Atlas integration separately.",
+  "scope": [
+    "Seven full-paper assessments",
+    "Portable skill and existing references",
+    "Optional no-model evidence-use checker",
+    "Independent bounded scenario validation",
+    "Archives, release artifacts and sanitized evidence"
+  ],
+  "non_goals": [
+    "New memory framework or database",
+    "Automatic dispatcher or learning activation",
+    "Paid model benchmark campaign",
+    "Claim of general productivity improvement",
+    "Changing historical receipts",
+    "Atlas implementation before release acceptance"
+  ],
+  "checks": {
+    "C1": "Evidence eligibility is action/claim scoped; material governing conditions are distinct from byte integrity.",
+    "C2": "Resume covers current obligations and affected dependencies, carries budgets/holds, and permits harmless authorized investigation.",
+    "C3": "Acceptance checks required retained-state invariants as well as deliverable output, proportionally.",
+    "C4": "History remains queryable; derivative advice and copied observations cannot establish independent support by repetition.",
+    "C5": "Optional method diagnosis and result reporting separate conformance, selection, control freshness, trial denominators and task performance.",
+    "C6": "Portable prompts/examples carry essential semantics without extra universal teams, tooling or studies.",
+    "C7": "Checker discriminates valid/invalid/unknown declared uses and discloses trusted-input and enforcement boundaries.",
+    "C8": "Nine-file package stays within existing 16000/110000-byte limits; incumbent/archive identities and required repository checks pass.",
+    "C9": "Independent scenarios/reviews inspect actual candidate; failures, unknown costs and limitations remain visible.",
+    "C10": "At request start, uncertainty is described with reasons and only material unresolved user choices trigger a concise query; safe groundwork and prior decisions survive."
+  },
+  "acceptance_requirements": "evidence/requirements.md",
+  "frozen_scenarios": "evidence/FREEZE.json",
+  "budget": {
+    "reviews_soft": 9,
+    "reviews_hard": 12,
+    "integration_reviews_reserved": 3,
+    "requests_hard": 600,
+    "cost": null,
+    "accounting": "Review attempts counted; model request/cost telemetry unknown. No paid external CLI campaign."
+  },
+  "stop_rule": "No acceptance with a blocking required check; park incomplete work with evidence if allowance exhausted.",
+  "comparison": "5.2 exact bytes as incumbent; discriminating functional fixtures and scoped behavioral scenarios, not general performance.",
+  "losses": [
+    "False blocking of safe reads",
+    "Lost historical context",
+    "Universal maintenance rituals",
+    "Self-certified evidence",
+    "Broken portability",
+    "Larger context cost",
+    "State corruption",
+    "Budget reset"
+  ],
+  "costs": {
+    "execution": null,
+    "research": null,
+    "lead": null,
+    "human_time": null
+  },
+  "next_expenditure_decision": "Do narrow rules and checker merit release under these checks; Atlas adoption requires its own live-path qualification.",
+  "amendment": "Direct human request: small beginning-of-request uncertainty decision; reuse existing allowance/decisions."
+}

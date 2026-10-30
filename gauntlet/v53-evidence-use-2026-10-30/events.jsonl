@@ -1,0 +1,3 @@
+{"event": "contract_frozen", "time": "2026-10-30T16:54:40.812010+00:00", "criteria_version": 1, "source": "human-request-and-independent-requirements"}
+{"event": "local_acceptance", "time": "2026-10-30T17:22:29.425804+00:00", "acceptance_sha256": "d3b222955664fc59f61e957705415edbc26e7c6d40391ba1adaf7ac37d42e4fc", "published": false}
+{"event": "uncertainty_amendment_accepted", "time": "2026-10-30T17:44:53.742556+00:00", "review_attempt": 8, "source_sha256": "926565246bf9364d630ec9c767d5157decb4ab6e3e29348c2d42d5a33314dad0"}

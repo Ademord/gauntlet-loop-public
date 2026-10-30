@@ -1,0 +1,27 @@
+{
+  "identity-and-checks.json": {
+    "original_sha256": "847f26cbada5bf788452884910634f6afb0d371385825f5bcf8138b539024017",
+    "public_sha256": "23e5f791ccae172165d688fc42d8d58bc470f0fdd5cdff3a5436870f89bc89d5",
+    "normalization": "owned paths generalized; original preserved privately"
+  },
+  "candidate-SHA256SUMS": {
+    "original_sha256": "11bdcf9f79d157bc95a78e422a8e3a1319cac1a1e143b696a65e9db6415290d2",
+    "public_sha256": "11bdcf9f79d157bc95a78e422a8e3a1319cac1a1e143b696a65e9db6415290d2",
+    "normalization": "owned paths generalized; original preserved privately"
+  },
+  "prior-source-identity.json": {
+    "original_sha256": "04aa9cb4dab3b4a1c453e2bd39d5ca4dda0661c3707cf24e0d1df376032eb617",
+    "public_sha256": "04aa9cb4dab3b4a1c453e2bd39d5ca4dda0661c3707cf24e0d1df376032eb617",
+    "normalization": "owned paths generalized; original preserved privately"
+  },
+  "source-changes-from-accepted.diff": {
+    "original_sha256": "9dba50eea64537aae5cdf2fef65666afb677fc1dad433ff5f9d7da734958f358",
+    "public_sha256": "9dba50eea64537aae5cdf2fef65666afb677fc1dad433ff5f9d7da734958f358",
+    "normalization": "owned paths generalized; original preserved privately"
+  },
+  "reader-controls.json": {
+    "original_sha256": "dfbe4cd35d3c1bee9186d9c0324b18f87e378085132637639242a1ed34c146e9",
+    "public_sha256": "dfbe4cd35d3c1bee9186d9c0324b18f87e378085132637639242a1ed34c146e9",
+    "normalization": "owned paths generalized; original preserved privately"
+  }
+}

@@ -62,3 +62,16 @@ Source: the owner's discussion of dependable delivery, lower human corrective ef
 | B-044 | Make a later skill release only for a justified behavior change, including simplifying or retiring instructions already covered by native controls. Keep added critics/teams proportional to task needs. | Current 5.1.0, [native-overlap proposals](materials/native-overlap.json), [upgrade process](../../versions/README.md#adding-a-version); M-003, M-015, M-019, M-031, M-033, M-050 | Select a concrete gap with competing explanations, reuse relevant research within its scope, and define the decision the change enables. Follow the upgrade review; use a targeted comparison if claiming an outcome advantage. Include failures and preparation, evaluation, execution and human effort. Choose the version from the actual change; no automatic 5.2 or 6.0. | adopted in reviewed [5.2 upgrade](../../gauntlet/v52-reconsideration-2026-09-25/progress.md): reconsideration and continuity; performance remains unproven |
 
 Success is useful accepted work with inspectable limits and less avoidable effort. More roles, graph nodes, checkpoints or recording infrastructure are not milestones by themselves. Do not implement all rows merely because they are indexed here.
+
+## Full-text candidates, 30 October 2026
+
+These rows are combined in one bounded [5.3 upgrade](../../gauntlet/v53-evidence-use-2026-10-30/progress.md). Humanize adds no mechanism; CALM supplies historical/current controls for existing behavior. No paid campaign or performance promotion follows.
+
+| ID | Candidate | Source | Gate and falsifier | Status |
+| --- | --- | --- | --- | --- |
+| B-045 | Claim/action-specific evidence eligibility | [SciValidityBench](../scans/2026-10-30/06-scivaliditybench.md) | Same receipt under decisive/irrelevant condition changes; reject incorrect acceptance without blocking valid controls | adopted in5.3.0, scoped checks only |
+| B-046 | Action-scoped return evidence coverage | [TRACE](../scans/2026-10-30/03-trace.md) | Preserve obligations, holds and spending; missing publication evidence must not block authorized inspection | adopted in5.3.0, scoped checks only |
+| B-047 | Required retained-state postconditions | [OffQuery](../scans/2026-10-30/05-offquery.md) | Output success with damaged required state must fail; unchanged-state control passes | adopted in5.3.0, scoped checks only |
+| B-048 | Advice descendants do not self-confirm | [More Memory](../scans/2026-10-30/07-more-memory.md) | Copied lineage cannot satisfy independent support; a qualifying observation remains usable | adopted in5.3.0, scoped checks only |
+| B-049 | Optional paired diagnosis and honest evaluation provenance | [RiseHarness](../scans/2026-10-30/02-riseharness.md) | Distinguish development-selected transfer, target-selected best, controls, missing slots and per-task regressions | adopted in5.3.0, scoped checks only |
+| B-050 | Proportional uncertainty decision at request start | Owner feedback; upgrade contractv2 | Ask only material unresolved choices, reuse decisions and continue safe groundwork; self-reported levels are not calibrated probabilities | adopted in5.3.0 after independent source amendment review |

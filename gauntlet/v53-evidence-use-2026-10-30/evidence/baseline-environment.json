@@ -1,0 +1,23 @@
+{
+  "initial_run": {
+    "exit": 1,
+    "observed_failures": 12,
+    "observed_errors": 1,
+    "skip": 1,
+    "causes_observed": [
+      "Missing validation dependencies",
+      "Default temporary directory has symlink ancestor rejected by existing static bridge"
+    ],
+    "full_original_output_preserved": false,
+    "limit": "Tool output was truncated; counts and observed diagnostics retained, not invented complete logs"
+  },
+  "repaired_environment": {
+    "python": "3.13.16",
+    "PYTHONPATH": ".validation-deps",
+    "TMPDIR": "canonical private temporary directory",
+    "baseline_tests": 182,
+    "candidate_tests": 202,
+    "skips_each": 1,
+    "failures": 0
+  }
+}

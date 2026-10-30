@@ -1,16 +1,16 @@
 # Optional software delivery and project-specific checks
 
-Read this when the gauntlet concerns a software repository, app, site, extension, or demo. These checks can optionally extend the definition of done. Select them from the user's choices or requirements already established for the project; do not silently make every item mandatory. Offer a relevant subset when useful, and honor explicit scope such as local-only work. Once selected, a check becomes part of the completion bar and needs real evidence. Unselected extras do not block SHIP; existing project requirements remain requirements.
+Read for software work. Select delivery extensions only from user choices or established project requirements, respecting local-only scope. Once required/selected, a check needs actual evidence. Unselected extras do not block delivery; selecting one extension does not select the others.
 
 ## Define the bar from the actual project
 
-Inspect the repository instructions, README, existing CI, hosting configuration, release commands, supported platforms, and reported failures. Identify the important user journeys and transitions, including what a fresh user installs or downloads. Turn these into observable acceptance checks with evidence sources before building. If a critic discovers a missed requirement-derived check, record its source and a criteria version change using the [execution contract](execution-contract.md); do not silently add new product scope or weaken an expectation.
+Inspect project instructions, README, CI, hosting, release commands, supported platforms and reported failures. Define observable user journeys, including fresh installation/downloads, before building. A newly discovered requirement-derived check needs a sourced [criteria amendment](execution-contract.md), never silent scope expansion or weakened expectations.
 
-Maintain a compact acceptance record in the project's existing worklog or progress artifact: **check ID, requirement source, selection/scope, expected behavior, artifact identity, criteria version, evidence, status, remaining gap**. Use passed, failed, blocked, not selected, or not applicable. Link to test results, screenshots, workflow runs, and the deployed demo rather than relying on a narrative assurance. Counts come from actual results. Explain why a gate is not applicable; lack of access, an inconvenient test, or an unavailable host is a blocker for a selected or otherwise required gate.
+Reuse the project acceptance record: check ID, requirement source, scope, expected behavior, artifact/criteria identities, actual evidence, status and gap. Statuses are passed, failed, blocked, not selected or not applicable. Missing tools/access for a required check means blocked, not inapplicable. Link actual results; do not infer them from prose.
 
 ## Optional delivery extensions
 
-Each section below describes how to satisfy an extension **after it has been selected**. CI, hosting, demo experience, portable/offline delivery, a clean public working copy, README images, onboarding, and deeper project-specific coverage can be chosen separately or together. Selecting a demo does not automatically select public hosting, offline support, or a repository split.
+Select CI, hosting, demo, portable delivery, public copy, README images and deeper coverage independently; one does not imply another.
 
 ### Repository and CI
 

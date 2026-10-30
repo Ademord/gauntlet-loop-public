@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "review_id": "source-review-2026-10-30",
+  "created_utc": "2026-10-30T17:02:39.337433+00:00",
+  "role": "independent source/package critic",
+  "candidate_manifest_sha256": "de97295a3e9a04f799b86de3f43f754c423de0a4f0ccb833924522219f4b2f12",
+  "portable_sha256": "af5ff8e574d50fb70cb3fd534a18bc8488b98bd0bbd3d0a1a7b7776763697625",
+  "winner": "none",
+  "accepted": false,
+  "biggest_gap": "SR-01: standalone prompts omit source-lineage independence semantics",
+  "checks": [
+    {
+      "id": "C1",
+      "status": "passed",
+      "scope": "Source semantics",
+      "evidence": [
+        "skill/references/execution-contract.md:31-37",
+        "skill/SKILL.md:57"
+      ],
+      "observation": "Names a proposed claim/action and checks relevant identity, current criteria/scope, authority, lifecycle and selection procedure. Matching bytes are insufficient; unknown material conditions withhold only that use. Declared helper matches neither establish truth nor grant authority."
+    },
+    {
+      "id": "C2",
+      "status": "passed",
+      "scope": "Source semantics",
+      "evidence": [
+        "skill/references/execution-contract.md:41-45",
+        "skill/references/execution-contract.md:157-182"
+      ],
+      "observation": "Resume reconciles intervening additions, implicit dependencies and private summaries with current sources; budgets, holds, ownership and uncertain effects survive. Missing publication evidence permits authorized inspection/preparation and independent work."
+    },
+    {
+      "id": "C3",
+      "status": "passed",
+      "scope": "Source semantics",
+      "evidence": [
+        "skill/references/execution-contract.md:25",
+        "skill/references/execution-contract.md:100",
+        "skill/SKILL.md:57"
+      ],
+      "observation": "Required retained-state postconditions use preimage and actual post-state, and independent review covers them alongside output and affected complete journey. Scope is explicitly proportional; no universal workspace audit."
+    },
+    {
+      "id": "C4",
+      "status": "passed",
+      "scope": "Full-package source semantics; C6 separately covers standalone prompts",
+      "evidence": [
+        "skill/references/execution-contract.md:35",
+        "skill/references/learning-and-evolution.md:11",
+        "skill/references/learning-and-evolution.md:55",
+        "skill/references/learning-and-evolution.md:67"
+      ],
+      "observation": "Historical evidence remains answerable under original scope. Superseded evidence and dispositions survive. Copies, summaries and descendant trajectories do not add independent support; a qualifying new observation may. Existing retention/privacy rules survive."
+    },
+    {
+      "id": "C5",
+      "status": "passed",
+      "scope": "Source semantics",
+      "evidence": [
+        "skill/references/learning-and-evolution.md:69-83",
+        "research/scans/2026-10-30/02-riseharness.md",
+        "skill/references/research-basis.md:10"
+      ],
+      "observation": "Method diagnosis remains optional/between runs, using existing observations and stable-success counterexamples. Evaluation distinguishes development-selected and best-on-evaluation candidates, historical/fresh controls, allocated denominators/missing trials, per-task losses, outcome consistency and unknown full costs. Conformance, scores and enforcement remain separate."
+    },
+    {
+      "id": "C6",
+      "status": "failed",
+      "scope": "Standalone portable prompt/template semantics",
+      "evidence": [
+        "skill/references/prompt-drafting.md:7",
+        "skill/references/prompt-drafting.md:25-31",
+        "skill/references/bars-and-examples.md:47-53",
+        "skill/references/bars-and-examples.md:65-71"
+      ],
+      "observation": "The paste-ready template and both worked prompts preserve history but omit the rule that copied/derived reports are not independent observations. Separate reviewer roles, discriminating factual tests, and not voting do not distinguish several source descendants from independent support. A fresh session is expressly promised to need no skill copy. See SR-01."
+    },
+    {
+      "id": "C7",
+      "status": "not selected",
+      "scope": "Delegated to independent helper review",
+      "evidence": [
+        "skill/references/execution-contract.md:37"
+      ],
+      "observation": "Only documentation/enforcement boundary checked here. No numerical/helper probes or behavioral-oracle outputs read."
+    },
+    {
+      "id": "C8",
+      "status": "passed",
+      "scope": "Independent package, incumbent identity and current repository verification",
+      "evidence": [
+        "validation-results.json",
+        "candidate-SHA256SUMS",
+        "identity.json"
+      ],
+      "observation": "Nine package files; entrypoint 15093 <= 16000 bytes; portable 109850 <= 110000 bytes. Package validator and release verifier passed. All nine archived 5.2 files match pinned baseline commit exactly. Existing version sum list verifies 37 files but currently omits the new 5.2 directory; its bytes were checked independently here."
+    },
+    {
+      "id": "C9",
+      "status": "passed",
+      "scope": "This independent source review only",
+      "evidence": [
+        "review.md",
+        "identity.json"
+      ],
+      "observation": "Inspected actual candidate and actual baseline diff. This is not a claim that scenarios passed, a runtime enforcement measurement or release acceptance. No oracle or forward-agent output read; no paid/model CLI calls or external writes."
+    }
+  ],
+  "blocking_findings": [
+    {
+      "id": "SR-01",
+      "class": "deterministic",
+      "check": "C6",
+      "requirement": "Frozen C6 and R6, plus promise at prompt-drafting.md:7 that a fresh session need not possess this skill",
+      "actual": "All three standalone text blocks say to preserve history but do not prohibit treating copied/derived reports as independent support. Their lineage reference concerns review/budget continuity.",
+      "consequence": "A standalone prompt consumer may satisfy the printed contract yet count several summaries of one observation as corroboration or admit circularly re-derived support. Full-package rules prevent this, but are not carried into the promised portable blocks.",
+      "smallest_next_observation": "Add equivalent source-lineage semantics to template and both worked prompts, then inspect those exact blocks and rebuild/validate the portable export under 110000 bytes."
+    }
+  ],
+  "nonblocking_notes": [
+    {
+      "id": "SR-N01",
+      "topic": "Archive verification coverage",
+      "observation": "versions/SHA256SUMS omits the newly copied versions/v5.2.0 entries. verify_release.py therefore covers 37 older listed files, not this directory. Independent git-show comparisons here establish all nine current 5.2 bytes. Add the new archive to the version sums during final integration."
+    },
+    {
+      "id": "SR-N02",
+      "topic": "Source fidelity limit",
+      "observation": "Compared seven assessment notes and reading manifest with compressed research-basis text; did not independently reread every primary paper or reproduce experiments. No contradictions between these supplied assessments and adopted behavior were found."
+    }
+  ],
+  "limits": [
+    "Source/package audit, not runtime scenario execution.",
+    "Helper functional review is separate.",
+    "No behavioral oracle or forward-agent outputs inspected.",
+    "No full paper replication or performance benefit established.",
+    "Model request, cost and wall-clock impact of future use remain unknown."
+  ]
+}

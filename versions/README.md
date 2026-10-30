@@ -13,7 +13,8 @@ Every version of the skill, oldest first. The current version is [skill/](../ski
 | v4.0.0 | [v4/](v4/SKILL.md) | 8 | `94c0360fa0fd` | Byte for byte. Its single-file release can be regenerated with `python tools/export_single_file.py --package versions/v4 --out v4.md`. |
 | v5.0.0 | [v5/](v5/SKILL.md) | 8 | in [SHA256SUMS](SHA256SUMS) | Byte for byte, snapshotted when 5.1.0 replaced it in `skill/`. |
 | v5.1.0 | [v5.1.0/](v5.1.0/SKILL.md) | 9 | in [SHA256SUMS](SHA256SUMS) | Byte for byte, captured before 5.2.0. The original [release review](v5.1.0-RELEASE-REVIEW.md) is also preserved. |
-| v5.2.0 | [../skill/](../skill/SKILL.md) | 9 | in [dist/package-verification.json](../dist/package-verification.json) | The current version: reconsideration and incoming-message continuity. |
+| v5.2.0 | [v5.2.0/](v5.2.0/SKILL.md) | 9 | in [SHA256SUMS](SHA256SUMS) | Byte for byte, outgoing package before 5.3.0. |
+| v5.3.0 | [../skill/](../skill/SKILL.md) | 9 | in [dist/package-verification.json](../dist/package-verification.json) | Evidence-use and retained-state extension; publication receipt separate. |
 
 The full SHA256 of every stored file is in [SHA256SUMS](SHA256SUMS). From the repository root, `sha256sum -c versions/SHA256SUMS` checks them, and so does `python tools/verify_release.py`.
 
@@ -29,6 +30,7 @@ The full SHA256 of every stored file is in [SHA256SUMS](SHA256SUMS). From the re
 | v5.0.0 | A gauntlet run on itself: nine frozen checks, six scenario probes, six independent critic reviews in three rounds, deterministic validators | [v5 run](../gauntlet/v5-upgrade-2026-09-17/progress.md) |
 | v5.1.0 | A gauntlet run under 5.0.0: nine frozen checks, eight scenario probes frozen before building, four independent critics per round, deterministic validators | [v5.1 run](../gauntlet/v51-upgrade-2026-09-19/progress.md), [archived release review](v5.1.0-RELEASE-REVIEW.md) |
 | v5.2.0 | Frozen requirements, independently authored scenario prompts, fresh Opus execution and independent rule review, package/history checks; live pilots separate | [upgrade record](../gauntlet/v52-reconsideration-2026-09-25/progress.md) |
+| v5.3.0 | Seven full-paper assessments, frozen16-case behavioral qualification, independent source/helper review and deterministic regression/package checks; no general performance measurement | [upgrade](../gauntlet/v53-evidence-use-2026-10-30/progress.md) |
 
 None of these is a performance measurement.
 

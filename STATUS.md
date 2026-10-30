@@ -1,8 +1,10 @@
 # Status
 
-Work in progress, updated 25 September 2026. This is the canonical working repository.
+Work in progress, updated 30 October 2026. Current release 5.3.0 passed independent source/helper/amendment and package qualification. Earlier checkpoints below retain their historical scope.
 
-Current skill: **5.2.0**, with bounded reconsideration when feedback challenges the problem interpretation and continuity across incoming messages. The [upgrade record](gauntlet/v52-reconsideration-2026-09-25/progress.md) separates frozen checks, scenario outputs, independent review and publication. The [Quick start](README.md#quick-start) still resolves the latest published release. Native host interruption scheduling is not controlled by this Markdown skill.
+**Current release:5.3.0**, evidence-use, retained-state and beginning-of-request uncertainty; see the [upgrade](gauntlet/v53-evidence-use-2026-10-30/progress.md). Package/source/helper and bounded decision checks are qualified; publication is verified separately in its receipt. No general performance gain is established.
+
+Previous release: **5.2.0**, with bounded reconsideration when feedback challenges the problem interpretation and continuity across incoming messages. The [upgrade record](gauntlet/v52-reconsideration-2026-09-25/progress.md) separates frozen checks, scenario outputs, independent review and publication. The [Quick start](README.md#quick-start) still resolves the latest published release. Native host interruption scheduling is not controlled by this Markdown skill.
 
 `main` remains the project home. Prior skill 5.1.0 is archived byte for byte; original research and run records remain intact. The private installed customization and active pilot versions are separate from this public package. No performance advantage or reduced human correction burden has been established.
 
@@ -47,7 +49,8 @@ The [six-task review calibration](research/program/calibration/DECISION.md) is c
 | Area | State | Where |
 | --- | --- | --- |
 | Skill 5.1.0 (historical) | Accepted by a gauntlet run under 5.0.0: nine frozen checks, eight scenario probes frozen before building, four independent critics over four review rounds. It restores what v4 dropped and fixes wording the v5 run left ambiguous; no new mechanism, and nothing benchmarked. 5.0.0 is preserved byte for byte in versions/v5/ | [archive](versions/v5.1.0/SKILL.md), [gauntlet/v51-upgrade-2026-09-19/](gauntlet/v51-upgrade-2026-09-19/progress.md) |
-| Skill 5.2.0 | Reconsideration and message continuity; see scoped checks and remaining uncertainty in the upgrade record | [skill/](skill/SKILL.md), [upgrade](gauntlet/v52-reconsideration-2026-09-25/progress.md) |
+| Skill 5.2.0, published | Reconsideration and message continuity; historical qualification | [archive](versions/v5.2.0/SKILL.md), [upgrade](gauntlet/v52-reconsideration-2026-09-25/progress.md) |
+| Skill 5.3.0 | Claim-specific evidence eligibility, current-context coverage, retained-state checks; publication receipt recorded separately | [skill/](skill/SKILL.md), [upgrade](gauntlet/v53-evidence-use-2026-10-30/progress.md) |
 | Version history | Complete from v1 to v5.2; every stored file checksummed | [versions/](versions/README.md) |
 | Research | Six papers noted with verbatim abstracts; the v5 thesis; a research program with a pre-registered paired-study protocol, amended 19 September for harness isolation and measurement | [research/](research/README.md) |
 | Run ledger | Scripts ready. The first ingest over the author's projects found three recorded runs and five run folders without a machine-readable record; every cell is below threshold. Outputs stay local | [tools/ledger/](tools/README.md), [ledger/SCHEMA.md](ledger/SCHEMA.md) |
