@@ -31,3 +31,5 @@ Local configuration lives in gitignored `*.local.json` files. The schema of the 
 - `python -m unittest discover -s tests -v` checks accounting, prompt binding, grader integrity, stage isolation, budget/stop behavior, evidence scope and immutable research records without model calls.
 - `python tools/paired_study/replay_measurements.py --output research/program/paired-study/results.corrected.jsonl --report research/program/paired-study/measurement-replay.md` creates a derived correction from matching local transcripts. It never rewrites the original rows. A fresh clone lacks gitignored transcripts; unsupported corrections stay unknown.
 - [Review calibration](../research/program/calibration/README.md) documents the frozen six-task comparison, its limits, and explicit prepare/execute commands.
+
+Release hooks use `GAUNTLET_PYTHON` when set, otherwise `python3`. Select the documented validation interpreter per command if the generic Python shim is unconfigured; do not change global tool versions to run a release hook.

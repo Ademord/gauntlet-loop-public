@@ -23,3 +23,7 @@ All C1–C9 passed independent final review; package/helper pinned in the owned 
 ## Final uncertainty amendment and publication authority
 
 Owner requested a small beginning-of-request uncertainty decision and explicitly authorized finishing/publishing this release before autonomous Atlas work. Contract v2/C10 and standalone carriers were independently rechecked;8 critic attempts charged. The new package is15,355/109,968 bytes and retains all16 earlier citation URLs. Prior qualification and failures stay preserved. The final202-test run is recorded separately; older16-case decisions are reused only for unchanged semantics. Publication receipt will pin the actual tag,commit,assets and readback.
+
+Publication preparation correction: the first local commit reported ignored non-executable hooks. The staged content guard had run manually; the message guard is now explicitly checked, both hooks made executable, and all gates rerun before push. Stored review diffs retain exact patch whitespace; only that artifact type is exempted from Git whitespace diagnostics. No force push or source-history rewrite is used.
+
+The first executable-hook attempt then exposed an unconfigured generic `python` shim and correctly stopped the commit. Hooks now select `GAUNTLET_PYTHON` or `python3`; the validation interpreter is supplied per command without global configuration changes.
