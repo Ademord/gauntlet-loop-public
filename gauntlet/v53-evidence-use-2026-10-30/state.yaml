@@ -5,8 +5,8 @@
   "review_attempts": 8,
   "review_hard_cap": 12,
   "remaining_review_allowance": 4,
-  "candidate_source_manifest": "5495ef47e95d6adf29eef47a2129fbda68171571f84ff258b7132edbb04a2d74",
-  "portable_sha256": "9028e88a36ccc2428c70da70a2ca63b88767c2088baffb8deab6535204544b07",
+  "candidate_source_manifest": "11bdcf9f79d157bc95a78e422a8e3a1319cac1a1e143b696a65e9db6415290d2",
+  "portable_sha256": "e1fb594936603345629490525e683a3cb6e64db6e39e07e478c78a107602f0eb",
   "checks": {
     "C1": "passed",
     "C2": "passed",
@@ -21,10 +21,26 @@
   },
   "remaining": [],
   "remote_publication": "published_verified",
-  "atlas_integration": "not_started",
+  "atlas_integration": "installed_local_fixture_qualified",
   "costs": "unknown",
-  "updated_at": "2026-10-30T17:11:39.889010+00:00",
-  "acceptance_sha256": "d3b222955664fc59f61e957705415edbc26e7c6d40391ba1adaf7ac37d42e4fc",
-  "amendment": "Independent source/package amendment accepted",
-  "publication": "publication.json"
+  "updated_at": "2026-10-30T18:32:32.765230+00:00",
+  "acceptance_sha256": "926565246bf9364d630ec9c767d5157decb4ab6e3e29348c2d42d5a33314dad0",
+  "amendment": "Independent source/package uncertainty amendment accepted; historical pre-amendment pins retained in prior_local_acceptance.",
+  "publication": "publication.json",
+  "prior_local_acceptance": {
+    "scope": "Historical local acceptance before the uncertainty amendment; not the final published package identity",
+    "criteria_version": 1,
+    "candidate_source_manifest": "5495ef47e95d6adf29eef47a2129fbda68171571f84ff258b7132edbb04a2d74",
+    "portable_sha256": "9028e88a36ccc2428c70da70a2ca63b88767c2088baffb8deab6535204544b07",
+    "acceptance_sha256": "d3b222955664fc59f61e957705415edbc26e7c6d40391ba1adaf7ac37d42e4fc"
+  },
+  "amendment_acceptance": {
+    "criteria_version": 2,
+    "reference": "evidence/reviews/uncertainty-amendment.json",
+    "sha256": "926565246bf9364d630ec9c767d5157decb4ab6e3e29348c2d42d5a33314dad0",
+    "scope": "C6, C10 and affected C8 source/package revalidation; prior qualification remains scoped to unchanged semantics"
+  },
+  "acceptance_scope": "Current source/package acceptance composes the prior local acceptance with the independently accepted uncertainty amendment; publication is verified separately.",
+  "atlas_integration_limits": "Pinned guarded caller installed and verified with local fake-process fixtures; no paid production pilot, universal tool interception or complete native-host billing coverage.",
+  "status_correction": "Dated metadata correction: current identities match the already-published tag and assets. Package and tag bytes were not changed."
 }
