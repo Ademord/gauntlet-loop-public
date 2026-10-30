@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "repository": "Ademord/gauntlet-loop-public",
+  "tag": "v5.3.0",
+  "release_commit": "de871198cad3dfcf0096688ca6120802c5994d7b",
+  "release_url": "https://github.com/Ademord/gauntlet-loop-public/releases/tag/v5.3.0",
+  "published_at": "2026-10-30T17:54:30Z",
+  "draft": false,
+  "prerelease": false,
+  "latest_stable_verified": true,
+  "assets": [
+    {
+      "id": 692927803,
+      "name": "gauntlet-loop-v5-SKILL.md",
+      "bytes": 109968,
+      "digest": "sha256:e1fb594936603345629490525e683a3cb6e64db6e39e07e478c78a107602f0eb",
+      "url": "https://github.com/Ademord/gauntlet-loop-public/releases/download/v5.3.0/gauntlet-loop-v5-SKILL.md"
+    },
+    {
+      "id": 692927807,
+      "name": "gauntlet-loop-v5.zip",
+      "bytes": 45499,
+      "digest": "sha256:97aa339731a3b2dcb960b21d8f6fa79ba40b7d21b83e05955ca94e276e45c639",
+      "url": "https://github.com/Ademord/gauntlet-loop-public/releases/download/v5.3.0/gauntlet-loop-v5.zip"
+    },
+    {
+      "id": 692927804,
+      "name": "package-verification.json",
+      "bytes": 1265,
+      "digest": "sha256:05f7fe0888acc993c13a37a4133ec871da9bfa8cd12a7fd6884c9ee7f57c8dab",
+      "url": "https://github.com/Ademord/gauntlet-loop-public/releases/download/v5.3.0/package-verification.json"
+    }
+  ],
+  "verification": "GitHub release API readback; same asset IDs and digests as byte-verified draft downloads; remote main/tag readback recorded in task evidence",
+  "publication": "Normal fast-forward main push and annotated tag, no force push",
+  "limits": [
+    "Package qualification is not a general productivity benchmark",
+    "Host model and total research cost unobservable; no zero-cost claim",
+    "Atlas integration is separate"
+  ]
+}

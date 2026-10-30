@@ -20,10 +20,11 @@
     "C10": "passed"
   },
   "remaining": [],
-  "remote_publication": "authorized_pending_readback",
+  "remote_publication": "published_verified",
   "atlas_integration": "not_started",
   "costs": "unknown",
   "updated_at": "2026-10-30T17:11:39.889010+00:00",
   "acceptance_sha256": "d3b222955664fc59f61e957705415edbc26e7c6d40391ba1adaf7ac37d42e4fc",
-  "amendment": "Independent source/package amendment accepted"
+  "amendment": "Independent source/package amendment accepted",
+  "publication": "publication.json"
 }

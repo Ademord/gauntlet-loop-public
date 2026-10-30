@@ -27,3 +27,7 @@ Owner requested a small beginning-of-request uncertainty decision and explicitly
 Publication preparation correction: the first local commit reported ignored non-executable hooks. The staged content guard had run manually; the message guard is now explicitly checked, both hooks made executable, and all gates rerun before push. Stored review diffs retain exact patch whitespace; only that artifact type is exempted from Git whitespace diagnostics. No force push or source-history rewrite is used.
 
 The first executable-hook attempt then exposed an unconfigured generic `python` shim and correctly stopped the commit. Hooks now select `GAUNTLET_PYTHON` or `python3`; the validation interpreter is supplied per command without global configuration changes.
+
+## Published5.3.0
+
+[GitHub release](https://github.com/Ademord/gauntlet-loop-public/releases/tag/v5.3.0) published30October2026 at17:54:30UTC, release commit `de871198cad3dfcf0096688ca6120802c5994d7b`. [Publication receipt](publication.json) verifies latest stable status, asset IDs/sizes/digests and exact bytes downloaded before publication. Main/tag were pushed normally with no force push. Atlas rollout remains a separate phase.
